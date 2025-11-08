@@ -1,0 +1,137 @@
+    'x-xss-protection': '0',
+    'strict-transport-security': 'max-age=631138519; includeSubdomains',
+    vary: 'accept-encoding',
+    'api-version': '2.150',
+    'origin-cf-ray': '985b321fa151452d-ATL',
+    perf: '7402827104',
+    'x-access-level': 'read',
+    'x-connection-hash': 'aaab7a691ab472b657290e5d9af3332808bc148144e3249c49c3c042e5574576',
+    'x-content-type-options': 'nosniff',
+    'x-frame-options': 'SAMEORIGIN',
+    'x-rate-limit-limit': '1080000',
+    'x-rate-limit-remaining': '1079998',
+    'x-rate-limit-reset': '1758978630',
+    'x-response-time': '11',
+    'x-served-by': 'tsa_b',
+    'x-transaction-id': '1ef68cc95a670f4c',
+    'set-cookie': [
+      'guest_id=v1%3A175897815035924590; SameSite=None; Secure; Path=/; Domain=x.com; Max-Age=34214400; Expires=Wed, 28 Oct 2026 13:02:30 GMT'
+    ]
+  },
+  rateLimit: { limit: 1080000, remaining: 1079998, reset: 1758978630 },
+  data: {
+    title: 'Forbidden',
+    status: 403,
+    detail: 'Your client app is not configured with the appropriate oauth1 app permissions for this endpoint.',
+    type: 'https://api.twitter.com/2/problems/oauth1-permissions'
+  }
+}
+🔄 [TWITTER] Falling back to simulation mode
+💾 [TWITTER] Saved tweet record to database: simulated_1758978150381_73j1tcwbi
+🐦 [TWITTER] Tweet processing completed: {
+  id: 'simulated_1758978150381_73j1tcwbi',
+  type: 'automatic',
+  actuallyPosted: false,
+  contentLength: 357,
+  timestamp: '2025-09-27T13:02:30.421Z'
+}
+🐦 [AUTO-TWEET] Automatic tweet posted successfully: {
+  tweetId: 'simulated_1758978150381_73j1tcwbi',
+  tweetNumber: 1,
+  timestamp: '2025-09-27T13:02:30.421Z',
+  nextTweet: '2025-09-27T14:00:00.000Z'
+}
+🔍 [STORAGE] Getting queued ingestion jobs (worker: worker-zwO4YCjV, limit: 3)
+✅ [STORAGE] Found 0 queued ingestion jobs
+🔍 [STORAGE] Getting queued ingestion jobs (worker: worker-zwO4YCjV, limit: 3)
+✅ [STORAGE] Found 0 queued ingestion jobs
+🔍 [STORAGE] Getting queued ingestion jobs (worker: worker-zwO4YCjV, limit: 3)
+✅ [STORAGE] Found 0 queued ingestion jobs
+🔍 [STORAGE] Getting queued ingestion jobs (worker: worker-zwO4YCjV, limit: 3)
+✅ [STORAGE] Found 0 queued ingestion jobs
+🔍 [STORAGE] Getting queued ingestion jobs (worker: worker-zwO4YCjV, limit: 3)
+✅ [STORAGE] Found 0 queued ingestion jobs
+🔍 [STORAGE] Getting queued ingestion jobs (worker: worker-zwO4YCjV, limit: 3)
+✅ [STORAGE] Found 0 queued ingestion jobs
+🔍 [STORAGE] Getting queued ingestion jobs (worker: worker-zwO4YCjV, limit: 3)
+✅ [STORAGE] Found 0 queued ingestion jobs
+🔍 [STORAGE] Getting queued ingestion jobs (worker: worker-zwO4YCjV, limit: 3)
+✅ [STORAGE] Found 0 queued ingestion jobs
+🔍 [STORAGE] Getting queued ingestion jobs (worker: worker-zwO4YCjV, limit: 3)
+✅ [STORAGE] Found 0 queued ingestion jobs
+🔐 [WALLET SESSION] Session check endpoint accessed
+🔍 [STORAGE] Getting queued ingestion jobs (worker: worker-zwO4YCjV, limit: 3)
+✅ [STORAGE] Found 0 queued ingestion jobs
+🔍 [STORAGE] Getting queued ingestion jobs (worker: worker-zwO4YCjV, limit: 3)
+✅ [STORAGE] Found 0 queued ingestion jobs
+🔍 [STORAGE] Getting queued ingestion jobs (worker: worker-zwO4YCjV, limit: 3)
+✅ [STORAGE] Found 0 queued ingestion jobs
+🔍 [STORAGE] Getting queued ingestion jobs (worker: worker-zwO4YCjV, limit: 3)
+✅ [STORAGE] Found 0 queued ingestion jobs
+1:03:35 PM [vite] Internal server error: /home/runner/workspace/client/src/pages/gaming-dashboard-redesigned.tsx: Expected corresponding JSX closing tag for <CardContent>. (570:16)
+
+  568 |                     </Badge>
+  569 |                   </div>
+> 570 |                 </div>
+      |                 ^
+  571 |
+  572 |                 {/* Medieval Power Stats */}
+  573 |                 <div className={`space-y-3 ${themeClasses.cardBg} rounded-lg p-3 border ${themeClasses.border}`}>
+  Plugin: vite:react-babel
+  File: /home/runner/workspace/client/src/pages/gaming-dashboard-redesigned.tsx:570:16
+  568|                      </Badge>
+  569|                    </div>
+  570|                  </div>
+     |                  ^
+  571|  
+  572|                  {/* Medieval Power Stats */}
+      at toParseError (/home/runner/workspace/node_modules/@babel/parser/src/parse-error.ts:95:45)
+      at raise (/home/runner/workspace/node_modules/@babel/parser/src/tokenizer/index.ts:1503:19)
+      at jsxParseElementAt (/home/runner/workspace/node_modules/@babel/parser/src/plugins/jsx/index.ts:527:18)
+      at jsxParseElementAt (/home/runner/workspace/node_modules/@babel/parser/src/plugins/jsx/index.ts:483:34)
+      at jsxParseElementAt (/home/runner/workspace/node_modules/@babel/parser/src/plugins/jsx/index.ts:483:34)
+      at jsxParseElementAt (/home/runner/workspace/node_modules/@babel/parser/src/plugins/jsx/index.ts:483:34)
+      at jsxParseElementAt (/home/runner/workspace/node_modules/@babel/parser/src/plugins/jsx/index.ts:483:34)
+      at jsxParseElementAt (/home/runner/workspace/node_modules/@babel/parser/src/plugins/jsx/index.ts:483:34)
+      at jsxParseElementAt (/home/runner/workspace/node_modules/@babel/parser/src/plugins/jsx/index.ts:483:34)
+      at jsxParseElement (/home/runner/workspace/node_modules/@babel/parser/src/plugins/jsx/index.ts:559:19)
+      at parseExprAtom (/home/runner/workspace/node_modules/@babel/parser/src/plugins/jsx/index.ts:573:21)
+      at parseExprSubscripts (/home/runner/workspace/node_modules/@babel/parser/src/parser/expression.ts:734:23)
+      at parseUpdate (/home/runner/workspace/node_modules/@babel/parser/src/parser/expression.ts:713:21)
+      at parseMaybeUnary (/home/runner/workspace/node_modules/@babel/parser/src/parser/expression.ts:675:23)
+      at parseMaybeUnary (/home/runner/workspace/node_modules/@babel/parser/src/plugins/typescript/index.ts:3855:20)
+      at parseMaybeUnaryOrPrivate (/home/runner/workspace/node_modules/@babel/parser/src/parser/expression.ts:409:14)
+      at parseExprOps (/home/runner/workspace/node_modules/@babel/parser/src/parser/expression.ts:421:23)
+      at parseMaybeConditional (/home/runner/workspace/node_modules/@babel/parser/src/parser/expression.ts:376:23)
+      at parseMaybeAssign (/home/runner/workspace/node_modules/@babel/parser/src/parser/expression.ts:301:21)
+      at fn (/home/runner/workspace/node_modules/@babel/parser/src/plugins/typescript/index.ts:3708:23)
+      at tryParse (/home/runner/workspace/node_modules/@babel/parser/src/parser/util.ts:174:20)
+      at parseMaybeAssign (/home/runner/workspace/node_modules/@babel/parser/src/plugins/typescript/index.ts:3707:20)
+      at callback (/home/runner/workspace/node_modules/@babel/parser/src/parser/expression.ts:257:12)
+      at allowInAnd (/home/runner/workspace/node_modules/@babel/parser/src/parser/expression.ts:3192:12)
+      at parseMaybeAssignAllowIn (/home/runner/workspace/node_modules/@babel/parser/src/parser/expression.ts:256:17)
+      at parseMaybeAssignAllowInOrVoidPattern (/home/runner/workspace/node_modules/@babel/parser/src/parser/expression.ts:3306:17)
+      at parseParenAndDistinguishExpression (/home/runner/workspace/node_modules/@babel/parser/src/parser/expression.ts:1813:16)
+      at parseExprAtom (/home/runner/workspace/node_modules/@babel/parser/src/parser/expression.ts:1162:21)
+      at parseExprAtom (/home/runner/workspace/node_modules/@babel/parser/src/plugins/jsx/index.ts:583:22)
+      at parseExprSubscripts (/home/runner/workspace/node_modules/@babel/parser/src/parser/expression.ts:734:23)
+      at parseUpdate (/home/runner/workspace/node_modules/@babel/parser/src/parser/expression.ts:713:21)
+      at parseMaybeUnary (/home/runner/workspace/node_modules/@babel/parser/src/parser/expression.ts:675:23)
+      at parseMaybeUnary (/home/runner/workspace/node_modules/@babel/parser/src/plugins/typescript/index.ts:3855:20)
+      at parseMaybeUnaryOrPrivate (/home/runner/workspace/node_modules/@babel/parser/src/parser/expression.ts:409:14)
+      at parseExprOps (/home/runner/workspace/node_modules/@babel/parser/src/parser/expression.ts:421:23)
+      at parseMaybeConditional (/home/runner/workspace/node_modules/@babel/parser/src/parser/expression.ts:376:23)
+      at parseMaybeAssign (/home/runner/workspace/node_modules/@babel/parser/src/parser/expression.ts:301:21)
+      at parseMaybeAssign (/home/runner/workspace/node_modules/@babel/parser/src/plugins/typescript/index.ts:3727:22)
+      at parseExpressionBase (/home/runner/workspace/node_modules/@babel/parser/src/parser/expression.ts:226:23)
+      at callback (/home/runner/workspace/node_modules/@babel/parser/src/parser/expression.ts:217:39)
+      at allowInAnd (/home/runner/workspace/node_modules/@babel/parser/src/parser/expression.ts:3187:16)
+      at parseExpression (/home/runner/workspace/node_modules/@babel/parser/src/parser/expression.ts:217:17)
+      at parseReturnStatement (/home/runner/workspace/node_modules/@babel/parser/src/parser/statement.ts:1110:28)
+      at parseStatementContent (/home/runner/workspace/node_modules/@babel/parser/src/parser/statement.ts:538:21)
+      at parseStatementContent (/home/runner/workspace/node_modules/@babel/parser/src/plugins/typescript/index.ts:3185:20)
+      at parseStatementLike (/home/runner/workspace/node_modules/@babel/parser/src/parser/statement.ts:477:17)
+      at parseStatementListItem (/home/runner/workspace/node_modules/@babel/parser/src/parser/statement.ts:426:17)
+      at parseBlockOrModuleBlockBody (/home/runner/workspace/node_modules/@babel/parser/src/parser/statement.ts:1439:16)
+      at parseBlockBody (/home/runner/workspace/node_modules/@babel/parser/src/parser/statement.ts:1412:10)
+      at parseBlock (/home/runner/workspace/node_modules/@babel/parser/src/parser/statement.ts:1380:10)

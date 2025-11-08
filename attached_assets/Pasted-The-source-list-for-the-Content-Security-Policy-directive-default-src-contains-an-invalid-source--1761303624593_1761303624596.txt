@@ -1,0 +1,383 @@
+The source list for the Content Security Policy directive 'default-src' contains an invalid source: ''unsafe-dynamic''. It will be ignored.
+The source list for the Content Security Policy directive 'default-src' contains an invalid source: ''unsafe-dynamic''. It will be ignored.
+The source list for the Content Security Policy directive 'default-src' contains an invalid source: ''unsafe-dynamic''. It will be ignored.
+The source list for the Content Security Policy directive 'default-src' contains an invalid source: ''unsafe-dynamic''. It will be ignored.
+The source list for the Content Security Policy directive 'default-src' contains an invalid source: ''unsafe-dynamic''. It will be ignored.
+The source list for the Content Security Policy directive 'default-src' contains an invalid source: ''unsafe-dynamic''. It will be ignored.
+The source list for the Content Security Policy directive 'default-src' contains an invalid source: ''unsafe-dynamic''. It will be ignored.
+The source list for the Content Security Policy directive 'default-src' contains an invalid source: ''unsafe-dynamic''. It will be ignored.
+The source list for the Content Security Policy directive 'default-src' contains an invalid source: ''unsafe-dynamic''. It will be ignored.
+The source list for the Content Security Policy directive 'default-src' contains an invalid source: ''unsafe-dynamic''. It will be ignored.
+The source list for the Content Security Policy directive 'default-src' contains an invalid source: ''unsafe-dynamic''. It will be ignored.
+The source list for the Content Security Policy directive 'default-src' contains an invalid source: ''unsafe-dynamic''. It will be ignored.
+The source list for the Content Security Policy directive 'default-src' contains an invalid source: ''unsafe-dynamic''. It will be ignored.
+The source list for the Content Security Policy directive 'default-src' contains an invalid source: ''unsafe-dynamic''. It will be ignored.
+The Content-Security-Policy directive 'default-src' contains 'report-uri' as a source expression. Did you want to add it as a directive and forget a semicolon?
+The Content-Security-Policy directive 'default-src' contains 'report-uri' as a source expression. Did you want to add it as a directive and forget a semicolon?
+The Content-Security-Policy directive 'default-src' contains 'report-uri' as a source expression. Did you want to add it as a directive and forget a semicolon?
+The Content-Security-Policy directive 'default-src' contains 'report-uri' as a source expression. Did you want to add it as a directive and forget a semicolon?
+The Content-Security-Policy directive 'default-src' contains 'report-uri' as a source expression. Did you want to add it as a directive and forget a semicolon?
+The Content-Security-Policy directive 'default-src' contains 'report-uri' as a source expression. Did you want to add it as a directive and forget a semicolon?
+The Content-Security-Policy directive 'default-src' contains 'report-uri' as a source expression. Did you want to add it as a directive and forget a semicolon?
+The Content-Security-Policy directive 'default-src' contains 'report-uri' as a source expression. Did you want to add it as a directive and forget a semicolon?
+The Content-Security-Policy directive 'default-src' contains 'report-uri' as a source expression. Did you want to add it as a directive and forget a semicolon?
+The Content-Security-Policy directive 'default-src' contains 'report-uri' as a source expression. Did you want to add it as a directive and forget a semicolon?
+The Content-Security-Policy directive 'default-src' contains 'report-uri' as a source expression. Did you want to add it as a directive and forget a semicolon?
+The Content-Security-Policy directive 'default-src' contains 'report-uri' as a source expression. Did you want to add it as a directive and forget a semicolon?
+The Content-Security-Policy directive 'default-src' contains 'report-uri' as a source expression. Did you want to add it as a directive and forget a semicolon?
+The Content-Security-Policy directive 'default-src' contains 'report-uri' as a source expression. Did you want to add it as a directive and forget a semicolon?
+The source list for Content Security Policy directive 'default-src' contains a source with an invalid path: '/api/4509669501698048/security/?sentry_key=7eb3d90eb4660416caf507087367e67e'. The query component, including the '?', will be ignored.
+The source list for Content Security Policy directive 'default-src' contains a source with an invalid path: '/api/4509669501698048/security/?sentry_key=7eb3d90eb4660416caf507087367e67e'. The query component, including the '?', will be ignored.
+The source list for Content Security Policy directive 'default-src' contains a source with an invalid path: '/api/4509669501698048/security/?sentry_key=7eb3d90eb4660416caf507087367e67e'. The query component, including the '?', will be ignored.
+The source list for Content Security Policy directive 'default-src' contains a source with an invalid path: '/api/4509669501698048/security/?sentry_key=7eb3d90eb4660416caf507087367e67e'. The query component, including the '?', will be ignored.
+The source list for Content Security Policy directive 'default-src' contains a source with an invalid path: '/api/4509669501698048/security/?sentry_key=7eb3d90eb4660416caf507087367e67e'. The query component, including the '?', will be ignored.
+The source list for Content Security Policy directive 'default-src' contains a source with an invalid path: '/api/4509669501698048/security/?sentry_key=7eb3d90eb4660416caf507087367e67e'. The query component, including the '?', will be ignored.
+The source list for Content Security Policy directive 'default-src' contains a source with an invalid path: '/api/4509669501698048/security/?sentry_key=7eb3d90eb4660416caf507087367e67e'. The query component, including the '?', will be ignored.
+The source list for Content Security Policy directive 'default-src' contains a source with an invalid path: '/api/4509669501698048/security/?sentry_key=7eb3d90eb4660416caf507087367e67e'. The query component, including the '?', will be ignored.
+The source list for Content Security Policy directive 'default-src' contains a source with an invalid path: '/api/4509669501698048/security/?sentry_key=7eb3d90eb4660416caf507087367e67e'. The query component, including the '?', will be ignored.
+The source list for Content Security Policy directive 'default-src' contains a source with an invalid path: '/api/4509669501698048/security/?sentry_key=7eb3d90eb4660416caf507087367e67e'. The query component, including the '?', will be ignored.
+The source list for Content Security Policy directive 'default-src' contains a source with an invalid path: '/api/4509669501698048/security/?sentry_key=7eb3d90eb4660416caf507087367e67e'. The query component, including the '?', will be ignored.
+The source list for Content Security Policy directive 'default-src' contains a source with an invalid path: '/api/4509669501698048/security/?sentry_key=7eb3d90eb4660416caf507087367e67e'. The query component, including the '?', will be ignored.
+The source list for Content Security Policy directive 'default-src' contains a source with an invalid path: '/api/4509669501698048/security/?sentry_key=7eb3d90eb4660416caf507087367e67e'. The query component, including the '?', will be ignored.
+The source list for Content Security Policy directive 'default-src' contains a source with an invalid path: '/api/4509669501698048/security/?sentry_key=7eb3d90eb4660416caf507087367e67e'. The query component, including the '?', will be ignored.
+_app-35b0847386b214e5.js:13 
+      /////////////////////
+   ///////////////////////////
+  ////////@@@@@@@//////////////
+  ////////@@@@@@@//////////////
+  ////////@@@@@@@//////////////        Curious and driven?
+  ///////////////@@@@@@@///////        Work with us!
+  ///////////////@@@@@@@///////
+  ///////////////@@@@@@@///////        https://join.replit.com/hack.with.us
+  ////////@@@@@@@//////////////
+  ////////@@@@@@@//////////////
+  ////////@@@@@@#//////////////
+   ///////////////////////////
+      /////////////////////
+      
+dippydoge1-10-11:1 The source list for the Content Security Policy directive 'default-src' contains an invalid source: ''unsafe-dynamic''. It will be ignored.
+dippydoge1-10-11:1 The Content-Security-Policy directive 'default-src' contains 'report-uri' as a source expression. Did you want to add it as a directive and forget a semicolon?
+dippydoge1-10-11:1 The source list for Content Security Policy directive 'default-src' contains a source with an invalid path: '/api/4509669501698048/security/?sentry_key=7eb3d90eb4660416caf507087367e67e'. The query component, including the '?', will be ignored.
+_app-35b0847386b214e5.js:13 [LaunchDarkly] LaunchDarkly client initialized
+analytics.tiktok.com/i18n/pixel/events.js?sdkid=D004GE3C77U8PIVDSDJG&lib=ttq:1  Failed to load resource: net::ERR_NAME_NOT_RESOLVED
+graphql:1  Failed to load resource: the server responded with a status of 400 ()
+graphql:1  Failed to load resource: the server responded with a status of 400 ()
+_app-35b0847386b214e5.js:13 Adding extension: CSV Editor Object
+dippydoge1-10-11:1 Banner not shown: beforeinstallpromptevent.preventDefault() called. The page must call beforeinstallpromptevent.prompt() to show the banner.
+_app-35b0847386b214e5.js:13 Adding extension: GPT-Replit - ChatGPT in your Repl. Object
+_app-35b0847386b214e5.js:13 Adding extension: ReplDB Export and Import Object
+graphql:1  Failed to load resource: the server responded with a status of 400 ()
+_app-35b0847386b214e5.js:13 Adding extension: AI Playground Object
+_app-35b0847386b214e5.js:13 Adding extension: UI Sketcher Object
+_app-35b0847386b214e5.js:13 Adding extension: API Request Tester Object
+Error while parsing the 'sandbox' attribute: 'allow-downloads-without-user-activation' is an invalid sandbox flag.
+Error while parsing the 'sandbox' attribute: 'allow-downloads-without-user-activation' is an invalid sandbox flag.
+Error while parsing the 'sandbox' attribute: 'allow-downloads-without-user-activation' is an invalid sandbox flag.
+Error while parsing the 'sandbox' attribute: 'allow-downloads-without-user-activation' is an invalid sandbox flag.
+Error while parsing the 'sandbox' attribute: 'allow-downloads-without-user-activation' is an invalid sandbox flag.
+ Unrecognized feature: 'ambient-light-sensor'.
+_ @ framework-1e6ac4b2503c752e.js:1
+ Unrecognized feature: 'battery'.
+_ @ framework-1e6ac4b2503c752e.js:1
+ Unrecognized feature: 'execution-while-not-rendered'.
+_ @ framework-1e6ac4b2503c752e.js:1
+ Unrecognized feature: 'execution-while-out-of-viewport'.
+_ @ framework-1e6ac4b2503c752e.js:1
+ Unrecognized feature: 'layout-animations'.
+_ @ framework-1e6ac4b2503c752e.js:1
+ Unrecognized feature: 'legacy-image-formats'.
+_ @ framework-1e6ac4b2503c752e.js:1
+ Unrecognized feature: 'navigation-override'.
+_ @ framework-1e6ac4b2503c752e.js:1
+ Unrecognized feature: 'oversized-images'.
+_ @ framework-1e6ac4b2503c752e.js:1
+ Unrecognized feature: 'publickey-credentials'.
+_ @ framework-1e6ac4b2503c752e.js:1
+ Unrecognized feature: 'speaker-selection'.
+_ @ framework-1e6ac4b2503c752e.js:1
+ Unrecognized feature: 'unoptimized-images'.
+_ @ framework-1e6ac4b2503c752e.js:1
+ Unrecognized feature: 'unsized-media'.
+_ @ framework-1e6ac4b2503c752e.js:1
+ Unrecognized feature: 'pointer-lock'.
+_ @ framework-1e6ac4b2503c752e.js:1
+ Allow attribute will take precedence over 'allowfullscreen'.
+_ @ framework-1e6ac4b2503c752e.js:1
+ Allow attribute will take precedence over 'allowpaymentrequest'.
+_ @ framework-1e6ac4b2503c752e.js:1
+_app-35b0847386b214e5.js:13 Adding extension: Icon Generator Object
+dippydoge1-10-11:1 Uncaught (in promise) 
+main-48743b4cccccd3eb.js:1 Uncaught (in promise) 
+workspace_iframe.html?initialPath=%2F&id=%3Arhi%3A:32 Unrecognized feature: 'ambient-light-sensor'.
+workspace_iframe.html?initialPath=%2F&id=%3Arhi%3A:32 Unrecognized feature: 'battery'.
+workspace_iframe.html?initialPath=%2F&id=%3Arhi%3A:32 Unrecognized feature: 'execution-while-not-rendered'.
+workspace_iframe.html?initialPath=%2F&id=%3Arhi%3A:32 Unrecognized feature: 'execution-while-out-of-viewport'.
+workspace_iframe.html?initialPath=%2F&id=%3Arhi%3A:32 Unrecognized feature: 'layout-animations'.
+workspace_iframe.html?initialPath=%2F&id=%3Arhi%3A:32 Unrecognized feature: 'legacy-image-formats'.
+workspace_iframe.html?initialPath=%2F&id=%3Arhi%3A:32 Unrecognized feature: 'navigation-override'.
+workspace_iframe.html?initialPath=%2F&id=%3Arhi%3A:32 Unrecognized feature: 'oversized-images'.
+workspace_iframe.html?initialPath=%2F&id=%3Arhi%3A:32 Unrecognized feature: 'publickey-credentials'.
+workspace_iframe.html?initialPath=%2F&id=%3Arhi%3A:32 Unrecognized feature: 'speaker-selection'.
+workspace_iframe.html?initialPath=%2F&id=%3Arhi%3A:32 Unrecognized feature: 'unoptimized-images'.
+workspace_iframe.html?initialPath=%2F&id=%3Arhi%3A:32 Unrecognized feature: 'unsized-media'.
+workspace_iframe.html?initialPath=%2F&id=%3Arhi%3A:32 Allow attribute will take precedence over 'allowfullscreen'.
+workspace_iframe.html?initialPath=%2F&id=%3Arhi%3A:32 Allow attribute will take precedence over 'allowpaymentrequest'.
+301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/:1  Failed to load resource: the server responded with a status of 404 (Not Found)
+301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/:1 Refused to load the script 'https://301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/__replco/static/devtools/injected.js' because it violates the following Content Security Policy directive: "default-src 'none'". Note that 'script-src-elem' was not explicitly set, so 'default-src' is used as a fallback.
+
+301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/:1 Refused to execute inline event handler because it violates the following Content Security Policy directive: "default-src 'none'". Either the 'unsafe-inline' keyword, a hash ('sha256-...'), or a nonce ('nonce-...') is required to enable inline execution. Note that hashes do not apply to event handlers, style attributes and javascript: navigations unless the 'unsafe-hashes' keyword is present. Note also that 'script-src' was not explicitly set, so 'default-src' is used as a fallback.
+
+ Refused to load the script 'https://replit.com/public/js/beacon.js' because it violates the following Content Security Policy directive: "default-src 'none'". Note that 'script-src-elem' was not explicitly set, so 'default-src' is used as a fallback.
+
+onIframeLoad @ workspace_iframe.htm…2F&id=%3Arhi%3A:142
+ WebSocket connection to 'wss://301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/?token=tmhFbUmHfIYi' failed: 
+window.WebSocket @ init.js:53
+ 🔧 Fixed WebSocket URL for Replit: wss://localhost:undefined/?token=tmhFbUmHfIYi → wss://301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/?token=tmhFbUmHfIYi
+ WebSocket connection to 'wss://301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/?token=tmhFbUmHfIYi' failed: 
+window.WebSocket @ init.js:53
+ [vite] failed to connect to websocket.
+your current setup:
+  (browser) 301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/ <--[HTTP]--> localhost:undefined/ (server)
+  (browser) 301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev:/ <--[WebSocket (failing)]--> localhost:undefined/ (server)
+Check out your Vite / network configuration and https://vite.dev/config/server-options.html#server-hmr .
+(anonymous) @ injected.js:27
+ 🔄 Found token but no session data - will validate immediately
+ 🎨 App.tsx: App component is rendering
+ 🏗️ App.tsx: Returning JSX with all providers
+ 🚫 SessionMonitor: DISABLED - Using unified SessionManager instead
+ 🗺️ Router: Router component is rendering
+ 📍 Router: Current location: /
+ 💳 Router: Initializing wallet data state
+ 📭 Router: No saved wallet data found
+ 🔍 SessionManager.getSession() returning: Object
+ 🔍 SessionManager.getSession() returning: Object
+ 🔍 Found local wallet connections: Array(0)
+ 🎨 App.tsx: App component is rendering
+ 🏗️ App.tsx: Returning JSX with all providers
+ 🚫 SessionMonitor: DISABLED - Using unified SessionManager instead
+ 🗺️ Router: Router component is rendering
+ 📍 Router: Current location: /
+ 💳 Router: Initializing wallet data state
+ 📭 Router: No saved wallet data found
+ 🔍 SessionManager.getSession() returning: Object
+ 🔍 SessionManager.getSession() returning: Object
+ 🔍 Found local wallet connections: Array(0)
+ 🔐 [GLOBAL RENEWAL] Handler initialized
+ 🔍 SessionManager.getSession() returning: Object
+ 🔍 SessionManager: checkSession() called - current sessionData: false
+ 🌐 SessionManager: Making Riddle wallet session request to /api/riddle-wallet/session
+ 🎨 [THEME] Applied theme: light, dark class: false
+ 🔄 App.tsx: useEffect running - recovering wallet state
+ ⚠️ SessionManager: Session needs renewal - private keys missing
+ 🔍 SessionManager.getSession() returning: Object
+ ⚠️ [GLOBAL RENEWAL] Session needs renewal - showing modal
+ 🔍 SessionManager.getSession() returning: Object
+ 🔍 SessionManager.getSession() returning: Object
+ 🔔 SessionManager: Notified listeners about session renewal needed
+ 🔍 SessionManager.getSession() returning: Object
+ 🔍 SessionManager.getSession() returning: Object
+ 🔍 SessionManager.getSession() returning: Object
+ 🔍 Found local wallet connections: Array(0)
+ 🔐 [GLOBAL RENEWAL] Handler initialized
+ 🔍 SessionManager.getSession() returning: Object
+ ⚠️ [GLOBAL RENEWAL] Initial check - session needs renewal
+ 📱 Platform: web, Native: false
+ 📱 Initializing push notifications for platform: web
+ 🌐 Initializing web notifications
+ 📝 Registering device token with backend (web)
+ 🔍 SessionManager sessionToken: FOUND
+ 🔍 getQueryFn - SessionManager sessionToken: FOUND
+ 🔍 SessionManager: checkSession() called - current sessionData: true
+ 🌐 SessionManager: Making Riddle wallet session request to /api/riddle-wallet/session
+301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/api/notifications/register-device:1  Failed to load resource: the server responded with a status of 500 (Internal Server Error)
+ ❌ Failed to register device token: 
+(anonymous) @ injected.js:27
+ ⚠️ SessionManager: Session needs renewal - private keys missing
+ 🔍 SessionManager.getSession() returning: Object
+ 🔍 SessionManager.getSession() returning: Object
+ 🔍 SessionManager.getSession() returning: Object
+ ⚠️ [GLOBAL RENEWAL] Session needs renewal - showing modal
+ 🔍 SessionManager.getSession() returning: Object
+ 🔔 SessionManager: Notified listeners about session renewal needed
+ 🔍 SessionManager.getSession() returning: Object
+ 🔍 SessionManager.getSession() returning: Object
+ 🔍 SessionManager.getSession() returning: Object
+ 🔍 Found local wallet connections: Array(0)
+ 🔍 SessionManager sessionToken: FOUND
+ ✅ [GLOBAL RENEWAL] Session renewed successfully - continuing operations
+ 🔍 SessionManager: checkSession() called - current sessionData: true
+ 🌐 SessionManager: Making Riddle wallet session request to /api/riddle-wallet/session
+ 🔐 [GLOBAL RENEWAL] User closed renewal modal
+ 🔍 SessionManager.getSession() returning: Object
+ 🔍 SessionManager.getSession() returning: Object
+ 🔍 SessionManager.getSession() returning: Object
+ 🔍 Found local wallet connections: Array(0)
+ 🔐 [GLOBAL RENEWAL] Handler initialized
+ 🔍 SessionManager.getSession() returning: Object
+ ⚠️ [GLOBAL RENEWAL] Initial check - session needs renewal
+ 🔐 [GLOBAL RENEWAL] Handler initialized
+ 🔍 SessionManager.getSession() returning: Object
+ ⚠️ [GLOBAL RENEWAL] Initial check - session needs renewal
+ ✅ SessionManager: Valid session for dippydoge
+ ✅ SessionManager: Updated session data: Object
+ 🔍 SessionManager.getSession() returning: Object
+ 🔍 SessionManager.getSession() returning: Object
+ 🔍 SessionManager.getSession() returning: Object
+ 🔍 SessionManager.getSession() returning: Object
+ ✅ [GLOBAL RENEWAL] Session renewed - closing modal
+ 🔔 SessionManager: Notified 4 listeners
+ 🔍 SessionManager.getSession() returning: Object
+ 🔍 SessionManager.getSession() returning: Object
+ 🔍 SessionManager.getSession() returning: Object
+ 🔍 Found local wallet connections: Array(0)
+ 🔐 [GLOBAL RENEWAL] Handler initialized
+ 🔍 SessionManager.getSession() returning: Object
+ 🔍 getQueryFn - SessionManager sessionToken: FOUND
+ 🔍 SessionManager.getSession() returning: Object
+ 🔍 SessionManager.getSession() returning: Object
+ 🔍 SessionManager.getSession() returning: Object
+ 🔍 SessionManager.getSession() returning: Object
+ 🔍 SessionManager.getSession() returning: Object
+ 🔍 Found local wallet connections: Array(0)
+ 🔍 SessionManager: checkSession() called - current sessionData: true
+ 🌐 SessionManager: Making Riddle wallet session request to /api/riddle-wallet/session
+ ✅ SessionManager: Valid session for dippydoge
+ ✅ SessionManager: Updated session data: Object
+ 🔍 SessionManager.getSession() returning: Object
+ 🔍 SessionManager.getSession() returning: Object
+ 🔍 SessionManager.getSession() returning: Object
+ 🔍 SessionManager.getSession() returning: Object
+ 🔍 SessionManager.getSession() returning: Object
+ 🔔 SessionManager: Notified 5 listeners
+ 🔍 SessionManager.getSession() returning: Object
+ 🔍 SessionManager.getSession() returning: Object
+ 🔍 SessionManager.getSession() returning: Object
+ 🔍 SessionManager.getSession() returning: Object
+ 🔍 Found local wallet connections: Array(0)
+ 🔍 SessionManager.getSession() returning: Object
+ 🔍 SessionManager.getSession() returning: Object
+ 🔍 SessionManager.getSession() returning: Object
+ 🔍 SessionManager.getSession() returning: Object
+ 🔍 Found local wallet connections: Array(0)
+ 🔍 SessionManager.getSession() returning: Object
+ 🔍 SessionManager.getSession() returning: Object
+ 🔍 SessionManager.getSession() returning: Object
+ 🔍 Found local wallet connections: Array(0)
+ 🔍 SessionManager.getSession() returning: Object
+ 🔍 SessionManager.getSession() returning: Object
+ 🔍 SessionManager.getSession() returning: Object
+ 🔍 Found local wallet connections: Array(0)
+ 🔍 SessionManager.getSession() returning: Object
+ 🔍 SessionManager.getSession() returning: Object
+ 🔍 SessionManager.getSession() returning: Object
+ 🔍 SessionManager.getSession() returning: Object
+ 🔍 Found local wallet connections: Array(0)
+ 🔍 SessionManager: checkSession() called - current sessionData: true
+ 🌐 SessionManager: Making Riddle wallet session request to /api/riddle-wallet/session
+ 🔍 getQueryFn - SessionManager sessionToken: FOUND
+ 🔍 SessionManager.getSession() returning: Object
+ ✅ SessionManager: Valid session for dippydoge
+ ✅ SessionManager: Updated session data: Object
+ 🔍 SessionManager.getSession() returning: Object
+ 🔍 SessionManager.getSession() returning: Object
+ 🔍 SessionManager.getSession() returning: Object
+ 🔍 SessionManager.getSession() returning: Object
+ 🔍 SessionManager.getSession() returning: Object
+ 🔔 SessionManager: Notified 5 listeners
+ 🔍 SessionManager.getSession() returning: Object
+ 🔍 SessionManager.getSession() returning: Object
+ 🔍 SessionManager.getSession() returning: Object
+ 🔍 SessionManager.getSession() returning: Object
+ 🔍 Found local wallet connections: Array(0)
+ 🔍 SessionManager.getSession() returning: Object
+ 🔍 SessionManager.getSession() returning: Object
+ 🗺️ Router: Router component is rendering
+ 📍 Router: Current location: /gaming
+ 🔍 SessionManager.getSession() returning: Object
+ 🔍 SessionManager.getSession() returning: Object
+ 🔍 SessionManager.getSession() returning: Object
+ 🔍 Found local wallet connections: Array(0)
+ 🔍 getQueryFn - SessionManager sessionToken: FOUND
+ 🔍 getQueryFn - SessionManager sessionToken: FOUND
+301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/api/battles/leaderboard?limit=5:1  Failed to load resource: the server responded with a status of 404 (Not Found)
+ 🔍 getQueryFn - SessionManager sessionToken: FOUND
+ 🗺️ Router: Router component is rendering
+ 📍 Router: Current location: /inquisition-gaming-v2
+ 🔍 SessionManager.getSession() returning: Object
+ 🔍 SessionManager.getSession() returning: Object
+ 🔍 SessionManager.getSession() returning: Object
+ 🔍 Found local wallet connections: Array(0)
+ 🔍 SessionManager.getSession() returning: Object
+ 🔍 SessionManager: checkSession() called - current sessionData: true
+ 🌐 SessionManager: Making Riddle wallet session request to /api/riddle-wallet/session
+ 🔍 getQueryFn - SessionManager sessionToken: FOUND
+ 🔍 getQueryFn - SessionManager sessionToken: FOUND
+ 🔍 getQueryFn - SessionManager sessionToken: FOUND
+ 🔍 getQueryFn - SessionManager sessionToken: FOUND
+ 🔍 getQueryFn - SessionManager sessionToken: FOUND
+ ✅ SessionManager: Valid session for dippydoge
+ ✅ SessionManager: Updated session data: Object
+ 🔍 SessionManager.getSession() returning: Object
+ 🔍 SessionManager.getSession() returning: Object
+ 🔍 SessionManager.getSession() returning: Object
+ 🔍 SessionManager.getSession() returning: Object
+ 🔍 SessionManager.getSession() returning: Object
+ 🔔 SessionManager: Notified 5 listeners
+ 🔍 SessionManager.getSession() returning: Object
+ 🔍 SessionManager.getSession() returning: Object
+ 🔍 SessionManager.getSession() returning: Object
+ 🔍 Found local wallet connections: Array(0)
+ 🔍 SessionManager.getSession() returning: Object
+301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/api/gaming/player/profile:1  Failed to load resource: the server responded with a status of 404 (Not Found)
+ 🔍 SessionManager.getSession() returning: Object
+ 🔍 SessionManager.getSession() returning: Object
+ 🔍 SessionManager.getSession() returning: Object
+ 🔍 SessionManager.getSession() returning: Object
+ 🔍 getQueryFn - SessionManager sessionToken: FOUND
+301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/api/gaming/player/profile:1  Failed to load resource: the server responded with a status of 404 (Not Found)
+ 🔍 getQueryFn - SessionManager sessionToken: FOUND
+301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/api/gaming/player/profile:1  Failed to load resource: the server responded with a status of 404 (Not Found)
+ 🔍 SessionManager.getSession() returning: Object
+ Warning: Missing `Description` or `aria-describedby={undefined}` for {DialogContent}.
+(anonymous) @ injected.js:27
+48.png:1  Failed to load resource: net::ERR_UNKNOWN_URL_SCHEME
+ 🎨 [NFT IMAGE] Generating with public endpoint (NO AUTH) Object
+ 🔍 SessionManager.getSession() returning: Object
+ 🔍 getQueryFn - SessionManager sessionToken: FOUND
+ 🔍 SessionManager.getSession() returning: Object
+ 🔍 SessionManager.getSession() returning: Object
+ 🔍 SessionManager: checkSession() called - current sessionData: true
+ 🌐 SessionManager: Making Riddle wallet session request to /api/riddle-wallet/session
+ ✅ SessionManager: Valid session for dippydoge
+ ✅ SessionManager: Updated session data: Object
+ 🔍 SessionManager.getSession() returning: Object
+ 🔍 SessionManager.getSession() returning: Object
+ 🔍 SessionManager.getSession() returning: Object
+ 🔍 SessionManager.getSession() returning: Object
+injected.js:27 🔍 SessionManager.getSession() returning: Object
+injected.js:27 🔔 SessionManager: Notified 5 listeners
+injected.js:27 🔍 SessionManager.getSession() returning: Object
+injected.js:27 🔍 SessionManager.getSession() returning: Object
+injected.js:27 🔍 SessionManager.getSession() returning: Object
+injected.js:27 🔍 Found local wallet connections: Array(0)
+injected.js:27 🔍 SessionManager.getSession() returning: Object
+injected.js:27 🔍 getQueryFn - SessionManager sessionToken: FOUND
+injected.js:27 ✅ [NFT IMAGE] Image generated: Object
+301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/api/gaming/player/nfts/0008138812C36A8E1C6C8B3DCE5BA3902299EF5B6EB51C8F98C485FB05BA1C60/save-image:1  Failed to load resource: the server responded with a status of 401 (Unauthorized)
+injected.js:27 🔍 SessionManager.getSession() returning: Object
+injected.js:27 🎨 [NFT IMAGE] Generating with public endpoint (NO AUTH) Object
+injected.js:27 🔍 getQueryFn - SessionManager sessionToken: FOUND
+injected.js:27 🔍 SessionManager.getSession() returning: Object
+injected.js:27 🔍 SessionManager.getSession() returning: Object
+injected.js:27 ✅ [NFT IMAGE] Image generated: Object
+301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/api/gaming/player/nfts/0008138812C36A8E1C6C8B3DCE5BA3902299EF5B6EB51C8F98C485FB05BA1C60/save-image:1  Failed to load resource: the server responded with a status of 401 (Unauthorized)
+injected.js:27 ❌ [NFT IMAGE] Generation error: Error: Failed to save image to NFT
+    at Object.mutationFn (inquisition-gaming-v2.tsx:552:15)
+(anonymous) @ injected.js:27
+injected.js:27 🔍 SessionManager.getSession() returning: Object
+injected.js:27 🔍 SessionManager.getSession() returning: Object
+injected.js:27 🔍 SessionManager.getSession() returning: Object
+injected.js:27 🔍 Found local wallet connections: Array(0)
+injected.js:27 🔍 SessionManager.getSession() returning: Object
+injected.js:27 🔍 SessionManager.getSession() returning: Object
+injected.js:27 🔍 getQueryFn - SessionManager sessionToken: FOUND

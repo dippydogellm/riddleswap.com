@@ -1,0 +1,137 @@
+eturning JSX with all providers
+index-dvgdVeiy.js:550 🚫 SessionMonitor: DISABLED - Using unified SessionManager instead
+index-dvgdVeiy.js:550 🗺️ Router: Router component is rendering
+index-dvgdVeiy.js:550 📍 Router: Current location: /
+index-dvgdVeiy.js:550 💳 Router: Initializing wallet data state
+index-dvgdVeiy.js:550 🔓 Router: No session token found
+index-dvgdVeiy.js:54 🔍 SessionManager.getSession() returning: Object
+index-dvgdVeiy.js:54 🔍 SessionManager.getSession() returning: Object
+index-dvgdVeiy.js:518 🔍 Found local wallet connections: Array(0)
+favicon.ico:1  Failed to load resource: the server responded with a status of 503 ()
+install-prompt-BidAwbHg.css:1  Failed to load resource: the server responded with a status of 503 ()
+index-dvgdVeiy.js:550 🎨 App.tsx: App component is rendering
+index-dvgdVeiy.js:550 🏗️ App.tsx: Returning JSX with all providers
+index-dvgdVeiy.js:550 🚫 SessionMonitor: DISABLED - Using unified SessionManager instead
+index-dvgdVeiy.js:550 🗺️ Router: Router component is rendering
+index-dvgdVeiy.js:550 📍 Router: Current location: /
+index-dvgdVeiy.js:550 💳 Router: Initializing wallet data state
+index-dvgdVeiy.js:550 🔓 Router: No session token found
+index-dvgdVeiy.js:54 🔍 SessionManager.getSession() returning: {isLoggedIn: false, handle: undefined, hasWalletData: false, hasSessionToken: false, walletDataKeys: Array(0)}
+index-dvgdVeiy.js:54 🔍 SessionManager.getSession() returning: {isLoggedIn: false, handle: undefined, hasWalletData: false, hasSessionToken: false, walletDataKeys: Array(0)}
+index-dvgdVeiy.js:518 🔍 Found local wallet connections: []
+index-dvgdVeiy.js:550 🎨 App.tsx: App component is rendering
+index-dvgdVeiy.js:550 🏗️ App.tsx: Returning JSX with all providers
+index-dvgdVeiy.js:550 🎨 App.tsx: App component is rendering
+index-dvgdVeiy.js:550 🏗️ App.tsx: Returning JSX with all providers
+index-dvgdVeiy.js:550 🚫 SessionMonitor: DISABLED - Using unified SessionManager instead
+index-dvgdVeiy.js:550 🗺️ Router: Router component is rendering
+index-dvgdVeiy.js:550 📍 Router: Current location: /
+index-dvgdVeiy.js:550 💳 Router: Initializing wallet data state
+index-dvgdVeiy.js:550 🔓 Router: No session token found
+index-dvgdVeiy.js:54 🔍 SessionManager.getSession() returning: {isLoggedIn: false, handle: undefined, hasWalletData: false, hasSessionToken: false, walletDataKeys: Array(0)}
+index-dvgdVeiy.js:54 🔍 SessionManager.getSession() returning: {isLoggedIn: false, handle: undefined, hasWalletData: false, hasSessionToken: false, walletDataKeys: Array(0)}
+index-dvgdVeiy.js:518 🔍 Found local wallet connections: []
+index-dvgdVeiy.js:550 🎨 App.tsx: App component is rendering
+index-dvgdVeiy.js:550 🏗️ App.tsx: Returning JSX with all providers
+index-dvgdVeiy.js:46 Error: Unable to preload CSS for /assets/install-prompt-BidAwbHg.css
+    at HTMLLinkElement.<anonymous> (index-dvgdVeiy.js:46:58500)
+px @ index-dvgdVeiy.js:46
+CD.s.componentDidCatch.n.callback @ index-dvgdVeiy.js:46
+sT @ index-dvgdVeiy.js:44
+bT @ index-dvgdVeiy.js:46
+FD @ index-dvgdVeiy.js:46
+QW @ index-dvgdVeiy.js:46
+tq @ index-dvgdVeiy.js:46
+yl @ index-dvgdVeiy.js:46
+BD @ index-dvgdVeiy.js:46
+P @ index-dvgdVeiy.js:31
+V @ index-dvgdVeiy.js:31
+_ @ inpage.js:166
+w @ inpage.js:166
+Y @ inpage.js:166
+postMessage
+h @ inpage.js:166
+b @ inpage.js:166
+U @ index-dvgdVeiy.js:31
+H @ index-dvgdVeiy.js:31
+e.unstable_scheduleCallback @ index-dvgdVeiy.js:31
+KD @ index-dvgdVeiy.js:46
+Br @ index-dvgdVeiy.js:46
+nq @ index-dvgdVeiy.js:46
+index-dvgdVeiy.js:550 ErrorBoundary caught an error: Error: Unable to preload CSS for /assets/install-prompt-BidAwbHg.css
+    at HTMLLinkElement.<anonymous> (index-dvgdVeiy.js:46:58500) {componentStack: '\n    at Lazy\n    at f (https://riddleswap.com/asse…om/assets/index-dvgdVeiy.js:550:42506)\n    at qxe'}
+componentDidCatch @ index-dvgdVeiy.js:550
+CD.s.componentDidCatch.n.callback @ index-dvgdVeiy.js:46
+sT @ index-dvgdVeiy.js:44
+bT @ index-dvgdVeiy.js:46
+FD @ index-dvgdVeiy.js:46
+QW @ index-dvgdVeiy.js:46
+tq @ index-dvgdVeiy.js:46
+yl @ index-dvgdVeiy.js:46
+BD @ index-dvgdVeiy.js:46
+P @ index-dvgdVeiy.js:31
+V @ index-dvgdVeiy.js:31
+_ @ inpage.js:166
+w @ inpage.js:166
+Y @ inpage.js:166
+postMessage
+h @ inpage.js:166
+b @ inpage.js:166
+U @ index-dvgdVeiy.js:31
+H @ index-dvgdVeiy.js:31
+e.unstable_scheduleCallback @ index-dvgdVeiy.js:31
+KD @ index-dvgdVeiy.js:46
+Br @ index-dvgdVeiy.js:46
+nq @ index-dvgdVeiy.js:46
+index-dvgdVeiy.js:550  POST https://riddleswap.com/api/errors/log 503 (Service Unavailable)
+logError @ index-dvgdVeiy.js:550
+componentDidCatch @ index-dvgdVeiy.js:550
+CD.s.componentDidCatch.n.callback @ index-dvgdVeiy.js:46
+sT @ index-dvgdVeiy.js:44
+bT @ index-dvgdVeiy.js:46
+FD @ index-dvgdVeiy.js:46
+QW @ index-dvgdVeiy.js:46
+tq @ index-dvgdVeiy.js:46
+yl @ index-dvgdVeiy.js:46
+BD @ index-dvgdVeiy.js:46
+P @ index-dvgdVeiy.js:31
+V @ index-dvgdVeiy.js:31
+_ @ inpage.js:166
+w @ inpage.js:166
+Y @ inpage.js:166
+postMessage
+h @ inpage.js:166
+b @ inpage.js:166
+U @ index-dvgdVeiy.js:31
+H @ index-dvgdVeiy.js:31
+e.unstable_scheduleCallback @ index-dvgdVeiy.js:31
+KD @ index-dvgdVeiy.js:46
+Br @ index-dvgdVeiy.js:46
+nq @ index-dvgdVeiy.js:46
+xrp-logo.png:1  Failed to load resource: the server responded with a status of 500 ()
+index-B6kMaoLn.css:1  Failed to load resource: the server responded with a status of 500 ()
+bnb-logo.png:1  Failed to load resource: the server responded with a status of 500 ()
+avalanche-logo.png:1  Failed to load resource: the server responded with a status of 500 ()
+arbitrum-logo.png:1  Failed to load resource: the server responded with a status of 500 ()
+taiko-logo.png:1  Failed to load resource: the server responded with a status of 500 ()
+optimism-logo.png:1  Failed to load resource: the server responded with a status of 500 ()
+fantom-logo.png:1  Failed to load resource: the server responded with a status of 500 ()
+soneium-logo.png:1  Failed to load resource: the server responded with a status of 500 ()
+solana-logo.png:1  Failed to load resource: the server responded with a status of 500 ()
+linea-logo.png:1  Failed to load resource: the server responded with a status of 500 ()
+favicon.ico:1  Failed to load resource: the server responded with a status of 500 ()
+rdl-logo-official.png:1  Failed to load resource: the server responded with a status of 500 ()
+ethereum-logo.png:1  Failed to load resource: the server responded with a status of 500 ()
+logo.jpg:1  Failed to load resource: the server responded with a status of 500 ()
+bitcoin-logo.png:1  Failed to load resource: the server responded with a status of 500 ()
+base-logo.png:1  Failed to load resource: the server responded with a status of 500 ()
+metis-logo.png:1  Failed to load resource: the server responded with a status of 500 ()
+unichain-logo.png:1  Failed to load resource: the server responded with a status of 500 ()
+scroll-logo.png:1  Failed to load resource: the server responded with a status of 500 ()
+mantle-logo.png:1  Failed to load resource: the server responded with a status of 500 ()
+zksync-logo.png:1  Failed to load resource: the server responded with a status of 500 ()
+polygon-logo.png:1  Failed to load resource: the server responded with a status of 500 ()
+download-CQU6lzKr.js:1  Failed to load resource: the server responded with a status of 500 ()
+manifest.json:1  Failed to load resource: the server responded with a status of 500 ()
+install-prompt-UFV3T6c5.js:1  Failed to load resource: the server responded with a status of 500 ()
+(index):1  Failed to load resource: the server responded with a status of 500 ()

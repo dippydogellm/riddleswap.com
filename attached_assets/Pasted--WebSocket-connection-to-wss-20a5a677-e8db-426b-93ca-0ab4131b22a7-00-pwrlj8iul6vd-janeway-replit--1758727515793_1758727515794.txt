@@ -1,0 +1,216 @@
+ WebSocket connection to 'wss://20a5a677-e8db-426b-93ca-0ab4131b22a7-00-pwrlj8iul6vd.janeway.replit.dev/?token=RC5ylHNI0b5e' failed: 
+window.WebSocket @ init.js:53
+ 🔧 Fixed WebSocket URL for Replit: wss://localhost:undefined/?token=RC5ylHNI0b5e → wss://20a5a677-e8db-426b-93ca-0ab4131b22a7-00-pwrlj8iul6vd.janeway.replit.dev/?token=RC5ylHNI0b5e
+ WebSocket connection to 'wss://20a5a677-e8db-426b-93ca-0ab4131b22a7-00-pwrlj8iul6vd.janeway.replit.dev/?token=RC5ylHNI0b5e' failed: 
+window.WebSocket @ init.js:53
+ [vite] failed to connect to websocket.
+your current setup:
+  (browser) 20a5a677-e8db-426b-93ca-0ab4131b22a7-00-pwrlj8iul6vd.janeway.replit.dev/ <--[HTTP]--> localhost:undefined/ (server)
+  (browser) 20a5a677-e8db-426b-93ca-0ab4131b22a7-00-pwrlj8iul6vd.janeway.replit.dev:/ <--[WebSocket (failing)]--> localhost:undefined/ (server)
+Check out your Vite / network configuration and https://vite.dev/config/server-options.html#server-hmr .
+(anonymous) @ client:512
+ Download the React DevTools for a better development experience: https://reactjs.org/link/react-devtools
+ 🔄 Found token but no session data - will validate immediately
+ 🎨 App.tsx: App component is rendering
+ 🏗️ App.tsx: Returning JSX with all providers
+ 🚫 SessionMonitor: DISABLED - Using unified SessionManager instead
+ 🗺️ Router: Router component is rendering
+ 📍 Router: Current location: /xrp-wallet
+ 💳 Router: Initializing wallet data state
+ 📭 Router: No saved wallet data found
+ 🔍 SessionManager.getSession() returning: Object
+ 🔍 SessionManager.getSession() returning: Object
+ 🎨 App.tsx: App component is rendering
+ 🏗️ App.tsx: Returning JSX with all providers
+ 🚫 SessionMonitor: DISABLED - Using unified SessionManager instead
+ 🗺️ Router: Router component is rendering
+ 📍 Router: Current location: /xrp-wallet
+ 💳 Router: Initializing wallet data state
+ 📭 Router: No saved wallet data found
+ 🔍 SessionManager.getSession() returning: Object
+ 🔍 SessionManager.getSession() returning: Object
+ 🔍 SessionManager: checkSession() called - current sessionData: false
+ 🌐 SessionManager: Making Riddle wallet session request to /api/riddle-wallet/session
+ 🛡️ AuthGuard: User not authenticated, redirecting to login
+ 🎨 [THEME] Applied theme: dark, dark class: true
+ 🔄 App.tsx: useEffect running - recovering wallet state
+ 🗺️ Router: Router component is rendering
+ 📍 Router: Current location: /wallet-login
+ 🔍 SessionManager.getSession() returning: Object
+ 🔍 SessionManager.getSession() returning: Object
+ ✅ SessionManager: Valid session for dippydoge
+ ✅ SessionManager: Updated session data: Object
+ 🔍 SessionManager.getSession() returning: Object
+ 🔍 SessionManager.getSession() returning: Object
+ 🔔 SessionManager: Notified 2 listeners
+ 🔍 SessionManager.getSession() returning: Object
+ 🔧 Before install prompt event fired
+wallet-login:1 Banner not shown: beforeinstallpromptevent.preventDefault() called. The page must call beforeinstallpromptevent.prompt() to show the banner.
+ 🗺️ Router: Router component is rendering
+ 📍 Router: Current location: /wallet-dashboard
+ 🔍 SessionManager.getSession() returning: Object
+ 🔍 SessionManager.getSession() returning: Object
+ 🔍 SessionManager: checkSession() called - current sessionData: true
+ 🌐 SessionManager: Making Riddle wallet session request to /api/riddle-wallet/session
+ ✅ AuthGuard: User authenticated, allowing access
+ ✅ SessionManager: Valid session for dippydoge
+ ✅ SessionManager: Updated session data: Object
+ 🔍 SessionManager.getSession() returning: Object
+ 🔍 SessionManager.getSession() returning: Object
+ 🔔 SessionManager: Notified 2 listeners
+ 🔍 SessionManager.getSession() returning: Object
+ 🔍 SessionManager.getSession() returning: Object
+ 🔍 [AUTH CHECK] Session token found: YES
+ 🔍 [AUTH CHECK] Session data found: YES
+ ✅ [AUTH CHECK] Valid session for user: dippydoge
+ 🔍 getQueryFn - SessionManager sessionToken: FOUND
+ 🔍 getQueryFn - SessionManager sessionToken: FOUND
+ 📊 [WALLET DASHBOARD] Fetching portfolio from separate endpoints...
+ 🔗 [WALLET DASHBOARD] Using addresses: Object
+ 🔗 Found 0 linked projects
+api/wallets/bnb/balance/0xC710c941362C40f1C1bDDB4485c8134AB505541F:1  Failed to load resource: the server responded with a status of 404 (Not Found)
+ 🔍 SessionManager.getSession() returning: Object
+ 🔍 SessionManager.getSession() returning: Object
+ ✅ [XRP] Balance: 6.039418 | USD: $17.64
+ ✅ [ETH] Balance: 0.001436 | USD: $0
+ ✅ [ARBITRUM] Balance: 0.000000 | USD: $0
+ ✅ [OPTIMISM] Balance: 0.000000 | USD: $0
+ ✅ [BASE] Balance: 0.000000 | USD: $0
+ ✅ [POLYGON] Balance: 0.000000 | USD: $0
+ ⚠️ [BNB] Failed with status 404: API endpoint not found
+ ✅ [SOL] Balance: 0.007038 | USD: $1.76
+ ✅ [BTC] Balance: 0.00027633 | USD: $30.4
+ ✅ [WALLET DASHBOARD] Aggregated portfolio: Object
+ Chain not found in CHAIN_MAP: eth
+getChainLogoPath @ chains.ts:241
+ Chain not found in CHAIN_MAP: xrp
+getChainLogoPath @ chains.ts:241
+ Chain not found in CHAIN_MAP: btc
+getChainLogoPath @ chains.ts:241
+ Chain not found in CHAIN_MAP: sol
+getChainLogoPath @ chains.ts:241
+ Loading logo for polygon: /images/chains/polygon-logo.png
+ Loading logo for arbitrum: /images/chains/arbitrum-logo.png
+ Loading logo for optimism: /images/chains/optimism-logo.png
+ Loading logo for base: /images/chains/base-logo.png
+ Loading logo for zksync: /images/chains/zksync-logo.png
+ Loading logo for linea: /images/chains/linea-logo.png
+ Loading logo for scroll: /images/chains/scroll-logo.png
+chains.ts:265 Loading logo for mantle: /images/chains/mantle-logo.png
+chains.ts:265 Loading logo for metis: /images/chains/metis-logo.png
+chains.ts:265 Loading logo for taiko: /images/chains/taiko-logo.png
+chains.ts:265 Loading logo for unichain: /images/chains/unichain-logo.png
+chains.ts:265 Loading logo for soneium: /images/chains/soneium-logo.png
+chains.ts:262 Chain not found in CHAIN_MAP: avax
+getChainLogoPath @ chains.ts:262
+chains.ts:262 Chain not found in CHAIN_MAP: bnb
+getChainLogoPath @ chains.ts:262
+useAuth.ts:28 🔍 [AUTH CHECK] Session token found: YES
+useAuth.ts:42 🔍 [AUTH CHECK] Session data found: YES
+useAuth.ts:47 ✅ [AUTH CHECK] Valid session for user: dippydoge
+queryClient.ts:135 🔍 getQueryFn - SessionManager sessionToken: FOUND
+chains.ts:262 Chain not found in CHAIN_MAP: eth
+getChainLogoPath @ chains.ts:262
+chains.ts:262 Chain not found in CHAIN_MAP: xrp
+getChainLogoPath @ chains.ts:262
+chains.ts:262 Chain not found in CHAIN_MAP: btc
+getChainLogoPath @ chains.ts:262
+chains.ts:262 Chain not found in CHAIN_MAP: sol
+getChainLogoPath @ chains.ts:262
+chains.ts:265 Loading logo for polygon: /images/chains/polygon-logo.png
+chains.ts:265 Loading logo for arbitrum: /images/chains/arbitrum-logo.png
+chains.ts:265 Loading logo for optimism: /images/chains/optimism-logo.png
+chains.ts:265 Loading logo for base: /images/chains/base-logo.png
+chains.ts:262 Chain not found in CHAIN_MAP: avax
+getChainLogoPath @ chains.ts:262
+chains.ts:262 Chain not found in CHAIN_MAP: bnb
+getChainLogoPath @ chains.ts:262
+chains.ts:262 Chain not found in CHAIN_MAP: eth
+getChainLogoPath @ chains.ts:262
+chains.ts:262 Chain not found in CHAIN_MAP: xrp
+getChainLogoPath @ chains.ts:262
+chains.ts:262 Chain not found in CHAIN_MAP: btc
+getChainLogoPath @ chains.ts:262
+chains.ts:262 Chain not found in CHAIN_MAP: sol
+getChainLogoPath @ chains.ts:262
+chains.ts:265 Loading logo for polygon: /images/chains/polygon-logo.png
+chains.ts:265 Loading logo for arbitrum: /images/chains/arbitrum-logo.png
+chains.ts:265 Loading logo for optimism: /images/chains/optimism-logo.png
+chains.ts:262 Chain not found in CHAIN_MAP: avax
+getChainLogoPath @ chains.ts:262
+chains.ts:262 Chain not found in CHAIN_MAP: bnb
+getChainLogoPath @ chains.ts:262
+chains.ts:265 Loading logo for zksync: /images/chains/zksync-logo.png
+chains.ts:265 Loading logo for zksync: /images/chains/zksync-logo.png
+chains.ts:265 Loading logo for mantle: /images/chains/mantle-logo.png
+chains.ts:265 Loading logo for scroll: /images/chains/scroll-logo.png
+chains.ts:265 Loading logo for mantle: /images/chains/mantle-logo.png
+chains.ts:265 Loading logo for metis: /images/chains/metis-logo.png
+chains.ts:265 Loading logo for linea: /images/chains/linea-logo.png
+chains.ts:265 Loading logo for taiko: /images/chains/taiko-logo.png
+chains.ts:265 Loading logo for linea: /images/chains/linea-logo.png
+chains.ts:265 Loading logo for taiko: /images/chains/taiko-logo.png
+chains.ts:256 Invalid chainId provided to getChainLogoPath: undefined
+getChainLogoPath @ chains.ts:256
+chains.ts:275 Invalid chainId provided to getChainDisplayName: undefined
+getChainDisplayName @ chains.ts:275
+chains.ts:256 Invalid chainId provided to getChainLogoPath: undefined
+getChainLogoPath @ chains.ts:256
+chains.ts:275 Invalid chainId provided to getChainDisplayName: undefined
+getChainDisplayName @ chains.ts:275
+chains.ts:256 Invalid chainId provided to getChainLogoPath: undefined
+getChainLogoPath @ chains.ts:256
+chains.ts:275 Invalid chainId provided to getChainDisplayName: undefined
+getChainDisplayName @ chains.ts:275
+chains.ts:256 Invalid chainId provided to getChainLogoPath: undefined
+getChainLogoPath @ chains.ts:256
+chains.ts:275 Invalid chainId provided to getChainDisplayName: undefined
+getChainDisplayName @ chains.ts:275
+chains.ts:265 Loading logo for unichain: /images/chains/unichain-logo.png
+chains.ts:265 Loading logo for soneium: /images/chains/soneium-logo.png
+chains.ts:265 Loading logo for unichain: /images/chains/unichain-logo.png
+chains.ts:265 Loading logo for soneium: /images/chains/soneium-logo.png
+chains.ts:256 Invalid chainId provided to getChainLogoPath: undefined
+getChainLogoPath @ chains.ts:256
+chains.ts:275 Invalid chainId provided to getChainDisplayName: undefined
+getChainDisplayName @ chains.ts:275
+chains.ts:256 Invalid chainId provided to getChainLogoPath: undefined
+getChainLogoPath @ chains.ts:256
+chains.ts:275 Invalid chainId provided to getChainDisplayName: undefined
+getChainDisplayName @ chains.ts:275
+chains.ts:256 Invalid chainId provided to getChainLogoPath: undefined
+getChainLogoPath @ chains.ts:256
+chains.ts:275 Invalid chainId provided to getChainDisplayName: undefined
+getChainDisplayName @ chains.ts:275
+chains.ts:256 Invalid chainId provided to getChainLogoPath: undefined
+getChainLogoPath @ chains.ts:256
+chains.ts:275 Invalid chainId provided to getChainDisplayName: undefined
+getChainDisplayName @ chains.ts:275
+chains.ts:256 Invalid chainId provided to getChainLogoPath: undefined
+getChainLogoPath @ chains.ts:256
+chains.ts:275 Invalid chainId provided to getChainDisplayName: undefined
+getChainDisplayName @ chains.ts:275
+chains.ts:256 Invalid chainId provided to getChainLogoPath: undefined
+getChainLogoPath @ chains.ts:256
+chains.ts:275 Invalid chainId provided to getChainDisplayName: undefined
+getChainDisplayName @ chains.ts:275
+chains.ts:256 Invalid chainId provided to getChainLogoPath: undefined
+getChainLogoPath @ chains.ts:256
+chains.ts:275 Invalid chainId provided to getChainDisplayName: undefined
+getChainDisplayName @ chains.ts:275
+chains.ts:256 Invalid chainId provided to getChainLogoPath: undefined
+getChainLogoPath @ chains.ts:256
+chains.ts:275 Invalid chainId provided to getChainDisplayName: undefined
+getChainDisplayName @ chains.ts:275
+sessionManager.ts:503 🔍 SessionManager.getSession() returning: Object
+App.tsx:194 🗺️ Router: Router component is rendering
+App.tsx:197 📍 Router: Current location: /gaming
+sessionManager.ts:503 🔍 SessionManager.getSession() returning: Object
+sessionManager.ts:503 🔍 SessionManager.getSession() returning: Object
+sessionManager.ts:503 🔍 SessionManager.getSession() returning: Object
+queryClient.ts:135 🔍 getQueryFn - SessionManager sessionToken: FOUND
+queryClient.ts:135 🔍 getQueryFn - SessionManager sessionToken: FOUND
+queryClient.ts:135 🔍 getQueryFn - SessionManager sessionToken: FOUND
+queryClient.ts:135 🔍 getQueryFn - SessionManager sessionToken: FOUND
+api/gaming/player/dashboard:1  Failed to load resource: the server responded with a status of 401 (Unauthorized)
+queryClient.ts:76 🔓 Got 401 error - NOT clearing session data automatically

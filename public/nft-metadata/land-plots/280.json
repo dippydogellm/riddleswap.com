@@ -1,0 +1,76 @@
+{
+  "id": 280,
+  "name": "Trolls Inquisition Land Plot #280",
+  "description": "A mountain domain at coordinates (39, 6) in the Trolls Inquisition realm. This 1x sizeable plot contains Iron, Gold, Stone and offers 11.65% yearly yield. Part of the legendary 1000-plot medieval kingdom where epic battles and alliances are forged.",
+  "image": "https://riddleswap.replit.app/api/nft-images/land-plots/280.png",
+  "external_url": "https://riddleswap.replit.app/nft-gaming-dashboard?plot=280",
+  "attributes": [
+    {
+      "trait_type": "Terrain Type",
+      "value": "mountain"
+    },
+    {
+      "trait_type": "X Coordinate",
+      "value": 39
+    },
+    {
+      "trait_type": "Y Coordinate",
+      "value": 6
+    },
+    {
+      "trait_type": "Size Multiplier",
+      "value": "1x"
+    },
+    {
+      "trait_type": "Resources Count",
+      "value": 3
+    },
+    {
+      "trait_type": "Primary Resource",
+      "value": "Iron"
+    },
+    {
+      "trait_type": "Rarity Score",
+      "value": 40
+    },
+    {
+      "trait_type": "XRP Price",
+      "value": 84
+    },
+    {
+      "trait_type": "Early Bird Eligible",
+      "value": "Yes"
+    },
+    {
+      "trait_type": "Yearly Yield (XRP)",
+      "value": 9
+    },
+    {
+      "trait_type": "Yield Percentage",
+      "value": "11.65%"
+    },
+    {
+      "trait_type": "Position Type",
+      "value": "Border"
+    }
+  ],
+  "properties": {
+    "coordinates": {
+      "x": 39,
+      "y": 6
+    },
+    "terrain_type": "mountain",
+    "resources": [
+      "Iron",
+      "Gold",
+      "Stone"
+    ],
+    "size_multiplier": 1,
+    "xrp_price": 84,
+    "rdl_price": 84000,
+    "early_bird_discount": 75,
+    "yearly_yield": 9,
+    "yield_percentage": 11.65,
+    "rarity_score": 40
+  }
+}

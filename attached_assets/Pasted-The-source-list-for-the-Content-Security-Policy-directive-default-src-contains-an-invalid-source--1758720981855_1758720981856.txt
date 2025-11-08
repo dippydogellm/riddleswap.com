@@ -1,0 +1,556 @@
+The source list for the Content Security Policy directive 'default-src' contains an invalid source: ''unsafe-dynamic''. It will be ignored.
+The source list for the Content Security Policy directive 'default-src' contains an invalid source: ''unsafe-dynamic''. It will be ignored.
+The source list for the Content Security Policy directive 'default-src' contains an invalid source: ''unsafe-dynamic''. It will be ignored.
+The source list for the Content Security Policy directive 'default-src' contains an invalid source: ''unsafe-dynamic''. It will be ignored.
+The source list for the Content Security Policy directive 'default-src' contains an invalid source: ''unsafe-dynamic''. It will be ignored.
+The source list for the Content Security Policy directive 'default-src' contains an invalid source: ''unsafe-dynamic''. It will be ignored.
+The source list for the Content Security Policy directive 'default-src' contains an invalid source: ''unsafe-dynamic''. It will be ignored.
+The source list for the Content Security Policy directive 'default-src' contains an invalid source: ''unsafe-dynamic''. It will be ignored.
+The source list for the Content Security Policy directive 'default-src' contains an invalid source: ''unsafe-dynamic''. It will be ignored.
+The source list for the Content Security Policy directive 'default-src' contains an invalid source: ''unsafe-dynamic''. It will be ignored.
+The Content-Security-Policy directive 'default-src' contains 'report-uri' as a source expression. Did you want to add it as a directive and forget a semicolon?
+The Content-Security-Policy directive 'default-src' contains 'report-uri' as a source expression. Did you want to add it as a directive and forget a semicolon?
+The Content-Security-Policy directive 'default-src' contains 'report-uri' as a source expression. Did you want to add it as a directive and forget a semicolon?
+The Content-Security-Policy directive 'default-src' contains 'report-uri' as a source expression. Did you want to add it as a directive and forget a semicolon?
+The Content-Security-Policy directive 'default-src' contains 'report-uri' as a source expression. Did you want to add it as a directive and forget a semicolon?
+The Content-Security-Policy directive 'default-src' contains 'report-uri' as a source expression. Did you want to add it as a directive and forget a semicolon?
+The Content-Security-Policy directive 'default-src' contains 'report-uri' as a source expression. Did you want to add it as a directive and forget a semicolon?
+The Content-Security-Policy directive 'default-src' contains 'report-uri' as a source expression. Did you want to add it as a directive and forget a semicolon?
+The Content-Security-Policy directive 'default-src' contains 'report-uri' as a source expression. Did you want to add it as a directive and forget a semicolon?
+The Content-Security-Policy directive 'default-src' contains 'report-uri' as a source expression. Did you want to add it as a directive and forget a semicolon?
+The source list for Content Security Policy directive 'default-src' contains a source with an invalid path: '/api/4509669501698048/security/?sentry_key=7eb3d90eb4660416caf507087367e67e'. The query component, including the '?', will be ignored.
+The source list for Content Security Policy directive 'default-src' contains a source with an invalid path: '/api/4509669501698048/security/?sentry_key=7eb3d90eb4660416caf507087367e67e'. The query component, including the '?', will be ignored.
+The source list for Content Security Policy directive 'default-src' contains a source with an invalid path: '/api/4509669501698048/security/?sentry_key=7eb3d90eb4660416caf507087367e67e'. The query component, including the '?', will be ignored.
+The source list for Content Security Policy directive 'default-src' contains a source with an invalid path: '/api/4509669501698048/security/?sentry_key=7eb3d90eb4660416caf507087367e67e'. The query component, including the '?', will be ignored.
+The source list for Content Security Policy directive 'default-src' contains a source with an invalid path: '/api/4509669501698048/security/?sentry_key=7eb3d90eb4660416caf507087367e67e'. The query component, including the '?', will be ignored.
+The source list for Content Security Policy directive 'default-src' contains a source with an invalid path: '/api/4509669501698048/security/?sentry_key=7eb3d90eb4660416caf507087367e67e'. The query component, including the '?', will be ignored.
+The source list for Content Security Policy directive 'default-src' contains a source with an invalid path: '/api/4509669501698048/security/?sentry_key=7eb3d90eb4660416caf507087367e67e'. The query component, including the '?', will be ignored.
+The source list for Content Security Policy directive 'default-src' contains a source with an invalid path: '/api/4509669501698048/security/?sentry_key=7eb3d90eb4660416caf507087367e67e'. The query component, including the '?', will be ignored.
+The source list for Content Security Policy directive 'default-src' contains a source with an invalid path: '/api/4509669501698048/security/?sentry_key=7eb3d90eb4660416caf507087367e67e'. The query component, including the '?', will be ignored.
+The source list for Content Security Policy directive 'default-src' contains a source with an invalid path: '/api/4509669501698048/security/?sentry_key=7eb3d90eb4660416caf507087367e67e'. The query component, including the '?', will be ignored.
+ 
+      /////////////////////
+   ///////////////////////////
+  ////////@@@@@@@//////////////
+  ////////@@@@@@@//////////////
+  ////////@@@@@@@//////////////        Curious and driven?
+  ///////////////@@@@@@@///////        Work with us!
+  ///////////////@@@@@@@///////
+  ///////////////@@@@@@@///////        https://join.replit.com/hack.with.us
+  ////////@@@@@@@//////////////
+  ////////@@@@@@@//////////////
+  ////////@@@@@@#//////////////
+   ///////////////////////////
+      /////////////////////
+      
+riddle:1 The source list for the Content Security Policy directive 'default-src' contains an invalid source: ''unsafe-dynamic''. It will be ignored.
+riddle:1 The Content-Security-Policy directive 'default-src' contains 'report-uri' as a source expression. Did you want to add it as a directive and forget a semicolon?
+riddle:1 The source list for Content Security Policy directive 'default-src' contains a source with an invalid path: '/api/4509669501698048/security/?sentry_key=7eb3d90eb4660416caf507087367e67e'. The query component, including the '?', will be ignored.
+ [LaunchDarkly] LaunchDarkly client initialized
+analytics.tiktok.com/i18n/pixel/events.js?sdkid=D004GE3C77U8PIVDSDJG&lib=ttq:1  Failed to load resource: net::ERR_NAME_NOT_RESOLVED
+riddle:1 Access to fetch at 'https://sp.replit.com/v1/t' from origin 'https://replit.com' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.
+sp.replit.com/v1/t:1  Failed to load resource: net::ERR_FAILED
+ Error while parsing the 'sandbox' attribute: 'allow-downloads-without-user-activation' is an invalid sandbox flag.
+_ @ framework-af3aff93c3c4ed2c.js:1
+(anonymous) @ framework-af3aff93c3c4ed2c.js:1
+uD @ framework-af3aff93c3c4ed2c.js:1
+uI @ framework-af3aff93c3c4ed2c.js:1
+uM @ framework-af3aff93c3c4ed2c.js:1
+uS @ framework-af3aff93c3c4ed2c.js:1
+C @ framework-af3aff93c3c4ed2c.js:1
+z @ framework-af3aff93c3c4ed2c.js:1
+E @ inpage.js:166
+_ @ inpage.js:166
+J @ inpage.js:166
+ Unrecognized feature: 'ambient-light-sensor'.
+_ @ framework-af3aff93c3c4ed2c.js:1
+(anonymous) @ framework-af3aff93c3c4ed2c.js:1
+uD @ framework-af3aff93c3c4ed2c.js:1
+uI @ framework-af3aff93c3c4ed2c.js:1
+uM @ framework-af3aff93c3c4ed2c.js:1
+uS @ framework-af3aff93c3c4ed2c.js:1
+C @ framework-af3aff93c3c4ed2c.js:1
+z @ framework-af3aff93c3c4ed2c.js:1
+E @ inpage.js:166
+_ @ inpage.js:166
+J @ inpage.js:166
+ Unrecognized feature: 'battery'.
+_ @ framework-af3aff93c3c4ed2c.js:1
+(anonymous) @ framework-af3aff93c3c4ed2c.js:1
+uD @ framework-af3aff93c3c4ed2c.js:1
+uI @ framework-af3aff93c3c4ed2c.js:1
+uM @ framework-af3aff93c3c4ed2c.js:1
+uS @ framework-af3aff93c3c4ed2c.js:1
+C @ framework-af3aff93c3c4ed2c.js:1
+z @ framework-af3aff93c3c4ed2c.js:1
+E @ inpage.js:166
+_ @ inpage.js:166
+J @ inpage.js:166
+ Unrecognized feature: 'execution-while-not-rendered'.
+_ @ framework-af3aff93c3c4ed2c.js:1
+(anonymous) @ framework-af3aff93c3c4ed2c.js:1
+uD @ framework-af3aff93c3c4ed2c.js:1
+uI @ framework-af3aff93c3c4ed2c.js:1
+uM @ framework-af3aff93c3c4ed2c.js:1
+uS @ framework-af3aff93c3c4ed2c.js:1
+C @ framework-af3aff93c3c4ed2c.js:1
+z @ framework-af3aff93c3c4ed2c.js:1
+E @ inpage.js:166
+_ @ inpage.js:166
+J @ inpage.js:166
+ Unrecognized feature: 'execution-while-out-of-viewport'.
+_ @ framework-af3aff93c3c4ed2c.js:1
+(anonymous) @ framework-af3aff93c3c4ed2c.js:1
+uD @ framework-af3aff93c3c4ed2c.js:1
+uI @ framework-af3aff93c3c4ed2c.js:1
+uM @ framework-af3aff93c3c4ed2c.js:1
+uS @ framework-af3aff93c3c4ed2c.js:1
+C @ framework-af3aff93c3c4ed2c.js:1
+z @ framework-af3aff93c3c4ed2c.js:1
+E @ inpage.js:166
+_ @ inpage.js:166
+J @ inpage.js:166
+ Unrecognized feature: 'layout-animations'.
+_ @ framework-af3aff93c3c4ed2c.js:1
+(anonymous) @ framework-af3aff93c3c4ed2c.js:1
+uD @ framework-af3aff93c3c4ed2c.js:1
+uI @ framework-af3aff93c3c4ed2c.js:1
+uM @ framework-af3aff93c3c4ed2c.js:1
+uS @ framework-af3aff93c3c4ed2c.js:1
+C @ framework-af3aff93c3c4ed2c.js:1
+z @ framework-af3aff93c3c4ed2c.js:1
+E @ inpage.js:166
+_ @ inpage.js:166
+J @ inpage.js:166
+ Unrecognized feature: 'legacy-image-formats'.
+_ @ framework-af3aff93c3c4ed2c.js:1
+(anonymous) @ framework-af3aff93c3c4ed2c.js:1
+uD @ framework-af3aff93c3c4ed2c.js:1
+uI @ framework-af3aff93c3c4ed2c.js:1
+uM @ framework-af3aff93c3c4ed2c.js:1
+uS @ framework-af3aff93c3c4ed2c.js:1
+C @ framework-af3aff93c3c4ed2c.js:1
+z @ framework-af3aff93c3c4ed2c.js:1
+E @ inpage.js:166
+_ @ inpage.js:166
+J @ inpage.js:166
+ Unrecognized feature: 'navigation-override'.
+_ @ framework-af3aff93c3c4ed2c.js:1
+(anonymous) @ framework-af3aff93c3c4ed2c.js:1
+uD @ framework-af3aff93c3c4ed2c.js:1
+uI @ framework-af3aff93c3c4ed2c.js:1
+uM @ framework-af3aff93c3c4ed2c.js:1
+uS @ framework-af3aff93c3c4ed2c.js:1
+C @ framework-af3aff93c3c4ed2c.js:1
+z @ framework-af3aff93c3c4ed2c.js:1
+E @ inpage.js:166
+_ @ inpage.js:166
+J @ inpage.js:166
+ Unrecognized feature: 'oversized-images'.
+_ @ framework-af3aff93c3c4ed2c.js:1
+(anonymous) @ framework-af3aff93c3c4ed2c.js:1
+uD @ framework-af3aff93c3c4ed2c.js:1
+uI @ framework-af3aff93c3c4ed2c.js:1
+uM @ framework-af3aff93c3c4ed2c.js:1
+uS @ framework-af3aff93c3c4ed2c.js:1
+C @ framework-af3aff93c3c4ed2c.js:1
+z @ framework-af3aff93c3c4ed2c.js:1
+E @ inpage.js:166
+_ @ inpage.js:166
+J @ inpage.js:166
+ Unrecognized feature: 'publickey-credentials'.
+_ @ framework-af3aff93c3c4ed2c.js:1
+(anonymous) @ framework-af3aff93c3c4ed2c.js:1
+uD @ framework-af3aff93c3c4ed2c.js:1
+uI @ framework-af3aff93c3c4ed2c.js:1
+uM @ framework-af3aff93c3c4ed2c.js:1
+uS @ framework-af3aff93c3c4ed2c.js:1
+C @ framework-af3aff93c3c4ed2c.js:1
+z @ framework-af3aff93c3c4ed2c.js:1
+E @ inpage.js:166
+_ @ inpage.js:166
+J @ inpage.js:166
+ Unrecognized feature: 'speaker-selection'.
+_ @ framework-af3aff93c3c4ed2c.js:1
+(anonymous) @ framework-af3aff93c3c4ed2c.js:1
+uD @ framework-af3aff93c3c4ed2c.js:1
+uI @ framework-af3aff93c3c4ed2c.js:1
+uM @ framework-af3aff93c3c4ed2c.js:1
+uS @ framework-af3aff93c3c4ed2c.js:1
+C @ framework-af3aff93c3c4ed2c.js:1
+z @ framework-af3aff93c3c4ed2c.js:1
+E @ inpage.js:166
+_ @ inpage.js:166
+J @ inpage.js:166
+ Unrecognized feature: 'unoptimized-images'.
+_ @ framework-af3aff93c3c4ed2c.js:1
+(anonymous) @ framework-af3aff93c3c4ed2c.js:1
+uD @ framework-af3aff93c3c4ed2c.js:1
+uI @ framework-af3aff93c3c4ed2c.js:1
+uM @ framework-af3aff93c3c4ed2c.js:1
+uS @ framework-af3aff93c3c4ed2c.js:1
+C @ framework-af3aff93c3c4ed2c.js:1
+z @ framework-af3aff93c3c4ed2c.js:1
+E @ inpage.js:166
+_ @ inpage.js:166
+J @ inpage.js:166
+ Unrecognized feature: 'unsized-media'.
+_ @ framework-af3aff93c3c4ed2c.js:1
+(anonymous) @ framework-af3aff93c3c4ed2c.js:1
+uD @ framework-af3aff93c3c4ed2c.js:1
+uI @ framework-af3aff93c3c4ed2c.js:1
+uM @ framework-af3aff93c3c4ed2c.js:1
+uS @ framework-af3aff93c3c4ed2c.js:1
+C @ framework-af3aff93c3c4ed2c.js:1
+z @ framework-af3aff93c3c4ed2c.js:1
+E @ inpage.js:166
+_ @ inpage.js:166
+J @ inpage.js:166
+ Unrecognized feature: 'pointer-lock'.
+_ @ framework-af3aff93c3c4ed2c.js:1
+(anonymous) @ framework-af3aff93c3c4ed2c.js:1
+uD @ framework-af3aff93c3c4ed2c.js:1
+uI @ framework-af3aff93c3c4ed2c.js:1
+uM @ framework-af3aff93c3c4ed2c.js:1
+uS @ framework-af3aff93c3c4ed2c.js:1
+C @ framework-af3aff93c3c4ed2c.js:1
+z @ framework-af3aff93c3c4ed2c.js:1
+E @ inpage.js:166
+_ @ inpage.js:166
+J @ inpage.js:166
+ Allow attribute will take precedence over 'allowfullscreen'.
+_ @ framework-af3aff93c3c4ed2c.js:1
+(anonymous) @ framework-af3aff93c3c4ed2c.js:1
+uD @ framework-af3aff93c3c4ed2c.js:1
+uI @ framework-af3aff93c3c4ed2c.js:1
+uM @ framework-af3aff93c3c4ed2c.js:1
+uS @ framework-af3aff93c3c4ed2c.js:1
+C @ framework-af3aff93c3c4ed2c.js:1
+z @ framework-af3aff93c3c4ed2c.js:1
+E @ inpage.js:166
+_ @ inpage.js:166
+J @ inpage.js:166
+ Allow attribute will take precedence over 'allowpaymentrequest'.
+_ @ framework-af3aff93c3c4ed2c.js:1
+(anonymous) @ framework-af3aff93c3c4ed2c.js:1
+uD @ framework-af3aff93c3c4ed2c.js:1
+uI @ framework-af3aff93c3c4ed2c.js:1
+uM @ framework-af3aff93c3c4ed2c.js:1
+uS @ framework-af3aff93c3c4ed2c.js:1
+C @ framework-af3aff93c3c4ed2c.js:1
+z @ framework-af3aff93c3c4ed2c.js:1
+E @ inpage.js:166
+_ @ inpage.js:166
+J @ inpage.js:166
+workspace_iframe.html?initialPath=%2F&id=%3Ar5f%3A:32 Error while parsing the 'sandbox' attribute: 'allow-downloads-without-user-activation' is an invalid sandbox flag.
+workspace_iframe.html?initialPath=%2F&id=%3Ar5f%3A:32 Unrecognized feature: 'ambient-light-sensor'.
+workspace_iframe.html?initialPath=%2F&id=%3Ar5f%3A:32 Unrecognized feature: 'battery'.
+workspace_iframe.html?initialPath=%2F&id=%3Ar5f%3A:32 Unrecognized feature: 'execution-while-not-rendered'.
+workspace_iframe.html?initialPath=%2F&id=%3Ar5f%3A:32 Unrecognized feature: 'execution-while-out-of-viewport'.
+workspace_iframe.html?initialPath=%2F&id=%3Ar5f%3A:32 Unrecognized feature: 'layout-animations'.
+workspace_iframe.html?initialPath=%2F&id=%3Ar5f%3A:32 Unrecognized feature: 'legacy-image-formats'.
+workspace_iframe.html?initialPath=%2F&id=%3Ar5f%3A:32 Unrecognized feature: 'navigation-override'.
+workspace_iframe.html?initialPath=%2F&id=%3Ar5f%3A:32 Unrecognized feature: 'oversized-images'.
+workspace_iframe.html?initialPath=%2F&id=%3Ar5f%3A:32 Unrecognized feature: 'publickey-credentials'.
+workspace_iframe.html?initialPath=%2F&id=%3Ar5f%3A:32 Unrecognized feature: 'speaker-selection'.
+workspace_iframe.html?initialPath=%2F&id=%3Ar5f%3A:32 Unrecognized feature: 'unoptimized-images'.
+workspace_iframe.html?initialPath=%2F&id=%3Ar5f%3A:32 Unrecognized feature: 'unsized-media'.
+workspace_iframe.html?initialPath=%2F&id=%3Ar5f%3A:32 Allow attribute will take precedence over 'allowfullscreen'.
+workspace_iframe.html?initialPath=%2F&id=%3Ar5f%3A:32 Allow attribute will take precedence over 'allowpaymentrequest'.
+ WebSocket connection to 'wss://20a5a677-e8db-426b-93ca-0ab4131b22a7-00-pwrlj8iul6vd.janeway.replit.dev/?token=tNvoYuHAune3' failed: 
+t @ eruda.js:2
+ 🔧 Fixed WebSocket URL for Replit: wss://localhost:undefined/?token=tNvoYuHAune3 → wss://20a5a677-e8db-426b-93ca-0ab4131b22a7-00-pwrlj8iul6vd.janeway.replit.dev/?token=tNvoYuHAune3
+ WebSocket connection to 'wss://20a5a677-e8db-426b-93ca-0ab4131b22a7-00-pwrlj8iul6vd.janeway.replit.dev/?token=tNvoYuHAune3' failed: 
+t @ eruda.js:2
+ [vite] failed to connect to websocket.
+your current setup:
+  (browser) 20a5a677-e8db-426b-93ca-0ab4131b22a7-00-pwrlj8iul6vd.janeway.replit.dev/ <--[HTTP]--> localhost:undefined/ (server)
+  (browser) 20a5a677-e8db-426b-93ca-0ab4131b22a7-00-pwrlj8iul6vd.janeway.replit.dev:/ <--[WebSocket (failing)]--> localhost:undefined/ (server)
+Check out your Vite / network configuration and https://vite.dev/config/server-options.html#server-hmr .
+Mt.forEach.n.<computed> @ eruda.js:2
+ 🎨 App.tsx: App component is rendering
+ 🏗️ App.tsx: Returning JSX with all providers
+ 🚫 SessionMonitor: DISABLED - Using unified SessionManager instead
+ 🗺️ Router: Router component is rendering
+ 📍 Router: Current location: /
+ 💳 Router: Initializing wallet data state
+ 📭 Router: No saved wallet data found
+ 🔍 SessionManager.getSession() returning: [object Object]
+riddle:1 Banner not shown: beforeinstallpromptevent.preventDefault() called. The page must call beforeinstallpromptevent.prompt() to show the banner.
+ 🎨 App.tsx: App component is rendering
+ 🏗️ App.tsx: Returning JSX with all providers
+ 🚫 SessionMonitor: DISABLED - Using unified SessionManager instead
+ 🗺️ Router: Router component is rendering
+ 📍 Router: Current location: /
+ 💳 Router: Initializing wallet data state
+ 📭 Router: No saved wallet data found
+ 🔍 SessionManager.getSession() returning: [object Object]
+ 🔍 SessionManager: checkSession() called - current sessionData: true
+ 🌐 SessionManager: Making Riddle wallet session request to /api/riddle-wallet/session
+ 🎨 [THEME] Applied theme: dark, dark class: true
+ 🔄 App.tsx: useEffect running - recovering wallet state
+ ✅ SessionManager: Valid session for dippydoge
+ ✅ SessionManager: Updated session data: [object Object]
+ 🔍 SessionManager.getSession() returning: [object Object]
+ 🔔 SessionManager: Notified 1 listeners
+ 🔍 SessionManager.getSession() returning: [object Object]
+ 🔍 getQueryFn - SessionManager sessionToken: FOUND
+ 🔍 getQueryFn - SessionManager sessionToken: FOUND
+ 🔍 getQueryFn - SessionManager sessionToken: FOUND
+ 🔍 SessionManager: checkSession() called - current sessionData: true
+ 🌐 SessionManager: Making Riddle wallet session request to /api/riddle-wallet/session
+ ✅ SessionManager: Valid session for dippydoge
+ ✅ SessionManager: Updated session data: [object Object]
+ 🔍 SessionManager.getSession() returning: [object Object]
+ 🔔 SessionManager: Notified 1 listeners
+ 🔍 SessionManager.getSession() returning: [object Object]
+ 🔍 SessionManager: checkSession() called - current sessionData: true
+ 🌐 SessionManager: Making Riddle wallet session request to /api/riddle-wallet/session
+ ✅ SessionManager: Valid session for dippydoge
+ ✅ SessionManager: Updated session data: [object Object]
+ 🔍 SessionManager.getSession() returning: [object Object]
+ 🔔 SessionManager: Notified 1 listeners
+ 🔍 SessionManager.getSession() returning: [object Object]
+ 🔍 SessionManager: checkSession() called - current sessionData: true
+ 🌐 SessionManager: Making Riddle wallet session request to /api/riddle-wallet/session
+ ✅ SessionManager: Valid session for dippydoge
+ ✅ SessionManager: Updated session data: [object Object]
+ 🔍 SessionManager.getSession() returning: [object Object]
+ 🔔 SessionManager: Notified 1 listeners
+ 🔍 SessionManager.getSession() returning: [object Object]
+ 🔍 SessionManager: checkSession() called - current sessionData: true
+ 🌐 SessionManager: Making Riddle wallet session request to /api/riddle-wallet/session
+ ✅ SessionManager: Valid session for dippydoge
+ ✅ SessionManager: Updated session data: [object Object]
+ 🔍 SessionManager.getSession() returning: [object Object]
+ 🔔 SessionManager: Notified 1 listeners
+ 🔍 SessionManager.getSession() returning: [object Object]
+ 🔍 SessionManager.getSession() returning: [object Object]
+ 🗺️ Router: Router component is rendering
+ 📍 Router: Current location: /gaming
+ 🔍 SessionManager.getSession() returning: [object Object]
+ 🔍 SessionManager.getSession() returning: [object Object]
+ 🔍 getQueryFn - SessionManager sessionToken: FOUND
+ 🔍 getQueryFn - SessionManager sessionToken: FOUND
+20a5a677-e8db-426b-93ca-0ab4131b22a7-00-pwrlj8iul6vd.janeway.replit.dev/api/gaming/player/dashboard:1  Failed to load resource: the server responded with a status of 500 (Internal Server Error)
+ 🔍 SessionManager.getSession() returning: [object Object]
+ 🔍 getQueryFn - SessionManager sessionToken: FOUND
+20a5a677-e8db-426b-93ca-0ab4131b22a7-00-pwrlj8iul6vd.janeway.replit.dev/api/gaming/player/dashboard:1  Failed to load resource: the server responded with a status of 500 (Internal Server Error)
+ 🔍 getQueryFn - SessionManager sessionToken: FOUND
+20a5a677-e8db-426b-93ca-0ab4131b22a7-00-pwrlj8iul6vd.janeway.replit.dev/api/gaming/player/dashboard:1  Failed to load resource: the server responded with a status of 500 (Internal Server Error)
+ 🔍 SessionManager.getSession() returning: [object Object]
+ 🔍 SessionManager.getSession() returning: [object Object]
+ 🧹 SessionManager: Clearing session
+ 🔍 SessionManager.getSession() returning: [object Object]
+ ✅ Header: Logout completed via centralized sessionManager
+ 🔍 SessionManager.getSession() returning: [object Object]
+ WebSocket connection to 'wss://20a5a677-e8db-426b-93ca-0ab4131b22a7-00-pwrlj8iul6vd.janeway.replit.dev/?token=tNvoYuHAune3' failed: 
+t @ eruda.js:2
+ 🔧 Fixed WebSocket URL for Replit: wss://localhost:undefined/?token=tNvoYuHAune3 → wss://20a5a677-e8db-426b-93ca-0ab4131b22a7-00-pwrlj8iul6vd.janeway.replit.dev/?token=tNvoYuHAune3
+ WebSocket connection to 'wss://20a5a677-e8db-426b-93ca-0ab4131b22a7-00-pwrlj8iul6vd.janeway.replit.dev/?token=tNvoYuHAune3' failed: 
+t @ eruda.js:2
+ [vite] failed to connect to websocket.
+your current setup:
+  (browser) 20a5a677-e8db-426b-93ca-0ab4131b22a7-00-pwrlj8iul6vd.janeway.replit.dev/ <--[HTTP]--> localhost:undefined/ (server)
+  (browser) 20a5a677-e8db-426b-93ca-0ab4131b22a7-00-pwrlj8iul6vd.janeway.replit.dev:/ <--[WebSocket (failing)]--> localhost:undefined/ (server)
+Check out your Vite / network configuration and https://vite.dev/config/server-options.html#server-hmr .
+Mt.forEach.n.<computed> @ eruda.js:2
+ 🎨 App.tsx: App component is rendering
+ 🏗️ App.tsx: Returning JSX with all providers
+ 🚫 SessionMonitor: DISABLED - Using unified SessionManager instead
+ 🗺️ Router: Router component is rendering
+ 📍 Router: Current location: /wallet-login
+ 💳 Router: Initializing wallet data state
+ 🔓 Router: No session token found
+ 🔍 SessionManager.getSession() returning: Object
+ 🎨 App.tsx: App component is rendering
+ 🏗️ App.tsx: Returning JSX with all providers
+ 🚫 SessionMonitor: DISABLED - Using unified SessionManager instead
+ 🗺️ Router: Router component is rendering
+ 📍 Router: Current location: /wallet-login
+ 💳 Router: Initializing wallet data state
+ 🔓 Router: No session token found
+ 🔍 SessionManager.getSession() returning: Object
+ 🔍 SessionManager: checkSession() called - current sessionData: false
+ 🔓 SessionManager: No token found locally, checking backend session
+ 🔍 SessionManager: Checking backend session via cookies/session storage
+ 🎨 [THEME] Applied theme: dark, dark class: true
+ 🔄 App.tsx: useEffect running - recovering wallet state
+ 📊 SessionManager: No backend session found
+ 🔍 SessionManager.getSession() returning: Object
+ 🔍 SessionManager.getSession() returning: Object
+ 🔐 [WALLET LOGIN] Attempting login for handle: dippydoge
+ 🔍 [WALLET LOGIN] Login response status: 200
+ 🔍 [WALLET LOGIN] Response headers: Headers
+ 📋 [WALLET LOGIN] Login response data: Object
+ ✅ [WALLET LOGIN] Login successful, storing session...
+ 🔑 [WALLET LOGIN] Session token received: 29knzybv...
+ 🧹 Clearing ALL wallet and session data...
+ 🧹 SessionManager: Clearing session
+ 🔍 SessionManager.getSession() returning: Object
+ ✅ All wallet and session data cleared
+ 💾 [WALLET LOGIN] Session stored in sessionStorage
+ 💾 [WALLET LOGIN] Session token stored in all expected locations
+ 🔑 [WALLET LOGIN] Fresh token stored: 29knzybv53...
+ 🔍 SessionManager.getSession() returning: Object
+ 🔐 SessionManager: New session set
+ 🔍 SessionManager.getSession() returning: Object
+ 🔍 SessionManager: checkSession() called - current sessionData: true
+ 🌐 SessionManager: Making Riddle wallet session request to /api/riddle-wallet/session
+ 🗺️ Router: Router component is rendering
+ 📍 Router: Current location: /wallet-dashboard
+ 🔍 SessionManager.getSession() returning: Object
+ 🔍 SessionManager.getSession() returning: Object
+ ✅ AuthGuard: User authenticated, allowing access
+ 🔍 SessionManager.getSession() returning: Object
+ ✅ SessionManager: Valid session for dippydoge
+ ✅ SessionManager: Updated session data: Object
+ 🔍 SessionManager.getSession() returning: Object
+ 🔍 SessionManager.getSession() returning: Object
+ 🔔 SessionManager: Notified 2 listeners
+ 🔍 SessionManager.getSession() returning: Object
+ 🔍 SessionManager.getSession() returning: Object
+ 🔍 [AUTH CHECK] Session token found: YES
+ 🔍 [AUTH CHECK] Session data found: YES
+ ✅ [AUTH CHECK] Valid session for user: dippydoge
+ 🔍 getQueryFn - SessionManager sessionToken: FOUND
+ 🔍 getQueryFn - SessionManager sessionToken: FOUND
+ 📊 [WALLET DASHBOARD] Fetching portfolio from separate endpoints...
+ 🔗 [WALLET DASHBOARD] Using addresses: Object
+ 🔗 Found 0 linked projects
+ ✅ [XRP] Balance: 6.039418 | USD: $0
+ ✅ [ETH] Balance: 0.001436 | USD: $6
+ ✅ [ARBITRUM] Balance: 0.000000 | USD: $0
+ ✅ [OPTIMISM] Balance: 0.000000 | USD: $0
+ ✅ [BASE] Balance: 0.000000 | USD: $0
+ ✅ [POLYGON] Balance: 0.000000 | USD: $0
+ ❌ [BNB] Failed to parse response: 
+Mt.forEach.n.<computed> @ eruda.js:2
+ ✅ [SOL] Balance: 0.007038 | USD: $1.49
+ ✅ [BTC] Balance: 0.00027633 | USD: $30.4
+ ✅ [WALLET DASHBOARD] Aggregated portfolio: Object
+ Chain not found in CHAIN_MAP: eth
+Mt.forEach.n.<computed> @ eruda.js:2
+ Chain not found in CHAIN_MAP: xrp
+Mt.forEach.n.<computed> @ eruda.js:2
+ Chain not found in CHAIN_MAP: btc
+Mt.forEach.n.<computed> @ eruda.js:2
+ Chain not found in CHAIN_MAP: sol
+Mt.forEach.n.<computed> @ eruda.js:2
+ Loading logo for polygon: /images/chains/polygon-logo.png
+ Loading logo for arbitrum: /images/chains/arbitrum-logo.png
+ Loading logo for optimism: /images/chains/optimism-logo.png
+ Loading logo for base: /images/chains/base-logo.png
+ Loading logo for zksync: /images/chains/zksync-logo.png
+ Loading logo for linea: /images/chains/linea-logo.png
+ Loading logo for scroll: /images/chains/scroll-logo.png
+ Loading logo for mantle: /images/chains/mantle-logo.png
+Console.js:61 Loading logo for metis: /images/chains/metis-logo.png
+Console.js:61 Loading logo for taiko: /images/chains/taiko-logo.png
+Console.js:61 Loading logo for unichain: /images/chains/unichain-logo.png
+Console.js:61 Loading logo for soneium: /images/chains/soneium-logo.png
+Console.js:61 Chain not found in CHAIN_MAP: avax
+Mt.forEach.n.<computed> @ Console.js:61
+Console.js:61 Chain not found in CHAIN_MAP: bnb
+Mt.forEach.n.<computed> @ Console.js:61
+Console.js:61 🔍 [AUTH CHECK] Session token found: YES
+Console.js:61 🔍 [AUTH CHECK] Session data found: YES
+Console.js:61 ✅ [AUTH CHECK] Valid session for user: dippydoge
+Console.js:61 🔍 getQueryFn - SessionManager sessionToken: FOUND
+Console.js:61 Chain not found in CHAIN_MAP: eth
+Mt.forEach.n.<computed> @ Console.js:61
+Console.js:61 Chain not found in CHAIN_MAP: xrp
+Mt.forEach.n.<computed> @ Console.js:61
+Console.js:61 Chain not found in CHAIN_MAP: btc
+Mt.forEach.n.<computed> @ Console.js:61
+Console.js:61 Chain not found in CHAIN_MAP: sol
+Mt.forEach.n.<computed> @ Console.js:61
+Console.js:61 Chain not found in CHAIN_MAP: avax
+Mt.forEach.n.<computed> @ Console.js:61
+Console.js:61 Chain not found in CHAIN_MAP: bnb
+Mt.forEach.n.<computed> @ Console.js:61
+Console.js:61 Chain not found in CHAIN_MAP: eth
+Mt.forEach.n.<computed> @ Console.js:61
+Console.js:61 Chain not found in CHAIN_MAP: xrp
+Mt.forEach.n.<computed> @ Console.js:61
+Console.js:61 Chain not found in CHAIN_MAP: btc
+Mt.forEach.n.<computed> @ Console.js:61
+Console.js:61 Chain not found in CHAIN_MAP: sol
+Mt.forEach.n.<computed> @ Console.js:61
+Console.js:61 Chain not found in CHAIN_MAP: avax
+Mt.forEach.n.<computed> @ Console.js:61
+Console.js:61 Chain not found in CHAIN_MAP: bnb
+Mt.forEach.n.<computed> @ Console.js:61
+Console.js:61 Loading logo for optimism: /images/chains/optimism-logo.png
+Console.js:61 Loading logo for optimism: /images/chains/optimism-logo.png
+Console.js:61 Loading logo for polygon: /images/chains/polygon-logo.png
+Console.js:61 Loading logo for polygon: /images/chains/polygon-logo.png
+Console.js:61 Loading logo for arbitrum: /images/chains/arbitrum-logo.png
+Console.js:61 Loading logo for base: /images/chains/base-logo.png
+Console.js:61 Loading logo for arbitrum: /images/chains/arbitrum-logo.png
+Console.js:61 Loading logo for zksync: /images/chains/zksync-logo.png
+Console.js:61 Loading logo for zksync: /images/chains/zksync-logo.png
+Console.js:61 🚨 AUTO-LOGGED ERROR: ErrorEvent
+Mt.forEach.n.<computed> @ Console.js:61
+RDLBank.tsx:212 Uncaught TypeError: rdlBalances?.filter is not a function
+    at RDLBank (RDLBank.tsx:212:31)
+    at renderWithHooks (chunk-SM3OW2QE.js?v=b65356fd:11548:26)
+    at updateFunctionComponent (chunk-SM3OW2QE.js?v=b65356fd:14582:28)
+    at beginWork (chunk-SM3OW2QE.js?v=b65356fd:15924:22)
+    at HTMLUnknownElement.callCallback2 (chunk-SM3OW2QE.js?v=b65356fd:3674:22)
+    at Object.invokeGuardedCallbackDev (chunk-SM3OW2QE.js?v=b65356fd:3699:24)
+    at invokeGuardedCallback (chunk-SM3OW2QE.js?v=b65356fd:3733:39)
+    at beginWork$1 (chunk-SM3OW2QE.js?v=b65356fd:19765:15)
+    at performUnitOfWork (chunk-SM3OW2QE.js?v=b65356fd:19198:20)
+    at workLoopSync (chunk-SM3OW2QE.js?v=b65356fd:19137:13)
+Console.js:61 🚨 AUTO-LOGGED ERROR: ErrorEvent
+Mt.forEach.n.<computed> @ Console.js:61
+RDLBank.tsx:212 Uncaught TypeError: rdlBalances?.filter is not a function
+    at RDLBank (RDLBank.tsx:212:31)
+    at renderWithHooks (chunk-SM3OW2QE.js?v=b65356fd:11548:26)
+    at updateFunctionComponent (chunk-SM3OW2QE.js?v=b65356fd:14582:28)
+    at beginWork (chunk-SM3OW2QE.js?v=b65356fd:15924:22)
+    at HTMLUnknownElement.callCallback2 (chunk-SM3OW2QE.js?v=b65356fd:3674:22)
+    at Object.invokeGuardedCallbackDev (chunk-SM3OW2QE.js?v=b65356fd:3699:24)
+    at invokeGuardedCallback (chunk-SM3OW2QE.js?v=b65356fd:3733:39)
+    at beginWork$1 (chunk-SM3OW2QE.js?v=b65356fd:19765:15)
+    at performUnitOfWork (chunk-SM3OW2QE.js?v=b65356fd:19198:20)
+    at workLoopSync (chunk-SM3OW2QE.js?v=b65356fd:19137:13)
+Console.js:61 The above error occurred in the <RDLBank> component:
+
+    at RDLBank (https://20a5a677-e8db-426b-93ca-0ab4131b22a7-00-pwrlj8iul6vd.janeway.replit.dev/src/components/RDLBank.tsx:68:21)
+    at div
+    at div
+    at div
+    at WalletDashboard (https://20a5a677-e8db-426b-93ca-0ab4131b22a7-00-pwrlj8iul6vd.janeway.replit.dev/src/pages/wallet-dashboard.tsx:482:27)
+    at Suspense
+    at AuthGuard (https://20a5a677-e8db-426b-93ca-0ab4131b22a7-00-pwrlj8iul6vd.janeway.replit.dev/src/components/AuthGuard.tsx:22:29)
+    at WalletDashboardRoute
+    at Route (https://20a5a677-e8db-426b-93ca-0ab4131b22a7-00-pwrlj8iul6vd.janeway.replit.dev/@fs/home/runner/workspace/node_modules/.vite/deps/wouter.js?v=b65356fd:206:16)
+    at Switch (https://20a5a677-e8db-426b-93ca-0ab4131b22a7-00-pwrlj8iul6vd.janeway.replit.dev/@fs/home/runner/workspace/node_modules/.vite/deps/wouter.js?v=b65356fd:262:17)
+    at Suspense
+    at div
+    at div
+    at Router (https://20a5a677-e8db-426b-93ca-0ab4131b22a7-00-pwrlj8iul6vd.janeway.replit.dev/src/App.tsx?t=1758720892521&v=Yj1Qb9RZQSzqKGJqTjxIW:751:22)
+    at Provider (https://20a5a677-e8db-426b-93ca-0ab4131b22a7-00-pwrlj8iul6vd.janeway.replit.dev/@fs/home/runner/workspace/node_modules/.vite/deps/chunk-RV2IQSFV.js?v=b65356fd:38:15)
+    at TooltipProvider (https://20a5a677-e8db-426b-93ca-0ab4131b22a7-00-pwrlj8iul6vd.janeway.replit.dev/@fs/home/runner/workspace/node_modules/.vite/deps/@radix-ui_react-tooltip.js?v=b65356fd:65:5)
+    at ThemeProvider (https://20a5a677-e8db-426b-93ca-0ab4131b22a7-00-pwrlj8iul6vd.janeway.replit.dev/src/contexts/theme-context.tsx:20:33)
+    at QueryClientProvider (https://20a5a677-e8db-426b-93ca-0ab4131b22a7-00-pwrlj8iul6vd.janeway.replit.dev/@fs/home/runner/workspace/node_modules/.vite/deps/@tanstack_react-query.js?v=b65356fd:2934:3)
+    at ErrorBoundary (https://20a5a677-e8db-426b-93ca-0ab4131b22a7-00-pwrlj8iul6vd.janeway.replit.dev/src/components/ErrorBoundary.tsx:24:5)
+    at App (https://20a5a677-e8db-426b-93ca-0ab4131b22a7-00-pwrlj8iul6vd.janeway.replit.dev/src/App.tsx?t=1758720892521&v=Yj1Qb9RZQSzqKGJqTjxIW:1722:3)
+
+React will try to recreate this component tree from scratch using the error boundary you provided, ErrorBoundary.
+Mt.forEach.n.<computed> @ Console.js:61
+Console.js:61 ErrorBoundary caught an error: TypeError: rdlBalances?.filter is not a function
+    at RDLBank (RDLBank.tsx:212:31)
+    at renderWithHooks (chunk-SM3OW2QE.js?v=b65356fd:11548:26)
+    at updateFunctionComponent (chunk-SM3OW2QE.js?v=b65356fd:14582:28)
+    at beginWork (chunk-SM3OW2QE.js?v=b65356fd:15924:22)
+    at beginWork$1 (chunk-SM3OW2QE.js?v=b65356fd:19753:22)
+    at performUnitOfWork (chunk-SM3OW2QE.js?v=b65356fd:19198:20)
+    at workLoopSync (chunk-SM3OW2QE.js?v=b65356fd:19137:13)
+    at renderRootSync (chunk-SM3OW2QE.js?v=b65356fd:19116:15)
+    at recoverFromConcurrentError (chunk-SM3OW2QE.js?v=b65356fd:18736:28)
+    at performSyncWorkOnRoot (chunk-SM3OW2QE.js?v=b65356fd:18879:28) Object
+Mt.forEach.n.<computed> @ Console.js:61
+Console.js:61 Error logged successfully

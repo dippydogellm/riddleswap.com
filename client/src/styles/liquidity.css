@@ -1,0 +1,512 @@
+/* Liquidity Page Styles */
+
+.liquidity-page {
+  min-height: 100vh;
+  background: hsl(var(--background));
+  padding: 2rem 1rem;
+}
+
+.liquidity-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.liquidity-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.liquidity-title {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: hsl(var(--foreground));
+  margin-bottom: 1rem;
+  background: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary) / 0.7));
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.liquidity-description {
+  font-size: 1.125rem;
+  color: hsl(var(--muted-foreground));
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+.liquidity-stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+}
+
+.liquidity-stat-card {
+  background: hsl(var(--card));
+  border: 1px solid hsl(var(--border));
+  border-radius: 1rem;
+  padding: 1.5rem;
+  text-align: center;
+  transition: all 0.2s ease;
+}
+
+.liquidity-stat-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-medium);
+}
+
+.liquidity-stat-value {
+  font-size: 2rem;
+  font-weight: 800;
+  color: hsl(var(--primary));
+  margin-bottom: 0.5rem;
+}
+
+.liquidity-stat-label {
+  font-size: 0.875rem;
+  color: hsl(var(--muted-foreground));
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.liquidity-main-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+
+.liquidity-form-section {
+  background: hsl(var(--card));
+  border: 1px solid hsl(var(--border));
+  border-radius: 1rem;
+  padding: 2rem;
+  box-shadow: var(--shadow-small);
+}
+
+.liquidity-form-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: hsl(var(--foreground));
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.liquidity-tabs {
+  display: flex;
+  background: hsl(var(--secondary));
+  border-radius: 0.75rem;
+  padding: 0.25rem;
+  margin-bottom: 2rem;
+}
+
+.liquidity-tab {
+  flex: 1;
+  padding: 0.75rem;
+  background: transparent;
+  border: none;
+  border-radius: 0.5rem;
+  color: hsl(var(--muted-foreground));
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.liquidity-tab.active {
+  background: hsl(var(--background));
+  color: hsl(var(--foreground));
+  box-shadow: var(--shadow-small);
+}
+
+.liquidity-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.liquidity-token-input-group {
+  background: hsl(var(--secondary) / 0.3);
+  border: 1px solid hsl(var(--border));
+  border-radius: 0.75rem;
+  padding: 1.5rem;
+}
+
+.liquidity-token-label {
+  font-size: 0.875rem;
+  color: hsl(var(--muted-foreground));
+  margin-bottom: 0.75rem;
+  font-weight: 500;
+}
+
+.liquidity-token-input {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.liquidity-amount-input {
+  flex: 1;
+  padding: 0.75rem 1rem;
+  border: 2px solid hsl(var(--border));
+  border-radius: 0.5rem;
+  background: hsl(var(--background));
+  color: hsl(var(--foreground));
+  font-size: 1.25rem;
+  font-weight: 600;
+  transition: all 0.2s ease;
+  box-sizing: border-box;
+  min-width: 0;
+}
+
+.liquidity-amount-input:focus {
+  outline: none;
+  border-color: hsl(var(--primary));
+  box-shadow: 0 0 0 2px hsl(var(--primary) / 0.1);
+}
+
+.liquidity-token-selector {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 1rem;
+  background: hsl(var(--background));
+  border: 2px solid hsl(var(--border));
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  min-width: 120px;
+}
+
+.liquidity-token-selector:hover {
+  border-color: hsl(var(--primary) / 0.3);
+}
+
+.liquidity-token-logo {
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 50%;
+  background: hsl(var(--muted));
+}
+
+.liquidity-token-symbol {
+  font-weight: 600;
+  color: hsl(var(--foreground));
+}
+
+.liquidity-token-balance {
+  font-size: 0.875rem;
+  color: hsl(var(--muted-foreground));
+  margin-top: 0.5rem;
+  text-align: right;
+}
+
+.liquidity-plus-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  background: hsl(var(--secondary));
+  border: 2px solid hsl(var(--border));
+  border-radius: 50%;
+  color: hsl(var(--muted-foreground));
+  margin: 1rem auto;
+}
+
+.liquidity-details {
+  background: hsl(var(--secondary) / 0.3);
+  border-radius: 0.75rem;
+  padding: 1.5rem;
+  margin: 1.5rem 0;
+}
+
+.liquidity-detail-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.75rem;
+}
+
+.liquidity-detail-row:last-child {
+  margin-bottom: 0;
+}
+
+.liquidity-detail-label {
+  font-size: 0.875rem;
+  color: hsl(var(--muted-foreground));
+}
+
+.liquidity-detail-value {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: hsl(var(--foreground));
+  text-align: right;
+}
+
+.liquidity-submit-button {
+  padding: 1rem 2rem;
+  background: hsl(var(--primary));
+  color: hsl(var(--primary-foreground));
+  border: none;
+  border-radius: 0.75rem;
+  font-size: 1.125rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: var(--shadow-medium);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
+.liquidity-submit-button:hover:not(:disabled) {
+  background: hsl(var(--primary) / 0.9);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-heavy);
+}
+
+.liquidity-submit-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.liquidity-positions-section {
+  background: hsl(var(--card));
+  border: 1px solid hsl(var(--border));
+  border-radius: 1rem;
+  overflow: hidden;
+  box-shadow: var(--shadow-small);
+}
+
+.liquidity-positions-header {
+  padding: 1.5rem 2rem;
+  border-bottom: 1px solid hsl(var(--border));
+  background: hsl(var(--secondary) / 0.3);
+}
+
+.liquidity-positions-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: hsl(var(--foreground));
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.liquidity-positions-list {
+  padding: 0;
+}
+
+.liquidity-position-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.5rem 2rem;
+  border-bottom: 1px solid hsl(var(--border));
+  transition: all 0.2s ease;
+}
+
+.liquidity-position-item:hover {
+  background: hsl(var(--secondary) / 0.3);
+}
+
+.liquidity-position-item:last-child {
+  border-bottom: none;
+}
+
+.liquidity-position-info {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.liquidity-position-tokens {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.liquidity-position-token-logos {
+  display: flex;
+  align-items: center;
+  margin-right: 0.75rem;
+}
+
+.liquidity-position-token-logo {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  background: hsl(var(--muted));
+  border: 2px solid hsl(var(--background));
+}
+
+.liquidity-position-token-logo:not(:first-child) {
+  margin-left: -0.5rem;
+}
+
+.liquidity-position-pair {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: hsl(var(--foreground));
+}
+
+.liquidity-position-details {
+  text-align: right;
+}
+
+.liquidity-position-value {
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: hsl(var(--primary));
+  margin-bottom: 0.25rem;
+}
+
+.liquidity-position-share {
+  font-size: 0.875rem;
+  color: hsl(var(--muted-foreground));
+}
+
+.liquidity-position-actions {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.liquidity-position-action {
+  padding: 0.5rem 1rem;
+  border-radius: 0.375rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: 1px solid hsl(var(--border));
+}
+
+.liquidity-position-action.primary {
+  background: hsl(var(--primary));
+  color: hsl(var(--primary-foreground));
+  border-color: hsl(var(--primary));
+}
+
+.liquidity-position-action.primary:hover {
+  background: hsl(var(--primary) / 0.9);
+}
+
+.liquidity-position-action.secondary {
+  background: transparent;
+  color: hsl(var(--muted-foreground));
+}
+
+.liquidity-position-action.secondary:hover {
+  background: hsl(var(--secondary));
+  color: hsl(var(--secondary-foreground));
+}
+
+.liquidity-empty-positions {
+  text-align: center;
+  padding: 4rem 2rem;
+  color: hsl(var(--muted-foreground));
+}
+
+.liquidity-empty-icon {
+  width: 4rem;
+  height: 4rem;
+  margin: 0 auto 1rem;
+  opacity: 0.5;
+}
+
+.liquidity-empty-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: hsl(var(--foreground));
+}
+
+.liquidity-empty-description {
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .liquidity-page {
+    padding: 1rem 0.5rem;
+  }
+  
+  .liquidity-title {
+    font-size: 2rem;
+  }
+  
+  .liquidity-stats {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+  
+  .liquidity-main-content {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .liquidity-form-section {
+    padding: 1.5rem;
+  }
+  
+  .liquidity-position-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 1rem;
+  }
+  
+  .liquidity-position-details {
+    text-align: left;
+    width: 100%;
+  }
+  
+  .liquidity-position-actions {
+    width: 100%;
+    justify-content: flex-end;
+  }
+  
+  .liquidity-positions-header {
+    padding: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .liquidity-title {
+    font-size: 1.5rem;
+  }
+  
+  .liquidity-stats {
+    grid-template-columns: 1fr;
+  }
+  
+  .liquidity-form-section {
+    padding: 1rem;
+  }
+  
+  .liquidity-token-input {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  
+  .liquidity-token-selector {
+    width: 100%;
+    justify-content: center;
+  }
+  
+  .liquidity-position-actions {
+    flex-direction: column;
+  }
+  
+  .liquidity-amount-input {
+    font-size: 1rem; /* Prevent zoom on iOS */
+  }
+}

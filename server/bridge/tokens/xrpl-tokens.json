@@ -1,0 +1,19 @@
+{
+  "XRP": {
+    "symbol": "XRP",
+    "name": "XRP",
+    "isNative": true,
+    "decimals": 6,
+    "coingeckoId": "ripple",
+    "dexScreener": "xrp"
+  },
+  "RDL": {
+    "symbol": "RDL",
+    "name": "Riddle XRPL",
+    "issuer": "r9xvnzUWZJpDu3NA6MKHmKhKJQTRqCRgu9",
+    "currency": "52444C0000000000000000000000000000000000",
+    "decimals": 15,
+    "dexScreener": "RDL.r9xvnzUWZJpDu3NA6MKHmKhKJQTRqCRgu9_XRP",
+    "isMasterToken": true
+  }
+}

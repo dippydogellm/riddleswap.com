@@ -1,0 +1,117 @@
+g
+2025-10-30 02:13:47.22
+8c4971a5
+User
+✅ Additional EVM chain endpoints registered successfully
+2025-10-30 02:13:47.33
+8c4971a5
+User
+✅ Rewards Dashboard routes registered successfully
+2025-10-30 02:13:47.33
+8c4971a5
+User
+📸 Registering Monthly NFT Snapshot routes...
+2025-10-30 02:13:47.37
+8c4971a5
+User
+⏰ [MONTHLY-SCHEDULER] Monthly NFT snapshot scheduler initialized (1st day of month at 2:00 AM UTC)
+2025-10-30 02:13:47.37
+8c4971a5
+User
+✅ Monthly NFT Snapshot routes registered successfully
+2025-10-30 02:13:47.37
+8c4971a5
+User
+🎨 Registering RiddleSwap Collections routes...
+2025-10-30 02:13:47.37
+8c4971a5
+User
+✅ RiddleSwap Collections routes registered successfully
+2025-10-30 02:13:47.37
+8c4971a5
+User
+✅ DevTools project management routes already registered
+2025-10-30 02:13:47.37
+8c4971a5
+User
+💰 Registering subscription service routes...
+2025-10-30 02:13:47.37
+8c4971a5
+User
+✅ Subscription service routes registered successfully
+2025-10-30 02:13:47.37
+8c4971a5
+User
+📝 Registering project content override routes...
+2025-10-30 02:13:47.37
+8c4971a5
+User
+✅ Project content override routes registered successfully
+2025-10-30 02:13:47.37
+8c4971a5
+User
+🤖 Registering THE ORACLE AI routes...
+2025-10-30 02:13:47.38
+8c4971a5
+User
+✅ THE ORACLE AI routes registered successfully
+2025-10-30 02:13:47.38
+8c4971a5
+User
+✅ Mapping System routes registered successfully
+2025-10-30 02:13:47.39
+8c4971a5
+User
+✅ Inquisition Generator routes registered successfully
+2025-10-30 02:13:47.39
+8c4971a5
+User
+🎨 [API] Setting up Inquisition image generation routes...
+2025-10-30 02:13:47.39
+8c4971a5
+User
+✅ [API] Inquisition image generation routes registered successfully
+2025-10-30 02:13:47.39
+8c4971a5
+User
+🏰 Generating 1000 land plot NFT metadata files...
+2025-10-30 02:13:47.40
+8c4971a5
+User
+✅ Generated 200/1000 metadata files
+2025-10-30 02:13:47.41
+8c4971a5
+User
+✅ Generated 300/1000 metadata files
+2025-10-30 02:14:03.77
+8c4971a5
+System
+starting up user application
+2025-10-30 02:14:03.77
+8c4971a5
+System
+forwarding local port 5000 to external port 80 (mapped as 1104)
+2025-10-30 02:14:04.82
+8c4971a5
+User
+> rest-express@1.0.0 start
+2025-10-30 02:14:04.82
+8c4971a5
+User
+> NODE_ENV=production PORT=5000 node dist/index.js
+2025-10-30 02:14:07.71
+8c4971a5
+User
+bigint: Failed to load bindings, pure JS will be used (try npm run rebuild?)
+2025-10-30 02:14:08.92
+8c4971a5
+User
+✅ Restored session for user: dippydoge
+2025-10-30 02:14:09.01
+8c4971a5
+User
+✅ Restored session for user: dippydoge
+2025-10-30 02:14:09.09
+8c4971a5
+User
+✅ Restored session for user: jake

@@ -1,0 +1,660 @@
+analytics.tiktok.com/i18n/pixel/events.js?sdkid=D004GE3C77U8PIVDSDJG&lib=ttq:1  Failed to load resource: net::ERR_NAME_NOT_RESOLVED
+The source list for the Content Security Policy directive 'default-src' contains an invalid source: ''unsafe-dynamic''. It will be ignored.
+The source list for the Content Security Policy directive 'default-src' contains an invalid source: ''unsafe-dynamic''. It will be ignored.
+The source list for the Content Security Policy directive 'default-src' contains an invalid source: ''unsafe-dynamic''. It will be ignored.
+The source list for the Content Security Policy directive 'default-src' contains an invalid source: ''unsafe-dynamic''. It will be ignored.
+The source list for the Content Security Policy directive 'default-src' contains an invalid source: ''unsafe-dynamic''. It will be ignored.
+The source list for the Content Security Policy directive 'default-src' contains an invalid source: ''unsafe-dynamic''. It will be ignored.
+The source list for the Content Security Policy directive 'default-src' contains an invalid source: ''unsafe-dynamic''. It will be ignored.
+The source list for the Content Security Policy directive 'default-src' contains an invalid source: ''unsafe-dynamic''. It will be ignored.
+The source list for the Content Security Policy directive 'default-src' contains an invalid source: ''unsafe-dynamic''. It will be ignored.
+The source list for the Content Security Policy directive 'default-src' contains an invalid source: ''unsafe-dynamic''. It will be ignored.
+The Content-Security-Policy directive 'default-src' contains 'report-uri' as a source expression. Did you want to add it as a directive and forget a semicolon?
+The Content-Security-Policy directive 'default-src' contains 'report-uri' as a source expression. Did you want to add it as a directive and forget a semicolon?
+The Content-Security-Policy directive 'default-src' contains 'report-uri' as a source expression. Did you want to add it as a directive and forget a semicolon?
+The Content-Security-Policy directive 'default-src' contains 'report-uri' as a source expression. Did you want to add it as a directive and forget a semicolon?
+The Content-Security-Policy directive 'default-src' contains 'report-uri' as a source expression. Did you want to add it as a directive and forget a semicolon?
+The Content-Security-Policy directive 'default-src' contains 'report-uri' as a source expression. Did you want to add it as a directive and forget a semicolon?
+The Content-Security-Policy directive 'default-src' contains 'report-uri' as a source expression. Did you want to add it as a directive and forget a semicolon?
+The Content-Security-Policy directive 'default-src' contains 'report-uri' as a source expression. Did you want to add it as a directive and forget a semicolon?
+The Content-Security-Policy directive 'default-src' contains 'report-uri' as a source expression. Did you want to add it as a directive and forget a semicolon?
+The Content-Security-Policy directive 'default-src' contains 'report-uri' as a source expression. Did you want to add it as a directive and forget a semicolon?
+The source list for Content Security Policy directive 'default-src' contains a source with an invalid path: '/api/4509669501698048/security/?sentry_key=7eb3d90eb4660416caf507087367e67e'. The query component, including the '?', will be ignored.
+The source list for Content Security Policy directive 'default-src' contains a source with an invalid path: '/api/4509669501698048/security/?sentry_key=7eb3d90eb4660416caf507087367e67e'. The query component, including the '?', will be ignored.
+The source list for Content Security Policy directive 'default-src' contains a source with an invalid path: '/api/4509669501698048/security/?sentry_key=7eb3d90eb4660416caf507087367e67e'. The query component, including the '?', will be ignored.
+The source list for Content Security Policy directive 'default-src' contains a source with an invalid path: '/api/4509669501698048/security/?sentry_key=7eb3d90eb4660416caf507087367e67e'. The query component, including the '?', will be ignored.
+The source list for Content Security Policy directive 'default-src' contains a source with an invalid path: '/api/4509669501698048/security/?sentry_key=7eb3d90eb4660416caf507087367e67e'. The query component, including the '?', will be ignored.
+The source list for Content Security Policy directive 'default-src' contains a source with an invalid path: '/api/4509669501698048/security/?sentry_key=7eb3d90eb4660416caf507087367e67e'. The query component, including the '?', will be ignored.
+The source list for Content Security Policy directive 'default-src' contains a source with an invalid path: '/api/4509669501698048/security/?sentry_key=7eb3d90eb4660416caf507087367e67e'. The query component, including the '?', will be ignored.
+The source list for Content Security Policy directive 'default-src' contains a source with an invalid path: '/api/4509669501698048/security/?sentry_key=7eb3d90eb4660416caf507087367e67e'. The query component, including the '?', will be ignored.
+The source list for Content Security Policy directive 'default-src' contains a source with an invalid path: '/api/4509669501698048/security/?sentry_key=7eb3d90eb4660416caf507087367e67e'. The query component, including the '?', will be ignored.
+The source list for Content Security Policy directive 'default-src' contains a source with an invalid path: '/api/4509669501698048/security/?sentry_key=7eb3d90eb4660416caf507087367e67e'. The query component, including the '?', will be ignored.
+dippydoge1-10-11:1 The source list for the Content Security Policy directive 'default-src' contains an invalid source: ''unsafe-dynamic''. It will be ignored.
+dippydoge1-10-11:1 The Content-Security-Policy directive 'default-src' contains 'report-uri' as a source expression. Did you want to add it as a directive and forget a semicolon?
+dippydoge1-10-11:1 The source list for Content Security Policy directive 'default-src' contains a source with an invalid path: '/api/4509669501698048/security/?sentry_key=7eb3d90eb4660416caf507087367e67e'. The query component, including the '?', will be ignored.
+ 
+      /////////////////////
+   ///////////////////////////
+  ////////@@@@@@@//////////////
+  ////////@@@@@@@//////////////
+  ////////@@@@@@@//////////////        Curious and driven?
+  ///////////////@@@@@@@///////        Work with us!
+  ///////////////@@@@@@@///////
+  ///////////////@@@@@@@///////        https://join.replit.com/hack.with.us
+  ////////@@@@@@@//////////////
+  ////////@@@@@@@//////////////
+  ////////@@@@@@#//////////////
+   ///////////////////////////
+      /////////////////////
+      
+ [LaunchDarkly] LaunchDarkly client initialized
+ Error while parsing the 'sandbox' attribute: 'allow-downloads-without-user-activation' is an invalid sandbox flag.
+_ @ framework-4ca1e485f3149550.js:1
+ Unrecognized feature: 'ambient-light-sensor'.
+_ @ framework-4ca1e485f3149550.js:1
+ Unrecognized feature: 'battery'.
+_ @ framework-4ca1e485f3149550.js:1
+ Unrecognized feature: 'execution-while-not-rendered'.
+_ @ framework-4ca1e485f3149550.js:1
+ Unrecognized feature: 'execution-while-out-of-viewport'.
+_ @ framework-4ca1e485f3149550.js:1
+ Unrecognized feature: 'layout-animations'.
+_ @ framework-4ca1e485f3149550.js:1
+ Unrecognized feature: 'legacy-image-formats'.
+_ @ framework-4ca1e485f3149550.js:1
+ Unrecognized feature: 'navigation-override'.
+_ @ framework-4ca1e485f3149550.js:1
+ Unrecognized feature: 'oversized-images'.
+_ @ framework-4ca1e485f3149550.js:1
+ Unrecognized feature: 'publickey-credentials'.
+_ @ framework-4ca1e485f3149550.js:1
+ Unrecognized feature: 'speaker-selection'.
+_ @ framework-4ca1e485f3149550.js:1
+ Unrecognized feature: 'unoptimized-images'.
+_ @ framework-4ca1e485f3149550.js:1
+ Unrecognized feature: 'unsized-media'.
+_ @ framework-4ca1e485f3149550.js:1
+ Unrecognized feature: 'pointer-lock'.
+_ @ framework-4ca1e485f3149550.js:1
+ Allow attribute will take precedence over 'allowfullscreen'.
+_ @ framework-4ca1e485f3149550.js:1
+ Allow attribute will take precedence over 'allowpaymentrequest'.
+_ @ framework-4ca1e485f3149550.js:1
+workspace_iframe.html?initialPath=%2F&id=%3Ar6l%3A:32 Error while parsing the 'sandbox' attribute: 'allow-downloads-without-user-activation' is an invalid sandbox flag.
+workspace_iframe.html?initialPath=%2F&id=%3Ar6l%3A:32 Unrecognized feature: 'ambient-light-sensor'.
+workspace_iframe.html?initialPath=%2F&id=%3Ar6l%3A:32 Unrecognized feature: 'battery'.
+workspace_iframe.html?initialPath=%2F&id=%3Ar6l%3A:32 Unrecognized feature: 'execution-while-not-rendered'.
+workspace_iframe.html?initialPath=%2F&id=%3Ar6l%3A:32 Unrecognized feature: 'execution-while-out-of-viewport'.
+workspace_iframe.html?initialPath=%2F&id=%3Ar6l%3A:32 Unrecognized feature: 'layout-animations'.
+workspace_iframe.html?initialPath=%2F&id=%3Ar6l%3A:32 Unrecognized feature: 'legacy-image-formats'.
+workspace_iframe.html?initialPath=%2F&id=%3Ar6l%3A:32 Unrecognized feature: 'navigation-override'.
+workspace_iframe.html?initialPath=%2F&id=%3Ar6l%3A:32 Unrecognized feature: 'oversized-images'.
+workspace_iframe.html?initialPath=%2F&id=%3Ar6l%3A:32 Unrecognized feature: 'publickey-credentials'.
+workspace_iframe.html?initialPath=%2F&id=%3Ar6l%3A:32 Unrecognized feature: 'speaker-selection'.
+workspace_iframe.html?initialPath=%2F&id=%3Ar6l%3A:32 Unrecognized feature: 'unoptimized-images'.
+workspace_iframe.html?initialPath=%2F&id=%3Ar6l%3A:32 Unrecognized feature: 'unsized-media'.
+workspace_iframe.html?initialPath=%2F&id=%3Ar6l%3A:32 Allow attribute will take precedence over 'allowfullscreen'.
+workspace_iframe.html?initialPath=%2F&id=%3Ar6l%3A:32 Allow attribute will take precedence over 'allowpaymentrequest'.
+ WebSocket connection to 'wss://301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/?token=sZy_qRVmGzVo' failed: 
+window.WebSocket @ init.js:53
+ WebSocket connection to 'wss://301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/?token=sZy_qRVmGzVo' failed: 
+window.WebSocket @ init.js:53
+dippydoge1-10-11:1 Banner not shown: beforeinstallpromptevent.preventDefault() called. The page must call beforeinstallpromptevent.prompt() to show the banner.
+workspace_iframe.html?initialPath=%2F&id=%3Ar6l%3A:32 Error while parsing the 'sandbox' attribute: 'allow-downloads-without-user-activation' is an invalid sandbox flag.
+ WebSocket connection to 'wss://301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/?token=sZy_qRVmGzVo' failed: 
+window.WebSocket @ init.js:53
+ WebSocket connection to 'wss://301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/?token=sZy_qRVmGzVo' failed: 
+window.WebSocket @ init.js:53
+workspace_iframe.html?initialPath=%2F&id=%3Ar6l%3A:32 Error while parsing the 'sandbox' attribute: 'allow-downloads-without-user-activation' is an invalid sandbox flag.
+ WebSocket connection to 'wss://301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/?token=sZy_qRVmGzVo' failed: 
+window.WebSocket @ init.js:53
+ 🔧 Fixed WebSocket URL for Replit: wss://localhost:undefined/?token=sZy_qRVmGzVo → wss://301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/?token=sZy_qRVmGzVo
+ WebSocket connection to 'wss://301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/?token=sZy_qRVmGzVo' failed: 
+window.WebSocket @ init.js:53
+ [vite] failed to connect to websocket.
+your current setup:
+  (browser) 301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/ <--[HTTP]--> localhost:undefined/ (server)
+  (browser) 301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev:/ <--[WebSocket (failing)]--> localhost:undefined/ (server)
+Check out your Vite / network configuration and https://vite.dev/config/server-options.html#server-hmr .
+(anonymous) @ injected.js:27
+ 🎨 App.tsx: App component is rendering
+ 🏗️ App.tsx: Returning JSX with all providers
+ 🚫 SessionMonitor: DISABLED - Using unified SessionManager instead
+ 🗺️ Router: Router component is rendering
+ 📍 Router: Current location: /
+ 💳 Router: Initializing wallet data state
+ 📭 Router: No saved wallet data found
+ 🔍 SessionManager.getSession() returning: Object
+ 🔍 Found local wallet connections: Array(0)
+ 🎨 App.tsx: App component is rendering
+ 🏗️ App.tsx: Returning JSX with all providers
+ 🚫 SessionMonitor: DISABLED - Using unified SessionManager instead
+ 🗺️ Router: Router component is rendering
+ 📍 Router: Current location: /
+ 💳 Router: Initializing wallet data state
+ 📭 Router: No saved wallet data found
+ 🔍 SessionManager.getSession() returning: Object
+ 🔍 Found local wallet connections: Array(0)
+ 🔐 [GLOBAL RENEWAL] Handler initialized
+ 🔍 SessionManager.getSession() returning: Object
+ 🔍 SessionManager: checkSession() called - current sessionData: true
+ 🌐 SessionManager: Making Riddle wallet session request to /api/riddle-wallet/session
+ 🎨 [THEME] Applied theme: dark, dark class: true
+ 🔄 App.tsx: useEffect running - recovering wallet state
+ ✅ SessionManager: Valid session for riddlbroker
+ ✅ SessionManager: Updated session data: Object
+ 🔍 SessionManager.getSession() returning: Object
+ 🔍 SessionManager.getSession() returning: Object
+ 🔔 SessionManager: Notified 2 listeners
+ 🔍 SessionManager.getSession() returning: Object
+ 🔍 Found local wallet connections: Array(0)
+ 🗺️ Router: Router component is rendering
+ 📍 Router: Current location: /roadmap
+ 🔍 SessionManager.getSession() returning: Object
+ 🔍 Found local wallet connections: Array(0)
+ 🔍 SessionManager: checkSession() called - current sessionData: true
+ 🌐 SessionManager: Making Riddle wallet session request to /api/riddle-wallet/session
+ ✅ SessionManager: Valid session for riddlbroker
+ ✅ SessionManager: Updated session data: Object
+ 🔍 SessionManager.getSession() returning: Object
+ 🔍 SessionManager.getSession() returning: Object
+ 🔔 SessionManager: Notified 2 listeners
+ 🔍 SessionManager.getSession() returning: Object
+ 🔍 Found local wallet connections: Array(0)
+ 🔍 SessionManager: checkSession() called - current sessionData: true
+ 🌐 SessionManager: Making Riddle wallet session request to /api/riddle-wallet/session
+ ✅ SessionManager: Valid session for riddlbroker
+ ✅ SessionManager: Updated session data: Object
+ 🔍 SessionManager.getSession() returning: Object
+ 🔍 SessionManager.getSession() returning: Object
+ 🔔 SessionManager: Notified 2 listeners
+ 🔍 SessionManager.getSession() returning: Object
+ 🔍 Found local wallet connections: Array(0)
+ 🔍 SessionManager: checkSession() called - current sessionData: true
+ 🌐 SessionManager: Making Riddle wallet session request to /api/riddle-wallet/session
+ ✅ SessionManager: Valid session for riddlbroker
+ ✅ SessionManager: Updated session data: Object
+ 🔍 SessionManager.getSession() returning: Object
+ 🔍 SessionManager.getSession() returning: Object
+ 🔔 SessionManager: Notified 2 listeners
+ 🔍 SessionManager.getSession() returning: Object
+ 🔍 Found local wallet connections: Array(0)
+ 🔍 SessionManager: checkSession() called - current sessionData: true
+ 🌐 SessionManager: Making Riddle wallet session request to /api/riddle-wallet/session
+ ✅ SessionManager: Valid session for riddlbroker
+ ✅ SessionManager: Updated session data: Object
+ 🔍 SessionManager.getSession() returning: Object
+ 🔍 SessionManager.getSession() returning: Object
+ 🔔 SessionManager: Notified 2 listeners
+ 🔍 SessionManager.getSession() returning: Object
+ 🔍 Found local wallet connections: Array(0)
+ 🔍 SessionManager: checkSession() called - current sessionData: true
+ 🌐 SessionManager: Making Riddle wallet session request to /api/riddle-wallet/session
+ ✅ SessionManager: Valid session for riddlbroker
+ ✅ SessionManager: Updated session data: Object
+ 🔍 SessionManager.getSession() returning: Object
+ 🔍 SessionManager.getSession() returning: Object
+ 🔔 SessionManager: Notified 2 listeners
+ 🔍 SessionManager.getSession() returning: Object
+ 🔍 Found local wallet connections: Array(0)
+ 🔍 SessionManager: checkSession() called - current sessionData: true
+ 🌐 SessionManager: Making Riddle wallet session request to /api/riddle-wallet/session
+ ✅ SessionManager: Valid session for riddlbroker
+ ✅ SessionManager: Updated session data: Object
+ 🔍 SessionManager.getSession() returning: Object
+ 🔍 SessionManager.getSession() returning: Object
+ 🔔 SessionManager: Notified 2 listeners
+ 🔍 SessionManager.getSession() returning: Object
+ 🔍 Found local wallet connections: Array(0)
+ 🔍 SessionManager: checkSession() called - current sessionData: true
+ 🌐 SessionManager: Making Riddle wallet session request to /api/riddle-wallet/session
+ ✅ SessionManager: Valid session for riddlbroker
+ ✅ SessionManager: Updated session data: Object
+ 🔍 SessionManager.getSession() returning: Object
+ 🔍 SessionManager.getSession() returning: Object
+ 🔔 SessionManager: Notified 2 listeners
+ 🔍 SessionManager.getSession() returning: Object
+ 🔍 Found local wallet connections: Array(0)
+ 🔍 SessionManager: checkSession() called - current sessionData: true
+ 🌐 SessionManager: Making Riddle wallet session request to /api/riddle-wallet/session
+ ✅ SessionManager: Valid session for riddlbroker
+ ✅ SessionManager: Updated session data: Object
+ 🔍 SessionManager.getSession() returning: Object
+ 🔍 SessionManager.getSession() returning: Object
+ 🔔 SessionManager: Notified 2 listeners
+ 🔍 SessionManager.getSession() returning: Object
+ 🔍 Found local wallet connections: Array(0)
+ 🔍 SessionManager: checkSession() called - current sessionData: true
+ 🌐 SessionManager: Making Riddle wallet session request to /api/riddle-wallet/session
+ ✅ SessionManager: Valid session for riddlbroker
+ ✅ SessionManager: Updated session data: Object
+ 🔍 SessionManager.getSession() returning: Object
+ 🔍 SessionManager.getSession() returning: Object
+ 🔔 SessionManager: Notified 2 listeners
+ 🔍 SessionManager.getSession() returning: Object
+ 🔍 Found local wallet connections: Array(0)
+ 🔍 SessionManager: checkSession() called - current sessionData: true
+ 🌐 SessionManager: Making Riddle wallet session request to /api/riddle-wallet/session
+ ✅ SessionManager: Valid session for riddlbroker
+ ✅ SessionManager: Updated session data: Object
+ 🔍 SessionManager.getSession() returning: Object
+ 🔍 SessionManager.getSession() returning: Object
+ 🔔 SessionManager: Notified 2 listeners
+ 🔍 SessionManager.getSession() returning: Object
+ 🔍 Found local wallet connections: Array(0)
+ 🔍 SessionManager: checkSession() called - current sessionData: true
+ 🌐 SessionManager: Making Riddle wallet session request to /api/riddle-wallet/session
+ ✅ SessionManager: Valid session for riddlbroker
+ ✅ SessionManager: Updated session data: Object
+ 🔍 SessionManager.getSession() returning: Object
+ 🔍 SessionManager.getSession() returning: Object
+ 🔔 SessionManager: Notified 2 listeners
+ 🔍 SessionManager.getSession() returning: Object
+ 🔍 Found local wallet connections: Array(0)
+ 🗺️ Router: Router component is rendering
+ 📍 Router: Current location: /nft-marketplace
+ 🔍 SessionManager.getSession() returning: Object
+ 🔍 Found local wallet connections: Array(0)
+ 🔍 Search: "", Tab: volumes, Results: 0/0
+ 🔍 Search: "", Tab: volumes, Results: 0/0
+ 📊 Loaded 20 collections from volumes endpoint
+ 🧹 Filtered 0 invalid collections (null/undefined issuer)
+ ✅ Loaded 20 collections for volumes tab (Page 1)
+ 🔍 Search: "", Tab: volumes, Results: 20/20
+ 🔍 Search: "", Tab: volumes, Results: 20/20
+ 🗺️ Router: Router component is rendering
+ 📍 Router: Current location: /nft-collection/rw1R8cfHGMySmbj7gJ1HkiCqTY1xhLGYAs/1
+ 🔍 SessionManager.getSession() returning: Object
+ 🔍 Found local wallet connections: Array(0)
+ 🔍 getQueryFn - SessionManager sessionToken: FOUND
+ 🔍 [FLOOR SWEEP] No NFTs available in allNFTs
+ 🔍 [FLOOR SWEEP] No NFTs available in allNFTs
+ 🔍 [FLOOR SWEEP] No NFTs available in allNFTs
+ 🔍 [FLOOR SWEEP] No NFTs available in allNFTs
+ 🔍 [FLOOR SWEEP] No NFTs available in allNFTs
+ 🔍 [FLOOR SWEEP] No NFTs available in allNFTs
+ 🔍 [FLOOR SWEEP] No NFTs available in allNFTs
+ 📊 [COLLECTION] Total: 1406 NFTs, 583 for sale, Floor: undefined XRP
+ 🔍 [FLOOR SWEEP] NFT A8467A: forSale=true, isForSale=undefined, sellPrice=0, salePrice=undefined, hasPrice=undefined, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A84776: forSale=true, isForSale=undefined, sellPrice=0, salePrice=undefined, hasPrice=undefined, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A83E2C: forSale=true, isForSale=undefined, sellPrice=0, salePrice=undefined, hasPrice=undefined, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A84177: forSale=true, isForSale=undefined, sellPrice=0, salePrice=undefined, hasPrice=undefined, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A844FD: forSale=true, isForSale=undefined, sellPrice=222.22, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A84136: forSale=true, isForSale=undefined, sellPrice=260, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A84683: forSale=true, isForSale=undefined, sellPrice=268, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A84706: forSale=true, isForSale=undefined, sellPrice=269, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A83FD3: forSale=true, isForSale=undefined, sellPrice=270, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A84404: forSale=true, isForSale=undefined, sellPrice=275.8, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A8463A: forSale=true, isForSale=undefined, sellPrice=280, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A83F19: forSale=true, isForSale=undefined, sellPrice=280, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A8440B: forSale=true, isForSale=undefined, sellPrice=285, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A84199: forSale=true, isForSale=undefined, sellPrice=294, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A84383: forSale=true, isForSale=undefined, sellPrice=294, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A84493: forSale=true, isForSale=undefined, sellPrice=295, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A83EB3: forSale=true, isForSale=undefined, sellPrice=300, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A8438C: forSale=true, isForSale=undefined, sellPrice=300, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A8433B: forSale=true, isForSale=undefined, sellPrice=300, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A84007: forSale=true, isForSale=undefined, sellPrice=300, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A84444: forSale=true, isForSale=undefined, sellPrice=300, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A84273: forSale=true, isForSale=undefined, sellPrice=300, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A84413: forSale=true, isForSale=undefined, sellPrice=305, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A846BC: forSale=true, isForSale=undefined, sellPrice=310, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A84713: forSale=true, isForSale=undefined, sellPrice=320, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A8444E: forSale=true, isForSale=undefined, sellPrice=321, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A83EB5: forSale=true, isForSale=undefined, sellPrice=321, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A83DDE: forSale=true, isForSale=undefined, sellPrice=321, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A83D1C: forSale=true, isForSale=undefined, sellPrice=321, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A83E6E: forSale=true, isForSale=undefined, sellPrice=321, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A846FA: forSale=true, isForSale=undefined, sellPrice=321, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A8412F: forSale=true, isForSale=undefined, sellPrice=321, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A8437B: forSale=true, isForSale=undefined, sellPrice=321.589, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A8445F: forSale=true, isForSale=undefined, sellPrice=333, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A8467F: forSale=true, isForSale=undefined, sellPrice=333, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A84565: forSale=true, isForSale=undefined, sellPrice=333, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A83E97: forSale=true, isForSale=undefined, sellPrice=340, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A83D12: forSale=true, isForSale=undefined, sellPrice=344, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A841FE: forSale=true, isForSale=undefined, sellPrice=349, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A840B7: forSale=true, isForSale=undefined, sellPrice=350, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A83E19: forSale=true, isForSale=undefined, sellPrice=350, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A842A7: forSale=true, isForSale=undefined, sellPrice=350, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A844C5: forSale=true, isForSale=undefined, sellPrice=370, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A84417: forSale=true, isForSale=undefined, sellPrice=375, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A841EF: forSale=true, isForSale=undefined, sellPrice=375, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A84746: forSale=true, isForSale=undefined, sellPrice=380, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A846DA: forSale=true, isForSale=undefined, sellPrice=390, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A8432D: forSale=true, isForSale=undefined, sellPrice=399, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A84586: forSale=true, isForSale=undefined, sellPrice=399, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A844F9: forSale=true, isForSale=undefined, sellPrice=399, salePrice=undefined, hasPrice=true, isForSale=true
+ ✅ [FLOOR SWEEP] Found 46 NFTs available for floor sweep
+ 🔍 [FLOOR SWEEP] NFT A8467A: forSale=true, isForSale=undefined, sellPrice=0, salePrice=undefined, hasPrice=undefined, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A84776: forSale=true, isForSale=undefined, sellPrice=0, salePrice=undefined, hasPrice=undefined, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A83E2C: forSale=true, isForSale=undefined, sellPrice=0, salePrice=undefined, hasPrice=undefined, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A84177: forSale=true, isForSale=undefined, sellPrice=0, salePrice=undefined, hasPrice=undefined, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A844FD: forSale=true, isForSale=undefined, sellPrice=222.22, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A84136: forSale=true, isForSale=undefined, sellPrice=260, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A84683: forSale=true, isForSale=undefined, sellPrice=268, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A84706: forSale=true, isForSale=undefined, sellPrice=269, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A83FD3: forSale=true, isForSale=undefined, sellPrice=270, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A84404: forSale=true, isForSale=undefined, sellPrice=275.8, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A8463A: forSale=true, isForSale=undefined, sellPrice=280, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A83F19: forSale=true, isForSale=undefined, sellPrice=280, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A8440B: forSale=true, isForSale=undefined, sellPrice=285, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A84199: forSale=true, isForSale=undefined, sellPrice=294, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A84383: forSale=true, isForSale=undefined, sellPrice=294, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A84493: forSale=true, isForSale=undefined, sellPrice=295, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A83EB3: forSale=true, isForSale=undefined, sellPrice=300, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A8438C: forSale=true, isForSale=undefined, sellPrice=300, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A8433B: forSale=true, isForSale=undefined, sellPrice=300, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A84007: forSale=true, isForSale=undefined, sellPrice=300, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A84444: forSale=true, isForSale=undefined, sellPrice=300, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A84273: forSale=true, isForSale=undefined, sellPrice=300, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A84413: forSale=true, isForSale=undefined, sellPrice=305, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A846BC: forSale=true, isForSale=undefined, sellPrice=310, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A84713: forSale=true, isForSale=undefined, sellPrice=320, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A8444E: forSale=true, isForSale=undefined, sellPrice=321, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A83EB5: forSale=true, isForSale=undefined, sellPrice=321, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A83DDE: forSale=true, isForSale=undefined, sellPrice=321, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A83D1C: forSale=true, isForSale=undefined, sellPrice=321, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A83E6E: forSale=true, isForSale=undefined, sellPrice=321, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A846FA: forSale=true, isForSale=undefined, sellPrice=321, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A8412F: forSale=true, isForSale=undefined, sellPrice=321, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A8437B: forSale=true, isForSale=undefined, sellPrice=321.589, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A8445F: forSale=true, isForSale=undefined, sellPrice=333, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A8467F: forSale=true, isForSale=undefined, sellPrice=333, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A84565: forSale=true, isForSale=undefined, sellPrice=333, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A83E97: forSale=true, isForSale=undefined, sellPrice=340, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A83D12: forSale=true, isForSale=undefined, sellPrice=344, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A841FE: forSale=true, isForSale=undefined, sellPrice=349, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A840B7: forSale=true, isForSale=undefined, sellPrice=350, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A83E19: forSale=true, isForSale=undefined, sellPrice=350, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A842A7: forSale=true, isForSale=undefined, sellPrice=350, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A844C5: forSale=true, isForSale=undefined, sellPrice=370, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A84417: forSale=true, isForSale=undefined, sellPrice=375, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A841EF: forSale=true, isForSale=undefined, sellPrice=375, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A84746: forSale=true, isForSale=undefined, sellPrice=380, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A846DA: forSale=true, isForSale=undefined, sellPrice=390, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A8432D: forSale=true, isForSale=undefined, sellPrice=399, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A84586: forSale=true, isForSale=undefined, sellPrice=399, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A844F9: forSale=true, isForSale=undefined, sellPrice=399, salePrice=undefined, hasPrice=true, isForSale=true
+ ✅ [FLOOR SWEEP] Found 46 NFTs available for floor sweep
+ 🔍 [FLOOR SWEEP] NFT A8467A: forSale=true, isForSale=undefined, sellPrice=0, salePrice=undefined, hasPrice=undefined, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A84776: forSale=true, isForSale=undefined, sellPrice=0, salePrice=undefined, hasPrice=undefined, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A83E2C: forSale=true, isForSale=undefined, sellPrice=0, salePrice=undefined, hasPrice=undefined, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A84177: forSale=true, isForSale=undefined, sellPrice=0, salePrice=undefined, hasPrice=undefined, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A844FD: forSale=true, isForSale=undefined, sellPrice=222.22, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A84136: forSale=true, isForSale=undefined, sellPrice=260, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A84683: forSale=true, isForSale=undefined, sellPrice=268, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A84706: forSale=true, isForSale=undefined, sellPrice=269, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A83FD3: forSale=true, isForSale=undefined, sellPrice=270, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A84404: forSale=true, isForSale=undefined, sellPrice=275.8, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A8463A: forSale=true, isForSale=undefined, sellPrice=280, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A83F19: forSale=true, isForSale=undefined, sellPrice=280, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A8440B: forSale=true, isForSale=undefined, sellPrice=285, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A84199: forSale=true, isForSale=undefined, sellPrice=294, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A84383: forSale=true, isForSale=undefined, sellPrice=294, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A84493: forSale=true, isForSale=undefined, sellPrice=295, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A83EB3: forSale=true, isForSale=undefined, sellPrice=300, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A8438C: forSale=true, isForSale=undefined, sellPrice=300, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A8433B: forSale=true, isForSale=undefined, sellPrice=300, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A84007: forSale=true, isForSale=undefined, sellPrice=300, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A84444: forSale=true, isForSale=undefined, sellPrice=300, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A84273: forSale=true, isForSale=undefined, sellPrice=300, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A84413: forSale=true, isForSale=undefined, sellPrice=305, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A846BC: forSale=true, isForSale=undefined, sellPrice=310, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A84713: forSale=true, isForSale=undefined, sellPrice=320, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A8444E: forSale=true, isForSale=undefined, sellPrice=321, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A83EB5: forSale=true, isForSale=undefined, sellPrice=321, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A83DDE: forSale=true, isForSale=undefined, sellPrice=321, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A83D1C: forSale=true, isForSale=undefined, sellPrice=321, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A83E6E: forSale=true, isForSale=undefined, sellPrice=321, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A846FA: forSale=true, isForSale=undefined, sellPrice=321, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A8412F: forSale=true, isForSale=undefined, sellPrice=321, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A8437B: forSale=true, isForSale=undefined, sellPrice=321.589, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A8445F: forSale=true, isForSale=undefined, sellPrice=333, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A8467F: forSale=true, isForSale=undefined, sellPrice=333, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A84565: forSale=true, isForSale=undefined, sellPrice=333, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A83E97: forSale=true, isForSale=undefined, sellPrice=340, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A83D12: forSale=true, isForSale=undefined, sellPrice=344, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A841FE: forSale=true, isForSale=undefined, sellPrice=349, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A840B7: forSale=true, isForSale=undefined, sellPrice=350, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A83E19: forSale=true, isForSale=undefined, sellPrice=350, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A842A7: forSale=true, isForSale=undefined, sellPrice=350, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A844C5: forSale=true, isForSale=undefined, sellPrice=370, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A84417: forSale=true, isForSale=undefined, sellPrice=375, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A841EF: forSale=true, isForSale=undefined, sellPrice=375, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A84746: forSale=true, isForSale=undefined, sellPrice=380, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A846DA: forSale=true, isForSale=undefined, sellPrice=390, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A8432D: forSale=true, isForSale=undefined, sellPrice=399, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A84586: forSale=true, isForSale=undefined, sellPrice=399, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A844F9: forSale=true, isForSale=undefined, sellPrice=399, salePrice=undefined, hasPrice=true, isForSale=true
+ ✅ [FLOOR SWEEP] Found 46 NFTs available for floor sweep
+ 🔍 [FLOOR SWEEP] NFT A8467A: forSale=true, isForSale=undefined, sellPrice=0, salePrice=undefined, hasPrice=undefined, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A84776: forSale=true, isForSale=undefined, sellPrice=0, salePrice=undefined, hasPrice=undefined, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A83E2C: forSale=true, isForSale=undefined, sellPrice=0, salePrice=undefined, hasPrice=undefined, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A84177: forSale=true, isForSale=undefined, sellPrice=0, salePrice=undefined, hasPrice=undefined, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A844FD: forSale=true, isForSale=undefined, sellPrice=222.22, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A84136: forSale=true, isForSale=undefined, sellPrice=260, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A84683: forSale=true, isForSale=undefined, sellPrice=268, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A84706: forSale=true, isForSale=undefined, sellPrice=269, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A83FD3: forSale=true, isForSale=undefined, sellPrice=270, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A84404: forSale=true, isForSale=undefined, sellPrice=275.8, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A8463A: forSale=true, isForSale=undefined, sellPrice=280, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A83F19: forSale=true, isForSale=undefined, sellPrice=280, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A8440B: forSale=true, isForSale=undefined, sellPrice=285, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A84199: forSale=true, isForSale=undefined, sellPrice=294, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A84383: forSale=true, isForSale=undefined, sellPrice=294, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A84493: forSale=true, isForSale=undefined, sellPrice=295, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A83EB3: forSale=true, isForSale=undefined, sellPrice=300, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A8438C: forSale=true, isForSale=undefined, sellPrice=300, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A8433B: forSale=true, isForSale=undefined, sellPrice=300, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A84007: forSale=true, isForSale=undefined, sellPrice=300, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A84444: forSale=true, isForSale=undefined, sellPrice=300, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A84273: forSale=true, isForSale=undefined, sellPrice=300, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A84413: forSale=true, isForSale=undefined, sellPrice=305, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A846BC: forSale=true, isForSale=undefined, sellPrice=310, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A84713: forSale=true, isForSale=undefined, sellPrice=320, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A8444E: forSale=true, isForSale=undefined, sellPrice=321, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A83EB5: forSale=true, isForSale=undefined, sellPrice=321, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A83DDE: forSale=true, isForSale=undefined, sellPrice=321, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A83D1C: forSale=true, isForSale=undefined, sellPrice=321, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A83E6E: forSale=true, isForSale=undefined, sellPrice=321, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A846FA: forSale=true, isForSale=undefined, sellPrice=321, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A8412F: forSale=true, isForSale=undefined, sellPrice=321, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A8437B: forSale=true, isForSale=undefined, sellPrice=321.589, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A8445F: forSale=true, isForSale=undefined, sellPrice=333, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A8467F: forSale=true, isForSale=undefined, sellPrice=333, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A84565: forSale=true, isForSale=undefined, sellPrice=333, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A83E97: forSale=true, isForSale=undefined, sellPrice=340, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A83D12: forSale=true, isForSale=undefined, sellPrice=344, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A841FE: forSale=true, isForSale=undefined, sellPrice=349, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A840B7: forSale=true, isForSale=undefined, sellPrice=350, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A83E19: forSale=true, isForSale=undefined, sellPrice=350, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A842A7: forSale=true, isForSale=undefined, sellPrice=350, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A844C5: forSale=true, isForSale=undefined, sellPrice=370, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A84417: forSale=true, isForSale=undefined, sellPrice=375, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A841EF: forSale=true, isForSale=undefined, sellPrice=375, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A84746: forSale=true, isForSale=undefined, sellPrice=380, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A846DA: forSale=true, isForSale=undefined, sellPrice=390, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A8432D: forSale=true, isForSale=undefined, sellPrice=399, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A84586: forSale=true, isForSale=undefined, sellPrice=399, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A844F9: forSale=true, isForSale=undefined, sellPrice=399, salePrice=undefined, hasPrice=true, isForSale=true
+ ✅ [FLOOR SWEEP] Found 46 NFTs available for floor sweep
+ 🔍 [FLOOR SWEEP] NFT A8467A: forSale=true, isForSale=undefined, sellPrice=0, salePrice=undefined, hasPrice=undefined, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A84776: forSale=true, isForSale=undefined, sellPrice=0, salePrice=undefined, hasPrice=undefined, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A83E2C: forSale=true, isForSale=undefined, sellPrice=0, salePrice=undefined, hasPrice=undefined, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A84177: forSale=true, isForSale=undefined, sellPrice=0, salePrice=undefined, hasPrice=undefined, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A844FD: forSale=true, isForSale=undefined, sellPrice=222.22, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A84136: forSale=true, isForSale=undefined, sellPrice=260, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A84683: forSale=true, isForSale=undefined, sellPrice=268, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A84706: forSale=true, isForSale=undefined, sellPrice=269, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A83FD3: forSale=true, isForSale=undefined, sellPrice=270, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A84404: forSale=true, isForSale=undefined, sellPrice=275.8, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A8463A: forSale=true, isForSale=undefined, sellPrice=280, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A83F19: forSale=true, isForSale=undefined, sellPrice=280, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A8440B: forSale=true, isForSale=undefined, sellPrice=285, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A84199: forSale=true, isForSale=undefined, sellPrice=294, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A84383: forSale=true, isForSale=undefined, sellPrice=294, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A84493: forSale=true, isForSale=undefined, sellPrice=295, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A83EB3: forSale=true, isForSale=undefined, sellPrice=300, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A8438C: forSale=true, isForSale=undefined, sellPrice=300, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A8433B: forSale=true, isForSale=undefined, sellPrice=300, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A84007: forSale=true, isForSale=undefined, sellPrice=300, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A84444: forSale=true, isForSale=undefined, sellPrice=300, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A84273: forSale=true, isForSale=undefined, sellPrice=300, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A84413: forSale=true, isForSale=undefined, sellPrice=305, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A846BC: forSale=true, isForSale=undefined, sellPrice=310, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A84713: forSale=true, isForSale=undefined, sellPrice=320, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A8444E: forSale=true, isForSale=undefined, sellPrice=321, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A83EB5: forSale=true, isForSale=undefined, sellPrice=321, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A83DDE: forSale=true, isForSale=undefined, sellPrice=321, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A83D1C: forSale=true, isForSale=undefined, sellPrice=321, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A83E6E: forSale=true, isForSale=undefined, sellPrice=321, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A846FA: forSale=true, isForSale=undefined, sellPrice=321, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A8412F: forSale=true, isForSale=undefined, sellPrice=321, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A8437B: forSale=true, isForSale=undefined, sellPrice=321.589, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A8445F: forSale=true, isForSale=undefined, sellPrice=333, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A8467F: forSale=true, isForSale=undefined, sellPrice=333, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A84565: forSale=true, isForSale=undefined, sellPrice=333, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A83E97: forSale=true, isForSale=undefined, sellPrice=340, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A83D12: forSale=true, isForSale=undefined, sellPrice=344, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A841FE: forSale=true, isForSale=undefined, sellPrice=349, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A840B7: forSale=true, isForSale=undefined, sellPrice=350, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A83E19: forSale=true, isForSale=undefined, sellPrice=350, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A842A7: forSale=true, isForSale=undefined, sellPrice=350, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A844C5: forSale=true, isForSale=undefined, sellPrice=370, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A84417: forSale=true, isForSale=undefined, sellPrice=375, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A841EF: forSale=true, isForSale=undefined, sellPrice=375, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A84746: forSale=true, isForSale=undefined, sellPrice=380, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A846DA: forSale=true, isForSale=undefined, sellPrice=390, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A8432D: forSale=true, isForSale=undefined, sellPrice=399, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A84586: forSale=true, isForSale=undefined, sellPrice=399, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A844F9: forSale=true, isForSale=undefined, sellPrice=399, salePrice=undefined, hasPrice=true, isForSale=true
+ ✅ [FLOOR SWEEP] Found 46 NFTs available for floor sweep
+ 🔍 [FLOOR SWEEP] NFT A8467A: forSale=true, isForSale=undefined, sellPrice=0, salePrice=undefined, hasPrice=undefined, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A84776: forSale=true, isForSale=undefined, sellPrice=0, salePrice=undefined, hasPrice=undefined, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A83E2C: forSale=true, isForSale=undefined, sellPrice=0, salePrice=undefined, hasPrice=undefined, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A84177: forSale=true, isForSale=undefined, sellPrice=0, salePrice=undefined, hasPrice=undefined, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A844FD: forSale=true, isForSale=undefined, sellPrice=222.22, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A84136: forSale=true, isForSale=undefined, sellPrice=260, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A84683: forSale=true, isForSale=undefined, sellPrice=268, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A84706: forSale=true, isForSale=undefined, sellPrice=269, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A83FD3: forSale=true, isForSale=undefined, sellPrice=270, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A84404: forSale=true, isForSale=undefined, sellPrice=275.8, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A8463A: forSale=true, isForSale=undefined, sellPrice=280, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A83F19: forSale=true, isForSale=undefined, sellPrice=280, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A8440B: forSale=true, isForSale=undefined, sellPrice=285, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A84199: forSale=true, isForSale=undefined, sellPrice=294, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A84383: forSale=true, isForSale=undefined, sellPrice=294, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A84493: forSale=true, isForSale=undefined, sellPrice=295, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A83EB3: forSale=true, isForSale=undefined, sellPrice=300, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A8438C: forSale=true, isForSale=undefined, sellPrice=300, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A8433B: forSale=true, isForSale=undefined, sellPrice=300, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A84007: forSale=true, isForSale=undefined, sellPrice=300, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A84444: forSale=true, isForSale=undefined, sellPrice=300, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A84273: forSale=true, isForSale=undefined, sellPrice=300, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A84413: forSale=true, isForSale=undefined, sellPrice=305, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A846BC: forSale=true, isForSale=undefined, sellPrice=310, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A84713: forSale=true, isForSale=undefined, sellPrice=320, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A8444E: forSale=true, isForSale=undefined, sellPrice=321, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A83EB5: forSale=true, isForSale=undefined, sellPrice=321, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A83DDE: forSale=true, isForSale=undefined, sellPrice=321, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A83D1C: forSale=true, isForSale=undefined, sellPrice=321, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A83E6E: forSale=true, isForSale=undefined, sellPrice=321, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A846FA: forSale=true, isForSale=undefined, sellPrice=321, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A8412F: forSale=true, isForSale=undefined, sellPrice=321, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A8437B: forSale=true, isForSale=undefined, sellPrice=321.589, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A8445F: forSale=true, isForSale=undefined, sellPrice=333, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A8467F: forSale=true, isForSale=undefined, sellPrice=333, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A84565: forSale=true, isForSale=undefined, sellPrice=333, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A83E97: forSale=true, isForSale=undefined, sellPrice=340, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A83D12: forSale=true, isForSale=undefined, sellPrice=344, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A841FE: forSale=true, isForSale=undefined, sellPrice=349, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A840B7: forSale=true, isForSale=undefined, sellPrice=350, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A83E19: forSale=true, isForSale=undefined, sellPrice=350, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A842A7: forSale=true, isForSale=undefined, sellPrice=350, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A844C5: forSale=true, isForSale=undefined, sellPrice=370, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A84417: forSale=true, isForSale=undefined, sellPrice=375, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A841EF: forSale=true, isForSale=undefined, sellPrice=375, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A84746: forSale=true, isForSale=undefined, sellPrice=380, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A846DA: forSale=true, isForSale=undefined, sellPrice=390, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A8432D: forSale=true, isForSale=undefined, sellPrice=399, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A84586: forSale=true, isForSale=undefined, sellPrice=399, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A844F9: forSale=true, isForSale=undefined, sellPrice=399, salePrice=undefined, hasPrice=true, isForSale=true
+ ✅ [FLOOR SWEEP] Found 46 NFTs available for floor sweep
+ 🔍 [FLOOR SWEEP] NFT A8467A: forSale=true, isForSale=undefined, sellPrice=0, salePrice=undefined, hasPrice=undefined, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A84776: forSale=true, isForSale=undefined, sellPrice=0, salePrice=undefined, hasPrice=undefined, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A83E2C: forSale=true, isForSale=undefined, sellPrice=0, salePrice=undefined, hasPrice=undefined, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A84177: forSale=true, isForSale=undefined, sellPrice=0, salePrice=undefined, hasPrice=undefined, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A844FD: forSale=true, isForSale=undefined, sellPrice=222.22, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A84136: forSale=true, isForSale=undefined, sellPrice=260, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A84683: forSale=true, isForSale=undefined, sellPrice=268, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A84706: forSale=true, isForSale=undefined, sellPrice=269, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A83FD3: forSale=true, isForSale=undefined, sellPrice=270, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A84404: forSale=true, isForSale=undefined, sellPrice=275.8, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A8463A: forSale=true, isForSale=undefined, sellPrice=280, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A83F19: forSale=true, isForSale=undefined, sellPrice=280, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A8440B: forSale=true, isForSale=undefined, sellPrice=285, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A84199: forSale=true, isForSale=undefined, sellPrice=294, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A84383: forSale=true, isForSale=undefined, sellPrice=294, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A84493: forSale=true, isForSale=undefined, sellPrice=295, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A83EB3: forSale=true, isForSale=undefined, sellPrice=300, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A8438C: forSale=true, isForSale=undefined, sellPrice=300, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A8433B: forSale=true, isForSale=undefined, sellPrice=300, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A84007: forSale=true, isForSale=undefined, sellPrice=300, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A84444: forSale=true, isForSale=undefined, sellPrice=300, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A84273: forSale=true, isForSale=undefined, sellPrice=300, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A84413: forSale=true, isForSale=undefined, sellPrice=305, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A846BC: forSale=true, isForSale=undefined, sellPrice=310, salePrice=undefined, hasPrice=true, isForSale=true
+ 🔍 [FLOOR SWEEP] NFT A84713: forSale=true, isForSale=undefined, sellPrice=320, salePrice=undefined, hasPrice=true, isForSale=true
+injected.js:27 🔍 [FLOOR SWEEP] NFT A8444E: forSale=true, isForSale=undefined, sellPrice=321, salePrice=undefined, hasPrice=true, isForSale=true
+injected.js:27 🔍 [FLOOR SWEEP] NFT A83EB5: forSale=true, isForSale=undefined, sellPrice=321, salePrice=undefined, hasPrice=true, isForSale=true
+injected.js:27 🔍 [FLOOR SWEEP] NFT A83DDE: forSale=true, isForSale=undefined, sellPrice=321, salePrice=undefined, hasPrice=true, isForSale=true
+injected.js:27 🔍 [FLOOR SWEEP] NFT A83D1C: forSale=true, isForSale=undefined, sellPrice=321, salePrice=undefined, hasPrice=true, isForSale=true
+injected.js:27 🔍 [FLOOR SWEEP] NFT A83E6E: forSale=true, isForSale=undefined, sellPrice=321, salePrice=undefined, hasPrice=true, isForSale=true
+injected.js:27 🔍 [FLOOR SWEEP] NFT A846FA: forSale=true, isForSale=undefined, sellPrice=321, salePrice=undefined, hasPrice=true, isForSale=true
+injected.js:27 🔍 [FLOOR SWEEP] NFT A8412F: forSale=true, isForSale=undefined, sellPrice=321, salePrice=undefined, hasPrice=true, isForSale=true
+injected.js:27 🔍 [FLOOR SWEEP] NFT A8437B: forSale=true, isForSale=undefined, sellPrice=321.589, salePrice=undefined, hasPrice=true, isForSale=true
+injected.js:27 🔍 [FLOOR SWEEP] NFT A8445F: forSale=true, isForSale=undefined, sellPrice=333, salePrice=undefined, hasPrice=true, isForSale=true
+injected.js:27 🔍 [FLOOR SWEEP] NFT A8467F: forSale=true, isForSale=undefined, sellPrice=333, salePrice=undefined, hasPrice=true, isForSale=true
+injected.js:27 🔍 [FLOOR SWEEP] NFT A84565: forSale=true, isForSale=undefined, sellPrice=333, salePrice=undefined, hasPrice=true, isForSale=true
+injected.js:27 🔍 [FLOOR SWEEP] NFT A83E97: forSale=true, isForSale=undefined, sellPrice=340, salePrice=undefined, hasPrice=true, isForSale=true
+injected.js:27 🔍 [FLOOR SWEEP] NFT A83D12: forSale=true, isForSale=undefined, sellPrice=344, salePrice=undefined, hasPrice=true, isForSale=true
+injected.js:27 🔍 [FLOOR SWEEP] NFT A841FE: forSale=true, isForSale=undefined, sellPrice=349, salePrice=undefined, hasPrice=true, isForSale=true
+injected.js:27 🔍 [FLOOR SWEEP] NFT A840B7: forSale=true, isForSale=undefined, sellPrice=350, salePrice=undefined, hasPrice=true, isForSale=true
+injected.js:27 🔍 [FLOOR SWEEP] NFT A83E19: forSale=true, isForSale=undefined, sellPrice=350, salePrice=undefined, hasPrice=true, isForSale=true
+injected.js:27 🔍 [FLOOR SWEEP] NFT A842A7: forSale=true, isForSale=undefined, sellPrice=350, salePrice=undefined, hasPrice=true, isForSale=true
+injected.js:27 🔍 [FLOOR SWEEP] NFT A844C5: forSale=true, isForSale=undefined, sellPrice=370, salePrice=undefined, hasPrice=true, isForSale=true
+injected.js:27 🔍 [FLOOR SWEEP] NFT A84417: forSale=true, isForSale=undefined, sellPrice=375, salePrice=undefined, hasPrice=true, isForSale=true
+injected.js:27 🔍 [FLOOR SWEEP] NFT A841EF: forSale=true, isForSale=undefined, sellPrice=375, salePrice=undefined, hasPrice=true, isForSale=true
+injected.js:27 🔍 [FLOOR SWEEP] NFT A84746: forSale=true, isForSale=undefined, sellPrice=380, salePrice=undefined, hasPrice=true, isForSale=true
+injected.js:27 🔍 [FLOOR SWEEP] NFT A846DA: forSale=true, isForSale=undefined, sellPrice=390, salePrice=undefined, hasPrice=true, isForSale=true
+injected.js:27 🔍 [FLOOR SWEEP] NFT A8432D: forSale=true, isForSale=undefined, sellPrice=399, salePrice=undefined, hasPrice=true, isForSale=true
+injected.js:27 🔍 [FLOOR SWEEP] NFT A84586: forSale=true, isForSale=undefined, sellPrice=399, salePrice=undefined, hasPrice=true, isForSale=true
+injected.js:27 🔍 [FLOOR SWEEP] NFT A844F9: forSale=true, isForSale=undefined, sellPrice=399, salePrice=undefined, hasPrice=true, isForSale=true
+injected.js:27 ✅ [FLOOR SWEEP] Found 46 NFTs available for floor sweep
+injected.js:27 🗺️ Router: Router component is rendering
+injected.js:27 📍 Router: Current location: /nft/00080BB86C429EE66CE731CAA492445DFF564F9CB8A46A30DA4BDB9905A844FD
+injected.js:27 🔍 SessionManager.getSession() returning: Object
+injected.js:27 🔍 Found local wallet connections: Array(0)
+injected.js:27 🔍 Fetching LIVE NFT detail for: 00080BB86C429EE66CE731CAA492445DFF564F9CB8A46A30DA4BDB9905A844FD
+injected.js:27 🔍 SessionManager.getSession() returning: Object
+injected.js:27 🔍 Using authenticated wallet address: rGLzXKif4ksBZe2MY6RZT9m69hdgzsXG4X
+injected.js:27 📜 [HISTORY] Fetching transaction history from Bithomp for: 00080BB86C429EE66CE731CAA492445DFF564F9CB8A46A30DA4BDB9905A844FD
+injected.js:27 💰 [OFFERS] Fetching active offers for NFT: 00080BB86C429EE66CE731CAA492445DFF564F9CB8A46A30DA4BDB9905A844FD
+injected.js:27 🔍 [INCOMING OFFERS] Fetching offers...
+301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/api/gaming/nft/00080BB86C429EE66CE731CAA492445DFF564F9CB8A46A30DA4BDB9905A844FD?t=1760895716048:1  Failed to load resource: the server responded with a status of 404 (Not Found)
+injected.js:27 🔍 Trying regular NFT endpoint for: 00080BB86C429EE66CE731CAA492445DFF564F9CB8A46A30DA4BDB9905A844FD
+injected.js:27 ✅ [HISTORY] Found 4 transactions
+injected.js:27 ✅ [INCOMING OFFERS] Found offers: 0
+injected.js:27 ✅ Found NFT via detail endpoint: Fuzzybear #780
+injected.js:27 📊 [RARITY] Fetching rarity data for NFT: 00080BB86C429EE66CE731CAA492445DFF564F9CB8A46A30DA4BDB9905A844FD
+injected.js:27 🔐 [OWNERSHIP CHECK] User: rGLzXKif4ksBZe2MY6RZT9m69hdgzsXG4X, NFT Owner: rKymSQrwRF8DcwEzyAgNLMaaSKYSMfJNDY, Is Owner: false
+injected.js:27 📊 [RARITY] Fetching rarity data for NFT: 00080BB86C429EE66CE731CAA492445DFF564F9CB8A46A30DA4BDB9905A844FD
+injected.js:27 🔐 [OWNERSHIP CHECK] User: rGLzXKif4ksBZe2MY6RZT9m69hdgzsXG4X, NFT Owner: rKymSQrwRF8DcwEzyAgNLMaaSKYSMfJNDY, Is Owner: false
+injected.js:27 ✅ [OFFERS] Found 0 buy offers, 0 sell offers
+injected.js:27 🔐 [OWNERSHIP CHECK] User: rGLzXKif4ksBZe2MY6RZT9m69hdgzsXG4X, NFT Owner: rKymSQrwRF8DcwEzyAgNLMaaSKYSMfJNDY, Is Owner: false
+injected.js:27 💰 Found 1 sell offers for NFT 00080BB86C429EE66CE731CAA492445DFF564F9CB8A46A30DA4BDB9905A844FD
+injected.js:27 📬 Found 0 pending buy offers for NFT 00080BB86C429EE66CE731CAA492445DFF564F9CB8A46A30DA4BDB9905A844FD
+injected.js:27 🔐 [OWNERSHIP CHECK] User: rGLzXKif4ksBZe2MY6RZT9m69hdgzsXG4X, NFT Owner: rKymSQrwRF8DcwEzyAgNLMaaSKYSMfJNDY, Is Owner: false
+injected.js:27 🔐 [OWNERSHIP CHECK] User: rGLzXKif4ksBZe2MY6RZT9m69hdgzsXG4X, NFT Owner: rKymSQrwRF8DcwEzyAgNLMaaSKYSMfJNDY, Is Owner: false
+injected.js:27 🔐 [OWNERSHIP CHECK] User: rGLzXKif4ksBZe2MY6RZT9m69hdgzsXG4X, NFT Owner: rKymSQrwRF8DcwEzyAgNLMaaSKYSMfJNDY, Is Owner: false

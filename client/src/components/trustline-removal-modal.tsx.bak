@@ -1,0 +1,546 @@
+// DEPRECATED: This legacy trustline removal modal has been superseded by
+// components/xrp-wallet/TrustlineManager.tsx. Keeping a tiny stub to avoid
+// accidental imports. Do not use.
+
+export const DEPRECATED_TRUSTLINE_MODAL = true;
+
+  const handleDirectRemoveTrustlines = async () => {
+    if (!confirmRemoval || selectedTokens.length === 0) {
+      return;
+    }
+
+    // Check if external wallet - handle one at a time
+    if (hasExternalWallet()) {
+      if (selectedTokens.length > 1) {
+        toast({
+          title: "External Wallet Limitation",
+          description: "Please select one token at a time for external wallets",
+          variant: "default",
+        });
+        return;
+      }
+
+      const tokenId = selectedTokens[0];
+      const [currency, issuer] = tokenId.split(':');
+      const trustlineData = removableTrustlines.find((t: RemovableTrustline) => 
+        t.currency === currency && t.issuer === issuer
+      );
+
+      if (trustlineData) {
+        setExternalWalletOperation({
+          operation: 'remove',
+          currency,
+          issuer,
+          balance: '0'
+        });
+        return;
+      }
+    }
+
+    setIsProcessing(true);
+    setCurrentStep('process');
+    
+    // Initialize status tracking
+    const initialStatuses = selectedTokens.map(tokenId => {
+      const [currency, issuer] = tokenId.split(':');
+      return {
+        currency,
+        issuer,
+        step: 'removing' as const
+      };
+    });
+    setTokenStatuses(initialStatuses);
+
+    try {
+      // Process each trustline removal
+      for (let i = 0; i < selectedTokens.length; i++) {
+        const tokenId = selectedTokens[i];
+        const [currency, issuer] = tokenId.split(':');
+        
+        setTokenStatuses(prev => prev.map(status => 
+          status.currency === currency && status.issuer === issuer
+            ? { ...status, step: 'removing' }
+            : status
+        ));
+
+        try {
+          const removeResult = await removeTrustlineMutation.mutateAsync({
+            currency,
+            issuer
+          });
+
+          if (removeResult.success) {
+            setTokenStatuses(prev => prev.map(status => 
+              status.currency === currency && status.issuer === issuer
+                ? { ...status, step: 'completed', removeTxHash: removeResult.txHash }
+                : status
+            ));
+
+            toast({
+              title: "Trustline Removed",
+              description: `Successfully removed ${currency} trustline`,
+            });
+          } else {
+            throw new Error(removeResult.error || 'Failed to remove trustline');
+          }
+        } catch (removeError) {
+          setTokenStatuses(prev => prev.map(status => 
+            status.currency === currency && status.issuer === issuer
+              ? { ...status, step: 'error', error: `Failed to remove: ${removeError}` }
+              : status
+          ));
+        }
+      }
+      
+      // Mark as complete
+      setCurrentStep('complete');
+      
+      toast({
+        title: "Process Complete",
+        description: `Successfully removed ${selectedTokens.length} trustline${selectedTokens.length !== 1 ? 's' : ''}`,
+      });
+      
+      if (onSuccess) {
+        onSuccess();
+      }
+      
+      // Refresh data
+      await refetchRemovable();
+      await refetchSellable();
+      
+    } catch (error) {
+      console.error('Error in trustline removal process:', error);
+      toast({
+        title: "Process Failed",
+        description: "Some trustlines could not be removed",
+        variant: "destructive",
+      });
+    } finally {
+      setIsProcessing(false);
+    }
+  };
+
+  const getSelectedTokenNames = () => {
+    return selectedTokens.map(id => {
+      const [currency] = id.split(':');
+      if (view === 'sellable') {
+        const token = sellableTokens.find((t: SellableToken) => t.currency === currency);
+        return token?.name || currency;
+      } else {
+        const trustline = removableTrustlines.find((t: RemovableTrustline) => t.currency === currency);
+        return trustline?.name || currency;
+      }
+    });
+  };
+
+  // Render step progress indicator
+  const renderStepProgress = (status: TokenProcessStatus) => {
+    const getStepIcon = (step: string) => {
+      switch (step) {
+        case 'pending': return <div className="w-4 h-4 border-2 border-gray-300 rounded-full" />;
+        case 'selling': return <Loader2 className="w-4 h-4 animate-spin text-blue-500" />;
+        case 'sold': return <CheckCircle className="w-4 h-4 text-green-500" />;
+        case 'removing': return <Loader2 className="w-4 h-4 animate-spin text-orange-500" />;
+        case 'completed': return <CheckCircle className="w-4 h-4 text-green-500" />;
+        case 'error': return <X className="w-4 h-4 text-red-500" />;
+        default: return <div className="w-4 h-4 border-2 border-gray-300 rounded-full" />;
+      }
+    };
+
+    const getStepText = (step: string) => {
+      switch (step) {
+        case 'pending': return 'Waiting';
+        case 'selling': return 'Selling to XRP...';
+        case 'sold': return 'Sold to XRP';
+        case 'removing': return 'Removing trustline...';
+        case 'completed': return 'Completed';
+        case 'error': return 'Error';
+        default: return 'Pending';
+      }
+    };
+
+    return (
+      <div className="flex items-center gap-3">
+        {getStepIcon(status.step)}
+        <div className="flex-1">
+          <div className="flex items-center gap-2">
+            <span className="font-medium">{status.currency}</span>
+            <span className="text-sm text-gray-600">{getStepText(status.step)}</span>
+          </div>
+          {status.error && (
+            <p className="text-xs text-red-600 mt-1">{status.error}</p>
+          )}
+          {status.sellTxHash && (
+            <p className="text-xs text-green-600 mt-1">
+              Sale TX: {status.sellTxHash.slice(0, 8)}...
+            </p>
+          )}
+          {status.removeTxHash && (
+            <p className="text-xs text-green-600 mt-1">
+              Remove TX: {status.removeTxHash.slice(0, 8)}...
+            </p>
+          )}
+        </div>
+      </div>
+    );
+  };
+
+  return (
+    <Dialog open={isOpen} onOpenChange={onClose}>
+      <DialogContent className="sm:max-w-[700px] max-h-[85vh] overflow-y-auto">
+        <DialogHeader>
+          <DialogTitle className="flex items-center justify-center gap-2 text-xl">
+            {currentStep === 'select' ? (
+              <>
+                <Trash2 className="h-6 w-6 text-red-500" />
+                Token Management
+              </>
+            ) : currentStep === 'process' ? (
+              <>
+                <Loader2 className="h-6 w-6 animate-spin text-blue-500" />
+                Processing Tokens...
+              </>
+            ) : (
+              <>
+                <CheckCircle className="h-6 w-6 text-green-500" />
+                Complete!
+              </>
+            )}
+          </DialogTitle>
+        </DialogHeader>
+
+        <div className="space-y-4">
+          {/* Step 1: Selection Phase */}
+          {currentStep === 'select' && (
+            <>
+              {/* View Toggle - Centered */}
+              <div className="flex justify-center mb-4">
+                <Paper sx={{ p: 1, borderRadius: 2, bgcolor: 'background.paper' }}>
+                  <Button
+                    variant={view === 'sellable' ? 'default' : 'outline'}
+                    size="default"
+                    onClick={() => setView('sellable')}
+                    className="min-w-[160px]"
+                  >
+                    <DollarSign className="h-4 w-4 mr-2" />
+                    Sell Tokens ({sellableTokens.length})
+                  </Button>
+                  <Button
+                    variant={view === 'removable' ? 'default' : 'outline'}
+                    size="default"
+                    onClick={() => setView('removable')}
+                    className="min-w-[160px]"
+                  >
+                    <Trash2 className="h-4 w-4 mr-2" />
+                    Remove ({removableTrustlines.length})
+                  </Button>
+                </Paper>
+              </div>
+
+              {/* Info Alert - Centered and User Friendly */}
+              <Alert className="border-blue-200 bg-blue-50 dark:border-blue-800 dark:bg-blue-900/10">
+                <div className="flex items-start gap-3">
+                  <AlertTriangle className="h-5 w-5 text-blue-600 flex-shrink-0 mt-0.5" />
+                  <AlertDescription className="text-blue-800 dark:text-blue-200">
+                    {view === 'sellable' ? (
+                      <div>
+                        <p className="font-semibold mb-1">💰 How it works:</p>
+                        <ol className="pl-3 mt-1">
+                          <li>Tokens are sold to XRP (or burned if you choose)</li>
+                          <li>Wait 3 seconds for confirmation</li>
+                          <li>Trustlines are removed automatically</li>
+                        </ol>
+                      </div>
+                    ) : (
+                      <div>
+                        <p className="font-semibold mb-1">✅ Ready to Remove</p>
+                        <Typography variant="body2">
+                          These trustlines have zero balance and can be removed instantly. This action is permanent.
+                        </Typography>
+                      </div>
+                    )}
+                  </AlertDescription>
+                </div>
+              </Alert>
+
+              {/* Loading State */}
+              {isLoading && (
+                <div className="text-center py-4">
+                  <CircularProgress sx={{ mb: 2 }} />
+                  <Typography variant="body1">Loading tokens...</Typography>
+                </div>
+              )}
+
+              {/* Empty States */}
+              {!isLoading && view === 'sellable' && sellableTokens.length === 0 && (
+                <div className="text-center py-8">
+                  <CheckCircle className="h-16 w-16 text-green-500 mx-auto mb-4" />
+                  <Typography variant="h6" gutterBottom>
+                    No Tokens to Sell
+                  </Typography>
+                  <Typography variant="body2" color="text.secondary">
+                    You don't have any tokens with balances to sell.
+                  </Typography>
+                </div>
+              )}
+
+              {!isLoading && view === 'removable' && removableTrustlines.length === 0 && (
+                <div className="text-center py-8">
+                  <CheckCircle className="h-16 w-16 text-green-500 mx-auto mb-4" />
+                  <Typography variant="h6" gutterBottom>
+                    No Trustlines to Remove
+                  </Typography>
+                  <Typography variant="body2" color="text.secondary">
+                    All your trustlines have balances. Sell tokens first to remove trustlines.
+                  </Typography>
+                </div>
+              )}
+
+              {/* Token Selection */}
+              {!isLoading && ((view === 'sellable' && sellableTokens.length > 0) || (view === 'removable' && removableTrustlines.length > 0)) && (
+                <>
+                  <Typography variant="h6" gutterBottom sx={{ textAlign: 'center' }}>
+                    {view === 'sellable'
+                      ? `Select Tokens to Sell & Remove (${sellableTokens.length} available)`
+                      : `Select Trustlines to Remove (${removableTrustlines.length} available)`
+                    }
+                  </Typography>
+
+                  <div className="max-h-60 overflow-y-auto mb-3">
+                    <Stack spacing={1}>
+                      {(view === 'sellable' ? sellableTokens : removableTrustlines).map((token: any) => {
+                        const tokenId = `${token.currency}:${token.issuer}`;
+                        const isSelected = selectedTokens.includes(tokenId);
+
+                        return (
+                          <Paper
+                            key={tokenId}
+                            sx={{
+                              p: 2,
+                              cursor: 'pointer',
+                              border: 1,
+                              borderColor: isSelected ? 'primary.main' : 'divider',
+                              bgcolor: isSelected ? 'action.selected' : 'background.paper',
+                              '&:hover': {
+                                bgcolor: 'action.hover',
+                                borderColor: 'primary.main'
+                              }
+                            }}
+                            onClick={() => handleTokenToggle(token.currency, token.issuer)}
+                          >
+                            <Grid container alignItems="center" spacing={2}>
+                              <Grid item>
+                                <Checkbox
+                                  checked={isSelected}
+                                  onChange={() => handleTokenToggle(token.currency, token.issuer)}
+                                />
+                              </Grid>
+
+                              {/* Token Logo */}
+                              {token.logo && (
+                                <Grid item>
+                                  <Avatar
+                                    src={token.logo}
+                                    sx={{ width: 32, height: 32 }}
+                                    onError={(e: any) => {
+                                      e.currentTarget.style.display = 'none';
+                                    }}
+                                  />
+                                </Grid>
+                              )}
+
+                              <Grid item xs>
+                                <div>
+                                  <Typography variant="subtitle2" fontWeight="600">
+                                    {token.name || token.currency}
+                                  </Typography>
+                                  <Typography variant="caption" color="text.secondary">
+                                    {token.currency.length > 3 && token.name ? `(${token.currency.slice(0, 6)}...)` : ''}
+                                  </Typography>
+                                </div>
+                              </Grid>
+
+                              <Grid item>
+                                <Chip
+                                  label={`${token.balance} ${token.name || token.currency}`}
+                                  size="small"
+                                  color={view === 'sellable' ? 'primary' : 'default'}
+                                />
+                                {view === 'sellable' && (
+                                  <Chip
+                                    label="→ XRP"
+                                    size="small"
+                                    variant="outlined"
+                                    sx={{ ml: 1 }}
+                                  />
+                                )}
+                              </Grid>
+                            </Grid>
+                          </Paper>
+                        );
+                      })}
+                    </Stack>
+                  </div>
+
+                  {/* Selected Summary */}
+                  {selectedTokens.length > 0 && (
+                    <Alert className="bg-green-50 border-green-200 dark:bg-green-900/10 dark:border-green-800">
+                      <div className="flex items-center justify-center gap-2">
+                        <CheckCircle className="h-4 w-4 text-green-600" />
+                        <AlertDescription className="text-center">
+                          <strong className="text-green-800 dark:text-green-200">
+                            ✓ {selectedTokens.length} token{selectedTokens.length !== 1 ? 's' : ''} selected:
+                          </strong>
+                          <span className="ml-2 text-green-700 dark:text-green-300">
+                            {getSelectedTokenNames().join(', ')}
+                          </span>
+                        </AlertDescription>
+                      </div>
+                    </Alert>
+                  )}
+
+                  {/* Burn Option - Only show for sellable tokens */}
+                  {selectedTokens.length > 0 && view === 'sellable' && (
+                    <Alert className="bg-orange-50 border-orange-200 dark:bg-orange-900/20 dark:border-orange-700">
+                      <div className="flex items-center justify-center gap-2">
+                        <Checkbox
+                          checked={useBurn}
+                          onCheckedChange={(checked) => setUseBurn(checked === true)}
+                        />
+                        <Trash2 className="h-5 w-5 text-orange-600" />
+                        <AlertDescription className="text-center">
+                          <strong className="text-orange-800 dark:text-orange-200">
+                            Burn tokens instead of selling
+                          </strong>
+                          <Typography variant="body2" sx={{ mt: 1 }}>
+                            {useBurn
+                              ? '⚠️ Tokens will be sent to a burn address (permanently destroyed) instead of being sold for XRP'
+                              : 'Enable to permanently destroy tokens instead of trading them for XRP'
+                            }
+                          </Typography>
+                        </AlertDescription>
+                      </div>
+                    </Alert>
+                  )}
+
+                  {/* Confirmation Checkbox */}
+                  {selectedTokens.length > 0 && (
+                    <FormControlLabel
+                      control={
+                        <Checkbox
+                          checked={confirmRemoval}
+                          onCheckedChange={(checked) => setConfirmRemoval(checked === true)}
+                        />
+                      }
+                      label={
+                        view === 'sellable'
+                          ? `I understand tokens will be ${useBurn ? 'burned (destroyed)' : 'sold to XRP'}, then trustlines removed (irreversible)`
+                          : 'I understand this action is permanent and cannot be undone'
+                      }
+                      sx={{ mb: 3, display: 'flex', justifyContent: 'center' }}
+                    />
+                  )}
+                </>
+              )}
+            </>
+          )}
+
+          {/* Step 2: Processing Phase */}
+          {currentStep === 'process' && (
+            <div className="text-center py-2">
+              <CircularProgress sx={{ mb: 2 }} />
+              <Typography variant="h6" gutterBottom>
+                Processing {tokenStatuses.length} tokens...
+              </Typography>
+              <Typography variant="body2" color="text.secondary">
+                ({tokenStatuses.filter(s => ['sold', 'completed'].includes(s.step)).length}/{tokenStatuses.length} completed)
+              </Typography>
+
+              <div className="mt-3 max-h-60 overflow-y-auto">
+                <Stack spacing={2}>
+                  {tokenStatuses.map((status, index) => (
+                    <Paper key={`${status.currency}:${status.issuer}`} sx={{ p: 2 }}>
+                      {renderStepProgress(status)}
+                    </Paper>
+                  ))}
+                </Stack>
+              </div>
+            </div>
+          )}
+
+          {/* Step 3: Complete Phase */}
+          {currentStep === 'complete' && (
+            <div className="text-center py-4">
+              <CheckCircle className="h-20 w-20 text-green-500 mx-auto mb-4 animate-pulse" />
+              <Typography variant="h5" gutterBottom>
+                Process Complete!
+              </Typography>
+              <Typography variant="body1" color="text.secondary">
+                Successfully processed {tokenStatuses.filter(s => s.step === 'completed').length} tokens.
+                {view === 'sellable'
+                  ? useBurn
+                    ? ' All selected tokens have been burned (destroyed) and their trustlines removed.'
+                    : ' All selected tokens have been sold to XRP and their trustlines removed.'
+                  : ' All selected trustlines have been removed.'
+                }
+              </Typography>
+            </div>
+          )}
+        </div>
+
+        <DialogFooter className="gap-2">
+          <Button variant="outline" onClick={onClose} disabled={isProcessing}>
+            <X className="h-4 w-4 mr-2" />
+            {currentStep === 'complete' ? 'Done' : 'Cancel'}
+          </Button>
+
+          {currentStep === 'select' && selectedTokens.length > 0 && (
+            <Button
+              variant={view === 'sellable' ? (useBurn ? 'destructive' : 'default') : 'destructive'}
+              onClick={view === 'sellable' ? handleSellAndRemoveTrustlines : handleDirectRemoveTrustlines}
+              disabled={!confirmRemoval || isProcessing}
+              className="min-w-[200px] font-semibold"
+            >
+              {isProcessing ? (
+                <>
+                  <CircularProgress size={16} sx={{ mr: 1 }} />
+                  Processing...
+                </>
+              ) : view === 'sellable' ? (
+                useBurn ? `Burn & Remove ${selectedTokens.length} Token${selectedTokens.length !== 1 ? 's' : ''}` : `Sell & Remove ${selectedTokens.length} Token${selectedTokens.length !== 1 ? 's' : ''}`
+              ) : (
+                `Remove ${selectedTokens.length} Trustline${selectedTokens.length !== 1 ? 's' : ''}`
+              )}
+            </Button>
+          )}
+        </DialogFooter>
+      </DialogContent>
+
+      {/* External Wallet Operation Dialog */}
+      {externalWalletOperation && (
+        <ExternalWalletTrustlineManager
+          isOpen={!!externalWalletOperation}
+          onClose={() => {
+            setExternalWalletOperation(null);
+            setSelectedTokens([]);
+            setConfirmRemoval(false);
+          }}
+          onSuccess={() => {
+            setExternalWalletOperation(null);
+            setSelectedTokens([]);
+            setConfirmRemoval(false);
+            refetchSellable();
+            refetchRemovable();
+            if (onSuccess) {
+              onSuccess();
+            }
+          }}
+          operation={externalWalletOperation.operation}
+          currency={externalWalletOperation.currency}
+          issuer={externalWalletOperation.issuer}
+          balance={externalWalletOperation.balance}
+        />
+      )}
+    </Dialog>
+  );
+}

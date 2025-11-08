@@ -1,0 +1,77 @@
+stem 2: Separate Minting SystemThis system allows creators (or your platform) to mint NFTs with royalties, which are then sent to the broker wallet for listing.Step 1: Set Up Minter WalletUse the same broker wallet or a separate minter wallet (recommended for clarity).
+Generate as above (Step 1 of Buy System).
+Fund with 20+ XRP.
+
+Step 2: Backend for MintingAdd a minting endpoint to your server.javascript
+
+app.post('/api/mint-nft', async (req, res) => {
+  const { uri, taxon, transferFee } = req.body; // e.g., uri: 'https://riddleswap.com/nft/123.json', transferFee: 500 (5%)
+  try {
+    const tx = await client.autofill({
+      TransactionType: 'NFTokenMint',
+      Account: brokerWallet.classicAddress,
+      URI: xrpl.convertStringToHex(uri), // Metadata link (IPFS or your server)
+      Flags: 8, // Transferable NFT
+      NFTokenTaxon: taxon || 0, // Collection ID
+      TransferFee: transferFee || 500 // 5% royalty
+    });
+    const signed = brokerWallet.sign(tx);
+    const result = await client.submitAndWait(signed.tx_blob);
+    const nftId = result.result.meta.nftoken_id;
+    
+    // Transfer to broker wallet (if minter is separate)
+    const transferTx = await client.autofill({
+      TransactionType: 'NFTokenCreateOffer',
+      Account: brokerWallet.classicAddress,
+      NFTokenID: nftId,
+      Amount: '0', // Free transfer
+      Destination: brokerWallet.classicAddress
+    });
+    const signedTransfer = brokerWallet.sign(transferTx);
+    await client.submitAndWait(signedTransfer.tx_blob);
+    
+    res.json({ nftId });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
+Step 3: Minting FlowCreator Input:Creators upload NFT metadata (image, attributes) to IPFS (via Pinata) or your server.
+Provide URI (e.g., https://ipfs.io/ipfs/Qm...) and royalty percentage (e.g., 5%).
+Mint NFT:Backend calls /api/mint-nft with URI and TransferFee.
+NFT is minted and assigned to the broker wallet.
+Royalties:TransferFee ensures 5% of every secondary sale goes to the issuer (creator’s XRPL address).
+No extra code needed—XRPL handles this natively.
+Step 4: Metadata HostingUse IPFS for decentralized storage:Pinata: Upload JSON metadata (e.g., { name: "Troll Sword", image: "ipfs://..." }).
+Cost: ~$0.01/NFT/month.
+Alternative: Host on your server (e.g., riddleswap.com/nft/123.json).
+
+Testing and DeploymentTestnet:Use Testnet WebSocket: wss://s.altnet.rippletest.net:51233.
+Get free XRP: https://testnet.xrpl.org.
+Test minting 5-10 NFTs, then simulate buys.
+Security:Store seeds in AWS KMS or similar.
+Use multi-sig for the broker wallet (SignersListSet).
+Rate-limit API endpoints to prevent abuse.
+Go Live:Switch to mainnet: wss://xrplcluster.com.
+Monitor transactions via XRPL explorer or subscriptions:javascript
+
+client.on('transaction', (tx) => {
+  if (tx.transaction.TransactionType === 'NFTokenAcceptOffer') {
+    console.log('Sale completed:', tx.meta);
+  }
+});
+Announce on X or your site.
+User Flow on riddleswap.comMinting:Creator logs in → Uploads metadata → Backend mints NFT → NFT sent to broker wallet.
+Buying:User browses NFTs → Connects Xaman wallet → Signs escrow payment → Broker transfers NFT → Royalties auto-paid.
+CostsMinting: 0.00001 XRP per mint + 2 XRP reserve per NFT (~$1/NFT at $0.50/XRP).
+Buying: 0.00001 XRP per tx; escrow requires ~2 XRP reserve.
+Hosting: Free (self-hosted) or ~$0.01/NFT/month (IPFS).
+Dev Time: ~10-20 hours for basic setup.
+
+NotesRoyalties: Automatically handled via TransferFee (e.g., 5% to issuer on every sale).
+Scalability: XRPL handles thousands of tx/s; use a load balancer for high traffic.
+Alternative: If coding is complex, explore Sologenic’s NFT SDK for XRPL (simplifies marketplace setup).
+Clarifications: If you meant a different blockchain (not XRPL) or specific features (e.g., "pay for hold" details), please specify!
+
+Let me know if you need code tweaks, a specific frontend example, or help with a particular step!
+

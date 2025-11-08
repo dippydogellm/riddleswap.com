@@ -1,0 +1,205 @@
+The source list for the Content Security Policy directive 'default-src' contains an invalid source: ''unsafe-dynamic''. It will be ignored.
+The source list for the Content Security Policy directive 'default-src' contains an invalid source: ''unsafe-dynamic''. It will be ignored.
+The source list for the Content Security Policy directive 'default-src' contains an invalid source: ''unsafe-dynamic''. It will be ignored.
+The source list for the Content Security Policy directive 'default-src' contains an invalid source: ''unsafe-dynamic''. It will be ignored.
+The source list for the Content Security Policy directive 'default-src' contains an invalid source: ''unsafe-dynamic''. It will be ignored.
+The source list for the Content Security Policy directive 'default-src' contains an invalid source: ''unsafe-dynamic''. It will be ignored.
+The source list for the Content Security Policy directive 'default-src' contains an invalid source: ''unsafe-dynamic''. It will be ignored.
+The source list for the Content Security Policy directive 'default-src' contains an invalid source: ''unsafe-dynamic''. It will be ignored.
+The source list for the Content Security Policy directive 'default-src' contains an invalid source: ''unsafe-dynamic''. It will be ignored.
+The source list for the Content Security Policy directive 'default-src' contains an invalid source: ''unsafe-dynamic''. It will be ignored.
+The Content-Security-Policy directive 'default-src' contains 'report-uri' as a source expression. Did you want to add it as a directive and forget a semicolon?
+The Content-Security-Policy directive 'default-src' contains 'report-uri' as a source expression. Did you want to add it as a directive and forget a semicolon?
+The Content-Security-Policy directive 'default-src' contains 'report-uri' as a source expression. Did you want to add it as a directive and forget a semicolon?
+The Content-Security-Policy directive 'default-src' contains 'report-uri' as a source expression. Did you want to add it as a directive and forget a semicolon?
+The Content-Security-Policy directive 'default-src' contains 'report-uri' as a source expression. Did you want to add it as a directive and forget a semicolon?
+The Content-Security-Policy directive 'default-src' contains 'report-uri' as a source expression. Did you want to add it as a directive and forget a semicolon?
+The Content-Security-Policy directive 'default-src' contains 'report-uri' as a source expression. Did you want to add it as a directive and forget a semicolon?
+The Content-Security-Policy directive 'default-src' contains 'report-uri' as a source expression. Did you want to add it as a directive and forget a semicolon?
+The Content-Security-Policy directive 'default-src' contains 'report-uri' as a source expression. Did you want to add it as a directive and forget a semicolon?
+The Content-Security-Policy directive 'default-src' contains 'report-uri' as a source expression. Did you want to add it as a directive and forget a semicolon?
+The source list for Content Security Policy directive 'default-src' contains a source with an invalid path: '/api/4509669501698048/security/?sentry_key=7eb3d90eb4660416caf507087367e67e'. The query component, including the '?', will be ignored.
+The source list for Content Security Policy directive 'default-src' contains a source with an invalid path: '/api/4509669501698048/security/?sentry_key=7eb3d90eb4660416caf507087367e67e'. The query component, including the '?', will be ignored.
+The source list for Content Security Policy directive 'default-src' contains a source with an invalid path: '/api/4509669501698048/security/?sentry_key=7eb3d90eb4660416caf507087367e67e'. The query component, including the '?', will be ignored.
+The source list for Content Security Policy directive 'default-src' contains a source with an invalid path: '/api/4509669501698048/security/?sentry_key=7eb3d90eb4660416caf507087367e67e'. The query component, including the '?', will be ignored.
+The source list for Content Security Policy directive 'default-src' contains a source with an invalid path: '/api/4509669501698048/security/?sentry_key=7eb3d90eb4660416caf507087367e67e'. The query component, including the '?', will be ignored.
+The source list for Content Security Policy directive 'default-src' contains a source with an invalid path: '/api/4509669501698048/security/?sentry_key=7eb3d90eb4660416caf507087367e67e'. The query component, including the '?', will be ignored.
+The source list for Content Security Policy directive 'default-src' contains a source with an invalid path: '/api/4509669501698048/security/?sentry_key=7eb3d90eb4660416caf507087367e67e'. The query component, including the '?', will be ignored.
+The source list for Content Security Policy directive 'default-src' contains a source with an invalid path: '/api/4509669501698048/security/?sentry_key=7eb3d90eb4660416caf507087367e67e'. The query component, including the '?', will be ignored.
+The source list for Content Security Policy directive 'default-src' contains a source with an invalid path: '/api/4509669501698048/security/?sentry_key=7eb3d90eb4660416caf507087367e67e'. The query component, including the '?', will be ignored.
+The source list for Content Security Policy directive 'default-src' contains a source with an invalid path: '/api/4509669501698048/security/?sentry_key=7eb3d90eb4660416caf507087367e67e'. The query component, including the '?', will be ignored.
+_app-92fc94815d01ceb7.js:34 
+      /////////////////////
+   ///////////////////////////
+  ////////@@@@@@@//////////////
+  ////////@@@@@@@//////////////
+  ////////@@@@@@@//////////////        Curious and driven?
+  ///////////////@@@@@@@///////        Work with us!
+  ///////////////@@@@@@@///////
+  ///////////////@@@@@@@///////        https://join.replit.com/hack.with.us
+  ////////@@@@@@@//////////////
+  ////////@@@@@@@//////////////
+  ////////@@@@@@#//////////////
+   ///////////////////////////
+      /////////////////////
+      
+riddle:1 The source list for the Content Security Policy directive 'default-src' contains an invalid source: ''unsafe-dynamic''. It will be ignored.
+riddle:1 The Content-Security-Policy directive 'default-src' contains 'report-uri' as a source expression. Did you want to add it as a directive and forget a semicolon?
+riddle:1 The source list for Content Security Policy directive 'default-src' contains a source with an invalid path: '/api/4509669501698048/security/?sentry_key=7eb3d90eb4660416caf507087367e67e'. The query component, including the '?', will be ignored.
+_app-92fc94815d01ceb7.js:34 [LaunchDarkly] LaunchDarkly client initialized
+analytics.tiktok.com/i18n/pixel/events.js?sdkid=D004GE3C77U8PIVDSDJG&lib=ttq:1  Failed to load resource: net::ERR_NAME_NOT_RESOLVED
+riddle:1 Banner not shown: beforeinstallpromptevent.preventDefault() called. The page must call beforeinstallpromptevent.prompt() to show the banner.
+ Error while parsing the 'sandbox' attribute: 'allow-downloads-without-user-activation' is an invalid sandbox flag.
+_ @ framework-0736a825ee38b3a4.js:1
+ Unrecognized feature: 'ambient-light-sensor'.
+_ @ framework-0736a825ee38b3a4.js:1
+ Unrecognized feature: 'battery'.
+_ @ framework-0736a825ee38b3a4.js:1
+ Unrecognized feature: 'execution-while-not-rendered'.
+_ @ framework-0736a825ee38b3a4.js:1
+ Unrecognized feature: 'execution-while-out-of-viewport'.
+_ @ framework-0736a825ee38b3a4.js:1
+ Unrecognized feature: 'layout-animations'.
+_ @ framework-0736a825ee38b3a4.js:1
+ Unrecognized feature: 'legacy-image-formats'.
+_ @ framework-0736a825ee38b3a4.js:1
+ Unrecognized feature: 'navigation-override'.
+_ @ framework-0736a825ee38b3a4.js:1
+ Unrecognized feature: 'oversized-images'.
+_ @ framework-0736a825ee38b3a4.js:1
+ Unrecognized feature: 'publickey-credentials'.
+_ @ framework-0736a825ee38b3a4.js:1
+ Unrecognized feature: 'speaker-selection'.
+_ @ framework-0736a825ee38b3a4.js:1
+ Unrecognized feature: 'unoptimized-images'.
+_ @ framework-0736a825ee38b3a4.js:1
+ Unrecognized feature: 'unsized-media'.
+_ @ framework-0736a825ee38b3a4.js:1
+ Unrecognized feature: 'pointer-lock'.
+_ @ framework-0736a825ee38b3a4.js:1
+ Allow attribute will take precedence over 'allowfullscreen'.
+_ @ framework-0736a825ee38b3a4.js:1
+ Allow attribute will take precedence over 'allowpaymentrequest'.
+_ @ framework-0736a825ee38b3a4.js:1
+workspace_iframe.html?initialPath=%2F&id=%3Ar5i%3A:32 Error while parsing the 'sandbox' attribute: 'allow-downloads-without-user-activation' is an invalid sandbox flag.
+workspace_iframe.html?initialPath=%2F&id=%3Ar5i%3A:32 Unrecognized feature: 'ambient-light-sensor'.
+workspace_iframe.html?initialPath=%2F&id=%3Ar5i%3A:32 Unrecognized feature: 'battery'.
+workspace_iframe.html?initialPath=%2F&id=%3Ar5i%3A:32 Unrecognized feature: 'execution-while-not-rendered'.
+workspace_iframe.html?initialPath=%2F&id=%3Ar5i%3A:32 Unrecognized feature: 'execution-while-out-of-viewport'.
+workspace_iframe.html?initialPath=%2F&id=%3Ar5i%3A:32 Unrecognized feature: 'layout-animations'.
+workspace_iframe.html?initialPath=%2F&id=%3Ar5i%3A:32 Unrecognized feature: 'legacy-image-formats'.
+workspace_iframe.html?initialPath=%2F&id=%3Ar5i%3A:32 Unrecognized feature: 'navigation-override'.
+workspace_iframe.html?initialPath=%2F&id=%3Ar5i%3A:32 Unrecognized feature: 'oversized-images'.
+workspace_iframe.html?initialPath=%2F&id=%3Ar5i%3A:32 Unrecognized feature: 'publickey-credentials'.
+workspace_iframe.html?initialPath=%2F&id=%3Ar5i%3A:32 Unrecognized feature: 'speaker-selection'.
+workspace_iframe.html?initialPath=%2F&id=%3Ar5i%3A:32 Unrecognized feature: 'unoptimized-images'.
+workspace_iframe.html?initialPath=%2F&id=%3Ar5i%3A:32 Unrecognized feature: 'unsized-media'.
+workspace_iframe.html?initialPath=%2F&id=%3Ar5i%3A:32 Allow attribute will take precedence over 'allowfullscreen'.
+workspace_iframe.html?initialPath=%2F&id=%3Ar5i%3A:32 Allow attribute will take precedence over 'allowpaymentrequest'.
+ WebSocket connection to 'wss://20a5a677-e8db-426b-93ca-0ab4131b22a7-00-pwrlj8iul6vd.janeway.replit.dev/?token=fqG80vEKsn1J' failed: 
+t @ eruda.js:2
+ 🔧 Fixed WebSocket URL for Replit: wss://localhost:undefined/?token=fqG80vEKsn1J → wss://20a5a677-e8db-426b-93ca-0ab4131b22a7-00-pwrlj8iul6vd.janeway.replit.dev/?token=fqG80vEKsn1J
+ WebSocket connection to 'wss://20a5a677-e8db-426b-93ca-0ab4131b22a7-00-pwrlj8iul6vd.janeway.replit.dev/?token=fqG80vEKsn1J' failed: 
+t @ eruda.js:2
+ [vite] failed to connect to websocket.
+your current setup:
+  (browser) 20a5a677-e8db-426b-93ca-0ab4131b22a7-00-pwrlj8iul6vd.janeway.replit.dev/ <--[HTTP]--> localhost:undefined/ (server)
+  (browser) 20a5a677-e8db-426b-93ca-0ab4131b22a7-00-pwrlj8iul6vd.janeway.replit.dev:/ <--[WebSocket (failing)]--> localhost:undefined/ (server)
+Check out your Vite / network configuration and https://vite.dev/config/server-options.html#server-hmr .
+Mt.forEach.n.<computed> @ eruda.js:2
+ 🎨 App.tsx: App component is rendering
+ 🏗️ App.tsx: Returning JSX with all providers
+ 🚫 SessionMonitor: DISABLED - Using unified SessionManager instead
+ 🗺️ Router: Router component is rendering
+ 📍 Router: Current location: /
+ 💳 Router: Initializing wallet data state
+ 📭 Router: No saved wallet data found
+ 🔍 SessionManager.getSession() returning: [object Object]
+ 🎨 App.tsx: App component is rendering
+ 🏗️ App.tsx: Returning JSX with all providers
+ 🚫 SessionMonitor: DISABLED - Using unified SessionManager instead
+ 🗺️ Router: Router component is rendering
+ 📍 Router: Current location: /
+ 💳 Router: Initializing wallet data state
+ 📭 Router: No saved wallet data found
+ 🔍 SessionManager.getSession() returning: [object Object]
+ 🔍 SessionManager: checkSession() called - current sessionData: true
+ 🌐 SessionManager: Making Riddle wallet session request to /api/riddle-wallet/session
+ 🎨 [THEME] Applied theme: dark, dark class: true
+ 🔄 App.tsx: useEffect running - recovering wallet state
+ 🔍 SessionManager.getSession() returning: [object Object]
+ ✅ SessionManager: Valid session for dippydoge
+ ✅ SessionManager: Updated session data: [object Object]
+ 🔍 SessionManager.getSession() returning: [object Object]
+ 🔔 SessionManager: Notified 1 listeners
+ 🔍 SessionManager.getSession() returning: [object Object]
+ 🔍 getQueryFn - SessionManager sessionToken: FOUND
+ 🔍 getQueryFn - SessionManager sessionToken: FOUND
+ 🔍 getQueryFn - SessionManager sessionToken: FOUND
+ 🔍 SessionManager: checkSession() called - current sessionData: true
+ 🌐 SessionManager: Making Riddle wallet session request to /api/riddle-wallet/session
+ ✅ SessionManager: Valid session for dippydoge
+ ✅ SessionManager: Updated session data: [object Object]
+ 🔍 SessionManager.getSession() returning: [object Object]
+ 🔔 SessionManager: Notified 1 listeners
+ 🔍 SessionManager.getSession() returning: [object Object]
+ 🔍 SessionManager.getSession() returning: [object Object]
+ 🗺️ Router: Router component is rendering
+ 📍 Router: Current location: /gaming
+ 🔍 SessionManager.getSession() returning: [object Object]
+ 🔍 getQueryFn - SessionManager sessionToken: FOUND
+ 🔍 getQueryFn - SessionManager sessionToken: FOUND
+ 🔍 getQueryFn - SessionManager sessionToken: FOUND
+ 🔍 getQueryFn - SessionManager sessionToken: FOUND
+ 🔍 getQueryFn - SessionManager sessionToken: FOUND
+ 🔍 getQueryFn - SessionManager sessionToken: FOUND
+ 🔍 SessionManager: checkSession() called - current sessionData: true
+ 🌐 SessionManager: Making Riddle wallet session request to /api/riddle-wallet/session
+ ✅ SessionManager: Valid session for dippydoge
+ ✅ SessionManager: Updated session data: [object Object]
+ 🔍 SessionManager.getSession() returning: [object Object]
+ 🔔 SessionManager: Notified 1 listeners
+ 🔍 SessionManager.getSession() returning: [object Object]
+Network.js:227 WebSocket connection to 'wss://20a5a677-e8db-426b-93ca-0ab4131b22a7-00-pwrlj8iul6vd.janeway.replit.dev/?token=fqG80vEKsn1J' failed: 
+t @ Network.js:227
+Console.js:61 🔧 Fixed WebSocket URL for Replit: wss://localhost:undefined/?token=fqG80vEKsn1J → wss://20a5a677-e8db-426b-93ca-0ab4131b22a7-00-pwrlj8iul6vd.janeway.replit.dev/?token=fqG80vEKsn1J
+Network.js:227 WebSocket connection to 'wss://20a5a677-e8db-426b-93ca-0ab4131b22a7-00-pwrlj8iul6vd.janeway.replit.dev/?token=fqG80vEKsn1J' failed: 
+t @ Network.js:227
+Console.js:61 [vite] failed to connect to websocket.
+your current setup:
+  (browser) 20a5a677-e8db-426b-93ca-0ab4131b22a7-00-pwrlj8iul6vd.janeway.replit.dev/ <--[HTTP]--> localhost:undefined/ (server)
+  (browser) 20a5a677-e8db-426b-93ca-0ab4131b22a7-00-pwrlj8iul6vd.janeway.replit.dev:/ <--[WebSocket (failing)]--> localhost:undefined/ (server)
+Check out your Vite / network configuration and https://vite.dev/config/server-options.html#server-hmr .
+Mt.forEach.n.<computed> @ Console.js:61
+Console.js:61 🎨 App.tsx: App component is rendering
+Console.js:61 🏗️ App.tsx: Returning JSX with all providers
+Console.js:61 🚫 SessionMonitor: DISABLED - Using unified SessionManager instead
+Console.js:61 🗺️ Router: Router component is rendering
+Console.js:61 📍 Router: Current location: /gaming
+Console.js:61 💳 Router: Initializing wallet data state
+Console.js:61 📭 Router: No saved wallet data found
+Console.js:61 🔍 SessionManager.getSession() returning: Object
+Console.js:61 🎨 App.tsx: App component is rendering
+Console.js:61 🏗️ App.tsx: Returning JSX with all providers
+Console.js:61 🚫 SessionMonitor: DISABLED - Using unified SessionManager instead
+Console.js:61 🗺️ Router: Router component is rendering
+Console.js:61 📍 Router: Current location: /gaming
+Console.js:61 💳 Router: Initializing wallet data state
+Console.js:61 📭 Router: No saved wallet data found
+Console.js:61 🔍 SessionManager.getSession() returning: Object
+Console.js:61 🔍 SessionManager: checkSession() called - current sessionData: true
+Console.js:61 🌐 SessionManager: Making Riddle wallet session request to /api/riddle-wallet/session
+Console.js:61 🎨 [THEME] Applied theme: dark, dark class: true
+Console.js:61 🔄 App.tsx: useEffect running - recovering wallet state
+Console.js:61 🔍 SessionManager.getSession() returning: Object
+Console.js:61 ✅ SessionManager: Valid session for dippydoge
+Console.js:61 ✅ SessionManager: Updated session data: Object
+Console.js:61 🔍 SessionManager.getSession() returning: Object
+Console.js:61 🔔 SessionManager: Notified 1 listeners
+Console.js:61 🔍 SessionManager.getSession() returning: Object
+Console.js:61 🔍 getQueryFn - SessionManager sessionToken: FOUND
+Console.js:61 🔍 getQueryFn - SessionManager sessionToken: FOUND
+Console.js:61 🔍 getQueryFn - SessionManager sessionToken: FOUND
+Console.js:61 🔍 getQueryFn - SessionManager sessionToken: FOUND
+Console.js:61 🔍 getQueryFn - SessionManager sessionToken: FOUND
+Console.js:61 🔍 getQueryFn - SessionManager sessionToken: FOUND

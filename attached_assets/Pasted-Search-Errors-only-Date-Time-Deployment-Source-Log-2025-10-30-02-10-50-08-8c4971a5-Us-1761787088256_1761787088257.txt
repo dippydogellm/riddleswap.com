@@ -1,0 +1,158 @@
+Search
+
+
+Errors only
+
+Date
+Time
+Deployment
+Source
+Log
+2025-10-30 02:10:50.08
+8c4971a5
+User
+- Missing recommended production variable: RIDDLEPAD_BANK_WALLET - XRPL wallet address for RiddlePad fee collection
+2025-10-30 02:15:13.88
+8c4971a5
+User
+- Missing recommended production variable: ETHEREUM_RPC_URL - Ethereum RPC endpoint for EVM operations
+2025-10-30 02:15:13.88
+8c4971a5
+User
+- ETHEREUM_RPC_URL not set - EVM functionality will be limited
+2025-10-30 02:15:15.24
+8c4971a5
+User
+npm notice
+2025-10-30 02:15:15.24
+8c4971a5
+User
+npm notice New major version of npm available! 10.8.2 -> 11.6.2
+2025-10-30 02:15:15.24
+8c4971a5
+User
+npm notice To update run: npm install -g npm@11.6.2
+2025-10-30 02:15:15.24
+8c4971a5
+User
+npm notice
+2025-10-30 02:15:26.31
+8c4971a5
+User
+bigint: Failed to load bindings, pure JS will be used (try npm run rebuild?)
+2025-10-30 02:15:26.60
+8c4971a5
+User
+bigint: Failed to load bindings, pure JS will be used (try npm run rebuild?)
+2025-10-30 02:15:26.74
+8c4971a5
+User
+⚠️ [ENV VALIDATION] Environment validation warnings:
+2025-10-30 02:15:26.74
+8c4971a5
+User
+- Missing recommended production variable: RIDDLEPAD_BANK_WALLET - XRPL wallet address for RiddlePad fee collection
+2025-10-30 02:15:26.74
+8c4971a5
+User
+- Missing recommended production variable: RIDDLEPAD_COLLECTION_PRIVATE_KEY - Private key for RiddlePad on-chain operations (when enabled)
+2025-10-30 02:15:26.74
+8c4971a5
+User
+- Missing recommended production variable: ETHEREUM_RPC_URL - Ethereum RPC endpoint for EVM operations
+2025-10-30 02:15:26.74
+8c4971a5
+User
+- ETHEREUM_RPC_URL not set - EVM functionality will be limited
+2025-10-30 02:15:27.17
+8c4971a5
+User
+⚠️ [ENV VALIDATION] Environment validation warnings:
+2025-10-30 02:15:27.17
+8c4971a5
+User
+- Missing recommended production variable: RIDDLEPAD_BANK_WALLET - XRPL wallet address for RiddlePad fee collection
+2025-10-30 02:15:27.17
+8c4971a5
+User
+- Missing recommended production variable: RIDDLEPAD_COLLECTION_PRIVATE_KEY - Private key for RiddlePad on-chain operations (when enabled)
+2025-10-30 02:15:27.17
+8c4971a5
+User
+- Missing recommended production variable: ETHEREUM_RPC_URL - Ethereum RPC endpoint for EVM operations
+2025-10-30 02:15:27.17
+8c4971a5
+User
+- ETHEREUM_RPC_URL not set - EVM functionality will be limited
+2025-10-30 02:15:27.53
+8c4971a5
+User
+⚠️ [RIDDLEPAD CONFIG] Configuration warnings:
+2025-10-30 02:15:40.37
+8c4971a5
+User
+npm notice
+2025-10-30 02:15:40.37
+8c4971a5
+User
+npm notice New major version of npm available! 10.8.2 -> 11.6.2
+2025-10-30 02:15:40.37
+8c4971a5
+User
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v11.6.2
+2025-10-30 02:15:40.37
+8c4971a5
+User
+npm notice To update run: npm install -g npm@11.6.2
+2025-10-30 02:15:40.37
+8c4971a5
+User
+npm notice
+2025-10-30 02:15:54.23
+8c4971a5
+User
+bigint: Failed to load bindings, pure JS will be used (try npm run rebuild?)
+2025-10-30 02:15:54.79
+8c4971a5
+User
+⚠️ [ENV VALIDATION] Environment validation warnings:
+2025-10-30 02:15:54.79
+8c4971a5
+User
+- Missing recommended production variable: RIDDLEPAD_BANK_WALLET - XRPL wallet address for RiddlePad fee collection
+2025-10-30 02:15:54.79
+8c4971a5
+User
+- Missing recommended production variable: RIDDLEPAD_COLLECTION_PRIVATE_KEY - Private key for RiddlePad on-chain operations (when enabled)
+2025-10-30 02:15:54.79
+8c4971a5
+User
+- Missing recommended production variable: ETHEREUM_RPC_URL - Ethereum RPC endpoint for EVM operations
+2025-10-30 02:15:54.79
+8c4971a5
+User
+- ETHEREUM_RPC_URL not set - EVM functionality will be limited
+2025-10-30 02:15:56.31
+8c4971a5
+User
+npm notice
+2025-10-30 02:15:56.31
+8c4971a5
+User
+npm notice New major version of npm available! 10.8.2 -> 11.6.2
+2025-10-30 02:15:56.31
+8c4971a5
+User
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v11.6.2
+2025-10-30 02:15:56.31
+8c4971a5
+User
+npm notice To update run: npm install -g npm@11.6.2
+2025-10-30 02:15:56.31
+8c4971a5
+User
+npm notice
+2025-10-30 02:16:09.07
+8c4971a5
+User
+bigint: Failed to load bindings, pure JS will be used (try npm run rebuild?)

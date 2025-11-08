@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test Wallet Generation</title>
+</head>
+<body>
+    <h1>Testing Wallet Generation</h1>
+    <button onclick="testWalletGen()">Generate Test Wallet</button>
+    <div id="results"></div>
+    
+    <script type="module">
+        // Import the libraries directly
+        import { ethers } from 'https://cdn.jsdelivr.net/npm/ethers@6.9.0/+esm';
+        import * as bip39 from 'https://cdn.jsdelivr.net/npm/bip39@3.1.0/+esm';
+        
+        window.testWalletGen = async function() {
+            const resultsDiv = document.getElementById('results');
+            resultsDiv.innerHTML = '<p>Generating wallet...</p>';
+            
+            try {
+                // Generate 24-word mnemonic
+                const entropy = ethers.randomBytes(32);
+                const seedPhrase = bip39.entropyToMnemonic(entropy);
+                
+                // Create HD wallet
+                const hdWallet = ethers.HDNodeWallet.fromPhrase(seedPhrase);
+                
+                // Generate different wallets
+                const ethAddress = hdWallet.address;
+                
+                // For XRP - we need to use a different derivation path or generate separately
+                const xrpWallet = ethers.Wallet.createRandom();
+                const xrpAddress = 'r' + xrpWallet.address.substring(2, 35);
+                
+                // For Solana - different key generation
+                const solWallet = ethers.Wallet.createRandom();
+                const solAddress = solWallet.address.substring(2); // Remove 0x
+                
+                // For Bitcoin - different format
+                const btcWallet = ethers.Wallet.createRandom();
+                const btcAddress = '1' + btcWallet.address.substring(2, 27);
+                
+                resultsDiv.innerHTML = `
+                    <h2>Generated Addresses:</h2>
+                    <p><strong>Seed Phrase (${seedPhrase.split(' ').length} words):</strong><br>${seedPhrase}</p>
+                    <p><strong>ETH:</strong> ${ethAddress}</p>
+                    <p><strong>XRP:</strong> ${xrpAddress}</p>
+                    <p><strong>SOL:</strong> ${solAddress}</p>
+                    <p><strong>BTC:</strong> ${btcAddress}</p>
+                    <h3>Validation:</h3>
+                    <p>ETH starts with 0x: ${ethAddress.startsWith('0x')}</p>
+                    <p>XRP starts with r: ${xrpAddress.startsWith('r')}</p>
+                    <p>All addresses unique: ${new Set([ethAddress, xrpAddress, solAddress, btcAddress]).size === 4}</p>
+                `;
+                
+            } catch (error) {
+                resultsDiv.innerHTML = `<p style="color: red;">Error: ${error.message}</p>`;
+            }
+        }
+    </script>
+</body>
+</html>

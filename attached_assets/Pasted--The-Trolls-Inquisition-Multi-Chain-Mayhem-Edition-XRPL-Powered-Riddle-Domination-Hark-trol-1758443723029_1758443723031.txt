@@ -1,0 +1,96 @@
+# The Trolls Inquisition: Multi-Chain Mayhem Edition – XRPL-Powered Riddle Domination!
+
+Hark, troll tycoons and inquisitorial overlords! Your decree echoes through the vaults: *The Trolls Inquisition* shall embrace the wilds of multi-chain glory! We've turbocharged the spec with **different NFT areas** tailored for **diverse blockchains** (e.g., XRPL for native speed, Ethereum for DeFi depth, Polygon for low-fee frenzy), but the **main currency remains RDL (Riddle)**—issued as a blazing-fast fungible token on the **XRP Ledger (XRPL)**. No compromises: RDL is the lifeblood, bridged seamlessly across chains for trades, taxes, and triumphs. Imagine trolls hoarding RDL on XRPL's sub-second settlements while your Inquisition NFTs dash across Ethereum's EVM sidechain!
+
+This update weaves in XRPL's 2025 evolutions—like the XRPL EVM sidechain for Ethereum bridging and Wormhole/Axelar integrations—ensuring "play now" scalability. We've kept the chaos fun: Chain-specific "areas" mean themed zones (e.g., "XRPL Vaults" for troll bankers), with AI Narrator quips like "Ah, the XRP winds carry your RDL riches—lest the bridges toll too high!" Phase 1 beta now supports XRPL wallet connects for instant RDL drips. Let's claim those chains!
+
+## Updated Overview: Multi-Chain Empire with RDL Supremacy
+- **Core Shift**: RDL (Riddle) is the **sole main currency**—a fungible token on XRPL (currency code: "RDL", issuer account: game treasury wallet). Total supply: 1B, with deflationary burns on troll taxes (1% of fees scorched for scarcity fun). All in-game actions (wagers, trades, claims) settle in RDL, bridged to other chains as needed.
+- **Multi-Chain NFT Areas**: NFTs live on "areas" per chain for optimized fun:
+  - **XRPL Native Area**: Lightning-fast mints/trades; ideal for Trolls/Inquiry (low-fee hoarding).
+  - **Ethereum EVM Area** (via XRPL EVM Sidechain): DeFi integrations; suits Dantes Aurum elites.
+  - **Polygon Area**: Gas-cheap battles; perfect for Lost Imperium masses.
+  - **Future-Proof**: Add Solana/BSC via bridges. Game UI has a "Chain Portal" hub—select areas for army assembly (e.g., mix XRPL trolls with Ethereum inquisitors).
+- **Bridging Magic**: Wormhole for XRPL-Ethereum/Solana; Axelar for Polygon. RDL wraps as wRDL on other chains (e.g., ERC-20 on Ethereum). Companion app handles swaps: "Bridge 100 RDL to Ethereum? Trolls approve—for a 0.5% tax!"
+- **Riddle Wallet Evolution**: XRPL-first (XUMM or Xaman integration), with multi-chain extensions (WalletConnect for EVM). Scans all chains for NFT affiliations—power levels auto-sync via oracles.
+- **Fun Twist**: "Chain Dashes"—NFT traits unlock cross-chain bonuses (e.g., XRPL dash for +speed in battles). Narrator: "Your RDL flows like XRP rivers, but beware the bridge trolls!"
+
+## Phase 1: Playable Now with Multi-Chain Flair – Enhanced Mechanics
+Beta live at `https://trollsinquisition.xai` (XRPL connect for 10 RDL starter pack). Claim land across chains—e.g., XRPL blocks for instant yields!
+
+### Land Claiming & Buying: Chain-Agnostic Conquest
+The 5000-block map spans chains: 2000 XRPL-native (fast claims), 1500 Ethereum (high-value auctions), 1500 Polygon (budget grabs). Blocks as chain-specific NFTs (e.g., XRPL Issued Currency for trust-line claims).
+
+- **Claiming Mechanics** (Updated for Multi-Chain):
+  1. **Free Claim (Unowned)**: Select chain in UI → Deploy army (min 100 power). Costs 5 RDL (paid on XRPL, bridged if needed). Tech: `LandClaim.sol` (EVM) or XRPL Payment txn with trust line. DB flags chain: `territory_blocks: {chain: "XRPL", blockId: "rABC..."}`. Adjacency bonuses cross-chain via oracle queries.
+  2. **Challenge Claim**: PvP on target chain's area—wager RDL/NFTs. Winner mints block NFT on that chain. Fun: "Chain Rift" events—AI prompt bridges temporary portals for hybrid battles!
+  3. **Riddle-Solve Claims**: No-fight option: Solve AI riddle (e.g., "What bridges chains but fears the toll?") for free grabs. Rewards RDL yields (1-5/day, auto-distributed via cron).
+  - **Limits**: Max 50 blocks/chain/user; overflows to "Exile Areas" (shared public zones).
+
+- **Buying Mechanics**:
+  1. **Direct Purchase**: List in chain-specific marketplace (e.g., XRPL via xrpl.services UI). Price in RDL—buyer bridges if cross-chain. 1% broker fee (burned for deflation).
+  2. **Auctions**: Weekly per area (e.g., "XRPL Vault Auction"—starts at 50 RDL, Dutch-style drop). Tech: XRPL Offers for native; EVM Timelock contracts.
+  3. **Troll Influence**: Troll NFTs get "Tax Whispers"—preview undervalued blocks for a RDL tip.
+  - **Cross-Chain Fun**: Buy an Ethereum block with XRPL RDL? Instant Wormhole bridge—Narrator cheers: "The ledger leaps!"
+
+| Chain Area | Block Count | Claim Cost (RDL) | Yield Perk | Fun Theme |
+|------------|-------------|------------------|------------|-----------|
+| **XRPL Native** | 2000 | 3 (ultra-low) | +20% Speed Dashes | Troll Vaults: Hoard RDL like XRP whales! |
+| **Ethereum EVM** | 1500 | 7 | DeFi Hooks (lend blocks for interest) | Golden Aurum Spires: Bridge riches, risk rugs! |
+| **Polygon** | 1500 | 2 | Mass Claims (bulk x5) | Imperium Ruins: Cheap chaos for horde builders. |
+
+### Updated NFT Collections: Chain-Tuned Traits
+NFTs mint on preferred chains (e.g., Inquisition on Ethereum for smart contract evolutions). Card Generator now chain-aware: Select area → Auto-optimizes metadata (e.g., XRPL for lightweight traits).
+
+| Collection | Preferred Chain Area | Multi-Chain Perk | Example Dash Upgrade |
+|------------|----------------------|------------------|----------------------|
+| **The Inquiry** | XRPL (scout speed) | Bridge Reveal: Spy cross-chain enemies. | Stealth Dash + Wormhole Teleport. |
+| **The Inquisition** | Ethereum (contract trials) | PWE Votes via DAO on EVM. | Holy Dash: Burn bridges on losses! |
+| **The Trolls** | XRPL (tax efficiency) | Auto-Bridge Fees: Collect 1.5% on all chains. | Greed Dash: Siphon RDL mid-bridge. |
+| **Dantes Aurum** | Ethereum (DeFi shine) | wRDL Staking: Boost power via yields. | Cursed Dash: Hex rival bridges. |
+| **Lost Imperium** | Polygon (mass summons) | Rift Reclaim: Pull blocks from other areas. | Decay Dash: Corrode chain fees. |
+
+- **Attachments**: Weapons/abilities as semi-fungibles (XRPL Issued or ERC-1155)—bridge 'em for hybrid builds (e.g., XRPL Fire Blade on Polygon army).
+
+## Full Technical Specifications: XRPL-Core Multi-Chain Beast
+We've overhauled for XRPL primacy—RDL issuance via XRPL's native token system, with bridges for the rest. "Play now" via XUMM wallet (QR scans for mobile fun).
+
+### 1. **Frontend Tech Specs** (Multi-Chain Ready)
+   - **Framework**: React + TypeScript; Chain-agnostic UI with ethers.js (EVM) + xrpl.js (XRPL). "Chain Portal" component: Dropdown selects area, auto-switches providers.
+   - **Rendering**: PixiJS for maps—render hexes with chain overlays (e.g., XRPL blocks glow blue). Bridge animations: Lottie files for Wormhole flows.
+   - **Wallet**: Xaman/XUMM SDK for XRPL; WalletConnect for others. RDL Balance: Multicall across chains (e.g., `getRDLBalance(wallet, chainId)`).
+   - **AI**: Prompts now include chain context (e.g., "Generate XRPL-fast troll strategy").
+
+### 2. **Backend Tech Specs**
+   - **Server**: Node.js/Express; Dual APIs: REST for XRPL, GraphQL for EVM. WebSockets sync cross-chain events (e.g., bridge confirmations).
+   - **Bridge Integration**: Wormhole SDK for XRPL-EVM; Axelar for Polygon. Example: `bridgeRDL(amount, fromChain: "XRPL", toChain: "ETHEREUM")` → Returns tx hash.
+   - **Battle Engine**: Chain-optimized resolution—XRPL for instant wagers (Payment txns), EVM for complex oracles.
+   - **Narrator**: TTS with chain flavors (e.g., "XRP echo" audio filter for XRPL events).
+
+### 3. **Blockchain & Smart Contracts Tech Specs**
+   - **Primary Chain**: XRPL Mainnet (no gas—drops instead). RDL Issuance: Via Payment txn from issuer account (rIssuer...). Trust lines required for holdings. Burn via "back issuer" sends.
+     - Tools: xrpl.js for txns; Easy Tokens! (xrpl.services) for UI minting.
+   - **Multi-Chain Contracts**:
+     - **XRPL Native**: `Payment` for RDL transfers/taxes; `OfferCreate` for land auctions. NFTs as Issued Currencies (semi-fungible via NFToken standard—XRPL's 2023 upgrade).
+     - **Ethereum/Polygon**: ERC-20 wrapper for RDL (wRDL); ERC-721/1155 for NFTs. XRPL EVM Sidechain: Deploy mirrors for 1000 TPS Ethereum-like smart contracts.
+     - **Bridge Contracts**: Wormhole Core (V3) for XRPL ↔ EVM; Axelar Gateway for Polygon. Functions: `wrapRDL(amount)`, `unwrapRDL(voucher)`.
+     - **Escrow/Tax**: XRPL Escrow for wagers; EVM Timelocks. TrollTax: Hooks (XRPL amendment) auto-skim 1% on inbound txns.
+     - **Security**: XRPL's deterministic consensus + EVM audits. Multi-sig issuer for RDL.
+
+### 4. **Database Tech Specs** (Chain-Aware)
+   - **Schemas Update**:
+     - `nfts`: Add `chain_id: ENUM('XRPL', 'ETHEREUM', 'POLYGON')`; `wrapped_token_id: VARCHAR` for bridges.
+     - `territory_blocks`: `{chain: "XRPL", block_coords: [x,y], rdl_yield: 2}`.
+     - `transactions`: Log bridges (e.g., `{"type": "Wormhole", "amount": 100, "fromChain": "XRPL"}`).
+   - **Sync**: XRPL WebSocket subscriptions + EVM event listeners (TheGraph subgraphs). Power calc queries all chains: `SUM(power) OVER (PARTITION BY user_id)`.
+   - **Oracles**: Chainlink for cross-chain verifications (e.g., confirm NFT ownership).
+
+### 5. **Deployment & DevOps**
+   - **Hosting**: AWS + XRPL Hooks for serverless txns. Beta: XRPL Testnet for RDL drips.
+   - **Companion App**: Flutter for iOS/Android—built-in XUMM bridge UI. Swaps via XRPL AMM (2024 amendment).
+   - **Cost**: XRPL drops (~0.00001 XRP/tx); Bridges: 0.1% Wormhole fee.
+
+## Phase 2 Prep: Metaverse Multi-Chain Nexus
+Portals in the hub link chain areas—e.g., XRPL center for RDL banking, Ethereum wings for NFT forges. 3 Games gain chain modes (e.g., Inquisition on XRPL for speedy purges). Bridges ensure RDL flows freely, with troll taxes on every hop!
+
+This multi-chain monster is forged—RDL reigns on XRPL, NFTs roam free! Play now, bridge boldly, tax triumphantly. What's next, emperor? 🪙🌉

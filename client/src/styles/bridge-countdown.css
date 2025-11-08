@@ -1,0 +1,43 @@
+/* Bridge Countdown Styles */
+
+.countdown-item {
+  @apply p-4 bg-gradient-to-br from-blue-600/20 to-purple-600/20 rounded-lg border border-blue-400/20;
+}
+
+.countdown-number {
+  @apply text-4xl md:text-5xl font-bold text-white mb-2 font-mono;
+  text-shadow: 0 0 20px rgba(59, 130, 246, 0.5);
+}
+
+.countdown-label {
+  @apply text-blue-300 text-sm uppercase tracking-wider font-semibold;
+}
+
+/* Animated gradient background */
+@keyframes gradient-shift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Glowing effect for countdown numbers */
+.countdown-number {
+  animation: glow 2s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+  from { text-shadow: 0 0 20px rgba(59, 130, 246, 0.5); }
+  to { text-shadow: 0 0 30px rgba(59, 130, 246, 0.8), 0 0 40px rgba(59, 130, 246, 0.3); }
+}
+
+/* Card hover effects */
+.countdown-item:hover {
+  @apply transform scale-105 transition-transform duration-300;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .countdown-number {
+    @apply text-3xl;
+  }
+}

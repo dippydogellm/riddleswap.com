@@ -1,0 +1,814 @@
+
+index-Z5SNXSD2.js:559 🏗️ App.tsx: Returning JSX with all providers
+index-Z5SNXSD2.js:559 🚫 SessionMonitor: DISABLED - Using unified SessionManager instead
+index-Z5SNXSD2.js:559 🗺️ Router: Router component is rendering
+index-Z5SNXSD2.js:559 📍 Router: Current location: /gaming
+index-Z5SNXSD2.js:559 💳 Router: Initializing wallet data state
+index-Z5SNXSD2.js:559 📭 Router: No saved wallet data found
+index-Z5SNXSD2.js:559 🔐 [GLOBAL RENEWAL] Handler initialized
+index-Z5SNXSD2.js:559 ⚠️ [GLOBAL RENEWAL] Initial check - session needs renewal
+index-Z5SNXSD2.js:54 🔍 getQueryFn - SessionManager sessionToken: FOUND
+index-Z5SNXSD2.js:529 📱 Platform: web, Native: false
+index-Z5SNXSD2.js:529 📱 Initializing push notifications for platform: web
+index-Z5SNXSD2.js:529 🌐 Initializing web notifications
+index-Z5SNXSD2.js:529 📝 Registering device token with backend (web)
+index-Z5SNXSD2.js:54 🔍 SessionManager sessionToken: FOUND
+index-Z5SNXSD2.js:54 🔍 getQueryFn - SessionManager sessionToken: FOUND
+index-Z5SNXSD2.js:434 🎨 [THEME] Applied theme: dark, dark class: true
+index-Z5SNXSD2.js:559 🔄 App.tsx: useEffect running - recovering wallet state
+index-Z5SNXSD2.js:559 🔐 [GLOBAL RENEWAL] Handler initialized
+index-Z5SNXSD2.js:559 ⚠️ [GLOBAL RENEWAL] Initial check - session needs renewal
+index-Z5SNXSD2.js:434 Refused to apply inline style because it violates the following Content Security Policy directive: "style-src 'self' https://fonts.googleapis.com https://cdn.jsdelivr.net". Either the 'unsafe-inline' keyword, a hash ('sha256-kAApudxpTi9mfjlC9lC8ZaS9xFHU9/NLLbB173MU7SU='), or a nonce ('nonce-...') is required to enable inline execution.
+
+AX @ index-Z5SNXSD2.js:434
+add @ index-Z5SNXSD2.js:434
+(anonymous) @ index-Z5SNXSD2.js:434
+U0 @ index-Z5SNXSD2.js:46
+gu @ index-Z5SNXSD2.js:46
+tq @ index-Z5SNXSD2.js:46
+yl @ index-Z5SNXSD2.js:46
+CT @ index-Z5SNXSD2.js:46
+Za @ index-Z5SNXSD2.js:44
+tq @ index-Z5SNXSD2.js:46
+yl @ index-Z5SNXSD2.js:46
+BN @ index-Z5SNXSD2.js:46
+k @ index-Z5SNXSD2.js:31
+U @ index-Z5SNXSD2.js:31
+_ @ inpage.js:166
+w @ inpage.js:166
+Y @ inpage.js:166
+postMessage
+h @ inpage.js:166
+b @ inpage.js:166
+W @ index-Z5SNXSD2.js:31
+U @ index-Z5SNXSD2.js:31
+_ @ inpage.js:166
+w @ inpage.js:166
+Y @ inpage.js:166
+postMessage
+h @ inpage.js:166
+b @ inpage.js:166
+W @ index-Z5SNXSD2.js:31
+K @ index-Z5SNXSD2.js:31
+e.unstable_scheduleCallback @ index-Z5SNXSD2.js:31
+KN @ index-Z5SNXSD2.js:46
+Ur @ index-Z5SNXSD2.js:46
+is @ index-Z5SNXSD2.js:46
+W0 @ index-Z5SNXSD2.js:46
+q0.render.Y2.render @ index-Z5SNXSD2.js:46
+(anonymous) @ index-Z5SNXSD2.js:559
+favicon.ico:1  GET https://riddleswap.com/favicon.ico 502 (Bad Gateway)
+Image
+(anonymous) @ inpage.js:1
+u @ inpage.js:1
+a @ inpage.js:1
+(anonymous) @ inpage.js:1
+r.sendSiteMetadata @ inpage.js:1
+e @ inpage.js:1
+rdl-logo-official.png:1  GET https://riddleswap.com/images/logos/rdl-logo-official.png 502 (Bad Gateway)
+Image
+ET @ index-Z5SNXSD2.js:46
+FN @ index-Z5SNXSD2.js:46
+QW @ index-Z5SNXSD2.js:46
+tq @ index-Z5SNXSD2.js:46
+yl @ index-Z5SNXSD2.js:46
+BN @ index-Z5SNXSD2.js:46
+k @ index-Z5SNXSD2.js:31
+U @ index-Z5SNXSD2.js:31
+_ @ inpage.js:166
+w @ inpage.js:166
+Y @ inpage.js:166
+postMessage
+h @ inpage.js:166
+b @ inpage.js:166
+W @ index-Z5SNXSD2.js:31
+K @ index-Z5SNXSD2.js:31
+e.unstable_scheduleCallback @ index-Z5SNXSD2.js:31
+KN @ index-Z5SNXSD2.js:46
+Ur @ index-Z5SNXSD2.js:46
+is @ index-Z5SNXSD2.js:46
+W0 @ index-Z5SNXSD2.js:46
+q0.render.Y2.render @ index-Z5SNXSD2.js:46
+(anonymous) @ index-Z5SNXSD2.js:559
+logo.jpg:1  GET https://riddleswap.com/logo.jpg 502 (Bad Gateway)
+Image
+ET @ index-Z5SNXSD2.js:46
+FN @ index-Z5SNXSD2.js:46
+QW @ index-Z5SNXSD2.js:46
+tq @ index-Z5SNXSD2.js:46
+yl @ index-Z5SNXSD2.js:46
+BN @ index-Z5SNXSD2.js:46
+k @ index-Z5SNXSD2.js:31
+U @ index-Z5SNXSD2.js:31
+_ @ inpage.js:166
+w @ inpage.js:166
+Y @ inpage.js:166
+postMessage
+h @ inpage.js:166
+b @ inpage.js:166
+W @ index-Z5SNXSD2.js:31
+K @ index-Z5SNXSD2.js:31
+e.unstable_scheduleCallback @ index-Z5SNXSD2.js:31
+KN @ index-Z5SNXSD2.js:46
+Ur @ index-Z5SNXSD2.js:46
+is @ index-Z5SNXSD2.js:46
+W0 @ index-Z5SNXSD2.js:46
+q0.render.Y2.render @ index-Z5SNXSD2.js:46
+(anonymous) @ index-Z5SNXSD2.js:559
+index-Z5SNXSD2.js:54  POST https://riddleswap.com/api/notifications/register-device 502 (Bad Gateway)
+ns @ index-Z5SNXSD2.js:54
+registerDevice @ index-Z5SNXSD2.js:529
+initializeWebNotifications @ index-Z5SNXSD2.js:529
+initialize @ index-Z5SNXSD2.js:529
+(anonymous) @ index-Z5SNXSD2.js:529
+(anonymous) @ index-Z5SNXSD2.js:529
+U0 @ index-Z5SNXSD2.js:46
+gu @ index-Z5SNXSD2.js:46
+CT @ index-Z5SNXSD2.js:46
+Za @ index-Z5SNXSD2.js:44
+tq @ index-Z5SNXSD2.js:46
+yl @ index-Z5SNXSD2.js:46
+BN @ index-Z5SNXSD2.js:46
+k @ index-Z5SNXSD2.js:31
+U @ index-Z5SNXSD2.js:31
+_ @ inpage.js:166
+w @ inpage.js:166
+Y @ inpage.js:166
+postMessage
+h @ inpage.js:166
+b @ inpage.js:166
+W @ index-Z5SNXSD2.js:31
+K @ index-Z5SNXSD2.js:31
+e.unstable_scheduleCallback @ index-Z5SNXSD2.js:31
+KN @ index-Z5SNXSD2.js:46
+Ur @ index-Z5SNXSD2.js:46
+is @ index-Z5SNXSD2.js:46
+W0 @ index-Z5SNXSD2.js:46
+q0.render.Y2.render @ index-Z5SNXSD2.js:46
+(anonymous) @ index-Z5SNXSD2.js:559
+index-Z5SNXSD2.js:54  GET https://riddleswap.com/api/riddle-wallet/session 502 (Bad Gateway)
+checkSession @ index-Z5SNXSD2.js:54
+(anonymous) @ index-Z5SNXSD2.js:54
+U0 @ index-Z5SNXSD2.js:46
+gu @ index-Z5SNXSD2.js:46
+CT @ index-Z5SNXSD2.js:46
+Za @ index-Z5SNXSD2.js:44
+tq @ index-Z5SNXSD2.js:46
+yl @ index-Z5SNXSD2.js:46
+BN @ index-Z5SNXSD2.js:46
+k @ index-Z5SNXSD2.js:31
+U @ index-Z5SNXSD2.js:31
+_ @ inpage.js:166
+w @ inpage.js:166
+Y @ inpage.js:166
+postMessage
+h @ inpage.js:166
+b @ inpage.js:166
+W @ index-Z5SNXSD2.js:31
+K @ index-Z5SNXSD2.js:31
+e.unstable_scheduleCallback @ index-Z5SNXSD2.js:31
+KN @ index-Z5SNXSD2.js:46
+Ur @ index-Z5SNXSD2.js:46
+is @ index-Z5SNXSD2.js:46
+W0 @ index-Z5SNXSD2.js:46
+q0.render.Y2.render @ index-Z5SNXSD2.js:46
+(anonymous) @ index-Z5SNXSD2.js:559
+index-Z5SNXSD2.js:46  GET https://riddleswap.com/assets/arrow-left-CTRjVsZj.js net::ERR_ABORTED 502 (Bad Gateway)
+(anonymous) @ index-Z5SNXSD2.js:46
+se @ index-Z5SNXSD2.js:46
+(anonymous) @ index-Z5SNXSD2.js:559
+Kz @ index-Z5SNXSD2.js:10
+HN @ index-Z5SNXSD2.js:46
+VN @ index-Z5SNXSD2.js:46
+ZW @ index-Z5SNXSD2.js:46
+Gm @ index-Z5SNXSD2.js:46
+BN @ index-Z5SNXSD2.js:46
+k @ index-Z5SNXSD2.js:31
+U @ index-Z5SNXSD2.js:31
+_ @ inpage.js:166
+w @ inpage.js:166
+Y @ inpage.js:166
+postMessage
+h @ inpage.js:166
+b @ inpage.js:166
+W @ index-Z5SNXSD2.js:31
+K @ index-Z5SNXSD2.js:31
+e.unstable_scheduleCallback @ index-Z5SNXSD2.js:31
+KN @ index-Z5SNXSD2.js:46
+Ur @ index-Z5SNXSD2.js:46
+is @ index-Z5SNXSD2.js:46
+W0 @ index-Z5SNXSD2.js:46
+q0.render.Y2.render @ index-Z5SNXSD2.js:46
+(anonymous) @ index-Z5SNXSD2.js:559
+index-Z5SNXSD2.js:46  GET https://riddleswap.com/assets/BackButton-fbjJ0Jkq.js net::ERR_ABORTED 502 (Bad Gateway)
+(anonymous) @ index-Z5SNXSD2.js:46
+se @ index-Z5SNXSD2.js:46
+(anonymous) @ index-Z5SNXSD2.js:559
+Kz @ index-Z5SNXSD2.js:10
+HN @ index-Z5SNXSD2.js:46
+VN @ index-Z5SNXSD2.js:46
+ZW @ index-Z5SNXSD2.js:46
+Gm @ index-Z5SNXSD2.js:46
+BN @ index-Z5SNXSD2.js:46
+k @ index-Z5SNXSD2.js:31
+U @ index-Z5SNXSD2.js:31
+_ @ inpage.js:166
+w @ inpage.js:166
+Y @ inpage.js:166
+postMessage
+h @ inpage.js:166
+b @ inpage.js:166
+W @ index-Z5SNXSD2.js:31
+K @ index-Z5SNXSD2.js:31
+e.unstable_scheduleCallback @ index-Z5SNXSD2.js:31
+KN @ index-Z5SNXSD2.js:46
+Ur @ index-Z5SNXSD2.js:46
+is @ index-Z5SNXSD2.js:46
+W0 @ index-Z5SNXSD2.js:46
+q0.render.Y2.render @ index-Z5SNXSD2.js:46
+(anonymous) @ index-Z5SNXSD2.js:559
+index-Z5SNXSD2.js:54  GET https://riddleswap.com/api/wallet/total-balance 502 (Bad Gateway)
+(anonymous) @ index-Z5SNXSD2.js:54
+s @ index-Z5SNXSD2.js:54
+x @ index-Z5SNXSD2.js:54
+start @ index-Z5SNXSD2.js:54
+fetch @ index-Z5SNXSD2.js:54
+vf @ index-Z5SNXSD2.js:54
+onSubscribe @ index-Z5SNXSD2.js:54
+subscribe @ index-Z5SNXSD2.js:54
+(anonymous) @ index-Z5SNXSD2.js:54
+lN @ index-Z5SNXSD2.js:44
+U0 @ index-Z5SNXSD2.js:46
+gu @ index-Z5SNXSD2.js:46
+CT @ index-Z5SNXSD2.js:46
+Za @ index-Z5SNXSD2.js:44
+tq @ index-Z5SNXSD2.js:46
+yl @ index-Z5SNXSD2.js:46
+BN @ index-Z5SNXSD2.js:46
+k @ index-Z5SNXSD2.js:31
+U @ index-Z5SNXSD2.js:31
+_ @ inpage.js:166
+w @ inpage.js:166
+Y @ inpage.js:166
+postMessage
+h @ inpage.js:166
+b @ inpage.js:166
+W @ index-Z5SNXSD2.js:31
+K @ index-Z5SNXSD2.js:31
+e.unstable_scheduleCallback @ index-Z5SNXSD2.js:31
+KN @ index-Z5SNXSD2.js:46
+Ur @ index-Z5SNXSD2.js:46
+is @ index-Z5SNXSD2.js:46
+W0 @ index-Z5SNXSD2.js:46
+q0.render.Y2.render @ index-Z5SNXSD2.js:46
+(anonymous) @ index-Z5SNXSD2.js:559
+index-Z5SNXSD2.js:54  GET https://riddleswap.com/api/notifications/unread-count 502 (Bad Gateway)
+(anonymous) @ index-Z5SNXSD2.js:54
+s @ index-Z5SNXSD2.js:54
+x @ index-Z5SNXSD2.js:54
+start @ index-Z5SNXSD2.js:54
+fetch @ index-Z5SNXSD2.js:54
+vf @ index-Z5SNXSD2.js:54
+onSubscribe @ index-Z5SNXSD2.js:54
+subscribe @ index-Z5SNXSD2.js:54
+(anonymous) @ index-Z5SNXSD2.js:54
+lN @ index-Z5SNXSD2.js:44
+U0 @ index-Z5SNXSD2.js:46
+gu @ index-Z5SNXSD2.js:46
+CT @ index-Z5SNXSD2.js:46
+Za @ index-Z5SNXSD2.js:44
+tq @ index-Z5SNXSD2.js:46
+yl @ index-Z5SNXSD2.js:46
+BN @ index-Z5SNXSD2.js:46
+k @ index-Z5SNXSD2.js:31
+U @ index-Z5SNXSD2.js:31
+_ @ inpage.js:166
+w @ inpage.js:166
+Y @ inpage.js:166
+postMessage
+h @ inpage.js:166
+b @ inpage.js:166
+W @ index-Z5SNXSD2.js:31
+K @ index-Z5SNXSD2.js:31
+e.unstable_scheduleCallback @ index-Z5SNXSD2.js:31
+KN @ index-Z5SNXSD2.js:46
+Ur @ index-Z5SNXSD2.js:46
+is @ index-Z5SNXSD2.js:46
+W0 @ index-Z5SNXSD2.js:46
+q0.render.Y2.render @ index-Z5SNXSD2.js:46
+(anonymous) @ index-Z5SNXSD2.js:559
+index-Z5SNXSD2.js:46  GET https://riddleswap.com/assets/gamepad-2-B4IlDoef.js net::ERR_ABORTED 502 (Bad Gateway)
+(anonymous) @ index-Z5SNXSD2.js:46
+se @ index-Z5SNXSD2.js:46
+(anonymous) @ index-Z5SNXSD2.js:559
+Kz @ index-Z5SNXSD2.js:10
+HN @ index-Z5SNXSD2.js:46
+VN @ index-Z5SNXSD2.js:46
+ZW @ index-Z5SNXSD2.js:46
+Gm @ index-Z5SNXSD2.js:46
+BN @ index-Z5SNXSD2.js:46
+k @ index-Z5SNXSD2.js:31
+U @ index-Z5SNXSD2.js:31
+_ @ inpage.js:166
+w @ inpage.js:166
+Y @ inpage.js:166
+postMessage
+h @ inpage.js:166
+b @ inpage.js:166
+W @ index-Z5SNXSD2.js:31
+K @ index-Z5SNXSD2.js:31
+e.unstable_scheduleCallback @ index-Z5SNXSD2.js:31
+KN @ index-Z5SNXSD2.js:46
+Ur @ index-Z5SNXSD2.js:46
+is @ index-Z5SNXSD2.js:46
+W0 @ index-Z5SNXSD2.js:46
+q0.render.Y2.render @ index-Z5SNXSD2.js:46
+(anonymous) @ index-Z5SNXSD2.js:559
+index-Z5SNXSD2.js:46  GET https://riddleswap.com/assets/trophy-eVK3_R4F.js net::ERR_ABORTED 502 (Bad Gateway)
+(anonymous) @ index-Z5SNXSD2.js:46
+se @ index-Z5SNXSD2.js:46
+(anonymous) @ index-Z5SNXSD2.js:559
+Kz @ index-Z5SNXSD2.js:10
+HN @ index-Z5SNXSD2.js:46
+VN @ index-Z5SNXSD2.js:46
+ZW @ index-Z5SNXSD2.js:46
+Gm @ index-Z5SNXSD2.js:46
+BN @ index-Z5SNXSD2.js:46
+k @ index-Z5SNXSD2.js:31
+U @ index-Z5SNXSD2.js:31
+_ @ inpage.js:166
+w @ inpage.js:166
+Y @ inpage.js:166
+postMessage
+h @ inpage.js:166
+b @ inpage.js:166
+W @ index-Z5SNXSD2.js:31
+K @ index-Z5SNXSD2.js:31
+e.unstable_scheduleCallback @ index-Z5SNXSD2.js:31
+KN @ index-Z5SNXSD2.js:46
+Ur @ index-Z5SNXSD2.js:46
+is @ index-Z5SNXSD2.js:46
+W0 @ index-Z5SNXSD2.js:46
+q0.render.Y2.render @ index-Z5SNXSD2.js:46
+(anonymous) @ index-Z5SNXSD2.js:559
+index-Z5SNXSD2.js:46  GET https://riddleswap.com/assets/hammer-CQXhQT-S.js net::ERR_ABORTED 502 (Bad Gateway)
+(anonymous) @ index-Z5SNXSD2.js:46
+se @ index-Z5SNXSD2.js:46
+(anonymous) @ index-Z5SNXSD2.js:559
+Kz @ index-Z5SNXSD2.js:10
+HN @ index-Z5SNXSD2.js:46
+VN @ index-Z5SNXSD2.js:46
+ZW @ index-Z5SNXSD2.js:46
+Gm @ index-Z5SNXSD2.js:46
+BN @ index-Z5SNXSD2.js:46
+k @ index-Z5SNXSD2.js:31
+U @ index-Z5SNXSD2.js:31
+_ @ inpage.js:166
+w @ inpage.js:166
+Y @ inpage.js:166
+postMessage
+h @ inpage.js:166
+b @ inpage.js:166
+W @ index-Z5SNXSD2.js:31
+K @ index-Z5SNXSD2.js:31
+e.unstable_scheduleCallback @ index-Z5SNXSD2.js:31
+KN @ index-Z5SNXSD2.js:46
+Ur @ index-Z5SNXSD2.js:46
+is @ index-Z5SNXSD2.js:46
+W0 @ index-Z5SNXSD2.js:46
+q0.render.Y2.render @ index-Z5SNXSD2.js:46
+(anonymous) @ index-Z5SNXSD2.js:559
+index-Z5SNXSD2.js:46  GET https://riddleswap.com/assets/inquisition-landing-BNimdtQJ.js net::ERR_ABORTED 502 (Bad Gateway)
+(anonymous) @ index-Z5SNXSD2.js:46
+se @ index-Z5SNXSD2.js:46
+(anonymous) @ index-Z5SNXSD2.js:559
+Kz @ index-Z5SNXSD2.js:10
+HN @ index-Z5SNXSD2.js:46
+VN @ index-Z5SNXSD2.js:46
+ZW @ index-Z5SNXSD2.js:46
+Gm @ index-Z5SNXSD2.js:46
+BN @ index-Z5SNXSD2.js:46
+k @ index-Z5SNXSD2.js:31
+U @ index-Z5SNXSD2.js:31
+_ @ inpage.js:166
+w @ inpage.js:166
+Y @ inpage.js:166
+postMessage
+h @ inpage.js:166
+b @ inpage.js:166
+W @ index-Z5SNXSD2.js:31
+K @ index-Z5SNXSD2.js:31
+e.unstable_scheduleCallback @ index-Z5SNXSD2.js:31
+KN @ index-Z5SNXSD2.js:46
+Ur @ index-Z5SNXSD2.js:46
+is @ index-Z5SNXSD2.js:46
+W0 @ index-Z5SNXSD2.js:46
+q0.render.Y2.render @ index-Z5SNXSD2.js:46
+(anonymous) @ index-Z5SNXSD2.js:559
+index-Z5SNXSD2.js:46  GET https://riddleswap.com/assets/sparkles-pEGs7BZQ.js net::ERR_ABORTED 502 (Bad Gateway)
+(anonymous) @ index-Z5SNXSD2.js:46
+se @ index-Z5SNXSD2.js:46
+(anonymous) @ index-Z5SNXSD2.js:559
+Kz @ index-Z5SNXSD2.js:10
+HN @ index-Z5SNXSD2.js:46
+VN @ index-Z5SNXSD2.js:46
+ZW @ index-Z5SNXSD2.js:46
+Gm @ index-Z5SNXSD2.js:46
+BN @ index-Z5SNXSD2.js:46
+k @ index-Z5SNXSD2.js:31
+U @ index-Z5SNXSD2.js:31
+_ @ inpage.js:166
+w @ inpage.js:166
+Y @ inpage.js:166
+postMessage
+h @ inpage.js:166
+b @ inpage.js:166
+W @ index-Z5SNXSD2.js:31
+K @ index-Z5SNXSD2.js:31
+e.unstable_scheduleCallback @ index-Z5SNXSD2.js:31
+KN @ index-Z5SNXSD2.js:46
+Ur @ index-Z5SNXSD2.js:46
+is @ index-Z5SNXSD2.js:46
+W0 @ index-Z5SNXSD2.js:46
+q0.render.Y2.render @ index-Z5SNXSD2.js:46
+(anonymous) @ index-Z5SNXSD2.js:559
+index-Z5SNXSD2.js:46  GET https://riddleswap.com/assets/crown-B0hTYdHe.js net::ERR_ABORTED 502 (Bad Gateway)
+(anonymous) @ index-Z5SNXSD2.js:46
+se @ index-Z5SNXSD2.js:46
+(anonymous) @ index-Z5SNXSD2.js:559
+Kz @ index-Z5SNXSD2.js:10
+HN @ index-Z5SNXSD2.js:46
+VN @ index-Z5SNXSD2.js:46
+ZW @ index-Z5SNXSD2.js:46
+Gm @ index-Z5SNXSD2.js:46
+BN @ index-Z5SNXSD2.js:46
+k @ index-Z5SNXSD2.js:31
+U @ index-Z5SNXSD2.js:31
+_ @ inpage.js:166
+w @ inpage.js:166
+Y @ inpage.js:166
+postMessage
+h @ inpage.js:166
+b @ inpage.js:166
+W @ index-Z5SNXSD2.js:31
+K @ index-Z5SNXSD2.js:31
+e.unstable_scheduleCallback @ index-Z5SNXSD2.js:31
+KN @ index-Z5SNXSD2.js:46
+Ur @ index-Z5SNXSD2.js:46
+is @ index-Z5SNXSD2.js:46
+W0 @ index-Z5SNXSD2.js:46
+q0.render.Y2.render @ index-Z5SNXSD2.js:46
+(anonymous) @ index-Z5SNXSD2.js:559
+index-Z5SNXSD2.js:46  GET https://riddleswap.com/assets/shopping-bag-DUzpn5Fw.js net::ERR_ABORTED 502 (Bad Gateway)
+(anonymous) @ index-Z5SNXSD2.js:46
+se @ index-Z5SNXSD2.js:46
+(anonymous) @ index-Z5SNXSD2.js:559
+Kz @ index-Z5SNXSD2.js:10
+HN @ index-Z5SNXSD2.js:46
+VN @ index-Z5SNXSD2.js:46
+ZW @ index-Z5SNXSD2.js:46
+Gm @ index-Z5SNXSD2.js:46
+BN @ index-Z5SNXSD2.js:46
+k @ index-Z5SNXSD2.js:31
+U @ index-Z5SNXSD2.js:31
+_ @ inpage.js:166
+w @ inpage.js:166
+Y @ inpage.js:166
+postMessage
+h @ inpage.js:166
+b @ inpage.js:166
+W @ index-Z5SNXSD2.js:31
+K @ index-Z5SNXSD2.js:31
+e.unstable_scheduleCallback @ index-Z5SNXSD2.js:31
+KN @ index-Z5SNXSD2.js:46
+Ur @ index-Z5SNXSD2.js:46
+is @ index-Z5SNXSD2.js:46
+W0 @ index-Z5SNXSD2.js:46
+q0.render.Y2.render @ index-Z5SNXSD2.js:46
+(anonymous) @ index-Z5SNXSD2.js:559
+index-Z5SNXSD2.js:529 ❌ Failed to register device token: Error: 502: The deployment could not be reached
+    at SD (index-Z5SNXSD2.js:54:57006)
+    at async ns (index-Z5SNXSD2.js:54:57492)
+    at async Wwe.registerDevice (index-Z5SNXSD2.js:529:12891)
+    at async Wwe.initializeWebNotifications (index-Z5SNXSD2.js:529:11119)
+    at async Wwe.initialize (index-Z5SNXSD2.js:529:10604)
+    at async index-Z5SNXSD2.js:529:14479
+registerDevice @ index-Z5SNXSD2.js:529
+await in registerDevice
+initializeWebNotifications @ index-Z5SNXSD2.js:529
+initialize @ index-Z5SNXSD2.js:529
+(anonymous) @ index-Z5SNXSD2.js:529
+(anonymous) @ index-Z5SNXSD2.js:529
+U0 @ index-Z5SNXSD2.js:46
+gu @ index-Z5SNXSD2.js:46
+CT @ index-Z5SNXSD2.js:46
+Za @ index-Z5SNXSD2.js:44
+tq @ index-Z5SNXSD2.js:46
+yl @ index-Z5SNXSD2.js:46
+BN @ index-Z5SNXSD2.js:46
+k @ index-Z5SNXSD2.js:31
+U @ index-Z5SNXSD2.js:31
+_ @ inpage.js:166
+w @ inpage.js:166
+Y @ inpage.js:166
+postMessage
+h @ inpage.js:166
+b @ inpage.js:166
+W @ index-Z5SNXSD2.js:31
+K @ index-Z5SNXSD2.js:31
+e.unstable_scheduleCallback @ index-Z5SNXSD2.js:31
+KN @ index-Z5SNXSD2.js:46
+Ur @ index-Z5SNXSD2.js:46
+is @ index-Z5SNXSD2.js:46
+W0 @ index-Z5SNXSD2.js:46
+q0.render.Y2.render @ index-Z5SNXSD2.js:46
+(anonymous) @ index-Z5SNXSD2.js:559
+index-Z5SNXSD2.js:559 🗺️ Router: Router component is rendering
+index-Z5SNXSD2.js:559 🎨 App.tsx: App component is rendering
+index-Z5SNXSD2.js:559 🏗️ App.tsx: Returning JSX with all providers
+index-Z5SNXSD2.js:559 🗺️ Router: Router component is rendering
+index-Z5SNXSD2.js:559 🎨 App.tsx: App component is rendering
+index-Z5SNXSD2.js:559 🏗️ App.tsx: Returning JSX with all providers
+index-Z5SNXSD2.js:46 TypeError: Failed to fetch dynamically imported module: https://riddleswap.com/assets/inquisition-landing-BNimdtQJ.js
+gx @ index-Z5SNXSD2.js:46
+CN.s.componentDidCatch.n.callback @ index-Z5SNXSD2.js:46
+oT @ index-Z5SNXSD2.js:44
+ET @ index-Z5SNXSD2.js:46
+FN @ index-Z5SNXSD2.js:46
+QW @ index-Z5SNXSD2.js:46
+tq @ index-Z5SNXSD2.js:46
+yl @ index-Z5SNXSD2.js:46
+BN @ index-Z5SNXSD2.js:46
+k @ index-Z5SNXSD2.js:31
+U @ index-Z5SNXSD2.js:31
+_ @ inpage.js:166
+w @ inpage.js:166
+Y @ inpage.js:166
+postMessage
+h @ inpage.js:166
+b @ inpage.js:166
+W @ index-Z5SNXSD2.js:31
+K @ index-Z5SNXSD2.js:31
+e.unstable_scheduleCallback @ index-Z5SNXSD2.js:31
+KN @ index-Z5SNXSD2.js:46
+Ur @ index-Z5SNXSD2.js:46
+qN @ index-Z5SNXSD2.js:46
+iq @ index-Z5SNXSD2.js:46
+Promise.then
+(anonymous) @ index-Z5SNXSD2.js:46
+bT @ index-Z5SNXSD2.js:46
+$N @ index-Z5SNXSD2.js:46
+Wi @ index-Z5SNXSD2.js:46
+$N @ index-Z5SNXSD2.js:46
+Wi @ index-Z5SNXSD2.js:46
+$N @ index-Z5SNXSD2.js:46
+Wi @ index-Z5SNXSD2.js:46
+$N @ index-Z5SNXSD2.js:46
+Wi @ index-Z5SNXSD2.js:46
+$N @ index-Z5SNXSD2.js:46
+Wi @ index-Z5SNXSD2.js:46
+$N @ index-Z5SNXSD2.js:46
+Wi @ index-Z5SNXSD2.js:46
+$N @ index-Z5SNXSD2.js:46
+Wi @ index-Z5SNXSD2.js:46
+$N @ index-Z5SNXSD2.js:46
+Wi @ index-Z5SNXSD2.js:46
+$N @ index-Z5SNXSD2.js:46
+Wi @ index-Z5SNXSD2.js:46
+$N @ index-Z5SNXSD2.js:46
+Wi @ index-Z5SNXSD2.js:46
+$N @ index-Z5SNXSD2.js:46
+Wi @ index-Z5SNXSD2.js:46
+$N @ index-Z5SNXSD2.js:46
+Wi @ index-Z5SNXSD2.js:46
+$N @ index-Z5SNXSD2.js:46
+Wi @ index-Z5SNXSD2.js:46
+$N @ index-Z5SNXSD2.js:46
+Wi @ index-Z5SNXSD2.js:46
+$N @ index-Z5SNXSD2.js:46
+tq @ index-Z5SNXSD2.js:46
+yl @ index-Z5SNXSD2.js:46
+BN @ index-Z5SNXSD2.js:46
+k @ index-Z5SNXSD2.js:31
+U @ index-Z5SNXSD2.js:31
+_ @ inpage.js:166
+w @ inpage.js:166
+Y @ inpage.js:166
+postMessage
+h @ inpage.js:166
+b @ inpage.js:166
+W @ index-Z5SNXSD2.js:31
+K @ index-Z5SNXSD2.js:31
+e.unstable_scheduleCallback @ index-Z5SNXSD2.js:31
+KN @ index-Z5SNXSD2.js:46
+Ur @ index-Z5SNXSD2.js:46
+is @ index-Z5SNXSD2.js:46
+W0 @ index-Z5SNXSD2.js:46
+q0.render.Y2.render @ index-Z5SNXSD2.js:46
+(anonymous) @ index-Z5SNXSD2.js:559
+index-Z5SNXSD2.js:559 ErrorBoundary caught an error: TypeError: Failed to fetch dynamically imported module: https://riddleswap.com/assets/inquisition-landing-BNimdtQJ.js {componentStack: '\n    at Lazy\n    at G (https://riddleswap.com/asse…com/assets/index-Z5SNXSD2.js:559:1046)\n    at Hxe'}
+componentDidCatch @ index-Z5SNXSD2.js:559
+CN.s.componentDidCatch.n.callback @ index-Z5SNXSD2.js:46
+oT @ index-Z5SNXSD2.js:44
+ET @ index-Z5SNXSD2.js:46
+FN @ index-Z5SNXSD2.js:46
+QW @ index-Z5SNXSD2.js:46
+tq @ index-Z5SNXSD2.js:46
+yl @ index-Z5SNXSD2.js:46
+BN @ index-Z5SNXSD2.js:46
+k @ index-Z5SNXSD2.js:31
+U @ index-Z5SNXSD2.js:31
+_ @ inpage.js:166
+w @ inpage.js:166
+Y @ inpage.js:166
+postMessage
+h @ inpage.js:166
+b @ inpage.js:166
+W @ index-Z5SNXSD2.js:31
+K @ index-Z5SNXSD2.js:31
+e.unstable_scheduleCallback @ index-Z5SNXSD2.js:31
+KN @ index-Z5SNXSD2.js:46
+Ur @ index-Z5SNXSD2.js:46
+qN @ index-Z5SNXSD2.js:46
+iq @ index-Z5SNXSD2.js:46
+Promise.then
+(anonymous) @ index-Z5SNXSD2.js:46
+bT @ index-Z5SNXSD2.js:46
+$N @ index-Z5SNXSD2.js:46
+Wi @ index-Z5SNXSD2.js:46
+$N @ index-Z5SNXSD2.js:46
+Wi @ index-Z5SNXSD2.js:46
+$N @ index-Z5SNXSD2.js:46
+Wi @ index-Z5SNXSD2.js:46
+$N @ index-Z5SNXSD2.js:46
+Wi @ index-Z5SNXSD2.js:46
+$N @ index-Z5SNXSD2.js:46
+Wi @ index-Z5SNXSD2.js:46
+$N @ index-Z5SNXSD2.js:46
+Wi @ index-Z5SNXSD2.js:46
+$N @ index-Z5SNXSD2.js:46
+Wi @ index-Z5SNXSD2.js:46
+$N @ index-Z5SNXSD2.js:46
+Wi @ index-Z5SNXSD2.js:46
+$N @ index-Z5SNXSD2.js:46
+Wi @ index-Z5SNXSD2.js:46
+$N @ index-Z5SNXSD2.js:46
+Wi @ index-Z5SNXSD2.js:46
+$N @ index-Z5SNXSD2.js:46
+Wi @ index-Z5SNXSD2.js:46
+$N @ index-Z5SNXSD2.js:46
+Wi @ index-Z5SNXSD2.js:46
+$N @ index-Z5SNXSD2.js:46
+Wi @ index-Z5SNXSD2.js:46
+$N @ index-Z5SNXSD2.js:46
+Wi @ index-Z5SNXSD2.js:46
+$N @ index-Z5SNXSD2.js:46
+tq @ index-Z5SNXSD2.js:46
+yl @ index-Z5SNXSD2.js:46
+BN @ index-Z5SNXSD2.js:46
+k @ index-Z5SNXSD2.js:31
+U @ index-Z5SNXSD2.js:31
+_ @ inpage.js:166
+w @ inpage.js:166
+Y @ inpage.js:166
+postMessage
+h @ inpage.js:166
+b @ inpage.js:166
+W @ index-Z5SNXSD2.js:31
+K @ index-Z5SNXSD2.js:31
+e.unstable_scheduleCallback @ index-Z5SNXSD2.js:31
+KN @ index-Z5SNXSD2.js:46
+Ur @ index-Z5SNXSD2.js:46
+is @ index-Z5SNXSD2.js:46
+W0 @ index-Z5SNXSD2.js:46
+q0.render.Y2.render @ index-Z5SNXSD2.js:46
+(anonymous) @ index-Z5SNXSD2.js:559
+favicon.ico:1  GET https://riddleswap.com/favicon.ico 502 (Bad Gateway)
+Image
+(anonymous) @ inpage.js:1
+u @ inpage.js:1
+a @ inpage.js:1
+await in a
+(anonymous) @ inpage.js:1
+r.sendSiteMetadata @ inpage.js:1
+e @ inpage.js:1
+index-Z5SNXSD2.js:559  POST https://riddleswap.com/api/errors/log 502 (Bad Gateway)
+logError @ index-Z5SNXSD2.js:559
+componentDidCatch @ index-Z5SNXSD2.js:559
+CN.s.componentDidCatch.n.callback @ index-Z5SNXSD2.js:46
+oT @ index-Z5SNXSD2.js:44
+ET @ index-Z5SNXSD2.js:46
+FN @ index-Z5SNXSD2.js:46
+QW @ index-Z5SNXSD2.js:46
+tq @ index-Z5SNXSD2.js:46
+yl @ index-Z5SNXSD2.js:46
+BN @ index-Z5SNXSD2.js:46
+k @ index-Z5SNXSD2.js:31
+U @ index-Z5SNXSD2.js:31
+_ @ inpage.js:166
+w @ inpage.js:166
+Y @ inpage.js:166
+postMessage
+h @ inpage.js:166
+b @ inpage.js:166
+W @ index-Z5SNXSD2.js:31
+K @ index-Z5SNXSD2.js:31
+e.unstable_scheduleCallback @ index-Z5SNXSD2.js:31
+KN @ index-Z5SNXSD2.js:46
+Ur @ index-Z5SNXSD2.js:46
+qN @ index-Z5SNXSD2.js:46
+iq @ index-Z5SNXSD2.js:46
+Promise.then
+(anonymous) @ index-Z5SNXSD2.js:46
+bT @ index-Z5SNXSD2.js:46
+$N @ index-Z5SNXSD2.js:46
+Wi @ index-Z5SNXSD2.js:46
+$N @ index-Z5SNXSD2.js:46
+Wi @ index-Z5SNXSD2.js:46
+$N @ index-Z5SNXSD2.js:46
+Wi @ index-Z5SNXSD2.js:46
+$N @ index-Z5SNXSD2.js:46
+Wi @ index-Z5SNXSD2.js:46
+$N @ index-Z5SNXSD2.js:46
+Wi @ index-Z5SNXSD2.js:46
+$N @ index-Z5SNXSD2.js:46
+Wi @ index-Z5SNXSD2.js:46
+$N @ index-Z5SNXSD2.js:46
+Wi @ index-Z5SNXSD2.js:46
+$N @ index-Z5SNXSD2.js:46
+Wi @ index-Z5SNXSD2.js:46
+$N @ index-Z5SNXSD2.js:46
+Wi @ index-Z5SNXSD2.js:46
+$N @ index-Z5SNXSD2.js:46
+Wi @ index-Z5SNXSD2.js:46
+$N @ index-Z5SNXSD2.js:46
+Wi @ index-Z5SNXSD2.js:46
+$N @ index-Z5SNXSD2.js:46
+Wi @ index-Z5SNXSD2.js:46
+$N @ index-Z5SNXSD2.js:46
+Wi @ index-Z5SNXSD2.js:46
+$N @ index-Z5SNXSD2.js:46
+Wi @ index-Z5SNXSD2.js:46
+$N @ index-Z5SNXSD2.js:46
+tq @ index-Z5SNXSD2.js:46
+yl @ index-Z5SNXSD2.js:46
+BN @ index-Z5SNXSD2.js:46
+k @ index-Z5SNXSD2.js:31
+U @ index-Z5SNXSD2.js:31
+_ @ inpage.js:166
+w @ inpage.js:166
+Y @ inpage.js:166
+postMessage
+h @ inpage.js:166
+b @ inpage.js:166
+W @ index-Z5SNXSD2.js:31
+K @ index-Z5SNXSD2.js:31
+e.unstable_scheduleCallback @ index-Z5SNXSD2.js:31
+KN @ index-Z5SNXSD2.js:46
+Ur @ index-Z5SNXSD2.js:46
+is @ index-Z5SNXSD2.js:46
+W0 @ index-Z5SNXSD2.js:46
+q0.render.Y2.render @ index-Z5SNXSD2.js:46
+(anonymous) @ index-Z5SNXSD2.js:559
+icon-192.png:1  GET https://riddleswap.com/icon-192.png 502 (Bad Gateway)
+Image
+(anonymous) @ inpage.js:1
+u @ inpage.js:1
+a @ inpage.js:1
+await in a
+(anonymous) @ inpage.js:1
+r.sendSiteMetadata @ inpage.js:1
+e @ inpage.js:1
+icon-192.png:1  GET https://riddleswap.com/icon-192.png 502 (Bad Gateway)
+Image
+(anonymous) @ inpage.js:1
+u @ inpage.js:1
+a @ inpage.js:1
+await in a
+(anonymous) @ inpage.js:1
+r.sendSiteMetadata @ inpage.js:1
+e @ inpage.js:1
+icon-192.png:1  GET https://riddleswap.com/icon-192.png 502 (Bad Gateway)
+Image
+(anonymous) @ inpage.js:1
+u @ inpage.js:1
+a @ inpage.js:1
+await in a
+(anonymous) @ inpage.js:1
+r.sendSiteMetadata @ inpage.js:1
+e @ inpage.js:1
+icon-512.png:1  GET https://riddleswap.com/icon-512.png 502 (Bad Gateway)
+Image
+(anonymous) @ inpage.js:1
+u @ inpage.js:1
+a @ inpage.js:1
+await in a
+(anonymous) @ inpage.js:1
+r.sendSiteMetadata @ inpage.js:1
+e @ inpage.js:1
+icon-192.png:1  GET https://riddleswap.com/icon-192.png 502 (Bad Gateway)
+manifest.json:1  GET https://riddleswap.com/manifest.json 502 (Bad Gateway)
+gaming:1 Manifest fetch from https://riddleswap.com/manifest.json failed, code 502
+icon-192.png:1  GET https://riddleswap.com/icon-192.png 502 (Bad Gateway)
+icon-192.png:1  GET https://riddleswap.com/icon-192.png 502 (Bad Gateway)
+icon-512.png:1  GET https://riddleswap.com/icon-512.png 502 (Bad Gateway)

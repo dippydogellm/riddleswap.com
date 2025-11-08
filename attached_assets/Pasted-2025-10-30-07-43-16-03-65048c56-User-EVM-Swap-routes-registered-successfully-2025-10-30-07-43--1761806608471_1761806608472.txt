@@ -1,0 +1,115 @@
+2025-10-30 07:43:16.03
+65048c56
+User
+✅ EVM Swap routes registered successfully
+2025-10-30 07:43:16.03
+65048c56
+User
+🔧 Registering Portfolio & Analytics routes...
+2025-10-30 07:43:16.03
+65048c56
+User
+✅ Portfolio & Analytics routes registered successfully
+2025-10-30 07:43:16.03
+65048c56
+User
+🔧 Registering NFT Collections base route...
+2025-10-30 07:43:16.03
+65048c56
+User
+✅ NFT Collections base route registered successfully
+2025-10-30 07:43:16.03
+65048c56
+User
+🔧 Registering Traders Tools routes...
+2025-10-30 07:43:16.03
+65048c56
+User
+✅ Traders Tools routes registered successfully
+2025-10-30 07:43:16.03
+65048c56
+User
+🔧 Registering Wallet Project Linking routes...
+2025-10-30 07:43:16.03
+65048c56
+User
+✅ Wallet Project Linking routes registered successfully
+2025-10-30 07:43:16.03
+65048c56
+User
+🔧 Registering Financial Ecosystem routes...
+2025-10-30 07:43:16.03
+65048c56
+User
+✅ Staking routes registered successfully
+2025-10-30 07:43:16.03
+65048c56
+User
+✅ Trading routes registered successfully
+2025-10-30 07:43:16.03
+65048c56
+User
+✅ Copy Trading routes registered successfully
+2025-10-30 07:43:16.03
+65048c56
+User
+✅ Wallet Status routes registered successfully
+2025-10-30 07:43:16.03
+65048c56
+User
+✅ Wallet Total Balance routes registered successfully
+2025-10-30 07:43:16.03
+65048c56
+User
+✅ Loans routes registered successfully
+2025-10-30 07:43:16.04
+65048c56
+User
+✅ NFT Swap routes registered successfully
+2025-10-30 07:43:16.04
+65048c56
+User
+🎉 All Financial Ecosystem routes registered successfully
+2025-10-30 07:43:16.04
+65048c56
+User
+🔧 Registering External Wallet routes...
+2025-10-30 07:43:16.04
+65048c56
+User
+✅ External Wallet routes registered successfully
+2025-10-30 07:43:16.04
+65048c56
+User
+🔧 Registering Simple External Wallet routes...
+2025-10-30 07:43:16.04
+65048c56
+User
+✅ Simple External Wallet routes registered successfully
+2025-10-30 07:43:16.04
+65048c56
+User
+🎨 Registering NFT Population routes...
+2025-10-30 07:43:16.04
+65048c56
+User
+✅ NFT Population routes registered successfully
+2025-10-30 07:43:16.04
+65048c56
+User
+🔧 Registering Linked Wallet routes...
+2025-10-30 07:43:16.04
+65048c56
+User
+✅ Linked Wallet routes registered successfully
+2025-10-30 07:43:16.04
+65048c56
+User
+🔧 Registering Authentication routes...
+
+Collapse
+
+Wrap
+
+Colors
+

@@ -1,0 +1,15 @@
+<svg width="192" height="192" viewBox="0 0 192 192" xmlns="http://www.w3.org/2000/svg">
+  <rect width="192" height="192" rx="24" fill="#000000"/>
+  <g transform="translate(48, 48) scale(0.75)">
+    <!-- RiddleSwap Icon -->
+    <circle cx="96" cy="64" r="32" fill="#FFFFFF" stroke="#000000" stroke-width="2"/>
+    <circle cx="96" cy="128" r="32" fill="#FFFFFF" stroke="#000000" stroke-width="2"/>
+    
+    <!-- Swap arrows -->
+    <path d="M64 96 L80 80 L80 88 L112 88 L112 80 L128 96 L112 112 L112 104 L80 104 L80 112 Z" fill="#FFFFFF"/>
+    
+    <!-- XRP Symbol -->
+    <text x="96" y="72" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#000000">XRP</text>
+    <text x="96" y="136" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#000000">TOKEN</text>
+  </g>
+</svg>

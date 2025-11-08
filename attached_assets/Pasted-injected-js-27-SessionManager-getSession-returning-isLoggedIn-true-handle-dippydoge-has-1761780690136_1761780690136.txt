@@ -1,0 +1,82 @@
+injected.js:27 🔍 SessionManager.getSession() returning: {isLoggedIn: true, handle: 'dippydoge', hasWalletData: true, hasSessionToken: true, walletDataKeys: Array(4)}
+injected.js:27 🔍 SessionManager.getSession() returning: {isLoggedIn: true, handle: 'dippydoge', hasWalletData: true, hasSessionToken: true, walletDataKeys: Array(4)}
+injected.js:27 🔍 SessionManager.getSession() returning: {isLoggedIn: true, handle: 'dippydoge', hasWalletData: true, hasSessionToken: true, walletDataKeys: Array(4)}
+injected.js:27 🔍 SessionManager.getSession() returning: {isLoggedIn: true, handle: 'dippydoge', hasWalletData: true, hasSessionToken: true, walletDataKeys: Array(4)}
+injected.js:27 🔍 SessionManager.getSession() returning: {isLoggedIn: true, handle: 'dippydoge', hasWalletData: true, hasSessionToken: true, walletDataKeys: Array(4)}
+injected.js:27 🔍 SessionManager.getSession() returning: {isLoggedIn: true, handle: 'dippydoge', hasWalletData: true, hasSessionToken: true, walletDataKeys: Array(4)}
+injected.js:27 🔍 SessionManager.getSession() returning: {isLoggedIn: true, handle: 'dippydoge', hasWalletData: true, hasSessionToken: true, walletDataKeys: Array(4)}
+injected.js:27 🔍 SessionManager.getSession() returning: {isLoggedIn: true, handle: 'dippydoge', hasWalletData: true, hasSessionToken: true, walletDataKeys: Array(4)}
+injected.js:27 🔍 SessionManager.getSession() returning: {isLoggedIn: true, handle: 'dippydoge', hasWalletData: true, hasSessionToken: true, walletDataKeys: Array(4)}
+injected.js:27 🔍 SessionManager.getSession() returning: {isLoggedIn: true, handle: 'dippydoge', hasWalletData: true, hasSessionToken: true, walletDataKeys: Array(4)}
+injected.js:27 🔍 SessionManager.getSession() returning: {isLoggedIn: true, handle: 'dippydoge', hasWalletData: true, hasSessionToken: true, walletDataKeys: Array(4)}
+injected.js:27 🔍 SessionManager.getSession() returning: {isLoggedIn: true, handle: 'dippydoge', hasWalletData: true, hasSessionToken: true, walletDataKeys: Array(4)}
+injected.js:27 🔍 SessionManager.getSession() returning: {isLoggedIn: true, handle: 'dippydoge', hasWalletData: true, hasSessionToken: true, walletDataKeys: Array(4)}
+injected.js:27 🔍 SessionManager.getSession() returning: {isLoggedIn: true, handle: 'dippydoge', hasWalletData: true, hasSessionToken: true, walletDataKeys: Array(4)}
+injected.js:27 🔍 SessionManager.getSession() returning: {isLoggedIn: true, handle: 'dippydoge', hasWalletData: true, hasSessionToken: true, walletDataKeys: Array(4)}
+injected.js:27 🔍 SessionManager.getSession() returning: {isLoggedIn: true, handle: 'dippydoge', hasWalletData: true, hasSessionToken: true, walletDataKeys: Array(4)}
+injected.js:27 🔍 SessionManager.getSession() returning: {isLoggedIn: true, handle: 'dippydoge', hasWalletData: true, hasSessionToken: true, walletDataKeys: Array(4)}
+injected.js:27 🔍 SessionManager.getSession() returning: {isLoggedIn: true, handle: 'dippydoge', hasWalletData: true, hasSessionToken: true, walletDataKeys: Array(4)}
+injected.js:27 🔍 SessionManager.getSession() returning: {isLoggedIn: true, handle: 'dippydoge', hasWalletData: true, hasSessionToken: true, walletDataKeys: Array(4)}
+injected.js:204  POST https://301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/api/riddlecity/city/create 400 (Bad Request)
+apply @ injected.js:204
+mutationFn @ CreateCityModal.tsx:25
+fn @ @tanstack_react-query.js?v=eaa43f1b:1216
+run @ @tanstack_react-query.js?v=eaa43f1b:506
+start @ @tanstack_react-query.js?v=eaa43f1b:547
+execute @ @tanstack_react-query.js?v=eaa43f1b:1251
+await in execute
+mutate @ @tanstack_react-query.js?v=eaa43f1b:2650
+(anonymous) @ @tanstack_react-query.js?v=eaa43f1b:3362
+handleSubmit @ CreateCityModal.tsx:47
+callCallback2 @ chunk-SM3OW2QE.js?v=eaa43f1b:3674
+invokeGuardedCallbackDev @ chunk-SM3OW2QE.js?v=eaa43f1b:3699
+invokeGuardedCallback @ chunk-SM3OW2QE.js?v=eaa43f1b:3733
+invokeGuardedCallbackAndCatchFirstError @ chunk-SM3OW2QE.js?v=eaa43f1b:3736
+executeDispatch @ chunk-SM3OW2QE.js?v=eaa43f1b:7014
+processDispatchQueueItemsInOrder @ chunk-SM3OW2QE.js?v=eaa43f1b:7034
+processDispatchQueue @ chunk-SM3OW2QE.js?v=eaa43f1b:7043
+dispatchEventsForPlugins @ chunk-SM3OW2QE.js?v=eaa43f1b:7051
+(anonymous) @ chunk-SM3OW2QE.js?v=eaa43f1b:7174
+batchedUpdates$1 @ chunk-SM3OW2QE.js?v=eaa43f1b:18913
+batchedUpdates @ chunk-SM3OW2QE.js?v=eaa43f1b:3579
+dispatchEventForPluginEventSystem @ chunk-SM3OW2QE.js?v=eaa43f1b:7173
+dispatchEventWithEnableCapturePhaseSelectiveHydrationWithoutDiscreteEventReplay @ chunk-SM3OW2QE.js?v=eaa43f1b:5478
+dispatchEvent @ chunk-SM3OW2QE.js?v=eaa43f1b:5472
+dispatchDiscreteEvent @ chunk-SM3OW2QE.js?v=eaa43f1b:5449
+injected.js:27 🔍 SessionManager.getSession() returning: {isLoggedIn: true, handle: 'dippydoge', hasWalletData: true, hasSessionToken: true, walletDataKeys: Array(4)}
+injected.js:204  POST https://301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/api/riddlecity/city/create 400 (Bad Request)
+apply @ injected.js:204
+mutationFn @ CreateCityModal.tsx:25
+fn @ @tanstack_react-query.js?v=eaa43f1b:1216
+run @ @tanstack_react-query.js?v=eaa43f1b:506
+(anonymous) @ @tanstack_react-query.js?v=eaa43f1b:530
+Promise.then
+(anonymous) @ @tanstack_react-query.js?v=eaa43f1b:526
+Promise.catch
+run @ @tanstack_react-query.js?v=eaa43f1b:510
+start @ @tanstack_react-query.js?v=eaa43f1b:547
+execute @ @tanstack_react-query.js?v=eaa43f1b:1251
+await in execute
+mutate @ @tanstack_react-query.js?v=eaa43f1b:2650
+(anonymous) @ @tanstack_react-query.js?v=eaa43f1b:3362
+handleSubmit @ CreateCityModal.tsx:47
+callCallback2 @ chunk-SM3OW2QE.js?v=eaa43f1b:3674
+invokeGuardedCallbackDev @ chunk-SM3OW2QE.js?v=eaa43f1b:3699
+invokeGuardedCallback @ chunk-SM3OW2QE.js?v=eaa43f1b:3733
+invokeGuardedCallbackAndCatchFirstError @ chunk-SM3OW2QE.js?v=eaa43f1b:3736
+executeDispatch @ chunk-SM3OW2QE.js?v=eaa43f1b:7014
+processDispatchQueueItemsInOrder @ chunk-SM3OW2QE.js?v=eaa43f1b:7034
+processDispatchQueue @ chunk-SM3OW2QE.js?v=eaa43f1b:7043
+dispatchEventsForPlugins @ chunk-SM3OW2QE.js?v=eaa43f1b:7051
+(anonymous) @ chunk-SM3OW2QE.js?v=eaa43f1b:7174
+batchedUpdates$1 @ chunk-SM3OW2QE.js?v=eaa43f1b:18913
+batchedUpdates @ chunk-SM3OW2QE.js?v=eaa43f1b:3579
+dispatchEventForPluginEventSystem @ chunk-SM3OW2QE.js?v=eaa43f1b:7173
+dispatchEventWithEnableCapturePhaseSelectiveHydrationWithoutDiscreteEventReplay @ chunk-SM3OW2QE.js?v=eaa43f1b:5478
+dispatchEvent @ chunk-SM3OW2QE.js?v=eaa43f1b:5472
+dispatchDiscreteEvent @ chunk-SM3OW2QE.js?v=eaa43f1b:5449
+injected.js:27 🔍 SessionManager.getSession() returning: {isLoggedIn: true, handle: 'dippydoge', hasWalletData: true, hasSessionToken: true, walletDataKeys: Array(4)}
+injected.js:27 🔍 SessionManager.getSession() returning: {isLoggedIn: true, handle: 'dippydoge', hasWalletData: true, hasSessionToken: true, walletDataKeys: Array(4)}
+injected.js:27 🔍 SessionManager.getSession() returning: {isLoggedIn: true, handle: 'dippydoge', hasWalletData: true, hasSessionToken: true, walletDataKeys: Array(4)}
+2injected.js:27 🔍 getQueryFn - SessionManager sessionToken: FOUND
+injected.js:27 🔍 SessionManager.getSession() returning: {isLoggedIn: true, handle: 'dippydoge', hasWalletData: true, hasSessionToken: true, walletDataKeys: Array(4)}

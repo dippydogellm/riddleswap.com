@@ -1,0 +1,18 @@
+{
+  "SOL": {
+    "symbol": "SOL",
+    "name": "Solana",
+    "isNative": true,
+    "decimals": 9,
+    "coingeckoId": "solana",
+    "dexScreener": "SOL"
+  },
+  "SRDL": {
+    "symbol": "SRDL",
+    "name": "Riddle Solana",
+    "mint": "4tPL1ZPT4uy36VYjoDvoCpvNYurscS324D8P9Ap32AzE",
+    "decimals": 6,
+    "dexScreener": "solana/4tPL1ZPT4uy36VYjoDvoCpvNYurscS324D8P9Ap32AzE",
+    "isMasterToken": true
+  }
+}

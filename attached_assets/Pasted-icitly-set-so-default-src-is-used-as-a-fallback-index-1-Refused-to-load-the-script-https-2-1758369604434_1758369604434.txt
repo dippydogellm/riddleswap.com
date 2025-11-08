@@ -1,0 +1,19 @@
+icitly set, so 'default-src' is used as a fallback.
+
+(index):1 Refused to load the script 'https://20a5a677-e8db-426b-93ca-0ab4131b22a7-00-pwrlj8iul6vd.janeway.replit.dev/__replco/static/devtools/injected.js' because it violates the following Content Security Policy directive: "default-src 'none'". Note that 'script-src-elem' was not explicitly set, so 'default-src' is used as a fallback.
+
+(index):1 Refused to execute inline event handler because it violates the following Content Security Policy directive: "default-src 'none'". Either the 'unsafe-inline' keyword, a hash ('sha256-...'), or a nonce ('nonce-...') is required to enable inline execution. Note that hashes do not apply to event handlers, style attributes and javascript: navigations unless the 'unsafe-hashes' keyword is present. Note also that 'script-src' was not explicitly set, so 'default-src' is used as a fallback.
+
+ Refused to load the script 'https://replit.com/public/js/beacon.js' because it violates the following Content Security Policy directive: "default-src 'none'". Note that 'script-src-elem' was not explicitly set, so 'default-src' is used as a fallback.
+
+onIframeLoad @ workspace_iframe.htm…2F&id=%3Arqv%3A:142
+Network.js:227 WebSocket connection to 'wss://20a5a677-e8db-426b-93ca-0ab4131b22a7-00-pwrlj8iul6vd.janeway.replit.dev/?token=o1Q2thIc6RrP' failed: 
+t @ Network.js:227
+Console.js:61 🔧 Fixed WebSocket URL for Replit: wss://localhost:undefined/?token=o1Q2thIc6RrP → wss://20a5a677-e8db-426b-93ca-0ab4131b22a7-00-pwrlj8iul6vd.janeway.replit.dev/?token=o1Q2thIc6RrP
+Network.js:227 WebSocket connection to 'wss://20a5a677-e8db-426b-93ca-0ab4131b22a7-00-pwrlj8iul6vd.janeway.replit.dev/?token=o1Q2thIc6RrP' failed: 
+t @ Network.js:227
+Console.js:61 [vite] failed to connect to websocket.
+your current setup:
+  (browser) 20a5a677-e8db-426b-93ca-0ab4131b22a7-00-pwrlj8iul6vd.janeway.replit.dev/ <--[HTTP]--> localhost:undefined/ (server)
+  (browser) 20a5a677-e8db-426b-93ca-0ab4131b22a7-00-pwrlj8iul6vd.janeway.replit.dev:/ <--[WebSocket (failing)]--> localhost:undefined/ (server)
+Check out your Vite / network configuration and https://vite.dev/config/server-options.html#server-hmr 

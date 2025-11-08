@@ -1,0 +1,101 @@
+ WebSocket connection to 'wss://301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/?token=j5kWw977plAW' failed: 
+window.WebSocket @ init.js:53
+ 🔧 Fixed WebSocket URL for Replit: wss://localhost:undefined/?token=j5kWw977plAW → wss://301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/?token=j5kWw977plAW
+ WebSocket connection to 'wss://301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/?token=j5kWw977plAW' failed: 
+window.WebSocket @ init.js:53
+ [vite] failed to connect to websocket.
+your current setup:
+  (browser) 301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/ <--[HTTP]--> localhost:undefined/ (server)
+  (browser) 301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev:/ <--[WebSocket (failing)]--> localhost:undefined/ (server)
+Check out your Vite / network configuration and https://vite.dev/config/server-options.html#server-hmr .
+(anonymous) @ client:512
+ Download the React DevTools for a better development experience: https://reactjs.org/link/react-devtools
+ 🎨 App.tsx: App component is rendering
+ 🏗️ App.tsx: Returning JSX with all providers
+SessionMonitor.tsx:10 🚫 SessionMonitor: DISABLED - Using unified SessionManager instead
+App.tsx:210 🗺️ Router: Router component is rendering
+App.tsx:213 📍 Router: Current location: /nft/00080BB84047A9C1CA01632DCBE55AE16223C3C86C3D44D2D3AD111B05D2587F
+App.tsx:216 💳 Router: Initializing wallet data state
+App.tsx:234 📭 Router: No saved wallet data found
+sessionManager.ts:517 🔍 SessionManager.getSession() returning: Object
+wallet-connection-dashboard.tsx:152 🔍 Found local wallet connections: Array(0)
+App.tsx:556 🎨 App.tsx: App component is rendering
+App.tsx:573 🏗️ App.tsx: Returning JSX with all providers
+SessionMonitor.tsx:10 🚫 SessionMonitor: DISABLED - Using unified SessionManager instead
+App.tsx:210 🗺️ Router: Router component is rendering
+App.tsx:213 📍 Router: Current location: /nft/00080BB84047A9C1CA01632DCBE55AE16223C3C86C3D44D2D3AD111B05D2587F
+App.tsx:216 💳 Router: Initializing wallet data state
+App.tsx:234 📭 Router: No saved wallet data found
+sessionManager.ts:517 🔍 SessionManager.getSession() returning: Object
+wallet-connection-dashboard.tsx:152 🔍 Found local wallet connections: Array(0)
+sessionManager.ts:103 🔍 SessionManager: checkSession() called - current sessionData: true
+sessionManager.ts:163 🌐 SessionManager: Making Riddle wallet session request to /api/riddle-wallet/session
+theme-context.tsx:50 🎨 [THEME] Applied theme: dark, dark class: true
+App.tsx:559 🔄 App.tsx: useEffect running - recovering wallet state
+sessionManager.ts:178 ✅ SessionManager: Valid session for dippydoge
+sessionManager.ts:207 ✅ SessionManager: Updated session data: Object
+sessionManager.ts:517 🔍 SessionManager.getSession() returning: Object
+sessionManager.ts:220 🔔 SessionManager: Notified 1 listeners
+sessionManager.ts:517 🔍 SessionManager.getSession() returning: Object
+wallet-connection-dashboard.tsx:152 🔍 Found local wallet connections: Array(0)
+install-prompt.tsx:34 🔧 Before install prompt event fired
+00080BB84047A9C1CA01632DCBE55AE16223C3C86C3D44D2D3AD111B05D2587F:1 Banner not shown: beforeinstallpromptevent.preventDefault() called. The page must call beforeinstallpromptevent.prompt() to show the banner.
+nft-detail.tsx:241 🔍 Fetching LIVE NFT detail for: 00080BB84047A9C1CA01632DCBE55AE16223C3C86C3D44D2D3AD111B05D2587F
+sessionManager.ts:517 🔍 SessionManager.getSession() returning: Object
+nft-detail.tsx:249 🔍 Using authenticated wallet address: rEVrTKUKSLx5nxdfV8SAFTxS9FGFrfHRLo
+nft-detail.tsx:349 🔍 Fetching LIVE transaction history for: 00080BB84047A9C1CA01632DCBE55AE16223C3C86C3D44D2D3AD111B05D2587F
+nft-detail.tsx:375 No wallet address found for history API
+nft-detail.tsx:495 🔍 [INCOMING OFFERS] Fetching offers...
+/api/gaming/nft/00080BB84047A9C1CA01632DCBE55AE16223C3C86C3D44D2D3AD111B05D2587F?t=1760710631018:1  Failed to load resource: the server responded with a status of 500 (Internal Server Error)
+nft-detail.tsx:300 🔍 Trying regular NFT endpoint for: 00080BB84047A9C1CA01632DCBE55AE16223C3C86C3D44D2D3AD111B05D2587F
+nft-detail.tsx:506 ✅ [INCOMING OFFERS] Found offers: 0
+nft-detail.tsx:710 📬 Found 0 pending buy offers for NFT 00080BB84047A9C1CA01632DCBE55AE16223C3C86C3D44D2D3AD111B05D2587F
+nft-detail.tsx:315 ✅ Found NFT via detail endpoint: Riddle Raffle #980
+nft-detail.tsx:921 🔐 [OWNERSHIP CHECK] User: rEVrTKUKSLx5nxdfV8SAFTxS9FGFrfHRLo, NFT Owner: rfLzAt7mVN6Yg7Rn1dQM2yg8nE4P51qGSC, Is Owner: false
+/api/metadata/unified/raitaXppXqftnQt8Jd2dp6uxh6dKDENDpg/1:1  Failed to load resource: the server responded with a status of 404 (Not Found)
+/api/metadata/unified/raitaXppXqftnQt8Jd2dp6uxh6dKDENDpg/1:1  Failed to load resource: the server responded with a status of 404 (Not Found)
+nft-detail.tsx:921 🔐 [OWNERSHIP CHECK] User: rEVrTKUKSLx5nxdfV8SAFTxS9FGFrfHRLo, NFT Owner: rfLzAt7mVN6Yg7Rn1dQM2yg8nE4P51qGSC, Is Owner: false
+chunk-UUFUSNZG.js?v=f202566d:336 Warning: Missing `Description` or `aria-describedby={undefined}` for {DialogContent}.
+(anonymous) @ chunk-UUFUSNZG.js?v=f202566d:336
+/api/metadata/unified/raitaXppXqftnQt8Jd2dp6uxh6dKDENDpg/1:1  Failed to load resource: the server responded with a status of 404 (Not Found)
+nft-detail.tsx:921 🔐 [OWNERSHIP CHECK] User: rEVrTKUKSLx5nxdfV8SAFTxS9FGFrfHRLo, NFT Owner: rfLzAt7mVN6Yg7Rn1dQM2yg8nE4P51qGSC, Is Owner: false
+nft-detail.tsx:921 🔐 [OWNERSHIP CHECK] User: rEVrTKUKSLx5nxdfV8SAFTxS9FGFrfHRLo, NFT Owner: rfLzAt7mVN6Yg7Rn1dQM2yg8nE4P51qGSC, Is Owner: false
+nft-detail.tsx:921 🔐 [OWNERSHIP CHECK] User: rEVrTKUKSLx5nxdfV8SAFTxS9FGFrfHRLo, NFT Owner: rfLzAt7mVN6Yg7Rn1dQM2yg8nE4P51qGSC, Is Owner: false
+chunk-UUFUSNZG.js?v=f202566d:336 Warning: Missing `Description` or `aria-describedby={undefined}` for {DialogContent}.
+(anonymous) @ chunk-UUFUSNZG.js?v=f202566d:336
+sessionManager.ts:517 🔍 SessionManager.getSession() returning: Object
+wallet-connection-dashboard.tsx:152 🔍 Found local wallet connections: Array(0)
+nft-detail.tsx:921 🔐 [OWNERSHIP CHECK] User: rEVrTKUKSLx5nxdfV8SAFTxS9FGFrfHRLo, NFT Owner: rfLzAt7mVN6Yg7Rn1dQM2yg8nE4P51qGSC, Is Owner: false
+MakeOfferDialog.tsx:45 Offer submission error: Error: Authentication required
+    at submitOffer (nft-detail.tsx:632:13)
+    at handleSubmit (MakeOfferDialog.tsx:41:13)
+    at HTMLUnknownElement.callCallback2 (chunk-SM3OW2QE.js?v=f202566d:3674:22)
+    at Object.invokeGuardedCallbackDev (chunk-SM3OW2QE.js?v=f202566d:3699:24)
+    at invokeGuardedCallback (chunk-SM3OW2QE.js?v=f202566d:3733:39)
+    at invokeGuardedCallbackAndCatchFirstError (chunk-SM3OW2QE.js?v=f202566d:3736:33)
+    at executeDispatch (chunk-SM3OW2QE.js?v=f202566d:7014:11)
+    at processDispatchQueueItemsInOrder (chunk-SM3OW2QE.js?v=f202566d:7034:15)
+    at processDispatchQueue (chunk-SM3OW2QE.js?v=f202566d:7043:13)
+    at dispatchEventsForPlugins (chunk-SM3OW2QE.js?v=f202566d:7051:11)
+handleSubmit @ MakeOfferDialog.tsx:45
+sessionManager.ts:517 🔍 SessionManager.getSession() returning: Object
+wallet-connection-dashboard.tsx:152 🔍 Found local wallet connections: Array(0)
+nft-detail.tsx:921 🔐 [OWNERSHIP CHECK] User: rEVrTKUKSLx5nxdfV8SAFTxS9FGFrfHRLo, NFT Owner: rfLzAt7mVN6Yg7Rn1dQM2yg8nE4P51qGSC, Is Owner: false
+MakeOfferDialog.tsx:45 Offer submission error: Error: Authentication required
+    at submitOffer (nft-detail.tsx:632:13)
+    at handleSubmit (MakeOfferDialog.tsx:41:13)
+    at HTMLUnknownElement.callCallback2 (chunk-SM3OW2QE.js?v=f202566d:3674:22)
+    at Object.invokeGuardedCallbackDev (chunk-SM3OW2QE.js?v=f202566d:3699:24)
+    at invokeGuardedCallback (chunk-SM3OW2QE.js?v=f202566d:3733:39)
+    at invokeGuardedCallbackAndCatchFirstError (chunk-SM3OW2QE.js?v=f202566d:3736:33)
+    at executeDispatch (chunk-SM3OW2QE.js?v=f202566d:7014:11)
+    at processDispatchQueueItemsInOrder (chunk-SM3OW2QE.js?v=f202566d:7034:15)
+    at processDispatchQueue (chunk-SM3OW2QE.js?v=f202566d:7043:13)
+    at dispatchEventsForPlugins (chunk-SM3OW2QE.js?v=f202566d:7051:11)
+handleSubmit @ MakeOfferDialog.tsx:45
+sessionManager.ts:517 🔍 SessionManager.getSession() returning: {isLoggedIn: true, handle: 'dippydoge', hasWalletData: true, hasSessionToken: true, walletDataKeys: Array(7)}
+wallet-connection-dashboard.tsx:152 🔍 Found local wallet connections: []
+nft-detail.tsx:921 🔐 [OWNERSHIP CHECK] User: rEVrTKUKSLx5nxdfV8SAFTxS9FGFrfHRLo, NFT Owner: rfLzAt7mVN6Yg7Rn1dQM2yg8nE4P51qGSC, Is Owner: false
+ 🔍 SessionManager.getSession() returning: {isLoggedIn: true, handle: 'dippydoge', hasWalletData: true, hasSessionToken: true, walletDataKeys: Array(7)}
+ 🔍 Found local wallet connections: []
+ 🔐 [OWNERSHIP CHECK] User: rEVrTKUKSLx5nxdfV8SAFTxS9FGFrfHRLo, NFT Owner: rfLzAt7mVN6Yg7Rn1dQM2yg8nE4P51qGSC, Is Owner: false

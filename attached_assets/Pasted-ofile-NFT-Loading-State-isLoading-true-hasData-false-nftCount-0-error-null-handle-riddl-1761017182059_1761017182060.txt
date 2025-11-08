@@ -1,0 +1,95 @@
+ofile] NFT Loading State: {isLoading: true, hasData: false, nftCount: 0, error: null, handle: 'riddlbroker'}
+injected.js:27 🔍 SessionManager.getSession() returning: {isLoggedIn: true, handle: 'riddlbroker', hasWalletData: true, hasSessionToken: true, walletDataKeys: Array(7)}
+injected.js:27 🎮 [Inquisition Profile] NFT Loading State: {isLoading: true, hasData: false, nftCount: 0, error: null, handle: 'riddlbroker'}
+injected.js:27 🔍 SessionManager.getSession() returning: {isLoggedIn: true, handle: 'riddlbroker', hasWalletData: true, hasSessionToken: true, walletDataKeys: Array(7)}
+injected.js:27 🎮 [Inquisition Profile] NFT Loading State: {isLoading: false, hasData: true, nftCount: 0, error: null, handle: 'riddlbroker'}
+2injected.js:27 🔍 getQueryFn - SessionManager sessionToken: FOUND
+injected.js:27 🔍 SessionManager.getSession() returning: {isLoggedIn: true, handle: 'riddlbroker', hasWalletData: true, hasSessionToken: true, walletDataKeys: Array(7)}
+injected.js:27 🔍 SessionManager.getSession() returning: {isLoggedIn: true, handle: 'riddlbroker', hasWalletData: true, hasSessionToken: true, walletDataKeys: Array(7)}
+injected.js:27 🔍 SessionManager.getSession() returning: {isLoggedIn: true, handle: 'riddlbroker', hasWalletData: true, hasSessionToken: true, walletDataKeys: Array(7)}
+injected.js:27 🎮 [Inquisition Profile] NFT Loading State: {isLoading: false, hasData: true, nftCount: 0, error: null, handle: 'riddlbroker'}
+injected.js:27 🔍 SessionManager.getSession() returning: {isLoggedIn: true, handle: 'riddlbroker', hasWalletData: true, hasSessionToken: true, walletDataKeys: Array(7)}
+injected.js:27 🎮 [Inquisition Profile] NFT Loading State: {isLoading: false, hasData: true, nftCount: 0, error: null, handle: 'riddlbroker'}
+injected.js:27 🔍 SessionManager.getSession() returning: {isLoggedIn: true, handle: 'riddlbroker', hasWalletData: true, hasSessionToken: true, walletDataKeys: Array(7)}
+injected.js:27 🎮 [Inquisition Profile] NFT Loading State: {isLoading: false, hasData: true, nftCount: 0, error: null, handle: 'riddlbroker'}
+injected.js:204  POST https://301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/api/upload-photo 401 (Unauthorized)
+apply @ injected.js:204
+mutationFn @ inquisition-profile.tsx:133
+fn @ @tanstack_react-query.js?v=0f4f54f1:1216
+run @ @tanstack_react-query.js?v=0f4f54f1:506
+start @ @tanstack_react-query.js?v=0f4f54f1:547
+execute @ @tanstack_react-query.js?v=0f4f54f1:1251
+await in execute
+mutate @ @tanstack_react-query.js?v=0f4f54f1:2650
+(anonymous) @ @tanstack_react-query.js?v=0f4f54f1:3362
+handleProfilePhotoChange @ inquisition-profile.tsx:221
+callCallback2 @ chunk-SM3OW2QE.js?v=0f4f54f1:3674
+invokeGuardedCallbackDev @ chunk-SM3OW2QE.js?v=0f4f54f1:3699
+invokeGuardedCallback @ chunk-SM3OW2QE.js?v=0f4f54f1:3733
+invokeGuardedCallbackAndCatchFirstError @ chunk-SM3OW2QE.js?v=0f4f54f1:3736
+executeDispatch @ chunk-SM3OW2QE.js?v=0f4f54f1:7014
+processDispatchQueueItemsInOrder @ chunk-SM3OW2QE.js?v=0f4f54f1:7034
+processDispatchQueue @ chunk-SM3OW2QE.js?v=0f4f54f1:7043
+dispatchEventsForPlugins @ chunk-SM3OW2QE.js?v=0f4f54f1:7051
+(anonymous) @ chunk-SM3OW2QE.js?v=0f4f54f1:7174
+batchedUpdates$1 @ chunk-SM3OW2QE.js?v=0f4f54f1:18913
+batchedUpdates @ chunk-SM3OW2QE.js?v=0f4f54f1:3579
+dispatchEventForPluginEventSystem @ chunk-SM3OW2QE.js?v=0f4f54f1:7173
+dispatchEventWithEnableCapturePhaseSelectiveHydrationWithoutDiscreteEventReplay @ chunk-SM3OW2QE.js?v=0f4f54f1:5478
+dispatchEvent @ chunk-SM3OW2QE.js?v=0f4f54f1:5472
+dispatchDiscreteEvent @ chunk-SM3OW2QE.js?v=0f4f54f1:5449
+injected.js:27 🔍 SessionManager.getSession() returning: {isLoggedIn: true, handle: 'riddlbroker', hasWalletData: true, hasSessionToken: true, walletDataKeys: Array(7)}
+injected.js:27 🎮 [Inquisition Profile] NFT Loading State: {isLoading: false, hasData: true, nftCount: 0, error: null, handle: 'riddlbroker'}
+injected.js:204  POST https://301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/api/upload-photo 401 (Unauthorized)
+apply @ injected.js:204
+mutationFn @ inquisition-profile.tsx:133
+fn @ @tanstack_react-query.js?v=0f4f54f1:1216
+run @ @tanstack_react-query.js?v=0f4f54f1:506
+(anonymous) @ @tanstack_react-query.js?v=0f4f54f1:530
+Promise.then
+(anonymous) @ @tanstack_react-query.js?v=0f4f54f1:526
+Promise.catch
+run @ @tanstack_react-query.js?v=0f4f54f1:510
+start @ @tanstack_react-query.js?v=0f4f54f1:547
+execute @ @tanstack_react-query.js?v=0f4f54f1:1251
+await in execute
+mutate @ @tanstack_react-query.js?v=0f4f54f1:2650
+(anonymous) @ @tanstack_react-query.js?v=0f4f54f1:3362
+handleProfilePhotoChange @ inquisition-profile.tsx:221
+callCallback2 @ chunk-SM3OW2QE.js?v=0f4f54f1:3674
+invokeGuardedCallbackDev @ chunk-SM3OW2QE.js?v=0f4f54f1:3699
+invokeGuardedCallback @ chunk-SM3OW2QE.js?v=0f4f54f1:3733
+invokeGuardedCallbackAndCatchFirstError @ chunk-SM3OW2QE.js?v=0f4f54f1:3736
+executeDispatch @ chunk-SM3OW2QE.js?v=0f4f54f1:7014
+processDispatchQueueItemsInOrder @ chunk-SM3OW2QE.js?v=0f4f54f1:7034
+processDispatchQueue @ chunk-SM3OW2QE.js?v=0f4f54f1:7043
+dispatchEventsForPlugins @ chunk-SM3OW2QE.js?v=0f4f54f1:7051
+(anonymous) @ chunk-SM3OW2QE.js?v=0f4f54f1:7174
+batchedUpdates$1 @ chunk-SM3OW2QE.js?v=0f4f54f1:18913
+batchedUpdates @ chunk-SM3OW2QE.js?v=0f4f54f1:3579
+dispatchEventForPluginEventSystem @ chunk-SM3OW2QE.js?v=0f4f54f1:7173
+dispatchEventWithEnableCapturePhaseSelectiveHydrationWithoutDiscreteEventReplay @ chunk-SM3OW2QE.js?v=0f4f54f1:5478
+dispatchEvent @ chunk-SM3OW2QE.js?v=0f4f54f1:5472
+dispatchDiscreteEvent @ chunk-SM3OW2QE.js?v=0f4f54f1:5449
+injected.js:27 🔍 SessionManager.getSession() returning: {isLoggedIn: true, handle: 'riddlbroker', hasWalletData: true, hasSessionToken: true, walletDataKeys: Array(7)}
+injected.js:27 🔍 SessionManager.getSession() returning: {isLoggedIn: true, handle: 'riddlbroker', hasWalletData: true, hasSessionToken: true, walletDataKeys: Array(7)}
+injected.js:27 🔍 SessionManager.getSession() returning: {isLoggedIn: true, handle: 'riddlbroker', hasWalletData: true, hasSessionToken: true, walletDataKeys: Array(7)}
+injected.js:27 🔍 Found local wallet connections: []
+injected.js:27 🔍 SessionManager.getSession() returning: {isLoggedIn: true, handle: 'riddlbroker', hasWalletData: true, hasSessionToken: true, walletDataKeys: Array(7)}
+injected.js:27 🎮 [Inquisition Profile] NFT Loading State: {isLoading: false, hasData: true, nftCount: 0, error: null, handle: 'riddlbroker'}
+injected.js:27 🔍 SessionManager: checkSession() called - current sessionData: true
+injected.js:27 🌐 SessionManager: Making Riddle wallet session request to /api/riddle-wallet/session
+injected.js:27 ✅ SessionManager: Valid session for riddlbroker
+injected.js:27 ✅ SessionManager: Updated session data: {handle: 'riddlbroker', hasWalletData: true, authenticated: true, listeners: 5}
+injected.js:27 🔍 SessionManager.getSession() returning: {isLoggedIn: true, handle: 'riddlbroker', hasWalletData: true, hasSessionToken: true, walletDataKeys: Array(7)}
+injected.js:27 🔍 SessionManager.getSession() returning: {isLoggedIn: true, handle: 'riddlbroker', hasWalletData: true, hasSessionToken: true, walletDataKeys: Array(7)}
+injected.js:27 🔍 SessionManager.getSession() returning: {isLoggedIn: true, handle: 'riddlbroker', hasWalletData: true, hasSessionToken: true, walletDataKeys: Array(7)}
+injected.js:27 🔍 SessionManager.getSession() returning: {isLoggedIn: true, handle: 'riddlbroker', hasWalletData: true, hasSessionToken: true, walletDataKeys: Array(7)}
+injected.js:27 🔍 SessionManager.getSession() returning: {isLoggedIn: true, handle: 'riddlbroker', hasWalletData: true, hasSessionToken: true, walletDataKeys: Array(7)}
+injected.js:27 🔔 SessionManager: Notified 5 listeners
+injected.js:27 🔍 SessionManager.getSession() returning: {isLoggedIn: true, handle: 'riddlbroker', hasWalletData: true, hasSessionToken: true, walletDataKeys: Array(7)}
+injected.js:27 🔍 SessionManager.getSession() returning: {isLoggedIn: true, handle: 'riddlbroker', hasWalletData: true, hasSessionToken: true, walletDataKeys: Array(7)}
+injected.js:27 🔍 SessionManager.getSession() returning: {isLoggedIn: true, handle: 'riddlbroker', hasWalletData: true, hasSessionToken: true, walletDataKeys: Array(7)}
+injected.js:27 🔍 Found local wallet connections: []
+injected.js:27 🔍 SessionManager.getSession() returning: {isLoggedIn: true, handle: 'riddlbroker', hasWalletData: true, hasSessionToken: true, walletDataKeys: Array(7)}
+injected.js:27 🎮 [Inquisition Profile] NFT Loading State: {isLoading: false, hasData: true, nftCount: 0, error: null, handle: 'riddlbroker'}

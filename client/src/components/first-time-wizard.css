@@ -1,0 +1,189 @@
+/* First-Time Wizard Mobile-Optimized Styles */
+
+/* Override any conflicting dialog styles */
+.first-time-wizard-dialog {
+  position: fixed !important;
+  top: 50% !important;
+  left: 50% !important;
+  transform: translate(-50%, -50%) !important;
+  z-index: 50 !important;
+  background: rgba(15, 23, 42, 0.95) !important;
+  border: 1px solid rgb(71, 85, 105) !important;
+  border-radius: 0.5rem !important;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04) !important;
+  color: white !important;
+  overflow-y: auto !important;
+  max-height: calc(100vh - 2rem) !important;
+}
+
+/* Mobile styles */
+@media (max-width: 640px) {
+  .first-time-wizard-dialog {
+    width: calc(100vw - 1rem) !important;
+    max-width: calc(100vw - 1rem) !important;
+    height: calc(100vh - 1rem) !important;
+    max-height: calc(100vh - 1rem) !important;
+    margin: 0.5rem !important;
+    padding: 0.75rem !important;
+    border-radius: 0.375rem !important;
+  }
+  
+  .wizard-header {
+    padding-bottom: 0.5rem !important;
+  }
+  
+  .wizard-title {
+    font-size: 1.125rem !important; /* text-lg */
+    line-height: 1.75rem !important;
+  }
+  
+  .wizard-content {
+    padding: 0.75rem 0 !important;
+    flex: 1 !important;
+    overflow-y: auto !important;
+  }
+  
+  .wizard-navigation {
+    padding-top: 0.75rem !important;
+    border-top: 1px solid rgb(71, 85, 105) !important;
+    gap: 0.5rem !important;
+    margin-top: auto !important;
+  }
+  
+  .wizard-button {
+    flex: 1 !important;
+    padding: 0.5rem 0.75rem !important;
+    font-size: 0.875rem !important;
+  }
+  
+  .wizard-step-indicator {
+    font-size: 0.75rem !important;
+    gap: 0.25rem !important;
+  }
+  
+  .wizard-step-title {
+    font-size: 0.75rem !important;
+    line-height: 1rem !important;
+    text-align: center !important;
+  }
+}
+
+/* Desktop styles */
+@media (min-width: 640px) {
+  .first-time-wizard-dialog {
+    width: 90% !important;
+    max-width: 28rem !important; /* max-w-md */
+    max-height: 85vh !important;
+    padding: 1.5rem !important;
+  }
+  
+  .wizard-title {
+    font-size: 1.5rem !important; /* text-2xl */
+    line-height: 2rem !important;
+  }
+  
+  .wizard-content {
+    padding: 1.5rem 0 !important;
+  }
+  
+  .wizard-navigation {
+    padding-top: 1rem !important;
+    gap: 1rem !important;
+  }
+  
+  .wizard-button {
+    padding: 0.75rem 1rem !important;
+    font-size: 0.875rem !important;
+  }
+}
+
+@media (min-width: 768px) {
+  .first-time-wizard-dialog {
+    max-width: 32rem !important; /* max-w-xl */
+  }
+  
+  .wizard-title {
+    font-size: 1.5rem !important; /* text-2xl */
+  }
+}
+
+@media (min-width: 1024px) {
+  .first-time-wizard-dialog {
+    max-width: 42rem !important; /* max-w-2xl */
+  }
+}
+
+/* Progress indicators */
+.wizard-step-mobile {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  gap: 0.25rem !important;
+  font-size: 0.75rem !important;
+}
+
+.wizard-step-desktop {
+  display: none !important;
+}
+
+@media (min-width: 640px) {
+  .wizard-step-mobile {
+    display: none !important;
+  }
+  
+  .wizard-step-desktop {
+    display: flex !important;
+    gap: 0.5rem !important;
+  }
+}
+
+/* Ensure proper layout flow */
+.wizard-dialog-container {
+  display: flex !important;
+  flex-direction: column !important;
+  height: 100% !important;
+}
+
+/* Icon and button adjustments */
+.wizard-icon-small {
+  height: 0.75rem !important;
+  width: 0.75rem !important;
+}
+
+.wizard-icon-medium {
+  height: 1rem !important;
+  width: 1rem !important;
+}
+
+@media (min-width: 640px) {
+  .wizard-icon-small {
+    height: 1rem !important;
+    width: 1rem !important;
+  }
+  
+  .wizard-icon-medium {
+    height: 1rem !important;
+    width: 1rem !important;
+  }
+}
+
+/* Close button positioning */
+.wizard-close-button {
+  position: absolute !important;
+  right: 1rem !important;
+  top: 1rem !important;
+  border-radius: 0.125rem !important;
+  opacity: 0.7 !important;
+  transition: opacity 0.2s !important;
+}
+
+.wizard-close-button:hover {
+  opacity: 1 !important;
+}
+
+@media (max-width: 640px) {
+  .wizard-close-button {
+    right: 0.75rem !important;
+    top: 0.75rem !important;
+  }
+}

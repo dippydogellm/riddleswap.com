@@ -1,0 +1,119 @@
+Deployment
+Source
+Log
+2025-11-01 10:27:32.13
+37b0282e
+User
+❌ [BROKER MONITOR] Failed to start: NotConnectedError: Unexpected server response: 429
+2025-11-01 10:27:37.23
+37b0282e
+User
+data: Error: Unexpected server response: 429
+2025-11-01 10:27:37.23
+37b0282e
+User
+at ClientRequest. (/home/runner/workspace/node_modules/ws/lib/websocket.js:913:7)
+2025-11-01 10:27:37.23
+37b0282e
+User
+at ClientRequest.emit (node:events:524:28)
+2025-11-01 10:27:37.23
+37b0282e
+User
+at HTTPParser.parserOnIncomingClient (node:_http_client:702:27)
+2025-11-01 10:27:37.23
+37b0282e
+User
+at HTTPParser.parserOnHeadersComplete (node:_http_common:118:17)
+2025-11-01 10:27:37.23
+37b0282e
+User
+at TLSSocket.socketOnData (node:_http_client:544:22)
+2025-11-01 10:27:37.23
+37b0282e
+User
+at TLSSocket.emit (node:events:524:28)
+2025-11-01 10:27:37.23
+37b0282e
+User
+at addChunk (node:internal/streams/readable:561:12)
+2025-11-01 10:27:37.23
+37b0282e
+User
+at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+2025-11-01 10:27:37.23
+37b0282e
+User
+at Readable.push (node:internal/streams/readable:392:5)
+2025-11-01 10:27:37.23
+37b0282e
+User
+at TLSWrap.onStreamRead (node:internal/stream_base_commons:191:23)
+2025-11-01 10:27:37.23
+37b0282e
+User
+}
+2025-11-01 10:27:37.23
+37b0282e
+User
+🔄 [BROKER MONITOR] Retrying in 30000ms...
+2025-11-01 10:27:37.25
+37b0282e
+User
+❌ [BROKER MONITOR] Failed to start: NotConnectedError: Unexpected server response: 429
+2025-11-01 10:27:37.25
+37b0282e
+User
+at Connection.onConnectionFailed (/home/runner/workspace/node_modules/xrpl/dist/npm/client/connection.js:288:54)
+2025-11-01 10:27:37.25
+37b0282e
+User
+at Socket. (/home/runner/workspace/node_modules/xrpl/dist/npm/client/connection.js:109:49)
+2025-11-01 10:27:37.25
+37b0282e
+User
+at Socket.emit (node:events:536:35)
+2025-11-01 10:27:37.25
+37b0282e
+User
+at emitErrorAndClose (/home/runner/workspace/node_modules/ws/lib/websocket.js:1041:13)
+2025-11-01 10:27:37.25
+37b0282e
+User
+at process.processTicksAndRejections (node:internal/process/task_queues:82:21) {
+2025-11-01 10:27:37.25
+37b0282e
+User
+data: Error: Unexpected server response: 429
+2025-11-01 10:27:37.25
+37b0282e
+User
+at ClientRequest. (/home/runner/workspace/node_modules/ws/lib/websocket.js:913:7)
+2025-11-01 10:27:37.25
+37b0282e
+User
+at ClientRequest.emit (node:events:524:28)
+2025-11-01 10:27:37.25
+37b0282e
+User
+at HTTPParser.parserOnIncomingClient (node:_http_client:702:27)
+2025-11-01 10:27:37.25
+37b0282e
+User
+at HTTPParser.parserOnHeadersComplete (node:_http_common:118:17)
+2025-11-01 10:27:37.25
+37b0282e
+User
+at TLSSocket.socketOnData (node:_http_client:544:22)
+2025-11-01 10:27:37.25
+37b0282e
+User
+at TLSSocket.emit (node:events:524:28)
+2025-11-01 10:27:37.25
+37b0282e
+User
+at addChunk (node:internal/streams/readable:561:12)
+2025-11-01 10:27:37.25
+37b0282e
+User
+at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)

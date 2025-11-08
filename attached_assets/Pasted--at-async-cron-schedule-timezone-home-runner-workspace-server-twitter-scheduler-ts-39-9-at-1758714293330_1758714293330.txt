@@ -1,0 +1,105 @@
+    at async cron.schedule.timezone (/home/runner/workspace/server/twitter-scheduler.ts:39:9)
+    at async Timeout._onTimeout (/home/runner/workspace/node_modules/node-cron/src/scheduler/runner.ts:100:30) {
+  status: 401,
+  headers: Headers {
+    date: 'Wed, 24 Sep 2025 11:44:33 GMT',
+    'content-type': 'application/json',
+    'content-length': '183',
+    connection: 'keep-alive',
+    'www-authenticate': 'Bearer realm="OpenAI API"',
+    'openai-version': '2020-10-01',
+    'x-request-id': 'req_9908e44e7e73bc38e34939db2eb580db',
+    'openai-processing-ms': '106',
+    'x-envoy-upstream-service-time': '113',
+    'strict-transport-security': 'max-age=31536000; includeSubDomains; preload',
+    'cf-cache-status': 'DYNAMIC',
+    'set-cookie': '__cf_bm=nlxHvRgzwKwftUMnVFCr282Xw7j.XZNee4Q6821xbAM-1758714273-1.0.1.1-ZlYEkgbzv7RogmFwMXdOKl.1yRw4oGe6x8CbnSFVyMKYc7LKSoJBUAy6Mk93g6MmxXv1swu_8PtBjZRWFhYNUjzTdTIROaEUtVSLjvZ62EU; path=/; expires=Wed, 24-Sep-25 12:14:33 GMT; domain=.api.openai.com; HttpOnly; Secure; SameSite=None, _cfuvid=Ct7iiiFUUz3vAv5O6DkT0FU.Ja7C_..Jud4nliZOhrQ-1758714273570-0.0.1.1-604800000; path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None',
+    'x-content-type-options': 'nosniff',
+    server: 'cloudflare',
+    'cf-ray': '984207cfdca6c00b-ATL',
+    'alt-svc': 'h3=":443"; ma=86400'
+  },
+  requestID: 'req_9908e44e7e73bc38e34939db2eb580db',
+  error: {
+    message: 'You do not have access to the project tied to the API key.',
+    type: 'invalid_request_error',
+    param: null,
+    code: 'invalid_project'
+  },
+  code: 'invalid_project',
+  param: null,
+  type: 'invalid_request_error'
+}
+🐦 [TWITTER] Using direct API credentials for authentication
+🐦 [TWITTER] Posting to actual X/Twitter...
+❌ [TWITTER] Failed to post to X/Twitter: ApiResponseError: Request failed with code 403
+    at RequestHandlerHelper.createResponseError (/home/runner/workspace/node_modules/twitter-api-v2/dist/cjs/client-mixins/request-handler.helper.js:104:16)
+    at RequestHandlerHelper.onResponseEndHandler (/home/runner/workspace/node_modules/twitter-api-v2/dist/cjs/client-mixins/request-handler.helper.js:269:25)
+    at Gunzip.emit (node:events:524:28)
+    at endReadableNT (node:internal/streams/readable:1698:12)
+    at process.processTicksAndRejections (node:internal/process/task_queues:82:21) {
+  error: true,
+  type: 'response',
+  code: 403,
+  headers: {
+    date: 'Wed, 24 Sep 2025 11:44:33 GMT',
+    'content-type': 'application/json; charset=utf-8',
+    'content-length': '176',
+    connection: 'keep-alive',
+    'cf-ray': '984207d2485fb036-ATL',
+    'cf-cache-status': 'DYNAMIC',
+    'cache-control': 'no-cache, no-store, max-age=0',
+    'content-disposition': 'attachment; filename=json.json',
+    'content-encoding': 'gzip',
+    server: 'cloudflare',
+    'x-xss-protection': '0',
+    'strict-transport-security': 'max-age=631138519; includeSubdomains',
+    vary: 'accept-encoding',
+    'api-version': '2.150',
+    'origin-cf-ray': '984207d2642cb036-ATL',
+    perf: '7402827104',
+    'x-access-level': 'read',
+    'x-connection-hash': '2638326e085f3c51d49cff601c5c279b61a2ee4faa6b954366fa0976f9161418',
+    'x-content-type-options': 'nosniff',
+    'x-frame-options': 'SAMEORIGIN',
+    'x-rate-limit-limit': '1080000',
+    'x-rate-limit-remaining': '1079997',
+    'x-rate-limit-reset': '1758714510',
+    'x-response-time': '12',
+    'x-transaction-id': 'da9260a71ad8a422',
+    'set-cookie': [
+      'guest_id=v1%3A175871427368185478; SameSite=None; Secure; Path=/; Domain=x.com; Max-Age=34214400; Expires=Sun, 25 Oct 2026 11:44:33 GMT'
+    ]
+  },
+  rateLimit: { limit: 1080000, remaining: 1079997, reset: 1758714510 },
+  data: {
+    title: 'Forbidden',
+    status: 403,
+    detail: 'Your client app is not configured with the appropriate oauth1 app permissions for this endpoint.',
+    type: 'https://api.twitter.com/2/problems/oauth1-permissions'
+  }
+}
+🔄 [TWITTER] Falling back to simulation mode
+💾 [TWITTER] Saved tweet record to database: simulated_1758714273707_o2stvpkxj
+🐦 [TWITTER] Tweet processing completed: {
+  id: 'simulated_1758714273707_o2stvpkxj',
+  type: 'automatic',
+  actuallyPosted: false,
+  contentLength: 351,
+  timestamp: '2025-09-24T11:44:33.807Z'
+}
+🐦 [AUTO-TWEET] Automatic tweet posted successfully: {
+  tweetId: 'simulated_1758714273707_o2stvpkxj',
+  tweetNumber: 1,
+  timestamp: '2025-09-24T11:44:33.807Z',
+  nextTweet: '2025-09-24T12:00:00.000Z'
+}
+✅ WALLET CSP exception applied for: /src/styles/wallet-connect-fix.css (Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWeb...)
+✅ WALLET CSP exception applied for: /src/components/wallet-connection-dashboard.tsx (Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWeb...)
+✅ WALLET CSP exception applied for: /src/lib/xaman-wallet-integration.ts (Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWeb...)
+🔐 [WALLET SESSION] Session check endpoint accessed
+🔍 [SESSION INFO] Public session info endpoint accessed
+✅ [SESSION INFO] Valid session found for: dippydoge
+🔍 [STORAGE] Getting queued ingestion jobs (worker: worker-afMq1gjM, limit: 3)
+✅ [STORAGE] Found 0 queued ingestion jobs
+11:44:41 AM [vite] Pre-transform error: Failed to resolve import "@/lib/sessionManager" from "client/src/components/gaming/PlayerDashboard.tsx". Does the file exist?

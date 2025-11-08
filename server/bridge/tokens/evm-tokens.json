@@ -1,0 +1,11 @@
+{
+  "ETH": {
+    "symbol": "ETH",
+    "name": "Ethereum",
+    "isNative": true,
+    "decimals": 18,
+    "coingeckoId": "ethereum",
+    "dexScreener": "ETH",
+    "chains": ["ethereum"]
+  }
+}

@@ -1,0 +1,169 @@
+/* Sidebar-specific Styles - NO TRANSPARENCY */
+
+/* Professional Header Navigation Sidebar */
+.professional-header-sidebar,
+.navigation-sidebar-container {
+  background-color: hsl(var(--sidebar-background)) !important;
+  background-image: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  opacity: 1 !important;
+  isolation: isolate !important;
+}
+
+/* Remove all transparency from navigation sidebar */
+.navigation-sidebar {
+  position: fixed;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 20rem; /* w-80 equivalent */
+  background-color: hsl(var(--sidebar-background)) !important;
+  background-image: none !important;
+  border-right: 1px solid hsl(var(--sidebar-border));
+  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+  z-index: 200;
+  opacity: 1 !important;
+  backdrop-filter: none !important;
+}
+
+/* Dark mode specific - ensure solid background */
+.dark .navigation-sidebar {
+  background-color: #0F172A !important; /* Solid dark blue */
+}
+
+/* Light mode specific - ensure solid background */
+:not(.dark) .navigation-sidebar {
+  background-color: #FFFFFF !important; /* Solid white */
+}
+
+/* Sidebar content styling */
+.sidebar-content {
+  padding: 1rem;
+  height: 100%;
+  overflow-y: auto;
+  background: transparent; /* Content inherits parent background */
+}
+
+/* Sidebar menu items */
+.sidebar-menu-item {
+  display: flex;
+  align-items: center;
+  padding: 0.75rem 1rem;
+  border-radius: 0.5rem;
+  transition: all 0.2s ease;
+  color: hsl(var(--sidebar-foreground));
+  text-decoration: none;
+  width: 100%;
+  background: transparent;
+}
+
+.sidebar-menu-item:hover {
+  background-color: hsl(var(--sidebar-accent));
+  color: hsl(var(--sidebar-accent-foreground));
+}
+
+.sidebar-menu-item.active {
+  background-color: hsl(var(--sidebar-primary));
+  color: hsl(var(--sidebar-primary-foreground));
+}
+
+/* Sidebar section headers */
+.sidebar-section-header {
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: hsl(var(--muted-foreground));
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Mobile sidebar overlay */
+.sidebar-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgb(0, 0, 0); /* Solid black overlay, no transparency */
+  z-index: 150;
+  display: none;
+}
+
+.sidebar-overlay.active {
+  display: block;
+}
+
+/* Mobile sidebar sheet */
+.mobile-sidebar-sheet {
+  background-color: hsl(var(--sidebar-background)) !important;
+  opacity: 1 !important;
+  backdrop-filter: none !important;
+}
+
+/* Ensure all sidebar containers are opaque */
+aside[data-sidebar],
+div[data-sidebar],
+.sidebar-provider aside,
+.sidebar-inset aside {
+  background-color: hsl(var(--sidebar-background)) !important;
+  background-image: none !important;
+  opacity: 1 !important;
+  backdrop-filter: none !important;
+}
+
+/* Fix for shadcn sidebar component */
+.sidebar-provider {
+  --sidebar-background: 0 0% 100%; /* White in light mode */
+}
+
+.dark .sidebar-provider {
+  --sidebar-background: 224 71% 4%; /* Dark blue in dark mode */
+}
+
+/* Override any transparent backgrounds in sidebar */
+.sidebar-provider .bg-transparent,
+.sidebar-provider .bg-opacity-95,
+.sidebar-provider .backdrop-blur {
+  background-color: hsl(var(--sidebar-background)) !important;
+  backdrop-filter: none !important;
+  opacity: 1 !important;
+}
+
+/* External wallet sidebar styles */
+.wallet-sidebar {
+  background-color: hsl(var(--sidebar-background)) !important;
+  border-right: 1px solid hsl(var(--sidebar-border));
+  opacity: 1 !important;
+}
+
+/* ULTRA-SPECIFIC: Force navigation sidebar to be completely solid */
+div.navigation-sidebar.sidebar-opaque,
+.navigation-sidebar.sidebar-opaque.fixed,
+div.navigation-sidebar[class*="sidebar-opaque"] {
+  background-color: #FFFFFF !important; /* Force white in light mode */
+  background-image: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  opacity: 1 !important;
+  isolation: isolate !important;
+}
+
+/* Dark mode navigation sidebar - ultra specific */
+.dark div.navigation-sidebar.sidebar-opaque,
+.dark .navigation-sidebar.sidebar-opaque.fixed,
+.dark div.navigation-sidebar[class*="sidebar-opaque"] {
+  background-color: #0F172A !important; /* Force dark blue in dark mode */
+  background-image: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  opacity: 1 !important;
+}
+
+/* Override ANY Tailwind background classes on navigation sidebar */
+.navigation-sidebar[class*="bg-"],
+.navigation-sidebar.sidebar-opaque[class*="bg-"] {
+  background-color: #FFFFFF !important;
+}
+
+.dark .navigation-sidebar[class*="bg-"],
+.dark .navigation-sidebar.sidebar-opaque[class*="bg-"] {
+  background-color: #0F172A !important;
+}

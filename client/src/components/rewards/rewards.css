@@ -1,0 +1,353 @@
+/* Rewards System Styles */
+.rewards-dashboard {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.rewards-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.rewards-title-section {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.rewards-icon {
+  color: var(--primary);
+}
+
+.rewards-title {
+  font-size: 2rem;
+  font-weight: 700;
+  margin: 0;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.rewards-subtitle {
+  color: var(--text-muted);
+  margin: 0.25rem 0 0 0;
+}
+
+.bank-balance-card {
+  background: linear-gradient(135deg, #667eea10 0%, #764ba210 100%);
+  border: 1px solid #667eea30;
+}
+
+/* Tabs Styling */
+.rewards-tabs-list {
+  background: var(--card);
+  border: 1px solid var(--border);
+  padding: 0.25rem;
+  gap: 0.5rem;
+}
+
+.rewards-tab {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  transition: all 0.2s ease;
+}
+
+.rewards-tab[data-state="active"] {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+}
+
+.rewards-content {
+  margin-top: 2rem;
+}
+
+/* Stats Grid */
+.rewards-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.rewards-stat-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 0.75rem;
+  padding: 1.5rem;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.rewards-stat-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+.stat-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.stat-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.stat-icon.swap {
+  background: linear-gradient(135deg, #667eea20, #764ba220);
+  color: #667eea;
+}
+
+.stat-icon.bridge {
+  background: linear-gradient(135deg, #f093fb20, #f5576c20);
+  color: #f5576c;
+}
+
+.stat-icon.nft {
+  background: linear-gradient(135deg, #4facfe20, #00f2fe20);
+  color: #4facfe;
+}
+
+.stat-icon.rdl {
+  background: linear-gradient(135deg, #43e97b20, #38f9d720);
+  color: #43e97b;
+}
+
+.stat-icon.social {
+  background: linear-gradient(135deg, #fa709a20, #fee14020);
+  color: #fa709a;
+}
+
+.stat-value {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 0.25rem;
+}
+
+.stat-label {
+  color: var(--text-muted);
+  font-size: 0.875rem;
+}
+
+.stat-change {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-size: 0.875rem;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.25rem;
+  margin-top: 0.5rem;
+}
+
+.stat-change.positive {
+  background: #10b98120;
+  color: #10b981;
+}
+
+.stat-change.negative {
+  background: #ef444420;
+  color: #ef4444;
+}
+
+/* Config Section */
+.config-section {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 0.75rem;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.config-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.config-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1rem;
+}
+
+.config-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  background: var(--background);
+  border-radius: 0.5rem;
+}
+
+.config-label {
+  font-weight: 500;
+}
+
+.config-value {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.config-input {
+  width: 80px;
+  padding: 0.25rem 0.5rem;
+  border: 1px solid var(--border);
+  border-radius: 0.25rem;
+  background: var(--card);
+  text-align: right;
+}
+
+/* Distribution Panel */
+.distribution-panel {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 0.75rem;
+  padding: 2rem;
+}
+
+.distribution-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.distribution-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.distribution-stat {
+  padding: 1rem;
+  background: var(--background);
+  border-radius: 0.5rem;
+}
+
+.distribution-stat-label {
+  color: var(--text-muted);
+  font-size: 0.875rem;
+  margin-bottom: 0.5rem;
+}
+
+.distribution-stat-value {
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.distribution-button {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  padding: 0.75rem 2rem;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.distribution-button:hover {
+  transform: scale(1.05);
+}
+
+.distribution-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* History Table */
+.history-table {
+  width: 100%;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 0.75rem;
+  overflow: hidden;
+}
+
+.history-table thead {
+  background: var(--background);
+}
+
+.history-table th {
+  padding: 1rem;
+  text-align: left;
+  font-weight: 600;
+  border-bottom: 1px solid var(--border);
+}
+
+.history-table td {
+  padding: 1rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.history-table tbody tr:hover {
+  background: var(--background);
+}
+
+.claim-button {
+  padding: 0.25rem 1rem;
+  background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+  color: white;
+  border: none;
+  border-radius: 0.25rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.claim-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.claimed-badge {
+  padding: 0.25rem 0.75rem;
+  background: var(--background);
+  color: var(--text-muted);
+  border-radius: 0.25rem;
+  font-size: 0.875rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .rewards-dashboard {
+    padding: 1rem;
+  }
+
+  .rewards-header {
+    flex-direction: column;
+    gap: 1rem;
+    align-items: flex-start;
+  }
+
+  .bank-balance-card {
+    width: 100%;
+  }
+
+  .rewards-stats-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .distribution-stats {
+    grid-template-columns: 1fr;
+  }
+
+  .config-grid {
+    grid-template-columns: 1fr;
+  }
+}

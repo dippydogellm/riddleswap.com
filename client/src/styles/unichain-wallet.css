@@ -1,0 +1,659 @@
+/* Unichain Wallet Dedicated Styles */
+/* Pink/Purple Unichain Theme with Mobile Responsiveness */
+
+/* Unichain Wallet Container with scoped CSS variables */
+.unichain-wallet-container {
+  --unichain-primary: #FF007A;
+  --unichain-secondary: #FF69B4;
+  --unichain-accent: #FFB3DA;
+  --unichain-dark: #CC0062;
+  --unichain-light: #FFF0F6;
+  --unichain-gradient-from: #FF007A;
+  --unichain-gradient-to: #FFB3DA;
+  --unichain-success: #10B981;
+  --unichain-error: #EF4444;
+  --unichain-warning: #F59E0B;
+  
+  background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
+  min-height: 100vh;
+}
+
+/* Unichain Header Styling */
+.unichain-header-card {
+  background: linear-gradient(135deg, var(--unichain-gradient-from) 0%, var(--unichain-gradient-to) 100%);
+  border: 1px solid rgba(255, 0, 122, 0.3);
+  box-shadow: 0 4px 20px rgba(255, 0, 122, 0.2);
+}
+
+.unichain-header-icon {
+  background: linear-gradient(135deg, var(--unichain-primary) 0%, var(--unichain-secondary) 100%);
+  border-radius: 16px;
+  padding: 16px;
+}
+
+/* Unichain Balance Cards */
+.unichain-balance-card {
+  background: linear-gradient(135deg, rgba(255, 0, 122, 0.1) 0%, rgba(255, 179, 218, 0.1) 100%);
+  border: 1px solid rgba(255, 0, 122, 0.2);
+  border-radius: 12px;
+}
+
+.unichain-balance-text {
+  color: var(--unichain-accent);
+  font-weight: 600;
+}
+
+.unichain-price-text {
+  color: rgba(255, 179, 218, 0.8);
+}
+
+/* Unichain Action Buttons */
+.unichain-action-buttons {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+}
+
+@media (min-width: 640px) {
+  .unichain-action-buttons {
+    display: flex;
+    flex-direction: row;
+    gap: 12px;
+  }
+}
+
+.unichain-send-button {
+  background: linear-gradient(135deg, var(--unichain-primary) 0%, var(--unichain-dark) 100%);
+  border: none;
+  color: white;
+  transition: all 0.3s ease;
+}
+
+.unichain-send-button:hover {
+  background: linear-gradient(135deg, var(--unichain-dark) 0%, var(--unichain-primary) 100%);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(255, 0, 122, 0.3);
+}
+
+.unichain-receive-button {
+  background: linear-gradient(135deg, var(--unichain-success) 0%, #059669 100%);
+  border: none;
+  color: white;
+  transition: all 0.3s ease;
+}
+
+.unichain-receive-button:hover {
+  background: linear-gradient(135deg, #059669 0%, #047857 100%);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+}
+
+.unichain-swap-button {
+  background: linear-gradient(135deg, var(--unichain-secondary) 0%, var(--unichain-accent) 100%);
+  border: none;
+  color: white;
+  transition: all 0.3s ease;
+}
+
+.unichain-swap-button:hover {
+  background: linear-gradient(135deg, var(--unichain-accent) 0%, var(--unichain-secondary) 100%);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(255, 105, 180, 0.3);
+}
+
+/* Mobile Button Fixes */
+@media (max-width: 639px) {
+  .unichain-action-buttons button {
+    font-size: 12px;
+    padding: 8px 12px;
+    min-height: 36px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  
+  .unichain-action-buttons button svg {
+    width: 12px;
+    height: 12px;
+    margin-right: 4px;
+  }
+}
+
+/* Unichain Tabs Styling */
+.unichain-tabs-list {
+  background: rgba(255, 0, 122, 0.1);
+  border: 1px solid rgba(255, 0, 122, 0.2);
+}
+
+.unichain-tab-trigger {
+  color: rgba(255, 255, 255, 0.7);
+  transition: all 0.3s ease;
+}
+
+.unichain-tab-trigger[data-state="active"] {
+  background: linear-gradient(135deg, var(--unichain-primary) 0%, var(--unichain-secondary) 100%);
+  color: white;
+  border-radius: 6px;
+}
+
+.unichain-tab-trigger:hover {
+  background: rgba(255, 0, 122, 0.1);
+  color: var(--unichain-accent);
+}
+
+/* Unichain Token Cards */
+.unichain-token-card {
+  background: rgba(255, 0, 122, 0.05);
+  border: 1px solid rgba(255, 0, 122, 0.1);
+  border-radius: 12px;
+  transition: all 0.3s ease;
+}
+
+.unichain-token-card:hover {
+  background: rgba(255, 0, 122, 0.1);
+  border-color: rgba(255, 0, 122, 0.3);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(255, 0, 122, 0.2);
+}
+
+.unichain-token-actions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 639px) {
+  .unichain-token-actions {
+    flex-direction: column;
+    gap: 4px;
+  }
+  
+  .unichain-token-actions button {
+    font-size: 11px;
+    padding: 4px 8px;
+    min-height: 28px;
+  }
+  
+  .unichain-token-actions button svg {
+    width: 10px;
+    height: 10px;
+    margin-right: 2px;
+  }
+}
+
+/* Unichain NFT Cards */
+.unichain-nft-card {
+  background: rgba(255, 0, 122, 0.05);
+  border: 1px solid rgba(255, 0, 122, 0.1);
+  transition: all 0.3s ease;
+}
+
+.unichain-nft-card:hover {
+  background: rgba(255, 0, 122, 0.1);
+  border-color: var(--unichain-primary);
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 8px 24px rgba(255, 0, 122, 0.3);
+}
+
+/* Unichain Address Display */
+.unichain-address-container {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  justify-content: space-between;
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 0, 122, 0.2);
+  border-radius: 8px;
+  padding: 12px;
+}
+
+.unichain-address-text {
+  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+  color: var(--unichain-accent);
+  font-size: 14px;
+}
+
+@media (max-width: 639px) {
+  .unichain-address-text {
+    font-size: 12px;
+  }
+}
+
+/* Unichain Modal Styling */
+.unichain-modal-content {
+  background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
+  border: 1px solid rgba(255, 0, 122, 0.3);
+}
+
+.unichain-modal-header {
+  border-bottom: 1px solid rgba(255, 0, 122, 0.2);
+  padding-bottom: 12px;
+  margin-bottom: 16px;
+}
+
+.unichain-modal-title {
+  color: var(--unichain-accent);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Unichain Form Elements */
+.unichain-form-input {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 0, 122, 0.3);
+  color: white;
+  transition: all 0.3s ease;
+}
+
+.unichain-form-input:focus {
+  border-color: var(--unichain-primary);
+  box-shadow: 0 0 0 2px rgba(255, 0, 122, 0.2);
+}
+
+.unichain-form-input::placeholder {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.unichain-form-select {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 0, 122, 0.3);
+  color: white;
+}
+
+.unichain-form-label {
+  color: var(--unichain-accent);
+  font-weight: 500;
+}
+
+/* Unichain Loading States */
+.unichain-loading-spinner {
+  color: var(--unichain-primary);
+}
+
+.unichain-loading-text {
+  color: rgba(255, 179, 218, 0.8);
+}
+
+/* Unichain Success/Error States */
+.unichain-success {
+  background: rgba(16, 185, 129, 0.1);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+  color: var(--unichain-success);
+}
+
+.unichain-error {
+  background: rgba(239, 68, 68, 0.1);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  color: var(--unichain-error);
+}
+
+.unichain-warning {
+  background: rgba(245, 158, 11, 0.1);
+  border: 1px solid rgba(245, 158, 11, 0.3);
+  color: var(--unichain-warning);
+}
+
+/* Unichain QR Code Container */
+.unichain-qr-container {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Unichain Quick Stats Card */
+.unichain-stats-card {
+  background: rgba(255, 0, 122, 0.05);
+  border: 1px solid rgba(255, 0, 122, 0.1);
+  border-radius: 12px;
+}
+
+.unichain-stats-item {
+  border-bottom: 1px solid rgba(255, 0, 122, 0.1);
+  padding: 8px 0;
+}
+
+.unichain-stats-item:last-child {
+  border-bottom: none;
+}
+
+/* Unichain Quick Actions */
+.unichain-quick-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.unichain-quick-action-button {
+  background: linear-gradient(135deg, rgba(255, 0, 122, 0.2) 0%, rgba(255, 179, 218, 0.2) 100%);
+  border: 1px solid rgba(255, 0, 122, 0.3);
+  color: var(--unichain-accent);
+  transition: all 0.3s ease;
+  justify-content: flex-start;
+}
+
+.unichain-quick-action-button:hover {
+  background: linear-gradient(135deg, var(--unichain-primary) 0%, var(--unichain-secondary) 100%);
+  color: white;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(255, 0, 122, 0.3);
+}
+
+/* Unichain Refresh Button */
+.unichain-refresh-button {
+  border: 1px solid rgba(255, 0, 122, 0.5);
+  color: var(--unichain-accent);
+  background: rgba(255, 0, 122, 0.1);
+  transition: all 0.3s ease;
+}
+
+.unichain-refresh-button:hover {
+  background: rgba(255, 0, 122, 0.2);
+  border-color: var(--unichain-primary);
+  color: white;
+}
+
+/* Mobile Responsive Improvements */
+@media (max-width: 375px) {
+  .unichain-wallet-container {
+    padding: 8px;
+  }
+  
+  .unichain-header-card {
+    margin-bottom: 16px;
+  }
+  
+  .unichain-balance-card {
+    padding: 12px;
+  }
+  
+  .unichain-wallet-container .container {
+    padding-left: 8px;
+    padding-right: 8px;
+  }
+}
+
+@media (max-width: 390px) {
+  .unichain-action-buttons {
+    grid-template-columns: 1fr;
+    gap: 6px;
+  }
+}
+
+@media (max-width: 414px) {
+  .unichain-token-actions {
+    flex-direction: column;
+    gap: 4px;
+  }
+  
+  .unichain-nft-card {
+    margin-bottom: 12px;
+  }
+}
+
+/* Container overflow fixes for mobile */
+@media (max-width: 639px) {
+  .unichain-wallet-container .wallet-page {
+    overflow-x: hidden;
+  }
+  
+  .unichain-wallet-container .container {
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+  
+  /* Prevent button overflow */
+  .unichain-action-buttons,
+  .unichain-token-actions {
+    min-width: 0;
+    overflow: hidden;
+  }
+  
+  .unichain-action-buttons button,
+  .unichain-token-actions button {
+    min-width: 0;
+    flex: 1;
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
+}
+
+/* Unichain Portfolio Value Highlights */
+.unichain-portfolio-value {
+  background: linear-gradient(135deg, var(--unichain-gradient-from) 0%, var(--unichain-gradient-to) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: bold;
+}
+
+/* Unichain Asset Breakdown */
+.unichain-asset-breakdown {
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 0, 122, 0.2);
+  border-radius: 12px;
+}
+
+.unichain-asset-item {
+  border-bottom: 1px solid rgba(255, 0, 122, 0.1);
+  padding: 8px 0;
+}
+
+.unichain-asset-item:last-child {
+  border-bottom: none;
+  border-top: 1px solid rgba(255, 0, 122, 0.2);
+  padding-top: 12px;
+  margin-top: 8px;
+}
+
+/* Animation for Unichain elements */
+@keyframes unichain-glow {
+  0%, 100% {
+    box-shadow: 0 0 5px rgba(255, 0, 122, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(255, 0, 122, 0.8), 0 0 30px rgba(255, 179, 218, 0.4);
+  }
+}
+
+.unichain-glow-animation {
+  animation: unichain-glow 2s ease-in-out infinite;
+}
+
+/* Dark mode specific Unichain styling */
+@media (prefers-color-scheme: dark) {
+  .unichain-wallet-container {
+    background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+  }
+}
+
+/* Unichain Network Status Badge */
+.unichain-network-badge {
+  background: rgba(255, 0, 122, 0.1);
+  border: 1px solid rgba(255, 0, 122, 0.3);
+  color: var(--unichain-accent);
+  font-size: 12px;
+  font-weight: 500;
+  padding: 4px 8px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.unichain-network-status-dot {
+  width: 8px;
+  height: 8px;
+  background: #10B981;
+  border-radius: 50%;
+  animation: unichain-pulse 2s infinite;
+}
+
+@keyframes unichain-pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+/* Transaction History Styling */
+.unichain-transaction-list {
+  background: rgba(255, 0, 122, 0.05);
+  border: 1px solid rgba(255, 0, 122, 0.1);
+  border-radius: 8px;
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.unichain-transaction-item {
+  display: flex;
+  align-items: center;
+  padding: 12px 16px;
+  border-bottom: 1px solid rgba(255, 0, 122, 0.1);
+  transition: all 0.2s ease;
+}
+
+.unichain-transaction-item:last-child {
+  border-bottom: none;
+}
+
+.unichain-transaction-item:hover {
+  background: rgba(255, 0, 122, 0.1);
+}
+
+.unichain-transaction-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 12px;
+  flex-shrink: 0;
+}
+
+.unichain-transaction-icon.send {
+  background: rgba(239, 68, 68, 0.2);
+  color: #EF4444;
+}
+
+.unichain-transaction-icon.receive {
+  background: rgba(16, 185, 129, 0.2);
+  color: #10B981;
+}
+
+.unichain-transaction-details {
+  flex: 1;
+  min-width: 0;
+}
+
+.unichain-transaction-type {
+  font-weight: 500;
+  color: white;
+  font-size: 14px;
+  margin-bottom: 2px;
+}
+
+.unichain-transaction-address {
+  font-family: ui-monospace, SFMono-Regular, "SF Mono", Consolas, "Liberation Mono", Menlo, monospace;
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.6);
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.unichain-transaction-amount {
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.unichain-transaction-value {
+  font-weight: 600;
+  color: white;
+  font-size: 14px;
+  margin-bottom: 2px;
+}
+
+.unichain-transaction-usd {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.unichain-transaction-time {
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.5);
+  margin-top: 2px;
+}
+
+/* Unichain specific gradients and effects */
+.unichain-gradient-bg {
+  background: linear-gradient(135deg, var(--unichain-gradient-from) 0%, var(--unichain-gradient-to) 100%);
+}
+
+.unichain-border-glow {
+  border: 1px solid rgba(255, 0, 122, 0.3);
+  box-shadow: 0 0 10px rgba(255, 0, 122, 0.1);
+}
+
+.unichain-text-gradient {
+  background: linear-gradient(135deg, var(--unichain-primary) 0%, var(--unichain-accent) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Unichain Staking Card */
+.unichain-staking-card {
+  background: linear-gradient(135deg, rgba(255, 0, 122, 0.1) 0%, rgba(255, 179, 218, 0.05) 100%);
+  border: 1px solid rgba(255, 0, 122, 0.2);
+  border-radius: 12px;
+  position: relative;
+  overflow: hidden;
+}
+
+.unichain-staking-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(135deg, var(--unichain-primary) 0%, var(--unichain-accent) 100%);
+}
+
+/* Unichain DeFi Integration Cards */
+.unichain-defi-card {
+  background: rgba(255, 0, 122, 0.05);
+  border: 1px solid rgba(255, 0, 122, 0.15);
+  border-radius: 10px;
+  transition: all 0.3s ease;
+}
+
+.unichain-defi-card:hover {
+  background: rgba(255, 0, 122, 0.08);
+  border-color: rgba(255, 0, 122, 0.25);
+  transform: translateY(-2px);
+}
+
+/* Unichain Fee Estimation */
+.unichain-fee-estimate {
+  background: rgba(255, 0, 122, 0.1);
+  border: 1px solid rgba(255, 0, 122, 0.2);
+  border-radius: 8px;
+  padding: 8px 12px;
+  font-size: 12px;
+  color: var(--unichain-accent);
+}
+
+/* Unichain Price Chart Integration */
+.unichain-price-chart {
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 0, 122, 0.1);
+  border-radius: 8px;
+  padding: 16px;
+}

@@ -1,0 +1,141 @@
+Overview of Brokered NFT Sales on the XRP Ledger (XRPL)On the XRP Ledger, NFTs (non-fungible tokens) can be traded using offers created via the NFTokenCreateOffer transaction. A brokered sale involves a third-party broker facilitating the trade between a seller (e.g., your client) and a buyer, allowing the broker to collect a fee atomically during the acceptance. This uses the NFTokenAcceptOffer transaction in brokered mode, where the NFT transfers directly from seller to buyer, funds move accordingly, and the broker deducts their fee without ever owning the NFT or holding funds in escrow.The process does not inherently require the broker to have access to the client's (seller's) private keys—the client can create their own sell offer. However, if you want to create the offer "on behalf of the client" (e.g., in a service where the broker handles transaction submission), that would involve signing as the client's account, which requires their private key or authorization via mechanisms like regular keys or multi-signing. This is high-risk and not recommended for security reasons, as it grants full account control. Instead, the standard approach is for the client to create the offer themselves, designating your broker wallet as the destination to restrict acceptance.Key concepts:Offers: Sell offers are created by the NFT owner (seller/client) with the tfSellNFToken flag. Buy offers are created by potential buyers.
+Brokered Mode: The broker matches a sell offer and a buy offer, specifying a BrokerFee in the acceptance transaction.
+Fee Injection: The BrokerFee is an absolute amount (e.g., in XRP drops or tokens), not a percentage. To "inject" a 1% fee, calculate it based on the agreed sale price (e.g., 1% of the sell offer amount) and ensure the buy offer's amount covers the sell amount + fee.
+Private Keys: All transactions are signed with the submitting account's private key. The broker wallet signs only its own transaction (the acceptance). If signing on behalf of the client, use their key (risky) or set up authorization.
+Currencies: Offers can be in XRP or issued tokens, but both offers in a brokered trade must use the same currency. For simplicity, assume XRP here.
+Tools/Libraries: Use XRPL libraries like xrpl.js (JavaScript), xrpl-py (Python), or others to interact with the ledger.
+
+This process assumes the XLS-20 (NonFungibleTokensV1_1) amendment is enabled (it is on mainnet as of 2022 and all testnets).Step-by-Step Process to Set Up and Execute a Brokered NFT Sale with a 1% FeePrepare Wallets and NFT:Broker Wallet: This is your wallet. Generate or use an existing one. You'll need its seed (for deriving the private key) to sign transactions. Example: Use xrpl.js to create a wallet from a seed.
+Client (Seller) Wallet: The client owns the NFT. They need to fund it with at least 2 XRP reserve + transaction fees (10-12 drops base).
+Buyer Wallet: A separate account that will create the buy offer.
+NFT: The client must already own the NFT (minted via NFTokenMint). Get its NFTokenID (a 64-character hex string).
+Private Key Handling: For the broker wallet, store the seed securely and derive the private key only in memory for signing (e.g., via xrpl.Wallet.fromSeed(seed) in JS). Never store or transmit plain private keys. If handling on behalf of client, they must provide their seed/private key securely (e.g., via encrypted channel), but this exposes their account to theft—use only if the client explicitly consents and understands risks.
+Client Creates the Sell Offer (or Broker Does on Behalf):The sell offer specifies the minimum amount the client wants to receive (net of fee).
+Set Destination to the broker's address to ensure only the broker can accept it.
+To make it on behalf of the client without their key: Impossible securely. Options:Client provides their private key/seed: Use it to sign as their account (bad practice).
+Set up multi-signing: Client enables a SignerList on their account (via SignerListSet), adding the broker's address as a signer with quorum 1. Broker can then sign transactions for the client's account without the full private key.
+Regular key: Client sets the broker's key pair as their regular key (via SetRegularKey), allowing the broker to sign as them.
+Transaction Structure (NFTokenCreateOffer):Field
+Type
+Description/Example
+TransactionType
+String
+"NFTokenCreateOffer"
+Account
+String
+Client's address (e.g., "rClientAddress123")
+NFTokenID
+String
+The NFT's ID (e.g., "0008123F...")
+Amount
+Currency Amount
+Net amount client wants, e.g., {"value": "100", "currency": "XRP"} for 100 XRP net. For 1% fee, this is the base; buyer will offer ~101 XRP.
+Flags
+Number
+1 (for tfSellNFToken)
+Destination
+String
+Broker's address (e.g., "rBrokerAddress456") to restrict acceptance
+Expiration
+Number
+Optional: Unix timestamp in seconds since Ripple Epoch (e.g., current + 86400 for 1 day)
+Fee
+String
+"12" (drops; adjust for network)
+Sequence
+Number
+Client's next sequence number
+Signing and Submission:If client does it: They use their private key to sign (e.g., in a wallet app like Xaman or via code).
+If broker on behalf: Use client's seed to create a wallet object, sign the tx blob, and submit to an XRPL node (e.g., wss://xrplcluster.com).
+After submission, get the offer index (hash) from the response meta (e.g., offer_index).
+Example Pseudocode (JS with xrpl.js):
+
+const xrpl = require('xrpl');
+async function createSellOffer(clientSeed, brokerAddress, nftId, netAmount) {
+  const wallet = xrpl.Wallet.fromSeed(clientSeed); // Derives private key from seed
+  const client = new xrpl.Client('wss://s.altnet.rippletest.net:51233');
+  await client.connect();
+  const tx = {
+    TransactionType: 'NFTokenCreateOffer',
+    Account: wallet.address,
+    NFTokenID: nftId,
+    Amount: xrpl.xrpToDrops(netAmount), // e.g., '100000000' drops for 100 XRP
+    Flags: 1,
+    Destination: brokerAddress
+  };
+  const prepared = await client.autofill(tx);
+  const signed = wallet.sign(prepared);
+  const result = await client.submitAndWait(signed.tx_blob);
+  await client.disconnect();
+  return result.result.meta.nft_offer_index; // Save this
+}
+Buyer Creates the Buy Offer:Buyer sets Amount to at least net sell amount + 1% fee (calculated as absolute drops).
+Example: If sell Amount = 100 XRP, fee = 1 XRP (1%), buyer offers >= 101 XRP.
+Transaction similar to above, but omit Flags:1, set Owner to client's address.
+Buyer signs with their own private key.
+Get the buy offer index after submission.
+Broker can facilitate by providing instructions or a UI, but no need for buyer's keys.
+Broker Matches and Accepts Offers with 1% Fee:Query the ledger for offers using account_nft or nft_buy_offers/nft_sell_offers requests to get indices.
+Calculate fee: fee = Math.floor(sellAmount * 0.01 * 1000000) drops (for XRP).
+Ensure buyAmount >= sellAmount + fee (in drops).
+Submit NFTokenAcceptOffer in brokered mode.
+Transaction Structure:Field
+Type
+Description/Example
+TransactionType
+String
+"NFTokenAcceptOffer"
+Account
+String
+Broker's address
+NFTokenSellOffer
+String
+Sell offer index (hash)
+NFTokenBuyOffer
+String
+Buy offer index (hash)
+NFTokenBrokerFee
+Currency Amount
+Fee amount, e.g., xrpl.xrpToDrops('1') for 1% on 100 XRP base
+Fee
+String
+"12" drops
+Sequence
+Number
+Broker's next sequence
+Signing: Use broker wallet's private key.
+Upon success: NFT sent to buyer (new owner). Buyer debited full amount. Broker credited fee. Seller credited remainder (after any NFT transfer fee to issuer).
+Example Pseudocode (JS):
+
+async function acceptBrokered(sellIndex, buyIndex, feeDrops, brokerSeed) {
+  const wallet = xrpl.Wallet.fromSeed(brokerSeed);
+  const client = new xrpl.Client('wss://s.altnet.rippletest.net:51233');
+  await client.connect();
+  const tx = {
+    TransactionType: 'NFTokenAcceptOffer',
+    Account: wallet.address,
+    NFTokenSellOffer: sellIndex,
+    NFTokenBuyOffer: buyIndex,
+    NFTokenBrokerFee: feeDrops.toString() // e.g., '1000000' for 1 XRP
+  };
+  const prepared = await client.autofill(tx);
+  const signed = wallet.sign(prepared);
+  const result = await client.submitAndWait(signed.tx_blob);
+  await client.disconnect();
+  console.log('Balance Changes:', xrpl.getBalanceChanges(result.result.meta));
+  // Shows: Buyer -101 XRP, Broker +1 XRP (minus tx fee), Seller +100 XRP
+}
+Post-Sale Cleanup:Cancel any unused offers via NFTokenCancelOffer (signed by offer creators).
+Verify transfer: Query account_nfts for the buyer's address to confirm NFT ownership.
+Handle errors: e.g., tecINSUFFICIENT_PAYMENT if buy amount < sell + fee; tecEXPIRED if offers timed out.
+Additional Details and ConsiderationsCalculating 1% Fee Dynamically: Fetch sell offer Amount via ledger query, compute fee = 0.01 * sellValue (converted to drops). Adjust if using tokens (handle precision with BigInt).
+Multi-Currency/Tokens: If offers use issued tokens, ensure trust lines exist and no freezes. Fee must be in same currency.
+NFT Transfer Fees: If the NFT has a TransferFee (set during mint, up to 50%), it's deducted from seller's receipt and sent to issuer.
+Security with Private Keys: Always derive keys from seeds in code; avoid hardcoding. For broker wallet, use hardware wallets for production. If using client's key, implement only with explicit consent and audit trails—prefer client-signed payloads.
+Testing: Use Testnet/Devnet. Tools like xrpl.js provide autofill for fees/sequences.
+Scalability: For a service, build a backend to monitor offers (via websocket subscriptions) and automate matching.
+Costs: Each tx costs ~10-20 drops. Reserves: 2 XRP per offer object created.
+
+This setup ensures the offer is made (via client or proxy), fee injected atomically, and NFT sent to the new owner. For production code, add error handling, retries, and validation. 
+xrpl.org +1
+

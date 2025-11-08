@@ -1,0 +1,7869 @@
+// @ts-nocheck
+import { pgTable, text, serial, integer, boolean, timestamp, decimal, jsonb, index, uniqueIndex, varchar, bigint, date, check, unique } from "drizzle-orm/pg-core";
+import { createInsertSchema } from "drizzle-zod";
+import { z } from "zod";
+import { relations, sql } from "drizzle-orm";
+// Export NFT schema tables
+export * from './nft-schema';
+
+// Export monthly NFT snapshot tables
+export * from './monthly-nft-snapshots';
+
+// Export enhanced NFT gaming tables
+export * from './nft-gaming-enhanced';
+
+// Export AI Studio schema tables
+export * from './ai-studio-schema';
+
+// Export Battle System schema tables
+export * from './battle-system-schema';
+
+// Export Inquisition Audit System schema tables
+export * from './inquisition-audit-schema';
+
+// Export RiddleCity schema tables
+export * from './riddlecity-schema';
+
+// External wallets table for storing connected external wallets - enhanced for comprehensive linking system
+export const externalWallets = pgTable("external_wallets", {
+  id: serial("id").primaryKey(),
+  user_id: varchar("user_id").notNull(), // Simple user identifier, no foreign key constraint
+  wallet_type: text("wallet_type").notNull(), // metamask, phantom, xaman, joey
+  address: text("address").notNull(),
+  chain: text("chain").notNull(), // eth, sol, xrp
+  signature: text("signature"), // verification signature
+  verified: boolean("verified").default(false),
+  connected_at: timestamp("connected_at").defaultNow(),
+  last_used: timestamp("last_used").defaultNow(),
+  
+  // Enhanced authentication fields
+  nonce: text("nonce"), // Current auth nonce for secure verification
+  nonce_expires_at: timestamp("nonce_expires_at"), // Nonce expiry for replay protection
+  verification_message: text("verification_message"), // Last verification message signed
+  
+  // Project linking status
+  linked_project_count: integer("linked_project_count").default(0),
+  is_project_owner: boolean("is_project_owner").default(false), // Does this wallet own any projects
+  
+  // Security tracking
+  verification_attempts: integer("verification_attempts").default(0),
+  last_verification_attempt: timestamp("last_verification_attempt"),
+  blocked_until: timestamp("blocked_until"), // Rate limiting
+}, (table) => ({
+  userWalletIdx: index("user_wallet_idx").on(table.user_id),
+  addressIdx: index("address_idx").on(table.address),
+  chainAddressIdx: index("chain_address_idx").on(table.chain, table.address),
+  nonceIdx: index("nonce_idx").on(table.nonce),
+}));
+
+// Linked wallets table for permanent ownership verification - separate from live session management
+export const linkedWallets = pgTable("linked_wallets", {
+  id: text("id").primaryKey().$defaultFn(() => crypto.randomUUID()),
+  user_id: varchar("user_id").notNull(), // Simple user identifier, no foreign key constraint
+  address: text("address").notNull(),
+  chain: text("chain").notNull(), // eth, sol, xrp
+  wallet_type: text("wallet_type").notNull(), // metamask, phantom, xaman, joey
+  verified: boolean("verified").default(false),
+  
+  // Verification proof
+  proof_signature: text("proof_signature"), // The signature that proved ownership
+  proof_message: text("proof_message"), // The message that was signed
+  verification_nonce: text("verification_nonce"), // The nonce used for verification
+  
+  // Source tracking
+  source: text("source").notNull().default("manual"), // manual, from_session, import
+  
+  // Metadata
+  wallet_label: text("wallet_label"), // User-friendly name for this wallet
+  notes: text("notes"), // User notes about this wallet
+  
+  // Timestamps
+  created_at: timestamp("created_at").defaultNow().notNull(),
+  verified_at: timestamp("verified_at"), // When verification was completed
+  last_activity: timestamp("last_activity"), // Last time this wallet was referenced
+}, (table) => [
+  index("idx_linked_wallets_user").on(table.user_id),
+  index("idx_linked_wallets_address").on(table.address),
+  index("idx_linked_wallets_chain_addr").on(table.chain, table.address),
+  index("idx_linked_wallets_verified").on(table.verified),
+  index("idx_linked_wallets_source").on(table.source),
+]);
+
+// Authentication nonces for secure wallet verification
+export const authNonces = pgTable("auth_nonces", {
+  id: text("id").primaryKey().$defaultFn(() => crypto.randomUUID()),
+  nonce: text("nonce").notNull().unique(),
+  wallet_address: text("wallet_address").notNull(),
+  chain: text("chain").notNull(), // eth, sol, xrp
+  wallet_type: text("wallet_type").notNull(), // metamask, phantom, xaman, joey
+  message: text("message").notNull(), // Complete verification message
+  expires_at: timestamp("expires_at").notNull(),
+  used: boolean("used").default(false),
+  session_id: text("session_id"), // For tracking verification sessions
+  created_at: timestamp("created_at").defaultNow().notNull(),
+}, (table) => [
+  index("idx_auth_nonces_nonce").on(table.nonce),
+  index("idx_auth_nonces_wallet").on(table.wallet_address),
+  index("idx_auth_nonces_session").on(table.session_id),
+  index("idx_auth_nonces_expires").on(table.expires_at),
+]);
+
+
+// Address Book for storing favorite/frequent contacts
+export const addressBook = pgTable("address_book", {
+  id: serial("id").primaryKey(),
+  user_handle: varchar("user_handle").notNull(), // Owner of this address book entry
+  contact_name: text("contact_name").notNull(), // Friendly name for the contact
+  contact_handle: text("contact_handle"), // RiddleHandle of the contact (if they have one)
+  address: text("address").notNull(), // Wallet address
+  chain: text("chain").notNull(), // eth, xrp, sol, btc, bsc, polygon, arbitrum, optimism, base, etc.
+  notes: text("notes"), // Optional notes about this contact
+  is_favorite: boolean("is_favorite").default(false), // Mark as favorite for quick access
+  created_at: timestamp("created_at").defaultNow().notNull(),
+  updated_at: timestamp("updated_at").defaultNow().notNull(),
+}, (table) => [
+  index("idx_addressbook_user").on(table.user_handle),
+  index("idx_addressbook_chain").on(table.chain),
+  index("idx_addressbook_favorite").on(table.is_favorite),
+  unique("unique_user_contact").on(table.user_handle, table.address, table.chain),
+]);
+
+// Mapping & Coordinate System Tables
+// ==========================================
+
+// Game locations for coordinate tracking
+export const gameLocations = pgTable("game_locations", {
+  id: text("id").primaryKey().$defaultFn(() => crypto.randomUUID()),
+  name: text("name").notNull(),
+  description: text("description"),
+  zone: text("zone").default("unknown"),
+  coordinates: jsonb("coordinates").$type<{ x: number; y: number; z?: number }>().notNull(),
+  latitude: decimal("latitude", { precision: 10, scale: 8 }),
+  longitude: decimal("longitude", { precision: 11, scale: 8 }),
+  elevation: integer("elevation").default(0),
+  location_type: text("location_type").default("waypoint"), // waypoint, landmark, dungeon, town, encounter
+  status: text("status").default("active"), // active, inactive, hidden, destroyed, under_construction
+  danger_level: integer("danger_level").default(0), // 0-10 scale
+  resources: jsonb("resources").$type<Record<string, any>>().default({}),
+  accessibility: text("accessibility").default("public"), // public, restricted, hidden, secret
+  special_properties: jsonb("special_properties").$type<Record<string, any>>().default({}),
+  discovered_by: text("discovered_by"),
+  discovery_date: timestamp("discovery_date").defaultNow(),
+  last_visited: timestamp("last_visited"),
+  visit_count: integer("visit_count").default(0),
+  riddleauthor_notes: text("riddleauthor_notes"),
+  riddleauthor_lore: text("riddleauthor_lore"),
+  map_image_url: text("map_image_url"),
+  created_at: timestamp("created_at").defaultNow().notNull(),
+  updated_at: timestamp("updated_at").defaultNow().notNull(),
+}, (table) => [
+  index("idx_game_locations_zone").on(table.zone),
+  index("idx_game_locations_type").on(table.location_type),
+  index("idx_game_locations_status").on(table.status),
+  index("idx_game_locations_coords").on(table.coordinates),
+]);
+
+// Coordinate zones for area management
+export const coordinateZones = pgTable("coordinate_zones", {
+  id: text("id").primaryKey().$defaultFn(() => crypto.randomUUID()),
+  zone_name: text("zone_name").notNull().unique(),
+  description: text("description"),
+  boundaries: jsonb("boundaries").$type<{ north: number; south: number; east: number; west: number }>().notNull(),
+  center_lat: decimal("center_lat", { precision: 10, scale: 8 }),
+  center_lng: decimal("center_lng", { precision: 11, scale: 8 }),
+  radius_km: decimal("radius_km", { precision: 8, scale: 3 }),
+  zone_type: text("zone_type").default("exploration"), // exploration, dangerous, safe, pvp, story
+  control_faction: text("control_faction"),
+  security_level: text("security_level").default("neutral"), // safe, neutral, moderate, high_danger, extreme
+  climate: text("climate").default("temperate"), // tropical, temperate, arctic, desert, swamp, volcanic
+  terrain_type: text("terrain_type").default("mixed"), // forest, mountains, desert, ocean, underground, sky
+  population: integer("population").default(0),
+  resources: jsonb("resources").$type<Record<string, any>>().default({}),
+  events_active: jsonb("events_active").$type<Record<string, any>>().default({}),
+  riddleauthor_lore: text("riddleauthor_lore"),
+  map_generated: boolean("map_generated").default(false),
+  map_image_url: text("map_image_url"),
+  created_at: timestamp("created_at").defaultNow().notNull(),
+  updated_at: timestamp("updated_at").defaultNow().notNull(),
+}, (table) => [
+  index("idx_coordinate_zones_name").on(table.zone_name),
+  index("idx_coordinate_zones_type").on(table.zone_type),
+  index("idx_coordinate_zones_security").on(table.security_level),
+]);
+
+// Location status change logs
+export const locationStatusLogs = pgTable("location_status_logs", {
+  id: text("id").primaryKey().$defaultFn(() => crypto.randomUUID()),
+  location_id: text("location_id").references(() => gameLocations.id, { onDelete: "cascade" }).notNull(),
+  user_handle: text("user_handle"),
+  status_change: text("status_change").notNull(),
+  previous_status: text("previous_status"),
+  new_status: text("new_status"),
+  event_type: text("event_type").default("status_update"), // status_update, discovery, visit, event_trigger
+  coordinates: jsonb("coordinates").$type<{ x: number; y: number; z?: number }>(),
+  details: jsonb("details").$type<Record<string, any>>().default({}),
+  riddleauthor_triggered: boolean("riddleauthor_triggered").default(false),
+  narrative_event: text("narrative_event"),
+  created_at: timestamp("created_at").defaultNow().notNull(),
+}, (table) => [
+  index("idx_location_logs_location").on(table.location_id),
+  index("idx_location_logs_user").on(table.user_handle),
+  index("idx_location_logs_event").on(table.event_type),
+  index("idx_location_logs_created").on(table.created_at),
+]);
+
+// Map assets for AI-generated images and maps
+export const mapAssets = pgTable("map_assets", {
+  id: text("id").primaryKey().$defaultFn(() => crypto.randomUUID()),
+  asset_name: text("asset_name").notNull(),
+  asset_type: text("asset_type").notNull(), // location_image, zone_map, terrain_tile, character_portrait
+  zone_id: text("zone_id").references(() => coordinateZones.id, { onDelete: "cascade" }),
+  location_id: text("location_id").references(() => gameLocations.id, { onDelete: "cascade" }),
+  image_url: text("image_url").notNull(),
+  prompt_used: text("prompt_used"),
+  generation_metadata: jsonb("generation_metadata").$type<Record<string, any>>().default({}),
+  coordinates: jsonb("coordinates").$type<{ x: number; y: number; z?: number }>(),
+  asset_tags: text("asset_tags").array().default([]),
+  usage_context: text("usage_context").default("general"), // general, story, combat, exploration
+  created_by: text("created_by").default("riddleauthor"),
+  created_at: timestamp("created_at").defaultNow().notNull(),
+  updated_at: timestamp("updated_at").defaultNow().notNull(),
+}, (table) => [
+  index("idx_map_assets_type").on(table.asset_type),
+  index("idx_map_assets_zone").on(table.zone_id),
+  index("idx_map_assets_location").on(table.location_id),
+  index("idx_map_assets_tags").on(table.asset_tags),
+]);
+
+// Gaming NFT Collections and Player System
+// ==========================================
+
+// Gaming NFT collections for The Trolls Inquisition
+export const gamingNftCollections = pgTable("gaming_nft_collections", {
+  id: text("id").primaryKey().$defaultFn(() => crypto.randomUUID()),
+  collection_id: text("collection_id").notNull().unique(), // XRPL issuer or contract address
+  collection_name: text("collection_name").notNull(),
+  taxon: integer("taxon"), // XRPL taxon
+  chain: text("chain").default("xrpl"), // xrpl, ethereum, etc
+  game_role: text("game_role").notNull(), // army, bank, power, merchant, special
+  role_description: text("role_description"),
+  power_level: integer("power_level").default(1), // 1-10 scale for game mechanics
+  special_abilities: jsonb("special_abilities").$type<Record<string, any>>().default({}),
+  collection_verified: boolean("collection_verified").default(false),
+  metadata_ingested: boolean("metadata_ingested").default(false),
+  total_supply: integer("total_supply"),
+  active_in_game: boolean("active_in_game").default(true),
+  
+  // Rarity and ranking system
+  project_rarity_score: decimal("project_rarity_score", { precision: 10, scale: 4 }),
+  project_rarity_rank: integer("project_rarity_rank"),
+  collection_tier: text("collection_tier"),
+  total_nfts_scanned: integer("total_nfts_scanned").default(0),
+  avg_nft_power: decimal("avg_nft_power", { precision: 10, scale: 4 }),
+  top_nft_power: decimal("top_nft_power", { precision: 10, scale: 4 }),
+  last_rarity_scan: timestamp("last_rarity_scan"),
+  
+  created_at: timestamp("created_at").defaultNow().notNull(),
+  updated_at: timestamp("updated_at").defaultNow().notNull(),
+}, (table) => [
+  index("idx_gaming_nft_collections_id").on(table.collection_id),
+  index("idx_gaming_nft_collections_taxon").on(table.taxon),
+  index("idx_gaming_nft_collections_role").on(table.game_role),
+  index("idx_gaming_nft_collections_active").on(table.active_in_game),
+]);
+
+// Individual NFTs from gaming collections
+export const gamingNfts = pgTable("gaming_nfts", {
+  id: text("id").primaryKey().$defaultFn(() => crypto.randomUUID()),
+  collection_id: text("collection_id").references(() => gamingNftCollections.id, { onDelete: "cascade" }).notNull(),
+  token_id: text("token_id").notNull(), // NFT token ID or sequence
+  nft_id: text("nft_id").notNull(), // Full NFT identifier (e.g., issuer+taxon+sequence)
+  owner_address: text("owner_address"), // Current owner
+  metadata: jsonb("metadata").$type<Record<string, any>>().default({}),
+  traits: jsonb("traits").$type<Record<string, any>>().default({}),
+  image_url: text("image_url"),
+  name: text("name"),
+  description: text("description"),
+  rarity_rank: integer("rarity_rank"),
+  rarity_score: decimal("rarity_score", { precision: 10, scale: 4 }),
+  game_stats: jsonb("game_stats").$type<Record<string, any>>().default({}),
+  is_genesis: boolean("is_genesis").default(false),
+  power_multiplier: decimal("power_multiplier", { precision: 5, scale: 2 }).default("1.00"),
+  last_transferred: timestamp("last_transferred"),
+  metadata_updated: timestamp("metadata_updated").defaultNow(),
+  // AI-generated image tracking
+  ai_generated_image_url: text("ai_generated_image_url"),
+  ai_image_generated_at: timestamp("ai_image_generated_at"),
+  
+  // Ranking system fields
+  overall_rarity_rank: integer("overall_rarity_rank"),
+  collection_rarity_rank: integer("collection_rarity_rank"),
+  rank_change: integer("rank_change").default(0),
+  rarity_tier: text("rarity_tier"),
+  power_percentile: decimal("power_percentile", { precision: 5, scale: 2 }),
+  last_rank_update: timestamp("last_rank_update"),
+  
+  created_at: timestamp("created_at").defaultNow().notNull(),
+  updated_at: timestamp("updated_at").defaultNow().notNull(),
+}, (table) => [
+  index("idx_gaming_nfts_collection").on(table.collection_id),
+  index("idx_gaming_nfts_token").on(table.token_id),
+  index("idx_gaming_nfts_nft_id").on(table.nft_id),
+  index("idx_gaming_nfts_owner").on(table.owner_address),
+  index("idx_gaming_nfts_rarity").on(table.rarity_rank),
+]);
+
+// Player gaming profiles and NFT ownership
+export const gamingPlayers = pgTable("gaming_players", {
+  id: text("id").primaryKey().$defaultFn(() => crypto.randomUUID()),
+  user_handle: text("user_handle").notNull().unique(), // RiddleSwap handle - FIXED: Added unique constraint
+  wallet_address: text("wallet_address").notNull(),
+  chain: text("chain").default("xrpl"),
+  player_name: text("player_name"),
+  religion: text("religion"), // Christianity, Islam, Buddhism, Hinduism, Paganism, Secular
+  commander_class: text("commander_class"), // warrior, mage, rogue, paladin
+  play_type: text("play_type"), // warmonger, religious_state, trader, diplomat, builder, scientist
+  total_nfts_owned: integer("total_nfts_owned").default(0),
+  religion_power: decimal("religion_power", { precision: 10, scale: 2 }).default("0"), // Religious influence and control
+  army_power: decimal("army_power", { precision: 10, scale: 2 }).default("0"), // Military strength and combat effectiveness
+  bank_power: decimal("bank_power", { precision: 10, scale: 2 }).default("0"), // Banking and financial power
+  merchant_power: decimal("merchant_power", { precision: 10, scale: 2 }).default("0"), // Trading and commerce power
+  special_power: decimal("special_power", { precision: 10, scale: 2 }).default("0"), // Special abilities and mystical power
+  civilization_power: decimal("civilization_power", { precision: 10, scale: 2 }).default("0"), // Cultural influence and development
+  economic_power: decimal("economic_power", { precision: 10, scale: 2 }).default("0"), // Wealth and trade influence
+  total_power_level: decimal("total_power_level", { precision: 10, scale: 2 }).default("0"),
+  gaming_rank: text("gaming_rank").default("Novice"), // Novice, Warrior, Commander, Lord, Legend
+  achievements: jsonb("achievements").$type<Array<string>>().default([]),
+  game_stats: jsonb("game_stats").$type<Record<string, any>>().default({}),
+  current_location_id: text("current_location_id").references(() => gameLocations.id),
+  last_active: timestamp("last_active").defaultNow(),
+  is_gaming_verified: boolean("is_gaming_verified").default(false),
+  verification_completed_at: timestamp("verification_completed_at"),
+  payment_preference: text("payment_preference").default('FLEXIBLE'), // RDL_ONLY, XRP_PREFERRED, FLEXIBLE
+  first_time_setup_completed: boolean("first_time_setup_completed").default(false),
+  wizard_completed_at: timestamp("wizard_completed_at"),
+  // Image storage fields for profile customization
+  crest_image: text("crest_image"), // Base64 encoded civilization crest image
+  commander_profile_image: text("commander_profile_image"), // Base64 encoded commander profile picture
+  
+  // Activity-based power modifiers
+  rdl_balance: decimal("rdl_balance", { precision: 30, scale: 8 }).default("0"),
+  total_swap_volume_usd: decimal("total_swap_volume_usd", { precision: 30, scale: 2 }).default("0"),
+  total_bridge_volume_usd: decimal("total_bridge_volume_usd", { precision: 30, scale: 2 }).default("0"),
+  daily_swap_count: integer("daily_swap_count").default(0),
+  daily_bridge_count: integer("daily_bridge_count").default(0),
+  total_site_time_minutes: integer("total_site_time_minutes").default(0),
+  social_posts_count: integer("social_posts_count").default(0),
+  oracle_interactions: integer("oracle_interactions").default(0),
+  last_oracle_interaction: timestamp("last_oracle_interaction"),
+  activity_multiplier: decimal("activity_multiplier", { precision: 5, scale: 2 }).default("1.00"),
+  last_activity_sync: timestamp("last_activity_sync").defaultNow(),
+  
+  created_at: timestamp("created_at").defaultNow().notNull(),
+  updated_at: timestamp("updated_at").defaultNow().notNull(),
+}, (table) => [
+  index("idx_gaming_players_handle").on(table.user_handle),
+  index("idx_gaming_players_wallet").on(table.wallet_address),
+  index("idx_gaming_players_rank").on(table.gaming_rank),
+  index("idx_gaming_players_power").on(table.total_power_level),
+  index("idx_gaming_players_active").on(table.last_active),
+  index("idx_gaming_players_activity").on(table.activity_multiplier),
+  index("idx_gaming_players_oracle").on(table.last_oracle_interaction),
+]);
+
+// Player NFT ownership tracking for gaming
+export const playerNftOwnership = pgTable("player_nft_ownership", {
+  id: text("id").primaryKey().$defaultFn(() => crypto.randomUUID()),
+  player_id: text("player_id").references(() => gamingPlayers.id, { onDelete: "cascade" }).notNull(),
+  nft_id: text("nft_id").references(() => gamingNfts.id, { onDelete: "cascade" }).notNull(),
+  collection_id: text("collection_id").references(() => gamingNftCollections.id, { onDelete: "cascade" }).notNull(),
+  ownership_verified: boolean("ownership_verified").default(false),
+  verification_date: timestamp("verification_date"),
+  verification_method: text("verification_method"), // wallet_scan, manual, api_check
+  gaming_active: boolean("gaming_active").default(true), // Is this NFT active in gaming
+  power_contribution: integer("power_contribution").default(0),
+  special_bonuses: jsonb("special_bonuses").$type<Record<string, any>>().default({}),
+  last_verification_check: timestamp("last_verification_check").defaultNow(),
+  created_at: timestamp("created_at").defaultNow().notNull(),
+  updated_at: timestamp("updated_at").defaultNow().notNull(),
+}, (table) => [
+  index("idx_player_nft_ownership_player").on(table.player_id),
+  index("idx_player_nft_ownership_nft").on(table.nft_id),
+  index("idx_player_nft_ownership_collection").on(table.collection_id),
+  index("idx_player_nft_ownership_verified").on(table.ownership_verified),
+  index("idx_player_nft_ownership_active").on(table.gaming_active),
+]);
+
+// Gaming events and activities
+export const gamingEvents = pgTable("gaming_events", {
+  id: text("id").primaryKey().$defaultFn(() => crypto.randomUUID()),
+  event_type: text("event_type").notNull(), // nft_verification, power_calculation, location_discovery, battle, trade
+  player_id: text("player_id").references(() => gamingPlayers.id),
+  location_id: text("location_id").references(() => gameLocations.id),
+  nfts_involved: jsonb("nfts_involved").$type<Array<string>>().default([]),
+  participants: jsonb("participants").$type<Array<string>>().default([]),
+  event_data: jsonb("event_data").$type<Record<string, any>>().default({}),
+  event_result: jsonb("event_result").$type<Record<string, any>>().default({}),
+  power_changes: jsonb("power_changes").$type<Record<string, any>>().default({}),
+  rewards_earned: jsonb("rewards_earned").$type<Record<string, any>>().default({}),
+  riddleauthor_narration: text("riddleauthor_narration"),
+  event_outcome: text("event_outcome"), // success, failure, partial, ongoing
+  created_at: timestamp("created_at").defaultNow().notNull(),
+}, (table) => [
+  index("idx_gaming_events_type").on(table.event_type),
+  index("idx_gaming_events_player").on(table.player_id),
+  index("idx_gaming_events_location").on(table.location_id),
+  index("idx_gaming_events_created").on(table.created_at),
+]);
+
+// Player Civilizations Table - Enhanced with full metrics
+export const playerCivilizations = pgTable("player_civilizations", {
+  id: text("id").primaryKey().$defaultFn(() => crypto.randomUUID()),
+  player_id: text("player_id").notNull().references(() => gamingPlayers.id),
+  civilization_name: text("civilization_name").notNull(),
+  civilization_type: text("civilization_type"),
+  motto: text("motto"), // Civilization motto/slogan
+  color_primary: text("color_primary"), // Primary color for civilization theme
+  color_secondary: text("color_secondary"), // Secondary color
+  color_accent: text("color_accent"), // Accent/highlight color
+  crest_image: text("crest_image"), // URL to civilization crest image
+  founded_date: timestamp("founded_date"),
+  
+  // City & Infrastructure Metrics
+  total_plots: integer("total_plots").default(0),
+  total_buildings: integer("total_buildings").default(0),
+  total_population: integer("total_population").default(0),
+  infrastructure_score: integer("infrastructure_score").default(0),
+  happiness_average: decimal("happiness_average", { precision: 5, scale: 2 }).default("0"),
+  
+  // Economic Metrics
+  daily_income: jsonb("daily_income").$type<Record<string, any>>().default({}),
+  total_wealth: decimal("total_wealth").default('0'),
+  trade_routes: integer("trade_routes").default(0),
+  economic_output: decimal("economic_output", { precision: 20, scale: 2 }).default("0"),
+  
+  // Military & Battle Metrics
+  military_strength: integer("military_strength").default(0),
+  defense_rating: integer("defense_rating").default(0),
+  victories: integer("victories").default(0),
+  defeats: integer("defeats").default(0),
+  battles_participated: integer("battles_participated").default(0),
+  battle_win_rate: decimal("battle_win_rate", { precision: 5, scale: 2 }).default("0"),
+  total_battle_power: integer("total_battle_power").default(0),
+  
+  // Cultural & Development Metrics
+  culture_level: integer("culture_level").default(0),
+  research_level: integer("research_level").default(0),
+  religious_influence: integer("religious_influence").default(0),
+  cultural_development: integer("cultural_development").default(0),
+  wonders_built: integer("wonders_built").default(0),
+  
+  // Power Scores (from NFTs + Activities)
+  army_power: integer("army_power").default(0),
+  religion_power: integer("religion_power").default(0),
+  civilization_power: integer("civilization_power").default(0),
+  economic_power: integer("economic_power").default(0),
+  
+  // Civilization Score Breakdown
+  total_civilization_score: decimal("total_civilization_score", { precision: 20, scale: 2 }).default("0"),
+  battle_contribution_score: decimal("battle_contribution_score", { precision: 10, scale: 2 }).default("0"),
+  city_contribution_score: decimal("city_contribution_score", { precision: 10, scale: 2 }).default("0"),
+  economic_contribution_score: decimal("economic_contribution_score", { precision: 10, scale: 2 }).default("0"),
+  culture_contribution_score: decimal("culture_contribution_score", { precision: 10, scale: 2 }).default("0"),
+  
+  // Rankings & Status
+  global_rank: integer("global_rank"),
+  previous_global_rank: integer("previous_global_rank"),
+  rank_change_global: integer("rank_change_global").default(0),
+  civilization_score: decimal("civilization_score", { precision: 20, scale: 2 }),
+  civilization_tier: text("civilization_tier"),
+  rank_trend: text("rank_trend").default("stable"), // 'rising', 'falling', 'stable'
+  regional_rank: integer("regional_rank"),
+  reputation: integer("reputation").default(100),
+  achievements: text("achievements").array().default([]),
+  
+  // Metadata
+  last_calculated: timestamp("last_calculated"),
+  created_at: timestamp("created_at").defaultNow().notNull(),
+  updated_at: timestamp("updated_at").defaultNow().notNull()
+}, (table) => [
+  index("idx_player_civilizations_player").on(table.player_id),
+  index("idx_player_civilizations_rank").on(table.global_rank),
+  index("idx_player_civilizations_reputation").on(table.reputation),
+  index("idx_player_civilizations_score").on(table.total_civilization_score),
+  index("idx_player_civilizations_military").on(table.military_strength),
+]);
+
+// Ally Requests Table
+export const allyRequests = pgTable("ally_requests", {
+  id: text("id").primaryKey().$defaultFn(() => crypto.randomUUID()),
+  sender_handle: text("sender_handle").notNull(),
+  receiver_handle: text("receiver_handle").notNull(),
+  request_type: text("request_type").notNull().default('alliance'), // alliance, trade_agreement, non_aggression
+  status: text("status").notNull().default('pending'), // pending, accepted, declined, expired
+  message: text("message"),
+  terms: jsonb("terms").$type<Record<string, any>>().default({}), // specific alliance terms
+  expires_at: timestamp("expires_at"), // auto-expire after X days
+  responded_at: timestamp("responded_at"),
+  created_at: timestamp("created_at").defaultNow().notNull(),
+  updated_at: timestamp("updated_at").defaultNow().notNull()
+}, (table) => [
+  index("idx_ally_requests_sender").on(table.sender_handle),
+  index("idx_ally_requests_receiver").on(table.receiver_handle),
+  index("idx_ally_requests_status").on(table.status)
+]);
+
+// Active Alliances Table
+export const activeAlliances = pgTable("active_alliances", {
+  id: text("id").primaryKey().$defaultFn(() => crypto.randomUUID()),
+  player1_handle: text("player1_handle").notNull(),
+  player2_handle: text("player2_handle").notNull(),
+  alliance_type: text("alliance_type").notNull().default('mutual_defense'), // mutual_defense, trade, non_aggression
+  alliance_terms: jsonb("alliance_terms").$type<Record<string, any>>().default({}),
+  trust_level: integer("trust_level").default(50), // 0-100 trust score
+  trade_volume: integer("trade_volume").default(0),
+  military_support_count: integer("military_support_count").default(0),
+  last_interaction: timestamp("last_interaction").defaultNow().notNull(),
+  established_at: timestamp("established_at").defaultNow().notNull(),
+  expires_at: timestamp("expires_at"), // optional expiration
+  created_at: timestamp("created_at").defaultNow().notNull(),
+  updated_at: timestamp("updated_at").defaultNow().notNull()
+}, (table) => [
+  index("idx_alliances_player1").on(table.player1_handle),
+  index("idx_alliances_player2").on(table.player2_handle),
+  unique("unique_alliance").on(table.player1_handle, table.player2_handle)
+]);
+
+// Gaming Alliances (Guild-style, multi-member alliances)
+export const gamingAlliances = pgTable("gaming_alliances", {
+  id: text("id").primaryKey().$defaultFn(() => crypto.randomUUID()),
+  name: text("name").notNull(),
+  tag: text("tag").notNull(), // Short alliance tag (3-5 characters)
+  description: text("description"),
+  leader_handle: text("leader_handle").notNull(),
+  motto: text("motto"),
+  alliance_type: text("alliance_type").notNull().default('general'), // general, military, trade, religious
+  max_members: integer("max_members").default(20),
+  current_members: integer("current_members").default(1),
+  total_power: integer("total_power").default(0),
+  total_victories: integer("total_victories").default(0),
+  total_defeats: integer("total_defeats").default(0),
+  treasury_rdl: decimal("treasury_rdl").default('0'),
+  treasury_xrp: decimal("treasury_xrp").default('0'),
+  is_recruiting: boolean("is_recruiting").default(true),
+  join_requirements: jsonb("join_requirements").$type<{
+    min_power?: number;
+    min_level?: number;
+    application_required?: boolean;
+  }>().default({}),
+  perks: jsonb("perks").$type<string[]>().default([]),
+  achievements: jsonb("achievements").$type<string[]>().default([]),
+  rank: integer("rank"), // Global alliance ranking
+  created_at: timestamp("created_at").defaultNow().notNull(),
+  updated_at: timestamp("updated_at").defaultNow().notNull()
+}, (table) => [
+  index("idx_gaming_alliances_leader").on(table.leader_handle),
+  index("idx_gaming_alliances_tag").on(table.tag),
+  index("idx_gaming_alliances_rank").on(table.rank),
+  unique("unique_alliance_tag").on(table.tag)
+]);
+
+// Alliance Members
+export const allianceMembers = pgTable("alliance_members", {
+  id: text("id").primaryKey().$defaultFn(() => crypto.randomUUID()),
+  alliance_id: text("alliance_id").notNull().references(() => gamingAlliances.id, { onDelete: "cascade" }),
+  player_handle: text("player_handle").notNull(),
+  role: text("role").notNull().default('member'), // leader, officer, member
+  joined_at: timestamp("joined_at").defaultNow().notNull(),
+  contribution_points: integer("contribution_points").default(0),
+  battles_participated: integer("battles_participated").default(0),
+  rdl_contributed: decimal("rdl_contributed").default('0'),
+  xrp_contributed: decimal("xrp_contributed").default('0'),
+  permissions: jsonb("permissions").$type<{
+    can_invite?: boolean;
+    can_kick?: boolean;
+    can_manage_treasury?: boolean;
+    can_start_wars?: boolean;
+  }>().default({}),
+  created_at: timestamp("created_at").defaultNow().notNull(),
+  updated_at: timestamp("updated_at").defaultNow().notNull()
+}, (table) => [
+  index("idx_alliance_members_alliance").on(table.alliance_id),
+  index("idx_alliance_members_player").on(table.player_handle),
+  unique("unique_alliance_membership").on(table.alliance_id, table.player_handle),
+  unique("idx_alliance_members_player_unique").on(table.player_handle) // Global unique: one alliance per player
+]);
+
+// Alliance Join Requests
+export const allianceJoinRequests = pgTable("alliance_join_requests", {
+  id: text("id").primaryKey().$defaultFn(() => crypto.randomUUID()),
+  alliance_id: text("alliance_id").notNull().references(() => gamingAlliances.id, { onDelete: "cascade" }),
+  player_handle: text("player_handle").notNull(),
+  message: text("message"),
+  status: text("status").notNull().default('pending'), // pending, approved, rejected
+  reviewed_by: text("reviewed_by"), // Handle of officer who reviewed
+  reviewed_at: timestamp("reviewed_at"),
+  rejection_reason: text("rejection_reason"),
+  created_at: timestamp("created_at").defaultNow().notNull(),
+  updated_at: timestamp("updated_at").defaultNow().notNull()
+}, (table) => [
+  index("idx_alliance_requests_alliance").on(table.alliance_id),
+  index("idx_alliance_requests_player").on(table.player_handle),
+  index("idx_alliance_requests_status").on(table.status)
+]);
+
+// Project claims for ownership verification workflow
+export const projectClaims = pgTable("project_claims", {
+  id: text("id").primaryKey().$defaultFn(() => crypto.randomUUID()),
+  
+  // Project identification
+  project_id: text("project_id").references(() => devtoolsProjects.id, { onDelete: "cascade" }),
+  claimed_project_name: text("claimed_project_name").notNull(),
+  vanity_slug_requested: text("vanity_slug_requested").notNull(),
+  
+  // Chain and issuer details
+  chain: text("chain").notNull(), // xrp, eth, sol
+  issuer_wallet: text("issuer_wallet").notNull(), // The wallet that should control this project
+  nft_token_taxon: integer("nft_token_taxon"), // For XRPL NFT projects
+  contract_address: text("contract_address"), // For EVM/Solana contracts
+  
+  // Claimant information
+  claimant_wallet: text("claimant_wallet").notNull(), // Who is claiming this project
+  claimant_chain: text("claimant_chain").notNull(), // Chain of claimant wallet
+  
+  // Verification and proof
+  ownership_proof_type: text("ownership_proof_type").notNull(), // signature, transaction, control_verification
+  ownership_proof_data: jsonb("ownership_proof_data").$type<Record<string, any>>().notNull(),
+  verification_transaction_hash: text("verification_transaction_hash"), // Proof transaction if applicable
+  
+  // Claim workflow status
+  status: text("status").default("pending").notNull(), // pending, verified, approved, rejected, cancelled
+  admin_review_required: boolean("admin_review_required").default(true),
+  auto_approved: boolean("auto_approved").default(false), // If verification was automatic
+  
+  // Review and approval tracking
+  reviewed_by: text("reviewed_by"), // Admin who reviewed this claim
+  reviewed_at: timestamp("reviewed_at"),
+  rejection_reason: text("rejection_reason"),
+  approval_notes: text("approval_notes"),
+  
+  // Project metadata provided by claimant
+  project_description: text("project_description"),
+  project_website: text("project_website"),
+  project_social_links: jsonb("project_social_links").$type<Record<string, string>>().default({}),
+  project_logo_url: text("project_logo_url"),
+  
+  created_at: timestamp("created_at").defaultNow().notNull(),
+  updated_at: timestamp("updated_at").defaultNow().notNull(),
+}, (table) => [
+  index("idx_project_claims_project").on(table.project_id),
+  index("idx_project_claims_issuer").on(table.issuer_wallet),
+  index("idx_project_claims_claimant").on(table.claimant_wallet),
+  index("idx_project_claims_status").on(table.status),
+  index("idx_project_claims_vanity").on(table.vanity_slug_requested),
+  index("idx_project_claims_chain").on(table.chain),
+]);
+
+export const users = pgTable("users", {
+  id: serial("id").primaryKey(),
+  username: text("username").notNull().unique(),
+  password: text("password").notNull(),
+});
+
+// Error logging system for comprehensive error tracking
+export const errorLogs = pgTable("error_logs", {
+  id: text("id").primaryKey().$defaultFn(() => crypto.randomUUID()),
+  error_message: text("error_message").notNull(),
+  stack_trace: text("stack_trace"),
+  user_id: text("user_id"), // Optional - may not always have user context
+  user_handle: text("user_handle"), // Optional - user's handle if available
+  page_url: text("page_url").notNull(),
+  user_agent: text("user_agent"),
+  error_type: text("error_type").notNull(), // 'react_error', 'api_error', 'network_error', 'validation_error', 'auth_error'
+  severity: text("severity").notNull().default("medium"), // 'low', 'medium', 'high', 'critical'
+  component_name: text("component_name"), // React component where error occurred
+  api_endpoint: text("api_endpoint"), // API endpoint if it's an API error
+  browser_info: jsonb("browser_info"), // Browser version, OS, etc.
+  error_context: jsonb("error_context"), // Additional context data
+  resolved: boolean("resolved").default(false),
+  resolution_notes: text("resolution_notes"),
+  created_at: timestamp("created_at").defaultNow().notNull(),
+  resolved_at: timestamp("resolved_at"),
+}, (table) => [
+  index("idx_error_logs_type").on(table.error_type),
+  index("idx_error_logs_severity").on(table.severity),
+  index("idx_error_logs_created").on(table.created_at),
+  index("idx_error_logs_user").on(table.user_id),
+  index("idx_error_logs_resolved").on(table.resolved),
+]);
+
+export const tokens = pgTable("tokens", {
+  id: serial("id").primaryKey(),
+  symbol: text("symbol").notNull(),
+  name: text("name").notNull(),
+  issuer: text("issuer"),
+  currency_code: text("currency_code").notNull(),
+  icon_url: text("icon_url"),
+  is_native: boolean("is_native").default(false),
+  metadata: jsonb("metadata"),
+  created_at: timestamp("created_at").defaultNow(),
+});
+
+export const transactions = pgTable("transactions", {
+  id: serial("id").primaryKey(),
+  wallet_address: text("wallet_address").notNull(),
+  from_token_id: integer("from_token_id").references(() => tokens.id),
+  to_token_id: integer("to_token_id").references(() => tokens.id),
+  from_amount: decimal("from_amount", { precision: 20, scale: 8 }).notNull(),
+  to_amount: decimal("to_amount", { precision: 20, scale: 8 }).notNull(),
+  exchange_rate: decimal("exchange_rate", { precision: 20, scale: 8 }),
+  transaction_hash: text("transaction_hash"),
+  status: text("status").notNull().default("pending"), // pending, completed, failed
+  created_at: timestamp("created_at").defaultNow(),
+  updated_at: timestamp("updated_at").defaultNow(),
+});
+
+// Comprehensive Swap History Table
+export const swapHistory = pgTable("swap_history", {
+  id: text("id").primaryKey().$defaultFn(() => crypto.randomUUID()),
+  wallet_address: text("wallet_address").notNull(),
+  chain: text("chain").notNull(), // xrpl, ethereum, solana, etc.
+  
+  // Token details
+  from_token_symbol: text("from_token_symbol").notNull(),
+  from_token_name: text("from_token_name"),
+  from_token_issuer: text("from_token_issuer"),
+  from_token_logo: text("from_token_logo"),
+  
+  to_token_symbol: text("to_token_symbol").notNull(),
+  to_token_name: text("to_token_name"),
+  to_token_issuer: text("to_token_issuer"),
+  to_token_logo: text("to_token_logo"),
+  
+  // Swap amounts
+  from_amount: decimal("from_amount", { precision: 20, scale: 8 }).notNull(),
+  to_amount: decimal("to_amount", { precision: 20, scale: 8 }).notNull(),
+  exchange_rate: decimal("exchange_rate", { precision: 20, scale: 8 }),
+  
+  // Pricing info
+  from_price_usd: decimal("from_price_usd", { precision: 20, scale: 8 }),
+  to_price_usd: decimal("to_price_usd", { precision: 20, scale: 8 }),
+  total_value_usd: decimal("total_value_usd", { precision: 20, scale: 8 }),
+  
+  // Platform fee
+  platform_fee_xrp: decimal("platform_fee_xrp", { precision: 20, scale: 8 }),
+  platform_fee_usd: decimal("platform_fee_usd", { precision: 20, scale: 8 }),
+  
+  // Transaction details
+  transaction_hash: text("transaction_hash"),
+  fee_transaction_hash: text("fee_transaction_hash"),
+  block_number: text("block_number"),
+  gas_used: text("gas_used"),
+  
+  // Status and metadata
+  status: text("status").notNull().default("pending"), // pending, completed, failed, cancelled
+  failure_reason: text("failure_reason"),
+  swap_source: text("swap_source"), // xrpl_dex, 1inch, jupiter, etc.
+  slippage_tolerance: decimal("slippage_tolerance", { precision: 5, scale: 2 }),
+  
+  created_at: timestamp("created_at").defaultNow().notNull(),
+  completed_at: timestamp("completed_at"),
+}, (table) => [
+  index("idx_swap_history_wallet").on(table.wallet_address),
+  index("idx_swap_history_chain").on(table.chain),
+  index("idx_swap_history_status").on(table.status),
+  index("idx_swap_history_created").on(table.created_at),
+]);
+
+export const insertUserSchema = createInsertSchema(users);
+
+export const insertTokenSchema = createInsertSchema(tokens);
+
+export const insertTransactionSchema = createInsertSchema(transactions);
+
+export const insertSwapHistorySchema = createInsertSchema(swapHistory);
+
+export const insertErrorLogSchema = createInsertSchema(errorLogs);
+
+export type ErrorLog = typeof errorLogs.$inferSelect;
+export type InsertErrorLog = z.infer<typeof insertErrorLogSchema>;
+
+// Wallets for multi-chain support
+export const wallets = pgTable("wallets", {
+  id: serial("id").primaryKey(),
+  user_id: integer("user_id").references(() => users.id),
+  address: text("address").notNull(),
+  chain: text("chain").notNull(), // xrpl, ethereum, polygon, solana, etc.
+  wallet_type: text("wallet_type").notNull(), // xaman, metamask, phantom, etc.
+  is_connected: boolean("is_connected").default(true),
+  created_at: timestamp("created_at").defaultNow(),
+  updated_at: timestamp("updated_at").defaultNow(),
+});
+
+// Assets/NFTs for each wallet
+export const assets = pgTable("assets", {
+  id: serial("id").primaryKey(),
+  wallet_id: integer("wallet_id").references(() => wallets.id),
+  asset_type: text("asset_type").notNull(), // token, nft
+  contract_address: text("contract_address"),
+  token_id: text("token_id"), // for NFTs
+  name: text("name").notNull(),
+  symbol: text("symbol"),
+  balance: decimal("balance", { precision: 30, scale: 10 }),
+  decimals: integer("decimals"),
+  image_url: text("image_url"),
+  metadata: jsonb("metadata"),
+  last_updated: timestamp("last_updated").defaultNow(),
+});
+
+// Fee tracking for all platform operations
+export const feeTransactions = pgTable("fee_transactions", {
+  id: text("id").primaryKey().$defaultFn(() => crypto.randomUUID()),
+  user_handle: text("user_handle").notNull(),
+  wallet_address: text("wallet_address").notNull(),
+  operation_type: text("operation_type").notNull(), // swap, bridge, marketplace_purchase, marketplace_sale
+  source_chain: text("source_chain").notNull(), // xrp, sol, bnb, base, eth
+  
+  // Fee details
+  fee_amount: decimal("fee_amount", { precision: 20, scale: 8 }).notNull(),
+  fee_token: text("fee_token").notNull(), // XRP, SOL, BNB, ETH, etc.
+  fee_usd_value: decimal("fee_usd_value", { precision: 20, scale: 8 }).notNull(),
+  
+  // Reward calculation (25% of fee)
+  reward_amount: decimal("reward_amount", { precision: 20, scale: 8 }).notNull(),
+  reward_token: text("reward_token").notNull(), // RDL, SRDL, BNBRDL, BASRDL, ERDL
+  reward_usd_value: decimal("reward_usd_value", { precision: 20, scale: 8 }).notNull(),
+  
+  // Transaction references
+  operation_id: text("operation_id"), // Reference to swap/bridge/marketplace transaction
+  transaction_hash: text("transaction_hash"),
+  
+  created_at: timestamp("created_at").defaultNow().notNull(),
+}, (table) => [
+  index("idx_fee_transactions_user").on(table.user_handle),
+  index("idx_fee_transactions_chain").on(table.source_chain),
+  index("idx_fee_transactions_operation").on(table.operation_type),
+]);
+
+// Updated rewards system for chain-specific RDL tokens
+export const rewards = pgTable("rewards", {
+  id: text("id").primaryKey().$defaultFn(() => crypto.randomUUID()),
+  user_handle: text("user_handle").notNull(),
+  wallet_address: text("wallet_address").notNull(),
+  
+  // Reward details
+  reward_type: text("reward_type").notNull(), // fee_cashback, daily_login, referral, milestone
+  source_operation: text("source_operation"), // swap, bridge, marketplace_purchase, etc.
+  source_chain: text("source_chain").notNull(), // xrp, sol, bnb, base, eth
+  
+  // Token amounts
+  reward_token: text("reward_token").notNull(), // RDL, SRDL, BNBRDL, BASRDL, ERDL
+  amount: decimal("amount", { precision: 20, scale: 8 }).notNull(),
+  usd_value: decimal("usd_value", { precision: 20, scale: 8 }).notNull(),
+  
+  // Status
+  status: text("status").notNull().default("pending"), // pending, claimable, claimed, expired
+  description: text("description").notNull(),
+  
+  // Fee transaction reference
+  fee_transaction_id: text("fee_transaction_id").references(() => feeTransactions.id),
+  
+  // Timestamps
+  expires_at: timestamp("expires_at"),
+  created_at: timestamp("created_at").defaultNow().notNull(),
+  claimed_at: timestamp("claimed_at"),
+}, (table) => [
+  index("idx_rewards_user").on(table.user_handle),
+  index("idx_rewards_chain").on(table.source_chain),
+  index("idx_rewards_token").on(table.reward_token),
+  index("idx_rewards_status").on(table.status),
+]);
+
+// Collections for tracking user's NFT collections
+export const collections = pgTable("collections", {
+  id: serial("id").primaryKey(),
+  user_id: integer("user_id").references(() => users.id),
+  name: text("name").notNull(),
+  description: text("description"),
+  chain: text("chain").notNull(),
+  contract_address: text("contract_address"),
+  total_items: integer("total_items").default(0),
+  floor_price: decimal("floor_price", { precision: 20, scale: 8 }),
+  metadata: jsonb("metadata"),
+  created_at: timestamp("created_at").defaultNow(),
+});
+
+// Relations
+export const usersRelations = relations(users, ({ many }) => ({
+  wallets: many(wallets),
+  rewards: many(rewards),
+  collections: many(collections),
+}));
+
+export const walletsRelations = relations(wallets, ({ one, many }) => ({
+  user: one(users, { fields: [wallets.user_id], references: [users.id] }),
+  assets: many(assets),
+  rewards: many(rewards),
+}));
+
+export const assetsRelations = relations(assets, ({ one }) => ({
+  wallet: one(wallets, { fields: [assets.wallet_id], references: [wallets.id] }),
+}));
+
+export const feeTransactionsRelations = relations(feeTransactions, ({ many }) => ({
+  rewards: many(rewards),
+}));
+
+export const rewardsRelations = relations(rewards, ({ one }) => ({
+  feeTransaction: one(feeTransactions, { 
+    fields: [rewards.fee_transaction_id], 
+    references: [feeTransactions.id] 
+  }),
+}));
+
+export const collectionsRelations = relations(collections, ({ one }) => ({
+  user: one(users, { fields: [collections.user_id], references: [users.id] }),
+}));
+
+// NFT-based Rewards System
+export const nftRewards = pgTable("nft_rewards", {
+  id: text("id").primaryKey().$defaultFn(() => crypto.randomUUID()),
+  wallet_address: text("wallet_address").notNull(),
+  user_handle: text("user_handle"), // Optional, for Riddle wallet users
+  
+  // NFT Collection details
+  collection_issuer: text("collection_issuer").notNull(),
+  collection_taxon: integer("collection_taxon").notNull(),
+  collection_name: text("collection_name").notNull(),
+  
+  // Holdings and rewards
+  nft_count: integer("nft_count").notNull().default(0),
+  percentage_share: decimal("percentage_share", { precision: 10, scale: 6 }), // % of collection they own
+  monthly_reward_percentage: decimal("monthly_reward_percentage", { precision: 10, scale: 6 }), // % of monthly rewards
+  
+  // Distribution tracking
+  last_distribution_month: date("last_distribution_month"),
+  pending_rdl_amount: decimal("pending_rdl_amount", { precision: 30, scale: 8 }).default("0"),
+  total_rdl_earned: decimal("total_rdl_earned", { precision: 30, scale: 8 }).default("0"),
+  
+  // Status
+  status: text("status").notNull().default("active"), // active, inactive, paused
+  created_at: timestamp("created_at").defaultNow(),
+  updated_at: timestamp("updated_at").defaultNow(),
+}, (table) => [
+  index("idx_nft_rewards_wallet").on(table.wallet_address),
+  index("idx_nft_rewards_collection").on(table.collection_issuer, table.collection_taxon),
+  index("idx_nft_rewards_distribution_month").on(table.last_distribution_month),
+]);
+
+// Monthly reward distributions tracking
+export const monthlyRewardDistributions = pgTable("monthly_reward_distributions", {
+  id: text("id").primaryKey().$defaultFn(() => crypto.randomUUID()),
+  distribution_month: date("distribution_month").notNull(), // YYYY-MM format
+  total_platform_revenue_usd: decimal("total_platform_revenue_usd", { precision: 30, scale: 8 }).notNull(),
+  
+  // Revenue breakdown (50% to NFT holders)
+  nft_holder_allocation_usd: decimal("nft_holder_allocation_usd", { precision: 30, scale: 8 }).notNull(),
+  
+  // Collection-specific allocations
+  inquiry_allocation_usd: decimal("inquiry_allocation_usd", { precision: 30, scale: 8 }).notNull(), // 20%
+  lost_emporium_allocation_usd: decimal("lost_emporium_allocation_usd", { precision: 30, scale: 8 }).notNull(), // 2.5%
+  dante_aurum_allocation_usd: decimal("dante_aurum_allocation_usd", { precision: 30, scale: 8 }).notNull(), // 2.5%  
+  under_bridge_allocation_usd: decimal("under_bridge_allocation_usd", { precision: 30, scale: 8 }).notNull(), // 15%
+  inquisition_allocation_usd: decimal("inquisition_allocation_usd", { precision: 30, scale: 8 }).notNull(), // 5%
+  riddle_drop_allocation_usd: decimal("riddle_drop_allocation_usd", { precision: 30, scale: 8 }).notNull(), // 5%
+  
+  // Collection window (24 hours to collect or rewards are burnt)
+  collection_window_start: timestamp("collection_window_start"), // When collection begins (1st of month)
+  collection_window_end: timestamp("collection_window_end"), // When collection ends (24 hours later)
+  collection_window_open: boolean("collection_window_open").default(false), // Is collection currently open?
+  
+  // Distribution status
+  status: text("status").notNull().default("pending"), // pending, collection_open, collection_closed, processing, completed, failed
+  distribution_started_at: timestamp("distribution_started_at"),
+  distribution_completed_at: timestamp("distribution_completed_at"),
+  
+  // Transaction tracking
+  total_rdl_available: decimal("total_rdl_available", { precision: 30, scale: 8 }).default("0"), // Total available to collect
+  total_rdl_collected: decimal("total_rdl_collected", { precision: 30, scale: 8 }).default("0"), // Total actually collected
+  total_rdl_burnt: decimal("total_rdl_burnt", { precision: 30, scale: 8 }).default("0"), // Total burnt (uncollected)
+  holders_count: integer("holders_count").default(0),
+  successful_collections: integer("successful_collections").default(0),
+  failed_collections: integer("failed_collections").default(0),
+  
+  created_at: timestamp("created_at").defaultNow(),
+}, (table) => [
+  index("idx_monthly_distributions_month").on(table.distribution_month),
+  index("idx_monthly_distributions_status").on(table.status),
+  index("idx_monthly_distributions_collection_window").on(table.collection_window_open),
+]);
+
+// Individual reward collections (replaces transfers for manual collection)
+export const nftRewardTransfers = pgTable("nft_reward_transfers", {
+  id: text("id").primaryKey().$defaultFn(() => crypto.randomUUID()),
+  distribution_id: text("distribution_id").references(() => monthlyRewardDistributions.id),
+  nft_reward_id: text("nft_reward_id").references(() => nftRewards.id),
+  
+  // Collection details
+  wallet_address: text("wallet_address").notNull(),
+  collection_name: text("collection_name").notNull(),
+  rdl_amount: decimal("rdl_amount", { precision: 30, scale: 8 }).notNull(),
+  usd_value: decimal("usd_value", { precision: 30, scale: 8 }).notNull(),
+  
+  // Collection status and timing
+  status: text("status").notNull().default("available"), // available, collected, burnt, failed
+  available_until: timestamp("available_until").notNull(), // When reward expires (24h window)
+  
+  // Transaction details (only when collected)
+  transaction_hash: text("transaction_hash"),
+  failure_reason: text("failure_reason"),
+  
+  // Timing
+  created_at: timestamp("created_at").defaultNow(), // When reward was made available
+  collected_at: timestamp("collected_at"), // When user collected it
+  burnt_at: timestamp("burnt_at"), // When it was burnt for not collecting
+  
+}, (table) => [
+  index("idx_nft_transfers_distribution").on(table.distribution_id),
+  index("idx_nft_transfers_wallet").on(table.wallet_address),
+  index("idx_nft_transfers_status").on(table.status),
+  index("idx_nft_transfers_available_until").on(table.available_until), // For burning expired rewards
+]);
+
+// Riddle Bridge Tables
+export const walletConnections = pgTable("wallet_connections", {
+  id: serial("id").primaryKey(),
+  user_id: text("user_id"),
+  wallet_address: text("wallet_address").notNull(),
+  chain: text("chain").notNull(),
+  is_active: boolean("is_active").default(true),
+  last_used: timestamp("last_used").defaultNow(),
+  created_at: timestamp("created_at").defaultNow(),
+  updated_at: timestamp("updated_at").defaultNow()
+});
+
+export const bridgeTransactions = pgTable("bridge_transactions", {
+  id: text("id").primaryKey().$defaultFn(() => crypto.randomUUID()),
+  wallet_connection_id: text("wallet_connection_id").references(() => walletConnections.id),
+  source_chain: text("source_chain").notNull(),
+  destination_chain: text("destination_chain").notNull(),
+  input_token: text("input_token").notNull(),
+  output_token: text("output_token").notNull(),
+  input_amount: decimal("input_amount", { precision: 20, scale: 8 }).notNull(),
+  output_amount: decimal("output_amount", { precision: 20, scale: 8 }).notNull(),
+  destination_address: text("destination_address").notNull(),
+  bank_wallet_address: text("bank_wallet_address").notNull(),
+  native_fee: decimal("native_fee", { precision: 20, scale: 8 }).notNull(),
+  send_fee: decimal("send_fee", { precision: 20, scale: 8 }).notNull(),
+  bridge_fee: decimal("bridge_fee", { precision: 20, scale: 8 }).notNull(),
+  status: text("status").default("pending").notNull(), // pending, completed, failed
+  transaction_hash: text("transaction_hash"),
+  bank_transaction_hash: text("bank_transaction_hash"),
+  step1_tx_hash: text("step1_tx_hash"),
+  step2_tx_hash: text("step2_tx_hash"),
+  step2status: text("step2status").default("pending"),
+  step3status: text("step3status").default("pending"),
+  step3txhash: text("step3txhash"),
+  completed_at: timestamp("completed_at"),
+  error_message: text("error_message"),
+  created_at: timestamp("created_at").defaultNow().notNull(),
+  updated_at: timestamp("updated_at").defaultNow().notNull()
+});
+
+// DevTool Tables for multi-chain development tools
+export const devToolTokens = pgTable("devtool_tokens", {
+  id: text("id").primaryKey().$defaultFn(() => crypto.randomUUID()),
+  creator_address: text("creator_address").notNull(),
+  chain: text("chain").notNull(), // ethereum, bsc, polygon, solana, xrpl
+  name: text("name").notNull(),
+  symbol: text("symbol").notNull(),
+  decimals: integer("decimals").notNull(),
+  total_supply: decimal("total_supply", { precision: 30, scale: 0 }).notNull(),
+  contract_address: text("contract_address"),
+  transaction_hash: text("transaction_hash"),
+  logo_url: text("logo_url"),
+  description: text("description"),
+  website: text("website"),
+  telegram: text("telegram"),
+  twitter: text("twitter"),
+  is_mintable: boolean("is_mintable").default(false),
+  is_burnable: boolean("is_burnable").default(false),
+  tax_buy: decimal("tax_buy", { precision: 5, scale: 2 }).default("0"),
+  tax_sell: decimal("tax_sell", { precision: 5, scale: 2 }).default("0"),
+  status: text("status").default("draft").notNull(), // draft, deploying, deployed, failed
+  created_at: timestamp("created_at").defaultNow().notNull(),
+  deployed_at: timestamp("deployed_at")
+});
+
+export const devToolNfts = pgTable("devtool_nfts", {
+  id: text("id").primaryKey().$defaultFn(() => crypto.randomUUID()),
+  creator_address: text("creator_address").notNull(),
+  chain: text("chain").notNull(), // ethereum, bsc, polygon, solana, xrpl
+  collection_name: text("collection_name").notNull(),
+  collection_symbol: text("collection_symbol").notNull(),
+  description: text("description"),
+  max_supply: integer("max_supply"),
+  base_uri: text("base_uri"),
+  contract_address: text("contract_address"),
+  transaction_hash: text("transaction_hash"),
+  royalty_percentage: decimal("royalty_percentage", { precision: 5, scale: 2 }).default("0"),
+  royalty_address: text("royalty_address"),
+  is_revealed: boolean("is_revealed").default(false),
+  reveal_uri: text("reveal_uri"),
+  mint_price: decimal("mint_price", { precision: 20, scale: 8 }).default("0"),
+  status: text("status").default("draft").notNull(), // draft, deploying, deployed, failed
+  created_at: timestamp("created_at").defaultNow().notNull(),
+  deployed_at: timestamp("deployed_at")
+});
+
+export const devToolSnapshots = pgTable("devtool_snapshots", {
+  id: text("id").primaryKey().$defaultFn(() => crypto.randomUUID()),
+  creator_address: text("creator_address").notNull(),
+  chain: text("chain").notNull(),
+  snapshot_type: text("snapshot_type").notNull(), // token_holders, nft_holders, wallet_balances
+  target_contract: text("target_contract"),
+  block_number: text("block_number"),
+  total_holders: integer("total_holders").default(0),
+  snapshot_data: jsonb("snapshot_data"), // Array of {address, balance, tokenId?, metadata?}
+  file_url: text("file_url"), // CSV/JSON download link
+  status: text("status").default("pending").notNull(), // pending, processing, completed, failed
+  error_message: text("error_message"),
+  created_at: timestamp("created_at").defaultNow().notNull(),
+  completed_at: timestamp("completed_at")
+});
+
+export const devToolAirdrops = pgTable("devtool_airdrops", {
+  id: text("id").primaryKey().$defaultFn(() => crypto.randomUUID()),
+  creator_address: text("creator_address").notNull(),
+  riddle_wallet_handle: text("riddle_wallet_handle"), // Link to Riddle wallet account
+  chain: text("chain").notNull(),
+  airdrop_type: text("airdrop_type").notNull(), // token, nft, native
+  token_contract: text("token_contract"),
+  amount_per_address: decimal("amount_per_address", { precision: 20, scale: 8 }),
+  total_recipients: integer("total_recipients").default(0),
+  recipients: jsonb("recipients"), // Array of {address, amount, claimed?, txHash?}
+  claim_enabled: boolean("claim_enabled").default(true),
+  merkle_root: text("merkle_root"),
+  claim_contract: text("claim_contract"),
+  start_date: timestamp("start_date"),
+  end_date: timestamp("end_date"),
+  total_claimed: integer("total_claimed").default(0),
+  status: text("status").default("draft").notNull(), // draft, active, completed, cancelled
+  created_at: timestamp("created_at").defaultNow().notNull(),
+  launched_at: timestamp("launched_at")
+});
+
+// DevTool Insert Schemas
+export const insertDevToolTokenSchema = createInsertSchema(devToolTokens);
+
+export const insertDevToolNftSchema = createInsertSchema(devToolNfts);
+
+export const insertDevToolSnapshotSchema = createInsertSchema(devToolSnapshots);
+
+export const insertDevToolAirdropSchema = createInsertSchema(devToolAirdrops);
+
+// DevTool Types
+export type DevToolToken = typeof devToolTokens.$inferSelect;
+export type InsertDevToolToken = z.infer<typeof insertDevToolTokenSchema>;
+
+export type DevToolNft = typeof devToolNfts.$inferSelect;
+export type InsertDevToolNft = z.infer<typeof insertDevToolNftSchema>;
+
+export type DevToolSnapshot = typeof devToolSnapshots.$inferSelect;
+export type InsertDevToolSnapshot = z.infer<typeof insertDevToolSnapshotSchema>;
+
+export type DevToolAirdrop = typeof devToolAirdrops.$inferSelect;
+export type InsertDevToolAirdrop = z.infer<typeof insertDevToolAirdropSchema>;
+
+// Fee tracking and rewards types
+export type FeeTransaction = typeof feeTransactions.$inferSelect;
+export type InsertFeeTransaction = z.infer<typeof insertFeeTransactionSchema>;
+
+export type Reward = typeof rewards.$inferSelect;
+export type InsertReward = z.infer<typeof insertRewardSchema>;
+
+export const supportedTokens = pgTable("supported_tokens", {
+  id: serial("id").primaryKey(),
+  symbol: text("symbol").notNull(),
+  name: text("name").notNull(),
+  chain_id: text("chain_id").notNull(),
+  contract_address: text("contract_address"),
+  decimals: integer("decimals").default(18).notNull(),
+  is_active: boolean("is_active").default(true).notNull(),
+  price_usd: decimal("price_usd", { precision: 20, scale: 8 })
+});
+
+// Bridge Relations
+export const walletConnectionsRelations = relations(walletConnections, ({ many }) => ({
+  bridgeTransactions: many(bridgeTransactions),
+}));
+
+export const bridgeTransactionsRelations = relations(bridgeTransactions, ({ one }) => ({
+  walletConnection: one(walletConnections, { 
+    fields: [bridgeTransactions.wallet_connection_id], 
+    references: [walletConnections.id] 
+  }),
+}));
+
+// Insert schemas
+export const insertWalletSchema = createInsertSchema(wallets);
+
+export const insertAssetSchema = createInsertSchema(assets);
+
+// Fee tracking and rewards insert schemas
+export const insertFeeTransactionSchema = createInsertSchema(feeTransactions);
+
+export const insertRewardSchema = createInsertSchema(rewards);
+
+export const insertCollectionSchema = createInsertSchema(collections);
+
+// Bridge Insert Schemas
+export const insertWalletConnectionSchema = createInsertSchema(walletConnections);
+
+export const insertBridgeTransactionSchema = createInsertSchema(bridgeTransactions);
+
+export const insertSupportedTokenSchema = createInsertSchema(supportedTokens);
+
+// Direct messaging system
+export const messages = pgTable('messages', {
+  id: text('id').primaryKey().$defaultFn(() => crypto.randomUUID()),
+  fromUserId: text('from_user_id').notNull(),
+  toUserId: text('to_user_id').notNull(),
+  message: text('message').notNull(),
+  read: boolean('read').default(false),
+  createdAt: timestamp('created_at').defaultNow(),
+  updatedAt: timestamp('updated_at').defaultNow()
+});
+
+// NFT swap offers
+export const nftSwapOffers = pgTable('nft_swap_offers', {
+  id: text('id').primaryKey().$defaultFn(() => crypto.randomUUID()),
+  fromUserId: text('from_user_id').notNull(),
+  toUserId: text('to_user_id').notNull(),
+  offeredNftId: text('offered_nft_id').notNull(),
+  requestedNftId: text('requested_nft_id').notNull(),
+  status: text('status').default('pending'), // pending, accepted, rejected, cancelled
+  txHash: text('tx_hash'),
+  createdAt: timestamp('created_at').defaultNow(),
+  updatedAt: timestamp('updated_at').defaultNow()
+});
+
+// Wallet NFT searches - cache results
+export const walletNftSearches = pgTable('wallet_nft_searches', {
+  id: text('id').primaryKey().$defaultFn(() => crypto.randomUUID()),
+  walletAddress: text('wallet_address').notNull(),
+  nfts: jsonb('nfts').notNull().$type<any[]>(),
+  metadata: jsonb('metadata').$type<Record<string, any>>(),
+  lastSearched: timestamp('last_searched').defaultNow(),
+  cachedUntil: timestamp('cached_until').notNull()
+});
+
+// NFT metadata cache
+export const nftMetadataCache = pgTable('nft_metadata_cache', {
+  id: text('id').primaryKey().$defaultFn(() => crypto.randomUUID()),
+  nftId: text('nft_id').notNull().unique(),
+  uri: text('uri'),
+  metadata: jsonb('metadata').$type<any>(),
+  traits: jsonb('traits').$type<any[]>(),
+  imageUrl: text('image_url'),
+  cachedAt: timestamp('cached_at').defaultNow(),
+  expiresAt: timestamp('expires_at').notNull()
+});
+
+// Insert schemas for new tables
+export const insertMessageSchema = createInsertSchema(messages).omit(['id', 'createdAt', 'updatedAt']);
+
+export const insertNftSwapOfferSchema = createInsertSchema(nftSwapOffers).omit(['id', 'createdAt', 'updatedAt']);
+
+export const insertWalletNftSearchSchema = createInsertSchema(walletNftSearches).omit(['id', 'lastSearched']);
+
+export const insertNftMetadataCacheSchema = createInsertSchema(nftMetadataCache).omit(['id', 'cachedAt']);
+
+// Wallet NFT offers (incoming/pending NFTs)
+export const walletNftOffers = pgTable('wallet_nft_offers', {
+  id: text('id').primaryKey().$defaultFn(() => crypto.randomUUID()),
+  wallet_address: text('wallet_address').notNull(),
+  nft_id: text('nft_id').notNull(),
+  offer_type: text('offer_type').notNull(), // 'buy_offer' or 'sell_offer'
+  amount: decimal('amount', { precision: 20, scale: 8 }),
+  currency: text('currency').default('XRP'),
+  from_address: text('from_address').notNull(),
+  offer_index: text('offer_index').notNull(),
+  status: text('status').default('pending'), // pending, accepted, rejected, expired
+  auto_accept: boolean('auto_accept').default(false),
+  expiration: timestamp('expiration'),
+  created_at: timestamp('created_at').defaultNow(),
+  updated_at: timestamp('updated_at').defaultNow()
+});
+
+// Wallet NFT settings per wallet
+export const walletNftSettings = pgTable('wallet_nft_settings', {
+  id: text('id').primaryKey().$defaultFn(() => crypto.randomUUID()),
+  wallet_address: text('wallet_address').notNull().unique(),
+  auto_accept_offers: boolean('auto_accept_offers').default(false),
+  min_auto_accept_amount: decimal('min_auto_accept_amount', { precision: 20, scale: 8 }),
+  max_auto_accept_amount: decimal('max_auto_accept_amount', { precision: 20, scale: 8 }),
+  blocked_addresses: jsonb('blocked_addresses').$type<string[]>().default([]),
+  trusted_addresses: jsonb('trusted_addresses').$type<string[]>().default([]),
+  notification_enabled: boolean('notification_enabled').default(true),
+  created_at: timestamp('created_at').defaultNow(),
+  updated_at: timestamp('updated_at').defaultNow()
+});
+
+export const insertWalletNftOfferSchema = createInsertSchema(walletNftOffers).omit(['id', 'created_at', 'updated_at']);
+
+export const insertWalletNftSettingsSchema = createInsertSchema(walletNftSettings).omit(['id', 'created_at', 'updated_at']);
+
+export type InsertUser = z.infer<typeof insertUserSchema>;
+export type User = typeof users.$inferSelect;
+export type Token = typeof tokens.$inferSelect;
+export type InsertToken = z.infer<typeof insertTokenSchema>;
+export type Transaction = typeof transactions.$inferSelect;
+export type InsertTransaction = z.infer<typeof insertTransactionSchema>;
+export type SwapHistory = typeof swapHistory.$inferSelect;
+export type InsertSwapHistory = z.infer<typeof insertSwapHistorySchema>;
+
+export type Wallet = typeof wallets.$inferSelect;
+export type InsertWallet = z.infer<typeof insertWalletSchema>;
+export type Asset = typeof assets.$inferSelect;
+export type InsertAsset = z.infer<typeof insertAssetSchema>;
+export type Collection = typeof collections.$inferSelect;
+export type InsertCollection = z.infer<typeof insertCollectionSchema>;
+
+// Bridge Types
+export type WalletConnection = typeof walletConnections.$inferSelect;
+export type InsertWalletConnection = z.infer<typeof insertWalletConnectionSchema>;
+export type BridgeTransaction = typeof bridgeTransactions.$inferSelect;
+export type InsertBridgeTransaction = z.infer<typeof insertBridgeTransactionSchema>;
+export type SupportedToken = typeof supportedTokens.$inferSelect;
+export type InsertSupportedToken = z.infer<typeof insertSupportedTokenSchema>;
+
+// New NFT and messaging types
+export type Message = typeof messages.$inferSelect;
+export type InsertMessage = z.infer<typeof insertMessageSchema>;
+export type NftSwapOffer = typeof nftSwapOffers.$inferSelect;
+
+// NFT Swap Matches for tracking swap completions  
+export const nftSwapMatches = pgTable("nft_swap_matches", {
+  id: text("id").primaryKey().$defaultFn(() => crypto.randomUUID()),
+  offerId: text("offer_id").notNull().references(() => nftSwapOffers.id, { onDelete: "cascade" }),
+  
+  // Taker details
+  takerHandle: text("taker_handle").notNull(),
+  takerWallet: text("taker_wallet").notNull(),
+  
+  // Items being offered by taker
+  takerItems: jsonb("taker_items").$type<Array<{
+    chain: string;
+    contract: string;
+    tokenId: string;
+    name?: string;
+    image?: string;
+    estimatedValue?: number;
+  }>>().notNull(),
+  
+  // Match status
+  status: text("status").default("pending").notNull(), // pending, escrowed, completed, cancelled, failed
+  
+  // Escrow and transaction tracking
+  escrowRef: text("escrow_ref"),
+  takerEscrowTransactionHash: text("taker_escrow_transaction_hash"),
+  completionTransactionHash: text("completion_transaction_hash"),
+  
+  // Timestamps
+  createdAt: timestamp("created_at").defaultNow().notNull(),
+  completedAt: timestamp("completed_at"),
+}, (table) => [
+  index("idx_nft_swap_matches_offer").on(table.offerId),
+  index("idx_nft_swap_matches_taker").on(table.takerHandle),
+  index("idx_nft_swap_matches_status").on(table.status),
+]);
+
+export const insertNftSwapMatchSchema = createInsertSchema(nftSwapMatches).omit(['id', 'createdAt', 'completedAt']);
+
+export type NftSwapMatch = typeof nftSwapMatches.$inferSelect;
+export type InsertNftSwapMatch = z.infer<typeof insertNftSwapMatchSchema>;
+export type WalletNftSearch = typeof walletNftSearches.$inferSelect;
+export type InsertWalletNftSearch = z.infer<typeof insertWalletNftSearchSchema>;
+export type NftMetadataCache = typeof nftMetadataCache.$inferSelect;
+export type InsertNftMetadataCache = z.infer<typeof insertNftMetadataCacheSchema>;
+
+// Wallet NFT management types
+export type WalletNftOffer = typeof walletNftOffers.$inferSelect;
+export type InsertWalletNftOffer = z.infer<typeof insertWalletNftOfferSchema>;
+export type WalletNftSettings = typeof walletNftSettings.$inferSelect;
+export type InsertWalletNftSettings = z.infer<typeof insertWalletNftSettingsSchema>;
+
+// Liquidity Vault System - Multi-chain native token liquidity provision
+export const vaultContributions = pgTable('vault_contributions', {
+  id: serial('id').primaryKey(),
+  user_handle: varchar('user_handle').notNull(), // Who provided liquidity
+  wallet_address: text('wallet_address').notNull(), // Source wallet address
+  wallet_type: text('wallet_type').default('riddle'), // Type of wallet: riddle, external, etc.
+  chain: text('chain').notNull(), // eth, bsc, polygon, xrpl, sol, etc.
+  native_token: text('native_token').notNull(), // ETH, BNB, MATIC, XRP, SOL, etc.
+  
+  // Contribution details
+  amount: decimal('amount', { precision: 30, scale: 18 }).notNull(), // Amount deposited
+  amount_usd: decimal('amount_usd', { precision: 20, scale: 2 }), // USD value at deposit time
+  
+  // Transaction tracking
+  deposit_tx_hash: text('deposit_tx_hash'), // Transaction hash of deposit
+  memo: text('memo'), // Memo/identifier for verification
+  
+  // Status
+  status: text('status').default('pending').notNull(), // pending, verified, active, withdrawn
+  verified_at: timestamp('verified_at'),
+  
+  // Rewards tracking
+  rewards_earned: decimal('rewards_earned', { precision: 30, scale: 18 }).default('0'), // In native token
+  rewards_earned_usd: decimal('rewards_earned_usd', { precision: 20, scale: 2 }).default('0'),
+  last_reward_calculation: timestamp('last_reward_calculation'),
+  
+  // APY tracking
+  current_apy: decimal('current_apy', { precision: 5, scale: 2 }).default('2.76'), // 2.76% APY
+  
+  // Metadata
+  created_at: timestamp('created_at').defaultNow().notNull(),
+  updated_at: timestamp('updated_at').defaultNow().notNull(),
+}, (table) => [
+  index('idx_vault_user').on(table.user_handle),
+  index('idx_vault_chain').on(table.chain),
+  index('idx_vault_status').on(table.status),
+  index('idx_vault_memo').on(table.memo),
+  index('idx_vault_tx_hash').on(table.deposit_tx_hash),
+]);
+
+// Vault Rewards Distribution History
+export const vaultRewards = pgTable('vault_rewards', {
+  id: serial('id').primaryKey(),
+  contribution_id: integer('contribution_id').references(() => vaultContributions.id),
+  user_handle: varchar('user_handle').notNull(),
+  chain: text('chain').notNull(),
+  
+  // Reward details
+  reward_amount: decimal('reward_amount', { precision: 30, scale: 18 }).notNull(),
+  reward_amount_usd: decimal('reward_amount_usd', { precision: 20, scale: 2 }),
+  
+  // Period tracking
+  period_start: timestamp('period_start').notNull(),
+  period_end: timestamp('period_end').notNull(),
+  apy_applied: decimal('apy_applied', { precision: 5, scale: 2 }).notNull(),
+  
+  // Claim/withdrawal tracking
+  claim_status: text('claim_status').default('pending').notNull(), // pending, claimed, withdrawn
+  claimed_at: timestamp('claimed_at'), // When user claimed the reward
+  claim_tx_hash: text('claim_tx_hash'), // Transaction hash of the claim
+  withdrawal_wallet_address: text('withdrawal_wallet_address'), // Where the reward was sent
+  withdrawal_wallet_type: text('withdrawal_wallet_type'), // riddle, xaman, metamask, phantom, joey
+  
+  // Metadata
+  calculated_at: timestamp('calculated_at').defaultNow().notNull(),
+}, (table) => [
+  index('idx_vault_rewards_user').on(table.user_handle),
+  index('idx_vault_rewards_contribution').on(table.contribution_id),
+  index('idx_vault_rewards_chain').on(table.chain),
+  index('idx_vault_rewards_claim_status').on(table.claim_status),
+]);
+
+// Vault Chain Stats - Track total liquidity per chain
+export const vaultChainStats = pgTable('vault_chain_stats', {
+  id: serial('id').primaryKey(),
+  chain: text('chain').notNull().unique(),
+  native_token: text('native_token').notNull(),
+  
+  // Liquidity tracking
+  total_liquidity: decimal('total_liquidity', { precision: 30, scale: 18 }).default('0'),
+  total_liquidity_usd: decimal('total_liquidity_usd', { precision: 20, scale: 2 }).default('0'),
+  
+  // Contributors
+  active_contributors: integer('active_contributors').default(0),
+  
+  // APY settings
+  current_apy: decimal('current_apy', { precision: 5, scale: 2 }).default('2.76'), // 2.76% APY
+  min_deposit: decimal('min_deposit', { precision: 30, scale: 18 }).default('0.01'),
+  
+  // Bank wallet for this chain (NULL until admin configures)
+  bank_wallet_address: text('bank_wallet_address'),
+  
+  // Status
+  is_active: boolean('is_active').default(true),
+  
+  // Metadata
+  created_at: timestamp('created_at').defaultNow().notNull(),
+  updated_at: timestamp('updated_at').defaultNow().notNull(),
+}, (table) => [
+  index('idx_vault_chain_stats_chain').on(table.chain),
+  index('idx_vault_chain_stats_active').on(table.is_active),
+]);
+
+// Bridge Payloads - Enhanced for transaction tracking
+export const bridge_payloads = pgTable('bridge_payloads', {
+  id: serial('id').primaryKey(),
+  transaction_id: text('transaction_id').notNull(),
+  step: integer('step').notNull().default(1),
+  uuid: text('uuid').notNull().unique(),
+  status: text('status').notNull().default('pending'), // pending, completed, failed
+  
+  // Transaction details - matching actual database columns
+  userWalletAddress: text('userwalletaddress'),
+  destinationAddress: text('destinationaddress'),
+  fromCurrency: text('fromcurrency'),
+  toCurrency: text('tocurrency'),
+  amount: decimal('amount', { precision: 20, scale: 8 }),
+  outputAmount: decimal('outputamount', { precision: 20, scale: 8 }),
+  
+  // Fee tracking - 1% platform fee
+  platform_fee: decimal('platform_fee', { precision: 10, scale: 6 }).default('0.01'),
+  fee_amount: decimal('fee_amount', { precision: 20, scale: 8 }),
+  
+  // Transaction payload for auto-execution
+  payload: text('payload'), // JSON string of the transaction payload
+  
+  // Wallet integration
+  walletType: text('wallet_type'), // 'riddle', 'xaman', 'walletconnect'
+  riddleWalletId: text('riddle_wallet_id'),
+  
+  // Transaction hashes 
+  txHash: text('txhash'),
+  step3TxHash: text('step3txhash'),
+  
+  // Block verification fields
+  verification_status: text('verification_status').default('unverified'), // unverified, verified, pending_confirmations, failed
+  block_height: text('block_height'),
+  confirmations: integer('confirmations'),
+  verified_at: timestamp('verified_at'),
+  
+  // Blockchain details
+  from_token: text('from_token'),
+  to_token: text('to_token'),
+  tx_hash: text('tx_hash'),
+  
+  // Error handling
+  errorMessage: text('errormessage'),
+  
+  createdAt: timestamp('createdat').notNull().defaultNow(),
+  updatedAt: timestamp('updatedat').notNull().defaultNow()
+});
+
+// Riddle Wallets table
+export const riddleWallets = pgTable("riddle_wallets", {
+  id: text("id").primaryKey().$defaultFn(() => crypto.randomUUID()),
+  handle: text("handle").notNull().unique(),
+  linkedWalletAddress: text("linked_wallet_address").unique(), // Connected wallet address (optional)
+  linkedWalletChain: text("linked_wallet_chain"), // Connected wallet chain (optional) // 'ETH', 'SOL', 'XRP'
+  
+  // Password protection
+  masterPasswordHash: text("master_password_hash").notNull(),
+  salt: text("salt").notNull(),
+  
+  // Encrypted wallet data
+  encryptedSeedPhrase: text("encrypted_seed_phrase").notNull(),
+  encryptedPrivateKeys: jsonb("encrypted_private_keys").notNull().$type<Record<string, string>>(), // {eth: encrypted, xrp: encrypted, sol: encrypted, btc: encrypted}
+  
+  // Wallet addresses - make each unique to prevent duplicate addresses
+  ethAddress: text("eth_address").notNull().unique(),
+  xrpAddress: text("xrp_address").notNull().unique(),
+  solAddress: text("sol_address").notNull().unique(),
+  btcAddress: text("btc_address").notNull().unique(),
+  
+  // Security settings
+  autoLogoutEnabled: boolean("auto_logout_enabled").default(true),
+  autoLogoutMinutes: integer("auto_logout_minutes").default(30),
+  lastActivityAt: timestamp("last_activity_at").defaultNow(),
+  
+  createdAt: timestamp("created_at").defaultNow(),
+  updatedAt: timestamp("updated_at").defaultNow(),
+});
+
+// Riddle Wallet Sessions
+export const riddleWalletSessions = pgTable("riddle_wallet_sessions", {
+  id: text("id").primaryKey().$defaultFn(() => crypto.randomUUID()),
+  walletId: text("wallet_id").notNull().references(() => riddleWallets.id),
+  sessionToken: text("session_token").notNull().unique(),
+  signature: text("signature").notNull(), // Signature from linked wallet for authentication
+  expiresAt: timestamp("expires_at").notNull(),
+  createdAt: timestamp("created_at").defaultNow(),
+});
+
+// Relations for Riddle Wallets
+export const riddleWalletsRelations = relations(riddleWallets, ({ many }) => ({
+  sessions: many(riddleWalletSessions),
+}));
+
+export const riddleWalletSessionsRelations = relations(riddleWalletSessions, ({ one }) => ({
+  wallet: one(riddleWallets, {
+    fields: [riddleWalletSessions.walletId],
+    references: [riddleWallets.id],
+  }),
+}));
+
+// Insert schemas for Riddle Wallets
+export const insertRiddleWalletSchema = createInsertSchema(riddleWallets)
+  .omit(['id', 'createdAt', 'updatedAt', 'lastActivityAt'])
+  .extend({
+    handle: z.string().min(3).max(20).regex(/^[a-zA-Z0-9_]+$/, "Handle must contain only letters, numbers, and underscores"),
+    linkedWalletChain: z.enum(['ETH', 'SOL', 'XRP', 'BTC']),
+  });
+
+export const riddleWalletLoginSchema = z.object({
+  handle: z.string().min(3).max(20),
+  masterPassword: z.string().min(8).max(100),
+});
+
+export const insertRiddleWalletSessionSchema = createInsertSchema(riddleWalletSessions)
+  .omit(['id', 'createdAt']);
+
+// Types for Riddle Wallets
+export type RiddleWallet = typeof riddleWallets.$inferSelect;
+export type InsertRiddleWallet = z.infer<typeof insertRiddleWalletSchema>;
+export type RiddleWalletSession = typeof riddleWalletSessions.$inferSelect;
+export type InsertRiddleWalletSession = z.infer<typeof insertRiddleWalletSessionSchema>;
+
+
+// Export NFT schema
+export * from './nft-schema';
+
+// MESSAGING SYSTEM TABLES (COMPLETELY SEPARATE FROM SOCIAL MEDIA)
+export const messageConversations = pgTable("message_conversations", {
+  id: text("id").primaryKey().$defaultFn(() => crypto.randomUUID()),
+  participantOneId: varchar("participant_one_id").notNull().references(() => users.id, { onDelete: "cascade" }),
+  participantTwoId: varchar("participant_two_id").notNull().references(() => users.id, { onDelete: "cascade" }),
+  lastMessageId: text("last_message_id"),
+  lastMessageAt: timestamp("last_message_at"),
+  isArchived: boolean("is_archived").default(false),
+  createdAt: timestamp("created_at").defaultNow(),
+  updatedAt: timestamp("updated_at").defaultNow(),
+}, (table) => [
+  index("idx_conversations_participants").on(table.participantOneId, table.participantTwoId),
+]);
+
+export const directMessages = pgTable("direct_messages", {
+  id: text("id").primaryKey().$defaultFn(() => crypto.randomUUID()),
+  conversationId: text("conversation_id").notNull().references(() => messageConversations.id, { onDelete: "cascade" }),
+  senderId: varchar("sender_id").notNull().references(() => users.id, { onDelete: "cascade" }),
+  receiverId: varchar("receiver_id").notNull().references(() => users.id, { onDelete: "cascade" }),
+  content: text("content").notNull(),
+  messageType: text("message_type").default("text").notNull(), // text, image, file
+  attachmentUrl: text("attachment_url"),
+  isRead: boolean("is_read").default(false),
+  isDelivered: boolean("is_delivered").default(false),
+  isDeleted: boolean("is_deleted").default(false),
+  archivedByUserIds: text("archived_by_user_ids").array(), // Array of user IDs who archived this message
+  replyToMessageId: text("reply_to_message_id").references(() => messages.id),
+  createdAt: timestamp("created_at").defaultNow(),
+  updatedAt: timestamp("updated_at").defaultNow(),
+}, (table) => [
+  index("idx_messages_conversation").on(table.conversationId),
+  index("idx_messages_sender").on(table.senderId),
+  index("idx_messages_receiver").on(table.receiverId),
+]);
+
+// Unified notifications table for all notification types
+export const notifications = pgTable("notifications", {
+  id: text("id").primaryKey().$defaultFn(() => crypto.randomUUID()),
+  userId: text("user_id").notNull(), // Changed to text to match user handles
+  type: text("type").notNull(), // message, call_incoming, call_missed, like, comment, follow, mention
+  title: text("title").notNull(),
+  content: text("content").notNull(),
+  actionUrl: text("action_url"), // Where clicking notification should navigate
+  relatedId: text("related_id"), // ID of related item (message, post, conversation, etc.)
+  senderHandle: text("sender_handle"), // Who triggered the notification
+  senderName: text("sender_name"), // Display name of sender
+  senderAvatar: text("sender_avatar"), // Profile image of sender
+  isRead: boolean("is_read").default(false),
+  createdAt: timestamp("created_at").defaultNow(),
+}, (table) => [
+  index("idx_notifications_user").on(table.userId),
+  index("idx_notifications_type").on(table.type),
+  index("idx_notifications_unread").on(table.userId, table.isRead),
+]);
+
+// Keep the old table for backwards compatibility
+export const messageNotifications = pgTable("message_notifications", {
+  id: text("id").primaryKey().$defaultFn(() => crypto.randomUUID()),
+  userId: integer("user_id").notNull().references(() => users.id, { onDelete: "cascade" }),
+  messageId: text("message_id").notNull().references(() => directMessages.id, { onDelete: "cascade" }),
+  isRead: boolean("is_read").default(false),
+  createdAt: timestamp("created_at").defaultNow(),
+}, (table) => [
+  index("idx_message_notifications_user").on(table.userId),
+]);
+
+// Friend Connections for Messaging (separate from social follows)
+export const friendConnections = pgTable("friend_connections", {
+  id: text("id").primaryKey().$defaultFn(() => crypto.randomUUID()),
+  requesterId: integer("requester_id").notNull().references(() => users.id, { onDelete: "cascade" }),
+  receiverId: integer("receiver_id").notNull().references(() => users.id, { onDelete: "cascade" }),
+  status: text("status").default("pending").notNull(), // pending, accepted, blocked
+  createdAt: timestamp("created_at").defaultNow(),
+  updatedAt: timestamp("updated_at").defaultNow(),
+}, (table) => [
+  index("idx_friend_connections_requester").on(table.requesterId),
+  index("idx_friend_connections_receiver").on(table.receiverId),
+]);
+
+// Messaging Relations
+export const messageConversationRelations = relations(messageConversations, ({ one, many }) => ({
+  participantOne: one(users, {
+    fields: [messageConversations.participantOneId],
+    references: [users.id],
+  }),
+  participantTwo: one(users, {
+    fields: [messageConversations.participantTwoId],
+    references: [users.id],
+  }),
+  messages: many(directMessages),
+}));
+
+export const directMessageRelations = relations(directMessages, ({ one }) => ({
+  conversation: one(messageConversations, {
+    fields: [directMessages.conversationId],
+    references: [messageConversations.id],
+  }),
+  sender: one(users, {
+    fields: [directMessages.senderId],
+    references: [users.id],
+  }),
+  receiver: one(users, {
+    fields: [directMessages.receiverId],
+    references: [users.id],
+  }),
+  replyTo: one(directMessages, {
+    fields: [directMessages.replyToMessageId],
+    references: [directMessages.id],
+  }),
+}));
+
+export const friendConnectionRelations = relations(friendConnections, ({ one }) => ({
+  requester: one(users, {
+    fields: [friendConnections.requesterId],
+    references: [users.id],
+  }),
+  receiver: one(users, {
+    fields: [friendConnections.receiverId],
+    references: [users.id],
+  }),
+}));
+
+// Device Tokens for Push Notifications (FCM/APNs)
+export const deviceTokens = pgTable("device_tokens", {
+  id: text("id").primaryKey().$defaultFn(() => crypto.randomUUID()),
+  userId: text("user_id").notNull(), // User handle
+  deviceId: text("device_id").notNull(), // Device identifier
+  deviceToken: text("device_token").notNull().unique(), // FCM/APNs token
+  platform: text("platform").notNull(), // ios, android, web
+  deviceName: text("device_name"), // e.g., "iPhone 14 Pro"
+  appVersion: text("app_version"), // App version for compatibility tracking
+  isActive: boolean("is_active").default(true),
+  lastUsed: timestamp("last_used").defaultNow(), // Added lastUsed field
+  lastSeen: timestamp("last_seen").defaultNow(),
+  createdAt: timestamp("created_at").defaultNow(),
+  updatedAt: timestamp("updated_at").defaultNow(),
+}, (table) => [
+  index("idx_device_tokens_user").on(table.userId),
+  index("idx_device_tokens_active").on(table.isActive),
+  unique("unique_device_token").on(table.deviceToken),
+]);
+
+// Notification Preferences - per-user settings
+export const notificationPreferences = pgTable("notification_preferences", {
+  id: text("id").primaryKey().$defaultFn(() => crypto.randomUUID()),
+  userId: text("user_id").notNull().unique(), // User handle
+  
+  // Channel preferences
+  enablePush: boolean("enable_push").default(true),
+  enableEmail: boolean("enable_email").default(true),
+  enableInApp: boolean("enable_in_app").default(true),
+  
+  // Notification type preferences
+  messages: boolean("messages").default(true),
+  mentions: boolean("mentions").default(true),
+  likes: boolean("likes").default(true),
+  comments: boolean("comments").default(true),
+  follows: boolean("follows").default(true),
+  system: boolean("system").default(true),
+  
+  // Quiet hours
+  quietHoursEnabled: boolean("quiet_hours_enabled").default(false),
+  quietHoursStart: text("quiet_hours_start"), // e.g., "22:00"
+  quietHoursEnd: text("quiet_hours_end"), // e.g., "08:00"
+  
+  createdAt: timestamp("created_at").defaultNow(),
+  updatedAt: timestamp("updated_at").defaultNow(),
+}, (table) => [
+  index("idx_notification_prefs_user").on(table.userId),
+]);
+
+// Messaging Insert Schemas
+export const insertMessageConversationSchema = createInsertSchema(messageConversations).omit(['id', 'createdAt', 'updatedAt']);
+
+export const insertDirectMessageSchema = createInsertSchema(directMessages).omit(['id', 'createdAt', 'updatedAt']);
+
+export const insertFriendConnectionSchema = createInsertSchema(friendConnections).omit(['id', 'createdAt', 'updatedAt']);
+
+// Messaging Types
+export type MessageConversation = typeof messageConversations.$inferSelect;
+export type DirectMessage = typeof directMessages.$inferSelect;
+export type FriendConnection = typeof friendConnections.$inferSelect;
+export type InsertMessageConversation = z.infer<typeof insertMessageConversationSchema>;
+export type InsertDirectMessage = z.infer<typeof insertDirectMessageSchema>;
+export type InsertFriendConnection = z.infer<typeof insertFriendConnectionSchema>;
+
+// DevTools Project Management Tables - Enhanced with comprehensive project linking
+export const devtoolsProjects = pgTable("devtools_projects", {
+  id: text("id").primaryKey().$defaultFn(() => crypto.randomUUID()),
+  name: text("name").notNull(),
+  description: text("description"),
+  ownerWalletAddress: text("owner_wallet_address").notNull(),
+  projectType: text("project_type").notNull(), // "new" or "imported"
+  asset_type: text("asset_type").notNull().default("token"), // "token" or "nft" - determines which control pages appear
+  status: text("status").default("active").notNull(), // active, paused, suspended
+  
+  // Chain configurations
+  selectedChains: jsonb("selected_chains").$type<string[]>().default([]),
+  chainConfigurations: jsonb("chain_configurations").$type<Record<string, any>>().default({}),
+  
+  // Contract addresses for imported projects
+  contractAddresses: jsonb("contract_addresses").$type<Record<string, string>>().default({}),
+  
+  // Project settings
+  apiKeys: jsonb("api_keys").$type<Record<string, string>>().default({}),
+  webhookUrls: jsonb("webhook_urls").$type<string[]>().default([]),
+  
+  // Enhanced project management fields
+  issuer_wallet: text("issuer_wallet"), // The issuer account that controls this project
+  vanity_slug: text("vanity_slug").unique(), // e.g. "zerpmon" for riddle.app/zerpmon
+  nft_token_taxon: integer("nft_token_taxon"), // For XRPL NFT projects (0, 1, 2, etc.)
+  project_managers: jsonb("project_managers").$type<string[]>().default([]), // Wallet addresses with edit permissions
+  claim_status: text("claim_status").default("unclaimed").notNull(), // unclaimed, claimed, verified
+  
+  // Project discovery metadata
+  discovered_from_chain: text("discovered_from_chain"), // Which chain this was discovered from
+  discovered_from_issuer: text("discovered_from_issuer"), // Original issuer address 
+  discovery_transaction_hash: text("discovery_transaction_hash"), // Discovery source transaction
+  auto_discovered: boolean("auto_discovered").default(false), // Was this auto-discovered vs manually created
+  
+  // Vanity URL and branding
+  logo_url: text("logo_url"),
+  banner_url: text("banner_url"),
+  website_url: text("website_url"),
+  social_links: jsonb("social_links").$type<Record<string, string>>().default({}), // twitter, discord, etc.
+  
+  // Bithomp override settings
+  override_bithomp_responses: boolean("override_bithomp_responses").default(true),
+  custom_collection_metadata: jsonb("custom_collection_metadata").$type<Record<string, any>>().default({}),
+  
+  // Enhanced Bithomp collection data (for direct querying)
+  bithomp_collection_name: text("bithomp_collection_name"), // Name from Bithomp
+  bithomp_collection_description: text("bithomp_collection_description"), // Description from Bithomp
+  bithomp_verified: boolean("bithomp_verified").default(false), // Verification status from Bithomp
+  bithomp_floor_price: decimal("bithomp_floor_price", { precision: 20, scale: 8 }), // Current floor price
+  bithomp_floor_price_usd: decimal("bithomp_floor_price_usd", { precision: 20, scale: 8 }), // Floor price in USD
+  bithomp_total_nfts: integer("bithomp_total_nfts"), // Total NFTs in collection
+  bithomp_owners_count: integer("bithomp_owners_count"), // Unique owners count
+  bithomp_volume_24h: decimal("bithomp_volume_24h", { precision: 20, scale: 8 }), // 24h trading volume
+  bithomp_volume_24h_usd: decimal("bithomp_volume_24h_usd", { precision: 20, scale: 8 }), // 24h volume in USD
+  bithomp_collection_image: text("bithomp_collection_image"), // Main collection image URL
+  bithomp_metadata: jsonb("bithomp_metadata").$type<Record<string, any>>().default({}), // Raw Bithomp metadata
+  
+  // Data source tracking
+  bithomp_data_fetched_at: timestamp("bithomp_data_fetched_at"), // When data was last fetched
+  bithomp_data_source: text("bithomp_data_source").default("bithomp_api"), // Source of the data
+  bithomp_fetch_error: text("bithomp_fetch_error"), // Last fetch error if any
+  auto_bithomp_enriched: boolean("auto_bithomp_enriched").default(false), // Was auto-enriched during claim approval
+  
+  createdAt: timestamp("created_at").defaultNow(),
+  updatedAt: timestamp("updated_at").defaultNow(),
+}, (table) => [
+  index("idx_devtools_projects_owner").on(table.ownerWalletAddress),
+  index("idx_devtools_projects_issuer").on(table.issuer_wallet),
+  index("idx_devtools_projects_vanity").on(table.vanity_slug),
+  index("idx_devtools_projects_taxon").on(table.nft_token_taxon),
+  index("idx_devtools_projects_chain").on(table.discovered_from_chain),
+  index("idx_devtools_projects_claim_status").on(table.claim_status),
+  index("idx_devtools_projects_bithomp_verified").on(table.bithomp_verified),
+  index("idx_devtools_projects_bithomp_enriched").on(table.auto_bithomp_enriched),
+  index("idx_devtools_projects_bithomp_fetched").on(table.bithomp_data_fetched_at),
+]);
+
+// Project Owner Authentication Table - For secure project access
+export const projectOwnerAuth = pgTable("project_owner_auth", {
+  id: text("id").primaryKey().$defaultFn(() => crypto.randomUUID()),
+  project_id: text("project_id").notNull().references(() => devtoolsProjects.id, { onDelete: "cascade" }),
+  
+  // Owner identification
+  owner_wallet_address: text("owner_wallet_address").notNull(), // Primary owner wallet
+  
+  // Authentication methods
+  auth_type: text("auth_type").notNull().default("hybrid"), // password, wallet_signature, hybrid
+  password_hash: text("password_hash"), // Hashed password for password auth
+  salt: text("salt"), // Salt for password hashing
+  
+  // Wallet signature settings
+  wallet_signature_required: boolean("wallet_signature_required").default(true),
+  allowed_wallet_addresses: jsonb("allowed_wallet_addresses").$type<string[]>().default([]), // Additional authorized wallets
+  
+  // Security settings
+  two_factor_enabled: boolean("two_factor_enabled").default(false),
+  backup_codes: jsonb("backup_codes").$type<string[]>().default([]), // Emergency access codes
+  
+  // Session settings
+  session_timeout_minutes: integer("session_timeout_minutes").default(120), // 2 hours default
+  max_concurrent_sessions: integer("max_concurrent_sessions").default(3),
+  
+  // Security tracking
+  failed_login_attempts: integer("failed_login_attempts").default(0),
+  lockout_until: timestamp("lockout_until"), // Account lockout timestamp
+  password_changed_at: timestamp("password_changed_at"),
+  last_login_at: timestamp("last_login_at"),
+  
+  // Metadata
+  created_at: timestamp("created_at").defaultNow().notNull(),
+  updated_at: timestamp("updated_at").defaultNow().notNull(),
+}, (table) => [
+  index("idx_project_owner_auth_project").on(table.project_id),
+  index("idx_project_owner_auth_wallet").on(table.owner_wallet_address),
+  index("idx_project_owner_auth_lockout").on(table.lockout_until),
+]);
+
+// Project Owner Sessions Table - For managing active login sessions
+export const projectOwnerSessions = pgTable("project_owner_sessions", {
+  id: text("id").primaryKey().$defaultFn(() => crypto.randomUUID()),
+  project_id: text("project_id").notNull().references(() => devtoolsProjects.id, { onDelete: "cascade" }),
+  auth_id: text("auth_id").notNull().references(() => projectOwnerAuth.id, { onDelete: "cascade" }),
+  
+  // Session details
+  session_token: text("session_token").notNull().unique(), // Secure session token
+  wallet_address: text("wallet_address").notNull(), // Which wallet is logged in
+  
+  // Session metadata
+  ip_address: text("ip_address"),
+  user_agent: text("user_agent"),
+  login_method: text("login_method").notNull(), // password, wallet_signature, hybrid
+  
+  // Session timing
+  created_at: timestamp("created_at").defaultNow().notNull(),
+  expires_at: timestamp("expires_at").notNull(),
+  last_activity_at: timestamp("last_activity_at").defaultNow().notNull(),
+  
+  // Session status
+  is_active: boolean("is_active").default(true),
+  terminated_at: timestamp("terminated_at"),
+  termination_reason: text("termination_reason"), // logout, timeout, forced, security
+  
+}, (table) => [
+  index("idx_project_sessions_project").on(table.project_id),
+  index("idx_project_sessions_auth").on(table.auth_id),
+  index("idx_project_sessions_token").on(table.session_token),
+  index("idx_project_sessions_expires").on(table.expires_at),
+  index("idx_project_sessions_active").on(table.is_active),
+  index("idx_project_sessions_wallet").on(table.wallet_address),
+]);
+
+// Project Login Audit Logs - For security tracking and compliance
+export const projectLoginLogs = pgTable("project_login_logs", {
+  id: text("id").primaryKey().$defaultFn(() => crypto.randomUUID()),
+  project_id: text("project_id").notNull().references(() => devtoolsProjects.id, { onDelete: "cascade" }),
+  auth_id: text("auth_id").references(() => projectOwnerAuth.id, { onDelete: "set null" }),
+  
+  // Attempt details
+  wallet_address: text("wallet_address").notNull(),
+  login_method: text("login_method").notNull(), // password, wallet_signature, hybrid
+  attempt_result: text("attempt_result").notNull(), // success, failed_password, failed_signature, locked_out, invalid_wallet
+  
+  // Request metadata
+  ip_address: text("ip_address"),
+  user_agent: text("user_agent"),
+  
+  // Failure details (if applicable)
+  failure_reason: text("failure_reason"), // Invalid password, signature verification failed, account locked, etc.
+  
+  // Session created (if successful)
+  session_id: text("session_id").references(() => projectOwnerSessions.id, { onDelete: "set null" }),
+  
+  // Timing
+  attempted_at: timestamp("attempted_at").defaultNow().notNull(),
+  
+}, (table) => [
+  index("idx_project_login_logs_project").on(table.project_id),
+  index("idx_project_login_logs_wallet").on(table.wallet_address),
+  index("idx_project_login_logs_result").on(table.attempt_result),
+  index("idx_project_login_logs_attempted").on(table.attempted_at),
+  index("idx_project_login_logs_ip").on(table.ip_address),
+]);
+
+export const projectSubscriptions = pgTable("project_subscriptions", {
+  id: text("id").primaryKey().$defaultFn(() => crypto.randomUUID()),
+  projectId: text("project_id").notNull().references(() => devtoolsProjects.id, { onDelete: "cascade" }),
+  planType: text("plan_type").notNull(), // "bronze", "gold", "pay_as_you_go"
+  planPrice: decimal("plan_price", { precision: 10, scale: 2 }), // Monthly price in USD
+  billingCycle: text("billing_cycle").default("monthly").notNull(), // monthly, annual
+  
+  // Subscription status
+  status: text("status").default("active").notNull(), // active, past_due, cancelled, suspended
+  currentPeriodStart: timestamp("current_period_start").defaultNow(),
+  currentPeriodEnd: timestamp("current_period_end"),
+  trialEnd: timestamp("trial_end"),
+  cancelAt: timestamp("cancel_at"),
+  
+  // Payment information
+  lastPaymentDate: timestamp("last_payment_date"),
+  nextPaymentDate: timestamp("next_payment_date"),
+  
+  createdAt: timestamp("created_at").defaultNow(),
+  updatedAt: timestamp("updated_at").defaultNow(),
+});
+
+export const projectBilling = pgTable("project_billing", {
+  id: text("id").primaryKey().$defaultFn(() => crypto.randomUUID()),
+  projectId: text("project_id").notNull().references(() => devtoolsProjects.id, { onDelete: "cascade" }),
+  subscriptionId: text("subscription_id").references(() => projectSubscriptions.id),
+  
+  // Payment details
+  amount: decimal("amount", { precision: 10, scale: 2 }).notNull(),
+  currency: text("currency").default("USD").notNull(),
+  paymentMethod: text("payment_method").notNull(), // "xrp", "eth", "btc", "sol", etc.
+  
+  // Transaction information
+  transactionHash: text("transaction_hash"),
+  paymentStatus: text("payment_status").default("pending").notNull(), // pending, completed, failed
+  
+  // Period covered by this payment
+  billingPeriodStart: timestamp("billing_period_start").notNull(),
+  billingPeriodEnd: timestamp("billing_period_end").notNull(),
+  
+  createdAt: timestamp("created_at").defaultNow(),
+  updatedAt: timestamp("updated_at").defaultNow(),
+});
+
+export const projectUsageMetrics = pgTable("project_usage_metrics", {
+  id: text("id").primaryKey().$defaultFn(() => crypto.randomUUID()),
+  projectId: text("project_id").notNull().references(() => devtoolsProjects.id, { onDelete: "cascade" }),
+  
+  // Usage tracking
+  apiCalls: integer("api_calls").default(0),
+  dataTransfer: bigint("data_transfer", { mode: "number" }).default(0), // bytes
+  computeTime: integer("compute_time").default(0), // milliseconds
+  
+  // Daily usage breakdown
+  date: date("date").notNull(),
+  
+  createdAt: timestamp("created_at").defaultNow(),
+}, (table) => [
+  index("idx_project_usage_project_date").on(table.projectId, table.date),
+]);
+
+export const chainConfigurations = pgTable("chain_configurations", {
+  id: text("id").primaryKey().$defaultFn(() => crypto.randomUUID()),
+  projectId: text("project_id").notNull().references(() => devtoolsProjects.id, { onDelete: "cascade" }),
+  chainId: text("chain_id").notNull(), // "ethereum", "xrpl", "solana", "bitcoin", etc.
+  
+  // Chain-specific configuration
+  networkType: text("network_type").default("mainnet").notNull(), // mainnet, testnet
+  rpcEndpoints: jsonb("rpc_endpoints").$type<string[]>().default([]),
+  contractAddresses: jsonb("contract_addresses").$type<Record<string, string>>().default({}),
+  
+  // Monitoring configuration
+  monitoringEnabled: boolean("monitoring_enabled").default(true),
+  alertsEnabled: boolean("alerts_enabled").default(true),
+  
+  createdAt: timestamp("created_at").defaultNow(),
+  updatedAt: timestamp("updated_at").defaultNow(),
+}, (table) => [
+  index("idx_chain_config_project").on(table.projectId),
+]);
+
+// DevTools Project Insert Schemas (updated to include new enhanced fields)
+export const insertDevtoolsProjectSchema = createInsertSchema(devtoolsProjects).omit(['id', 'createdAt', 'updatedAt']);
+
+export const insertProjectSubscriptionSchema = createInsertSchema(projectSubscriptions).omit(['id', 'createdAt', 'updatedAt']);
+
+export const insertProjectBillingSchema = createInsertSchema(projectBilling).omit(['id', 'createdAt', 'updatedAt']);
+
+export const insertProjectUsageMetricsSchema = createInsertSchema(projectUsageMetrics).omit(['id', 'createdAt']);
+
+export const insertChainConfigurationSchema = createInsertSchema(chainConfigurations).omit(['id', 'createdAt', 'updatedAt']);
+
+// Project Owner Authentication Insert Schemas
+export const insertProjectOwnerAuthSchema = createInsertSchema(projectOwnerAuth).omit(['id', 'created_at', 'updated_at']);
+
+export const insertProjectOwnerSessionSchema = createInsertSchema(projectOwnerSessions).omit(['id', 'created_at', 'last_activity_at']);
+
+export const insertProjectLoginLogSchema = createInsertSchema(projectLoginLogs).omit(['id', 'attempted_at']);
+
+// Wallet to Project Linking Table
+export const walletProjectLinks = pgTable("wallet_project_links", {
+  id: text("id").primaryKey().$defaultFn(() => crypto.randomUUID()),
+  walletAddress: text("wallet_address").notNull(),
+  projectId: text("project_id").notNull().references(() => devtoolsProjects.id, { onDelete: "cascade" }),
+  chain: text("chain").notNull(), // xrpl, ethereum, solana, etc.
+  linkType: text("link_type").notNull(), // "issuer", "owner", "contributor", "developer"
+  isActive: boolean("is_active").default(true),
+  linkedAt: timestamp("linked_at").defaultNow(),
+  createdAt: timestamp("created_at").defaultNow(),
+}, (table) => [
+  index("idx_wallet_project_links_wallet").on(table.walletAddress),
+  index("idx_wallet_project_links_project").on(table.projectId),
+]);
+
+// Collection metadata cache
+export const collectionMetadataCache = pgTable("collection_metadata_cache", {
+  id: text("id").primaryKey().$defaultFn(() => crypto.randomUUID()),
+  collectionId: text("collection_id").notNull().unique(),
+  name: text("name"),
+  description: text("description"),
+  imageUrl: text("image_url"),
+  metadata: jsonb("metadata").$type<any>(),
+  totalItems: integer("total_items").default(0),
+  floorPrice: decimal("floor_price", { precision: 20, scale: 8 }),
+  volume24h: decimal("volume_24h", { precision: 20, scale: 8 }),
+  cachedAt: timestamp("cached_at").defaultNow(),
+  expiresAt: timestamp("expires_at").notNull(),
+});
+
+// Project Wallets - All wallets connected to a project with specific roles
+export const projectWallets = pgTable("project_wallets", {
+  id: text("id").primaryKey().$defaultFn(() => crypto.randomUUID()),
+  projectId: text("project_id").notNull().references(() => devtoolsProjects.id, { onDelete: "cascade" }),
+  chain: text("chain").notNull(), // xrpl, ethereum, solana, bitcoin, etc.
+  address: text("address").notNull(),
+  walletType: text("wallet_type").notNull(), // "native" (riddle wallet), "external" (connected)
+  role: text("role").notNull(), // "owner", "issuer", "funding", "treasury", "admin", "viewer"
+  verified: boolean("verified").default(false),
+  metadata: jsonb("metadata").$type<Record<string, any>>().default({}), // Additional wallet info
+  createdAt: timestamp("created_at").defaultNow(),
+  updatedAt: timestamp("updated_at").defaultNow(),
+}, (table) => [
+  index("idx_project_wallets_project").on(table.projectId),
+  index("idx_project_wallets_address").on(table.address),
+  index("idx_project_wallets_role").on(table.role),
+]);
+
+// Project Services - Track which services are enabled for each project
+export const projectServices = pgTable("project_services", {
+  id: text("id").primaryKey().$defaultFn(() => crypto.randomUUID()),
+  projectId: text("project_id").notNull().references(() => devtoolsProjects.id, { onDelete: "cascade" }),
+  service: text("service").notNull(), // "swap", "staking", "messaging", "streaming", "analytics", "nft_marketplace", "token_issuance", "airdrops"
+  enabled: boolean("enabled").default(true),
+  planTier: text("plan_tier"), // "free", "bronze", "silver", "gold", "platinum"
+  config: jsonb("config").$type<Record<string, any>>().default({}), // Service-specific configuration
+  usageQuota: integer("usage_quota"), // Monthly quota if applicable
+  usageCount: integer("usage_count").default(0), // Current month usage
+  lastUsed: timestamp("last_used"),
+  createdAt: timestamp("created_at").defaultNow(),
+  updatedAt: timestamp("updated_at").defaultNow(),
+}, (table) => [
+  index("idx_project_services_project").on(table.projectId),
+  index("idx_project_services_service").on(table.service),
+]);
+
+// Token Configurations - For token projects
+export const tokenConfigurations = pgTable("token_configurations", {
+  id: text("id").primaryKey().$defaultFn(() => crypto.randomUUID()),
+  projectId: text("project_id").notNull().references(() => devtoolsProjects.id, { onDelete: "cascade" }),
+  chain: text("chain").notNull(), // xrpl, ethereum, bsc, polygon, solana, etc.
+  standard: text("standard").notNull(), // "XRPL", "ERC20", "SPL", "BEP20"
+  
+  // Token basic info
+  name: text("name").notNull(),
+  symbol: text("symbol").notNull(),
+  decimals: integer("decimals").notNull(),
+  totalSupply: text("total_supply"), // Use text for large numbers
+  maxSupply: text("max_supply"), // Optional max supply cap
+  
+  // Addresses
+  issuerAddress: text("issuer_address"), // XRPL issuer or deployer
+  fundingAddress: text("funding_address"), // XRPL funding wallet
+  contractAddress: text("contract_address"), // EVM contract or Solana mint
+  treasuryAddress: text("treasury_address"), // Treasury/reserve wallet
+  
+  // XRPL specific parameters
+  xrplParams: jsonb("xrpl_params").$type<{
+    trustlineRequired: boolean;
+    flags: Record<string, boolean>; // DefaultRipple, RequireDest, etc.
+    transferRateBps: number; // Transfer fee in basis points
+    clawbackEnabled: boolean;
+    freezeEnabled: boolean;
+    ammPoolAddress?: string;
+    tickSize?: number;
+  }>(),
+  
+  // EVM specific parameters
+  evmParams: jsonb("evm_params").$type<{
+    mintable: boolean;
+    burnable: boolean;
+    pausable: boolean;
+    upgradeable: boolean;
+    maxTransferAmount?: string;
+    transferFeeRate?: number;
+    liquidityPools?: string[];
+  }>(),
+  
+  // Solana specific parameters
+  solanaParams: jsonb("solana_params").$type<{
+    mintAuthority: string;
+    freezeAuthority?: string;
+    metadataUri?: string;
+  }>(),
+  
+  status: text("status").default("draft").notNull(), // draft, deploying, deployed, paused, frozen
+  deploymentTxHash: text("deployment_tx_hash"),
+  deploymentBlockNumber: bigint("deployment_block_number", { mode: "number" }),
+  
+  createdAt: timestamp("created_at").defaultNow(),
+  updatedAt: timestamp("updated_at").defaultNow(),
+}, (table) => [
+  index("idx_token_configs_project").on(table.projectId),
+  index("idx_token_configs_chain").on(table.chain),
+  index("idx_token_configs_status").on(table.status),
+]);
+
+// NFT Configurations - For NFT projects
+export const nftConfigurations = pgTable("nft_configurations", {
+  id: text("id").primaryKey().$defaultFn(() => crypto.randomUUID()),
+  projectId: text("project_id").notNull().references(() => devtoolsProjects.id, { onDelete: "cascade" }),
+  chain: text("chain").notNull(), // xrpl, ethereum, bsc, polygon, solana, etc.
+  standard: text("standard").notNull(), // "XRPL", "ERC721", "ERC1155", "SPL-NFT"
+  
+  // Collection info
+  collectionName: text("collection_name").notNull(),
+  symbol: text("symbol"),
+  description: text("description"),
+  
+  // XRPL specific
+  taxon: integer("taxon"), // XRPL NFT taxon (0, 1, 2, etc.)
+  transferFee: integer("transfer_fee"), // 0-50000 (0-50%)
+  flags: integer("flags"), // XRPL NFT flags bitmap
+  
+  // Contract addresses
+  contractAddress: text("contract_address"), // EVM contract or Solana collection mint
+  minterAddress: text("minter_address"), // Who can mint new NFTs
+  
+  // Collection metadata
+  baseUri: text("base_uri"), // Base metadata URI
+  totalSupply: integer("total_supply"), // Max supply if limited
+  mintedCount: integer("minted_count").default(0),
+  
+  // Royalties and fees
+  royaltyBps: integer("royalty_bps"), // Royalty in basis points (e.g., 500 = 5%)
+  royaltyRecipient: text("royalty_recipient"),
+  
+  // Creator info (for display)
+  creators: jsonb("creators").$type<Array<{
+    address: string;
+    share: number; // Percentage share
+    verified: boolean;
+  }>>().default([]),
+  
+  status: text("status").default("draft").notNull(), // draft, deploying, deployed, minting, paused
+  deploymentTxHash: text("deployment_tx_hash"),
+  
+  createdAt: timestamp("created_at").defaultNow(),
+  updatedAt: timestamp("updated_at").defaultNow(),
+}, (table) => [
+  index("idx_nft_configs_project").on(table.projectId),
+  index("idx_nft_configs_chain").on(table.chain),
+  index("idx_nft_configs_taxon").on(table.taxon),
+  index("idx_nft_configs_status").on(table.status),
+]);
+
+// Wallet Project Links Insert Schemas
+export const insertWalletProjectLinkSchema = createInsertSchema(walletProjectLinks).omit(['id', 'createdAt']);
+
+export const insertCollectionMetadataCacheSchema = createInsertSchema(collectionMetadataCache).omit(['id', 'cachedAt']);
+
+// Insert Schemas for new tables
+export const insertProjectWalletSchema = createInsertSchema(projectWallets).omit(['id', 'createdAt', 'updatedAt']);
+
+export const insertProjectServiceSchema = createInsertSchema(projectServices).omit(['id', 'createdAt', 'updatedAt']);
+
+export const insertTokenConfigurationSchema = createInsertSchema(tokenConfigurations).omit(['id', 'createdAt', 'updatedAt']);
+
+export const insertNftConfigurationSchema = createInsertSchema(nftConfigurations).omit(['id', 'createdAt', 'updatedAt']);
+
+// DevTools Project Types
+export type DevtoolsProject = typeof devtoolsProjects.$inferSelect;
+export type ProjectSubscription = typeof projectSubscriptions.$inferSelect;
+export type ProjectBilling = typeof projectBilling.$inferSelect;
+export type ProjectUsageMetrics = typeof projectUsageMetrics.$inferSelect;
+export type ChainConfiguration = typeof chainConfigurations.$inferSelect;
+export type WalletProjectLink = typeof walletProjectLinks.$inferSelect;
+export type CollectionMetadataCache = typeof collectionMetadataCache.$inferSelect;
+export type InsertDevtoolsProject = z.infer<typeof insertDevtoolsProjectSchema>;
+export type InsertProjectSubscription = z.infer<typeof insertProjectSubscriptionSchema>;
+export type InsertProjectBilling = z.infer<typeof insertProjectBillingSchema>;
+export type InsertProjectUsageMetrics = z.infer<typeof insertProjectUsageMetricsSchema>;
+export type InsertChainConfiguration = z.infer<typeof insertChainConfigurationSchema>;
+export type InsertWalletProjectLink = z.infer<typeof insertWalletProjectLinkSchema>;
+export type InsertCollectionMetadataCache = z.infer<typeof insertCollectionMetadataCacheSchema>;
+
+// Project Owner Authentication Types
+export type ProjectOwnerAuth = typeof projectOwnerAuth.$inferSelect;
+export type ProjectOwnerSession = typeof projectOwnerSessions.$inferSelect;
+export type ProjectLoginLog = typeof projectLoginLogs.$inferSelect;
+export type InsertProjectOwnerAuth = z.infer<typeof insertProjectOwnerAuthSchema>;
+export type InsertProjectOwnerSession = z.infer<typeof insertProjectOwnerSessionSchema>;
+export type InsertProjectLoginLog = z.infer<typeof insertProjectLoginLogSchema>;
+
+// New table types
+export type ProjectWallet = typeof projectWallets.$inferSelect;
+export type ProjectService = typeof projectServices.$inferSelect;
+export type TokenConfiguration = typeof tokenConfigurations.$inferSelect;
+export type NftConfiguration = typeof nftConfigurations.$inferSelect;
+export type InsertProjectWallet = z.infer<typeof insertProjectWalletSchema>;
+export type InsertProjectService = z.infer<typeof insertProjectServiceSchema>;
+export type InsertTokenConfiguration = z.infer<typeof insertTokenConfigurationSchema>;
+export type InsertNftConfiguration = z.infer<typeof insertNftConfigurationSchema>;
+
+// Enhanced External Wallets Insert Schema
+export const insertExternalWalletSchema = createInsertSchema(externalWallets).omit(['id', 'connected_at', 'last_used', 'linked_project_count', 'verification_attempts', 'last_verification_attempt']);
+
+// Linked Wallets Insert Schema
+export const insertLinkedWalletSchema = createInsertSchema(linkedWallets).omit(['id', 'created_at', 'verified_at', 'last_activity']);
+
+// Auth Nonces Insert Schema  
+export const insertAuthNonceSchema = createInsertSchema(authNonces).omit(['id', 'created_at']);
+
+// Project Claims Insert Schema
+export const insertProjectClaimSchema = createInsertSchema(projectClaims).omit(['id', 'created_at', 'updated_at']);
+
+// Enhanced Insert Schema for DevTools Projects (updated to include new fields)
+// Note: insertDevtoolsProjectSchema already exists above, this is just documentation
+
+// Enhanced Types
+export type ExternalWallet = typeof externalWallets.$inferSelect;
+export type InsertExternalWallet = z.infer<typeof insertExternalWalletSchema>;
+
+export type LinkedWallet = typeof linkedWallets.$inferSelect;
+export type InsertLinkedWallet = z.infer<typeof insertLinkedWalletSchema>;
+
+export type AuthNonce = typeof authNonces.$inferSelect;
+export type InsertAuthNonce = z.infer<typeof insertAuthNonceSchema>;
+
+export type ProjectClaim = typeof projectClaims.$inferSelect;
+export type InsertProjectClaim = z.infer<typeof insertProjectClaimSchema>;
+
+// Social Media Platform Tables
+export const socialProfiles = pgTable("social_profiles", {
+  id: serial("id").primaryKey(), // Match existing database structure
+  handle: text("handle").notNull().unique(), // Match existing database structure 
+  displayName: text("display_name"), // Match existing column name
+  bio: text("bio"),
+  location: text("location"),
+  website: text("website"),
+  profileImageUrl: text("profile_picture_url"), // Match existing column name
+  coverImageUrl: text("cover_image_url"), // Match existing column name
+  
+  // Social Media Links
+  twitterUsername: text("twitter_username"),
+  instagramUsername: text("instagram_username"),
+  facebookUsername: text("facebook_username"),
+  linkedinUsername: text("linkedin_username"),
+  youtubeChannel: text("youtube_channel"),
+  tiktokUsername: text("tiktok_username"),
+  telegramUsername: text("telegram_username"),
+  discordUsername: text("discord_username"),
+  githubUsername: text("github_username"),
+  twitchUsername: text("twitch_username"),
+  
+  // Counts and stats
+  followersCount: integer("followers_count").default(0),
+  followingCount: integer("following_count").default(0),
+  postsCount: integer("posts_count").default(0),
+  
+  // Wallet address for compatibility
+  walletAddress: text("wallet_address"),
+  
+  createdAt: timestamp("created_at").defaultNow(),
+  updatedAt: timestamp("updated_at").defaultNow(),
+});
+
+export const posts = pgTable("posts", {
+  id: serial("id").primaryKey(), // Match actual database (integer primary key)
+  authorHandle: text("author_handle"), // Match actual database
+  authorWalletAddress: text("author_wallet_address").notNull(),
+  content: text("content").notNull(),
+  imageUrls: text("image_urls").array(), // Match actual database (array type)
+  likesCount: integer("likes_count").default(0),
+  commentsCount: integer("comments_count").default(0),
+  sharesCount: integer("shares_count").default(0),
+  createdAt: timestamp("created_at").defaultNow(),
+  updatedAt: timestamp("updated_at").defaultNow(),
+});
+
+export const postLikes = pgTable("post_likes", {
+  id: serial("id").primaryKey(), // Match actual database (integer primary key)
+  postId: integer("post_id").notNull(), // Match actual database (integer, not text)
+  userHandle: text("user_handle").notNull(), // Match actual database column name
+  createdAt: timestamp("created_at").defaultNow(),
+}, (table) => [
+  index("idx_post_likes_post_user").on(table.postId, table.userHandle),
+]);
+
+export const postComments = pgTable("post_comments", {
+  id: text("id").primaryKey().$defaultFn(() => crypto.randomUUID()),
+  postId: integer("post_id").notNull().references(() => posts.id, { onDelete: "cascade" }),
+  authorWalletAddress: text("author_wallet_address").notNull(),
+  content: text("content").notNull(),
+  parentCommentId: text("parent_comment_id"),
+  likesCount: integer("likes_count").default(0),
+  repliesCount: integer("replies_count").default(0),
+  isDeleted: boolean("is_deleted").default(false),
+  createdAt: timestamp("created_at").defaultNow(),
+  updatedAt: timestamp("updated_at").defaultNow(),
+}, (table) => [
+  index("idx_post_comments_post").on(table.postId),
+  index("idx_post_comments_author").on(table.authorWalletAddress),
+]);
+
+export const socialFollows = pgTable("social_follows", {
+  id: text("id").primaryKey().$defaultFn(() => crypto.randomUUID()),
+  followerWalletAddress: text("follower_wallet_address").notNull(),
+  followingWalletAddress: text("following_wallet_address").notNull(),
+  createdAt: timestamp("created_at").defaultNow(),
+}, (table) => [
+  index("idx_social_follows_follower").on(table.followerWalletAddress),
+  index("idx_social_follows_following").on(table.followingWalletAddress),
+]);
+
+// Voice Messages Table for DMs
+export const voiceMessages = pgTable("voice_messages", {
+  id: text("id").primaryKey().$defaultFn(() => crypto.randomUUID()),
+  messageId: text("message_id").notNull().references(() => directMessages.id, { onDelete: "cascade" }),
+  audioUrl: text("audio_url").notNull(),
+  duration: integer("duration"), // duration in seconds
+  transcription: text("transcription"), // optional AI transcription
+  createdAt: timestamp("created_at").defaultNow(),
+});
+
+// Social Relations
+export const socialProfileRelations = relations(socialProfiles, ({ one, many }) => ({
+  posts: many(posts, { relationName: "authorPosts" }),
+  followers: many(socialFollows, { relationName: "profileFollowers" }),
+  following: many(socialFollows, { relationName: "profileFollowing" }),
+}));
+
+export const postRelations = relations(posts, ({ one, many }) => ({
+  author: one(socialProfiles, {
+    fields: [posts.authorWalletAddress],
+    references: [socialProfiles.walletAddress],
+    relationName: "authorPosts"
+  }),
+  likes: many(postLikes),
+  comments: many(postComments),
+}));
+
+export const postLikeRelations = relations(postLikes, ({ one }) => ({
+  post: one(posts, {
+    fields: [postLikes.postId],
+    references: [posts.id],
+  }),
+}));
+
+export const postCommentRelations = relations(postComments, ({ one, many }) => ({
+  post: one(posts, {
+    fields: [postComments.postId],
+    references: [posts.id],
+  }),
+  author: one(socialProfiles, {
+    fields: [postComments.authorWalletAddress],
+    references: [socialProfiles.handle],
+  }),
+  parentComment: one(postComments, {
+    fields: [postComments.parentCommentId],
+    references: [postComments.id],
+    relationName: "commentReplies"
+  }),
+  replies: many(postComments, { relationName: "commentReplies" }),
+}));
+
+export const socialFollowRelations = relations(socialFollows, ({ one }) => ({
+  follower: one(socialProfiles, {
+    fields: [socialFollows.followerWalletAddress],
+    references: [socialProfiles.handle],
+    relationName: "profileFollowers"
+  }),
+  following: one(socialProfiles, {
+    fields: [socialFollows.followingWalletAddress],
+    references: [socialProfiles.handle],
+    relationName: "profileFollowing"
+  }),
+}));
+
+export const voiceMessageRelations = relations(voiceMessages, ({ one }) => ({
+  message: one(directMessages, {
+    fields: [voiceMessages.messageId],
+    references: [directMessages.id],
+  }),
+}));
+
+// Social Insert Schemas
+export const insertSocialProfileSchema = createInsertSchema(socialProfiles).omit(['id', 'createdAt', 'updatedAt']);
+
+export const insertPostSchema = createInsertSchema(posts).omit(['id', 'createdAt', 'updatedAt', 'likesCount', 'commentsCount', 'sharesCount']);
+
+export const insertPostLikeSchema = createInsertSchema(postLikes).omit(['id', 'createdAt']);
+
+export const insertPostCommentSchema = createInsertSchema(postComments).omit(['id', 'createdAt', 'updatedAt', 'likesCount', 'repliesCount', 'isDeleted']);
+
+export const insertSocialFollowSchema = createInsertSchema(socialFollows).omit(['id', 'createdAt']);
+
+export const insertVoiceMessageSchema = createInsertSchema(voiceMessages).omit(['id', 'createdAt']);
+
+// Social Types
+export type SocialProfile = typeof socialProfiles.$inferSelect;
+export type Post = typeof posts.$inferSelect;
+export type PostLike = typeof postLikes.$inferSelect;
+export type PostComment = typeof postComments.$inferSelect;
+export type SocialFollow = typeof socialFollows.$inferSelect;
+export type VoiceMessage = typeof voiceMessages.$inferSelect;
+
+export type InsertSocialProfile = z.infer<typeof insertSocialProfileSchema>;
+export type InsertPost = z.infer<typeof insertPostSchema>;
+export type InsertPostLike = z.infer<typeof insertPostLikeSchema>;
+export type InsertPostComment = z.infer<typeof insertPostCommentSchema>;
+export type InsertSocialFollow = z.infer<typeof insertSocialFollowSchema>;
+export type InsertVoiceMessage = z.infer<typeof insertVoiceMessageSchema>;
+
+// ============== REWARDS SYSTEM TABLES ==============
+export const swapFees = pgTable("swap_fees", {
+  id: serial("id").primaryKey(),
+  walletAddress: text("wallet_address").notNull(),
+  swapType: text("swap_type").notNull(), // xrpl, evm, solana, bridge
+  fromToken: text("from_token").notNull(),
+  toToken: text("to_token").notNull(),
+  swapAmount: decimal("swap_amount", { precision: 30, scale: 10 }).notNull(),
+  feeAmount: decimal("fee_amount", { precision: 30, scale: 10 }).notNull(),
+  feeInUsd: decimal("fee_in_usd", { precision: 20, scale: 4 }),
+  transactionHash: text("transaction_hash"),
+  createdAt: timestamp("created_at").defaultNow(),
+}, (table) => [
+  index("swap_fees_wallet_address_idx").on(table.walletAddress),
+  index("swap_fees_created_at_idx").on(table.createdAt),
+]);
+
+export const nftHoldings = pgTable("nft_holdings", {
+  id: serial("id").primaryKey(),
+  walletAddress: text("wallet_address").notNull(),
+  nftId: text("nft_id").notNull(),
+  collectionName: text("collection_name"),
+  holdingDuration: integer("holding_duration_days").default(0),
+  acquiredAt: timestamp("acquired_at").notNull(),
+  lastSnapshotAt: timestamp("last_snapshot_at").defaultNow(),
+  isActive: boolean("is_active").default(true),
+}, (table) => [
+  index("nft_holdings_wallet_nft_idx").on(table.walletAddress, table.nftId),
+]);
+
+export const tokenHoldings = pgTable("token_holdings", {
+  id: serial("id").primaryKey(),
+  walletAddress: text("wallet_address").notNull(),
+  tokenSymbol: text("token_symbol").notNull(),
+  tokenIssuer: text("token_issuer"),
+  balance: decimal("balance", { precision: 30, scale: 10 }).notNull(),
+  balanceInUsd: decimal("balance_in_usd", { precision: 20, scale: 4 }),
+  snapshotDate: timestamp("snapshot_date").defaultNow(),
+}, (table) => [
+  index("token_holdings_wallet_token_idx").on(table.walletAddress, table.tokenSymbol),
+  index("token_holdings_snapshot_idx").on(table.snapshotDate),
+]);
+
+export const socialRewards = pgTable("social_rewards", {
+  id: serial("id").primaryKey(),
+  walletAddress: text("wallet_address").notNull(),
+  actionType: text("action_type").notNull(), // post, like, comment, follow, share
+  pointsEarned: integer("points_earned").notNull(),
+  referenceId: text("reference_id"), // post_id, comment_id, etc
+  createdAt: timestamp("created_at").defaultNow(),
+}, (table) => [
+  index("social_rewards_wallet_address_idx").on(table.walletAddress),
+  index("social_rewards_created_at_idx").on(table.createdAt),
+]);
+
+export const rewardsDistribution = pgTable("rewards_distribution", {
+  id: serial("id").primaryKey(),
+  distributionMonth: text("distribution_month").notNull(), // YYYY-MM format
+  totalRevenueXrp: decimal("total_revenue_xrp", { precision: 30, scale: 10 }).notNull(),
+  totalRevenueUsd: decimal("total_revenue_usd", { precision: 20, scale: 4 }),
+  rewardsPoolXrp: decimal("rewards_pool_xrp", { precision: 30, scale: 10 }).notNull(), // 25% of revenue
+  rdlDistributed: decimal("rdl_distributed", { precision: 30, scale: 10 }),
+  distributionDate: timestamp("distribution_date"),
+  status: text("status").default("pending"), // pending, processing, completed
+  createdAt: timestamp("created_at").defaultNow(),
+});
+
+export const userRewards = pgTable("user_rewards", {
+  id: serial("id").primaryKey(),
+  walletAddress: text("wallet_address").notNull(),
+  distributionId: integer("distribution_id").references(() => rewardsDistribution.id),
+  swapPoints: integer("swap_points").default(0),
+  bridgePoints: integer("bridge_points").default(0),
+  nftPoints: integer("nft_points").default(0),
+  rdlHoldingPoints: integer("rdl_holding_points").default(0),
+  socialPoints: integer("social_points").default(0),
+  totalPoints: integer("total_points").notNull(),
+  rdlReward: decimal("rdl_reward", { precision: 30, scale: 10 }),
+  claimStatus: text("claim_status").default("unclaimed"), // unclaimed, claimed
+  claimedAt: timestamp("claimed_at"),
+  createdAt: timestamp("created_at").defaultNow(),
+}, (table) => [
+  index("user_rewards_wallet_distribution_idx").on(table.walletAddress, table.distributionId),
+]);
+
+export const rewardsConfig = pgTable("rewards_config", {
+  id: serial("id").primaryKey(),
+  configKey: text("config_key").notNull().unique(),
+  configValue: decimal("config_value", { precision: 10, scale: 4 }).notNull(),
+  description: text("description"),
+  updatedAt: timestamp("updated_at").defaultNow(),
+});
+
+// ============== IMPORTED WALLETS SYSTEM ==============
+// Universal wallet import system for all chains - stores ALL as private keys
+export const importedWallets = pgTable("imported_wallets", {
+  id: text("id").primaryKey().$defaultFn(() => crypto.randomUUID()),
+  user_handle: varchar("user_handle").notNull(), // Riddle handle of the owner
+  
+  // Wallet identification
+  address: text("address").notNull(), // Derived wallet address
+  chain: text("chain").notNull(), // eth, sol, xrp, btc, bsc, polygon, arbitrum, etc.
+  wallet_label: text("wallet_label"), // User-friendly name for this imported wallet
+  
+  // Encrypted storage - ALL stored as private key format (jsonb EncryptedData blob)
+  encrypted_private_key: jsonb("encrypted_private_key").notNull(),
+  
+  // Import metadata
+  import_method: text("import_method").notNull(), // mnemonic, private_key, xrpl_seed, xrpl_secret
+  original_format: text("original_format"), // For reference: what user originally provided
+  derivation_path: text("derivation_path"), // BIP44 path if derived from mnemonic
+  
+  // Wallet status
+  is_active: boolean("is_active").default(true),
+  
+  // Security tracking
+  last_used: timestamp("last_used"), // Last time this wallet was used for a transaction
+  created_at: timestamp("created_at").defaultNow().notNull(),
+  updated_at: timestamp("updated_at").defaultNow().notNull(),
+  
+  // Optional metadata
+  notes: text("notes"), // User notes about this imported wallet
+}, (table) => [
+  index("idx_imported_wallets_user").on(table.user_handle),
+  index("idx_imported_wallets_chain").on(table.chain),
+  index("idx_imported_wallets_address").on(table.address),
+  index("idx_imported_wallets_chain_addr").on(table.chain, table.address),
+  index("idx_imported_wallets_active").on(table.is_active),
+  unique("unique_imported_wallet").on(table.user_handle, table.chain, table.address),
+]);
+
+// Rewards Insert Schemas
+export const insertSwapFeeSchema = createInsertSchema(swapFees).omit(['id', 'createdAt']);
+
+export const insertNftHoldingSchema = createInsertSchema(nftHoldings).omit(['id', 'lastSnapshotAt']);
+
+export const insertTokenHoldingSchema = createInsertSchema(tokenHoldings).omit(['id', 'snapshotDate']);
+
+export const insertSocialRewardSchema = createInsertSchema(socialRewards).omit(['id', 'createdAt']);
+
+export const insertRewardsDistributionSchema = createInsertSchema(rewardsDistribution).omit(['id', 'createdAt']);
+
+export const insertUserRewardSchema = createInsertSchema(userRewards).omit(['id', 'createdAt']);
+
+export const insertRewardsConfigSchema = createInsertSchema(rewardsConfig).omit(['id', 'updatedAt']);
+
+// Imported Wallets Insert Schema
+export const insertImportedWalletSchema = createInsertSchema(importedWallets).omit(['id', 'created_at', 'updated_at']);
+
+// Rewards Types
+export type SwapFee = typeof swapFees.$inferSelect;
+export type InsertSwapFee = z.infer<typeof insertSwapFeeSchema>;
+export type NftHolding = typeof nftHoldings.$inferSelect;
+export type InsertNftHolding = z.infer<typeof insertNftHoldingSchema>;
+export type TokenHolding = typeof tokenHoldings.$inferSelect;
+export type InsertTokenHolding = z.infer<typeof insertTokenHoldingSchema>;
+export type SocialReward = typeof socialRewards.$inferSelect;
+
+// Imported Wallets Types
+export type ImportedWallet = typeof importedWallets.$inferSelect;
+export type InsertImportedWallet = z.infer<typeof insertImportedWalletSchema>;
+export type InsertSocialReward = z.infer<typeof insertSocialRewardSchema>;
+export type RewardsDistribution = typeof rewardsDistribution.$inferSelect;
+export type InsertRewardsDistribution = z.infer<typeof insertRewardsDistributionSchema>;
+export type UserReward = typeof userRewards.$inferSelect;
+export type InsertUserReward = z.infer<typeof insertUserRewardSchema>;
+export type RewardsConfig = typeof rewardsConfig.$inferSelect;
+export type InsertRewardsConfig = z.infer<typeof insertRewardsConfigSchema>;
+
+// ============== TOKEN LAUNCHPAD SYSTEM ==============
+export const tokenLaunches = pgTable("token_launches", {
+  id: serial("id").primaryKey(),
+  creatorWallet: text("creator_wallet").notNull(),
+  chainType: text("chain_type").notNull(), // xrpl, ethereum, solana, bsc, base, polygon
+  tokenName: text("token_name").notNull(),
+  tokenSymbol: text("token_symbol").notNull(),
+  tokenDescription: text("token_description"),
+  tokenLogo: text("token_logo"),
+  totalSupply: decimal("total_supply", { precision: 30, scale: 8 }).notNull(),
+  presaleAmount: decimal("presale_amount", { precision: 30, scale: 8 }).notNull(),
+  presalePrice: decimal("presale_price", { precision: 20, scale: 8 }).notNull(),
+  liquidityThreshold: decimal("liquidity_threshold", { precision: 30, scale: 8 }).notNull(),
+  softCap: decimal("soft_cap", { precision: 30, scale: 8 }).notNull(),
+  hardCap: decimal("hard_cap", { precision: 30, scale: 8 }).notNull(),
+  setupFeePaid: boolean("setup_fee_paid").default(false),
+  setupFeeTransaction: text("setup_fee_transaction"),
+  contractAddress: text("contract_address"),
+  status: text("status").notNull().default("pending"), // pending, active, completed, cancelled
+  currentStage: text("current_stage").notNull().default("setup"), // setup, whitelist, nft_holders, open_wl, open_sale, completed
+  
+  // Bonding Curve Settings
+  useBondingCurve: boolean("use_bonding_curve").default(false),
+  basePrice: decimal("base_price", { precision: 20, scale: 8 }).default("0.001"), // Starting price per token
+  curveCoefficient: decimal("curve_coefficient", { precision: 10, scale: 6 }).default("2.0"), // Curve steepness factor
+  fundingGoal: decimal("funding_goal", { precision: 30, scale: 8 }).notNull(), // Goal for auto-launch
+  currentMarketCap: decimal("current_market_cap", { precision: 30, scale: 8 }).default("0"),
+  currentTokenPrice: decimal("current_token_price", { precision: 20, scale: 8 }).default("0"),
+  priceUpdateFrequency: integer("price_update_frequency").default(60), // Seconds between price updates
+  
+  // NFT Gating Configuration
+  enableNftGating: boolean("enable_nft_gating").default(false),
+  nftGatingDuration: integer("nft_gating_duration").default(7200), // 2 hours in seconds
+  requiredNftCollections: jsonb("required_nft_collections").$type<string[]>().default([]), // NFT collection addresses
+  nftHolderDiscount: decimal("nft_holder_discount", { precision: 5, scale: 2 }).default("0"), // % discount for NFT holders
+  
+  // Auto-Launch Configuration  
+  autoLaunchEnabled: boolean("auto_launch_enabled").default(true),
+  liquidityPercentage: decimal("liquidity_percentage", { precision: 5, scale: 2 }).default("80"), // % of funds for liquidity
+  dexPlatform: text("dex_platform").default("uniswap"), // uniswap, pancakeswap, raydium, etc.
+  liquidityLockDuration: integer("liquidity_lock_duration").default(365), // Days to lock liquidity
+  
+  // Stage timings
+  whitelistStartTime: timestamp("whitelist_start_time"),
+  whitelistEndTime: timestamp("whitelist_end_time"),
+  nftHoldersStartTime: timestamp("nft_holders_start_time"),
+  nftHoldersEndTime: timestamp("nft_holders_end_time"),
+  openWlStartTime: timestamp("open_wl_start_time"),
+  openWlEndTime: timestamp("open_wl_end_time"),
+  openSaleStartTime: timestamp("open_sale_start_time"),
+  openSaleEndTime: timestamp("open_sale_end_time"),
+  
+  totalRaised: decimal("total_raised", { precision: 30, scale: 8 }).default("0"),
+  participantCount: integer("participant_count").default(0),
+  liquidityCreated: boolean("liquidity_created").default(false),
+  liquidityTransaction: text("liquidity_transaction"),
+  autoLaunchTriggered: boolean("auto_launch_triggered").default(false),
+  autoLaunchTransaction: text("auto_launch_transaction"),
+  
+  createdAt: timestamp("created_at").defaultNow(),
+  updatedAt: timestamp("updated_at").defaultNow(),
+}, (table) => [
+  index("token_launches_creator_idx").on(table.creatorWallet),
+  index("token_launches_chain_idx").on(table.chainType),
+  index("token_launches_status_idx").on(table.status),
+  index("token_launches_bonding_curve_idx").on(table.useBondingCurve),
+  index("token_launches_nft_gating_idx").on(table.enableNftGating),
+]);
+
+export const presaleContributions = pgTable("presale_contributions", {
+  id: serial("id").primaryKey(),
+  launchId: integer("launch_id").references(() => tokenLaunches.id),
+  contributorWallet: text("contributor_wallet").notNull(),
+  amount: decimal("amount", { precision: 30, scale: 8 }).notNull(),
+  stage: text("stage").notNull(), // whitelist, nft_holders, open_wl, open_sale
+  transactionHash: text("transaction_hash").notNull(),
+  tokenAmount: decimal("token_amount", { precision: 30, scale: 8 }).notNull(),
+  
+  // Bonding Curve Pricing Data
+  tokenPriceAtPurchase: decimal("token_price_at_purchase", { precision: 20, scale: 8 }).notNull(),
+  marketCapAtPurchase: decimal("market_cap_at_purchase", { precision: 30, scale: 8 }).notNull(),
+  isNftHolder: boolean("is_nft_holder").default(false),
+  nftHolderDiscount: decimal("nft_holder_discount", { precision: 5, scale: 2 }).default("0"),
+  verifiedNftCollections: jsonb("verified_nft_collections").$type<string[]>().default([]),
+  
+  claimed: boolean("claimed").default(false),
+  claimTransaction: text("claim_transaction"),
+  createdAt: timestamp("created_at").defaultNow(),
+}, (table) => [
+  index("presale_contributions_launch_idx").on(table.launchId),
+  index("presale_contributions_wallet_idx").on(table.contributorWallet),
+  index("presale_contributions_nft_holder_idx").on(table.isNftHolder),
+]);
+
+export const launchpadWhitelist = pgTable("launchpad_whitelist", {
+  id: serial("id").primaryKey(),
+  launchId: integer("launch_id").references(() => tokenLaunches.id),
+  walletAddress: text("wallet_address").notNull(),
+  stage: text("stage").notNull(), // whitelist, nft_holders, open_wl
+  maxAllocation: decimal("max_allocation", { precision: 30, scale: 8 }),
+  addedBy: text("added_by").notNull(),
+  createdAt: timestamp("created_at").defaultNow(),
+}, (table) => [
+  index("launchpad_whitelist_launch_idx").on(table.launchId),
+  index("launchpad_whitelist_wallet_idx").on(table.walletAddress),
+]);
+
+// NFT Verification for Launchpad Access
+export const nftVerificationCache = pgTable("nft_verification_cache", {
+  id: text("id").primaryKey().$defaultFn(() => crypto.randomUUID()),
+  walletAddress: text("wallet_address").notNull(),
+  collectionAddress: text("collection_address").notNull(),
+  nftIds: jsonb("nft_ids").$type<string[]>().notNull(),
+  verificationHash: text("verification_hash").notNull(),
+  isValid: boolean("is_valid").default(true),
+  expiresAt: timestamp("expires_at").notNull(),
+  createdAt: timestamp("created_at").defaultNow(),
+}, (table) => [
+  index("nft_verification_wallet_idx").on(table.walletAddress),
+  index("nft_verification_collection_idx").on(table.collectionAddress),
+  index("nft_verification_expires_idx").on(table.expiresAt),
+]);
+
+// Price History for Bonding Curve Tracking
+export const bondingCurvePriceHistory = pgTable("bonding_curve_price_history", {
+  id: text("id").primaryKey().$defaultFn(() => crypto.randomUUID()),
+  launchId: integer("launch_id").references(() => tokenLaunches.id),
+  tokenPrice: decimal("token_price", { precision: 20, scale: 8 }).notNull(),
+  marketCap: decimal("market_cap", { precision: 30, scale: 8 }).notNull(),
+  totalInvested: decimal("total_invested", { precision: 30, scale: 8 }).notNull(),
+  tokensCirculating: decimal("tokens_circulating", { precision: 30, scale: 8 }).notNull(),
+  contributionId: integer("contribution_id").references(() => presaleContributions.id),
+  createdAt: timestamp("created_at").defaultNow(),
+}, (table) => [
+  index("price_history_launch_idx").on(table.launchId),
+  index("price_history_timestamp_idx").on(table.createdAt),
+]);
+
+// Real-time Launch Analytics
+export const launchpadAnalytics = pgTable("launchpad_analytics", {
+  id: text("id").primaryKey().$defaultFn(() => crypto.randomUUID()),
+  launchId: integer("launch_id").references(() => tokenLaunches.id),
+  timestamp: timestamp("timestamp").defaultNow().notNull(),
+  
+  // Volume metrics
+  totalVolume24h: decimal("total_volume_24h", { precision: 30, scale: 8 }).default("0"),
+  contributionsCount24h: integer("contributions_count_24h").default(0),
+  uniqueContributors24h: integer("unique_contributors_24h").default(0),
+  avgContributionSize: decimal("avg_contribution_size", { precision: 30, scale: 8 }).default("0"),
+  
+  // NFT holder metrics
+  nftHolderContributions: integer("nft_holder_contributions").default(0),
+  nftHolderVolume: decimal("nft_holder_volume", { precision: 30, scale: 8 }).default("0"),
+  nftHolderPercentage: decimal("nft_holder_percentage", { precision: 5, scale: 2 }).default("0"),
+  
+  // Price and market metrics
+  currentPrice: decimal("current_price", { precision: 20, scale: 8 }).notNull(),
+  priceChange24h: decimal("price_change_24h", { precision: 10, scale: 4 }).default("0"),
+  marketCap: decimal("market_cap", { precision: 30, scale: 8 }).notNull(),
+  progressToGoal: decimal("progress_to_goal", { precision: 5, scale: 2 }).default("0"),
+  
+  createdAt: timestamp("created_at").defaultNow(),
+}, (table) => [
+  index("analytics_launch_idx").on(table.launchId),
+  index("analytics_timestamp_idx").on(table.timestamp),
+]);
+
+// Admin Monitoring Events
+export const launchpadMonitoringEvents = pgTable("launchpad_monitoring_events", {
+  id: text("id").primaryKey().$defaultFn(() => crypto.randomUUID()),
+  launchId: integer("launch_id").references(() => tokenLaunches.id),
+  eventType: text("event_type").notNull(), // nft_window_start, public_launch, goal_reached, auto_launch_triggered, error
+  eventData: jsonb("event_data").$type<Record<string, any>>().notNull(),
+  severity: text("severity").notNull().default("info"), // info, warning, error, critical
+  adminNotified: boolean("admin_notified").default(false),
+  resolved: boolean("resolved").default(false),
+  resolvedBy: text("resolved_by"),
+  resolvedAt: timestamp("resolved_at"),
+  createdAt: timestamp("created_at").defaultNow(),
+}, (table) => [
+  index("monitoring_launch_idx").on(table.launchId),
+  index("monitoring_event_type_idx").on(table.eventType),
+  index("monitoring_severity_idx").on(table.severity),
+  index("monitoring_unresolved_idx").on(table.resolved),
+]);
+
+// Token Launchpad Insert Schemas
+export const insertTokenLaunchSchema = createInsertSchema(tokenLaunches).omit(['id', 'createdAt', 'updatedAt']);
+
+export const insertPresaleContributionSchema = createInsertSchema(presaleContributions).omit(['id', 'createdAt']);
+
+export const insertLaunchpadWhitelistSchema = createInsertSchema(launchpadWhitelist).omit(['id', 'createdAt']);
+
+// New Bonding Curve Insert Schemas
+export const insertNftVerificationCacheSchema = createInsertSchema(nftVerificationCache).omit(['id', 'createdAt']);
+
+export const insertBondingCurvePriceHistorySchema = createInsertSchema(bondingCurvePriceHistory).omit(['id', 'createdAt']);
+
+export const insertLaunchpadAnalyticsSchema = createInsertSchema(launchpadAnalytics).omit(['id', 'createdAt']);
+
+export const insertLaunchpadMonitoringEventSchema = createInsertSchema(launchpadMonitoringEvents).omit(['id', 'createdAt']);
+
+
+// Token Launchpad Types
+export type TokenLaunch = typeof tokenLaunches.$inferSelect;
+export type InsertTokenLaunch = z.infer<typeof insertTokenLaunchSchema>;
+export type PresaleContribution = typeof presaleContributions.$inferSelect;
+export type InsertPresaleContribution = z.infer<typeof insertPresaleContributionSchema>;
+export type LaunchpadWhitelist = typeof launchpadWhitelist.$inferSelect;
+export type InsertLaunchpadWhitelist = z.infer<typeof insertLaunchpadWhitelistSchema>;
+
+// New Bonding Curve Types
+export type NftVerificationCache = typeof nftVerificationCache.$inferSelect;
+export type InsertNftVerificationCache = z.infer<typeof insertNftVerificationCacheSchema>;
+export type BondingCurvePriceHistory = typeof bondingCurvePriceHistory.$inferSelect;
+export type InsertBondingCurvePriceHistory = z.infer<typeof insertBondingCurvePriceHistorySchema>;
+export type LaunchpadAnalytics = typeof launchpadAnalytics.$inferSelect;
+export type InsertLaunchpadAnalytics = z.infer<typeof insertLaunchpadAnalyticsSchema>;
+export type LaunchpadMonitoringEvent = typeof launchpadMonitoringEvents.$inferSelect;
+export type InsertLaunchpadMonitoringEvent = z.infer<typeof insertLaunchpadMonitoringEventSchema>;
+
+// ============== NFT LAUNCHPAD SYSTEM ==============
+export const nftProjects = pgTable("nft_projects", {
+  id: serial("id").primaryKey(),
+  creatorWallet: text("creator_wallet").notNull(),
+  creatorUserId: text("creator_user_id"), // Reference to Riddle user handle
+  projectName: text("project_name").notNull(),
+  projectDescription: text("project_description"),
+  projectLogo: text("project_logo"), // IPFS URL for project logo
+  collectionName: text("collection_name").notNull(),
+  collectionSymbol: text("collection_symbol").notNull(),
+  chainType: text("chain_type").notNull(), // xrpl, ethereum, solana, polygon, base, arbitrum, optimism
+  taxon: bigint("taxon", { mode: 'number' }), // XRPL NFTokenTaxon for collection ID
+  totalSupply: integer("total_supply").notNull(),
+  mintPrice: decimal("mint_price", { precision: 20, scale: 8 }),
+  royaltyPercentage: decimal("royalty_percentage", { precision: 5, scale: 2 }).default("0"), // 0-100%
+  
+  // Status tracking
+  status: text("status").notNull().default("draft"), // draft, payment_pending, paid, uploading, validated, pinned, minting, launched, failed
+  validationStatus: text("validation_status").default("pending"), // pending, passed, failed
+  validationErrors: jsonb("validation_errors").$type<string[]>().default([]),
+  
+  // Payment tracking
+  paymentStatus: text("payment_status").default("pending"), // pending, processing, completed, failed
+  paymentAmount: decimal("payment_amount", { precision: 20, scale: 8 }), // Total payment in XRP
+  setupFee: decimal("setup_fee", { precision: 20, scale: 8 }).default("1"), // 1 XRP setup fee
+  perNftFee: decimal("per_nft_fee", { precision: 20, scale: 8 }).default("0.01"), // 0.01 XRP per NFT
+  paymentTxHash: text("payment_tx_hash"), // XRPL transaction hash
+  paymentDestination: text("payment_destination"), // Riddle Bank wallet address
+  paymentTimestamp: timestamp("payment_timestamp"), // When payment was made
+  paymentLedgerIndex: integer("payment_ledger_index"), // XRPL ledger index for verification
+  paymentRetryCount: integer("payment_retry_count").default(0), // Number of payment attempts
+  paymentErrorMessage: text("payment_error_message"), // Last payment error if any
+  
+  // Asset tracking
+  assetsUploaded: integer("assets_uploaded").default(0),
+  metadataGenerated: integer("metadata_generated").default(0),
+  ipfsImagesCid: text("ipfs_images_cid"), // IPFS CID for images directory
+  ipfsMetadataCids: jsonb("ipfs_metadata_cids").$type<string[]>().default([]), // Array of metadata CIDs
+  
+  // Minting tracking
+  mintedCount: integer("minted_count").default(0),
+  mintTransactions: jsonb("mint_transactions").$type<{hash: string; nftId: string; tokenId: string}[]>().default([]),
+  
+  // Launch configuration
+  launchDate: timestamp("launch_date"),
+  isPublic: boolean("is_public").default(true),
+  whitelistEnabled: boolean("whitelist_enabled").default(false),
+  
+  createdAt: timestamp("created_at").defaultNow(),
+  updatedAt: timestamp("updated_at").defaultNow(),
+}, (table) => [
+  index("nft_projects_creator_idx").on(table.creatorWallet),
+  index("nft_projects_status_idx").on(table.status),
+  index("nft_projects_chain_idx").on(table.chainType),
+]);
+
+// NFT Assets uploaded to project (temporary storage before IPFS)
+export const nftAssets = pgTable("nft_assets", {
+  id: serial("id").primaryKey(),
+  projectId: integer("project_id").references(() => nftProjects.id).notNull(),
+  assetIndex: integer("asset_index").notNull(), // 0, 1, 2, etc.
+  imageFilename: text("image_filename").notNull(),
+  imageIpfsHash: text("image_ipfs_hash"),
+  imageIpfsUrl: text("image_ipfs_url"),
+  
+  // NFT Metadata
+  nftName: text("nft_name").notNull(),
+  nftDescription: text("nft_description"),
+  attributes: jsonb("attributes").$type<{trait_type: string; value: string | number}[]>().default([]),
+  
+  // Metadata IPFS
+  metadataIpfsHash: text("metadata_ipfs_hash"),
+  metadataIpfsUrl: text("metadata_ipfs_url"),
+  
+  // Minting info
+  minted: boolean("minted").default(false),
+  mintTransactionHash: text("mint_transaction_hash"),
+  nftTokenId: text("nft_token_id"), // XRPL NFTokenID or ERC721 tokenId
+  
+  createdAt: timestamp("created_at").defaultNow(),
+}, (table) => [
+  index("nft_assets_project_idx").on(table.projectId),
+  index("nft_assets_minted_idx").on(table.minted),
+]);
+
+// NFT Project Activity Logs
+export const nftProjectLogs = pgTable("nft_project_logs", {
+  id: serial("id").primaryKey(),
+  projectId: integer("project_id").references(() => nftProjects.id).notNull(),
+  action: text("action").notNull(), // save_details, upload_assets, validate, preview, pin_ipfs, mint, launch
+  status: text("status").notNull(), // success, fail, in_progress
+  details: text("details"),
+  errorMessage: text("error_message"),
+  metadata: jsonb("metadata").$type<Record<string, any>>().default({}),
+  createdAt: timestamp("created_at").defaultNow(),
+}, (table) => [
+  index("nft_logs_project_idx").on(table.projectId),
+  index("nft_logs_action_idx").on(table.action),
+  index("nft_logs_status_idx").on(table.status),
+]);
+
+// NFT Project Whitelist (if enabled)
+export const nftProjectWhitelist = pgTable("nft_project_whitelist", {
+  id: serial("id").primaryKey(),
+  projectId: integer("project_id").references(() => nftProjects.id).notNull(),
+  walletAddress: text("wallet_address").notNull(),
+  maxMints: integer("max_mints").default(1),
+  mintedCount: integer("minted_count").default(0),
+  addedBy: text("added_by").notNull(),
+  createdAt: timestamp("created_at").defaultNow(),
+}, (table) => [
+  index("nft_whitelist_project_idx").on(table.projectId),
+  index("nft_whitelist_wallet_idx").on(table.walletAddress),
+]);
+
+// NFT Project Insert Schemas
+export const insertNftProjectSchema = createInsertSchema(nftProjects).omit(['id', 'createdAt', 'updatedAt']);
+
+export const insertNftAssetSchema = createInsertSchema(nftAssets).omit(['id', 'createdAt']);
+
+export const insertNftProjectLogSchema = createInsertSchema(nftProjectLogs).omit(['id', 'createdAt']);
+
+export const insertNftProjectWhitelistSchema = createInsertSchema(nftProjectWhitelist).omit(['id', 'createdAt']);
+
+// NFT Project Types
+export type NftProject = typeof nftProjects.$inferSelect;
+export type InsertNftProject = z.infer<typeof insertNftProjectSchema>;
+export type NftAsset = typeof nftAssets.$inferSelect;
+export type InsertNftAsset = z.infer<typeof insertNftAssetSchema>;
+export type NftProjectLog = typeof nftProjectLogs.$inferSelect;
+export type InsertNftProjectLog = z.infer<typeof insertNftProjectLogSchema>;
+export type NftProjectWhitelist = typeof nftProjectWhitelist.$inferSelect;
+export type InsertNftProjectWhitelist = z.infer<typeof insertNftProjectWhitelistSchema>;
+
+// ============== USER ACTIVITY TRACKING ==============
+// User time spent tracking for leaderboard functionality
+export const userActivityTracking = pgTable("user_activity_tracking", {
+  id: serial("id").primaryKey(),
+  userHandle: text("user_handle").notNull().unique(),
+  totalTimeMinutes: integer("total_time_minutes").default(0),
+  sessionCount: integer("session_count").default(0),
+  lastActive: timestamp("last_active").defaultNow(),
+  createdAt: timestamp("created_at").defaultNow(),
+  updatedAt: timestamp("updated_at").defaultNow(),
+}, (table) => [
+  index("idx_user_activity_handle").on(table.userHandle),
+  index("idx_user_activity_time").on(table.totalTimeMinutes),
+]);
+
+export const insertUserActivityTrackingSchema = createInsertSchema(userActivityTracking).omit(['id', 'createdAt', 'updatedAt']);
+
+
+
+// ============== REWARDS TRACKING SYSTEM ==============
+// Daily Activity Tracking
+export const dailyActivity = pgTable("daily_activity", {
+  id: text("id").primaryKey().$defaultFn(() => crypto.randomUUID()),
+  date: date("date").notNull().unique(),
+  total_swaps: integer("total_swaps").default(0),
+  total_volume_usd: decimal("total_volume_usd", { precision: 20, scale: 8 }).default('0'),
+  total_fees_collected_usd: decimal("total_fees_collected_usd", { precision: 20, scale: 8 }).default('0'),
+  total_rewards_distributed_usd: decimal("total_rewards_distributed_usd", { precision: 20, scale: 8 }).default('0'),
+  unique_traders: integer("unique_traders").default(0),
+  new_wallets: integer("new_wallets").default(0),
+  created_at: timestamp("created_at").defaultNow(),
+}, (table) => [
+  index("idx_daily_activity_date").on(table.date),
+]);
+
+// User Rewards Dashboard Tracking 
+export const userRewardsDashboard = pgTable("user_rewards_dashboard", {
+  id: text("id").primaryKey().$defaultFn(() => crypto.randomUUID()),
+  wallet_address: text("wallet_address").notNull(),
+  reward_type: text("reward_type").notNull(), // 'trading_fees', 'nft_collection', 'nft_royalties'
+  reward_period: text("reward_period").notNull(), // 'daily', 'monthly'
+  reward_date: date("reward_date").notNull(),
+  
+  // Trading rewards (25% of fees back)
+  fees_generated_usd: decimal("fees_generated_usd", { precision: 20, scale: 8 }).default('0'),
+  reward_percentage: decimal("reward_percentage", { precision: 5, scale: 2 }).default('25'), // 25%
+  reward_amount_rdl: decimal("reward_amount_rdl", { precision: 20, scale: 8 }).default('0'),
+  reward_amount_usd: decimal("reward_amount_usd", { precision: 20, scale: 8 }).default('0'),
+  
+  // NFT collection data
+  collection_name: text("collection_name"),
+  nfts_held: integer("nfts_held").default(0),
+  nfts_listed: integer("nfts_listed").default(0),
+  penalty_applied: boolean("penalty_applied").default(false), // true if listed during month
+  royalties_earned_usd: decimal("royalties_earned_usd", { precision: 20, scale: 8 }).default('0'),
+  
+  status: text("status").default('pending'), // 'pending', 'paid', 'forfeited'
+  paid_at: timestamp("paid_at"),
+  created_at: timestamp("created_at").defaultNow(),
+}, (table) => [
+  index("idx_user_rewards_wallet").on(table.wallet_address),
+  index("idx_user_rewards_date").on(table.reward_date),
+  index("idx_user_rewards_type").on(table.reward_type),
+]);
+
+// NFT Collection Holdings
+export const nftCollectionHoldings = pgTable("nft_collection_holdings", {
+  id: text("id").primaryKey().$defaultFn(() => crypto.randomUUID()),
+  wallet_address: text("wallet_address").notNull(),
+  collection_name: text("collection_name").notNull(),
+  nft_token_id: text("nft_token_id").notNull(),
+  nft_name: text("nft_name"),
+  
+  is_currently_held: boolean("is_currently_held").default(true),
+  is_listed_for_sale: boolean("is_listed_for_sale").default(false),
+  list_price_xrp: decimal("list_price_xrp", { precision: 20, scale: 8 }),
+  
+  acquired_at: timestamp("acquired_at").defaultNow(),
+  listed_at: timestamp("listed_at"),
+  sold_at: timestamp("sold_at"),
+  last_checked_at: timestamp("last_checked_at").defaultNow(),
+}, (table) => [
+  index("idx_nft_holdings_wallet").on(table.wallet_address),
+  index("idx_nft_holdings_collection").on(table.collection_name),
+  index("idx_nft_holdings_token").on(table.nft_token_id),
+]);
+
+// Collection Reward Distribution Rules  
+export const collectionRewardRules = pgTable("collection_reward_rules", {
+  id: text("id").primaryKey().$defaultFn(() => crypto.randomUUID()),
+  collection_name: text("collection_name").notNull().unique(),
+  royalty_percentage: decimal("royalty_percentage", { precision: 5, scale: 2 }).default('50'), // 50% of royalties
+  monthly_royalties_pool_usd: decimal("monthly_royalties_pool_usd", { precision: 20, scale: 8 }).default('0'),
+  total_supply: integer("total_supply").default(0),
+  reward_per_nft_base: decimal("reward_per_nft_base", { precision: 20, scale: 8 }).default('0'),
+  
+  penalty_for_listing: boolean("penalty_for_listing").default(true), // lose rewards if listing
+  is_active: boolean("is_active").default(true),
+  created_at: timestamp("created_at").defaultNow(),
+  updated_at: timestamp("updated_at").defaultNow(),
+});
+
+// Reward system insert schemas
+export const insertDailyActivitySchema = createInsertSchema(dailyActivity).omit(['id', 'created_at']);
+
+export const insertUserRewardDashboardSchema = createInsertSchema(userRewardsDashboard).omit(['id', 'created_at']);
+
+export const insertNftCollectionHoldingSchema = createInsertSchema(nftCollectionHoldings).omit(['id', 'acquired_at', 'last_checked_at']);
+
+export const insertCollectionRewardRuleSchema = createInsertSchema(collectionRewardRules).omit(['id', 'created_at', 'updated_at']);
+
+// Reward system types
+export type InsertDailyActivity = z.infer<typeof insertDailyActivitySchema>;
+export type SelectDailyActivity = typeof dailyActivity.$inferSelect;
+
+export type InsertUserRewardDashboard = z.infer<typeof insertUserRewardDashboardSchema>;
+export type SelectUserRewardDashboard = typeof userRewardsDashboard.$inferSelect;
+
+export type InsertNftCollectionHolding = z.infer<typeof insertNftCollectionHoldingSchema>;
+export type SelectNftCollectionHolding = typeof nftCollectionHoldings.$inferSelect;
+
+export type InsertCollectionRewardRule = z.infer<typeof insertCollectionRewardRuleSchema>;
+export type SelectCollectionRewardRule = typeof collectionRewardRules.$inferSelect;
+
+
+// ============== ENHANCED REWARDS SYSTEM TABLES ==============
+
+// Project-Based Reward Configurations
+export const projectRewardConfigs = pgTable("project_reward_configs", {
+  id: text("id").primaryKey().$defaultFn(() => crypto.randomUUID()),
+  project_id: text("project_id").notNull().references(() => devtoolsProjects.id, { onDelete: "cascade" }),
+  
+  // Reward system settings
+  enable_trading_rewards: boolean("enable_trading_rewards").default(true),
+  trading_reward_percentage: decimal("trading_reward_percentage", { precision: 5, scale: 2 }).default("25"), // 25%
+  enable_social_rewards: boolean("enable_social_rewards").default(true),
+  enable_nft_rewards: boolean("enable_nft_rewards").default(true),
+  enable_daily_login_rewards: boolean("enable_daily_login_rewards").default(true),
+  
+  // Social engagement reward values
+  reward_per_post: decimal("reward_per_post", { precision: 10, scale: 4 }).default("0.1"),
+  reward_per_like: decimal("reward_per_like", { precision: 10, scale: 4 }).default("0.01"),
+  reward_per_comment: decimal("reward_per_comment", { precision: 10, scale: 4 }).default("0.05"),
+  reward_per_follow: decimal("reward_per_follow", { precision: 10, scale: 4 }).default("0.2"),
+  reward_per_share: decimal("reward_per_share", { precision: 10, scale: 4 }).default("0.15"),
+  daily_login_reward: decimal("daily_login_reward", { precision: 10, scale: 4 }).default("0.5"),
+  
+  // Token configuration for this project
+  reward_token_symbol: text("reward_token_symbol").default("RDL"),
+  reward_token_chain: text("reward_token_chain").default("xrp"),
+  reward_token_address: text("reward_token_address"),
+  
+  // Custom reward rules (JSON configuration)
+  custom_reward_rules: jsonb("custom_reward_rules").$type<Record<string, any>>().default({}),
+  
+  // Distribution settings
+  auto_distribute: boolean("auto_distribute").default(false),
+  distribution_frequency: text("distribution_frequency").default("monthly"), // daily, weekly, monthly
+  minimum_claim_amount: decimal("minimum_claim_amount", { precision: 20, scale: 8 }).default("1"),
+  
+  // Status
+  is_active: boolean("is_active").default(true),
+  created_at: timestamp("created_at").defaultNow(),
+  updated_at: timestamp("updated_at").defaultNow(),
+}, (table) => [
+  index("idx_project_reward_configs_project").on(table.project_id),
+  index("idx_project_reward_configs_active").on(table.is_active),
+]);
+
+
+// Social Media Connections and Tracking
+export const socialMediaConnections = pgTable("social_media_connections", {
+  id: text("id").primaryKey().$defaultFn(() => crypto.randomUUID()),
+  wallet_address: text("wallet_address").notNull(),
+  user_handle: text("user_handle"),
+  
+  // Platform connections
+  twitter_username: text("twitter_username"),
+  twitter_verified: boolean("twitter_verified").default(false),
+  twitter_follower_count: integer("twitter_follower_count").default(0),
+  twitter_last_tweet_id: text("twitter_last_tweet_id"),
+  twitter_last_checked: timestamp("twitter_last_checked"),
+  
+  discord_username: text("discord_username"),
+  discord_user_id: text("discord_user_id"),
+  discord_server_member: boolean("discord_server_member").default(false),
+  discord_last_message_time: timestamp("discord_last_message_time"),
+  
+  telegram_username: text("telegram_username"),
+  telegram_user_id: text("telegram_user_id"),
+  telegram_group_member: boolean("telegram_group_member").default(false),
+  
+  // Engagement tracking
+  twitter_mentions_count: integer("twitter_mentions_count").default(0),
+  twitter_retweets_count: integer("twitter_retweets_count").default(0),
+  twitter_likes_count: integer("twitter_likes_count").default(0),
+  discord_messages_count: integer("discord_messages_count").default(0),
+  telegram_messages_count: integer("telegram_messages_count").default(0),
+  
+  // Reward tracking
+  social_rewards_earned: decimal("social_rewards_earned", { precision: 20, scale: 8 }).default("0"),
+  last_social_reward_date: date("last_social_reward_date"),
+  
+  created_at: timestamp("created_at").defaultNow(),
+  updated_at: timestamp("updated_at").defaultNow(),
+}, (table) => [
+  index("idx_social_connections_wallet").on(table.wallet_address),
+  index("idx_social_connections_twitter").on(table.twitter_username),
+  index("idx_social_connections_discord").on(table.discord_user_id),
+]);
+
+// Riddle Transaction Numbers (RTN) - Unified transaction tracking with broker wallet handling
+export const riddleTransactions = pgTable("riddle_transactions", {
+  id: text("id").primaryKey().$defaultFn(() => crypto.randomUUID()),
+  rtn: text("rtn").notNull().unique(), // RTN-YYYYMMDD-<ulid_suffix>
+  
+  // Transaction classification
+  type: text("type").notNull(), // swap, buy, sell, payment, copy_trade, bridge
+  chain: text("chain").notNull(), // xrpl, ethereum, polygon, solana, bitcoin
+  direction: text("direction"), // buy, sell (optional for non-trading types)
+  
+  // User identification
+  user_handle: text("user_handle"),
+  user_id: text("user_id"), // For external wallet sessions
+  source_wallet: text("source_wallet").notNull(),
+  
+  // Broker wallet handling
+  broker_wallet: text("broker_wallet"), // The broker/treasury wallet address
+  broker_fee_amount: decimal("broker_fee_amount", { precision: 20, scale: 8 }),
+  broker_fee_currency: text("broker_fee_currency"), // ETH, BNB, MATIC, XRP, etc.
+  broker_fee_tx_hash: text("broker_fee_tx_hash"), // Transaction hash for fee collection
+  
+  // Token details
+  token_in: text("token_in"), // Input token symbol/address
+  token_out: text("token_out"), // Output token symbol/address  
+  amount_in: decimal("amount_in", { precision: 20, scale: 8 }),
+  amount_out: decimal("amount_out", { precision: 20, scale: 8 }),
+  usd_value: decimal("usd_value", { precision: 20, scale: 8 }),
+  
+  // Transaction hashes and references
+  user_tx_hash: text("user_tx_hash"), // User's transaction hash
+  related_id: text("related_id"), // Link to swapHistory, copyTradingTrades, etc.
+  
+  // Status tracking
+  status: text("status").notNull().default("pending"), // pending, processing, onchain_pending, confirmed, failed, refunded
+  failure_reason: text("failure_reason"),
+  
+  // Additional context and metadata
+  context: jsonb("context").$type<Record<string, any>>().default({}), // Additional data (gas costs, slippage, etc.)
+  admin_notes: text("admin_notes"), // Admin can add notes for monitoring
+  
+  created_at: timestamp("created_at").defaultNow().notNull(),
+  updated_at: timestamp("updated_at").defaultNow().notNull(),
+}, (table) => [
+  index("idx_riddle_transactions_rtn").on(table.rtn),
+  index("idx_riddle_transactions_user_handle").on(table.user_handle),
+  index("idx_riddle_transactions_user_id").on(table.user_id),
+  index("idx_riddle_transactions_type").on(table.type),
+  index("idx_riddle_transactions_chain").on(table.chain),
+  index("idx_riddle_transactions_status").on(table.status),
+  index("idx_riddle_transactions_created").on(table.created_at),
+  index("idx_riddle_transactions_wallet").on(table.source_wallet),
+  index("idx_riddle_transactions_broker").on(table.broker_wallet),
+]);
+
+// Reward Claim Transactions - Real Blockchain Transactions
+export const rewardClaimTransactions = pgTable("reward_claim_transactions", {
+  id: text("id").primaryKey().$defaultFn(() => crypto.randomUUID()),
+  user_handle: text("user_handle").notNull(),
+  wallet_address: text("wallet_address").notNull(),
+  project_id: text("project_id").references(() => devtoolsProjects.id),
+  
+  // Reward details
+  reward_ids: jsonb("reward_ids").$type<string[]>().notNull(), // Array of reward IDs being claimed
+  total_reward_amount: decimal("total_reward_amount", { precision: 30, scale: 8 }).notNull(),
+  reward_token_symbol: text("reward_token_symbol").notNull(),
+  reward_token_chain: text("reward_token_chain").notNull(),
+  total_usd_value: decimal("total_usd_value", { precision: 30, scale: 8 }).notNull(),
+  
+  // Transaction details
+  transaction_hash: text("transaction_hash"),
+  block_number: text("block_number"),
+  gas_used: text("gas_used"),
+  gas_price: text("gas_price"),
+  transaction_fee: decimal("transaction_fee", { precision: 30, scale: 8 }),
+  
+  // Status and validation
+  status: text("status").default("pending").notNull(), // pending, confirming, confirmed, failed, cancelled
+  confirmation_count: integer("confirmation_count").default(0),
+  required_confirmations: integer("required_confirmations").default(12),
+  failure_reason: text("failure_reason"),
+  retry_count: integer("retry_count").default(0),
+  
+  // Batch claiming
+  is_batch_claim: boolean("is_batch_claim").default(false),
+  batch_claim_id: text("batch_claim_id"), // Groups multiple claims together
+  
+  // Timing
+  initiated_at: timestamp("initiated_at").defaultNow(),
+  confirmed_at: timestamp("confirmed_at"),
+  failed_at: timestamp("failed_at"),
+  
+  created_at: timestamp("created_at").defaultNow(),
+}, (table) => [
+  index("idx_claim_transactions_user").on(table.user_handle),
+  index("idx_claim_transactions_wallet").on(table.wallet_address),
+  index("idx_claim_transactions_project").on(table.project_id),
+  index("idx_claim_transactions_status").on(table.status),
+  index("idx_claim_transactions_hash").on(table.transaction_hash),
+  index("idx_claim_transactions_batch").on(table.batch_claim_id),
+]);
+
+// Community Engagement Challenges
+export const communityEngagementChallenges = pgTable("community_engagement_challenges", {
+  id: text("id").primaryKey().$defaultFn(() => crypto.randomUUID()),
+  project_id: text("project_id").references(() => devtoolsProjects.id),
+  
+  // Challenge details
+  challenge_name: text("challenge_name").notNull(),
+  challenge_description: text("challenge_description").notNull(),
+  challenge_type: text("challenge_type").notNull(), // daily_login, social_engagement, trading_volume, nft_holding
+  
+  // Requirements
+  requirement_config: jsonb("requirement_config").$type<Record<string, any>>().notNull(),
+  target_value: decimal("target_value", { precision: 30, scale: 8 }).notNull(),
+  
+  // Rewards
+  reward_amount: decimal("reward_amount", { precision: 20, scale: 8 }).notNull(),
+  reward_token_symbol: text("reward_token_symbol").notNull(),
+  max_participants: integer("max_participants"),
+  current_participants: integer("current_participants").default(0),
+  
+  // Timing
+  start_date: timestamp("start_date").notNull(),
+  end_date: timestamp("end_date").notNull(),
+  
+  // Status
+  is_active: boolean("is_active").default(true),
+  auto_complete: boolean("auto_complete").default(true),
+  
+  created_at: timestamp("created_at").defaultNow(),
+  updated_at: timestamp("updated_at").defaultNow(),
+}, (table) => [
+  index("idx_engagement_challenges_project").on(table.project_id),
+  index("idx_engagement_challenges_type").on(table.challenge_type),
+  index("idx_engagement_challenges_active").on(table.is_active),
+  index("idx_engagement_challenges_dates").on(table.start_date, table.end_date),
+]);
+
+// Community Challenge Participation
+export const communityChalllengeParticipation = pgTable("community_challenge_participation", {
+  id: text("id").primaryKey().$defaultFn(() => crypto.randomUUID()),
+  challenge_id: text("challenge_id").notNull().references(() => communityEngagementChallenges.id, { onDelete: "cascade" }),
+  wallet_address: text("wallet_address").notNull(),
+  user_handle: text("user_handle"),
+  
+  // Progress tracking
+  current_progress: decimal("current_progress", { precision: 30, scale: 8 }).default("0"),
+  target_progress: decimal("target_progress", { precision: 30, scale: 8 }).notNull(),
+  progress_percentage: decimal("progress_percentage", { precision: 5, scale: 2 }).default("0"),
+  
+  // Completion
+  is_completed: boolean("is_completed").default(false),
+  completed_at: timestamp("completed_at"),
+  reward_claimed: boolean("reward_claimed").default(false),
+  reward_claim_transaction_id: text("reward_claim_transaction_id").references(() => rewardClaimTransactions.id),
+  
+  // Tracking data
+  progress_data: jsonb("progress_data").$type<Record<string, any>>().default({}),
+  last_updated: timestamp("last_updated").defaultNow(),
+  
+  created_at: timestamp("created_at").defaultNow(),
+}, (table) => [
+  index("idx_challenge_participation_challenge").on(table.challenge_id),
+  index("idx_challenge_participation_wallet").on(table.wallet_address),
+  index("idx_challenge_participation_completed").on(table.is_completed),
+  index("idx_challenge_participation_progress").on(table.progress_percentage),
+]);
+
+// Project Reward Analytics
+export const projectRewardAnalytics = pgTable("project_reward_analytics", {
+  id: text("id").primaryKey().$defaultFn(() => crypto.randomUUID()),
+  project_id: text("project_id").notNull().references(() => devtoolsProjects.id, { onDelete: "cascade" }),
+  analytics_date: date("analytics_date").notNull(),
+  
+  // User metrics
+  total_active_users: integer("total_active_users").default(0),
+  new_users_today: integer("new_users_today").default(0),
+  returning_users: integer("returning_users").default(0),
+  
+  // Reward distribution metrics
+  total_rewards_distributed_usd: decimal("total_rewards_distributed_usd", { precision: 30, scale: 8 }).default("0"),
+  trading_rewards_distributed: decimal("trading_rewards_distributed", { precision: 30, scale: 8 }).default("0"),
+  social_rewards_distributed: decimal("social_rewards_distributed", { precision: 30, scale: 8 }).default("0"),
+  nft_rewards_distributed: decimal("nft_rewards_distributed", { precision: 30, scale: 8 }).default("0"),
+  
+  // Activity metrics
+  total_transactions: integer("total_transactions").default(0),
+  total_trading_volume_usd: decimal("total_trading_volume_usd", { precision: 30, scale: 8 }).default("0"),
+  total_social_interactions: integer("total_social_interactions").default(0),
+  
+  // Engagement metrics
+  average_session_time_minutes: decimal("average_session_time_minutes", { precision: 10, scale: 2 }).default("0"),
+  login_retention_rate: decimal("login_retention_rate", { precision: 5, scale: 2 }).default("0"),
+  reward_claim_rate: decimal("reward_claim_rate", { precision: 5, scale: 2 }).default("0"),
+  
+  created_at: timestamp("created_at").defaultNow(),
+}, (table) => [
+  index("idx_project_analytics_project").on(table.project_id),
+  index("idx_project_analytics_date").on(table.analytics_date),
+]);
+
+// Cross-Project User Linking
+export const crossProjectUserLinks = pgTable("cross_project_user_links", {
+  id: text("id").primaryKey().$defaultFn(() => crypto.randomUUID()),
+  primary_wallet_address: text("primary_wallet_address").notNull(),
+  user_handle: text("user_handle"),
+  
+  // Linked projects
+  linked_projects: jsonb("linked_projects").$type<string[]>().default([]), // Array of project IDs
+  
+  // Cross-project rewards summary
+  total_cross_project_rewards: decimal("total_cross_project_rewards", { precision: 30, scale: 8 }).default("0"),
+  participating_project_count: integer("participating_project_count").default(0),
+  
+  // Reputation system
+  reputation_score: decimal("reputation_score", { precision: 10, scale: 2 }).default("0"),
+  verification_level: text("verification_level").default("unverified"), // unverified, basic, verified, premium
+  
+  created_at: timestamp("created_at").defaultNow(),
+  updated_at: timestamp("updated_at").defaultNow(),
+}, (table) => [
+  index("idx_cross_project_wallet").on(table.primary_wallet_address),
+  index("idx_cross_project_handle").on(table.user_handle),
+  index("idx_cross_project_reputation").on(table.reputation_score),
+]);
+
+// Wallet Metrics for Ranking and Activity Scores - consolidated metrics with caching
+export const walletMetrics = pgTable("wallet_metrics", {
+  id: text("id").primaryKey().$defaultFn(() => crypto.randomUUID()),
+  address: text("address").notNull().unique(),
+  
+  // Activity metrics (30-day rolling window)
+  tx_count_30d: integer("tx_count_30d").default(0),
+  volume_xrp_30d: decimal("volume_xrp_30d", { precision: 20, scale: 8 }).default("0"),
+  volume_usd_30d: decimal("volume_usd_30d", { precision: 20, scale: 8 }).default("0"),
+  active_days_30d: integer("active_days_30d").default(0),
+  unique_counterparties_30d: integer("unique_counterparties_30d").default(0),
+  
+  // NFT activity metrics
+  nfts_held: integer("nfts_held").default(0),
+  nft_trades_30d: integer("nft_trades_30d").default(0),
+  offers_made_30d: integer("offers_made_30d").default(0),
+  offers_received_30d: integer("offers_received_30d").default(0),
+  
+  // Composite scores (0-100)
+  activity_score: decimal("activity_score", { precision: 5, scale: 2 }).default("0"),
+  trading_score: decimal("trading_score", { precision: 5, scale: 2 }).default("0"),
+  nft_score: decimal("nft_score", { precision: 5, scale: 2 }).default("0"),
+  overall_score: decimal("overall_score", { precision: 5, scale: 2 }).default("0"),
+  
+  // Ranking
+  rank_percentile: decimal("rank_percentile", { precision: 5, scale: 2 }).default("0"),
+  rank_position: integer("rank_position").default(0),
+  total_wallets_ranked: integer("total_wallets_ranked").default(0),
+  
+  // Classification
+  wallet_tier: text("wallet_tier").default("bronze"), // bronze, silver, gold, diamond, legend
+  is_riddle_wallet: boolean("is_riddle_wallet").default(false),
+  is_verified: boolean("is_verified").default(false),
+  
+  // Caching and computation
+  computed_at: timestamp("computed_at").defaultNow(),
+  expires_at: timestamp("expires_at").notNull().default(sql`now() + interval '24 hours'`),
+  computation_version: text("computation_version").default("v1"),
+  
+  created_at: timestamp("created_at").defaultNow(),
+  updated_at: timestamp("updated_at").defaultNow(),
+}, (table) => [
+  index("idx_wallet_metrics_address").on(table.address),
+  index("idx_wallet_metrics_score").on(table.overall_score),
+  index("idx_wallet_metrics_rank").on(table.rank_position),
+  index("idx_wallet_metrics_tier").on(table.wallet_tier),
+  index("idx_wallet_metrics_expires").on(table.expires_at),
+  index("idx_wallet_metrics_riddle").on(table.is_riddle_wallet),
+]);
+
+// Enhanced Rewards System Insert Schemas
+export const insertProjectRewardConfigSchema = createInsertSchema(projectRewardConfigs).omit(['id', 'created_at', 'updated_at']);
+
+
+export const insertSocialMediaConnectionSchema = createInsertSchema(socialMediaConnections).omit(['id', 'created_at', 'updated_at']);
+
+export const insertRiddleTransactionSchema = createInsertSchema(riddleTransactions).omit(['id', 'created_at', 'updated_at']);
+
+export const insertRewardClaimTransactionSchema = createInsertSchema(rewardClaimTransactions).omit(['id', 'created_at']);
+
+export const insertCommunityEngagementChallengeSchema = createInsertSchema(communityEngagementChallenges).omit(['id', 'created_at', 'updated_at']);
+
+export const insertCommunityChalllengeParticipationSchema = createInsertSchema(communityChalllengeParticipation).omit(['id', 'created_at']);
+
+export const insertProjectRewardAnalyticsSchema = createInsertSchema(projectRewardAnalytics).omit(['id', 'created_at']);
+
+export const insertCrossProjectUserLinkSchema = createInsertSchema(crossProjectUserLinks).omit(['id', 'created_at', 'updated_at']);
+
+// Enhanced Rewards System Types
+export type ProjectRewardConfig = typeof projectRewardConfigs.$inferSelect;
+export type InsertProjectRewardConfig = z.infer<typeof insertProjectRewardConfigSchema>;
+
+
+
+export type SocialMediaConnection = typeof socialMediaConnections.$inferSelect;
+export type InsertSocialMediaConnection = z.infer<typeof insertSocialMediaConnectionSchema>;
+
+export type RiddleTransaction = typeof riddleTransactions.$inferSelect;
+export type InsertRiddleTransaction = z.infer<typeof insertRiddleTransactionSchema>;
+
+export type RewardClaimTransaction = typeof rewardClaimTransactions.$inferSelect;
+export type InsertRewardClaimTransaction = z.infer<typeof insertRewardClaimTransactionSchema>;
+
+export type CommunityEngagementChallenge = typeof communityEngagementChallenges.$inferSelect;
+export type InsertCommunityEngagementChallenge = z.infer<typeof insertCommunityEngagementChallengeSchema>;
+
+export type CommunityChalllengeParticipation = typeof communityChalllengeParticipation.$inferSelect;
+export type InsertCommunityChalllengeParticipation = z.infer<typeof insertCommunityChalllengeParticipationSchema>;
+
+export type ProjectRewardAnalytics = typeof projectRewardAnalytics.$inferSelect;
+export type InsertProjectRewardAnalytics = z.infer<typeof insertProjectRewardAnalyticsSchema>;
+
+export type CrossProjectUserLink = typeof crossProjectUserLinks.$inferSelect;
+export type InsertCrossProjectUserLink = z.infer<typeof insertCrossProjectUserLinkSchema>;
+
+// ============== USER FAVORITES SYSTEM ==============
+// User Favorites for Collections - tied to wallet sessions (Multi-Chain Support)
+export const userFavorites = pgTable("user_favorites", {
+  id: serial("id").primaryKey(),
+  session_token: text("session_token").notNull(), // Links to wallet session
+  chain: text("chain").notNull().default('XRPL'), // Blockchain: XRPL, eth, bnb, polygon, arbitrum, optimism, base, mantle, solana
+  collection_issuer: text("collection_issuer"), // XRPL issuer (nullable for other chains)
+  collection_taxon: integer("collection_taxon"), // XRPL taxon (nullable for other chains)
+  contract_address: text("contract_address"), // Contract address for EVM/Solana chains (nullable for XRPL)
+  collection_name: text("collection_name"),
+  collection_image: text("collection_image"),
+  created_at: timestamp("created_at").defaultNow(),
+}, (table) => [
+  // Unique constraint to prevent duplicate favorites (includes chain)
+  index("unique_favorite").on(table.session_token, table.chain, table.collection_issuer, table.collection_taxon, table.contract_address),
+]);
+
+// Collection Likes - anonymous counter
+export const collectionLikes = pgTable("collection_likes", {
+  id: serial("id").primaryKey(),
+  collection_issuer: text("collection_issuer").notNull(),
+  collection_taxon: integer("collection_taxon").notNull(),
+  like_count: integer("like_count").notNull().default(0),
+  updated_at: timestamp("updated_at").defaultNow(),
+}, (table) => [
+  // Unique constraint per collection
+  index("unique_collection_likes").on(table.collection_issuer, table.collection_taxon),
+]);
+
+export const insertUserFavoritesSchema = createInsertSchema(userFavorites).omit(['id', 'created_at']);
+
+export const insertCollectionLikesSchema = createInsertSchema(collectionLikes).omit(['id', 'updated_at']);
+
+export type UserFavorites = typeof userFavorites.$inferSelect;
+export type InsertUserFavorites = z.infer<typeof insertUserFavoritesSchema>;
+export type CollectionLikes = typeof collectionLikes.$inferSelect;
+export type InsertCollectionLikes = z.infer<typeof insertCollectionLikesSchema>;
+
+// ============== LAUNCH CHAT SYSTEM ==============
+// ============== RIDDLEPAD FEE COLLECTION SYSTEM ==============
+// RiddlePad fee collection tracking for all platform fees
+export const riddlepadFeeCollection = pgTable("riddlepad_fee_collection", {
+  id: text("id").primaryKey().$defaultFn(() => crypto.randomUUID()),
+  
+  // Fee source identification
+  launchId: integer("launch_id").references(() => tokenLaunches.id),
+  feeType: text("fee_type").notNull(), // 'curve_completion', 'swap_fee', 'bridge_fee'
+  riddlepadId: text("riddlepad_id").notNull(), // Memo identifier: RPAD-{launchId}-{feeType}-{timestamp}
+  
+  // Fee details
+  feeAmount: decimal("fee_amount", { precision: 30, scale: 8 }).notNull(),
+  feeToken: text("fee_token").notNull().default("XRP"), // XRP, ETH, SOL, etc.
+  feeUsdValue: decimal("fee_usd_value", { precision: 30, scale: 8 }).notNull(),
+  feePercentage: decimal("fee_percentage", { precision: 5, scale: 2 }).notNull(), // 10.00 for curve completion, 1.00 for swaps
+  
+  // Transaction details
+  sourceTransactionHash: text("source_transaction_hash").notNull(), // Original transaction that triggered fee
+  feeTransactionHash: text("fee_transaction_hash"), // Fee collection transaction hash
+  bankWalletAddress: text("bank_wallet_address").notNull(), // Destination bank wallet
+  
+  // Source details (what triggered the fee)
+  sourceWallet: text("source_wallet").notNull(), // User who triggered the fee
+  sourceAmount: decimal("source_amount", { precision: 30, scale: 8 }).notNull(), // Original transaction amount
+  
+  // Collection status and timing
+  status: text("status").notNull().default("pending"), // pending, collected, failed, cancelled
+  collectedAt: timestamp("collected_at"),
+  failureReason: text("failure_reason"),
+  retryCount: integer("retry_count").default(0),
+  
+  // Token launch specific data (for curve completion fees)
+  curveCompletionData: jsonb("curve_completion_data").$type<{
+    totalRaised: string;
+    fundingGoal: string;
+    participantCount: number;
+    finalMarketCap: string;
+    completionTimestamp: string;
+  }>(),
+  
+  createdAt: timestamp("created_at").defaultNow().notNull(),
+  updatedAt: timestamp("updated_at").defaultNow(),
+}, (table) => [
+  index("idx_riddlepad_fees_launch").on(table.launchId),
+  index("idx_riddlepad_fees_type").on(table.feeType),
+  index("idx_riddlepad_fees_status").on(table.status),
+  index("idx_riddlepad_fees_riddlepad_id").on(table.riddlepadId),
+  index("idx_riddlepad_fees_created").on(table.createdAt),
+  index("idx_riddlepad_fees_source_wallet").on(table.sourceWallet),
+  // UNIQUE constraints for idempotency - prevent race conditions
+  index("unique_curve_completion_fee").on(table.launchId, table.feeType),
+  index("unique_source_transaction").on(table.sourceTransactionHash),
+]);
+
+// RiddlePad configuration settings
+export const riddlepadConfig = pgTable("riddlepad_config", {
+  id: serial("id").primaryKey(),
+  configKey: text("config_key").notNull().unique(),
+  configValue: text("config_value").notNull(),
+  description: text("description"),
+  updatedAt: timestamp("updated_at").defaultNow(),
+  updatedBy: text("updated_by").notNull(),
+}, (table) => [
+  index("idx_riddlepad_config_key").on(table.configKey),
+]);
+
+// RiddlePad Settlement Batches - tracks graduation settlements
+export const riddlepadSettlementBatch = pgTable("riddlepad_settlement_batch", {
+  id: text("id").primaryKey().$defaultFn(() => crypto.randomUUID()),
+  
+  // Launch identification
+  launchId: integer("launch_id").references(() => tokenLaunches.id).notNull(),
+  batchType: text("batch_type").notNull().default("graduation"), // graduation, manual_settlement
+  
+  // Settlement details
+  totalFeeAmount: decimal("total_fee_amount", { precision: 30, scale: 8 }).notNull(),
+  totalFeeUsdValue: decimal("total_fee_usd_value", { precision: 30, scale: 8 }).notNull(),
+  feeCount: integer("fee_count").notNull().default(0),
+  
+  // Settlement status and timeline
+  status: text("status").notNull().default("created"), // created, pending_onchain, transmitted_onchain, completed, failed
+  
+  // Graduation trigger details
+  triggerTimestamp: timestamp("trigger_timestamp").defaultNow().notNull(),
+  triggerWallet: text("trigger_wallet").notNull(), // Wallet that completed the bonding curve
+  triggerTransactionHash: text("trigger_transaction_hash"), // Transaction that completed curve
+  
+  // On-chain settlement details (Phase 2)
+  onchainTransactionHash: text("onchain_transaction_hash"), // Final settlement transaction
+  bankWalletAddress: text("bank_wallet_address"), // Destination bank wallet
+  settlementMemo: text("settlement_memo").notNull(), // RPAD-{launchId}-GRAD-{batchId}
+  
+  // Status tracking
+  transmittedAt: timestamp("transmitted_at"), // When on-chain transfer was initiated
+  completedAt: timestamp("completed_at"), // When fully settled
+  failureReason: text("failure_reason"),
+  retryCount: integer("retry_count").default(0),
+  
+  // Audit trail
+  createdAt: timestamp("created_at").defaultNow().notNull(),
+  updatedAt: timestamp("updated_at").defaultNow(),
+}, (table) => [
+  index("idx_settlement_batch_launch").on(table.launchId),
+  index("idx_settlement_batch_status").on(table.status),
+  index("idx_settlement_batch_created").on(table.createdAt),
+  // UNIQUE constraint - only one graduation settlement per launch
+  index("unique_graduation_settlement").on(table.launchId, table.batchType),
+]);
+
+// Bank Ledger Entries - comprehensive internal tracking
+export const bankLedgerEntries = pgTable("bank_ledger_entries", {
+  id: text("id").primaryKey().$defaultFn(() => crypto.randomUUID()),
+  
+  // Entry identification
+  entryType: text("entry_type").notNull(), // 'fee_accrual', 'settlement_pending', 'settlement_completed', 'fee_reversal'
+  referenceId: text("reference_id").notNull(), // References fee collection or settlement batch ID
+  
+  // Transaction details
+  amount: decimal("amount", { precision: 30, scale: 8 }).notNull(),
+  currency: text("currency").notNull().default("XRP"),
+  usdValue: decimal("usd_value", { precision: 30, scale: 8 }).notNull(),
+  
+  // Source details
+  sourceWallet: text("source_wallet").notNull(),
+  sourceTransactionHash: text("source_transaction_hash"),
+  launchId: integer("launch_id").references(() => tokenLaunches.id),
+  
+  // Bank accounting
+  bankWalletAddress: text("bank_wallet_address").notNull(),
+  runningBalance: decimal("running_balance", { precision: 30, scale: 8 }).notNull(),
+  
+  // Settlement tracking
+  settlementBatchId: text("settlement_batch_id").references(() => riddlepadSettlementBatch.id),
+  isSettled: boolean("is_settled").default(false),
+  settledAt: timestamp("settled_at"),
+  
+  // Memo and audit
+  memo: text("memo").notNull(), // RiddlePad memo for tracking
+  description: text("description").notNull(),
+  
+  createdAt: timestamp("created_at").defaultNow().notNull(),
+}, (table) => [
+  index("idx_bank_ledger_type").on(table.entryType),
+  index("idx_bank_ledger_reference").on(table.referenceId),
+  index("idx_bank_ledger_launch").on(table.launchId),
+  index("idx_bank_ledger_wallet").on(table.bankWalletAddress),
+  index("idx_bank_ledger_settlement").on(table.settlementBatchId),
+  index("idx_bank_ledger_created").on(table.createdAt),
+  index("idx_bank_ledger_settled").on(table.isSettled),
+]);
+
+// Chat messages for each token launch
+export const launchChatMessages = pgTable("launch_chat_messages", {
+  id: text("id").primaryKey().$defaultFn(() => crypto.randomUUID()),
+  launchId: integer("launch_id").references(() => tokenLaunches.id).notNull(),
+  senderWallet: text("sender_wallet").notNull(),
+  senderHandle: text("sender_handle"), // Optional display name
+  message: text("message").notNull(),
+  messageType: text("message_type").default("text").notNull(), // text, system, join, leave
+  
+  // User verification status
+  isDeveloper: boolean("is_developer").default(false),
+  isNftHolder: boolean("is_nft_holder").default(false),
+  isVerified: boolean("is_verified").default(false),
+  
+  // Message metadata  
+  replyToId: text("reply_to_id"), // For threaded conversations
+  editedAt: timestamp("edited_at"),
+  isDeleted: boolean("is_deleted").default(false),
+  
+  // Moderation
+  isFlagged: boolean("is_flagged").default(false),
+  flagReason: text("flag_reason"),
+  moderatedBy: text("moderated_by"),
+  moderatedAt: timestamp("moderated_at"),
+  
+  createdAt: timestamp("created_at").defaultNow().notNull(),
+  updatedAt: timestamp("updated_at").defaultNow().notNull(),
+}, (table) => [
+  index("idx_launch_chat_launch").on(table.launchId),
+  index("idx_launch_chat_sender").on(table.senderWallet),
+  index("idx_launch_chat_created").on(table.createdAt),
+  index("idx_launch_chat_type").on(table.messageType),
+]);
+
+// Active chat sessions tracking
+export const launchChatSessions = pgTable("launch_chat_sessions", {
+  id: text("id").primaryKey().$defaultFn(() => crypto.randomUUID()),
+  launchId: integer("launch_id").references(() => tokenLaunches.id).notNull(),
+  userWallet: text("user_wallet").notNull(),
+  userHandle: text("user_handle"),
+  
+  // Connection status
+  isOnline: boolean("is_online").default(true),
+  isTyping: boolean("is_typing").default(false),
+  lastActivity: timestamp("last_activity").defaultNow().notNull(),
+  
+  // Session metadata
+  joinedAt: timestamp("joined_at").defaultNow().notNull(),
+  leftAt: timestamp("left_at"),
+  connectionCount: integer("connection_count").default(1), // For multiple tabs
+  
+  createdAt: timestamp("created_at").defaultNow().notNull(),
+  updatedAt: timestamp("updated_at").defaultNow().notNull(),
+}, (table) => [
+  index("idx_launch_chat_sessions_launch").on(table.launchId),
+  index("idx_launch_chat_sessions_user").on(table.userWallet),
+  index("idx_launch_chat_sessions_online").on(table.isOnline),
+  index("unique_launch_user_session").on(table.launchId, table.userWallet),
+]);
+
+// Chat room settings and configuration
+export const launchChatRoomSettings = pgTable("launch_chat_room_settings", {
+  id: text("id").primaryKey().$defaultFn(() => crypto.randomUUID()),
+  launchId: integer("launch_id").references(() => tokenLaunches.id).notNull().unique(),
+  
+  // Room configuration
+  isEnabled: boolean("is_enabled").default(true),
+  isPublic: boolean("is_public").default(true), // false for private/gated rooms
+  requiresNftToChat: boolean("requires_nft_to_chat").default(false),
+  
+  // Message settings
+  messageRateLimit: integer("message_rate_limit").default(5), // messages per minute
+  maxMessageLength: integer("max_message_length").default(500),
+  allowMedia: boolean("allow_media").default(false),
+  
+  // Moderation
+  moderationEnabled: boolean("moderation_enabled").default(true),
+  autoModeration: boolean("auto_moderation").default(true),
+  bannedWords: jsonb("banned_words").$type<string[]>().default([]),
+  
+  // Developer controls
+  developerOnly: boolean("developer_only").default(false),
+  mutedUsers: jsonb("muted_users").$type<string[]>().default([]),
+  
+  createdAt: timestamp("created_at").defaultNow().notNull(),
+  updatedAt: timestamp("updated_at").defaultNow().notNull(),
+}, (table) => [
+  index("idx_launch_chat_settings_launch").on(table.launchId),
+]);
+
+// Chat message insert schemas
+export const insertLaunchChatMessageSchema = createInsertSchema(launchChatMessages).omit(['id', 'createdAt', 'updatedAt']);
+
+export const insertLaunchChatSessionSchema = createInsertSchema(launchChatSessions).omit(['id', 'createdAt', 'updatedAt']);
+
+export const insertLaunchChatRoomSettingsSchema = createInsertSchema(launchChatRoomSettings).omit(['id', 'createdAt', 'updatedAt']);
+
+// Chat system types
+export type LaunchChatMessage = typeof launchChatMessages.$inferSelect;
+export type InsertLaunchChatMessage = z.infer<typeof insertLaunchChatMessageSchema>;
+export type LaunchChatSession = typeof launchChatSessions.$inferSelect;
+export type InsertLaunchChatSession = z.infer<typeof insertLaunchChatSessionSchema>;
+export type LaunchChatRoomSettings = typeof launchChatRoomSettings.$inferSelect;
+export type InsertLaunchChatRoomSettings = z.infer<typeof insertLaunchChatRoomSettingsSchema>;
+
+// ============== FINANCIAL ECOSYSTEM TABLES ==============
+
+// Staking Pools - 10% bridge fee sharing with pro-rata rewards
+export const stakingPools = pgTable("staking_pools", {
+  id: text("id").primaryKey().$defaultFn(() => crypto.randomUUID()),
+  chain: text("chain").notNull(), // xrp, eth, sol, bnb, base
+  aprMode: text("apr_mode").default("variable").notNull(), // variable based on bridge fees
+  totalStaked: decimal("total_staked", { precision: 30, scale: 8 }).default("0").notNull(),
+  rewardPerTokenStored: decimal("reward_per_token_stored", { precision: 30, scale: 8 }).default("0").notNull(),
+  lastUpdateTime: timestamp("last_update_time").defaultNow().notNull(),
+  
+  // Pool metadata
+  minStakeAmount: decimal("min_stake_amount", { precision: 30, scale: 8 }).default("100").notNull(),
+  lockupDays: integer("lockup_days").default(0).notNull(), // 0 = no lockup
+  isActive: boolean("is_active").default(true),
+  
+  createdAt: timestamp("created_at").defaultNow().notNull(),
+  updatedAt: timestamp("updated_at").defaultNow().notNull(),
+}, (table) => [
+  index("idx_staking_pools_chain").on(table.chain),
+  index("idx_staking_pools_active").on(table.isActive),
+]);
+
+// Individual staking positions
+export const stakingPositions = pgTable("staking_positions", {
+  id: text("id").primaryKey().$defaultFn(() => crypto.randomUUID()),
+  poolId: text("pool_id").notNull().references(() => stakingPools.id, { onDelete: "cascade" }),
+  userHandle: text("user_handle").notNull(),
+  walletAddress: text("wallet_address").notNull(),
+  chain: text("chain").notNull(),
+  
+  // Position amounts
+  stakedAmount: decimal("staked_amount", { precision: 30, scale: 8 }).notNull(),
+  rewardDebt: decimal("reward_debt", { precision: 30, scale: 8 }).default("0").notNull(),
+  pendingRewards: decimal("pending_rewards", { precision: 30, scale: 8 }).default("0").notNull(),
+  
+  // Position status
+  status: text("status").default("active").notNull(), // active, withdrawn
+  lockupEndDate: timestamp("lockup_end_date"),
+  
+  // Transaction references
+  stakeTransactionHash: text("stake_transaction_hash"),
+  withdrawTransactionHash: text("withdraw_transaction_hash"),
+  
+  createdAt: timestamp("created_at").defaultNow().notNull(),
+  withdrawnAt: timestamp("withdrawn_at"),
+}, (table) => [
+  index("idx_staking_positions_user").on(table.userHandle),
+  index("idx_staking_positions_pool").on(table.poolId),
+  index("idx_staking_positions_status").on(table.status),
+]);
+
+// Fee ledger for tracking all platform fees
+export const feeLedger = pgTable("fee_ledger", {
+  id: text("id").primaryKey().$defaultFn(() => crypto.randomUUID()),
+  source: text("source").notNull(), // bridge, swap, marketplace, loan
+  chain: text("chain").notNull(),
+  
+  // Fee details
+  feeToken: text("fee_token").notNull(), // XRP, ETH, SOL, BNB, etc.
+  feeAmount: decimal("fee_amount", { precision: 30, scale: 8 }).notNull(),
+  feeUsdValue: decimal("fee_usd_value", { precision: 20, scale: 8 }).notNull(),
+  
+  // Transaction reference
+  transactionHash: text("transaction_hash").notNull(),
+  operationId: text("operation_id"), // Reference to swap/bridge/etc transaction
+  
+  // Distribution status
+  distributedToStaking: boolean("distributed_to_staking").default(false),
+  distributionTransactionHash: text("distribution_transaction_hash"),
+  
+  createdAt: timestamp("created_at").defaultNow().notNull(),
+}, (table) => [
+  index("idx_fee_ledger_source").on(table.source),
+  index("idx_fee_ledger_chain").on(table.chain),
+  index("idx_fee_ledger_distribution").on(table.distributedToStaking),
+]);
+
+// Reward fund tracking for staking distributions
+export const rewardFund = pgTable("reward_fund", {
+  id: text("id").primaryKey().$defaultFn(() => crypto.randomUUID()),
+  chain: text("chain").notNull(),
+  
+  // Current fund balance
+  balanceToken: text("balance_token").notNull(), // XRP, ETH, SOL, BNB, etc.
+  balanceAmount: decimal("balance_amount", { precision: 30, scale: 8 }).notNull(),
+  balanceUsdValue: decimal("balance_usd_value", { precision: 20, scale: 8 }).notNull(),
+  
+  // Distribution tracking
+  totalDistributed: decimal("total_distributed", { precision: 30, scale: 8 }).default("0").notNull(),
+  lastDistributedAt: timestamp("last_distributed_at"),
+  nextDistributionAt: timestamp("next_distribution_at"),
+  
+  updatedAt: timestamp("updated_at").defaultNow().notNull(),
+}, (table) => [
+  index("idx_reward_fund_chain").on(table.chain),
+]);
+
+// P2P Lending with NFT Collateral
+export const loans = pgTable("loans", {
+  id: text("id").primaryKey().$defaultFn(() => crypto.randomUUID()),
+  
+  // Loan parties
+  borrowerHandle: text("borrower_handle").notNull(),
+  borrowerWallet: text("borrower_wallet").notNull(),
+  lenderHandle: text("lender_handle"),
+  lenderWallet: text("lender_wallet"),
+  
+  // Loan terms
+  chain: text("chain").notNull(), // Chain where loan currency is issued
+  principalToken: text("principal_token").notNull(), // XRP, ETH, USDC, etc.
+  principalAmount: decimal("principal_amount", { precision: 30, scale: 8 }).notNull(),
+  interestRate: decimal("interest_rate", { precision: 5, scale: 2 }).notNull(), // APR percentage
+  durationDays: integer("duration_days").notNull(),
+  
+  // Platform fees
+  originationFeePct: decimal("origination_fee_pct", { precision: 5, scale: 2 }).default("5.0").notNull(),
+  originationFeeAmount: decimal("origination_fee_amount", { precision: 30, scale: 8 }),
+  
+  // NFT Collateral
+  nftChain: text("nft_chain").notNull(), // xrp, eth, sol
+  nftContract: text("nft_contract"), // Contract address (ETH/SOL) or issuer (XRP)
+  nftTokenId: text("nft_token_id").notNull(), // Token ID or NFT ID
+  nftEstimatedValue: decimal("nft_estimated_value", { precision: 30, scale: 8 }),
+  
+  // Loan status and timing
+  status: text("status").default("listed").notNull(), // listed, funded, active, repaid, defaulted, liquidated, cancelled
+  listedAt: timestamp("listed_at").defaultNow().notNull(),
+  fundedAt: timestamp("funded_at"),
+  startedAt: timestamp("started_at"),
+  dueAt: timestamp("due_at"),
+  completedAt: timestamp("completed_at"),
+  
+  // Escrow and transaction references
+  escrowRef: text("escrow_ref"), // Reference to bank wallet holding NFT
+  fundingTransactionHash: text("funding_transaction_hash"),
+  repaymentTransactionHash: text("repayment_transaction_hash"),
+  liquidationTransactionHash: text("liquidation_transaction_hash"),
+  
+  // Calculated amounts
+  totalRepaymentAmount: decimal("total_repayment_amount", { precision: 30, scale: 8 }),
+  amountRepaid: decimal("amount_repaid", { precision: 30, scale: 8 }).default("0"),
+  
+  createdAt: timestamp("created_at").defaultNow().notNull(),
+  updatedAt: timestamp("updated_at").defaultNow().notNull(),
+}, (table) => [
+  index("idx_loans_borrower").on(table.borrowerHandle),
+  index("idx_loans_lender").on(table.lenderHandle),
+  index("idx_loans_status").on(table.status),
+  index("idx_loans_chain").on(table.chain),
+  index("idx_loans_due_date").on(table.dueAt),
+]);
+
+// Loan event history for tracking lifecycle
+export const loanEvents = pgTable("loan_events", {
+  id: text("id").primaryKey().$defaultFn(() => crypto.randomUUID()),
+  loanId: text("loan_id").notNull().references(() => loans.id, { onDelete: "cascade" }),
+  
+  eventType: text("event_type").notNull(), // listed, funded, repaid, defaulted, liquidated, cancelled, partial_repayment
+  eventDescription: text("event_description").notNull(),
+  
+  // Event details
+  amount: decimal("amount", { precision: 30, scale: 8 }), // Amount involved in event
+  transactionHash: text("transaction_hash"),
+  userHandle: text("user_handle"), // Who triggered the event
+  
+  // Event metadata
+  eventData: jsonb("event_data"), // Additional event-specific data
+  
+  createdAt: timestamp("created_at").defaultNow().notNull(),
+}, (table) => [
+  index("idx_loan_events_loan").on(table.loanId),
+  index("idx_loan_events_type").on(table.eventType),
+  index("idx_loan_events_date").on(table.createdAt),
+]);
+
+// Bank Wallets for secure escrow
+export const bankWallets = pgTable("bank_wallets", {
+  id: text("id").primaryKey().$defaultFn(() => crypto.randomUUID()),
+  chain: text("chain").notNull(), // xrp, eth, sol, bnb, base
+  address: text("address").notNull(),
+  
+  // Wallet metadata
+  label: text("label").default("escrow").notNull(),
+  tagOrMemo: text("tag_or_memo"), // Destination tag for XRP or memo for other chains
+  
+  // Wallet status
+  isActive: boolean("is_active").default(true),
+  balance: decimal("balance", { precision: 30, scale: 8 }).default("0"),
+  lastBalanceUpdate: timestamp("last_balance_update").defaultNow(),
+  
+  // Usage tracking
+  totalTransactions: integer("total_transactions").default(0),
+  totalVolumeUsd: decimal("total_volume_usd", { precision: 30, scale: 8 }).default("0"),
+  
+  createdAt: timestamp("created_at").defaultNow().notNull(),
+  updatedAt: timestamp("updated_at").defaultNow().notNull(),
+}, (table) => [
+  index("idx_bank_wallets_chain").on(table.chain),
+  index("idx_bank_wallets_active").on(table.isActive),
+]);
+
+// Messaging Links for connecting messages to loans/swaps/NFTs
+export const messagingLinks = pgTable("messaging_links", {
+  id: text("id").primaryKey().$defaultFn(() => crypto.randomUUID()),
+  
+  // Link target
+  targetType: text("target_type").notNull(), // loan, swap, nft, collection
+  targetId: text("target_id").notNull(), // ID of the target entity
+  
+  // Owner information
+  ownerHandle: text("owner_handle").notNull(), // Handle of the entity owner
+  ownerWallet: text("owner_wallet").notNull(),
+  
+  // Link metadata
+  title: text("title").notNull(), // Display title for the link
+  description: text("description"), // Optional description
+  
+  // Link status
+  isActive: boolean("is_active").default(true),
+  messageCount: integer("message_count").default(0),
+  
+  createdAt: timestamp("created_at").defaultNow().notNull(),
+  updatedAt: timestamp("updated_at").defaultNow().notNull(),
+}, (table) => [
+  index("idx_messaging_links_target").on(table.targetType, table.targetId),
+  index("idx_messaging_links_owner").on(table.ownerHandle),
+]);
+
+// Financial ecosystem insert schemas
+export const insertStakingPoolSchema = createInsertSchema(stakingPools).omit(['id', 'createdAt', 'updatedAt']);
+
+export const insertStakingPositionSchema = createInsertSchema(stakingPositions).omit(['id', 'createdAt', 'withdrawnAt']);
+
+export const insertFeeLedgerSchema = createInsertSchema(feeLedger).omit(['id', 'createdAt']);
+
+export const insertRewardFundSchema = createInsertSchema(rewardFund).omit(['id', 'updatedAt']);
+
+export const insertLoanSchema = createInsertSchema(loans).omit(['id', 'createdAt', 'updatedAt', 'listedAt']);
+
+export const insertLoanEventSchema = createInsertSchema(loanEvents).omit(['id', 'createdAt']);
+
+
+export const insertBankWalletSchema = createInsertSchema(bankWallets).omit(['id', 'createdAt', 'updatedAt']);
+
+export const insertMessagingLinkSchema = createInsertSchema(messagingLinks).omit(['id', 'createdAt', 'updatedAt']);
+
+// Financial ecosystem types
+export type StakingPool = typeof stakingPools.$inferSelect;
+export type StakingPosition = typeof stakingPositions.$inferSelect;
+export type FeeLedger = typeof feeLedger.$inferSelect;
+export type RewardFund = typeof rewardFund.$inferSelect;
+export type Loan = typeof loans.$inferSelect;
+export type LoanEvent = typeof loanEvents.$inferSelect;
+export type BankWallet = typeof bankWallets.$inferSelect;
+export type MessagingLink = typeof messagingLinks.$inferSelect;
+
+export type InsertStakingPool = z.infer<typeof insertStakingPoolSchema>;
+export type InsertStakingPosition = z.infer<typeof insertStakingPositionSchema>;
+export type InsertFeeLedger = z.infer<typeof insertFeeLedgerSchema>;
+export type InsertRewardFund = z.infer<typeof insertRewardFundSchema>;
+export type InsertLoan = z.infer<typeof insertLoanSchema>;
+export type InsertLoanEvent = z.infer<typeof insertLoanEventSchema>;
+export type InsertNftSwapOffer = z.infer<typeof insertNftSwapOfferSchema>;
+
+export type InsertBankWallet = z.infer<typeof insertBankWalletSchema>;
+export type InsertMessagingLink = z.infer<typeof insertMessagingLinkSchema>;
+
+// ============== LIVE STREAMING SYSTEM ==============
+
+// Stream sessions for token launch live streams
+export const streamSessions = pgTable("stream_sessions", {
+  id: text("id").primaryKey().$defaultFn(() => crypto.randomUUID()),
+  launchId: integer("launch_id").references(() => tokenLaunches.id).notNull(),
+  streamerWallet: text("streamer_wallet").notNull(), // Must be launch creator
+  streamTitle: text("stream_title").notNull(),
+  streamDescription: text("stream_description"),
+  
+  // Stream configuration
+  streamType: text("stream_type").notNull().default("webrtc"), // webrtc, external_embed
+  externalStreamUrl: text("external_stream_url"), // For external platforms like YouTube, Twitch
+  maxViewers: integer("max_viewers").default(1000),
+  allowChat: boolean("allow_chat").default(true),
+  moderatedMode: boolean("moderated_mode").default(false),
+  
+  // Stream status and metrics
+  status: text("status").notNull().default("preparing"), // preparing, live, ended, error
+  currentViewers: integer("current_viewers").default(0),
+  peakViewers: integer("peak_viewers").default(0),
+  totalViewers: integer("total_viewers").default(0),
+  totalDuration: integer("total_duration").default(0), // in seconds
+  
+  // WebRTC signaling data
+  streamerOffer: jsonb("streamer_offer"), // SDP offer from broadcaster
+  iceServers: jsonb("ice_servers"), // STUN/TURN server configuration
+  signalingData: jsonb("signaling_data"), // Additional signaling info
+  
+  // Timestamps
+  scheduledAt: timestamp("scheduled_at"),
+  startedAt: timestamp("started_at"),
+  endedAt: timestamp("ended_at"),
+  createdAt: timestamp("created_at").defaultNow(),
+  updatedAt: timestamp("updated_at").defaultNow(),
+}, (table) => [
+  index("stream_sessions_launch_idx").on(table.launchId),
+  index("stream_sessions_streamer_idx").on(table.streamerWallet),
+  index("stream_sessions_status_idx").on(table.status),
+  index("stream_sessions_started_idx").on(table.startedAt),
+]);
+
+// Stream viewers for tracking who's watching
+export const streamViewers = pgTable("stream_viewers", {
+  id: text("id").primaryKey().$defaultFn(() => crypto.randomUUID()),
+  streamId: text("stream_id").references(() => streamSessions.id, { onDelete: 'cascade' }).notNull(),
+  viewerWallet: text("viewer_wallet").notNull(),
+  viewerHandle: text("viewer_handle"),
+  
+  // Connection details
+  connectionId: text("connection_id").notNull(), // Unique per session
+  userAgent: text("user_agent"),
+  ipAddress: text("ip_address"),
+  
+  // WebRTC connection data
+  viewerAnswer: jsonb("viewer_answer"), // SDP answer from viewer
+  iceCandidates: jsonb("ice_candidates"), // ICE candidates
+  connectionState: text("connection_state").default("connecting"), // connecting, connected, disconnected, failed
+  
+  // Viewing metrics
+  joinedAt: timestamp("joined_at").defaultNow(),
+  leftAt: timestamp("left_at"),
+  totalWatchTime: integer("total_watch_time").default(0), // in seconds
+  lastActivity: timestamp("last_activity").defaultNow(),
+  
+  // Viewer verification
+  isVerified: boolean("is_verified").default(false),
+  isNftHolder: boolean("is_nft_holder").default(false),
+  isDeveloper: boolean("is_developer").default(false),
+}, (table) => [
+  index("stream_viewers_stream_idx").on(table.streamId),
+  index("stream_viewers_wallet_idx").on(table.viewerWallet),
+  index("stream_viewers_connection_idx").on(table.connectionId),
+  index("stream_viewers_joined_idx").on(table.joinedAt),
+]);
+
+// WebRTC signaling messages for real-time communication
+export const streamSignalingMessages = pgTable("stream_signaling_messages", {
+  id: text("id").primaryKey().$defaultFn(() => crypto.randomUUID()),
+  streamId: text("stream_id").references(() => streamSessions.id, { onDelete: 'cascade' }).notNull(),
+  fromWallet: text("from_wallet").notNull(),
+  toWallet: text("to_wallet"), // null for broadcast messages
+  
+  // Message details
+  messageType: text("message_type").notNull(), // offer, answer, ice-candidate, stream-start, stream-end, viewer-join, viewer-leave
+  messageData: jsonb("message_data").notNull(), // SDP, ICE candidates, or other data
+  processed: boolean("processed").default(false),
+  
+  // Timestamps
+  createdAt: timestamp("created_at").defaultNow(),
+  processedAt: timestamp("processed_at"),
+}, (table) => [
+  index("stream_signaling_stream_idx").on(table.streamId),
+  index("stream_signaling_from_idx").on(table.fromWallet),
+  index("stream_signaling_to_idx").on(table.toWallet),
+  index("stream_signaling_type_idx").on(table.messageType),
+  index("stream_signaling_processed_idx").on(table.processed),
+]);
+
+// Stream analytics for performance tracking
+export const streamAnalytics = pgTable("stream_analytics", {
+  id: text("id").primaryKey().$defaultFn(() => crypto.randomUUID()),
+  streamId: text("stream_id").references(() => streamSessions.id, { onDelete: 'cascade' }).notNull(),
+  timestamp: timestamp("timestamp").defaultNow().notNull(),
+  
+  // Real-time metrics
+  activeViewers: integer("active_viewers").notNull(),
+  totalViewers: integer("total_viewers").notNull(),
+  chatMessages: integer("chat_messages").default(0),
+  
+  // Quality metrics
+  avgConnectionQuality: decimal("avg_connection_quality", { precision: 3, scale: 2 }), // 0.00 to 5.00
+  droppedConnections: integer("dropped_connections").default(0),
+  reconnections: integer("reconnections").default(0),
+  
+  // Engagement metrics  
+  newViewersJoined: integer("new_viewers_joined").default(0),
+  viewersLeft: integer("viewers_left").default(0),
+  avgWatchTime: integer("avg_watch_time").default(0), // in seconds
+}, (table) => [
+  index("stream_analytics_stream_idx").on(table.streamId),
+  index("stream_analytics_timestamp_idx").on(table.timestamp),
+]);
+
+// Stream moderations and events
+export const streamModerationEvents = pgTable("stream_moderation_events", {
+  id: text("id").primaryKey().$defaultFn(() => crypto.randomUUID()),
+  streamId: text("stream_id").references(() => streamSessions.id, { onDelete: 'cascade' }).notNull(),
+  moderatorWallet: text("moderator_wallet").notNull(),
+  targetWallet: text("target_wallet"),
+  
+  // Event details
+  eventType: text("event_type").notNull(), // mute_viewer, kick_viewer, ban_viewer, stream_warning, technical_issue
+  reason: text("reason"),
+  severity: text("severity").default("info"), // info, warning, error, critical
+  
+  // Event data
+  eventData: jsonb("event_data"), // Additional context
+  automated: boolean("automated").default(false), // Was this an automated action?
+  
+  createdAt: timestamp("created_at").defaultNow(),
+}, (table) => [
+  index("stream_moderation_stream_idx").on(table.streamId),
+  index("stream_moderation_moderator_idx").on(table.moderatorWallet),
+  index("stream_moderation_type_idx").on(table.eventType),
+]);
+
+// Streaming insert schemas
+export const insertStreamSessionSchema = createInsertSchema(streamSessions).omit(['id', 'createdAt', 'updatedAt']);
+
+export const insertStreamViewerSchema = createInsertSchema(streamViewers).omit(['id', 'joinedAt', 'lastActivity']);
+
+export const insertStreamSignalingMessageSchema = createInsertSchema(streamSignalingMessages).omit(['id', 'createdAt', 'processedAt']);
+
+export const insertStreamAnalyticsSchema = createInsertSchema(streamAnalytics).omit(['id', 'timestamp']);
+
+export const insertStreamModerationEventSchema = createInsertSchema(streamModerationEvents).omit(['id', 'createdAt']);
+
+// Streaming types
+export type StreamSession = typeof streamSessions.$inferSelect;
+export type StreamViewer = typeof streamViewers.$inferSelect;
+export type StreamSignalingMessage = typeof streamSignalingMessages.$inferSelect;
+export type StreamAnalytics = typeof streamAnalytics.$inferSelect;
+export type StreamModerationEvent = typeof streamModerationEvents.$inferSelect;
+
+export type InsertStreamSession = z.infer<typeof insertStreamSessionSchema>;
+export type InsertStreamViewer = z.infer<typeof insertStreamViewerSchema>;
+export type InsertStreamSignalingMessage = z.infer<typeof insertStreamSignalingMessageSchema>;
+export type InsertStreamAnalytics = z.infer<typeof insertStreamAnalyticsSchema>;
+export type InsertStreamModerationEvent = z.infer<typeof insertStreamModerationEventSchema>;
+
+// RiddlePad Fee Collection Insert Schemas (after table definitions)
+export const insertRiddlepadFeeCollectionSchema = createInsertSchema(riddlepadFeeCollection).omit(['id', 'createdAt', 'updatedAt']);
+
+export const insertRiddlepadConfigSchema = createInsertSchema(riddlepadConfig).omit(['id', 'updatedAt']);
+
+// Two-Phase RiddlePad Settlement Insert Schemas
+export const insertRiddlepadSettlementBatchSchema = createInsertSchema(riddlepadSettlementBatch).omit(['id', 'createdAt', 'updatedAt']);
+
+export const insertBankLedgerEntrySchema = createInsertSchema(bankLedgerEntries).omit(['id', 'createdAt']);
+
+// RiddlePad Fee Collection Types
+export type RiddlepadFeeCollection = typeof riddlepadFeeCollection.$inferSelect;
+
+// ============== COPY TRADING SYSTEM ==============
+
+// Copy trading profiles for traders who want to share their strategies
+export const copyTradingProfiles = pgTable("copy_trading_profiles", {
+  id: text("id").primaryKey().$defaultFn(() => crypto.randomUUID()),
+  userId: text("user_id").notNull(),
+  name: text("name").notNull(),
+  description: text("description"),
+  isPublic: boolean("is_public").default(true),
+  strategy: text("strategy"),
+  riskLevel: text("risk_level").default("medium"), // low, medium, high
+  minCopyAmount: text("min_copy_amount").default("100"),
+  maxCopyAmount: text("max_copy_amount").default("10000"),
+  feePercentage: decimal("fee_percentage", { precision: 5, scale: 2 }).default("10.00"),
+  
+  // Performance metrics
+  totalTrades: integer("total_trades").default(0),
+  winningTrades: integer("winning_trades").default(0),
+  totalPnlUsd: text("total_pnl_usd").default("0"),
+  followerCount: integer("follower_count").default(0),
+  averageHoldTime: integer("average_hold_time").default(0), // in minutes
+  maxDrawdown: text("max_drawdown").default("0"),
+  
+  createdAt: timestamp("created_at").defaultNow(),
+  updatedAt: timestamp("updated_at").defaultNow(),
+}, (table) => [
+  index("copy_trading_profiles_user_idx").on(table.userId),
+  index("copy_trading_profiles_public_idx").on(table.isPublic),
+  index("copy_trading_profiles_performance_idx").on(table.totalPnlUsd),
+]);
+
+// Copy trading subscriptions (followers following traders)
+export const copyTradingSubscriptions = pgTable("copy_trading_subscriptions", {
+  id: text("id").primaryKey().$defaultFn(() => crypto.randomUUID()),
+  followerId: text("follower_id").notNull(),
+  traderId: text("trader_id").notNull(),
+  copyAmount: text("copy_amount").notNull(),
+  maxPercentage: decimal("max_percentage", { precision: 5, scale: 2 }).default("10.00"),
+  stopLossPercentage: decimal("stop_loss_percentage", { precision: 5, scale: 2 }),
+  takeProfitPercentage: decimal("take_profit_percentage", { precision: 5, scale: 2 }),
+  isActive: boolean("is_active").default(true),
+  
+  // Tracking
+  totalCopiedTrades: integer("total_copied_trades").default(0),
+  totalPnlUsd: text("total_pnl_usd").default("0"),
+  
+  createdAt: timestamp("created_at").defaultNow(),
+  updatedAt: timestamp("updated_at").defaultNow(),
+}, (table) => [
+  index("copy_trading_subs_follower_idx").on(table.followerId),
+  index("copy_trading_subs_trader_idx").on(table.traderId),
+  index("copy_trading_subs_active_idx").on(table.isActive),
+]);
+
+// Individual copy trading trades
+export const copyTradingTrades = pgTable("copy_trading_trades", {
+  id: text("id").primaryKey().$defaultFn(() => crypto.randomUUID()),
+  traderId: text("trader_id").notNull(),
+  followerId: text("follower_id").notNull(),
+  subscriptionId: text("subscription_id").references(() => copyTradingSubscriptions.id),
+  
+  // Trade details
+  originalTradeId: text("original_trade_id"), // Reference to trader's original trade
+  copyTradeId: text("copy_trade_id"), // Reference to follower's copied trade
+  
+  // Trade data
+  fromToken: text("from_token").notNull(),
+  toToken: text("to_token").notNull(),
+  fromAmount: text("from_amount").notNull(),
+  toAmount: text("to_amount"),
+  copyAmountUsd: text("copy_amount_usd").notNull(),
+  executionPrice: text("execution_price"),
+  
+  // Performance
+  pnlUsd: text("pnl_usd").default("0"),
+  status: text("status").default("pending"), // pending, executed, completed, failed
+  
+  createdAt: timestamp("created_at").defaultNow(),
+  updatedAt: timestamp("updated_at").defaultNow(),
+}, (table) => [
+  index("copy_trading_trades_trader_idx").on(table.traderId),
+  index("copy_trading_trades_follower_idx").on(table.followerId),
+  index("copy_trading_trades_status_idx").on(table.status),
+  index("copy_trading_trades_subscription_idx").on(table.subscriptionId),
+]);
+
+// Copy trading insert schemas
+export const insertCopyTradingProfileSchema = createInsertSchema(copyTradingProfiles).omit(['id', 'createdAt', 'updatedAt']);
+
+export const insertCopyTradingSubscriptionSchema = createInsertSchema(copyTradingSubscriptions).omit(['id', 'createdAt', 'updatedAt']);
+
+export const insertCopyTradingTradeSchema = createInsertSchema(copyTradingTrades).omit(['id', 'createdAt', 'updatedAt']);
+
+// ============== CDN SYSTEM TABLES ==============
+
+// Asset files table for storing downloaded NFT assets and metadata
+export const assetFiles = pgTable("asset_files", {
+  id: text("id").primaryKey().$defaultFn(() => crypto.randomUUID()),
+  
+  // Source and content identification
+  source_url: text("source_url").notNull(),
+  content_hash: text("content_hash").notNull().unique(), // SHA-256 hash for deduplication
+  mime_type: text("mime_type").notNull(), // image/jpeg, image/png, application/json, etc.
+  file_size: bigint("file_size", { mode: "number" }).notNull(), // Size in bytes
+  
+  // Storage information
+  stored_path: text("stored_path").notNull(), // Path in CDN/storage system
+  cdn_url: text("cdn_url"), // Public CDN URL if different from stored_path
+  
+  // Asset variants for different sizes/formats
+  variants: jsonb("variants").$type<{
+    thumbnail?: { url: string; width: number; height: number; size: number };
+    medium?: { url: string; width: number; height: number; size: number };
+    large?: { url: string; width: number; height: number; size: number };
+    original?: { url: string; width: number; height: number; size: number };
+  }>().default({}),
+  
+  // Processing and status tracking
+  fetch_status: text("fetch_status").notNull().default("pending"), // pending, processing, completed, failed
+  process_status: text("process_status").notNull().default("pending"), // pending, processing, completed, failed
+  error_message: text("error_message"), // Error details if fetch/process failed
+  
+  // Metadata
+  original_filename: text("original_filename"),
+  alt_text: text("alt_text"), // For accessibility
+  compression_ratio: decimal("compression_ratio", { precision: 5, scale: 2 }), // If compressed
+  
+  // Timestamps
+  created_at: timestamp("created_at").defaultNow().notNull(),
+  last_fetched: timestamp("last_fetched").defaultNow().notNull(),
+  last_accessed: timestamp("last_accessed").defaultNow(),
+  updated_at: timestamp("updated_at").defaultNow().notNull(),
+}, (table) => [
+  index("idx_asset_files_hash").on(table.content_hash),
+  index("idx_asset_files_url").on(table.source_url),
+  index("idx_asset_files_status").on(table.fetch_status, table.process_status),
+  index("idx_asset_files_mime").on(table.mime_type),
+  index("idx_asset_files_created").on(table.created_at),
+  index("idx_asset_files_accessed").on(table.last_accessed),
+]);
+
+// Project content overrides table for custom project data that overrides Bithomp
+export const projectContentOverrides = pgTable("project_content_overrides", {
+  id: text("id").primaryKey().$defaultFn(() => crypto.randomUUID()),
+  
+  // Project and entity identification
+  project_id: text("project_id").references(() => devtoolsProjects.id, { onDelete: "cascade" }),
+  entity_type: text("entity_type").notNull(), // 'token', 'collection', 'nft'
+  
+  // Entity identification keys (for different entity types)
+  issuer: text("issuer"), // For tokens and collections
+  currency_code: text("currency_code"), // For tokens
+  taxon: integer("taxon"), // For collections (NFT taxon)
+  token_id: text("token_id"), // For individual NFTs
+  nft_sequence: integer("nft_sequence"), // For specific NFT sequence
+  
+  // Override content fields
+  title: text("title"),
+  description: text("description"),
+  logo_url: text("logo_url"), // Can reference asset_files.cdn_url
+  banner_url: text("banner_url"), // Can reference asset_files.cdn_url
+  website: text("website"),
+  
+  // Social media links
+  socials: jsonb("socials").$type<{
+    twitter?: string;
+    discord?: string;
+    telegram?: string;
+    instagram?: string;
+    github?: string;
+    linkedin?: string;
+    youtube?: string;
+    medium?: string;
+    reddit?: string;
+  }>().default({}),
+  
+  // Additional metadata
+  tags: text("tags").array(), // Searchable tags
+  categories: text("categories").array(), // Content categories
+  external_links: jsonb("external_links").$type<Array<{ title: string; url: string; type?: string }>>().default([]),
+  
+  // Override control
+  verified_override: boolean("verified_override").default(false), // Admin verified content
+  status: text("status").notNull().default("draft"), // 'draft', 'published', 'archived'
+  priority: integer("priority").default(0), // Higher priority overrides win
+  
+  // Audit fields
+  created_by: text("created_by"), // Wallet address of creator
+  reviewed_by: text("reviewed_by"), // Admin who reviewed
+  reviewed_at: timestamp("reviewed_at"),
+  
+  // Timestamps
+  created_at: timestamp("created_at").defaultNow().notNull(),
+  updated_at: timestamp("updated_at").defaultNow().notNull(),
+}, (table) => [
+  index("idx_content_overrides_project").on(table.project_id),
+  index("idx_content_overrides_entity").on(table.entity_type),
+  index("idx_content_overrides_issuer").on(table.issuer),
+  index("idx_content_overrides_token").on(table.issuer, table.currency_code),
+  index("idx_content_overrides_collection").on(table.issuer, table.taxon),
+  index("idx_content_overrides_nft").on(table.token_id),
+  index("idx_content_overrides_status").on(table.status),
+  index("idx_content_overrides_verified").on(table.verified_override),
+  index("idx_content_overrides_priority").on(table.priority),
+]);
+
+// Ingestion jobs table for tracking background asset download jobs
+export const ingestionJobs = pgTable("ingestion_jobs", {
+  id: text("id").primaryKey().$defaultFn(() => crypto.randomUUID()),
+  
+  // Job identification
+  project_id: text("project_id").references(() => devtoolsProjects.id, { onDelete: "cascade" }),
+  job_type: text("job_type").notNull(), // 'collection_scan', 'token_metadata', 'asset_download', 'metadata_refresh'
+  
+  // Target entity identification
+  entity_type: text("entity_type").notNull(), // 'token', 'collection', 'nft'
+  issuer: text("issuer"),
+  currency_code: text("currency_code"),
+  taxon: integer("taxon"),
+  token_id: text("token_id"),
+  
+  // Job configuration
+  job_config: jsonb("job_config").$type<{
+    batch_size?: number;
+    priority?: 'low' | 'normal' | 'high';
+    retry_limit?: number;
+    include_metadata?: boolean;
+    include_assets?: boolean;
+    asset_variants?: Array<'thumbnail' | 'medium' | 'large' | 'original'>;
+    filters?: Record<string, any>;
+  }>().default({}),
+  
+  // Job status and progress
+  status: text("status").notNull().default("queued"), // 'queued', 'running', 'completed', 'failed', 'cancelled', 'paused'
+  progress: jsonb("progress").$type<{
+    total_items?: number;
+    processed_items?: number;
+    failed_items?: number;
+    current_item?: string;
+    estimated_completion?: string;
+  }>().default({}),
+  
+  // Error tracking
+  attempts: integer("attempts").default(0),
+  max_attempts: integer("max_attempts").default(3),
+  error_message: text("error_message"),
+  error_details: jsonb("error_details").$type<Record<string, any>>(),
+  
+  // Processing metadata
+  worker_id: text("worker_id"), // ID of worker processing this job
+  started_by: text("started_by"), // Wallet address who initiated
+  
+  // Timestamps
+  created_at: timestamp("created_at").defaultNow().notNull(),
+  updated_at: timestamp("updated_at").defaultNow().notNull(),
+  started_at: timestamp("started_at"),
+  completed_at: timestamp("completed_at"),
+  failed_at: timestamp("failed_at"),
+  next_retry_at: timestamp("next_retry_at"),
+}, (table) => [
+  index("idx_ingestion_jobs_project").on(table.project_id),
+  index("idx_ingestion_jobs_type").on(table.job_type),
+  index("idx_ingestion_jobs_status").on(table.status),
+  index("idx_ingestion_jobs_entity").on(table.entity_type),
+  index("idx_ingestion_jobs_issuer").on(table.issuer),
+  index("idx_ingestion_jobs_created").on(table.created_at),
+  index("idx_ingestion_jobs_retry").on(table.next_retry_at),
+  index("idx_ingestion_jobs_worker").on(table.worker_id),
+]);
+
+// Enhanced Project Subscriptions with verification and subscription features
+export const enhancedProjectSubscriptions = pgTable("enhanced_project_subscriptions", {
+  id: text("id").primaryKey().$defaultFn(() => crypto.randomUUID()),
+  
+  // Project identification
+  project_id: text("project_id").references(() => devtoolsProjects.id, { onDelete: "cascade" }).notNull(),
+  
+  // Subscription tier and features
+  subscription_tier: text("subscription_tier").notNull().default("free"), // 'free', 'pro', 'verified', 'enterprise'
+  
+  // Enhanced feature permissions
+  can_add_extended_fields: boolean("can_add_extended_fields").default(false), // Can add custom metadata fields
+  verified_badge: boolean("verified_badge").default(false), // Show verified badge
+  can_override_bithomp: boolean("can_override_bithomp").default(false), // Can override Bithomp data
+  can_use_cdn: boolean("can_use_cdn").default(false), // Can use CDN for assets
+  can_ingestion_jobs: boolean("can_ingestion_jobs").default(false), // Can run background jobs
+  
+  // Subscription limits
+  max_override_entities: integer("max_override_entities").default(0), // Max entities that can be overridden
+  max_asset_storage_gb: decimal("max_asset_storage_gb", { precision: 10, scale: 2 }).default("0"), // Storage limit in GB
+  max_monthly_api_calls: integer("max_monthly_api_calls").default(1000), // API rate limit
+  max_ingestion_jobs_per_day: integer("max_ingestion_jobs_per_day").default(0),
+  
+  // Usage tracking
+  current_override_entities: integer("current_override_entities").default(0),
+  current_asset_storage_gb: decimal("current_asset_storage_gb", { precision: 10, scale: 2 }).default("0"),
+  current_monthly_api_calls: integer("current_monthly_api_calls").default(0),
+  api_calls_reset_date: date("api_calls_reset_date").defaultNow(),
+  
+  // Subscription management
+  subscription_status: text("subscription_status").notNull().default("active"), // 'active', 'cancelled', 'suspended', 'expired'
+  subscription_starts_at: timestamp("subscription_starts_at").defaultNow(),
+  subscription_expires_at: timestamp("subscription_expires_at"),
+  auto_renew: boolean("auto_renew").default(false),
+  
+  // Payment tracking
+  payment_status: text("payment_status").notNull().default("none"), // 'none', 'pending', 'paid', 'failed', 'refunded'
+  payment_method: text("payment_method"), // 'crypto' only - DeFi platform
+  last_payment_date: timestamp("last_payment_date"),
+  next_payment_date: timestamp("next_payment_date"),
+  payment_reference: text("payment_reference"), // Transaction hash or payment ID
+  
+  // Billing information
+  monthly_price_usd: decimal("monthly_price_usd", { precision: 10, scale: 2 }),
+  currency: text("currency").default("USD"),
+  discount_percentage: decimal("discount_percentage", { precision: 5, scale: 2 }).default("0"),
+  
+  // Trial and promotional features
+  trial_ends_at: timestamp("trial_ends_at"),
+  promotional_features: jsonb("promotional_features").$type<{
+    extra_storage?: number;
+    extra_api_calls?: number;
+    extra_overrides?: number;
+    expires_at?: string;
+  }>().default({}),
+  
+  // Timestamps
+  created_at: timestamp("created_at").defaultNow().notNull(),
+  updated_at: timestamp("updated_at").defaultNow().notNull(),
+  cancelled_at: timestamp("cancelled_at"),
+}, (table) => [
+  index("idx_enhanced_subscriptions_project").on(table.project_id),
+  index("idx_enhanced_subscriptions_tier").on(table.subscription_tier),
+  index("idx_enhanced_subscriptions_status").on(table.subscription_status),
+  index("idx_enhanced_subscriptions_expires").on(table.subscription_expires_at),
+  index("idx_enhanced_subscriptions_payment").on(table.payment_status),
+  index("idx_enhanced_subscriptions_trial").on(table.trial_ends_at),
+]);
+
+// Create insert and select schemas for CDN system tables
+export const insertAssetFileSchema = createInsertSchema(assetFiles).omit(['id', 'created_at', 'updated_at', 'last_fetched', 'last_accessed']);
+
+export const insertProjectContentOverrideSchema = createInsertSchema(projectContentOverrides).omit(['id', 'created_at', 'updated_at', 'reviewed_at']);
+
+export const insertIngestionJobSchema = createInsertSchema(ingestionJobs).omit(['id', 'created_at', 'updated_at', 'started_at', 'completed_at', 'failed_at']);
+
+export const insertEnhancedProjectSubscriptionSchema = createInsertSchema(enhancedProjectSubscriptions).omit(['id', 'created_at', 'updated_at', 'cancelled_at']);
+
+// Project claims schema is already defined above
+
+// Copy trading types
+export type CopyTradingProfile = typeof copyTradingProfiles.$inferSelect;
+export type CopyTradingSubscription = typeof copyTradingSubscriptions.$inferSelect;
+export type CopyTradingTrade = typeof copyTradingTrades.$inferSelect;
+
+export type InsertCopyTradingProfile = z.infer<typeof insertCopyTradingProfileSchema>;
+export type InsertCopyTradingSubscription = z.infer<typeof insertCopyTradingSubscriptionSchema>;
+export type InsertCopyTradingTrade = z.infer<typeof insertCopyTradingTradeSchema>;
+export type InsertRiddlepadFeeCollection = z.infer<typeof insertRiddlepadFeeCollectionSchema>;
+export type RiddlepadConfig = typeof riddlepadConfig.$inferSelect;
+export type InsertRiddlepadConfig = z.infer<typeof insertRiddlepadConfigSchema>;
+
+// CDN System Types
+export type AssetFile = typeof assetFiles.$inferSelect;
+export type InsertAssetFile = z.infer<typeof insertAssetFileSchema>;
+export type ProjectContentOverride = typeof projectContentOverrides.$inferSelect;
+export type InsertProjectContentOverride = z.infer<typeof insertProjectContentOverrideSchema>;
+export type IngestionJob = typeof ingestionJobs.$inferSelect;
+export type InsertIngestionJob = z.infer<typeof insertIngestionJobSchema>;
+export type EnhancedProjectSubscription = typeof enhancedProjectSubscriptions.$inferSelect;
+export type InsertEnhancedProjectSubscription = z.infer<typeof insertEnhancedProjectSubscriptionSchema>;
+
+// Two-Phase Settlement Types
+export type RiddlepadSettlementBatch = typeof riddlepadSettlementBatch.$inferSelect;
+export type InsertRiddlepadSettlementBatch = z.infer<typeof insertRiddlepadSettlementBatchSchema>;
+export type BankLedgerEntry = typeof bankLedgerEntries.$inferSelect;
+export type InsertBankLedgerEntry = z.infer<typeof insertBankLedgerEntrySchema>;
+
+// ===============================================================================
+// SEARCH SYSTEM MODELS
+// ===============================================================================
+
+// Search results table for caching and analytics
+export const searchResults = pgTable("search_results", {
+  id: text("id").primaryKey().$defaultFn(() => crypto.randomUUID()),
+  query: text("query").notNull(),
+  result_type: text("result_type").notNull(), // 'profile', 'project', 'page'
+  result_id: text("result_id").notNull(), // The ID of the found item
+  result_title: text("result_title").notNull(),
+  result_description: text("result_description"),
+  result_url: text("result_url").notNull(),
+  result_image: text("result_image"),
+  search_count: integer("search_count").default(1).notNull(),
+  last_searched: timestamp("last_searched").defaultNow().notNull(),
+  created_at: timestamp("created_at").defaultNow().notNull(),
+}, (table) => [
+  index("idx_search_results_query").on(table.query),
+  index("idx_search_results_type").on(table.result_type),
+  index("idx_search_results_count").on(table.search_count),
+  index("idx_search_results_last_searched").on(table.last_searched),
+]);
+
+// Search analytics for tracking popular searches and improving results
+export const searchAnalytics = pgTable("search_analytics", {
+  id: text("id").primaryKey().$defaultFn(() => crypto.randomUUID()),
+  query: text("query").notNull(),
+  search_type: text("search_type").notNull(), // 'successful', 'no_results', etc.
+  results_count: integer("results_count").notNull(),
+  user_handle: text("user_handle"), // Optional - for logged in users
+  ip_address: text("ip_address"),
+  user_agent: text("user_agent"),
+  clicked_result_id: text("clicked_result_id"), // Which result was clicked
+  clicked_result_type: text("clicked_result_type"), // Type of clicked result
+  search_session_id: text("search_session_id"), // For tracking search sessions
+  created_at: timestamp("created_at").defaultNow().notNull(),
+}, (table) => [
+  index("idx_search_analytics_query").on(table.query),
+  index("idx_search_analytics_user").on(table.user_handle),
+  index("idx_search_analytics_clicked").on(table.clicked_result_id),
+  index("idx_search_analytics_session").on(table.search_session_id),
+]);
+
+// Page metadata table for searchable static pages
+export const pageMetadata = pgTable("page_metadata", {
+  id: text("id").primaryKey().$defaultFn(() => crypto.randomUUID()),
+  page_path: text("page_path").notNull().unique(), // e.g. '/about', '/devtools', '/settings'
+  page_title: text("page_title").notNull(),
+  page_description: text("page_description").notNull(),
+  page_type: text("page_type").notNull(), // 'static', 'wallet', 'marketplace', 'profile', 'project'
+  keywords: text("keywords").array().default([]), // SEO keywords
+  searchable: boolean("searchable").default(true).notNull(),
+  
+  // SEO metadata
+  meta_title: text("meta_title"),
+  meta_description: text("meta_description"),
+  og_title: text("og_title"),
+  og_description: text("og_description"),
+  og_image: text("og_image"),
+  twitter_title: text("twitter_title"),
+  twitter_description: text("twitter_description"),
+  twitter_image: text("twitter_image"),
+  canonical_url: text("canonical_url"),
+  
+  // Dynamic content indicators
+  is_dynamic: boolean("is_dynamic").default(false),
+  dynamic_content_source: text("dynamic_content_source"), // 'user_profile', 'project_data', 'wallet_data'
+  
+  updated_at: timestamp("updated_at").defaultNow().notNull(),
+  created_at: timestamp("created_at").defaultNow().notNull(),
+}, (table) => [
+  index("idx_page_metadata_path").on(table.page_path),
+  index("idx_page_metadata_type").on(table.page_type),
+  index("idx_page_metadata_searchable").on(table.searchable),
+  index("idx_page_metadata_dynamic").on(table.is_dynamic),
+]);
+
+// Create insert schemas for search system
+export const insertSearchResultSchema = createInsertSchema(searchResults).omit(['id', 'created_at', 'last_searched']);
+
+export const insertSearchAnalyticsSchema = createInsertSchema(searchAnalytics).omit(['id', 'created_at']);
+
+export const insertPageMetadataSchema = createInsertSchema(pageMetadata).omit(['id', 'created_at', 'updated_at']);
+
+// Wallet Metrics types and insert schema
+export type WalletMetrics = typeof walletMetrics.$inferSelect;
+export type InsertWalletMetrics = z.infer<typeof insertWalletMetricsSchema>;
+export const insertWalletMetricsSchema = createInsertSchema(walletMetrics).omit(['id', 'computed_at', 'created_at', 'updated_at']);
+
+// Search system types
+export type SearchResult = typeof searchResults.$inferSelect;
+export type InsertSearchResult = z.infer<typeof insertSearchResultSchema>;
+export type SearchAnalytics = typeof searchAnalytics.$inferSelect;
+export type InsertSearchAnalytics = z.infer<typeof insertSearchAnalyticsSchema>;
+export type PageMetadata = typeof pageMetadata.$inferSelect;
+export type InsertPageMetadata = z.infer<typeof insertPageMetadataSchema>;
+
+// Unified search result interface for API responses
+export interface UnifiedSearchResult {
+  id: string;
+  type: 'profile' | 'project' | 'page' | 'token' | 'nft';
+  title: string;
+  description?: string;
+  url: string;
+  image?: string;
+  metadata?: Record<string, any>;
+}
+
+// ===== GAMING SYSTEM TABLES =====
+// The Trolls Inquisition Multi-Chain Mayhem Edition Database Schema
+
+// Gaming players - unified identity for the game
+export const gamePlayers = pgTable("game_players", {
+  id: text("id").primaryKey().$defaultFn(() => crypto.randomUUID()),
+  handle: varchar("handle"), // Riddle wallet handle if available
+  userId: varchar("user_id"), // External wallet user_id if no Riddle handle
+  primaryChain: text("primary_chain").notNull().default("xrpl"), // xrpl, ethereum, polygon
+  primaryAddress: text("primary_address").notNull(),
+  createdAt: timestamp("created_at").defaultNow().notNull(),
+  lastActivity: timestamp("last_activity").defaultNow().notNull(),
+}, (table) => [
+  index("idx_game_players_handle").on(table.handle),
+  index("idx_game_players_user_id").on(table.userId),
+  index("idx_game_players_primary_address").on(table.primaryAddress),
+]);
+
+// Player wallet associations for multi-chain gaming
+export const gamePlayerWallets = pgTable("game_player_wallets", {
+  id: text("id").primaryKey().$defaultFn(() => crypto.randomUUID()),
+  playerId: text("player_id").notNull().references(() => gamePlayers.id, { onDelete: "cascade" }),
+  chain: text("chain").notNull(), // xrpl, ethereum, polygon
+  address: text("address").notNull(),
+  isPrimary: boolean("is_primary").default(false),
+  createdAt: timestamp("created_at").defaultNow().notNull(),
+}, (table) => [
+  index("idx_game_player_wallets_player").on(table.playerId),
+  index("idx_game_player_wallets_chain_address").on(table.chain, table.address),
+]);
+
+// Land blocks - 5000 total across all chains
+export const gameLandBlocks = pgTable("game_land_blocks", {
+  id: text("id").primaryKey(), // Format: "xrpl:1234" or "ethereum:567"
+  chain: text("chain").notNull(), // xrpl, ethereum, polygon
+  blockIndex: integer("block_index").notNull(), // 0-4999 total, chain-specific ranges
+  ownerPlayerId: text("owner_player_id").references(() => gamePlayers.id, { onDelete: "set null" }),
+  status: text("status").notNull().default("unclaimed"), // unclaimed, claimed, contested
+  claimCostRdl: decimal("claim_cost_rdl", { precision: 20, scale: 8 }).notNull(),
+  yieldRdlPerDay: decimal("yield_rdl_per_day", { precision: 20, scale: 8 }).notNull().default("1.0"),
+  traits: jsonb("traits").$type<Record<string, any>>().default({}),
+  lastClaimedAt: timestamp("last_claimed_at"),
+  createdAt: timestamp("created_at").defaultNow().notNull(),
+}, (table) => [
+  index("idx_game_land_blocks_chain").on(table.chain),
+  index("idx_game_land_blocks_owner").on(table.ownerPlayerId),
+  index("idx_game_land_blocks_status").on(table.status),
+  index("idx_game_land_blocks_chain_index").on(table.chain, table.blockIndex),
+]);
+
+// Active land claims with staking
+export const gameLandClaims = pgTable("game_land_claims", {
+  id: text("id").primaryKey().$defaultFn(() => crypto.randomUUID()),
+  blockId: text("block_id").notNull().references(() => gameLandBlocks.id, { onDelete: "cascade" }),
+  playerId: text("player_id").notNull().references(() => gamePlayers.id, { onDelete: "cascade" }),
+  chain: text("chain").notNull(),
+  stakedRdl: decimal("staked_rdl", { precision: 20, scale: 8 }).notNull(),
+  status: text("status").notNull().default("active"), // active, released, challenged
+  createdAt: timestamp("created_at").defaultNow().notNull(),
+  releasedAt: timestamp("released_at"),
+}, (table) => [
+  index("idx_game_land_claims_block").on(table.blockId),
+  index("idx_game_land_claims_player").on(table.playerId),
+  index("idx_game_land_claims_status").on(table.status),
+]);
+
+// Medieval Land Plots - 1000 purchasable plots for The Trolls Inquisition
+export const medievalLandPlots = pgTable("medieval_land_plots", {
+  id: text("id").primaryKey().$defaultFn(() => crypto.randomUUID()),
+  plotNumber: integer("plot_number").notNull().unique(), // 1-1000
+  
+  // Map coordinates
+  mapX: integer("map_x").notNull(), // X coordinate on medieval map
+  mapY: integer("map_y").notNull(), // Y coordinate on medieval map
+  gridSection: text("grid_section").notNull(), // A1, B2, etc.
+  
+  // Real-world geographic coordinates for globe display
+  latitude: decimal("latitude", { precision: 10, scale: 8 }), // Real-world latitude (-90 to 90)
+  longitude: decimal("longitude", { precision: 11, scale: 8 }), // Real-world longitude (-180 to 180)
+  
+  // Terrain and pricing
+  terrainType: text("terrain_type").notNull(), // plains, forest, mountain, water, swamp, desert, tundra
+  terrainSubtype: text("terrain_subtype"), // dense_forest, rolling_hills, rocky_peaks, etc.
+  basePrice: decimal("base_price", { precision: 10, scale: 2 }).notNull(), // XRP price
+  currentPrice: decimal("current_price", { precision: 10, scale: 2 }).notNull(), // Current market price in XRP
+  // NOTE: RDL price is calculated live based on XRP price with 25% discount, not stored in database
+  rdlDiscountPercent: integer("rdl_discount_percent").default(25), // Configurable discount for RDL payments
+  
+  // Plot characteristics  
+  plotSize: text("plot_size").notNull().default("standard"), // standard, large, massive
+  sizeMultiplier: decimal("size_multiplier", { precision: 3, scale: 2 }).notNull().default("1.00"), // 1x, 2x, 3x
+  yieldRate: decimal("yield_rate", { precision: 5, scale: 2 }).notNull(), // Annual yield percentage 8-20%
+  
+  // Ownership and status
+  ownerId: text("owner_id").references(() => gamePlayers.id, { onDelete: "set null" }),
+  ownerHandle: text("owner_handle"), // Cached owner handle for faster queries
+  ownerAddress: text("owner_address"), // XRPL address of owner
+  status: text("status").notNull().default("available"), // available, owned, contested, reserved
+  
+  // Purchase details
+  purchasePrice: decimal("purchase_price", { precision: 20, scale: 8 }), // Actual purchase price (unified precision)
+  purchaseCurrency: text("purchase_currency"), // XRP or RDL
+  purchaseDate: timestamp("purchase_date"),
+  purchaseTransaction: text("purchase_transaction"), // XRPL transaction hash
+  
+  // Visual and gameplay
+  hasVisualIndicators: boolean("has_visual_indicators").default(false), // Purple rings, sparkles
+  specialFeatures: text("special_features").array().default([]), // ["river_access", "mountain_view", "ancient_ruins"]
+  resourceNodes: jsonb("resource_nodes").$type<Record<string, any>>().default({}), // Mining, farming, etc.
+  
+  // Inquisition Materials System (Army/Religion/Civilization/Economic)
+  plotResources: jsonb("plot_resources").$type<Record<string, any>>().default({}), // Inquisition-themed materials with levels
+  
+  // Metadata
+  description: text("description"),
+  lore: text("lore"), // RiddleAuthor generated lore for this plot
+  generatedImageUrl: text("generated_image_url"), // DALL-E generated image for plot
+  imageGeneratedAt: timestamp("image_generated_at"), // When image was generated
+  
+  createdAt: timestamp("created_at").defaultNow().notNull(),
+  updatedAt: timestamp("updated_at").defaultNow().notNull(),
+}, (table) => [
+  index("idx_medieval_plots_number").on(table.plotNumber),
+  index("idx_medieval_plots_terrain").on(table.terrainType),
+  index("idx_medieval_plots_owner").on(table.ownerId),
+  index("idx_medieval_plots_status").on(table.status),
+  index("idx_medieval_plots_price").on(table.currentPrice),
+  index("idx_medieval_plots_coordinates").on(table.mapX, table.mapY),
+  index("idx_medieval_plots_size").on(table.plotSize),
+]);
+
+// Land plot purchase transactions - comprehensive payment tracking
+export const landPlotPurchases = pgTable("land_plot_purchases", {
+  id: text("id").primaryKey().$defaultFn(() => crypto.randomUUID()),
+  plotId: text("plot_id").notNull().references(() => medievalLandPlots.id, { onDelete: "cascade" }),
+  
+  // Buyer information
+  buyerHandle: text("buyer_handle").notNull(), // RiddleSwap handle
+  buyerAddress: text("buyer_address").notNull(), // XRPL address
+  buyerWalletId: text("buyer_wallet_id"), // Reference to riddle wallet
+  
+  // Payment details
+  paymentMethod: text("payment_method").notNull(), // XRP, RDL
+  paidAmount: decimal("paid_amount", { precision: 20, scale: 8 }).notNull(),
+  originalXrpPrice: decimal("original_xrp_price", { precision: 20, scale: 8 }).notNull(),
+  rdlDiscountApplied: boolean("rdl_discount_applied").default(false),
+  discountPercent: integer("discount_percent").default(0), // Actual discount % applied
+  
+  // USD values at time of purchase (proof of value)
+  xrpPriceUsd: decimal("xrp_price_usd", { precision: 20, scale: 8 }), // XRP price in USD at purchase
+  rdlPriceUsd: decimal("rdl_price_usd", { precision: 20, scale: 8 }), // RDL price in USD at purchase
+  totalUsdValue: decimal("total_usd_value", { precision: 20, scale: 8 }), // Total purchase value in USD
+  
+  // Bank wallet and treasury management
+  bankWalletAddress: text("bank_wallet_address").notNull(), // Where payment was sent
+  treasuryTransactionHash: text("treasury_transaction_hash"), // Payment to bank
+  
+  // Transaction status
+  status: text("status").notNull().default("pending"), // pending, processing, completed, failed, refunded
+  paymentVerified: boolean("payment_verified").default(false),
+  ownershipTransferred: boolean("ownership_transferred").default(false),
+  
+  // Transaction metadata
+  transactionData: jsonb("transaction_data").$type<Record<string, any>>().default({}),
+  verificationAttempts: integer("verification_attempts").default(0),
+  lastVerificationAttempt: timestamp("last_verification_attempt"),
+  
+  // Timestamps
+  purchaseInitiated: timestamp("purchase_initiated").defaultNow().notNull(),
+  paymentReceived: timestamp("payment_received"),
+  ownershipTransferredAt: timestamp("ownership_transferred_at"),
+  completedAt: timestamp("completed_at"),
+  
+  createdAt: timestamp("created_at").defaultNow().notNull(),
+  updatedAt: timestamp("updated_at").defaultNow().notNull(),
+}, (table) => [
+  index("idx_land_purchases_plot").on(table.plotId),
+  index("idx_land_purchases_buyer").on(table.buyerHandle),
+  index("idx_land_purchases_status").on(table.status),
+  index("idx_land_purchases_method").on(table.paymentMethod),
+  index("idx_land_purchases_bank").on(table.bankWalletAddress),
+  index("idx_land_purchases_created").on(table.createdAt),
+]);
+
+// Land Inventory - NFTs, buildings, and weapons placed on land plots
+export const landInventory = pgTable("land_inventory", {
+  id: text("id").primaryKey().$defaultFn(() => crypto.randomUUID()),
+  plotId: text("plot_id").notNull().references(() => medievalLandPlots.id, { onDelete: "cascade" }),
+  ownerHandle: text("owner_handle").notNull(), // RiddleSwap handle
+  
+  // Item details
+  itemType: text("item_type").notNull(), // nft, building, weapon, resource
+  itemId: text("item_id").notNull(), // NFT ID, building ID, weapon ID, etc.
+  itemName: text("item_name"),
+  itemImage: text("item_image"),
+  itemMetadata: jsonb("item_metadata").$type<Record<string, any>>().default({}),
+  
+  // Position on land plot
+  positionX: integer("position_x"), // X coordinate on plot
+  positionY: integer("position_y"), // Y coordinate on plot
+  rotation: integer("rotation").default(0), // 0-360 degrees
+  
+  // Item stats
+  powerBonus: decimal("power_bonus", { precision: 20, scale: 8 }).default("0"), // Bonus power for battles
+  defenseBonus: decimal("defense_bonus", { precision: 20, scale: 8 }).default("0"),
+  productionRate: decimal("production_rate", { precision: 20, scale: 8 }).default("0"), // Resources per day
+  
+  // Status
+  isActive: boolean("is_active").default(true),
+  isEquipped: boolean("is_equipped").default(true), // Is currently equipped on land
+  
+  // Timestamps
+  addedAt: timestamp("added_at").defaultNow().notNull(),
+  removedAt: timestamp("removed_at"),
+  createdAt: timestamp("created_at").defaultNow().notNull(),
+  updatedAt: timestamp("updated_at").defaultNow().notNull(),
+}, (table) => [
+  index("idx_land_inventory_plot").on(table.plotId),
+  index("idx_land_inventory_owner").on(table.ownerHandle),
+  index("idx_land_inventory_type").on(table.itemType),
+  index("idx_land_inventory_item").on(table.itemId),
+]);
+
+// NFT collections for gaming (Trolls, Inquisition, etc.)
+export const gameCollections = pgTable("game_collections", {
+  key: text("key").primaryKey(), // trolls, inquisition, inquiry, dantes_aurum, lost_imperium
+  chain: text("chain").notNull(), // preferred chain for this collection
+  name: text("name").notNull(),
+  description: text("description"),
+  baseTraits: jsonb("base_traits").$type<Record<string, any>>().default({}),
+  powerMultiplier: decimal("power_multiplier", { precision: 10, scale: 4 }).notNull().default("1.0"),
+  createdAt: timestamp("created_at").defaultNow().notNull(),
+}, (table) => [
+  index("idx_game_collections_chain").on(table.chain),
+]);
+
+// Gaming-specific NFT traits and power levels
+export const gameNftTraits = pgTable("game_nft_traits", {
+  id: text("id").primaryKey().$defaultFn(() => crypto.randomUUID()),
+  chain: text("chain").notNull(),
+  nftId: varchar("nft_id").notNull(), // References nfts.nft_id
+  collectionKey: text("collection_key").notNull().references(() => gameCollections.key),
+  traits: jsonb("traits").$type<Record<string, any>>().default({}),
+  power: decimal("power", { precision: 20, scale: 8 }).notNull().default("100.0"),
+  level: integer("level").default(1),
+  experience: decimal("experience", { precision: 20, scale: 8 }).default("0"),
+  createdAt: timestamp("created_at").defaultNow().notNull(),
+  updatedAt: timestamp("updated_at").defaultNow().notNull(),
+}, (table) => [
+  index("idx_game_nft_traits_nft").on(table.nftId),
+  index("idx_game_nft_traits_collection").on(table.collectionKey),
+  index("idx_game_nft_traits_chain").on(table.chain),
+  index("idx_game_nft_traits_power").on(table.power),
+]);
+
+// Squadron system - Player-created NFT battle groups
+export const squadrons = pgTable("squadrons", {
+  id: text("id").primaryKey().$defaultFn(() => crypto.randomUUID()),
+  player_id: text("player_id").notNull(),
+  name: text("name").notNull(),
+  description: text("description"),
+  squadron_type: text("squadron_type").default("balanced"), // balanced, offensive, defensive
+  total_army_power: decimal("total_army_power", { precision: 20, scale: 8 }).default("0"),
+  total_religion_power: decimal("total_religion_power", { precision: 20, scale: 8 }).default("0"),
+  total_civilization_power: decimal("total_civilization_power", { precision: 20, scale: 8 }).default("0"),
+  total_economic_power: decimal("total_economic_power", { precision: 20, scale: 8 }).default("0"),
+  total_power: decimal("total_power", { precision: 20, scale: 8 }).default("0"),
+  nft_count: integer("nft_count").default(0),
+  max_nft_capacity: integer("max_nft_capacity").default(10),
+  is_active: boolean("is_active").default(true),
+  in_battle: boolean("in_battle").default(false),
+  current_battle_id: text("current_battle_id"),
+  battles_won: integer("battles_won").default(0),
+  battles_lost: integer("battles_lost").default(0),
+  total_xrp_won: decimal("total_xrp_won", { precision: 20, scale: 8 }).default("0"),
+  created_at: timestamp("created_at").defaultNow().notNull(),
+  updated_at: timestamp("updated_at").defaultNow().notNull(),
+}, (table) => [
+  index("idx_squadrons_player").on(table.player_id),
+  index("idx_squadrons_power").on(table.total_power),
+]);
+
+// Squadron members - Individual NFTs assigned to squadrons
+export const squadronMembers = pgTable("squadron_members", {
+  id: text("id").primaryKey().$defaultFn(() => crypto.randomUUID()),
+  squadron_id: text("squadron_id").notNull().references(() => squadrons.id, { onDelete: "cascade" }),
+  nft_id: text("nft_id").notNull(),
+  nft_name: text("nft_name"),
+  nft_image: text("nft_image"),
+  nft_power: decimal("nft_power", { precision: 20, scale: 8 }).default("0"),
+  position: integer("position"), // Order in squadron
+  added_at: timestamp("added_at").defaultNow().notNull(),
+}, (table) => [
+  index("idx_squadron_members_squadron").on(table.squadron_id),
+  index("idx_squadron_members_nft").on(table.nft_id),
+]);
+
+// Battle system
+export const gameBattles = pgTable("game_battles", {
+  id: text("id").primaryKey().$defaultFn(() => crypto.randomUUID()),
+  chain: text("chain").notNull(),
+  locationBlockId: text("location_block_id").references(() => gameLandBlocks.id),
+  battleType: text("battle_type").notNull().default("land_claim"), // land_claim, challenge, arena
+  status: text("status").notNull().default("pending"), // pending, active, ended, cancelled
+  wagerRdl: decimal("wager_rdl", { precision: 20, scale: 8 }).default("0"),
+  winnerPlayerId: text("winner_player_id").references(() => gamePlayers.id),
+  startedAt: timestamp("started_at"),
+  endedAt: timestamp("ended_at"),
+  createdAt: timestamp("created_at").defaultNow().notNull(),
+}, (table) => [
+  index("idx_game_battles_chain").on(table.chain),
+  index("idx_game_battles_location").on(table.locationBlockId),
+  index("idx_game_battles_status").on(table.status),
+  index("idx_game_battles_winner").on(table.winnerPlayerId),
+]);
+
+// Battle participants
+export const gameBattleParticipants = pgTable("game_battle_participants", {
+  id: text("id").primaryKey().$defaultFn(() => crypto.randomUUID()),
+  battleId: text("battle_id").notNull().references(() => gameBattles.id, { onDelete: "cascade" }),
+  playerId: text("player_id").notNull().references(() => gamePlayers.id, { onDelete: "cascade" }),
+  nftId: varchar("nft_id"), // Optional NFT used in battle
+  totalPower: decimal("total_power", { precision: 20, scale: 8 }).notNull().default("0"),
+  outcome: text("outcome"), // win, loss, draw, retreat
+  rewardRdl: decimal("reward_rdl", { precision: 20, scale: 8 }).default("0"),
+  experienceGained: decimal("experience_gained", { precision: 20, scale: 8 }).default("0"),
+  createdAt: timestamp("created_at").defaultNow().notNull(),
+}, (table) => [
+  index("idx_game_battle_participants_battle").on(table.battleId),
+  index("idx_game_battle_participants_player").on(table.playerId),
+  index("idx_game_battle_participants_outcome").on(table.outcome),
+]);
+
+// Battle events and AI narrator
+export const gameBattleEvents = pgTable("game_battle_events", {
+  id: text("id").primaryKey().$defaultFn(() => crypto.randomUUID()),
+  battleId: text("battle_id").notNull().references(() => gameBattles.id, { onDelete: "cascade" }),
+  sequence: integer("sequence").notNull(),
+  eventType: text("event_type").notNull(), // attack, defend, special, narrator
+  payload: jsonb("payload").$type<Record<string, any>>().default({}),
+  narratorText: text("narrator_text"),
+  createdAt: timestamp("created_at").defaultNow().notNull(),
+}, (table) => [
+  index("idx_game_battle_events_battle").on(table.battleId),
+  index("idx_game_battle_events_sequence").on(table.battleId, table.sequence),
+]);
+
+// RDL token balances and staking
+export const gameRdlLedger = pgTable("game_rdl_ledger", {
+  id: text("id").primaryKey().$defaultFn(() => crypto.randomUUID()),
+  playerId: text("player_id").notNull().references(() => gamePlayers.id, { onDelete: "cascade" }),
+  chain: text("chain").notNull(),
+  balanceCached: decimal("balance_cached", { precision: 20, scale: 8 }).notNull().default("0"),
+  stakedAmount: decimal("staked_amount", { precision: 20, scale: 8 }).notNull().default("0"),
+  updatedAt: timestamp("updated_at").defaultNow().notNull(),
+}, (table) => [
+  index("idx_game_rdl_ledger_player").on(table.playerId),
+  index("idx_game_rdl_ledger_chain").on(table.chain),
+  index("idx_game_rdl_ledger_player_chain").on(table.playerId, table.chain),
+]);
+
+// RDL stakes for various game activities
+export const gameRdlStakes = pgTable("game_rdl_stakes", {
+  id: text("id").primaryKey().$defaultFn(() => crypto.randomUUID()),
+  playerId: text("player_id").notNull().references(() => gamePlayers.id, { onDelete: "cascade" }),
+  sourceType: text("source_type").notNull(), // land, battle, tournament
+  sourceId: text("source_id").notNull(), // ID of the land claim, battle, etc.
+  chain: text("chain").notNull(),
+  amount: decimal("amount", { precision: 20, scale: 8 }).notNull(),
+  status: text("status").notNull().default("active"), // active, released, slashed
+  createdAt: timestamp("created_at").defaultNow().notNull(),
+  releasedAt: timestamp("released_at"),
+}, (table) => [
+  index("idx_game_rdl_stakes_player").on(table.playerId),
+  index("idx_game_rdl_stakes_source").on(table.sourceType, table.sourceId),
+  index("idx_game_rdl_stakes_status").on(table.status),
+]);
+
+// Cross-chain bridge transfers for RDL
+export const gameBridgeTransfers = pgTable("game_bridge_transfers", {
+  id: text("id").primaryKey().$defaultFn(() => crypto.randomUUID()),
+  playerId: text("player_id").notNull().references(() => gamePlayers.id, { onDelete: "cascade" }),
+  fromChain: text("from_chain").notNull(),
+  toChain: text("to_chain").notNull(),
+  amountRdl: decimal("amount_rdl", { precision: 20, scale: 8 }).notNull(),
+  status: text("status").notNull().default("pending"), // pending, bridging, completed, failed
+  bridgeTxId: text("bridge_tx_id"), // Bridge transaction ID
+  bridgeProvider: text("bridge_provider").default("wormhole"), // wormhole, axelar
+  createdAt: timestamp("created_at").defaultNow().notNull(),
+  completedAt: timestamp("completed_at"),
+}, (table) => [
+  index("idx_game_bridge_transfers_player").on(table.playerId),
+  index("idx_game_bridge_transfers_status").on(table.status),
+  index("idx_game_bridge_transfers_bridge_tx").on(table.bridgeTxId),
+]);
+
+// Building System for Medieval Land Plots
+// ==========================================
+
+// Building types available for construction
+export const buildingTypes = pgTable("building_types", {
+  id: text("id").primaryKey(), // house, farm, mine, forge, tavern, etc.
+  name: text("name").notNull(),
+  description: text("description"),
+  category: text("category").notNull(), // residential, production, military, special
+  icon: text("icon"), // emoji or icon identifier
+  
+  // Requirements
+  requiredTerrainTypes: text("required_terrain_types").array().default([]), // ["plains", "forest"]
+  requiredResources: jsonb("required_resources").$type<Record<string, number>>().default({}), // {wood: 10, stone: 5}
+  buildTime: integer("build_time").default(300), // seconds
+  maxPerPlot: integer("max_per_plot").default(1), // how many can be built per plot
+  
+  // Production capabilities
+  produces: text("produces").array().default([]), // ["food", "gold", "wood"]
+  productionRate: decimal("production_rate", { precision: 10, scale: 2 }).default("1.0"), // per hour
+  storageCapacity: integer("storage_capacity").default(100),
+  
+  // Upgrade system
+  canUpgrade: boolean("can_upgrade").default(false),
+  maxLevel: integer("max_level").default(3),
+  upgradeMultiplier: decimal("upgrade_multiplier", { precision: 3, scale: 2 }).default("1.5"), // production increase per level
+  
+  createdAt: timestamp("created_at").defaultNow().notNull(),
+}, (table) => [
+  index("idx_building_types_category").on(table.category),
+]);
+
+// Buildings constructed on medieval land plots
+export const plotBuildings = pgTable("plot_buildings", {
+  id: text("id").primaryKey().$defaultFn(() => crypto.randomUUID()),
+  plotId: text("plot_id").notNull().references(() => medievalLandPlots.id, { onDelete: "cascade" }),
+  buildingTypeId: text("building_type_id").notNull().references(() => buildingTypes.id),
+  level: integer("level").default(1),
+  
+  // Position on plot
+  positionX: integer("position_x").default(0), // 0-100 grid position
+  positionY: integer("position_y").default(0),
+  
+  // Status
+  status: text("status").notNull().default("constructing"), // constructing, active, upgrading, destroyed
+  constructionStarted: timestamp("construction_started").defaultNow(),
+  constructionCompleted: timestamp("construction_completed"),
+  
+  // Production tracking
+  lastHarvested: timestamp("last_harvested"),
+  totalProduced: jsonb("total_produced").$type<Record<string, number>>().default({}),
+  
+  // Upgrades
+  upgradeStarted: timestamp("upgrade_started"),
+  upgradeCompleted: timestamp("upgrade_completed"),
+  
+  createdAt: timestamp("created_at").defaultNow().notNull(),
+  updatedAt: timestamp("updated_at").defaultNow().notNull(),
+}, (table) => [
+  index("idx_plot_buildings_plot").on(table.plotId),
+  index("idx_plot_buildings_type").on(table.buildingTypeId),
+  index("idx_plot_buildings_status").on(table.status),
+  index("idx_plot_buildings_position").on(table.plotId, table.positionX, table.positionY),
+]);
+
+// Player resources and currencies
+export const playerResources = pgTable("player_resources", {
+  id: text("id").primaryKey().$defaultFn(() => crypto.randomUUID()),
+  playerId: text("player_id").notNull().references(() => gamePlayers.id, { onDelete: "cascade" }),
+  
+  // Basic resources
+  gold: decimal("gold", { precision: 20, scale: 2 }).default("100.0"), // Starting gold
+  wood: integer("wood").default(50),
+  stone: integer("stone").default(25),
+  food: integer("food").default(100),
+  iron: integer("iron").default(10),
+  coal: integer("coal").default(5),
+  
+  // Advanced resources
+  gems: integer("gems").default(0),
+  mithril: integer("mithril").default(0), // rare resource
+  magic_essence: integer("magic_essence").default(0),
+  
+  // Population and civilization stats
+  population: integer("population").default(0),
+  happiness: integer("happiness").default(50), // 0-100
+  culture: integer("culture").default(0),
+  research_points: integer("research_points").default(0),
+  
+  // Resource storage limits
+  maxStorage: jsonb("max_storage").$type<Record<string, number>>().default({
+    wood: 1000,
+    stone: 1000,
+    food: 500,
+    iron: 200,
+    coal: 200,
+    gems: 50,
+    mithril: 25,
+    magic_essence: 100
+  }),
+  
+  lastUpdated: timestamp("last_updated").defaultNow().notNull(),
+  createdAt: timestamp("created_at").defaultNow().notNull(),
+}, (table) => [
+  index("idx_player_resources_player").on(table.playerId),
+]);
+
+// Resource production history and income tracking
+export const resourceProduction = pgTable("resource_production", {
+  id: text("id").primaryKey().$defaultFn(() => crypto.randomUUID()),
+  playerId: text("player_id").notNull().references(() => gamePlayers.id, { onDelete: "cascade" }),
+  plotId: text("plot_id").references(() => medievalLandPlots.id),
+  buildingId: text("building_id").references(() => plotBuildings.id),
+  
+  // Production details
+  resourceType: text("resource_type").notNull(), // gold, wood, stone, food, etc.
+  amount: decimal("amount", { precision: 20, scale: 2 }).notNull(),
+  productionType: text("production_type").notNull(), // building, mining, farming, trading, quest
+  
+  // Source information
+  source: text("source"), // "Farm Level 2", "Iron Mine", "Trade Route"
+  productionHour: timestamp("production_hour").notNull(), // Hour when produced
+  
+  createdAt: timestamp("created_at").defaultNow().notNull(),
+}, (table) => [
+  index("idx_resource_production_player").on(table.playerId),
+  index("idx_resource_production_plot").on(table.plotId),
+  index("idx_resource_production_building").on(table.buildingId),
+  index("idx_resource_production_type").on(table.resourceType),
+  index("idx_resource_production_hour").on(table.productionHour),
+  index("idx_resource_production_player_hour").on(table.playerId, table.productionHour),
+]);
+
+// Civilization empire stats (merged with user handle system)
+
+// Player progression and achievements
+export const gameProgression = pgTable("game_progression", {
+  playerId: text("player_id").primaryKey().references(() => gamePlayers.id, { onDelete: "cascade" }),
+  level: integer("level").notNull().default(1),
+  experience: decimal("experience", { precision: 20, scale: 8 }).notNull().default("0"),
+  achievements: jsonb("achievements").$type<string[]>().default([]),
+  totalLandOwned: integer("total_land_owned").default(0),
+  totalBattlesWon: integer("total_battles_won").default(0),
+  totalRdlEarned: decimal("total_rdl_earned", { precision: 20, scale: 8 }).default("0"),
+  lastActivity: timestamp("last_activity").defaultNow().notNull(),
+  createdAt: timestamp("created_at").defaultNow().notNull(),
+  updatedAt: timestamp("updated_at").defaultNow().notNull(),
+}, (table) => [
+  index("idx_game_progression_level").on(table.level),
+  index("idx_game_progression_experience").on(table.experience),
+  index("idx_game_progression_activity").on(table.lastActivity),
+]);
+
+// ==========================================
+// RELIGION & MILITARY EXPANSION SYSTEM
+// ==========================================
+
+// Pantheon definitions - Different pantheons players can choose
+export const pantheonDefinitions = pgTable("pantheon_definitions", {
+  id: text("id").primaryKey().$defaultFn(() => crypto.randomUUID()),
+  name: text("name").notNull().unique(), // War, Nature, Knowledge, Trade, etc.
+  description: text("description").notNull(),
+  
+  // Faith generation bonuses
+  faithGenerationBonus: decimal("faith_generation_bonus", { precision: 5, scale: 2 }).default("0"), // +20% faith
+  
+  // Combat modifiers
+  combatBonuses: jsonb("combat_bonuses").$type<{
+    attack: number;
+    defense: number;
+    siegeBonus: number;
+    raidBonus: number;
+  }>().default({ attack: 0, defense: 0, siegeBonus: 0, raidBonus: 0 }),
+  
+  // Special abilities unlocked
+  specialAbilities: text("special_abilities").array().default([]), // ['holy_warriors', 'divine_protection', 'blessed_harvests']
+  
+  // Requirements to unlock
+  faithLevelRequired: integer("faith_level_required").default(1),
+  prerequisitePantheon: text("prerequisite_pantheon"), // Self-reference added via relations below
+  
+  // Visual and lore
+  iconUrl: text("icon_url"),
+  color: text("color").default("#8B5CF6"), // Hex color for UI
+  lore: text("lore"),
+  
+  isActive: boolean("is_active").default(true),
+  createdAt: timestamp("created_at").defaultNow().notNull(),
+}, (table) => [
+  index("idx_pantheon_definitions_name").on(table.name),
+  index("idx_pantheon_definitions_faith_level").on(table.faithLevelRequired),
+  index("idx_pantheon_definitions_active").on(table.isActive),
+]);
+
+// Player religion - Faith, pantheon, temples, religious power
+export const playerReligion = pgTable("player_religion", {
+  id: text("id").primaryKey().$defaultFn(() => crypto.randomUUID()),
+  playerId: text("player_id").notNull().references(() => gamePlayers.id, { onDelete: "cascade" }),
+  
+  // Faith system
+  faith: decimal("faith", { precision: 20, scale: 8 }).default("0"), // Current faith points
+  faithLevel: integer("faith_level").default(1), // 1-10 levels
+  faithXp: decimal("faith_xp", { precision: 20, scale: 8 }).default("0"), // XP towards next level
+  
+  // Pantheon selection
+  pantheonId: text("pantheon_id").references(() => pantheonDefinitions.id),
+  pantheonSelectedAt: timestamp("pantheon_selected_at"),
+  canChangePantheon: boolean("can_change_pantheon").default(true),
+  
+  // Religious buildings and units
+  templesCount: integer("temples_count").default(0),
+  maxTempleTier: integer("max_temple_tier").default(0), // Highest tier temple built
+  religiousUnits: jsonb("religious_units").$type<Record<string, number>>().default({}), // {'priests': 5, 'paladins': 2}
+  
+  // Production and bonuses
+  hourlyFaithGeneration: decimal("hourly_faith_generation", { precision: 10, scale: 2 }).default("1"),
+  pantheonBonusesActive: jsonb("pantheon_bonuses_active").$type<string[]>().default([]),
+  
+  // Tick system
+  lastTickAt: timestamp("last_tick_at").defaultNow().notNull(),
+  
+  createdAt: timestamp("created_at").defaultNow().notNull(),
+  updatedAt: timestamp("updated_at").defaultNow().notNull(),
+}, (table) => [
+  // UNIQUE: One religion per player
+  uniqueIndex("idx_player_religion_player_unique").on(table.playerId),
+  index("idx_player_religion_pantheon").on(table.pantheonId),
+  index("idx_player_religion_faith_level").on(table.faithLevel),
+  index("idx_player_religion_last_tick").on(table.lastTickAt),
+]);
+
+// Military armies - Player armies with units and strength
+export const militaryArmies = pgTable("military_armies", {
+  id: text("id").primaryKey().$defaultFn(() => crypto.randomUUID()),
+  playerId: text("player_id").notNull().references(() => gamePlayers.id, { onDelete: "cascade" }),
+  
+  // Army identity
+  name: text("name").notNull(), // "Northern Guard", "Iron Fist Legion"
+  homePlotId: text("home_plot_id").references(() => medievalLandPlots.id), // Where army is stationed
+  
+  // Combat stats
+  totalStrength: integer("total_strength").default(0), // Combined attack/defense value
+  supply: integer("supply").default(100), // 0-100, affects combat effectiveness
+  morale: integer("morale").default(100), // 0-100, affects combat bonuses
+  
+  // Unit composition
+  units: jsonb("units").$type<Record<string, number>>().default({}), // {'warriors': 10, 'archers': 5, 'cavalry': 2}
+  
+  // Economics
+  upkeepCost: decimal("upkeep_cost", { precision: 10, scale: 2 }).default("0"), // Daily maintenance cost
+  
+  // Status and actions
+  status: text("status").default("idle"), // idle, marching, in_battle, retreating
+  currentPlotId: text("current_plot_id").references(() => medievalLandPlots.id), // Current location
+  lastActionAt: timestamp("last_action_at").defaultNow().notNull(),
+  
+  createdAt: timestamp("created_at").defaultNow().notNull(),
+  updatedAt: timestamp("updated_at").defaultNow().notNull(),
+}, (table) => [
+  index("idx_military_armies_player").on(table.playerId),
+  index("idx_military_armies_home_plot").on(table.homePlotId),
+  index("idx_military_armies_current_plot").on(table.currentPlotId),
+  index("idx_military_armies_strength").on(table.totalStrength),
+  index("idx_military_armies_status").on(table.status),
+  index("idx_military_armies_last_action").on(table.lastActionAt),
+  // PERFORMANCE: Composite indexes for dashboard queries
+  index("idx_military_armies_player_status").on(table.playerId, table.status),
+]);
+
+// Plot fortifications - Defense structures built on land plots
+export const plotFortifications = pgTable("plot_fortifications", {
+  id: text("id").primaryKey().$defaultFn(() => crypto.randomUUID()),
+  plotId: text("plot_id").notNull().references(() => medievalLandPlots.id, { onDelete: "cascade" }),
+  ownerHandle: text("owner_handle").notNull(), // Plot owner
+  
+  // Defensive structures
+  wallTier: integer("wall_tier").default(0), // 0-5, stronger walls
+  watchtowers: integer("watchtowers").default(0), // Number of watchtowers
+  garrisonStrength: integer("garrison_strength").default(0), // Stationed defenders
+  
+  // Religious bonuses
+  shrineBonus: decimal("shrine_bonus", { precision: 5, scale: 2 }).default("0"), // Defense bonus from temples
+  
+  // Maintenance
+  fortificationUpkeep: decimal("fortification_upkeep", { precision: 10, scale: 2 }).default("0"),
+  lastRepairAt: timestamp("last_repair_at").defaultNow().notNull(),
+  
+  // Combat effectiveness
+  totalDefenseValue: integer("total_defense_value").default(0), // Combined defense rating
+  siegeResistance: integer("siege_resistance").default(0), // Resistance against siege attacks
+  
+  createdAt: timestamp("created_at").defaultNow().notNull(),
+  updatedAt: timestamp("updated_at").defaultNow().notNull(),
+}, (table) => [
+  // UNIQUE: One fortification per plot
+  uniqueIndex("idx_plot_fortifications_plot_unique").on(table.plotId),
+  index("idx_plot_fortifications_owner").on(table.ownerHandle),
+  index("idx_plot_fortifications_wall_tier").on(table.wallTier),
+  index("idx_plot_fortifications_defense_value").on(table.totalDefenseValue),
+]);
+
+// Combat logs - Battle history and results
+export const combatLogs = pgTable("combat_logs", {
+  id: text("id").primaryKey().$defaultFn(() => crypto.randomUUID()),
+  
+  // Battle participants
+  attackerHandle: text("attacker_handle").notNull(),
+  defenderHandle: text("defender_handle").notNull(),
+  
+  // Battle location and type
+  plotId: text("plot_id").references(() => medievalLandPlots.id),
+  combatType: text("combat_type").notNull(), // raid, siege, skirmish, holy_war
+  
+  // Pre-battle stats
+  attackerStrength: integer("attacker_strength").notNull(),
+  defenderStrength: integer("defender_strength").notNull(),
+  terrainModifier: decimal("terrain_modifier", { precision: 5, scale: 2 }).default("1.0"),
+  fortificationBonus: integer("fortification_bonus").default(0),
+  religionModifiers: jsonb("religion_modifiers").$type<Record<string, number>>().default({}),
+  
+  // Battle resolution
+  result: text("result").notNull(), // attacker_victory, defender_victory, draw
+  attackerLosses: jsonb("attacker_losses").$type<Record<string, number>>().default({}), // Unit losses
+  defenderLosses: jsonb("defender_losses").$type<Record<string, number>>().default({}),
+  
+  // Rewards and consequences
+  loot: jsonb("loot").$type<Record<string, number>>().default({}), // Resources gained
+  faithImpact: decimal("faith_impact", { precision: 10, scale: 2 }).default("0"), // Faith gained/lost
+  experienceGained: decimal("experience_gained", { precision: 10, scale: 2 }).default("0"),
+  
+  // Battle narrative
+  battleDescription: text("battle_description"), // Auto-generated battle story
+  
+  createdAt: timestamp("created_at").defaultNow().notNull(),
+}, (table) => [
+  index("idx_combat_logs_attacker").on(table.attackerHandle),
+  index("idx_combat_logs_defender").on(table.defenderHandle),
+  index("idx_combat_logs_plot").on(table.plotId),
+  index("idx_combat_logs_type").on(table.combatType),
+  index("idx_combat_logs_result").on(table.result),
+  index("idx_combat_logs_created").on(table.createdAt),
+  // PERFORMANCE: Composite indexes for time-ordered feeds
+  index("idx_combat_logs_attacker_time").on(table.attackerHandle, table.createdAt),
+  index("idx_combat_logs_defender_time").on(table.defenderHandle, table.createdAt),
+]);
+
+// Cooldowns - Action restrictions for game balance
+export const cooldowns = pgTable("cooldowns", {
+  id: text("id").primaryKey().$defaultFn(() => crypto.randomUUID()),
+  userHandle: text("user_handle").notNull(),
+  
+  // Action type and restrictions
+  actionType: text("action_type").notNull(), // raid, siege, pantheon_change, army_creation
+  cooldownUntil: timestamp("cooldown_until").notNull(),
+  
+  // Context
+  relatedId: text("related_id"), // Army ID, plot ID, etc.
+  context: jsonb("context").$type<Record<string, any>>().default({}),
+  
+  createdAt: timestamp("created_at").defaultNow().notNull(),
+}, (table) => [
+  // UNIQUE: Prevent duplicate cooldowns for same action
+  uniqueIndex("idx_cooldowns_user_action_unique").on(table.userHandle, table.actionType),
+  index("idx_cooldowns_until").on(table.cooldownUntil),
+  index("idx_cooldowns_action_type").on(table.actionType),
+]);
+
+// ==========================================
+// NFT WEAPONS & ARMOR UPGRADE SYSTEM
+// "The Trolls Inquisition Multi-Chain Mayhem Edition"
+// PRODUCTION-READY with XRPL Integration & Military Linkage
+// ==========================================
+
+// Weapon definitions - Master catalog of all weapons/armor types
+export const weaponDefinitions = pgTable("weapon_definitions", {
+  id: text("id").primaryKey().$defaultFn(() => crypto.randomUUID()),
+  
+  // Basic weapon info
+  name: text("name").notNull().unique(), // "Crusader Sword", "Dragon Scale Armor"
+  category: text("category").notNull(), // weapon, armor, machine, siege_engine
+  weaponType: text("weapon_type").notNull(), // sword, bow, shield, helmet, catapult
+  
+  // Visual properties
+  baseImageUrl: text("base_image_url"), // Base weapon image before customization
+  description: text("description").notNull(),
+  
+  // Tech levels and progression
+  maxTechLevel: integer("max_tech_level").default(5), // 1-5 tech levels
+  techLevelMultiplier: decimal("tech_level_multiplier", { precision: 5, scale: 2 }).default("1.2"), // +20% per level
+  
+  // Rarity and availability
+  rarity: text("rarity").notNull().default("common"), // common, uncommon, rare, epic, legendary
+  rarityMultiplier: decimal("rarity_multiplier", { precision: 5, scale: 2 }).default("1.0"),
+  
+  // Base stats (before tech level and color bonuses)
+  baseAttack: integer("base_attack").default(0),
+  baseDefense: integer("base_defense").default(0),
+  baseHealth: integer("base_health").default(0),
+  baseSiegeBonus: integer("base_siege_bonus").default(0),
+  
+  // XRPL Marketplace settings (bigint for drops precision)
+  basePriceDrops: bigint("base_price_drops", { mode: "number" }).default(1000000), // 1 XRP in drops
+  maxSupply: integer("max_supply").default(1000).notNull(), // Total that can ever be minted
+  currentSupply: integer("current_supply").default(0).notNull(), // How many have been minted
+  
+  // Colors and customization (SQL array default for proper migration)
+  availableColors: text("available_colors").array().default(sql`ARRAY['red','blue','gold','silver','black']::text[]`),
+  colorBonuses: jsonb("color_bonuses").$type<Record<string, {attack: number, defense: number, special: string}>>().default({}),
+  
+  isActive: boolean("is_active").default(true).notNull(),
+  createdAt: timestamp("created_at").defaultNow().notNull(),
+  updatedAt: timestamp("updated_at").defaultNow().notNull(),
+}, (table) => [
+  // Supply enforcement constraint
+  check("chk_weapon_definitions_supply", sql`${table.currentSupply} >= 0 AND ${table.currentSupply} <= ${table.maxSupply}`),
+  check("chk_weapon_definitions_max_supply", sql`${table.maxSupply} >= 0`),
+  
+  // Performance indexes
+  index("idx_weapon_definitions_category").on(table.category),
+  index("idx_weapon_definitions_rarity").on(table.rarity),
+  index("idx_weapon_definitions_active").on(table.isActive),
+  index("idx_weapon_definitions_supply").on(table.currentSupply, table.maxSupply),
+]);
+
+// Player NFT weapons - Individual weapons owned by players
+export const playerNftWeapons = pgTable("player_nft_weapons", {
+  id: text("id").primaryKey().$defaultFn(() => crypto.randomUUID()),
+  
+  // FIXED: Correct foreign key reference to gamingPlayers
+  playerId: text("player_id").notNull().references(() => gamingPlayers.id, { onDelete: "cascade" }),
+  weaponDefinitionId: text("weapon_definition_id").notNull().references(() => weaponDefinitions.id, { onDelete: "cascade" }),
+  
+  // XRPL NFT blockchain data (proper XRPL integration)
+  nftTokenId: text("nft_token_id").notNull().unique(), // XRPL NFTokenID (64-char hex)
+  nftTokenSequence: bigint("nft_token_sequence", { mode: "number" }), // XRPL NFToken sequence
+  mintTxHash: text("mint_tx_hash").notNull(), // NFTokenMint transaction hash
+  ownerXrplAddress: text("owner_xrpl_address").notNull(), // Current owner's XRPL address
+  
+  // Weapon customization
+  techLevel: integer("tech_level").default(1).notNull(), // 1-5 current tech level
+  color: text("color").notNull().default("silver"), // Current color scheme
+  customName: text("custom_name"), // Player-given name
+  
+  // Generated visual
+  imageUrl: text("image_url"), // AI-generated weapon image with color/tech
+  imageGeneratedAt: timestamp("image_generated_at"),
+  
+  // Calculated stats (recomputed on tech/color changes)
+  finalAttack: integer("final_attack").default(0).notNull(),
+  finalDefense: integer("final_defense").default(0).notNull(),
+  finalHealth: integer("final_health").default(0).notNull(),
+  finalSiegeBonus: integer("final_siege_bonus").default(0).notNull(),
+  statsLastRecalculated: timestamp("stats_last_recalculated").defaultNow(),
+  
+  // Equipment status
+  isEquipped: boolean("is_equipped").default(false).notNull(),
+  equippedToArmyId: text("equipped_to_army_id").references(() => militaryArmies.id, { onDelete: "set null" }),
+  equippedAt: timestamp("equipped_at"),
+  equipmentSlot: text("equipment_slot"), // "weapon", "armor", "siege", "special"
+  
+  // XRPL Market data (bigint for precise XRP amounts)
+  purchasePriceDrops: bigint("purchase_price_drops", { mode: "number" }).default(0),
+  purchasedAt: timestamp("purchased_at"),
+  
+  // Upgrade history
+  upgradeHistory: jsonb("upgrade_history").$type<Array<{
+    from: number;
+    to: number;
+    upgradedAt: string;
+    costDrops: string; // XRP cost in drops as string
+  }>>().default([]),
+  
+  createdAt: timestamp("created_at").defaultNow().notNull(),
+  updatedAt: timestamp("updated_at").defaultNow().notNull(),
+}, (table) => [
+  // Performance indexes
+  index("idx_player_nft_weapons_player").on(table.playerId),
+  index("idx_player_nft_weapons_definition").on(table.weaponDefinitionId),
+  index("idx_player_nft_weapons_equipped").on(table.isEquipped),
+  index("idx_player_nft_weapons_army").on(table.equippedToArmyId),
+  index("idx_player_nft_weapons_nft_token_id").on(table.nftTokenId),
+  index("idx_player_nft_weapons_owner").on(table.ownerXrplAddress),
+  
+  // Composite indexes for query optimization
+  index("idx_player_nft_weapons_army_equipped").on(table.equippedToArmyId, table.isEquipped),
+  index("idx_player_nft_weapons_player_equipped").on(table.playerId, table.isEquipped),
+]);
+
+// Weapon marketplace listings with XRPL settlement tracking
+export const weaponMarketplace = pgTable("weapon_marketplace", {
+  id: text("id").primaryKey().$defaultFn(() => crypto.randomUUID()),
+  
+  // FIXED: Correct foreign key references
+  sellerId: text("seller_id").notNull().references(() => gamingPlayers.id, { onDelete: "cascade" }),
+  weaponId: text("weapon_id").notNull().references(() => playerNftWeapons.id, { onDelete: "cascade" }),
+  
+  // XRPL Listing details (bigint for precise amounts)
+  priceDrops: bigint("price_drops", { mode: "number" }).notNull(), // XRP price in drops
+  description: text("description"),
+  
+  // XRPL offer integration
+  xrplOfferId: text("xrpl_offer_id"), // XRPL NFTokenCreateOffer ID
+  sellerXrplAddress: text("seller_xrpl_address").notNull(),
+  
+  // Status tracking
+  status: text("status").notNull().default("active"), // active, sold, cancelled, expired
+  
+  // XRPL Sale settlement data
+  buyerId: text("buyer_id").references(() => gamingPlayers.id, { onDelete: "set null" }),
+  buyerXrplAddress: text("buyer_xrpl_address"),
+  soldAt: timestamp("sold_at"),
+  salePriceDrops: bigint("sale_price_drops", { mode: "number" }),
+  saleTxHash: text("sale_tx_hash"), // XRPL NFTokenAcceptOffer tx hash
+  settledAt: timestamp("settled_at"),
+  
+  // Expiration
+  expiresAt: timestamp("expires_at").notNull(), // 30 days from listing
+  
+  createdAt: timestamp("created_at").defaultNow().notNull(),
+  updatedAt: timestamp("updated_at").defaultNow().notNull(),
+}, (table) => [
+  // Unique constraint: Only one active listing per NFT
+  uniqueIndex("idx_weapon_marketplace_unique_active").on(table.weaponId, table.status).where(sql`${table.status} = 'active'`),
+  
+  // Performance indexes
+  index("idx_weapon_marketplace_seller").on(table.sellerId),
+  index("idx_weapon_marketplace_status").on(table.status),
+  index("idx_weapon_marketplace_price").on(table.priceDrops),
+  index("idx_weapon_marketplace_weapon").on(table.weaponId),
+  index("idx_weapon_marketplace_expires").on(table.expiresAt),
+  index("idx_weapon_marketplace_xrpl_offer").on(table.xrplOfferId),
+]);
+
+// Weapon minting queue with XRPL state machine
+export const weaponMintQueue = pgTable("weapon_mint_queue", {
+  id: text("id").primaryKey().$defaultFn(() => crypto.randomUUID()),
+  
+  // FIXED: Correct foreign key references
+  playerId: text("player_id").notNull().references(() => gamingPlayers.id, { onDelete: "cascade" }),
+  weaponDefinitionId: text("weapon_definition_id").notNull().references(() => weaponDefinitions.id, { onDelete: "cascade" }),
+  
+  // Mint configuration
+  color: text("color").notNull(),
+  techLevel: integer("tech_level").default(1).notNull(),
+  customName: text("custom_name"),
+  
+  // XRPL Payment tracking (bigint for precise amounts)
+  paymentAmountDrops: bigint("payment_amount_drops", { mode: "number" }).notNull(),
+  paymentTxHash: text("payment_tx_hash"),
+  paymentStatus: text("payment_status").default("pending").notNull(), // pending, confirmed, failed
+  playerXrplAddress: text("player_xrpl_address").notNull(),
+  
+  // XRPL Mint status state machine
+  mintStatus: text("mint_status").default("queued").notNull(), // queued, funding, minting, minted, failed, cancelled
+  nftTokenId: text("nft_token_id"), // Set when minting completes (XRPL NFTokenID)
+  mintTxHash: text("mint_tx_hash"), // XRPL NFTokenMint transaction hash
+  nftTokenSequence: bigint("nft_token_sequence", { mode: "number" }),
+  
+  // Image generation pipeline
+  imageGenerationStatus: text("image_generation_status").default("pending").notNull(), // pending, generating, completed, failed
+  imageUrl: text("image_url"),
+  imagePrompt: text("image_prompt"), // AI prompt used for generation
+  
+  // Promotional tweet integration
+  tweetStatus: text("tweet_status").default("pending").notNull(), // pending, posted, failed, skipped
+  tweetId: text("tweet_id"),
+  tweetContent: text("tweet_content"),
+  
+  errorMessage: text("error_message"),
+  processedAt: timestamp("processed_at"),
+  
+  createdAt: timestamp("created_at").defaultNow().notNull(),
+}, (table) => [
+  // Unique constraint: One active mint per player/weapon/config combo
+  uniqueIndex("idx_weapon_mint_queue_unique_active").on(
+    table.playerId, 
+    table.weaponDefinitionId, 
+    table.color, 
+    table.techLevel
+  ).where(sql`${table.mintStatus} IN ('queued', 'funding', 'minting')`),
+  
+  // Performance indexes
+  index("idx_weapon_mint_queue_player").on(table.playerId),
+  index("idx_weapon_mint_queue_status").on(table.mintStatus),
+  index("idx_weapon_mint_queue_payment").on(table.paymentStatus),
+  index("idx_weapon_mint_queue_tweet").on(table.tweetStatus),
+  index("idx_weapon_mint_queue_created").on(table.createdAt),
+  index("idx_weapon_mint_queue_nft_token").on(table.nftTokenId),
+]);
+
+// Weapon upgrade transactions with XRPL payment tracking
+export const weaponUpgrades = pgTable("weapon_upgrades", {
+  id: text("id").primaryKey().$defaultFn(() => crypto.randomUUID()),
+  
+  // FIXED: Correct foreign key references
+  weaponId: text("weapon_id").notNull().references(() => playerNftWeapons.id, { onDelete: "cascade" }),
+  playerId: text("player_id").notNull().references(() => gamingPlayers.id, { onDelete: "cascade" }),
+  
+  // Upgrade details
+  fromTechLevel: integer("from_tech_level").notNull(),
+  toTechLevel: integer("to_tech_level").notNull(),
+  upgradeCostDrops: bigint("upgrade_cost_drops", { mode: "number" }).notNull(), // XRP cost in drops
+  
+  // XRPL Payment tracking
+  paymentTxHash: text("payment_tx_hash").notNull(),
+  paymentStatus: text("payment_status").default("completed").notNull(), // pending, completed, failed
+  playerXrplAddress: text("player_xrpl_address").notNull(),
+  
+  // Stat changes (calculated and applied)
+  attackIncrease: integer("attack_increase").default(0).notNull(),
+  defenseIncrease: integer("defense_increase").default(0).notNull(),
+  healthIncrease: integer("health_increase").default(0).notNull(),
+  siegeBonusIncrease: integer("siege_bonus_increase").default(0).notNull(),
+  
+  createdAt: timestamp("created_at").defaultNow().notNull(),
+}, (table) => [
+  // Performance indexes
+  index("idx_weapon_upgrades_weapon").on(table.weaponId),
+  index("idx_weapon_upgrades_player").on(table.playerId),
+  index("idx_weapon_upgrades_created").on(table.createdAt),
+  
+  // Validation: Ensure tech level progression is valid
+  check("chk_weapon_upgrades_progression", sql`${table.toTechLevel} > ${table.fromTechLevel} AND ${table.toTechLevel} <= 5`),
+]);
+
+// Military Equipment Linkage - Connects weapons to armies and recalculates power
+export const militaryEquipment = pgTable("military_equipment", {
+  id: text("id").primaryKey().$defaultFn(() => crypto.randomUUID()),
+  
+  // FIXED: Correct foreign key references
+  playerId: text("player_id").notNull().references(() => gamingPlayers.id, { onDelete: "cascade" }),
+  armyId: text("army_id").notNull().references(() => militaryArmies.id, { onDelete: "cascade" }),
+  weaponId: text("weapon_id").notNull().references(() => playerNftWeapons.id, { onDelete: "cascade" }),
+  
+  // Equipment configuration
+  equipmentSlot: text("equipment_slot").notNull(), // "weapon", "armor", "siege", "special"
+  isActive: boolean("is_active").default(true).notNull(),
+  
+  // Army power contribution (calculated when equipped)
+  attackContribution: integer("attack_contribution").default(0).notNull(),
+  defenseContribution: integer("defense_contribution").default(0).notNull(),
+  healthContribution: integer("health_contribution").default(0).notNull(),
+  siegeContribution: integer("siege_contribution").default(0).notNull(),
+  
+  // Tracking
+  equippedAt: timestamp("equipped_at").defaultNow().notNull(),
+  unequippedAt: timestamp("unequipped_at"),
+  
+  createdAt: timestamp("created_at").defaultNow().notNull(),
+}, (table) => [
+  // Unique constraint: One weapon per slot per army
+  uniqueIndex("idx_military_equipment_unique_slot").on(
+    table.armyId, 
+    table.equipmentSlot, 
+    table.isActive
+  ).where(sql`${table.isActive} = true`),
+  
+  // Unique constraint: One weapon can only be equipped to one army
+  uniqueIndex("idx_military_equipment_unique_weapon").on(
+    table.weaponId, 
+    table.isActive
+  ).where(sql`${table.isActive} = true`),
+  
+  // Performance indexes
+  index("idx_military_equipment_player").on(table.playerId),
+  index("idx_military_equipment_army").on(table.armyId),
+  index("idx_military_equipment_weapon").on(table.weaponId),
+  index("idx_military_equipment_active").on(table.isActive),
+  index("idx_military_equipment_slot").on(table.equipmentSlot),
+]);
+
+// Relations for gaming tables
+export const gamePlayersRelations = relations(gamePlayers, ({ many }) => ({
+  wallets: many(gamePlayerWallets),
+  landClaims: many(gameLandClaims),
+  battleParticipations: many(gameBattleParticipants),
+  rdlLedger: many(gameRdlLedger),
+  rdlStakes: many(gameRdlStakes),
+  bridgeTransfers: many(gameBridgeTransfers),
+  progression: many(gameProgression),
+}));
+
+export const gameLandBlocksRelations = relations(gameLandBlocks, ({ one, many }) => ({
+  owner: one(gamePlayers, {
+    fields: [gameLandBlocks.ownerPlayerId],
+    references: [gamePlayers.id],
+  }),
+  claims: many(gameLandClaims),
+  battles: many(gameBattles),
+}));
+
+export const gameBattlesRelations = relations(gameBattles, ({ one, many }) => ({
+  location: one(gameLandBlocks, {
+    fields: [gameBattles.locationBlockId],
+    references: [gameLandBlocks.id],
+  }),
+  winner: one(gamePlayers, {
+    fields: [gameBattles.winnerPlayerId],
+    references: [gamePlayers.id],
+  }),
+  participants: many(gameBattleParticipants),
+  events: many(gameBattleEvents),
+}));
+
+// Gaming schema exports with Zod validation
+export const insertGamePlayerSchema = createInsertSchema(gamePlayers).omit(['id', 'createdAt', 'lastActivity']);
+
+export const insertGameLandBlockSchema = createInsertSchema(gameLandBlocks).omit(['createdAt']);
+
+export const insertGameLandClaimSchema = createInsertSchema(gameLandClaims).omit(['id', 'createdAt']);
+
+export const insertGameCollectionSchema = createInsertSchema(gameCollections).omit(['createdAt']);
+
+export const insertGameNftTraitSchema = createInsertSchema(gameNftTraits).omit(['id', 'createdAt', 'updatedAt']);
+
+export const insertGameBattleSchema = createInsertSchema(gameBattles).omit(['id', 'createdAt']);
+
+export const insertGameBattleParticipantSchema = createInsertSchema(gameBattleParticipants).omit(['id', 'createdAt']);
+
+export const insertGameBattleEventSchema = createInsertSchema(gameBattleEvents).omit(['id', 'createdAt']);
+
+export const insertGameRdlLedgerSchema = createInsertSchema(gameRdlLedger).omit(['id', 'updatedAt']);
+
+export const insertGameRdlStakeSchema = createInsertSchema(gameRdlStakes).omit(['id', 'createdAt']);
+
+export const insertGameBridgeTransferSchema = createInsertSchema(gameBridgeTransfers).omit(['id', 'createdAt']);
+
+export const insertGameProgressionSchema = createInsertSchema(gameProgression).omit(['createdAt', 'updatedAt', 'lastActivity']);
+
+export const insertMedievalLandPlotSchema = createInsertSchema(medievalLandPlots).omit(['id', 'createdAt', 'updatedAt']);
+
+export const insertLandPlotPurchaseSchema = createInsertSchema(landPlotPurchases).omit(['id', 'createdAt', 'updatedAt', 'purchaseInitiated']);
+
+// Gaming types for TypeScript
+export type GamePlayer = typeof gamePlayers.$inferSelect;
+export type InsertGamePlayer = z.infer<typeof insertGamePlayerSchema>;
+export type GamePlayerWallet = typeof gamePlayerWallets.$inferSelect;
+export type GameLandBlock = typeof gameLandBlocks.$inferSelect;
+export type InsertGameLandBlock = z.infer<typeof insertGameLandBlockSchema>;
+export type GameLandClaim = typeof gameLandClaims.$inferSelect;
+export type InsertGameLandClaim = z.infer<typeof insertGameLandClaimSchema>;
+export type GameCollection = typeof gameCollections.$inferSelect;
+export type InsertGameCollection = z.infer<typeof insertGameCollectionSchema>;
+export type GameNftTrait = typeof gameNftTraits.$inferSelect;
+export type InsertGameNftTrait = z.infer<typeof insertGameNftTraitSchema>;
+export type GameBattle = typeof gameBattles.$inferSelect;
+export type InsertGameBattle = z.infer<typeof insertGameBattleSchema>;
+export type GameBattleParticipant = typeof gameBattleParticipants.$inferSelect;
+export type InsertGameBattleParticipant = z.infer<typeof insertGameBattleParticipantSchema>;
+export type GameBattleEvent = typeof gameBattleEvents.$inferSelect;
+export type InsertGameBattleEvent = z.infer<typeof insertGameBattleEventSchema>;
+export type GameRdlLedger = typeof gameRdlLedger.$inferSelect;
+export type InsertGameRdlLedger = z.infer<typeof insertGameRdlLedgerSchema>;
+export type GameRdlStake = typeof gameRdlStakes.$inferSelect;
+export type InsertGameRdlStake = z.infer<typeof insertGameRdlStakeSchema>;
+export type GameBridgeTransfer = typeof gameBridgeTransfers.$inferSelect;
+export type InsertGameBridgeTransfer = z.infer<typeof insertGameBridgeTransferSchema>;
+export type GameProgression = typeof gameProgression.$inferSelect;
+export type InsertGameProgression = z.infer<typeof insertGameProgressionSchema>;
+export type MedievalLandPlot = typeof medievalLandPlots.$inferSelect;
+export type InsertMedievalLandPlot = z.infer<typeof insertMedievalLandPlotSchema>;
+export type LandPlotPurchase = typeof landPlotPurchases.$inferSelect;
+export type InsertLandPlotPurchase = z.infer<typeof insertLandPlotPurchaseSchema>;
+
+// Religion & Military System Zod Schemas
+export const insertPantheonDefinitionSchema = createInsertSchema(pantheonDefinitions).omit(['id', 'createdAt']);
+
+export const insertPlayerReligionSchema = createInsertSchema(playerReligion).omit(['id', 'lastTickAt', 'createdAt', 'updatedAt']);
+
+export const insertMilitaryArmySchema = createInsertSchema(militaryArmies).omit(['id', 'lastActionAt', 'createdAt', 'updatedAt']);
+
+export const insertPlotFortificationSchema = createInsertSchema(plotFortifications).omit(['id', 'lastRepairAt', 'createdAt', 'updatedAt']);
+
+export const insertCombatLogSchema = createInsertSchema(combatLogs).omit(['id', 'createdAt']);
+
+export const insertCooldownSchema = createInsertSchema(cooldowns).omit(['id', 'createdAt']);
+
+// Religion & Military System Types
+export type PantheonDefinition = typeof pantheonDefinitions.$inferSelect;
+export type InsertPantheonDefinition = z.infer<typeof insertPantheonDefinitionSchema>;
+export type PlayerReligion = typeof playerReligion.$inferSelect;
+export type InsertPlayerReligion = z.infer<typeof insertPlayerReligionSchema>;
+export type MilitaryArmy = typeof militaryArmies.$inferSelect;
+export type InsertMilitaryArmy = z.infer<typeof insertMilitaryArmySchema>;
+export type PlotFortification = typeof plotFortifications.$inferSelect;
+export type InsertPlotFortification = z.infer<typeof insertPlotFortificationSchema>;
+export type CombatLog = typeof combatLogs.$inferSelect;
+export type InsertCombatLog = z.infer<typeof insertCombatLogSchema>;
+
+// ==========================================
+// NFT WEAPONS & ARMOR SCHEMA VALIDATIONS
+// PRODUCTION-READY with XRPL Integration
+// ==========================================
+
+// Weapon definitions schemas
+export const insertWeaponDefinitionSchema = createInsertSchema(weaponDefinitions).omit(['id', 'currentSupply', 'createdAt', 'updatedAt']);
+
+// Player NFT weapons schemas (corrected for new fields)
+export const insertPlayerNftWeaponSchema = createInsertSchema(playerNftWeapons).omit(['id', 'nftTokenSequence', 'imageGeneratedAt', 'finalAttack', 'finalDefense', 'finalHealth', 'finalSiegeBonus', 'statsLastRecalculated', 'equippedAt', 'purchasedAt', 'createdAt', 'updatedAt']);
+
+// Weapon marketplace schemas (updated for XRPL fields)
+export const insertWeaponMarketplaceSchema = createInsertSchema(weaponMarketplace).omit(['id', 'buyerId', 'buyerXrplAddress', 'soldAt', 'salePriceDrops', 'saleTxHash', 'settledAt', 'createdAt', 'updatedAt']);
+
+// Weapon mint queue schemas (updated for XRPL integration)
+export const insertWeaponMintQueueSchema = createInsertSchema(weaponMintQueue).omit(['id', 'nftTokenId', 'mintTxHash', 'nftTokenSequence', 'imageUrl', 'imagePrompt', 'tweetId', 'tweetContent', 'errorMessage', 'processedAt', 'createdAt']);
+
+// Weapon upgrade schemas (updated for XRPL payment tracking)
+export const insertWeaponUpgradeSchema = createInsertSchema(weaponUpgrades).omit(['id', 'createdAt']);
+
+// Military equipment schemas (new table)
+export const insertMilitaryEquipmentSchema = createInsertSchema(militaryEquipment).omit(['id', 'attackContribution', 'defenseContribution', 'healthContribution', 'siegeContribution', 'equippedAt', 'unequippedAt', 'createdAt']);
+
+// ==========================================
+// NFT WEAPONS & ARMOR TYPE EXPORTS
+// PRODUCTION-READY with XRPL Integration
+// ==========================================
+
+export type WeaponDefinition = typeof weaponDefinitions.$inferSelect;
+export type InsertWeaponDefinition = z.infer<typeof insertWeaponDefinitionSchema>;
+
+export type PlayerNftWeapon = typeof playerNftWeapons.$inferSelect;
+export type InsertPlayerNftWeapon = z.infer<typeof insertPlayerNftWeaponSchema>;
+
+export type WeaponMarketplace = typeof weaponMarketplace.$inferSelect;
+export type InsertWeaponMarketplace = z.infer<typeof insertWeaponMarketplaceSchema>;
+
+export type WeaponMintQueue = typeof weaponMintQueue.$inferSelect;
+export type InsertWeaponMintQueue = z.infer<typeof insertWeaponMintQueueSchema>;
+
+export type WeaponUpgrade = typeof weaponUpgrades.$inferSelect;
+export type InsertWeaponUpgrade = z.infer<typeof insertWeaponUpgradeSchema>;
+
+export type MilitaryEquipment = typeof militaryEquipment.$inferSelect;
+export type InsertMilitaryEquipment = z.infer<typeof insertMilitaryEquipmentSchema>;
+export type Cooldown = typeof cooldowns.$inferSelect;
+export type InsertCooldown = z.infer<typeof insertCooldownSchema>;
+
+// Civilization and Alliance System Types
+export type PlayerCivilization = typeof playerCivilizations.$inferSelect;
+export type AllyRequest = typeof allyRequests.$inferSelect;
+export type ActiveAlliance = typeof activeAlliances.$inferSelect;
+
+// Insert Schemas for Civilization System
+export const insertPlayerCivilizationSchema = createInsertSchema(playerCivilizations).omit(['id', 'founded_date', 'last_calculated', 'created_at', 'updated_at']);
+
+export const insertAllyRequestSchema = createInsertSchema(allyRequests).omit(['id', 'responded_at', 'created_at', 'updated_at']);
+
+export const insertActiveAllianceSchema = createInsertSchema(activeAlliances).omit(['id', 'last_interaction', 'established_at', 'created_at', 'updated_at']);
+
+export type InsertPlayerCivilization = z.infer<typeof insertPlayerCivilizationSchema>;
+export type InsertAllyRequest = z.infer<typeof insertAllyRequestSchema>;
+export type InsertActiveAlliance = z.infer<typeof insertActiveAllianceSchema>;
+
+// Gaming Alliance System Types
+export type GamingAlliance = typeof gamingAlliances.$inferSelect;
+export type AllianceMember = typeof allianceMembers.$inferSelect;
+export type AllianceJoinRequest = typeof allianceJoinRequests.$inferSelect;
+
+export const insertGamingAllianceSchema = createInsertSchema(gamingAlliances).omit(['id', 'created_at', 'updated_at']);
+
+export const insertAllianceMemberSchema = createInsertSchema(allianceMembers).omit(['id', 'joined_at', 'created_at', 'updated_at']);
+
+export const insertAllianceJoinRequestSchema = createInsertSchema(allianceJoinRequests).omit(['id', 'reviewed_at', 'created_at', 'updated_at']);
+
+export type InsertGamingAlliance = z.infer<typeof insertGamingAllianceSchema>;
+export type InsertAllianceMember = z.infer<typeof insertAllianceMemberSchema>;
+export type InsertAllianceJoinRequest = z.infer<typeof insertAllianceJoinRequestSchema>;
+
+// ===================================
+// RIDDLEAUTHOR AI SYSTEM SCHEMA
+// "The Trolls Inquisition Multi-Chain Mayhem Edition"
+// Comprehensive AI narrator and controller system
+// ===================================
+
+// RiddleAuthor AI Conversations - Interactive chat system with game narration
+export const riddleAuthorConversations = pgTable("riddle_author_conversations", {
+  id: text("id").primaryKey().$defaultFn(() => crypto.randomUUID()),
+  
+  // User and session information
+  user_handle: text("user_handle"), // Riddle wallet handle or null for anonymous
+  wallet_address: text("wallet_address"), // Primary wallet address
+  session_id: text("session_id").notNull(), // Browser session for conversation tracking
+  
+  // Conversation metadata
+  conversation_type: text("conversation_type").notNull().default("general"), // general, game_narrative, customer_service, trolls_inquisition
+  conversation_title: text("conversation_title"), // Auto-generated or user-set title
+  language: text("language").default("en").notNull(), // Language for AI responses
+  
+  // Game context (for Trolls Inquisition)
+  game_mode: text("game_mode"), // trolls_inquisition, nft_trading, bridge_quest, collection_battle
+  game_state: jsonb("game_state").$type<Record<string, any>>().default({}), // Current game state data
+  game_level: integer("game_level").default(1), // Player level in the game
+  active_collection: text("active_collection"), // Currently active NFT collection
+  
+  // AI behavior settings
+  ai_personality: text("ai_personality").default("narrator").notNull(), // narrator, customer_service, game_master, twitter_bot
+  response_style: text("response_style").default("engaging").notNull(), // engaging, professional, playful, mysterious
+  enable_learning: boolean("enable_learning").default(true), // Whether AI should learn from this conversation
+  
+  // Conversation status
+  status: text("status").default("active").notNull(), // active, paused, completed, archived
+  message_count: integer("message_count").default(0),
+  last_message_at: timestamp("last_message_at"),
+  
+  created_at: timestamp("created_at").defaultNow().notNull(),
+  updated_at: timestamp("updated_at").defaultNow().notNull(),
+}, (table) => [
+  index("idx_riddle_author_conversations_user").on(table.user_handle),
+  index("idx_riddle_author_conversations_wallet").on(table.wallet_address),
+  index("idx_riddle_author_conversations_session").on(table.session_id),
+  index("idx_riddle_author_conversations_type").on(table.conversation_type),
+  index("idx_riddle_author_conversations_game_mode").on(table.game_mode),
+  index("idx_riddle_author_conversations_status").on(table.status),
+  index("idx_riddle_author_conversations_created").on(table.created_at),
+]);
+
+// RiddleAuthor Messages - Individual messages in conversations
+export const riddleAuthorMessages = pgTable("riddle_author_messages", {
+  id: text("id").primaryKey().$defaultFn(() => crypto.randomUUID()),
+  conversation_id: text("conversation_id").notNull().references(() => riddleAuthorConversations.id, { onDelete: "cascade" }),
+  
+  // Message details
+  message_role: text("message_role").notNull(), // user, assistant, system - required field
+  role: text("role").notNull(), // user, assistant, system, game_event
+  content: text("content").notNull(),
+  message_type: text("message_type").default("text").notNull(), // text, game_action, nft_recommendation, tweet_draft, story_fragment
+  
+  // AI processing metadata
+  model_used: text("model_used").default("gpt-5").notNull(), // the newest OpenAI model is "gpt-5" which was released August 7, 2025. do not change this unless explicitly requested by the user
+  prompt_tokens: integer("prompt_tokens"),
+  completion_tokens: integer("completion_tokens"),
+  total_tokens: integer("total_tokens"),
+  processing_time_ms: integer("processing_time_ms"),
+  
+  // Game interaction data
+  triggers_game_event: boolean("triggers_game_event").default(false),
+  game_event_type: text("game_event_type"), // nft_purchase, bridge_transfer, collection_switch, level_up
+  game_event_data: jsonb("game_event_data").$type<Record<string, any>>().default({}),
+  
+  // NFT and trading context
+  mentioned_nfts: jsonb("mentioned_nfts").$type<string[]>().default([]), // NFT IDs mentioned in message
+  trading_recommendations: jsonb("trading_recommendations").$type<Record<string, any>>().default({}),
+  rtn_transaction_id: text("rtn_transaction_id"), // Reference to RTN transactions
+  
+  // Tweet integration
+  can_be_tweeted: boolean("can_be_tweeted").default(false),
+  tweet_drafted: boolean("tweet_drafted").default(false),
+  tweet_id: text("tweet_id"), // Reference to tweet (no foreign key to avoid circular dependency)
+  
+  created_at: timestamp("created_at").defaultNow().notNull(),
+}, (table) => [
+  index("idx_riddle_author_messages_conversation").on(table.conversation_id),
+  index("idx_riddle_author_messages_role").on(table.role),
+  index("idx_riddle_author_messages_type").on(table.message_type),
+  index("idx_riddle_author_messages_game_event").on(table.triggers_game_event),
+  index("idx_riddle_author_messages_created").on(table.created_at),
+]);
+
+// RiddleAuthor Generated Stories - AI-created narratives and lore
+export const riddleAuthorStories = pgTable("riddle_author_stories", {
+  id: text("id").primaryKey().$defaultFn(() => crypto.randomUUID()),
+  
+  // Story metadata
+  title: text("title").notNull(),
+  story_type: text("story_type").notNull(), // trolls_lore, collection_backstory, user_adventure, monthly_chronicle, nft_book_chapter
+  content: text("content").notNull(),
+  excerpt: text("excerpt"), // Short description or first paragraph
+  
+  // Generation context
+  generated_for_user: text("generated_for_user"), // User handle if personalized
+  generated_for_collection: text("generated_for_collection"), // Collection issuer/taxon
+  generation_prompt: text("generation_prompt").notNull(), // Original prompt used
+  model_used: text("model_used").default("gpt-5").notNull(), // the newest OpenAI model is "gpt-5" which was released August 7, 2025. do not change this unless explicitly requested by the user
+  
+  // Story categorization
+  game_element: text("game_element"), // trolls, bridges, collections, mayhem, inquisition
+  target_audience: text("target_audience").default("general").notNull(), // general, collectors, traders, gamers
+  difficulty_level: integer("difficulty_level").default(1), // 1-5 complexity scale
+  
+  // Publication status
+  status: text("status").default("draft").notNull(), // draft, published, featured, archived
+  publish_date: timestamp("publish_date"),
+  featured_until: timestamp("featured_until"),
+  
+  // Engagement metrics
+  view_count: integer("view_count").default(0),
+  like_count: integer("like_count").default(0),
+  share_count: integer("share_count").default(0),
+  
+  // NFT book integration
+  belongs_to_nft_book: text("belongs_to_nft_book"), // Reference to NFT book (no foreign key to avoid circular dependency)
+  chapter_number: integer("chapter_number"),
+  
+  // Tweet integration
+  tweeted: boolean("tweeted").default(false),
+  tweet_id: text("tweet_id"), // Reference to tweet (no foreign key to avoid circular dependency)
+  
+  created_at: timestamp("created_at").defaultNow().notNull(),
+  updated_at: timestamp("updated_at").defaultNow().notNull(),
+}, (table) => [
+  index("idx_riddle_author_stories_type").on(table.story_type),
+  index("idx_riddle_author_stories_user").on(table.generated_for_user),
+  index("idx_riddle_author_stories_collection").on(table.generated_for_collection),
+  index("idx_riddle_author_stories_status").on(table.status),
+  index("idx_riddle_author_stories_game_element").on(table.game_element),
+  index("idx_riddle_author_stories_nft_book").on(table.belongs_to_nft_book),
+  index("idx_riddle_author_stories_publish_date").on(table.publish_date),
+]);
+
+// RiddleAuthor Tweets - AI-controlled social media management
+export const riddleAuthorTweets = pgTable("riddle_author_tweets", {
+  id: text("id").primaryKey().$defaultFn(() => crypto.randomUUID()),
+  
+  // Tweet content
+  content: text("content").notNull(),
+  tweet_type: text("tweet_type").notNull(), // narrative, announcement, user_highlight, collection_spotlight, game_update, customer_service
+  
+  // Platform details
+  platform: text("platform").default("twitter").notNull(), // twitter, x
+  platform_tweet_id: text("platform_tweet_id").unique(), // External platform ID
+  tweet_url: text("tweet_url"), // Full URL to the tweet
+  
+  // Generation context
+  generated_by_ai: boolean("generated_by_ai").default(true),
+  generation_prompt: text("generation_prompt"),
+  model_used: text("model_used").default("gpt-5"), // the newest OpenAI model is "gpt-5" which was released August 7, 2025. do not change this unless explicitly requested by the user
+  
+  // User interaction (riddle wallet holders can tweet through AI)
+  initiated_by_user: text("initiated_by_user"), // User handle who requested this tweet
+  user_wallet_address: text("user_wallet_address"), // Wallet that has permission to tweet
+  user_input: text("user_input"), // Original user input/request
+  
+  // Content categorization
+  game_context: text("game_context"), // trolls_inquisition, collection_battles, bridge_mayhem
+  mentions_nfts: jsonb("mentions_nfts").$type<string[]>().default([]), // NFT collections mentioned
+  mentions_users: jsonb("mentions_users").$type<string[]>().default([]), // User handles mentioned
+  hashtags: jsonb("hashtags").$type<string[]>().default([]), // Hashtags used
+  
+  // Scheduling and status
+  status: text("status").default("draft").notNull(), // draft, scheduled, posted, failed, deleted
+  scheduled_for: timestamp("scheduled_for"),
+  posted_at: timestamp("posted_at"),
+  
+  // Engagement metrics (from platform)
+  likes_count: integer("likes_count").default(0),
+  retweets_count: integer("retweets_count").default(0),
+  replies_count: integer("replies_count").default(0),
+  views_count: integer("views_count").default(0),
+  
+  // Error handling
+  error_message: text("error_message"),
+  retry_count: integer("retry_count").default(0),
+  
+  // References
+  story_id: text("story_id"), // Reference to story (no foreign key to avoid circular dependency)
+  conversation_id: text("conversation_id").references(() => riddleAuthorConversations.id),
+  
+  created_at: timestamp("created_at").defaultNow().notNull(),
+  updated_at: timestamp("updated_at").defaultNow().notNull(),
+}, (table) => [
+  index("idx_riddle_author_tweets_type").on(table.tweet_type),
+  index("idx_riddle_author_tweets_platform_id").on(table.platform_tweet_id),
+  index("idx_riddle_author_tweets_user").on(table.initiated_by_user),
+  index("idx_riddle_author_tweets_wallet").on(table.user_wallet_address),
+  index("idx_riddle_author_tweets_status").on(table.status),
+  index("idx_riddle_author_tweets_scheduled").on(table.scheduled_for),
+  index("idx_riddle_author_tweets_posted").on(table.posted_at),
+  index("idx_riddle_author_tweets_game_context").on(table.game_context),
+]);
+
+// Twitter Mentions - Track mentions of @RiddleSwap and related terms
+export const twitterMentions = pgTable("twitter_mentions", {
+  id: text("id").primaryKey().$defaultFn(() => crypto.randomUUID()),
+  
+  // Tweet details
+  tweet_id: text("tweet_id").notNull().unique(), // External Twitter tweet ID
+  tweet_url: text("tweet_url"),
+  tweet_text: text("tweet_text").notNull(),
+  
+  // Author details
+  author_username: text("author_username").notNull(),
+  author_name: text("author_name"),
+  author_followers: integer("author_followers").default(0),
+  author_verified: boolean("author_verified").default(false),
+  
+  // Mention details
+  mention_type: text("mention_type").notNull(), // direct_mention, reply, quote_tweet, keyword_match
+  matched_keywords: jsonb("matched_keywords").$type<string[]>().default([]), // Keywords that triggered this mention
+  
+  // Sentiment and classification
+  sentiment: text("sentiment"), // positive, neutral, negative, spam
+  is_spam: boolean("is_spam").default(false),
+  requires_response: boolean("requires_response").default(false),
+  priority: text("priority").default("normal"), // low, normal, high, urgent
+  
+  // Engagement tracking
+  engagement_status: text("engagement_status").default("pending"), // pending, reviewed, responded, ignored, escalated
+  ai_response_generated: boolean("ai_response_generated").default(false),
+  ai_response_text: text("ai_response_text"),
+  ai_response_approved: boolean("ai_response_approved").default(false),
+  
+  // Action taken
+  liked: boolean("liked").default(false),
+  retweeted: boolean("retweeted").default(false),
+  replied: boolean("replied").default(false),
+  reply_tweet_id: text("reply_tweet_id"), // ID of our reply tweet
+  
+  // Admin review
+  reviewed_by_admin: boolean("reviewed_by_admin").default(false),
+  admin_notes: text("admin_notes"),
+  
+  // Timestamps
+  tweet_created_at: timestamp("tweet_created_at").notNull(),
+  detected_at: timestamp("detected_at").defaultNow().notNull(),
+  engaged_at: timestamp("engaged_at"),
+  
+  created_at: timestamp("created_at").defaultNow().notNull(),
+  updated_at: timestamp("updated_at").defaultNow().notNull(),
+}, (table) => [
+  index("idx_twitter_mentions_tweet_id").on(table.tweet_id),
+  index("idx_twitter_mentions_author").on(table.author_username),
+  index("idx_twitter_mentions_type").on(table.mention_type),
+  index("idx_twitter_mentions_status").on(table.engagement_status),
+  index("idx_twitter_mentions_sentiment").on(table.sentiment),
+  index("idx_twitter_mentions_priority").on(table.priority),
+  index("idx_twitter_mentions_detected").on(table.detected_at),
+]);
+
+// Twitter Engagement Settings - User settings for engagement automation
+export const twitterEngagementSettings = pgTable("twitter_engagement_settings", {
+  id: serial("id").primaryKey(),
+  
+  // Global automation settings
+  auto_like_enabled: boolean("auto_like_enabled").default(false),
+  auto_retweet_enabled: boolean("auto_retweet_enabled").default(false),
+  auto_reply_enabled: boolean("auto_reply_enabled").default(false),
+  
+  // Auto-like settings
+  auto_like_positive_only: boolean("auto_like_positive_only").default(true),
+  auto_like_min_followers: integer("auto_like_min_followers").default(100),
+  auto_like_max_per_hour: integer("auto_like_max_per_hour").default(10),
+  
+  // Auto-retweet settings
+  auto_retweet_positive_only: boolean("auto_retweet_positive_only").default(true),
+  auto_retweet_min_followers: integer("auto_retweet_min_followers").default(500),
+  auto_retweet_max_per_hour: integer("auto_retweet_max_per_hour").default(5),
+  
+  // Auto-reply settings
+  auto_reply_requires_approval: boolean("auto_reply_requires_approval").default(true),
+  auto_reply_positive_only: boolean("auto_reply_positive_only").default(true),
+  auto_reply_min_followers: integer("auto_reply_min_followers").default(50),
+  auto_reply_max_per_hour: integer("auto_reply_max_per_hour").default(5),
+  
+  // Keyword monitoring
+  monitored_keywords: jsonb("monitored_keywords").$type<string[]>().default([
+    "@RiddleSwap", "#RiddleSwap", "RiddleSwap", "$RDL", "#RDL",
+    "Trolls Inquisition", "#TrollsInquisition", "#TheInquisition"
+  ]),
+  
+  // Spam filtering
+  spam_filter_enabled: boolean("spam_filter_enabled").default(true),
+  block_keywords: jsonb("block_keywords").$type<string[]>().default([]),
+  
+  // Rate limiting
+  global_actions_per_hour: integer("global_actions_per_hour").default(20),
+  
+  // Admin controls
+  enabled_by_admin: boolean("enabled_by_admin").default(false),
+  
+  created_at: timestamp("created_at").defaultNow().notNull(),
+  updated_at: timestamp("updated_at").defaultNow().notNull(),
+});
+
+// Twitter Engagement Actions - Log all engagement actions
+export const twitterEngagementActions = pgTable("twitter_engagement_actions", {
+  id: text("id").primaryKey().$defaultFn(() => crypto.randomUUID()),
+  
+  // Action details
+  action_type: text("action_type").notNull(), // like, retweet, reply, quote_tweet
+  target_tweet_id: text("target_tweet_id").notNull(),
+  target_author: text("target_author").notNull(),
+  
+  // Action result
+  status: text("status").notNull(), // success, failed, pending
+  error_message: text("error_message"),
+  
+  // Reply details (if action_type is reply)
+  reply_text: text("reply_text"),
+  reply_tweet_id: text("reply_tweet_id"),
+  
+  // Automation context
+  automated: boolean("automated").default(false),
+  triggered_by_mention_id: text("triggered_by_mention_id"), // References twitter_mentions.id
+  
+  // AI involvement
+  ai_generated: boolean("ai_generated").default(false),
+  ai_model_used: text("ai_model_used"),
+  human_approved: boolean("human_approved").default(false),
+  approved_by_admin: text("approved_by_admin"),
+  
+  // Metrics
+  action_performed_at: timestamp("action_performed_at"),
+  
+  created_at: timestamp("created_at").defaultNow().notNull(),
+  updated_at: timestamp("updated_at").defaultNow().notNull(),
+}, (table) => [
+  index("idx_twitter_actions_type").on(table.action_type),
+  index("idx_twitter_actions_tweet").on(table.target_tweet_id),
+  index("idx_twitter_actions_status").on(table.status),
+  index("idx_twitter_actions_automated").on(table.automated),
+  index("idx_twitter_actions_performed").on(table.action_performed_at),
+]);
+
+// Swap Announcements - Track posted swap activity announcements
+export const swapAnnouncements = pgTable("swap_announcements", {
+  id: text("id").primaryKey().$defaultFn(() => crypto.randomUUID()),
+  
+  // Transaction details
+  tx_hash: text("tx_hash").notNull().unique(), // XRPL transaction hash
+  chain: text("chain").notNull().default("xrpl"), // xrpl, ethereum, solana, etc
+  
+  // Swap details  
+  swap_type: text("swap_type").notNull(), // buy, sell
+  token_in: text("token_in").notNull(), // Token sold
+  token_out: text("token_out").notNull(), // Token bought
+  amount_in: decimal("amount_in", { precision: 30, scale: 10 }).notNull(),
+  amount_out: decimal("amount_out", { precision: 30, scale: 10 }).notNull(),
+  
+  // USD values (if available)
+  usd_value: decimal("usd_value", { precision: 20, scale: 2 }),
+  
+  // Trader info
+  trader_address: text("trader_address").notNull(),
+  trader_handle: text("trader_handle"), // RiddleHandle if available
+  // Announcement details
+  announcement_text: text("announcement_text").notNull(),
+  announcement_type: text("announcement_type").default("standard"), // standard, whale, milestone
+  
+  // Publishing status
+  posted_to_twitter: boolean("posted_to_twitter").default(false),
+  twitter_tweet_id: text("twitter_tweet_id"),
+  twitter_posted_at: timestamp("twitter_posted_at"),
+  twitter_error: text("twitter_error"),
+  
+  posted_to_telegram: boolean("posted_to_telegram").default(false),
+  telegram_message_id: text("telegram_message_id"),
+  telegram_posted_at: timestamp("telegram_posted_at"),
+  telegram_error: text("telegram_error"),
+  
+  // Metadata
+  is_significant: boolean("is_significant").default(false), // Whale trade, milestone, etc
+  significance_reason: text("significance_reason"), // "whale_trade", "volume_milestone", "price_milestone"
+  
+  // Timestamps
+  swap_timestamp: timestamp("swap_timestamp").notNull(),
+  created_at: timestamp("created_at").defaultNow().notNull(),
+  updated_at: timestamp("updated_at").defaultNow().notNull(),
+}, (table) => [
+  index("idx_swap_announcements_tx").on(table.tx_hash),
+  index("idx_swap_announcements_chain").on(table.chain),
+  index("idx_swap_announcements_type").on(table.swap_type),
+  index("idx_swap_announcements_trader").on(table.trader_address),
+  index("idx_swap_announcements_significant").on(table.is_significant),
+  index("idx_swap_announcements_timestamp").on(table.swap_timestamp),
+  index("idx_swap_announcements_posted_twitter").on(table.posted_to_twitter),
+  index("idx_swap_announcements_posted_telegram").on(table.posted_to_telegram),
+]);
+
+// Swap Announcement Settings - Configuration for swap announcements
+export const swapAnnouncementSettings = pgTable("swap_announcement_settings", {
+  id: serial("id").primaryKey(),
+  
+  // Announcement triggers
+  enabled: boolean("enabled").default(false), // Master switch
+  min_usd_value: decimal("min_usd_value", { precision: 20, scale: 2 }).default("1000"), // Minimum $1000 swaps
+  whale_threshold: decimal("whale_threshold", { precision: 20, scale: 2 }).default("10000"), // $10k+ is whale
+  
+  // Announcement frequency
+  max_announcements_per_hour: integer("max_announcements_per_hour").default(5),
+  cooldown_minutes: integer("cooldown_minutes").default(10), // Wait 10min between announcements
+  
+  // Platform settings
+  announce_on_twitter: boolean("announce_on_twitter").default(true),
+  announce_on_telegram: boolean("announce_on_telegram").default(true),
+  
+  // Content settings
+  include_trader_handle: boolean("include_trader_handle").default(true),
+  include_usd_value: boolean("include_usd_value").default(true),
+  use_emojis: boolean("use_emojis").default(true),
+  
+  // Token filters
+  monitored_tokens: jsonb("monitored_tokens").$type<string[]>().default([
+    "RDL", "RiddleSwap", // RDL token
+  ]),
+  
+  created_at: timestamp("created_at").defaultNow().notNull(),
+  updated_at: timestamp("updated_at").defaultNow().notNull(),
+});
+
+// RiddleAuthor NFT Books - Monthly AI-generated book NFTs (123 copies each)
+export const riddleAuthorNftBooks = pgTable("riddle_author_nft_books", {
+  id: text("id").primaryKey().$defaultFn(() => crypto.randomUUID()),
+  
+  // Book metadata
+  title: text("title").notNull(),
+  subtitle: text("subtitle"),
+  description: text("description").notNull(),
+  book_month: date("book_month").notNull(), // YYYY-MM format
+  book_year: integer("book_year").notNull(),
+  
+  // Content details
+  total_chapters: integer("total_chapters").default(0),
+  total_words: integer("total_words").default(0),
+  cover_description: text("cover_description"), // AI-generated cover concept
+  cover_image_url: text("cover_image_url"), // Generated cover image
+  
+  // NFT minting details
+  collection_issuer: text("collection_issuer"), // XRPL issuer address
+  collection_taxon: integer("collection_taxon"), // XRPL token taxon
+  nft_copies_limit: integer("nft_copies_limit").default(123), // Always 123 copies
+  nft_copies_minted: integer("nft_copies_minted").default(0),
+  nft_copies_available: integer("nft_copies_available").default(123),
+  
+  // Pricing and sales
+  mint_price_xrp: decimal("mint_price_xrp", { precision: 20, scale: 8 }),
+  mint_price_usd: decimal("mint_price_usd", { precision: 20, scale: 8 }),
+  total_sales_xrp: decimal("total_sales_xrp", { precision: 20, scale: 8 }).default("0"),
+  total_sales_usd: decimal("total_sales_usd", { precision: 20, scale: 8 }).default("0"),
+  
+  // Generation process
+  generation_status: text("generation_status").default("planning").notNull(), // planning, generating, review, complete, failed
+  generation_started_at: timestamp("generation_started_at"),
+  generation_completed_at: timestamp("generation_completed_at"),
+  generation_prompt: text("generation_prompt"),
+  model_used: text("model_used").default("gpt-5"), // the newest OpenAI model is "gpt-5" which was released August 7, 2025. do not change this unless explicitly requested by the user
+  
+  // Publishing and availability
+  publication_status: text("publication_status").default("draft").notNull(), // draft, published, sold_out, archived
+  published_at: timestamp("published_at"),
+  sale_starts_at: timestamp("sale_starts_at"),
+  sale_ends_at: timestamp("sale_ends_at"),
+  
+  // Special features
+  is_limited_edition: boolean("is_limited_edition").default(true), // Always true for monthly books
+  includes_exclusive_content: boolean("includes_exclusive_content").default(true),
+  bonus_features: jsonb("bonus_features").$type<string[]>().default([]), // Interactive elements, hidden content, etc.
+  
+  // Metadata
+  metadata_json: jsonb("metadata_json").$type<Record<string, any>>().default({}), // NFT metadata
+  traits: jsonb("traits").$type<Record<string, any>>().default({}), // NFT traits
+  
+  created_at: timestamp("created_at").defaultNow().notNull(),
+  updated_at: timestamp("updated_at").defaultNow().notNull(),
+}, (table) => [
+  index("idx_riddle_author_nft_books_month").on(table.book_month),
+  index("idx_riddle_author_nft_books_year").on(table.book_year),
+  index("idx_riddle_author_nft_books_status").on(table.generation_status),
+  index("idx_riddle_author_nft_books_publication").on(table.publication_status),
+  index("idx_riddle_author_nft_books_collection").on(table.collection_issuer, table.collection_taxon),
+  index("idx_riddle_author_nft_books_sale_dates").on(table.sale_starts_at, table.sale_ends_at),
+]);
+
+// RiddleAuthor Knowledge Base - AI learning and customer service data
+export const riddleAuthorKnowledgeBase = pgTable("riddle_author_knowledge_base", {
+  id: text("id").primaryKey().$defaultFn(() => crypto.randomUUID()),
+  
+  // Knowledge entry details
+  topic: text("topic").notNull(),
+  category: text("category").notNull(), // platform_features, nft_collections, troubleshooting, game_mechanics, user_guides
+  question: text("question").notNull(),
+  answer: text("answer").notNull(),
+  keywords: jsonb("keywords").$type<string[]>().default([]), // Search keywords
+  
+  // Source information
+  source_type: text("source_type").notNull(), // user_interaction, documentation, ai_discovery, manual_entry
+  source_conversation_id: text("source_conversation_id").references(() => riddleAuthorConversations.id),
+  source_user_handle: text("source_user_handle"),
+  learned_from_interaction: boolean("learned_from_interaction").default(false),
+  
+  // AI understanding metrics
+  confidence_score: decimal("confidence_score", { precision: 5, scale: 2 }).default("0.80"), // 0-1 confidence in accuracy
+  usage_count: integer("usage_count").default(0), // How many times this knowledge was used
+  success_rate: decimal("success_rate", { precision: 5, scale: 2 }).default("0.90"), // Success rate when used
+  
+  // Content management
+  status: text("status").default("active").notNull(), // active, review_needed, deprecated, archived
+  verified_by_human: boolean("verified_by_human").default(false),
+  last_updated_by: text("last_updated_by"), // Admin who last verified/updated
+  
+  // Tagging and organization
+  tags: jsonb("tags").$type<string[]>().default([]),
+  related_topics: jsonb("related_topics").$type<string[]>().default([]),
+  difficulty_level: integer("difficulty_level").default(1), // 1-5 complexity
+  
+  // Performance tracking
+  positive_feedback_count: integer("positive_feedback_count").default(0),
+  negative_feedback_count: integer("negative_feedback_count").default(0),
+  last_used_at: timestamp("last_used_at"),
+  
+  created_at: timestamp("created_at").defaultNow().notNull(),
+  updated_at: timestamp("updated_at").defaultNow().notNull(),
+}, (table) => [
+  index("idx_riddle_author_kb_topic").on(table.topic),
+  index("idx_riddle_author_kb_category").on(table.category),
+  index("idx_riddle_author_kb_source_type").on(table.source_type),
+  index("idx_riddle_author_kb_status").on(table.status),
+  index("idx_riddle_author_kb_confidence").on(table.confidence_score),
+  index("idx_riddle_author_kb_usage").on(table.usage_count),
+  index("idx_riddle_author_kb_last_used").on(table.last_used_at),
+]);
+
+// RiddleAuthor Game Events - AI-controlled game mechanics and events
+export const riddleAuthorGameEvents = pgTable("riddle_author_game_events", {
+  id: text("id").primaryKey().$defaultFn(() => crypto.randomUUID()),
+  
+  // Event identification
+  event_type: text("event_type").notNull(), // trolls_inquisition_start, collection_battle, bridge_mayhem, nft_discovery, level_up
+  event_name: text("event_name").notNull(),
+  event_description: text("event_description").notNull(),
+  
+  // Targeting and triggers
+  triggered_by: text("triggered_by").notNull(), // ai_decision, user_action, scheduled, market_condition, conversation
+  trigger_condition: text("trigger_condition"), // Specific condition that triggered this event
+  target_audience: text("target_audience").default("all").notNull(), // all, wallet_holders, collection_owners, active_users
+  specific_user_handle: text("specific_user_handle"), // If targeting specific user
+  specific_wallet_address: text("specific_wallet_address"), // If targeting specific wallet
+  
+  // Game mechanics
+  affects_game_state: boolean("affects_game_state").default(true),
+  game_state_changes: jsonb("game_state_changes").$type<Record<string, any>>().default({}),
+  rewards_rdl: boolean("rewards_rdl").default(false),
+  rdl_reward_amount: decimal("rdl_reward_amount", { precision: 20, scale: 8 }),
+  
+  // NFT and collection context
+  related_collections: jsonb("related_collections").$type<string[]>().default([]), // Collection issuers/taxons
+  promotes_nft_trading: boolean("promotes_nft_trading").default(false),
+  recommended_actions: jsonb("recommended_actions").$type<string[]>().default([]),
+  
+  // Event scheduling and lifecycle
+  status: text("status").default("planned").notNull(), // planned, active, completed, cancelled, failed
+  event_start_time: timestamp("event_start_time"),
+  event_end_time: timestamp("event_end_time"),
+  duration_minutes: integer("duration_minutes"),
+  
+  // AI narrative integration
+  narrative_content: text("narrative_content"), // AI-generated story content for this event
+  conversation_id: text("conversation_id").references(() => riddleAuthorConversations.id),
+  generates_story: boolean("generates_story").default(false),
+  story_id: text("story_id").references(() => riddleAuthorStories.id),
+  
+  // Social media integration
+  should_tweet: boolean("should_tweet").default(false),
+  tweet_id: text("tweet_id").references(() => riddleAuthorTweets.id),
+  tweet_content: text("tweet_content"),
+  
+  // Performance metrics
+  participant_count: integer("participant_count").default(0),
+  success_rate: decimal("success_rate", { precision: 5, scale: 2 }),
+  user_engagement_score: decimal("user_engagement_score", { precision: 5, scale: 2 }),
+  
+  // RTN transaction integration
+  involves_transactions: boolean("involves_transactions").default(false),
+  rtn_transaction_ids: jsonb("rtn_transaction_ids").$type<string[]>().default([]),
+  
+  created_at: timestamp("created_at").defaultNow().notNull(),
+  updated_at: timestamp("updated_at").defaultNow().notNull(),
+}, (table) => [
+  index("idx_riddle_author_game_events_type").on(table.event_type),
+  index("idx_riddle_author_game_events_triggered_by").on(table.triggered_by),
+  index("idx_riddle_author_game_events_status").on(table.status),
+  index("idx_riddle_author_game_events_target").on(table.target_audience),
+  index("idx_riddle_author_game_events_user").on(table.specific_user_handle),
+  index("idx_riddle_author_game_events_wallet").on(table.specific_wallet_address),
+  index("idx_riddle_author_game_events_start_time").on(table.event_start_time),
+  index("idx_riddle_author_game_events_end_time").on(table.event_end_time),
+]);
+
+// RiddleAuthor Personality - AI personality traits and learning evolution
+export const riddleAuthorPersonality = pgTable("riddle_author_personality", {
+  id: text("id").primaryKey().$defaultFn(() => crypto.randomUUID()),
+  
+  // Personality configuration
+  personality_name: text("personality_name").notNull().default("RiddleAuthor"), // Name of this AI personality
+  personality_version: text("personality_version").notNull().default("1.0"), // Version tracking
+  base_personality: text("base_personality").notNull().default("engaging_narrator"), // Base template
+  
+  // Core traits (0-100 scale)
+  engagement_level: integer("engagement_level").default(85), // How engaging and interactive
+  formality_level: integer("formality_level").default(30), // Professional vs casual
+  humor_level: integer("humor_level").default(70), // Amount of humor used
+  mystery_level: integer("mystery_level").default(60), // Mysterious vs straightforward
+  helpfulness_level: integer("helpfulness_level").default(90), // Customer service focus
+  
+  // Gaming-specific traits
+  game_master_mode: boolean("game_master_mode").default(true), // Acts as game master
+  narrative_focus: integer("narrative_focus").default(80), // Story-telling emphasis
+  collection_knowledge: integer("collection_knowledge").default(95), // NFT collection expertise
+  trading_guidance: integer("trading_guidance").default(75), // Trading advice level
+  
+  // Learning and adaptation
+  learns_from_interactions: boolean("learns_from_interactions").default(true),
+  adaptation_rate: decimal("adaptation_rate", { precision: 5, scale: 2 }).default("0.10"), // How quickly personality adapts
+  interaction_count: integer("interaction_count").default(0), // Total interactions
+  positive_feedback_ratio: decimal("positive_feedback_ratio", { precision: 5, scale: 2 }).default("0.85"),
+  
+  // Response patterns
+  preferred_response_length: text("preferred_response_length").default("medium"), // short, medium, long, adaptive
+  uses_emojis: boolean("uses_emojis").default(true),
+  includes_questions: boolean("includes_questions").default(true), // Asks follow-up questions
+  suggests_actions: boolean("suggests_actions").default(true), // Suggests NFT trades, etc.
+  
+  // Context awareness
+  remembers_user_preferences: boolean("remembers_user_preferences").default(true),
+  tracks_user_collections: boolean("tracks_user_collections").default(true),
+  monitors_market_conditions: boolean("monitors_market_conditions").default(true),
+  adapts_to_conversation_flow: boolean("adapts_to_conversation_flow").default(true),
+  
+  // Special modes and triggers
+  trolls_inquisition_mode: boolean("trolls_inquisition_mode").default(true), // Gaming mode active
+  customer_service_priority: boolean("customer_service_priority").default(false), // Prioritize support
+  twitter_integration_active: boolean("twitter_integration_active").default(true),
+  story_generation_enabled: boolean("story_generation_enabled").default(true),
+  
+  // Performance and effectiveness
+  conversation_success_rate: decimal("conversation_success_rate", { precision: 5, scale: 2 }).default("0.88"),
+  average_conversation_length: integer("average_conversation_length").default(12), // Messages per conversation
+  user_retention_rate: decimal("user_retention_rate", { precision: 5, scale: 2 }).default("0.75"),
+  knowledge_accuracy_score: decimal("knowledge_accuracy_score", { precision: 5, scale: 2 }).default("0.92"),
+  
+  // Active status
+  is_active: boolean("is_active").default(true),
+  last_interaction_at: timestamp("last_interaction_at"),
+  
+  created_at: timestamp("created_at").defaultNow().notNull(),
+  updated_at: timestamp("updated_at").defaultNow().notNull(),
+}, (table) => [
+  index("idx_riddle_author_personality_name").on(table.personality_name),
+  index("idx_riddle_author_personality_version").on(table.personality_version),
+  index("idx_riddle_author_personality_active").on(table.is_active),
+  index("idx_riddle_author_personality_last_interaction").on(table.last_interaction_at),
+]);
+
+// RiddleAuthor RTN Transactions - Integration with the RTN transaction system
+export const riddleAuthorRtnTransactions = pgTable("riddle_author_rtn_transactions", {
+  id: text("id").primaryKey().$defaultFn(() => crypto.randomUUID()),
+  
+  // RTN system integration
+  rtn_number: text("rtn_number").notNull().unique(), // RTN-YYYYMMDD-<ULID> format
+  original_transaction_id: text("original_transaction_id"), // Reference to original transaction
+  
+  // AI involvement
+  ai_initiated: boolean("ai_initiated").default(false), // Was this transaction suggested by AI
+  ai_conversation_id: text("ai_conversation_id").references(() => riddleAuthorConversations.id),
+  ai_message_id: text("ai_message_id").references(() => riddleAuthorMessages.id),
+  ai_recommendation_type: text("ai_recommendation_type"), // buy_suggestion, sell_suggestion, bridge_recommendation, collection_switch
+  
+  // User and transaction details
+  user_handle: text("user_handle"), // Riddle wallet handle
+  wallet_address: text("wallet_address").notNull(),
+  transaction_type: text("transaction_type").notNull(), // nft_purchase, nft_sale, bridge_transfer, collection_trade
+  
+  // Transaction data
+  source_chain: text("source_chain").notNull(), // xrp, eth, sol, bnb, base, etc.
+  target_chain: text("target_chain"), // For bridge transactions
+  amount: decimal("amount", { precision: 20, scale: 8 }),
+  token_symbol: text("token_symbol"),
+  
+  // NFT specific details
+  nft_collection_issuer: text("nft_collection_issuer"),
+  nft_collection_taxon: integer("nft_collection_taxon"),
+  nft_token_id: text("nft_token_id"),
+  nft_metadata: jsonb("nft_metadata").$type<Record<string, any>>().default({}),
+  
+  // Transaction status tracking
+  status: text("status").default("pending").notNull(), // pending, processing, completed, failed, cancelled
+  transaction_hash: text("transaction_hash"),
+  block_height: text("block_height"),
+  confirmations: integer("confirmations").default(0),
+  
+  // AI narrative integration
+  generates_story_content: boolean("generates_story_content").default(false),
+  story_fragment: text("story_fragment"), // AI-generated story content about this transaction
+  adds_to_user_journey: boolean("adds_to_user_journey").default(true),
+  
+  // Game progression
+  affects_game_state: boolean("affects_game_state").default(false),
+  game_points_awarded: integer("game_points_awarded").default(0),
+  unlocks_game_content: boolean("unlocks_game_content").default(false),
+  unlocked_content_type: text("unlocked_content_type"), // new_level, special_story, exclusive_access
+  
+  // Performance tracking
+  ai_prediction_accuracy: decimal("ai_prediction_accuracy", { precision: 5, scale: 2 }), // If AI predicted outcome
+  user_satisfaction_score: integer("user_satisfaction_score"), // 1-5 scale
+  contributed_to_learning: boolean("contributed_to_learning").default(true),
+  
+  created_at: timestamp("created_at").defaultNow().notNull(),
+  updated_at: timestamp("updated_at").defaultNow().notNull(),
+}, (table) => [
+  index("idx_riddle_author_rtn_number").on(table.rtn_number),
+  index("idx_riddle_author_rtn_user").on(table.user_handle),
+  index("idx_riddle_author_rtn_wallet").on(table.wallet_address),
+  index("idx_riddle_author_rtn_conversation").on(table.ai_conversation_id),
+  index("idx_riddle_author_rtn_type").on(table.transaction_type),
+  index("idx_riddle_author_rtn_status").on(table.status),
+  index("idx_riddle_author_rtn_ai_initiated").on(table.ai_initiated),
+  index("idx_riddle_author_rtn_collection").on(table.nft_collection_issuer, table.nft_collection_taxon),
+]);
+
+// Support Ticket System Tables for Customer Service
+// ==========================================
+
+// Support tickets for customer service with privacy controls
+export const supportTickets = pgTable("support_tickets", {
+  id: text("id").primaryKey().$defaultFn(() => crypto.randomUUID()),
+  ticket_number: serial("ticket_number"), // Human-readable ticket number
+  
+  // Customer information
+  customer_handle: text("customer_handle").notNull(), // User handle (authenticated)
+  customer_id: text("customer_id"), // Optional additional customer ID
+  contact_email: text("contact_email"), // Optional email for updates
+  
+  // Ticket details
+  title: text("title").notNull(),
+  description: text("description").notNull(),
+  category: text("category").default("general").notNull(), // general, technical, billing, account, nft, trading
+  priority: text("priority").default("medium").notNull(), // low, medium, high, urgent, critical
+  status: text("status").default("open").notNull(), // open, in_progress, waiting_customer, resolved, closed
+  
+  // Privacy and visibility
+  visibility: text("visibility").default("private").notNull(), // private, internal_only, admin_only
+  is_public: boolean("is_public").default(false), // Never show to other customers
+  
+  // Assignment and routing
+  assigned_admin_id: text("assigned_admin_id"), // Which admin is handling this
+  assigned_admin_handle: text("assigned_admin_handle"), // Admin handle for easy reference
+  department: text("department").default("general").notNull(), // general, technical, billing, compliance
+  
+  // AI and automation
+  ai_conversation_id: text("ai_conversation_id").references(() => riddleAuthorConversations.id), // Link to Oracle conversation
+  ai_classification: text("ai_classification"), // AI-detected category/intent
+  ai_sentiment: text("ai_sentiment"), // positive, neutral, negative, frustrated
+  auto_resolved: boolean("auto_resolved").default(false), // Was this resolved by AI?
+  
+  // SLA and tracking
+  response_due_at: timestamp("response_due_at"), // When response is due
+  resolution_due_at: timestamp("resolution_due_at"), // When resolution is due
+  first_response_at: timestamp("first_response_at"), // When first admin response was sent
+  resolved_at: timestamp("resolved_at"), // When ticket was marked resolved
+  
+  // Metadata
+  source: text("source").default("chat").notNull(), // chat, email, web_form, api, auto_detected
+  tags: jsonb("tags").$type<string[]>().default([]), // Custom tags for organization
+  internal_notes: text("internal_notes"), // Admin-only notes
+  customer_satisfaction: integer("customer_satisfaction"), // 1-5 rating after resolution
+  
+  created_at: timestamp("created_at").defaultNow().notNull(),
+  updated_at: timestamp("updated_at").defaultNow().notNull(),
+}, (table) => [
+  index("idx_support_tickets_customer").on(table.customer_handle),
+  index("idx_support_tickets_status").on(table.status),
+  index("idx_support_tickets_priority").on(table.priority),
+  index("idx_support_tickets_assigned").on(table.assigned_admin_id),
+  index("idx_support_tickets_category").on(table.category),
+  index("idx_support_tickets_visibility").on(table.visibility),
+  index("idx_support_tickets_ai_conversation").on(table.ai_conversation_id),
+  index("idx_support_tickets_response_due").on(table.response_due_at),
+  index("idx_support_tickets_created").on(table.created_at),
+  uniqueIndex("idx_support_tickets_number").on(table.ticket_number),
+]);
+
+// Messages within support tickets (private customer service communication)
+export const ticketMessages = pgTable("ticket_messages", {
+  id: text("id").primaryKey().$defaultFn(() => crypto.randomUUID()),
+  ticket_id: text("ticket_id").notNull().references(() => supportTickets.id, { onDelete: "cascade" }),
+  
+  // Message details
+  content: text("content").notNull(),
+  message_type: text("message_type").default("text").notNull(), // text, attachment, system_note, auto_response
+  
+  // Sender information
+  sender_type: text("sender_type").notNull(), // customer, admin, ai, system
+  sender_handle: text("sender_handle"), // Handle of sender
+  sender_id: text("sender_id"), // ID of sender
+  sender_name: text("sender_name"), // Display name
+  
+  // Privacy and visibility 
+  visibility: text("visibility").default("private").notNull(), // private, admin_only, internal_only
+  is_internal: boolean("is_internal").default(false), // Admin-only internal communication
+  
+  // AI integration
+  ai_generated: boolean("ai_generated").default(false), // Was this generated by AI?
+  ai_confidence: decimal("ai_confidence", { precision: 3, scale: 2 }), // 0.00-1.00 confidence in AI response
+  reviewed_by_human: boolean("reviewed_by_human").default(false), // Has admin reviewed this AI response?
+  
+  // Attachments and metadata
+  attachments: jsonb("attachments").$type<Array<{name: string, url: string, type: string, size: number}>>().default([]),
+  metadata: jsonb("metadata").$type<Record<string, any>>().default({}),
+  
+  // Status tracking
+  is_response_to_customer: boolean("is_response_to_customer").default(false), // Counts towards SLA
+  triggers_notification: boolean("triggers_notification").default(true), // Should notify customer/admin
+  
+  created_at: timestamp("created_at").defaultNow().notNull(),
+  updated_at: timestamp("updated_at").defaultNow().notNull(),
+}, (table) => [
+  index("idx_ticket_messages_ticket").on(table.ticket_id),
+  index("idx_ticket_messages_sender").on(table.sender_type, table.sender_handle),
+  index("idx_ticket_messages_visibility").on(table.visibility),
+  index("idx_ticket_messages_created").on(table.created_at),
+  index("idx_ticket_messages_ai").on(table.ai_generated),
+  index("idx_ticket_messages_response").on(table.is_response_to_customer),
+]);
+
+// Admin staff management for customer service
+export const supportAdmins = pgTable("support_admins", {
+  id: text("id").primaryKey().$defaultFn(() => crypto.randomUUID()),
+  
+  // Admin details
+  admin_handle: text("admin_handle").notNull().unique(), // Their user handle
+  admin_name: text("admin_name"), // Display name
+  email: text("email"), // Contact email
+  
+  // Permissions and roles
+  role: text("role").default("agent").notNull(), // agent, supervisor, manager, admin
+  departments: jsonb("departments").$type<string[]>().default(["general"]), // Which departments they handle
+  permissions: jsonb("permissions").$type<string[]>().default([]), // Specific permissions
+  
+  // Availability and status
+  status: text("status").default("available").notNull(), // available, busy, away, offline
+  max_concurrent_tickets: integer("max_concurrent_tickets").default(10),
+  current_ticket_count: integer("current_ticket_count").default(0),
+  
+  // Performance tracking
+  total_tickets_handled: integer("total_tickets_handled").default(0),
+  average_response_time: integer("average_response_time"), // In minutes
+  customer_satisfaction_avg: decimal("customer_satisfaction_avg", { precision: 3, scale: 2 }),
+  
+  // Settings
+  auto_assign: boolean("auto_assign").default(true), // Should receive auto-assigned tickets
+  notification_preferences: jsonb("notification_preferences").$type<Record<string, boolean>>().default({}),
+  
+  created_at: timestamp("created_at").defaultNow().notNull(),
+  updated_at: timestamp("updated_at").defaultNow().notNull(),
+  last_activity: timestamp("last_activity").defaultNow().notNull(),
+}, (table) => [
+  index("idx_support_admins_handle").on(table.admin_handle),
+  index("idx_support_admins_status").on(table.status),
+  index("idx_support_admins_role").on(table.role),
+  index("idx_support_admins_auto_assign").on(table.auto_assign),
+]);
+
+// Relations for RiddleAuthor tables
+export const riddleAuthorConversationsRelations = relations(riddleAuthorConversations, ({ many }) => ({
+  messages: many(riddleAuthorMessages),
+  gameEvents: many(riddleAuthorGameEvents),
+  rtnTransactions: many(riddleAuthorRtnTransactions),
+}));
+
+export const riddleAuthorMessagesRelations = relations(riddleAuthorMessages, ({ one }) => ({
+  conversation: one(riddleAuthorConversations, {
+    fields: [riddleAuthorMessages.conversation_id],
+    references: [riddleAuthorConversations.id],
+  }),
+  tweet: one(riddleAuthorTweets, {
+    fields: [riddleAuthorMessages.tweet_id],
+    references: [riddleAuthorTweets.id],
+  }),
+}));
+
+export const riddleAuthorStoriesRelations = relations(riddleAuthorStories, ({ one, many }) => ({
+  nftBook: one(riddleAuthorNftBooks, {
+    fields: [riddleAuthorStories.belongs_to_nft_book],
+    references: [riddleAuthorNftBooks.id],
+  }),
+  tweet: one(riddleAuthorTweets, {
+    fields: [riddleAuthorStories.tweet_id],
+    references: [riddleAuthorTweets.id],
+  }),
+  gameEvents: many(riddleAuthorGameEvents),
+}));
+
+export const riddleAuthorTweetsRelations = relations(riddleAuthorTweets, ({ one }) => ({
+  story: one(riddleAuthorStories, {
+    fields: [riddleAuthorTweets.story_id],
+    references: [riddleAuthorStories.id],
+  }),
+  conversation: one(riddleAuthorConversations, {
+    fields: [riddleAuthorTweets.conversation_id],
+    references: [riddleAuthorConversations.id],
+  }),
+}));
+
+export const riddleAuthorNftBooksRelations = relations(riddleAuthorNftBooks, ({ many }) => ({
+  stories: many(riddleAuthorStories),
+}));
+
+export const riddleAuthorKnowledgeBaseRelations = relations(riddleAuthorKnowledgeBase, ({ one }) => ({
+  sourceConversation: one(riddleAuthorConversations, {
+    fields: [riddleAuthorKnowledgeBase.source_conversation_id],
+    references: [riddleAuthorConversations.id],
+  }),
+}));
+
+export const riddleAuthorGameEventsRelations = relations(riddleAuthorGameEvents, ({ one }) => ({
+  conversation: one(riddleAuthorConversations, {
+    fields: [riddleAuthorGameEvents.conversation_id],
+    references: [riddleAuthorConversations.id],
+  }),
+  story: one(riddleAuthorStories, {
+    fields: [riddleAuthorGameEvents.story_id],
+    references: [riddleAuthorStories.id],
+  }),
+  tweet: one(riddleAuthorTweets, {
+    fields: [riddleAuthorGameEvents.tweet_id],
+    references: [riddleAuthorTweets.id],
+  }),
+}));
+
+export const riddleAuthorRtnTransactionsRelations = relations(riddleAuthorRtnTransactions, ({ one }) => ({
+  conversation: one(riddleAuthorConversations, {
+    fields: [riddleAuthorRtnTransactions.ai_conversation_id],
+    references: [riddleAuthorConversations.id],
+  }),
+  message: one(riddleAuthorMessages, {
+    fields: [riddleAuthorRtnTransactions.ai_message_id],
+    references: [riddleAuthorMessages.id],
+  }),
+}));
+
+// Relations for Support Ticket System
+export const supportTicketsRelations = relations(supportTickets, ({ many, one }) => ({
+  messages: many(ticketMessages),
+  aiConversation: one(riddleAuthorConversations, {
+    fields: [supportTickets.ai_conversation_id],
+    references: [riddleAuthorConversations.id],
+  }),
+  assignedAdmin: one(supportAdmins, {
+    fields: [supportTickets.assigned_admin_handle],
+    references: [supportAdmins.admin_handle],
+  }),
+}));
+
+export const ticketMessagesRelations = relations(ticketMessages, ({ one }) => ({
+  ticket: one(supportTickets, {
+    fields: [ticketMessages.ticket_id],
+    references: [supportTickets.id],
+  }),
+}));
+
+export const supportAdminsRelations = relations(supportAdmins, ({ many }) => ({
+  assignedTickets: many(supportTickets),
+}));
+
+// Insert schemas for RiddleAuthor tables
+export const insertRiddleAuthorConversationSchema = createInsertSchema(riddleAuthorConversations).omit(['id', 'created_at', 'updated_at']);
+
+export const insertRiddleAuthorMessageSchema = createInsertSchema(riddleAuthorMessages).omit(['id', 'created_at']);
+
+export const insertRiddleAuthorStorySchema = createInsertSchema(riddleAuthorStories).omit(['id', 'created_at', 'updated_at']);
+
+export const insertRiddleAuthorTweetSchema = createInsertSchema(riddleAuthorTweets).omit(['id', 'created_at', 'updated_at']);
+
+export const insertRiddleAuthorNftBookSchema = createInsertSchema(riddleAuthorNftBooks).omit(['id', 'created_at', 'updated_at']);
+
+export const insertRiddleAuthorKnowledgeBaseSchema = createInsertSchema(riddleAuthorKnowledgeBase).omit(['id', 'created_at', 'updated_at']);
+
+export const insertRiddleAuthorGameEventSchema = createInsertSchema(riddleAuthorGameEvents).omit(['id', 'created_at', 'updated_at']);
+
+export const insertRiddleAuthorPersonalitySchema = createInsertSchema(riddleAuthorPersonality).omit(['id', 'created_at', 'updated_at']);
+
+export const insertRiddleAuthorRtnTransactionSchema = createInsertSchema(riddleAuthorRtnTransactions).omit(['id', 'created_at', 'updated_at']);
+
+// TypeScript types for RiddleAuthor system
+export type RiddleAuthorConversation = typeof riddleAuthorConversations.$inferSelect;
+export type InsertRiddleAuthorConversation = z.infer<typeof insertRiddleAuthorConversationSchema>;
+export type RiddleAuthorMessage = typeof riddleAuthorMessages.$inferSelect;
+export type InsertRiddleAuthorMessage = z.infer<typeof insertRiddleAuthorMessageSchema>;
+export type RiddleAuthorStory = typeof riddleAuthorStories.$inferSelect;
+export type InsertRiddleAuthorStory = z.infer<typeof insertRiddleAuthorStorySchema>;
+export type RiddleAuthorTweet = typeof riddleAuthorTweets.$inferSelect;
+export type InsertRiddleAuthorTweet = z.infer<typeof insertRiddleAuthorTweetSchema>;
+export type RiddleAuthorNftBook = typeof riddleAuthorNftBooks.$inferSelect;
+export type InsertRiddleAuthorNftBook = z.infer<typeof insertRiddleAuthorNftBookSchema>;
+export type RiddleAuthorKnowledgeBase = typeof riddleAuthorKnowledgeBase.$inferSelect;
+export type InsertRiddleAuthorKnowledgeBase = z.infer<typeof insertRiddleAuthorKnowledgeBaseSchema>;
+export type RiddleAuthorGameEvent = typeof riddleAuthorGameEvents.$inferSelect;
+export type InsertRiddleAuthorGameEvent = z.infer<typeof insertRiddleAuthorGameEventSchema>;
+export type RiddleAuthorPersonality = typeof riddleAuthorPersonality.$inferSelect;
+export type InsertRiddleAuthorPersonality = z.infer<typeof insertRiddleAuthorPersonalitySchema>;
+export type RiddleAuthorRtnTransaction = typeof riddleAuthorRtnTransactions.$inferSelect;
+export type InsertRiddleAuthorRtnTransaction = z.infer<typeof insertRiddleAuthorRtnTransactionSchema>;
+
+// Insert schemas for Support Ticket System
+export const insertSupportTicketSchema = createInsertSchema(supportTickets).omit(['id', 'ticket_number', 'created_at', 'updated_at']);
+
+export const insertTicketMessageSchema = createInsertSchema(ticketMessages).omit(['id', 'created_at', 'updated_at']);
+
+export const insertSupportAdminSchema = createInsertSchema(supportAdmins).omit(['id', 'created_at', 'updated_at', 'last_activity']);
+
+// TypeScript types for Support Ticket System
+export type SupportTicket = typeof supportTickets.$inferSelect;
+export type InsertSupportTicket = z.infer<typeof insertSupportTicketSchema>;
+export type TicketMessage = typeof ticketMessages.$inferSelect;
+export type InsertTicketMessage = z.infer<typeof insertTicketMessageSchema>;
+export type SupportAdmin = typeof supportAdmins.$inferSelect;
+export type InsertSupportAdmin = z.infer<typeof insertSupportAdminSchema>;
+
+// Pantheon Relations (Self-referential)
+export const pantheonDefinitionsRelations = relations(pantheonDefinitions, ({ one, many }) => ({
+  prerequisitePantheonRef: one(pantheonDefinitions, {
+    fields: [pantheonDefinitions.prerequisitePantheon],
+    references: [pantheonDefinitions.id],
+    relationName: "prerequisite"
+  }),
+  dependentPantheons: many(pantheonDefinitions, {
+    relationName: "prerequisite"
+  }),
+  playerReligions: many(playerReligion),
+}));
+
+export const playerReligionRelations = relations(playerReligion, ({ one }) => ({
+  player: one(gamePlayers, {
+    fields: [playerReligion.playerId],
+    references: [gamePlayers.id],
+  }),
+  pantheon: one(pantheonDefinitions, {
+    fields: [playerReligion.pantheonId],
+    references: [pantheonDefinitions.id],
+  }),
+}));
+
+// ==========================================
+// THE INQUIRY COLLECTION & ARMY SYSTEM EXTENSIONS
+// ==========================================
+
+// Army divisions - Subdivisions within armies for better organization
+export const armyDivisions = pgTable("army_divisions", {
+  id: text("id").primaryKey().$defaultFn(() => crypto.randomUUID()),
+  armyId: text("army_id").notNull().references(() => militaryArmies.id, { onDelete: "cascade" }),
+  playerId: text("player_id").notNull().references(() => gamingPlayers.id, { onDelete: "cascade" }),
+  
+  // Division identity
+  name: text("name").notNull(), // "Alpha Squad", "Recon Division", "Heavy Artillery"
+  divisionType: text("division_type").default("standard"), // standard, special_ops, recon, siege, guardian
+  
+  // Combat specialization
+  specialization: text("specialization"), // "assault", "defense", "stealth", "support", "command"
+  maxUnits: integer("max_units").default(10), // Maximum NFTs that can be assigned
+  currentUnits: integer("current_units").default(0), // Currently assigned NFTs
+  
+  // Combat stats (calculated from assigned NFTs)
+  totalAttack: integer("total_attack").default(0),
+  totalDefense: integer("total_defense").default(0),
+  totalSpecialPower: integer("total_special_power").default(0),
+  
+  // Division bonuses and modifiers
+  teamBonuses: jsonb("team_bonuses").$type<Record<string, any>>().default({}),
+  activeAddons: jsonb("active_addons").$type<Array<string>>().default([]),
+  
+  // Status and deployment
+  status: text("status").default("ready"), // ready, deployed, training, recovering
+  lastDeployedAt: timestamp("last_deployed_at"),
+  experiencePoints: integer("experience_points").default(0),
+  
+  createdAt: timestamp("created_at").defaultNow().notNull(),
+  updatedAt: timestamp("updated_at").defaultNow().notNull(),
+}, (table) => [
+  index("idx_army_divisions_army").on(table.armyId),
+  index("idx_army_divisions_player").on(table.playerId),
+  index("idx_army_divisions_type").on(table.divisionType),
+  index("idx_army_divisions_status").on(table.status),
+]);
+
+// The Inquiry NFT collection specific data
+export const inquiryNftCollection = pgTable("inquiry_nft_collection", {
+  id: text("id").primaryKey().$defaultFn(() => crypto.randomUUID()),
+  
+  // XRPL Collection data
+  issuerAddress: text("issuer_address").notNull().default("rGDJxq11nj6gstTrUKND3NtAaLtSUGqvDY"), // The Inquiry issuer
+  taxon: integer("taxon").default(0), // XRPL taxon for The Inquiry
+  totalSupply: integer("total_supply").default(123), // 123 total NFTs
+  
+  // Collection metadata
+  collectionName: text("collection_name").default("The Inquiry"),
+  description: text("description").default("What makes a riddle? What makes us ask? Explore the mystery together as we journey through a vibrantly abstract and absurdist tale of the riddle and the blockchain. 123 unique AI rendered NFTs."),
+  website: text("website").default("https://riddlechain.io/"),
+  xrpCafeUrl: text("xrp_cafe_url").default("https://xrp.cafe/collection/the-inquiry"),
+  
+  // Game integration
+  gameRole: text("game_role").default("special_ops"), // special role for The Inquiry
+  baseAttackPower: integer("base_attack_power").default(75),
+  baseDefensePower: integer("base_defense_power").default(60),
+  specialAbilityType: text("special_ability_type").default("mystery_sight"), // unique ability
+  
+  // Verification status
+  verified: boolean("verified").default(true),
+  metadataIngested: boolean("metadata_ingested").default(false),
+  lastScanAt: timestamp("last_scan_at"),
+  
+  createdAt: timestamp("created_at").defaultNow().notNull(),
+  updatedAt: timestamp("updated_at").defaultNow().notNull(),
+}, (table) => [
+  index("idx_inquiry_collection_issuer").on(table.issuerAddress),
+  index("idx_inquiry_collection_verified").on(table.verified),
+]);
+
+// Individual Inquiry NFTs with detailed metadata
+export const inquiryNfts = pgTable("inquiry_nfts", {
+  id: text("id").primaryKey().$defaultFn(() => crypto.randomUUID()),
+  collectionId: text("collection_id").references(() => inquiryNftCollection.id, { onDelete: "cascade" }).notNull(),
+  
+  // XRPL NFT identification
+  nftTokenId: text("nft_token_id").notNull().unique(), // Full XRPL NFTokenID
+  tokenSequence: bigint("token_sequence", { mode: "number" }), // NFT sequence number
+  
+  // NFT metadata from xrp.cafe
+  name: text("name").notNull(), // "Promethean", "Breathe", "Join Me", etc.
+  description: text("description"),
+  imageUrl: text("image_url"), // CDN image URL
+  
+  // Rarity and market data
+  rarityRank: integer("rarity_rank"), // 1-123 ranking
+  floorPrice: decimal("floor_price", { precision: 10, scale: 2 }), // XRP price
+  currentPrice: decimal("current_price", { precision: 10, scale: 2 }), // Current listing price
+  
+  // Game stats and abilities
+  attackPower: integer("attack_power").default(0), // Base + bonuses
+  defensePower: integer("defense_power").default(0), // Base + bonuses  
+  specialPower: integer("special_power").default(0), // Mystery/psychic abilities
+  mysteryLevel: integer("mystery_level").default(1), // 1-10 scale for The Inquiry theme
+  
+  // NFT traits and attributes
+  traits: jsonb("traits").$type<Record<string, any>>().default({}),
+  artStyle: text("art_style"), // Abstract, surreal, etc. from metadata
+  colorPalette: text("color_palette"), // Dominant colors
+  complexityScore: integer("complexity_score").default(1), // 1-10 visual complexity
+  
+  // Ownership and allocation
+  currentOwner: text("current_owner"), // XRPL address
+  assignedToArmyId: text("assigned_to_army_id").references(() => militaryArmies.id, { onDelete: "set null" }),
+  assignedToDivisionId: text("assigned_to_division_id").references(() => armyDivisions.id, { onDelete: "set null" }),
+  allocationStatus: text("allocation_status").default("unassigned"), // unassigned, assigned, deployed, reserve
+  
+  // Enhancement system
+  enhancementLevel: integer("enhancement_level").default(0), // 0-5 upgrade levels
+  activeAddons: jsonb("active_addons").$type<Array<string>>().default([]),
+  addonSlots: integer("addon_slots").default(3), // Available addon slots
+  
+  // Metadata tracking
+  metadataLastUpdated: timestamp("metadata_last_updated"),
+  ownershipLastVerified: timestamp("ownership_last_verified"),
+  
+  createdAt: timestamp("created_at").defaultNow().notNull(),
+  updatedAt: timestamp("updated_at").defaultNow().notNull(),
+}, (table) => [
+  index("idx_inquiry_nfts_token_id").on(table.nftTokenId),
+  index("idx_inquiry_nfts_collection").on(table.collectionId),
+  index("idx_inquiry_nfts_owner").on(table.currentOwner),
+  index("idx_inquiry_nfts_army").on(table.assignedToArmyId),
+  index("idx_inquiry_nfts_division").on(table.assignedToDivisionId),
+  index("idx_inquiry_nfts_rarity").on(table.rarityRank),
+  index("idx_inquiry_nfts_allocation").on(table.allocationStatus),
+]);
+
+// NFT Addons and Enhancement System
+export const nftAddons = pgTable("nft_addons", {
+  id: text("id").primaryKey().$defaultFn(() => crypto.randomUUID()),
+  
+  // Addon definition
+  addonName: text("addon_name").notNull().unique(), // "Mystical Sight", "Battle Hardened", "Ancient Wisdom"
+  addonType: text("addon_type").notNull(), // "combat", "utility", "special", "cosmetic"
+  description: text("description").notNull(),
+  
+  // Requirements and compatibility
+  compatibleCollections: text("compatible_collections").array().default(["inquiry"]), // Which collections can use this
+  minimumRarity: integer("minimum_rarity"), // Minimum rarity rank required
+  levelRequirement: integer("level_requirement").default(1), // Enhancement level needed
+  
+  // Stat bonuses
+  attackBonus: integer("attack_bonus").default(0),
+  defenseBonus: integer("defense_bonus").default(0),
+  specialBonus: integer("special_bonus").default(0),
+  mysteryBonus: integer("mystery_bonus").default(0),
+  
+  // Special effects
+  specialEffect: text("special_effect"), // JSON string of special abilities
+  effectTrigger: text("effect_trigger"), // "combat", "defense", "passive", "active"
+  cooldownMinutes: integer("cooldown_minutes").default(0), // For active abilities
+  
+  // Acquisition and cost
+  acquisitionMethod: text("acquisition_method").default("craft"), // "craft", "drop", "purchase", "quest"
+  costXrp: decimal("cost_xrp", { precision: 10, scale: 2 }), // XRP cost if purchasable
+  craftingMaterials: jsonb("crafting_materials").$type<Record<string, number>>().default({}),
+  
+  // Availability
+  isActive: boolean("is_active").default(true),
+  isRare: boolean("is_rare").default(false),
+  maxQuantity: integer("max_quantity"), // null = unlimited
+  currentQuantity: integer("current_quantity").default(0),
+  
+  createdAt: timestamp("created_at").defaultNow().notNull(),
+  updatedAt: timestamp("updated_at").defaultNow().notNull(),
+}, (table) => [
+  index("idx_nft_addons_name").on(table.addonName),
+  index("idx_nft_addons_type").on(table.addonType),
+  index("idx_nft_addons_active").on(table.isActive),
+  index("idx_nft_addons_collections").on(table.compatibleCollections),
+]);
+
+// NFT Addon Assignments - Track which addons are equipped to which NFTs
+export const nftAddonAssignments = pgTable("nft_addon_assignments", {
+  id: text("id").primaryKey().$defaultFn(() => crypto.randomUUID()),
+  
+  // Assignment relationships
+  nftId: text("nft_id").references(() => inquiryNfts.id, { onDelete: "cascade" }).notNull(),
+  addonId: text("addon_id").references(() => nftAddons.id, { onDelete: "cascade" }).notNull(),
+  playerId: text("player_id").references(() => gamingPlayers.id, { onDelete: "cascade" }).notNull(),
+  
+  // Assignment details
+  slotNumber: integer("slot_number").notNull(), // 1, 2, 3 for the 3 addon slots
+  isActive: boolean("is_active").default(true),
+  
+  // Applied bonuses (calculated when equipped)
+  appliedAttackBonus: integer("applied_attack_bonus").default(0),
+  appliedDefenseBonus: integer("applied_defense_bonus").default(0),
+  appliedSpecialBonus: integer("applied_special_bonus").default(0),
+  
+  // Usage tracking
+  timesActivated: integer("times_activated").default(0),
+  lastActivatedAt: timestamp("last_activated_at"),
+  totalDamageDealt: bigint("total_damage_dealt", { mode: "number" }).default(0),
+  totalDamageMitigated: bigint("total_damage_mitigated", { mode: "number" }).default(0),
+  
+  assignedAt: timestamp("assigned_at").defaultNow().notNull(),
+  unassignedAt: timestamp("unassigned_at"),
+  
+  createdAt: timestamp("created_at").defaultNow().notNull(),
+}, (table) => [
+  index("idx_nft_addon_assignments_nft").on(table.nftId),
+  index("idx_nft_addon_assignments_addon").on(table.addonId),
+  index("idx_nft_addon_assignments_player").on(table.playerId),
+  index("idx_nft_addon_assignments_active").on(table.isActive),
+  // Unique constraint: One addon per slot per NFT
+  uniqueIndex("idx_nft_addon_assignments_unique_slot").on(table.nftId, table.slotNumber, table.isActive).where(sql`${table.isActive} = true`),
+]);
+
+// Insert schemas for new tables
+export const insertArmyDivisionSchema = createInsertSchema(armyDivisions).omit(['id', 'currentUnits', 'totalAttack', 'totalDefense', 'totalSpecialPower', 'experiencePoints', 'createdAt', 'updatedAt']);
+
+export const insertInquiryNftCollectionSchema = createInsertSchema(inquiryNftCollection).omit(['id', 'createdAt', 'updatedAt']);
+
+export const insertInquiryNftSchema = createInsertSchema(inquiryNfts).omit(['id', 'attackPower', 'defensePower', 'specialPower', 'enhancementLevel', 'createdAt', 'updatedAt']);
+
+export const insertNftAddonSchema = createInsertSchema(nftAddons).omit(['id', 'currentQuantity', 'createdAt', 'updatedAt']);
+
+export const insertNftAddonAssignmentSchema = createInsertSchema(nftAddonAssignments).omit(['id', 'appliedAttackBonus', 'appliedDefenseBonus', 'appliedSpecialBonus', 'timesActivated', 'totalDamageDealt', 'totalDamageMitigated', 'assignedAt', 'unassignedAt', 'createdAt']);
+
+// TypeScript types for new tables
+export type ArmyDivision = typeof armyDivisions.$inferSelect;
+export type InsertArmyDivision = z.infer<typeof insertArmyDivisionSchema>;
+
+export type InquiryNftCollection = typeof inquiryNftCollection.$inferSelect;
+export type InsertInquiryNftCollection = z.infer<typeof insertInquiryNftCollectionSchema>;
+
+export type InquiryNft = typeof inquiryNfts.$inferSelect;
+export type InsertInquiryNft = z.infer<typeof insertInquiryNftSchema>;
+
+export type NftAddon = typeof nftAddons.$inferSelect;
+export type InsertNftAddon = z.infer<typeof insertNftAddonSchema>;
+
+export type NftAddonAssignment = typeof nftAddonAssignments.$inferSelect;
+export type InsertNftAddonAssignment = z.infer<typeof insertNftAddonAssignmentSchema>;
+
+// Gaming insert schemas - Missing from original schema
+export const insertGamingPlayerSchema = createInsertSchema(gamingPlayers).omit(['id', 'total_nfts_owned', 'total_power_level', 'last_active', 'created_at', 'updated_at']);
+
+export const insertGamingEventSchema = createInsertSchema(gamingEvents).omit(['id', 'created_at']);
+
+export const insertGameLocationSchema = createInsertSchema(gameLocations).omit(['id', 'visit_count', 'created_at', 'updated_at']);
+
+
+// Gaming TypeScript types
+export type GamingPlayer = typeof gamingPlayers.$inferSelect;
+export type InsertGamingPlayer = z.infer<typeof insertGamingPlayerSchema>;
+
+export type GamingEvent = typeof gamingEvents.$inferSelect;
+export type InsertGamingEvent = z.infer<typeof insertGamingEventSchema>;
+
+export type GameLocation = typeof gameLocations.$inferSelect;
+export type InsertGameLocation = z.infer<typeof insertGameLocationSchema>;
+
+
+export type GamingNftCollection = typeof gamingNftCollections.$inferSelect;
+export type GamingNft = typeof gamingNfts.$inferSelect;
+
+// Featured XRPL tokens for swap interface - Admin controlled
+export const featuredXrplTokens = pgTable("featured_xrpl_tokens", {
+  id: serial("id").primaryKey(),
+  symbol: text("symbol").notNull(),
+  currency_code: text("currency_code").notNull(),
+  issuer: text("issuer").notNull(),
+  name: text("name"),
+  icon_url: text("icon_url"),
+  display_order: integer("display_order").default(0),
+  is_active: boolean("is_active").default(true),
+  added_by: text("added_by").notNull(), // Admin who added it
+  created_at: timestamp("created_at").defaultNow().notNull(),
+  updated_at: timestamp("updated_at").defaultNow().notNull(),
+}, (table) => ({
+  symbolIssuerIdx: uniqueIndex("featured_symbol_issuer_idx").on(table.symbol, table.issuer),
+  orderIdx: index("featured_order_idx").on(table.display_order),
+}));
+
+export const insertFeaturedXrplTokenSchema = createInsertSchema(featuredXrplTokens).omit(['id', 'created_at', 'updated_at']);
+
+export type FeaturedXrplToken = typeof featuredXrplTokens.$inferSelect;
+export type InsertFeaturedXrplToken = z.infer<typeof insertFeaturedXrplTokenSchema>;
+
+// Multi-chain featured tokens for all swap interfaces - Admin controlled
+export const featuredTokens = pgTable("featured_tokens", {
+  id: serial("id").primaryKey(),
+  chain: text("chain").notNull(), // ethereum, bsc, polygon, arbitrum, optimism, base, avalanche, fantom, solana
+  chain_id: integer("chain_id"), // Chain ID for EVM chains (1, 56, 137, etc.)
+  symbol: text("symbol").notNull(),
+  name: text("name").notNull(),
+  address: text("address").notNull(), // Contract address or token mint address
+  decimals: integer("decimals").notNull().default(18),
+  logo_uri: text("logo_uri"),
+  display_order: integer("display_order").default(0),
+  is_active: boolean("is_active").default(true),
+  added_by: text("added_by").notNull(), // Admin who added it
+  created_at: timestamp("created_at").defaultNow().notNull(),
+  updated_at: timestamp("updated_at").defaultNow().notNull(),
+}, (table) => ({
+  chainAddressIdx: uniqueIndex("featured_chain_address_idx").on(table.chain, table.address),
+  chainOrderIdx: index("featured_chain_order_idx").on(table.chain, table.display_order),
+  activeIdx: index("featured_active_idx").on(table.is_active),
+}));
+
+export const insertFeaturedTokenSchema = createInsertSchema(featuredTokens).omit(['id', 'created_at', 'updated_at']);
+
+export type FeaturedToken = typeof featuredTokens.$inferSelect;
+export type InsertFeaturedToken = z.infer<typeof insertFeaturedTokenSchema>;
+
+// ============== PROJECT VERIFICATION & TWITTER SYSTEM ==============
+// Twitter verification for project ownership
+export const projectTwitterVerification = pgTable("project_twitter_verification", {
+  id: text("id").primaryKey().$defaultFn(() => crypto.randomUUID()),
+  project_id: text("project_id").notNull().references(() => devtoolsProjects.id, { onDelete: "cascade" }),
+  riddle_handle: text("riddle_handle").notNull(), // RiddleHandle claiming the project
+  
+  // Twitter account details
+  twitter_username: text("twitter_username"), // @username
+  twitter_user_id: text("twitter_user_id"), // Twitter numeric user ID
+  twitter_display_name: text("twitter_display_name"),
+  twitter_profile_image: text("twitter_profile_image"),
+  
+  // Verification details
+  verification_status: text("verification_status").default("pending").notNull(), // pending, posted, verified, failed
+  verification_code: text("verification_code").notNull(), // Unique code to post on Twitter
+  verification_tweet_url: text("verification_tweet_url"), // URL to the verification tweet
+  verification_tweet_id: text("verification_tweet_id"), // Tweet ID for API verification
+  
+  // Admin review
+  admin_verified: boolean("admin_verified").default(false),
+  admin_verified_by: text("admin_verified_by"), // Admin handle who verified
+  admin_verified_at: timestamp("admin_verified_at"),
+  admin_notes: text("admin_notes"),
+  
+  // Auto-verification attempt
+  auto_verify_attempted: boolean("auto_verify_attempted").default(false),
+  auto_verify_successful: boolean("auto_verify_successful").default(false),
+  auto_verify_error: text("auto_verify_error"),
+  
+  // Timestamps
+  created_at: timestamp("created_at").defaultNow().notNull(),
+  verified_at: timestamp("verified_at"),
+  expires_at: timestamp("expires_at"), // Verification code expiry
+}, (table) => [
+  index("idx_twitter_verification_project").on(table.project_id),
+  index("idx_twitter_verification_handle").on(table.riddle_handle),
+  index("idx_twitter_verification_status").on(table.verification_status),
+  index("idx_twitter_verification_code").on(table.verification_code),
+]);
+
+// ============== PROMOTION & ADVERTISING SYSTEM ==============
+// Paid promotions for projects (trending, banners, etc.)
+export const projectPromotions = pgTable("project_promotions", {
+  id: text("id").primaryKey().$defaultFn(() => crypto.randomUUID()),
+  project_id: text("project_id").notNull().references(() => devtoolsProjects.id, { onDelete: "cascade" }),
+  riddle_handle: text("riddle_handle").notNull(), // Who paid for promotion
+  
+  // Promotion type
+  promotion_type: text("promotion_type").notNull(), // trending, banner_home, banner_swap, banner_nft, featured_slot
+  placement: text("placement"), // top, sidebar, bottom, carousel, etc.
+  
+  // Promotion details
+  title: text("title"),
+  description: text("description"),
+  banner_image_url: text("banner_image_url"),
+  link_url: text("link_url"),
+  call_to_action: text("call_to_action"), // "Learn More", "Buy Now", etc.
+  
+  // Duration and scheduling
+  start_date: timestamp("start_date").notNull(),
+  end_date: timestamp("end_date").notNull(),
+  duration_days: integer("duration_days").notNull(),
+  
+  // Pricing
+  price_usd: decimal("price_usd", { precision: 10, scale: 2 }).notNull(),
+  price_paid_in_token: text("price_paid_in_token"), // XRP, RDL, ETH, etc.
+  price_paid_amount: decimal("price_paid_amount", { precision: 20, scale: 8 }),
+  
+  // Payment tracking
+  payment_status: text("payment_status").default("pending").notNull(), // pending, paid, failed, refunded
+  payment_tx_hash: text("payment_tx_hash"),
+  payment_method: text("payment_method"), // crypto, stripe, etc.
+  payment_timestamp: timestamp("payment_timestamp"),
+  
+  // Performance tracking
+  impressions: integer("impressions").default(0),
+  clicks: integer("clicks").default(0),
+  ctr: decimal("ctr", { precision: 5, scale: 2 }).default("0"), // Click-through rate
+  
+  // Status
+  status: text("status").default("pending").notNull(), // pending, active, paused, completed, cancelled
+  approved_by_admin: boolean("approved_by_admin").default(false),
+  admin_approved_by: text("admin_approved_by"),
+  admin_approved_at: timestamp("admin_approved_at"),
+  rejection_reason: text("rejection_reason"),
+  
+  // Timestamps
+  created_at: timestamp("created_at").defaultNow().notNull(),
+  updated_at: timestamp("updated_at").defaultNow().notNull(),
+}, (table) => [
+  index("idx_promotions_project").on(table.project_id),
+  index("idx_promotions_handle").on(table.riddle_handle),
+  index("idx_promotions_type").on(table.promotion_type),
+  index("idx_promotions_status").on(table.status),
+  index("idx_promotions_dates").on(table.start_date, table.end_date),
+  index("idx_promotions_payment").on(table.payment_status),
+]);
+
+// Promotion pricing tiers
+export const promotionPricing = pgTable("promotion_pricing", {
+  id: serial("id").primaryKey(),
+  promotion_type: text("promotion_type").notNull().unique(),
+  base_price_usd: decimal("base_price_usd", { precision: 10, scale: 2 }).notNull(),
+  price_per_day_usd: decimal("price_per_day_usd", { precision: 10, scale: 2 }),
+  min_duration_days: integer("min_duration_days").default(1),
+  max_duration_days: integer("max_duration_days").default(30),
+  max_active_slots: integer("max_active_slots"), // How many can run simultaneously
+  description: text("description"),
+  features: jsonb("features").$type<string[]>().default([]),
+  is_active: boolean("is_active").default(true),
+  created_at: timestamp("created_at").defaultNow().notNull(),
+  updated_at: timestamp("updated_at").defaultNow().notNull(),
+});
+
+// ============== DEVTOOLS PAYMENT TRACKING ==============
+// Track all payments for devtools services (airdrops, snapshots, etc.)
+export const devtoolsPayments = pgTable("devtools_payments", {
+  id: text("id").primaryKey().$defaultFn(() => crypto.randomUUID()),
+  riddle_handle: text("riddle_handle").notNull(),
+  project_id: text("project_id").references(() => devtoolsProjects.id, { onDelete: "set null" }),
+  
+  // Payment details
+  service_type: text("service_type").notNull(), // airdrop, snapshot, subscription, promotion, verification
+  service_id: text("service_id"), // Reference to the specific service (airdrop_id, snapshot_id, etc.)
+  payment_model: text("payment_model").notNull(), // pay_as_you_go, subscription, one_time
+  
+  // Amount
+  amount_usd: decimal("amount_usd", { precision: 10, scale: 2 }).notNull(),
+  amount_paid_token: text("amount_paid_token"), // XRP, RDL, ETH, etc.
+  amount_paid: decimal("amount_paid", { precision: 20, scale: 8 }),
+  
+  // Payment processing
+  payment_status: text("payment_status").default("pending").notNull(), // pending, processing, paid, failed, refunded
+  payment_method: text("payment_method").notNull(), // crypto_xrp, crypto_eth, crypto_rdl, stripe
+  payment_tx_hash: text("payment_tx_hash"),
+  payment_timestamp: timestamp("payment_timestamp"),
+  
+  // Stripe integration (if used)
+  stripe_payment_intent_id: text("stripe_payment_intent_id"),
+  stripe_customer_id: text("stripe_customer_id"),
+  
+  // Service details
+  service_description: text("service_description"),
+  service_quantity: integer("service_quantity"), // e.g., number of airdrop recipients
+  service_metadata: jsonb("service_metadata").$type<Record<string, any>>().default({}),
+  
+  // Refund tracking
+  refund_status: text("refund_status"), // none, requested, processing, refunded, rejected
+  refund_tx_hash: text("refund_tx_hash"),
+  refund_amount: decimal("refund_amount", { precision: 20, scale: 8 }),
+  refund_reason: text("refund_reason"),
+  refunded_at: timestamp("refunded_at"),
+  
+  // Timestamps
+  created_at: timestamp("created_at").defaultNow().notNull(),
+  updated_at: timestamp("updated_at").defaultNow().notNull(),
+}, (table) => [
+  index("idx_devtools_payments_handle").on(table.riddle_handle),
+  index("idx_devtools_payments_project").on(table.project_id),
+  index("idx_devtools_payments_service").on(table.service_type),
+  index("idx_devtools_payments_status").on(table.payment_status),
+  index("idx_devtools_payments_timestamp").on(table.payment_timestamp),
+]);
+
+// ============== AUTOMATIC MARKET MAKER TOOL ==============
+// Automated trading tool using riddlebroker wallet
+export const marketMakerConfigs = pgTable("market_maker_configs", {
+  id: text("id").primaryKey().$defaultFn(() => crypto.randomUUID()),
+  project_id: text("project_id").notNull().references(() => devtoolsProjects.id, { onDelete: "cascade" }),
+  riddle_handle: text("riddle_handle").notNull(),
+  
+  // Trading pair configuration
+  chain: text("chain").notNull(), // XRPL, ETH, etc.
+  base_token: text("base_token").notNull(), // XRP, ETH, etc.
+  quote_token: text("quote_token").notNull(), // USD, token address, etc.
+  
+  // Payment settings
+  payment_amount: decimal("payment_amount", { precision: 20, scale: 8 }).notNull(),
+  payment_frequency: text("payment_frequency").notNull(), // hourly, daily, weekly, custom
+  frequency_minutes: integer("frequency_minutes"), // For custom frequency
+  
+  // Amount variation
+  amount_variance_enabled: boolean("amount_variance_enabled").default(false),
+  min_amount: decimal("min_amount", { precision: 20, scale: 8 }),
+  max_amount: decimal("max_amount", { precision: 20, scale: 8 }),
+  
+  // Fee tracking (0.25% per transaction)
+  platform_fee_percentage: decimal("platform_fee_percentage", { precision: 5, scale: 4 }).default("0.0025"), // 0.25%
+  total_fees_collected: decimal("total_fees_collected", { precision: 20, scale: 8 }).default("0"),
+  total_transactions: integer("total_transactions").default(0),
+  
+  // Status
+  is_active: boolean("is_active").default(false),
+  last_execution: timestamp("last_execution"),
+  next_execution: timestamp("next_execution"),
+  
+  // Broker wallet usage
+  broker_wallet_address: text("broker_wallet_address").default("rGLzXKif4ksBZe2MY6RZT9m69hdgzsXG4X"),
+  
+  created_at: timestamp("created_at").defaultNow().notNull(),
+  updated_at: timestamp("updated_at").defaultNow().notNull(),
+}, (table) => [
+  index("idx_mm_project").on(table.project_id),
+  index("idx_mm_handle").on(table.riddle_handle),
+  index("idx_mm_active").on(table.is_active),
+  index("idx_mm_next_execution").on(table.next_execution),
+]);
+
+// Market maker transaction history
+export const marketMakerTransactions = pgTable("market_maker_transactions", {
+  id: text("id").primaryKey().$defaultFn(() => crypto.randomUUID()),
+  config_id: text("config_id").notNull().references(() => marketMakerConfigs.id, { onDelete: "cascade" }),
+  
+  // Transaction details
+  tx_hash: text("tx_hash").notNull(),
+  chain: text("chain").notNull(),
+  amount: decimal("amount", { precision: 20, scale: 8 }).notNull(),
+  fee_amount: decimal("fee_amount", { precision: 20, scale: 8 }).notNull(),
+  
+  // Status
+  status: text("status").default("pending").notNull(), // pending, success, failed
+  error_message: text("error_message"),
+  
+  executed_at: timestamp("executed_at").defaultNow().notNull(),
+}, (table) => [
+  index("idx_mmt_config").on(table.config_id),
+  index("idx_mmt_status").on(table.status),
+  index("idx_mmt_executed").on(table.executed_at),
+]);
+
+// Project NFT collection data storage
+export const projectNftCollections = pgTable("project_nft_collections", {
+  id: text("id").primaryKey().$defaultFn(() => crypto.randomUUID()),
+  project_id: text("project_id").notNull().references(() => devtoolsProjects.id, { onDelete: "cascade" }),
+  
+  // NFT identification
+  nft_id: text("nft_id").notNull(),
+  issuer: text("issuer").notNull(),
+  taxon: integer("taxon").notNull(),
+  
+  // NFT metadata
+  metadata: jsonb("metadata").$type<Record<string, any>>().default({}),
+  image_url: text("image_url"),
+  name: text("name"),
+  description: text("description"),
+  attributes: jsonb("attributes").$type<Array<{trait_type: string, value: string}>>().default([]),
+  
+  // Ownership data
+  current_owner: text("current_owner"),
+  
+  // Timestamps
+  scanned_at: timestamp("scanned_at").defaultNow().notNull(),
+  updated_at: timestamp("updated_at").defaultNow().notNull(),
+}, (table) => [
+  index("idx_pnc_project").on(table.project_id),
+  index("idx_pnc_issuer_taxon").on(table.issuer, table.taxon),
+  index("idx_pnc_nft_id").on(table.nft_id),
+]);
+
+// Insert schemas
+export const insertProjectTwitterVerificationSchema = createInsertSchema(projectTwitterVerification).omit(['id', 'created_at', 'verified_at']);
+
+export const insertProjectPromotionSchema = createInsertSchema(projectPromotions).omit(['id', 'created_at', 'updated_at']);
+
+export const insertPromotionPricingSchema = createInsertSchema(promotionPricing).omit(['id', 'created_at', 'updated_at']);
+
+export const insertDevtoolsPaymentSchema = createInsertSchema(devtoolsPayments).omit(['id', 'created_at', 'updated_at']);
+
+export const insertMarketMakerConfigSchema = createInsertSchema(marketMakerConfigs).omit(['id', 'created_at', 'updated_at']);
+
+export const insertMarketMakerTransactionSchema = createInsertSchema(marketMakerTransactions).omit(['id', 'executed_at']);
+
+export const insertProjectNftCollectionSchema = createInsertSchema(projectNftCollections).omit(['id', 'scanned_at', 'updated_at']);
+
+// Broker NFT Sales table for tracking all brokered NFT transactions
+export const brokerNftSales = pgTable("broker_nft_sales", {
+  id: text("id").primaryKey().$defaultFn(() => crypto.randomUUID()),
+  
+  // NFT details
+  nft_token_id: text("nft_token_id").notNull(),
+  nft_name: text("nft_name"),
+  collection_name: text("collection_name"),
+  
+  // Transaction parties
+  seller_address: text("seller_address").notNull(),
+  seller_handle: text("seller_handle"),
+  buyer_address: text("buyer_address").notNull(),
+  buyer_handle: text("buyer_handle"),
+  broker_address: text("broker_address").notNull().default("rGLzXKif4ksBZe2MY6RZT9m69hdgzsXG4X"),
+  
+  // Amounts (in XRP)
+  sale_price: decimal("sale_price", { precision: 20, scale: 8 }).notNull(), // Net amount seller receives
+  broker_fee: decimal("broker_fee", { precision: 20, scale: 8 }).notNull(), // 1% fee
+  total_amount: decimal("total_amount", { precision: 20, scale: 8 }).notNull(), // Total buyer pays
+  
+  // Offer IDs
+  sell_offer_id: text("sell_offer_id"),
+  buy_offer_id: text("buy_offer_id"),
+  
+  // Transaction details
+  transaction_hash: text("transaction_hash").notNull(),
+  ledger_index: integer("ledger_index"),
+  transaction_result: text("transaction_result"),
+  
+  // Status
+  status: text("status").notNull().default("completed"), // completed, failed, pending
+  
+  // Rewards tracking
+  fee_recorded: boolean("fee_recorded").default(false),
+  reward_id: text("reward_id"),
+  
+  created_at: timestamp("created_at").defaultNow().notNull(),
+  updated_at: timestamp("updated_at").defaultNow().notNull(),
+}, (table) => [
+  index("idx_broker_sales_nft").on(table.nft_token_id),
+  index("idx_broker_sales_seller").on(table.seller_address),
+  index("idx_broker_sales_buyer").on(table.buyer_address),
+  index("idx_broker_sales_tx").on(table.transaction_hash),
+  index("idx_broker_sales_created").on(table.created_at),
+]);
+
+export const insertBrokerNftSaleSchema = createInsertSchema(brokerNftSales).omit(['id', 'created_at', 'updated_at']);
+
+// Ranking History Table - tracks ranking changes over time
+export const rankingHistory = pgTable("ranking_history", {
+  id: text("id").primaryKey().$defaultFn(() => crypto.randomUUID()),
+  entity_type: text("entity_type").notNull(), // 'nft', 'civilization', 'collection'
+  entity_id: text("entity_id").notNull(), // ID of the ranked entity
+  entity_name: text("entity_name"), // Name of the ranked entity
+  previous_rank: integer("previous_rank"),
+  new_rank: integer("new_rank"),
+  rank_change: integer("rank_change"),
+  score_value: decimal("score_value", { precision: 20, scale: 4 }),
+  scan_timestamp: timestamp("scan_timestamp").defaultNow().notNull(),
+  metadata: jsonb("metadata").$type<Record<string, any>>().default({}),
+  created_at: timestamp("created_at").defaultNow().notNull(),
+}, (table) => [
+  index("idx_ranking_history_entity").on(table.entity_type, table.entity_id),
+  index("idx_ranking_history_timestamp").on(table.scan_timestamp),
+]);
+
+// Game Leaderboards Table - pre-calculated leaderboard data
+export const gameLeaderboards = pgTable("game_leaderboards", {
+  id: text("id").primaryKey().$defaultFn(() => crypto.randomUUID()),
+  leaderboard_type: text("leaderboard_type").notNull(), // 'nft_power', 'nft_rarity', 'civilization_score', 'collection_rarity'
+  category: text("category"), // optional category filter
+  entity_id: text("entity_id").notNull(),
+  entity_name: text("entity_name"),
+  rank: integer("rank").notNull(),
+  score: decimal("score", { precision: 20, scale: 4 }),
+  tier: text("tier"),
+  rankings: jsonb("rankings").$type<any[]>().default([]), // Array of ranked entities
+  total_entries: integer("total_entries").default(0),
+  metadata: jsonb("metadata").$type<Record<string, any>>().default({}),
+  last_updated: timestamp("last_updated").defaultNow().notNull(),
+  created_at: timestamp("created_at").defaultNow().notNull(),
+}, (table) => [
+  index("idx_game_leaderboards_type").on(table.leaderboard_type),
+  index("idx_game_leaderboards_rank").on(table.rank),
+  index("idx_game_leaderboards_updated").on(table.last_updated),
+]);
+
+// Scanner Logs Table - tracks scanner execution history
+export const scannerLogs = pgTable("scanner_logs", {
+  id: text("id").primaryKey().$defaultFn(() => crypto.randomUUID()),
+  scanner_name: text("scanner_name").notNull(),
+  scanner_type: text("scanner_type").notNull(), // 'initial_scan', 'ai_scoring', 'rarity_calculation', 'civilization_scan'
+  status: text("status").notNull(), // 'running', 'completed', 'failed'
+  target_id: text("target_id"), // Optional collection/player ID being scanned
+  target_name: text("target_name"), // Optional collection/player name
+  started_at: timestamp("started_at").notNull(),
+  completed_at: timestamp("completed_at"),
+  duration_ms: integer("duration_ms"),
+  items_processed: integer("items_processed").default(0),
+  items_failed: integer("items_failed").default(0),
+  entities_scanned: integer("entities_scanned").default(0),
+  entities_processed: integer("entities_processed").default(0),
+  entities_failed: integer("entities_failed").default(0),
+  error_message: text("error_message"),
+  error_details: jsonb("error_details").$type<Record<string, any>>(),
+  statistics: jsonb("statistics").$type<Record<string, any>>(),
+  metadata: jsonb("metadata").$type<Record<string, any>>().default({}),
+  created_at: timestamp("created_at").defaultNow().notNull(),
+}, (table) => [
+  index("idx_scanner_logs_name").on(table.scanner_name),
+  index("idx_scanner_logs_status").on(table.status),
+  index("idx_scanner_logs_started").on(table.started_at),
+]);
+
+export const insertRankingHistorySchema = createInsertSchema(rankingHistory).omit(['id', 'created_at']);
+export const insertGameLeaderboardsSchema = createInsertSchema(gameLeaderboards).omit(['id', 'created_at']);
+export const insertScannerLogsSchema = createInsertSchema(scannerLogs).omit(['id', 'created_at']);
+
+// TypeScript types
+export type BrokerNftSale = typeof brokerNftSales.$inferSelect;
+export type InsertBrokerNftSale = z.infer<typeof insertBrokerNftSaleSchema>;
+export type ProjectTwitterVerification = typeof projectTwitterVerification.$inferSelect;
+export type MarketMakerConfig = typeof marketMakerConfigs.$inferSelect;
+export type MarketMakerTransaction = typeof marketMakerTransactions.$inferSelect;
+export type ProjectNftCollection = typeof projectNftCollections.$inferSelect;
+export type InsertProjectTwitterVerification = z.infer<typeof insertProjectTwitterVerificationSchema>;
+
+export type ProjectPromotion = typeof projectPromotions.$inferSelect;
+export type InsertProjectPromotion = z.infer<typeof insertProjectPromotionSchema>;
+
+export type PromotionPricing = typeof promotionPricing.$inferSelect;
+export type InsertPromotionPricing = z.infer<typeof insertPromotionPricingSchema>;
+
+export type DevtoolsPayment = typeof devtoolsPayments.$inferSelect;
+export type InsertDevtoolsPayment = z.infer<typeof insertDevtoolsPaymentSchema>;

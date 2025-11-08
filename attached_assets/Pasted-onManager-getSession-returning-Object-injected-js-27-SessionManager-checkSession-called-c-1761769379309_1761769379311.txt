@@ -1,0 +1,119 @@
+onManager.getSession() returning: Object
+injected.js:27 🔍 SessionManager: checkSession() called - current sessionData: true
+injected.js:27 🌐 SessionManager: Making Riddle wallet session request to /api/riddle-wallet/session
+injected.js:27 🔍 getQueryFn - SessionManager sessionToken: FOUND
+injected.js:27 📱 Platform: web, Native: false
+injected.js:27 📱 Initializing push notifications for platform: web
+injected.js:27 🌐 Initializing web notifications
+injected.js:27 📝 Registering device token with backend (web)
+injected.js:27 🔍 SessionManager sessionToken: FOUND
+injected.js:27 🔍 getQueryFn - SessionManager sessionToken: FOUND
+injected.js:27 🎨 [THEME] Applied theme: light, dark class: false
+injected.js:27 🔄 App.tsx: useEffect running - recovering wallet state
+total-balance:1  Failed to load resource: the server responded with a status of 401 (Unauthorized)
+injected.js:27 🔓 Got 401 error - NOT clearing session data automatically
+injected.js:27 🔍 SessionManager.getSession() returning: Object
+injected.js:27 ✅ SessionManager: Valid session for dippydoge
+injected.js:27 ✅ SessionManager: Updated session data: Object
+injected.js:27 🔍 SessionManager.getSession() returning: Object
+injected.js:27 🔍 SessionManager.getSession() returning: Object
+injected.js:27 🔍 SessionManager.getSession() returning: Object
+injected.js:27 🔍 SessionManager.getSession() returning: Object
+injected.js:27 🔔 SessionManager: Notified 4 listeners
+injected.js:27 🔍 SessionManager.getSession() returning: Object
+injected.js:27 🔍 SessionManager.getSession() returning: Object
+injected.js:27 🔍 SessionManager.getSession() returning: Object
+injected.js:27 🔍 Found local wallet connections: Array(0)
+301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/api/notifications/register-device:1  Failed to load resource: the server responded with a status of 401 (Unauthorized)
+injected.js:27 🔓 apiRequest got 401 - NOT clearing session data automatically
+injected.js:27 🔓 Got 401 error - NOT clearing session data automatically
+injected.js:27 ❌ Failed to register device token: Error: 401: {"error":"Authentication required"}
+    at throwIfResNotOk (queryClient.ts:81:11)
+    at async apiRequest (queryClient.ts:119:3)
+    at async PushNotificationService.registerDevice (push-notification-service.ts:159:7)
+    at async PushNotificationService.initializeWebNotifications (push-notification-service.ts:58:7)
+    at async PushNotificationService.initialize (push-notification-service.ts:30:7)
+    at async initNotifications (NotificationBell.tsx:61:7)
+(anonymous) @ injected.js:27
+unread-count:1  Failed to load resource: the server responded with a status of 401 (Unauthorized)
+injected.js:27 🔓 Got 401 error - NOT clearing session data automatically
+injected.js:27 🔍 SessionManager.getSession() returning: Object
+injected.js:27 🔍 SessionManager: checkSession() called - current sessionData: true
+injected.js:27 🌐 SessionManager: Making Riddle wallet session request to /api/riddle-wallet/session
+6injected.js:27 🔍 getQueryFn - SessionManager sessionToken: FOUND
+injected.js:27 🔍 SessionManager.getSession() returning: Object
+injected.js:27 ✅ SessionManager: Valid session for dippydoge
+injected.js:27 ✅ SessionManager: Updated session data: Object
+injected.js:27 🔍 SessionManager.getSession() returning: Object
+injected.js:27 🔍 SessionManager.getSession() returning: Object
+injected.js:27 🔍 SessionManager.getSession() returning: Object
+injected.js:27 🔍 SessionManager.getSession() returning: Object
+injected.js:27 🔍 SessionManager.getSession() returning: Object
+injected.js:27 🔔 SessionManager: Notified 5 listeners
+injected.js:27 🔍 SessionManager.getSession() returning: Object
+injected.js:27 🔍 SessionManager.getSession() returning: Object
+injected.js:27 🔍 SessionManager.getSession() returning: Object
+injected.js:27 🔍 Found local wallet connections: Array(0)
+injected.js:27 🔍 SessionManager.getSession() returning: Object
+301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/api/riddlecity/city/my-city:1  Failed to load resource: the server responded with a status of 500 (Internal Server Error)
+301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/api/riddlecity/furnishings/catalog:1  Failed to load resource: the server responded with a status of 500 (Internal Server Error)
+injected.js:27 🔍 SessionManager.getSession() returning: Object
+injected.js:27 🔍 SessionManager.getSession() returning: Object
+301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/api/riddlecity/policies/catalog:1  Failed to load resource: the server responded with a status of 500 (Internal Server Error)
+301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/api/riddlecity/defense/catalog:1  Failed to load resource: the server responded with a status of 500 (Internal Server Error)
+3injected.js:27 🔍 getQueryFn - SessionManager sessionToken: FOUND
+301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/api/riddlecity/city/my-city:1  Failed to load resource: the server responded with a status of 500 (Internal Server Error)
+injected.js:27 🔍 SessionManager.getSession() returning: Object
+injected.js:27 🔍 SessionManager.getSession() returning: Object
+injected.js:27 🔍 SessionManager: checkSession() called - current sessionData: true
+injected.js:27 🌐 SessionManager: Making Riddle wallet session request to /api/riddle-wallet/session
+301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/api/riddlecity/furnishings/catalog:1  Failed to load resource: the server responded with a status of 500 (Internal Server Error)
+injected.js:27 🔍 getQueryFn - SessionManager sessionToken: FOUND
+injected.js:27 ✅ SessionManager: Valid session for dippydoge
+injected.js:27 ✅ SessionManager: Updated session data: Object
+injected.js:27 🔍 SessionManager.getSession() returning: Object
+injected.js:27 🔍 SessionManager.getSession() returning: Object
+injected.js:27 🔍 SessionManager.getSession() returning: Object
+injected.js:27 🔍 SessionManager.getSession() returning: Object
+injected.js:27 🔍 SessionManager.getSession() returning: Object
+injected.js:27 🔍 SessionManager.getSession() returning: Object
+injected.js:27 🔔 SessionManager: Notified 6 listeners
+injected.js:27 🔍 SessionManager.getSession() returning: Object
+injected.js:27 🔍 SessionManager.getSession() returning: Object
+injected.js:27 🔍 SessionManager.getSession() returning: Object
+injected.js:27 🔍 Found local wallet connections: Array(0)
+injected.js:27 🔍 SessionManager.getSession() returning: Object
+injected.js:27 🔍 SessionManager.getSession() returning: Object
+301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/api/riddlecity/policies/catalog:1  Failed to load resource: the server responded with a status of 500 (Internal Server Error)
+301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/api/riddlecity/defense/catalog:1  Failed to load resource: the server responded with a status of 500 (Internal Server Error)
+injected.js:27 🔍 SessionManager.getSession() returning: Object
+injected.js:27 🔍 SessionManager.getSession() returning: Object
+2injected.js:27 🔍 getQueryFn - SessionManager sessionToken: FOUND
+301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/api/riddlecity/policies/catalog:1  Failed to load resource: the server responded with a status of 500 (Internal Server Error)
+301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/api/riddlecity/furnishings/catalog:1  Failed to load resource: the server responded with a status of 500 (Internal Server Error)
+injected.js:27 🔍 getQueryFn - SessionManager sessionToken: FOUND
+301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/api/riddlecity/defense/catalog:1  Failed to load resource: the server responded with a status of 500 (Internal Server Error)
+injected.js:27 🔍 getQueryFn - SessionManager sessionToken: FOUND
+injected.js:27 🔍 SessionManager.getSession() returning: {isLoggedIn: true, handle: 'dippydoge', hasWalletData: true, hasSessionToken: true, walletDataKeys: Array(7)}
+injected.js:27 🔍 getQueryFn - SessionManager sessionToken: FOUND
+injected.js:204  GET https://301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/api/wallet/total-balance 401 (Unauthorized)
+apply @ injected.js:204
+(anonymous) @ queryClient.ts:161
+fetchFn @ @tanstack_react-query.js?v=eaa43f1b:868
+run @ @tanstack_react-query.js?v=eaa43f1b:506
+start @ @tanstack_react-query.js?v=eaa43f1b:547
+fetch @ @tanstack_react-query.js?v=eaa43f1b:951
+executeFetch_fn @ @tanstack_react-query.js?v=eaa43f1b:2244
+(anonymous) @ @tanstack_react-query.js?v=eaa43f1b:2278
+injected.js:27 🔓 Got 401 error - NOT clearing session data automatically
+injected.js:27 🔍 SessionManager.getSession() returning: {isLoggedIn: true, handle: 'dippydoge', hasWalletData: true, hasSessionToken: true, walletDataKeys: Array(7)}
+injected.js:204  GET https://301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/api/notifications/unread-count 401 (Unauthorized)
+apply @ injected.js:204
+(anonymous) @ queryClient.ts:161
+fetchFn @ @tanstack_react-query.js?v=eaa43f1b:868
+run @ @tanstack_react-query.js?v=eaa43f1b:506
+start @ @tanstack_react-query.js?v=eaa43f1b:547
+fetch @ @tanstack_react-query.js?v=eaa43f1b:951
+executeFetch_fn @ @tanstack_react-query.js?v=eaa43f1b:2244
+(anonymous) @ @tanstack_react-query.js?v=eaa43f1b:2278
+injected.js:27 🔓 Got 401 error - NOT clearing session data automatically

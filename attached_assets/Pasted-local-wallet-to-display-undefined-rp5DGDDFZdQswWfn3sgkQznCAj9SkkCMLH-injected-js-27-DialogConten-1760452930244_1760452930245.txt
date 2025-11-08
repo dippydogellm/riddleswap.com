@@ -1,0 +1,38 @@
+local wallet to display: undefined - rp5DGDDFZdQswWfn3sgkQznCAj9SkkCMLH
+injected.js:27 `DialogContent` requires a `DialogTitle` for the component to be accessible for screen reader users.
+
+If you want to hide the `DialogTitle`, you can wrap it with our VisuallyHidden component.
+
+For more information, see https://radix-ui.com/primitives/docs/components/dialog
+(anonymous) @ injected.js:27
+(anonymous) @ chunk-IXVO367N.js?v=dd132bec:323
+commitHookEffectListMount @ chunk-SM3OW2QE.js?v=dd132bec:16915
+commitPassiveMountOnFiber @ chunk-SM3OW2QE.js?v=dd132bec:18156
+commitPassiveMountEffects_complete @ chunk-SM3OW2QE.js?v=dd132bec:18129
+commitPassiveMountEffects_begin @ chunk-SM3OW2QE.js?v=dd132bec:18119
+commitPassiveMountEffects @ chunk-SM3OW2QE.js?v=dd132bec:18109
+flushPassiveEffectsImpl @ chunk-SM3OW2QE.js?v=dd132bec:19490
+flushPassiveEffects @ chunk-SM3OW2QE.js?v=dd132bec:19447
+commitRootImpl @ chunk-SM3OW2QE.js?v=dd132bec:19416
+commitRoot @ chunk-SM3OW2QE.js?v=dd132bec:19277
+performSyncWorkOnRoot @ chunk-SM3OW2QE.js?v=dd132bec:18895
+flushSyncCallbacks @ chunk-SM3OW2QE.js?v=dd132bec:9119
+(anonymous) @ chunk-SM3OW2QE.js?v=dd132bec:18627
+injected.js:27 Warning: Missing `Description` or `aria-describedby={undefined}` for {DialogContent}.
+(anonymous) @ injected.js:27
+(anonymous) @ chunk-IXVO367N.js?v=dd132bec:336
+commitHookEffectListMount @ chunk-SM3OW2QE.js?v=dd132bec:16915
+commitPassiveMountOnFiber @ chunk-SM3OW2QE.js?v=dd132bec:18156
+commitPassiveMountEffects_complete @ chunk-SM3OW2QE.js?v=dd132bec:18129
+commitPassiveMountEffects_begin @ chunk-SM3OW2QE.js?v=dd132bec:18119
+commitPassiveMountEffects @ chunk-SM3OW2QE.js?v=dd132bec:18109
+flushPassiveEffectsImpl @ chunk-SM3OW2QE.js?v=dd132bec:19490
+flushPassiveEffects @ chunk-SM3OW2QE.js?v=dd132bec:19447
+commitRootImpl @ chunk-SM3OW2QE.js?v=dd132bec:19416
+commitRoot @ chunk-SM3OW2QE.js?v=dd132bec:19277
+performSyncWorkOnRoot @ chunk-SM3OW2QE.js?v=dd132bec:18895
+flushSyncCallbacks @ chunk-SM3OW2QE.js?v=dd132bec:9119
+(anonymous) @ chunk-SM3OW2QE.js?v=dd132bec:18627
+injected.js:27 📱 [XAMAN] Received payload: {success: true, uuid: '7fb55b18-5a6a-4ea6-8377-a333001ab485', payloadType: 'signin', qrCode: 'https://xumm.app/sign/7fb55b18-5a6a-4ea6-8377-a333001ab485_q.png', deepLink: 'https://xumm.app/sign/7fb55b18-5a6a-4ea6-8377-a333001ab485', …}
+injected.js:27 📱 [XAMAN] QR Code length: 64
+injected.js

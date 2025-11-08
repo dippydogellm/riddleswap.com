@@ -1,0 +1,33 @@
+connections: []
+nft-detail.tsx:940 🔐 [OWNERSHIP CHECK] User: rEVrTKUKSLx5nxdfV8SAFTxS9FGFrfHRLo, NFT Owner: rfLzAt7mVN6Yg7Rn1dQM2yg8nE4P51qGSC, Is Owner: false
+MakeOfferDialog.tsx:45 Offer submission error: Error: Authentication required
+    at submitOffer (nft-detail.tsx:648:13)
+    at handleSubmit (MakeOfferDialog.tsx:41:13)
+    at HTMLUnknownElement.callCallback2 (chunk-SM3OW2QE.js?v=f202566d:3674:22)
+    at Object.invokeGuardedCallbackDev (chunk-SM3OW2QE.js?v=f202566d:3699:24)
+    at invokeGuardedCallback (chunk-SM3OW2QE.js?v=f202566d:3733:39)
+    at invokeGuardedCallbackAndCatchFirstError (chunk-SM3OW2QE.js?v=f202566d:3736:33)
+    at executeDispatch (chunk-SM3OW2QE.js?v=f202566d:7014:11)
+    at processDispatchQueueItemsInOrder (chunk-SM3OW2QE.js?v=f202566d:7034:15)
+    at processDispatchQueue (chunk-SM3OW2QE.js?v=f202566d:7043:13)
+    at dispatchEventsForPlugins (chunk-SM3OW2QE.js?v=f202566d:7051:11)
+handleSubmit @ MakeOfferDialog.tsx:45
+await in handleSubmit
+callCallback2 @ chunk-SM3OW2QE.js?v=f202566d:3674
+invokeGuardedCallbackDev @ chunk-SM3OW2QE.js?v=f202566d:3699
+invokeGuardedCallback @ chunk-SM3OW2QE.js?v=f202566d:3733
+invokeGuardedCallbackAndCatchFirstError @ chunk-SM3OW2QE.js?v=f202566d:3736
+executeDispatch @ chunk-SM3OW2QE.js?v=f202566d:7014
+processDispatchQueueItemsInOrder @ chunk-SM3OW2QE.js?v=f202566d:7034
+processDispatchQueue @ chunk-SM3OW2QE.js?v=f202566d:7043
+dispatchEventsForPlugins @ chunk-SM3OW2QE.js?v=f202566d:7051
+(anonymous) @ chunk-SM3OW2QE.js?v=f202566d:7174
+batchedUpdates$1 @ chunk-SM3OW2QE.js?v=f202566d:18913
+batchedUpdates @ chunk-SM3OW2QE.js?v=f202566d:3579
+dispatchEventForPluginEventSystem @ chunk-SM3OW2QE.js?v=f202566d:7173
+dispatchEventWithEnableCapturePhaseSelectiveHydrationWithoutDiscreteEventReplay @ chunk-SM3OW2QE.js?v=f202566d:5478
+dispatchEvent @ chunk-SM3OW2QE.js?v=f202566d:5472
+dispatchDiscreteEvent @ chunk-SM3OW2QE.js?v=f202566d:5449
+sessionManager.ts:517 🔍 SessionManager.getSession() returning: {isLoggedIn: true, handle: 'dippydoge', hasWalletData: true, hasSessionToken: true, walletDataKeys: Array(7)}
+wallet-connection-dashboard.tsx:152 🔍 Found local wallet connections: []
+nft-detail.tsx:940 🔐 [OWNERSHIP CHECK] User: rEVrTKUKSLx5nxdfV8SAFTxS9FGFrfHRLo, NFT Owner: rfLzAt7mVN6Yg7Rn1dQM2yg8nE4P51qGSC, Is Owner: false

@@ -1,0 +1,132 @@
+ Balance fetched for btc/1Cy5Cdji1TSDwLpoepgbJtYtdzZBRUD7sq: Object
+balance-fetcher---LuyZfA.js:1 ✅ Balance fetched for sol/AAD2Q1Jw9pcwWDs9WTVeGWFAZmKXu5h5PNikZ9p8QukL: Object
+balance-fetcher---LuyZfA.js:1 ✅ Balance fetched for xrp/rEVrTKUKSLx5nxdfV8SAFTxS9FGFrfHRLo: Object
+balance-fetcher---LuyZfA.js:1 ✅ Balance fetched for eth/0xC710c941362C40f1C1bDDB4485c8134AB505541F: Object
+index-CEx7GFMb.js:54 🔍 SessionManager.getSession() returning: Object
+index-CEx7GFMb.js:54 🔍 SessionManager.getSession() returning: Object
+index-CEx7GFMb.js:54 🔍 SessionManager.getSession() returning: Object
+index-CEx7GFMb.js:54 🔍 SessionManager.getSession() returning: Object
+index-CEx7GFMb.js:503 🔍 Found local wallet connections: Array(0)
+index-CEx7GFMb.js:54 🔍 SessionManager: checkSession() called - current sessionData: true
+index-CEx7GFMb.js:54 🌐 SessionManager: Making Riddle wallet session request to /api/riddle-wallet/session
+index-CEx7GFMb.js:54 ✅ SessionManager: Valid session for dippydoge
+index-CEx7GFMb.js:54 ✅ SessionManager: Updated session data: Object
+index-CEx7GFMb.js:54 🔍 SessionManager.getSession() returning: Object
+index-CEx7GFMb.js:54 🔍 SessionManager.getSession() returning: Object
+index-CEx7GFMb.js:54 🔍 SessionManager.getSession() returning: Object
+index-CEx7GFMb.js:54 🔍 SessionManager.getSession() returning: Object
+index-CEx7GFMb.js:54 🔍 SessionManager.getSession() returning: Object
+index-CEx7GFMb.js:54 🔍 SessionManager.getSession() returning: Object
+index-CEx7GFMb.js:54 🔔 SessionManager: Notified 6 listeners
+index-CEx7GFMb.js:54 🔍 SessionManager.getSession() returning: Object
+index-CEx7GFMb.js:54 🔍 SessionManager.getSession() returning: Object
+index-CEx7GFMb.js:54 🔍 SessionManager.getSession() returning: Object
+index-CEx7GFMb.js:54 🔍 SessionManager.getSession() returning: Object
+index-CEx7GFMb.js:503 🔍 Found local wallet connections: Array(0)
+index-CEx7GFMb.js:54 🔍 SessionManager.getSession() returning: Object
+index-CEx7GFMb.js:54 🔍 SessionManager.getSession() returning: Object
+index-CEx7GFMb.js:54 🔍 SessionManager.getSession() returning: Object
+index-CEx7GFMb.js:54 🔍 SessionManager.getSession() returning: Object
+index-CEx7GFMb.js:54 🔍 SessionManager.getSession() returning: Object
+index-CEx7GFMb.js:503 🔍 Found local wallet connections: Array(0)
+index-CEx7GFMb.js:54 🔍 SessionManager.getSession() returning: Object
+index-CEx7GFMb.js:535 🗺️ Router: Router component is rendering
+index-CEx7GFMb.js:535 📍 Router: Current location: /gaming
+index-CEx7GFMb.js:54 🔍 SessionManager.getSession() returning: Object
+index-CEx7GFMb.js:54 🔍 SessionManager.getSession() returning: Object
+index-CEx7GFMb.js:54 🔍 SessionManager.getSession() returning: Object
+index-CEx7GFMb.js:503 🔍 Found local wallet connections: Array(0)
+2index-CEx7GFMb.js:54 🔍 getQueryFn - SessionManager sessionToken: FOUND
+api/battles/leaderboard?limit=5:1  Failed to load resource: the server responded with a status of 404 ()
+index-CEx7GFMb.js:54 🔍 SessionManager.getSession() returning: Object
+index-CEx7GFMb.js:54 🔍 SessionManager.getSession() returning: Object
+index-CEx7GFMb.js:54 🔍 SessionManager.getSession() returning: Object
+index-CEx7GFMb.js:503 🔍 Found local wallet connections: Array(0)
+index-CEx7GFMb.js:535 🗺️ Router: Router component is rendering
+index-CEx7GFMb.js:535 📍 Router: Current location: /inquisition-gaming-v2
+index-CEx7GFMb.js:54 🔍 SessionManager.getSession() returning: Object
+index-CEx7GFMb.js:54 🔍 SessionManager.getSession() returning: Object
+index-CEx7GFMb.js:54 🔍 SessionManager.getSession() returning: Object
+index-CEx7GFMb.js:503 🔍 Found local wallet connections: Array(0)
+index-CEx7GFMb.js:54 🔍 SessionManager.getSession() returning: Object
+index-CEx7GFMb.js:54 🔍 SessionManager: checkSession() called - current sessionData: true
+index-CEx7GFMb.js:54 🌐 SessionManager: Making Riddle wallet session request to /api/riddle-wallet/session
+5index-CEx7GFMb.js:54 🔍 getQueryFn - SessionManager sessionToken: FOUND
+index-CEx7GFMb.js:54 ✅ SessionManager: Valid session for dippydoge
+index-CEx7GFMb.js:54 ✅ SessionManager: Updated session data: Object
+index-CEx7GFMb.js:54 🔍 SessionManager.getSession() returning: Object
+index-CEx7GFMb.js:54 🔍 SessionManager.getSession() returning: Object
+index-CEx7GFMb.js:54 🔍 SessionManager.getSession() returning: Object
+index-CEx7GFMb.js:54 🔍 SessionManager.getSession() returning: Object
+index-CEx7GFMb.js:54 🔍 SessionManager.getSession() returning: Object
+index-CEx7GFMb.js:54 🔔 SessionManager: Notified 5 listeners
+index-CEx7GFMb.js:54 🔍 SessionManager.getSession() returning: Object
+index-CEx7GFMb.js:54 🔍 SessionManager.getSession() returning: Object
+index-CEx7GFMb.js:54 🔍 SessionManager.getSession() returning: Object
+index-CEx7GFMb.js:503 🔍 Found local wallet connections: Array(0)
+index-CEx7GFMb.js:54 🔍 SessionManager.getSession() returning: Object
+api/gaming/player/profile:1  Failed to load resource: the server responded with a status of 404 ()
+index-CEx7GFMb.js:54 🔍 SessionManager.getSession() returning: Object
+index-CEx7GFMb.js:54 🔍 SessionManager.getSession() returning: Object
+index-CEx7GFMb.js:54 🔍 SessionManager.getSession() returning: Object
+index-CEx7GFMb.js:54 🔍 SessionManager.getSession() returning: Object
+index-CEx7GFMb.js:54 🔍 getQueryFn - SessionManager sessionToken: FOUND
+api/gaming/player/profile:1  Failed to load resource: the server responded with a status of 404 ()
+index-CEx7GFMb.js:54 🔍 getQueryFn - SessionManager sessionToken: FOUND
+api/gaming/player/profile:1  Failed to load resource: the server responded with a status of 404 ()
+2index-CEx7GFMb.js:54 🔍 getQueryFn - SessionManager sessionToken: FOUND
+index-CEx7GFMb.js:54 🔍 SessionManager.getSession() returning: Object
+index-CEx7GFMb.js:54 🔍 SessionManager.getSession() returning: Object
+index-CEx7GFMb.js:54 🔍 SessionManager.getSession() returning: Object
+index-CEx7GFMb.js:54 🔍 SessionManager.getSession() returning: Object
+index-CEx7GFMb.js:54 🔍 SessionManager.getSession() returning: Object
+index-CEx7GFMb.js:54 🔍 SessionManager.getSession() returning: Object
+index-CEx7GFMb.js:54 🔍 SessionManager.getSession() returning: Object
+index-CEx7GFMb.js:54 🔍 SessionManager.getSession() returning: Object
+index-CEx7GFMb.js:54 🔍 SessionManager.getSession() returning: Object
+index-CEx7GFMb.js:54 🔍 SessionManager.getSession() returning: Object
+index-CEx7GFMb.js:54 🔍 SessionManager: checkSession() called - current sessionData: true
+index-CEx7GFMb.js:54 🌐 SessionManager: Making Riddle wallet session request to /api/riddle-wallet/session
+index-CEx7GFMb.js:54 ✅ SessionManager: Valid session for dippydoge
+index-CEx7GFMb.js:54 ✅ SessionManager: Updated session data: Object
+index-CEx7GFMb.js:54 🔍 SessionManager.getSession() returning: Object
+index-CEx7GFMb.js:54 🔍 SessionManager.getSession() returning: Object
+index-CEx7GFMb.js:54 🔍 SessionManager.getSession() returning: Object
+index-CEx7GFMb.js:54 🔍 SessionManager.getSession() returning: Object
+index-CEx7GFMb.js:54 🔍 SessionManager.getSession() returning: Object
+index-CEx7GFMb.js:54 🔔 SessionManager: Notified 5 listeners
+index-CEx7GFMb.js:54 🔍 SessionManager.getSession() returning: Object
+index-CEx7GFMb.js:54 🔍 SessionManager.getSession() returning: Object
+index-CEx7GFMb.js:54 🔍 SessionManager.getSession() returning: Object
+index-CEx7GFMb.js:503 🔍 Found local wallet connections: Array(0)
+index-CEx7GFMb.js:54 🔍 SessionManager.getSession() returning: Object
+index-CEx7GFMb.js:54 🔍 SessionManager.getSession() returning: Object
+index-CEx7GFMb.js:414 Refused to apply inline style because it violates the following Content Security Policy directive: "style-src 'self' https://fonts.googleapis.com https://cdn.jsdelivr.net". Either the 'unsafe-inline' keyword, a hash ('sha256-kAApudxpTi9mfjlC9lC8ZaS9xFHU9/NLLbB173MU7SU='), or a nonce ('nonce-...') is required to enable inline execution.
+
+EX @ index-CEx7GFMb.js:414
+index-CEx7GFMb.js:458 Warning: Missing `Description` or `aria-describedby={undefined}` for {DialogContent}.
+(anonymous) @ index-CEx7GFMb.js:458
+inquisition-gaming-v2:1 Refused to load the image 'ipfs://bafybeigp2mspowp7lvifxf7nujgnltgvbhjioqykwojbqjk53wivqdl33m/774.png' because it violates the following Content Security Policy directive: "img-src 'self' data: blob: https: https://cryptologos.cc https://assets.coingecko.com https://dd.dexscreener.com https://api.dexscreener.com https://*.dexscreener.com https://static.dexscreener.com https://assets-cdn.trustwallet.com https://raw.githubusercontent.com https://bithomp.com https://cdn.bithomp.com https://gateway.pinata.cloud https://ipfs.io https://cloudflare-ipfs.com https://nftstorage.link".
+
+2index-CEx7GFMb.js:54 🔍 getQueryFn - SessionManager sessionToken: FOUND
+index-CEx7GFMb.js:54 🔍 SessionManager.getSession() returning: Object
+index-CEx7GFMb.js:54 🔍 SessionManager.getSession() returning: Object
+inquisition-gaming-v2-EewyBOGk.js:18 🎨 [NFT IMAGE] Generating with public endpoint (NO AUTH) Object
+index-CEx7GFMb.js:54 🔍 SessionManager.getSession() returning: Object
+inquisition-gaming-v2-EewyBOGk.js:18 ✅ [NFT IMAGE] Image generated: Object
+api/gaming/player/nfts/00080BB812C36A8E1C6C8B3DCE5BA3902299EF5B6EB51C8FDC0717BE05BA1D21/save-image:1  Failed to load resource: the server responded with a status of 403 ()
+index-CEx7GFMb.js:54 🔍 SessionManager.getSession() returning: Object
+inquisition-gaming-v2-EewyBOGk.js:18 🎨 [NFT IMAGE] Generating with public endpoint (NO AUTH) Object
+2index-CEx7GFMb.js:54 🔍 getQueryFn - SessionManager sessionToken: FOUND
+index-CEx7GFMb.js:54 🔍 SessionManager.getSession() returning: Object
+index-CEx7GFMb.js:54 🔍 SessionManager.getSession() returning: Object
+inquisition-gaming-v2-EewyBOGk.js:18 ✅ [NFT IMAGE] Image generated: Object
+api/gaming/player/nfts/00080BB812C36A8E1C6C8B3DCE5BA3902299EF5B6EB51C8FDC0717BE05BA1D21/save-image:1  Failed to load resource: the server responded with a status of 403 ()
+inquisition-gaming-v2-EewyBOGk.js:18 ❌ [NFT IMAGE] Generation error: Error: Failed to save image to NFT
+    at Object.mutationFn (inquisition-gaming-v2-EewyBOGk.js:18:5091)
+onError @ inquisition-gaming-v2-EewyBOGk.js:18
+index-CEx7GFMb.js:54 🔍 SessionManager.getSession() returning: Object
+index-CEx7GFMb.js:54 🔍 SessionManager.getSession() returning: Object
+index-CEx7GFMb.js:54 🔍 SessionManager.getSession() returning: Object
+index-CEx7GFMb.js:503 🔍 Found local wallet connections: Array(0)
+index-CEx7GFMb.js:54 🔍 SessionManager.getSession() returning: Object

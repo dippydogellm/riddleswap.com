@@ -1,0 +1,153 @@
+anager.getSession() returning: {isLoggedIn: true, handle: 'dippydoge', hasWalletData: true, hasSessionToken: true, walletDataKeys: Array(7)}
+injected.js:27 🔍 SessionManager.getSession() returning: {isLoggedIn: true, handle: 'dippydoge', hasWalletData: true, hasSessionToken: true, walletDataKeys: Array(7)}
+injected.js:27 🔍 SessionManager.getSession() returning: {isLoggedIn: true, handle: 'dippydoge', hasWalletData: true, hasSessionToken: true, walletDataKeys: Array(7)}
+injected.js:27 ✅ [GLOBAL RENEWAL] Session renewed - closing modal
+injected.js:27 🔔 SessionManager: Notified 4 listeners
+injected.js:27 🔍 SessionManager.getSession() returning: {isLoggedIn: true, handle: 'dippydoge', hasWalletData: true, hasSessionToken: true, walletDataKeys: Array(7)}
+injected.js:27 🔍 SessionManager.getSession() returning: {isLoggedIn: true, handle: 'dippydoge', hasWalletData: true, hasSessionToken: true, walletDataKeys: Array(7)}
+injected.js:27 🔍 SessionManager.getSession() returning: {isLoggedIn: true, handle: 'dippydoge', hasWalletData: true, hasSessionToken: true, walletDataKeys: Array(7)}
+injected.js:27 🔍 Found local wallet connections: []
+injected.js:27 🔐 [GLOBAL RENEWAL] Handler initialized
+injected.js:27 🔍 SessionManager.getSession() returning: {isLoggedIn: true, handle: 'dippydoge', hasWalletData: true, hasSessionToken: true, walletDataKeys: Array(7)}
+injected.js:27 🔍 SessionManager.getSession() returning: {isLoggedIn: true, handle: 'dippydoge', hasWalletData: true, hasSessionToken: true, walletDataKeys: Array(7)}
+injected.js:27 🔍 SessionManager.getSession() returning: {isLoggedIn: true, handle: 'dippydoge', hasWalletData: true, hasSessionToken: true, walletDataKeys: Array(7)}
+injected.js:27 🔍 SessionManager.getSession() returning: {isLoggedIn: true, handle: 'dippydoge', hasWalletData: true, hasSessionToken: true, walletDataKeys: Array(7)}
+injected.js:27 🔍 SessionManager.getSession() returning: {isLoggedIn: true, handle: 'dippydoge', hasWalletData: true, hasSessionToken: true, walletDataKeys: Array(7)}
+injected.js:27 🔍 Found local wallet connections: []
+injected.js:27 🗺️ Router: Router component is rendering
+injected.js:27 📍 Router: Current location: /profile
+injected.js:27 🔍 SessionManager.getSession() returning: {isLoggedIn: true, handle: 'dippydoge', hasWalletData: true, hasSessionToken: true, walletDataKeys: Array(7)}
+injected.js:27 🔍 SessionManager.getSession() returning: {isLoggedIn: true, handle: 'dippydoge', hasWalletData: true, hasSessionToken: true, walletDataKeys: Array(7)}
+injected.js:27 🔍 SessionManager.getSession() returning: {isLoggedIn: true, handle: 'dippydoge', hasWalletData: true, hasSessionToken: true, walletDataKeys: Array(7)}
+injected.js:27 🔍 Found local wallet connections: []
+injected.js:27 🔍 SessionManager.getSession() returning: {isLoggedIn: true, handle: 'dippydoge', hasWalletData: true, hasSessionToken: true, walletDataKeys: Array(7)}
+injected.js:27 🔍 SessionManager.getSession() returning: {isLoggedIn: true, handle: 'dippydoge', hasWalletData: true, hasSessionToken: true, walletDataKeys: Array(7)}
+injected.js:27 🔍 SessionManager.getSession() returning: {isLoggedIn: true, handle: 'dippydoge', hasWalletData: true, hasSessionToken: true, walletDataKeys: Array(7)}
+injected.js:27 🔍 Found local wallet connections: []
+injected.js:27 🔍 [AUTH CHECK] Session token found: YES
+injected.js:27 🔍 [AUTH CHECK] Server response: {success: true, authenticated: true, username: 'dippydoge', handle: 'dippydoge', expiresAt: 1761066075452, …}
+injected.js:27 ✅ [AUTH CHECK] Valid session for user: dippydoge
+injected.js:27 🔐 [AUTH DEBUG] authData: {sessionToken: '7ax1vz7w4nbmgy5v9ft', handle: 'dippydoge', authenticated: true, username: 'dippydoge', walletData: {…}, …}
+injected.js:27 🔐 [AUTH DEBUG] isAuthenticated: true
+injected.js:27 🔐 [AUTH DEBUG] authLoading: false
+injected.js:27 🔍 [PROFILE FETCH] URL: /api/social/profile isViewingOwnProfile: false
+injected.js:27 🔐 [AUTH DEBUG] authData: {sessionToken: '7ax1vz7w4nbmgy5v9ft', handle: 'dippydoge', authenticated: true, username: 'dippydoge', walletData: {…}, …}
+injected.js:27 🔐 [AUTH DEBUG] isAuthenticated: true
+injected.js:27 🔐 [AUTH DEBUG] authLoading: false
+injected.js:27 🔐 [AUTH DEBUG] authData: {sessionToken: '7ax1vz7w4nbmgy5v9ft', handle: 'dippydoge', authenticated: true, username: 'dippydoge', walletData: {…}, …}
+injected.js:27 🔐 [AUTH DEBUG] isAuthenticated: true
+injected.js:27 🔐 [AUTH DEBUG] authLoading: false
+injected.js:27 🔐 [AUTH DEBUG] authData: {sessionToken: '7ax1vz7w4nbmgy5v9ft', handle: 'dippydoge', authenticated: true, username: 'dippydoge', walletData: {…}, …}
+injected.js:27 🔐 [AUTH DEBUG] isAuthenticated: true
+injected.js:27 🔐 [AUTH DEBUG] authLoading: false
+injected.js:27 🔍 [PROFILE DEBUG] isViewingOwnProfile (route-based): false
+injected.js:27 🔍 [PROFILE DEBUG] targetUserId: undefined
+injected.js:27 🔍 [PROFILE DEBUG] authData.handle: dippydoge
+injected.js:27 🔍 [PROFILE DEBUG] isOwnProfile (final): true
+injected.js:27 🔍 [PROFILE DEBUG] profile data: {id: 4, handle: 'dippydoge', displayName: 'DippyDoge dd', bio: '', location: '', …}
+injected.js:27 🔍 getQueryFn - SessionManager sessionToken: FOUND
+injected.js:27 🔐 [AUTH DEBUG] authData: {sessionToken: '7ax1vz7w4nbmgy5v9ft', handle: 'dippydoge', authenticated: true, username: 'dippydoge', walletData: {…}, …}
+injected.js:27 🔐 [AUTH DEBUG] isAuthenticated: true
+injected.js:27 🔐 [AUTH DEBUG] authLoading: false
+injected.js:27 🔍 [PROFILE DEBUG] isViewingOwnProfile (route-based): false
+injected.js:27 🔍 [PROFILE DEBUG] targetUserId: undefined
+injected.js:27 🔍 [PROFILE DEBUG] authData.handle: dippydoge
+injected.js:27 🔍 [PROFILE DEBUG] isOwnProfile (final): true
+injected.js:27 🔍 [PROFILE DEBUG] profile data: {id: 4, handle: 'dippydoge', displayName: 'DippyDoge dd', bio: '', location: '', …}
+injected.js:27 🔐 [AUTH DEBUG] authData: {sessionToken: '7ax1vz7w4nbmgy5v9ft', handle: 'dippydoge', authenticated: true, username: 'dippydoge', walletData: {…}, …}
+injected.js:27 🔐 [AUTH DEBUG] isAuthenticated: true
+injected.js:27 🔐 [AUTH DEBUG] authLoading: false
+injected.js:27 🔍 [PROFILE DEBUG] isViewingOwnProfile (route-based): false
+injected.js:27 🔍 [PROFILE DEBUG] targetUserId: undefined
+injected.js:27 🔍 [PROFILE DEBUG] authData.handle: dippydoge
+injected.js:27 🔍 [PROFILE DEBUG] isOwnProfile (final): true
+injected.js:27 🔍 [PROFILE DEBUG] profile data: {id: 4, handle: 'dippydoge', displayName: 'DippyDoge dd', bio: '', location: '', …}
+injected.js:27 📸 [PHOTO UPLOADER] Starting profile image upload...
+injected.js:204  POST https://301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/api/upload-photo 400 (Bad Request)
+apply @ injected.js:204
+handleFileSelect @ PhotoUploader.tsx:41
+callCallback2 @ chunk-SM3OW2QE.js?v=664b3655:3674
+invokeGuardedCallbackDev @ chunk-SM3OW2QE.js?v=664b3655:3699
+invokeGuardedCallback @ chunk-SM3OW2QE.js?v=664b3655:3733
+invokeGuardedCallbackAndCatchFirstError @ chunk-SM3OW2QE.js?v=664b3655:3736
+executeDispatch @ chunk-SM3OW2QE.js?v=664b3655:7014
+processDispatchQueueItemsInOrder @ chunk-SM3OW2QE.js?v=664b3655:7034
+processDispatchQueue @ chunk-SM3OW2QE.js?v=664b3655:7043
+dispatchEventsForPlugins @ chunk-SM3OW2QE.js?v=664b3655:7051
+(anonymous) @ chunk-SM3OW2QE.js?v=664b3655:7174
+batchedUpdates$1 @ chunk-SM3OW2QE.js?v=664b3655:18913
+batchedUpdates @ chunk-SM3OW2QE.js?v=664b3655:3579
+dispatchEventForPluginEventSystem @ chunk-SM3OW2QE.js?v=664b3655:7173
+dispatchEventWithEnableCapturePhaseSelectiveHydrationWithoutDiscreteEventReplay @ chunk-SM3OW2QE.js?v=664b3655:5478
+dispatchEvent @ chunk-SM3OW2QE.js?v=664b3655:5472
+dispatchDiscreteEvent @ chunk-SM3OW2QE.js?v=664b3655:5449
+injected.js:27 ❌ [PHOTO UPLOADER] Upload error: Error: Failed to get upload URL: Bad Request
+    at handleFileSelect (PhotoUploader.tsx:51:15)
+(anonymous) @ injected.js:27
+(anonymous) @ injected.js:27
+(anonymous) @ injected.js:27
+(anonymous) @ injected.js:27
+(anonymous) @ injected.js:27
+(anonymous) @ injected.js:27
+(anonymous) @ injected.js:27
+(anonymous) @ injected.js:27
+(anonymous) @ injected.js:27
+(anonymous) @ injected.js:27
+handleFileSelect @ PhotoUploader.tsx:102
+await in handleFileSelect
+callCallback2 @ chunk-SM3OW2QE.js?v=664b3655:3674
+invokeGuardedCallbackDev @ chunk-SM3OW2QE.js?v=664b3655:3699
+invokeGuardedCallback @ chunk-SM3OW2QE.js?v=664b3655:3733
+invokeGuardedCallbackAndCatchFirstError @ chunk-SM3OW2QE.js?v=664b3655:3736
+executeDispatch @ chunk-SM3OW2QE.js?v=664b3655:7014
+processDispatchQueueItemsInOrder @ chunk-SM3OW2QE.js?v=664b3655:7034
+processDispatchQueue @ chunk-SM3OW2QE.js?v=664b3655:7043
+dispatchEventsForPlugins @ chunk-SM3OW2QE.js?v=664b3655:7051
+(anonymous) @ chunk-SM3OW2QE.js?v=664b3655:7174
+batchedUpdates$1 @ chunk-SM3OW2QE.js?v=664b3655:18913
+batchedUpdates @ chunk-SM3OW2QE.js?v=664b3655:3579
+dispatchEventForPluginEventSystem @ chunk-SM3OW2QE.js?v=664b3655:7173
+dispatchEventWithEnableCapturePhaseSelectiveHydrationWithoutDiscreteEventReplay @ chunk-SM3OW2QE.js?v=664b3655:5478
+dispatchEvent @ chunk-SM3OW2QE.js?v=664b3655:5472
+dispatchDiscreteEvent @ chunk-SM3OW2QE.js?v=664b3655:5449
+injected.js:27 🔍 SessionManager.getSession() returning: {isLoggedIn: true, handle: 'dippydoge', hasWalletData: true, hasSessionToken: true, walletDataKeys: Array(7)}
+injected.js:27 🔍 SessionManager.getSession() returning: {isLoggedIn: true, handle: 'dippydoge', hasWalletData: true, hasSessionToken: true, walletDataKeys: Array(7)}
+injected.js:27 🔍 SessionManager.getSession() returning: {isLoggedIn: true, handle: 'dippydoge', hasWalletData: true, hasSessionToken: true, walletDataKeys: Array(7)}
+injected.js:27 🔍 Found local wallet connections: []
+injected.js:27 🔐 [AUTH DEBUG] authData: {sessionToken: '7ax1vz7w4nbmgy5v9ft', handle: 'dippydoge', authenticated: true, username: 'dippydoge', walletData: {…}, …}
+injected.js:27 🔐 [AUTH DEBUG] isAuthenticated: true
+injected.js:27 🔐 [AUTH DEBUG] authLoading: false
+injected.js:27 🔍 [PROFILE DEBUG] isViewingOwnProfile (route-based): false
+injected.js:27 🔍 [PROFILE DEBUG] targetUserId: undefined
+injected.js:27 🔍 [PROFILE DEBUG] authData.handle: dippydoge
+injected.js:27 🔍 [PROFILE DEBUG] isOwnProfile (final): true
+injected.js:27 🔍 [PROFILE DEBUG] profile data: {id: 4, handle: 'dippydoge', displayName: 'DippyDoge dd', bio: '', location: '', …}
+dippydoge1-10-11:1 Access to XMLHttpRequest at 'https://events.launchdarkly.com/events/bulk/62b35a865152ab14c5942820' from origin 'https://replit.com' has been blocked by CORS policy: Response to preflight request doesn't pass access control check: No 'Access-Control-Allow-Origin' header is present on the requested resource.
+_app-39dea94da059629e.js:28  POST https://events.launchdarkly.com/events/bulk/62b35a865152ab14c5942820 net::ERR_FAILED
+(anonymous) @ _app-39dea94da059629e.js:28
+(anonymous) @ _app-39dea94da059629e.js:28
+(anonymous) @ _app-39dea94da059629e.js:30
+(anonymous) @ _app-39dea94da059629e.js:30
+(anonymous) @ _app-39dea94da059629e.js:30
+t @ _app-39dea94da059629e.js:30
+(anonymous) @ _app-39dea94da059629e.js:30
+(anonymous) @ _app-39dea94da059629e.js:30
+(anonymous) @ _app-39dea94da059629e.js:30
+e @ _app-39dea94da059629e.js:30
+n @ _app-39dea94da059629e.js:28
+dippydoge1-10-11:1 Access to XMLHttpRequest at 'https://events.launchdarkly.com/events/bulk/62b35a865152ab14c5942820' from origin 'https://replit.com' has been blocked by CORS policy: Response to preflight request doesn't pass access control check: No 'Access-Control-Allow-Origin' header is present on the requested resource.
+_app-39dea94da059629e.js:28  POST https://events.launchdarkly.com/events/bulk/62b35a865152ab14c5942820 net::ERR_FAILED
+(anonymous) @ _app-39dea94da059629e.js:28
+(anonymous) @ _app-39dea94da059629e.js:28
+(anonymous) @ _app-39dea94da059629e.js:30
+(anonymous) @ _app-39dea94da059629e.js:30
+(anonymous) @ _app-39dea94da059629e.js:30
+t @ _app-39dea94da059629e.js:30
+(anonymous) @ _app-39dea94da059629e.js:30
+Promise.catch
+t @ _app-39dea94da059629e.js:30
+(anonymous) @ _app-39dea94da059629e.js:30
+(anonymous) @ _app-39dea94da059629e.js:30
+(anonymous) @ _app-39dea94da059629e.js:30
+e @ _app-39dea94da059629e.js:30
+n @ _app-39dea94da059629e.js:28

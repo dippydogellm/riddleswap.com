@@ -1,0 +1,105 @@
+injected.js:27 🚫 SessionMonitor: DISABLED - Using unified SessionManager instead
+injected.js:27 🗺️ Router: Router component is rendering
+injected.js:27 📍 Router: Current location: /riddlecity
+injected.js:27 💳 Router: Initializing wallet data state
+injected.js:27 📭 Router: No saved wallet data found
+injected.js:27 🔍 SessionManager.getSession() returning: Object
+injected.js:27 🔍 SessionManager.getSession() returning: Object
+injected.js:27 🔍 SessionManager.getSession() returning: Object
+injected.js:27 🔍 Found local wallet connections: Array(0)
+injected.js:27 🎨 App.tsx: App component is rendering
+injected.js:27 🏗️ App.tsx: Returning JSX with all providers
+injected.js:27 🚫 SessionMonitor: DISABLED - Using unified SessionManager instead
+injected.js:27 🗺️ Router: Router component is rendering
+injected.js:27 📍 Router: Current location: /riddlecity
+injected.js:27 💳 Router: Initializing wallet data state
+injected.js:27 📭 Router: No saved wallet data found
+injected.js:27 🔍 SessionManager.getSession() returning: Object
+injected.js:27 🔍 SessionManager.getSession() returning: Object
+injected.js:27 🔍 SessionManager.getSession() returning: Object
+injected.js:27 🔍 Found local wallet connections: Array(0)
+injected.js:27 🔐 [GLOBAL RENEWAL] Handler initialized
+injected.js:27 🔍 SessionManager.getSession() returning: Object
+injected.js:27 🔍 SessionManager: checkSession() called - current sessionData: true
+injected.js:27 🌐 SessionManager: Making Riddle wallet session request to /api/riddle-wallet/session
+injected.js:27 🔍 getQueryFn - SessionManager sessionToken: FOUND
+injected.js:27 📱 Platform: web, Native: false
+injected.js:27 📱 Initializing push notifications for platform: web
+injected.js:27 🌐 Initializing web notifications
+injected.js:27 📝 Registering device token with backend (web)
+injected.js:27 🔍 SessionManager sessionToken: FOUND
+injected.js:27 🔍 getQueryFn - SessionManager sessionToken: FOUND
+injected.js:27 🎨 [THEME] Applied theme: light, dark class: false
+injected.js:27 🔄 App.tsx: useEffect running - recovering wallet state
+injected.js:27 ✅ SessionManager: Valid session for dippydoge
+injected.js:27 ✅ SessionManager: Updated session data: Object
+injected.js:27 🔍 SessionManager.getSession() returning: Object
+injected.js:27 🔍 SessionManager.getSession() returning: Object
+injected.js:27 🔍 SessionManager.getSession() returning: Object
+injected.js:27 🔍 SessionManager.getSession() returning: Object
+injected.js:27 🔔 SessionManager: Notified 4 listeners
+injected.js:27 🔍 SessionManager.getSession() returning: Object
+injected.js:27 🔍 SessionManager.getSession() returning: Object
+injected.js:27 🔍 SessionManager.getSession() returning: Object
+injected.js:27 🔍 Found local wallet connections: Array(0)
+301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/api/notifications/register-device:1  Failed to load resource: the server responded with a status of 500 (Internal Server Error)
+injected.js:27 ❌ Failed to register device token: Error: 500: {"error":"relation \"device_tokens\" does not exist"}
+    at throwIfResNotOk (queryClient.ts:81:11)
+    at async apiRequest (queryClient.ts:119:3)
+    at async PushNotificationService.registerDevice (push-notification-service.ts:159:7)
+    at async PushNotificationService.initializeWebNotifications (push-notification-service.ts:58:7)
+    at async PushNotificationService.initialize (push-notification-service.ts:30:7)
+    at async initNotifications (NotificationBell.tsx:61:7)
+(anonymous) @ injected.js:27
+injected.js:27 🔍 SessionManager.getSession() returning: Object
+injected.js:27 🔍 SessionManager: checkSession() called - current sessionData: true
+injected.js:27 🌐 SessionManager: Making Riddle wallet session request to /api/riddle-wallet/session
+6injected.js:27 🔍 getQueryFn - SessionManager sessionToken: FOUND
+injected.js:27 🔍 SessionManager.getSession() returning: Object
+injected.js:27 ✅ SessionManager: Valid session for dippydoge
+injected.js:27 ✅ SessionManager: Updated session data: Object
+injected.js:27 🔍 SessionManager.getSession() returning: Object
+injected.js:27 🔍 SessionManager.getSession() returning: Object
+injected.js:27 🔍 SessionManager.getSession() returning: Object
+injected.js:27 🔍 SessionManager.getSession() returning: Object
+injected.js:27 🔍 SessionManager.getSession() returning: Object
+injected.js:27 🔔 SessionManager: Notified 5 listeners
+injected.js:27 🔍 SessionManager.getSession() returning: Object
+injected.js:27 🔍 SessionManager.getSession() returning: Object
+injected.js:27 🔍 SessionManager.getSession() returning: Object
+injected.js:27 🔍 Found local wallet connections: Array(0)
+injected.js:27 🔍 SessionManager.getSession() returning: Object
+injected.js:27 🔍 SessionManager.getSession() returning: Object
+injected.js:27 🔍 SessionManager.getSession() returning: Object
+301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/api/riddlecity/city/my-city:1  Failed to load resource: the server responded with a status of 500 (Internal Server Error)
+injected.js:27 🔍 SessionManager.getSession() returning: Object
+injected.js:27 🔍 SessionManager.getSession() returning: Object
+injected.js:27 🔍 SessionManager.getSession() returning: Object
+injected.js:27 🔍 getQueryFn - SessionManager sessionToken: FOUND
+301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/api/riddlecity/city/my-city:1  Failed to load resource: the server responded with a status of 500 (Internal Server Error)
+injected.js:27 🔍 SessionManager.getSession() returning: Object
+injected.js:27 🔍 SessionManager.getSession() returning: Object
+injected.js:27 🔍 SessionManager: checkSession() called - current sessionData: true
+injected.js:27 🌐 SessionManager: Making Riddle wallet session request to /api/riddle-wallet/session
+injected.js:27 🔍 SessionManager.getSession() returning: Object
+injected.js:27 🔍 SessionManager.getSession() returning: Object
+injected.js:27 ✅ SessionManager: Valid session for dippydoge
+injected.js:27 ✅ SessionManager: Updated session data: Object
+injected.js:27 🔍 SessionManager.getSession() returning: Object
+injected.js:27 🔍 SessionManager.getSession() returning: Object
+injected.js:27 🔍 SessionManager.getSession() returning: Object
+injected.js:27 🔍 SessionManager.getSession() returning: Object
+injected.js:27 🔍 SessionManager.getSession() returning: Object
+injected.js:27 🔍 SessionManager.getSession() returning: Object
+injected.js:27 🔔 SessionManager: Notified 6 listeners
+injected.js:27 🔍 SessionManager.getSession() returning: Object
+injected.js:27 🔍 SessionManager.getSession() returning: Object
+injected.js:27 🔍 SessionManager.getSession() returning: Object
+injected.js:27 🔍 Found local wallet connections: Array(0)
+injected.js:27 🔍 SessionManager.getSession() returning: Object
+injected.js:27 🔍 SessionManager.getSession() returning: Object
+injected.js:27 🔍 SessionManager.getSession() returning: Object
+injected.js:27 🔍 SessionManager.getSession() returning: Object
+stallwart.build.js:1 stallwart: failed ping 1
+stallwart.build.js:1 stallwart: failed ping 2
+stallwart.build.js:1 stallwart: failed ping 3

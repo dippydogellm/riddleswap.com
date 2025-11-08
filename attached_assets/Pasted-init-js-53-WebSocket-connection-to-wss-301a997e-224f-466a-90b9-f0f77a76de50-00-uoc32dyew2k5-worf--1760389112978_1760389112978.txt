@@ -1,0 +1,62 @@
+init.js:53 WebSocket connection to 'wss://301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/?token=FCiNf7_hZ1Bw' failed: 
+(anonymous) @ init.js:53
+init.js:44 🔧 Fixed WebSocket URL for Replit: wss://localhost:undefined/?token=FCiNf7_hZ1Bw → wss://301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/?token=FCiNf7_hZ1Bw
+init.js:53 WebSocket connection to 'wss://301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/?token=FCiNf7_hZ1Bw' failed: 
+(anonymous) @ init.js:53
+client:512 [vite] failed to connect to websocket.
+your current setup:
+  (browser) 301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/ <--[HTTP]--> localhost:undefined/ (server)
+  (browser) 301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev:/ <--[WebSocket (failing)]--> localhost:undefined/ (server)
+Check out your Vite / network configuration and https://vite.dev/config/server-options.html#server-hmr .
+(anonymous) @ client:512
+chunk-SM3OW2QE.js?v=dd132bec:21551 Download the React DevTools for a better development experience: https://reactjs.org/link/react-devtools
+App.tsx:488 🎨 App.tsx: App component is rendering
+App.tsx:505 🏗️ App.tsx: Returning JSX with all providers
+SessionMonitor.tsx:10 🚫 SessionMonitor: DISABLED - Using unified SessionManager instead
+App.tsx:197 🗺️ Router: Router component is rendering
+App.tsx:200 📍 Router: Current location: /
+App.tsx:203 💳 Router: Initializing wallet data state
+App.tsx:207 🔓 Router: No session token found
+sessionManager.ts:502 🔍 SessionManager.getSession() returning: Object
+App.tsx:488 🎨 App.tsx: App component is rendering
+App.tsx:505 🏗️ App.tsx: Returning JSX with all providers
+SessionMonitor.tsx:10 🚫 SessionMonitor: DISABLED - Using unified SessionManager instead
+App.tsx:197 🗺️ Router: Router component is rendering
+App.tsx:200 📍 Router: Current location: /
+App.tsx:203 💳 Router: Initializing wallet data state
+App.tsx:207 🔓 Router: No session token found
+sessionManager.ts:502 🔍 SessionManager.getSession() returning: Object
+sessionManager.ts:94 🔍 SessionManager: checkSession() called - current sessionData: false
+sessionManager.ts:101 🔓 SessionManager: No token found locally, checking backend session
+sessionManager.ts:263 🔍 SessionManager: Checking backend session via cookies/session storage
+theme-context.tsx:50 🎨 [THEME] Applied theme: dark, dark class: true
+App.tsx:491 🔄 App.tsx: useEffect running - recovering wallet state
+App.tsx:501 ⚡ App.tsx: Skipping wallet recovery for faster login page loading
+sessionManager.ts:307 📊 SessionManager: No backend session found
+install-prompt.tsx:34 🔧 Before install prompt event fired
+301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/:1 Banner not shown: beforeinstallpromptevent.preventDefault() called. The page must call beforeinstallpromptevent.prompt() to show the banner.
+App.tsx:197 🗺️ Router: Router component is rendering
+App.tsx:200 📍 Router: Current location: /login
+sessionManager.ts:502 🔍 SessionManager.getSession() returning: Object
+sessionManager.ts:502 🔍 SessionManager.getSession() returning: Object
+queryClient.ts:135 🔍 getQueryFn - SessionManager sessionToken: NOT FOUND
+chunk-IXVO367N.js?v=dd132bec:336 Warning: Missing `Description` or `aria-describedby={undefined}` for {DialogContent}.
+(anonymous) @ chunk-IXVO367N.js?v=dd132bec:336
+JoeyConnectQR.tsx:44 📱 [JOEY] Initializing WalletConnect v2 SignClient...
+chunk-IXVO367N.js?v=dd132bec:323 `DialogContent` requires a `DialogTitle` for the component to be accessible for screen reader users.
+
+If you want to hide the `DialogTitle`, you can wrap it with our VisuallyHidden component.
+
+For more information, see https://radix-ui.com/primitives/docs/components/dialog
+(anonymous) @ chunk-IXVO367N.js?v=dd132bec:323
+chunk-IXVO367N.js?v=dd132bec:336 Warning: Missing `Description` or `aria-describedby={undefined}` for {DialogContent}.
+(anonymous) @ chunk-IXVO367N.js?v=dd132bec:336
+JoeyConnectQR.tsx:62 ✅ [JOEY] SignClient initialized
+@walletconnect_sign-client.js?v=dd132bec:5885 requiredNamespaces are deprecated and are automatically assigned to optionalNamespaces
+(anonymous) @ @walletconnect_sign-client.js?v=dd132bec:5885
+@walletconnect_sign-client.js?v=dd132bec:2273 Object
+@walletconnect_sign-client.js?v=dd132bec:2273 Object
+@walletconnect_sign-client.js?v=dd132bec:2273 Object
+@walletconnect_sign-client.js?v=dd132bec:2273 Object
+@walletconnect_sign-client.js?v=dd132bec:2273 {time: 1760389099304, level: 60, context: 'core/relayer', msg: 'Fatal socket error: WebSocket connection closed ab…ith code: 3000 (Unauthorized: origin not allowed)'}
+@walletconnect_sign-client.js?v=dd132bec:2273 {time: 1760389099305, level: 60, context: 'core/relayer', msg: 'Fatal socket error received, closing transport'}

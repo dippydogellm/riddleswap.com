@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gaming Wizard Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+            color: white;
+            line-height: 1.6;
+        }
+        .card {
+            background: rgba(255,255,255,0.1);
+            border-radius: 12px;
+            padding: 20px;
+            margin: 20px 0;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+        .button {
+            background: #22c55e;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 10px 5px;
+        }
+        .button:hover {
+            background: #16a34a;
+        }
+        .form-group {
+            margin: 15px 0;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 6px;
+            box-sizing: border-box;
+        }
+        .response {
+            background: rgba(0,0,0,0.3);
+            padding: 15px;
+            border-radius: 8px;
+            margin: 10px 0;
+            white-space: pre-wrap;
+            font-family: monospace;
+            font-size: 14px;
+        }
+        .success { color: #22c55e; }
+        .error { color: #ef4444; }
+        .status-indicator {
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 12px;
+            margin: 5px;
+            display: inline-block;
+        }
+        .status-working { background: #22c55e; }
+        .status-error { background: #ef4444; }
+        .status-pending { background: #f59e0b; }
+    </style>
+</head>
+<body>
+    <h1>🎮 Gaming Wizard Test Dashboard</h1>
+    <p>Test the Gaming Profile Wizard endpoints and database functionality</p>
+
+    <!-- API Status Section -->
+    <div class="card">
+        <h2>📊 API Endpoint Status</h2>
+        <div id="api-status">
+            <div class="status-indicator status-pending">Checking endpoints...</div>
+        </div>
+        <button class="button" onclick="checkAllEndpoints()">Check All Endpoints</button>
+    </div>
+
+    <!-- Profile Creation Test -->
+    <div class="card">
+        <h2>✨ Profile Creation Test</h2>
+        <div class="form-group">
+            <label>Player Name:</label>
+            <input type="text" id="playerName" placeholder="Enter player name" value="TestCommander">
+        </div>
+        <div class="form-group">
+            <label>Commander Class:</label>
+            <select id="commanderClass">
+                <option value="warrior">🛡️ Warrior</option>
+                <option value="mage">🧙 Mage</option>
+                <option value="rogue">🥷 Rogue</option>
+                <option value="paladin">✨ Paladin</option>
+            </select>
+        </div>
+        <button class="button" onclick="createProfile()">Create Profile</button>
+        <div id="profileResponse" class="response"></div>
+    </div>
+
+    <!-- NFT Verification Test -->
+    <div class="card">
+        <h2>🛡️ NFT Verification Test</h2>
+        <button class="button" onclick="verifyNFTs()">Start NFT Verification</button>
+        <button class="button" onclick="checkNFTStatus()">Check NFT Status</button>
+        <div id="nftResponse" class="response"></div>
+    </div>
+
+    <!-- Dashboard Data Test -->
+    <div class="card">
+        <h2>📈 Dashboard Data Test</h2>
+        <button class="button" onclick="getDashboard()">Get Dashboard Data</button>
+        <button class="button" onclick="getPlayerData()">Get Player Data</button>
+        <div id="dashboardResponse" class="response"></div>
+    </div>
+
+    <!-- Wizard Completion Test -->
+    <div class="card">
+        <h2>🎉 Wizard Completion Test</h2>
+        <div class="form-group">
+            <label>Civilization Name:</label>
+            <input type="text" id="civilizationName" placeholder="Enter civilization name" value="Test Kingdom">
+        </div>
+        <div class="form-group">
+            <label>Motto:</label>
+            <textarea id="motto" placeholder="Enter your motto">Unity Through Strength</textarea>
+        </div>
+        <button class="button" onclick="completeWizard()">Complete Wizard</button>
+        <div id="wizardResponse" class="response"></div>
+    </div>
+
+    <!-- Database Direct Test -->
+    <div class="card">
+        <h2>🗄️ Database Direct Test</h2>
+        <button class="button" onclick="checkDatabase()">Check Gaming Collections</button>
+        <button class="button" onclick="checkPlayerTable()">Check Players Table</button>
+        <div id="databaseResponse" class="response"></div>
+    </div>
+
+    <script>
+        const baseURL = 'http://localhost:5000';
+
+        async function makeRequest(url, options = {}) {
+            try {
+                const response = await fetch(url, {
+                    headers: {
+                        'Content-Type': 'application/json',
+                        ...options.headers
+                    },
+                    ...options
+                });
+                
+                let data;
+                const contentType = response.headers.get('content-type');
+                if (contentType && contentType.includes('application/json')) {
+                    data = await response.json();
+                } else {
+                    data = await response.text();
+                }
+                
+                return {
+                    ok: response.ok,
+                    status: response.status,
+                    data: data
+                };
+            } catch (error) {
+                return {
+                    ok: false,
+                    status: 0,
+                    data: { error: error.message }
+                };
+            }
+        }
+
+        function updateResponse(elementId, response, isSuccess = null) {
+            const element = document.getElementById(elementId);
+            const status = isSuccess !== null ? isSuccess : response.ok;
+            element.className = `response ${status ? 'success' : 'error'}`;
+            element.textContent = JSON.stringify(response, null, 2);
+        }
+
+        async function checkAllEndpoints() {
+            const statusDiv = document.getElementById('api-status');
+            statusDiv.innerHTML = '<div class="status-indicator status-pending">Checking...</div>';
+            
+            const endpoints = [
+                '/api/gaming/player/dashboard',
+                '/api/nft-gaming/player/dashboard', 
+                '/api/gaming/player/profile',
+                '/api/gaming/player/verify-nfts',
+                '/api/nft-gaming/complete-wizard',
+                '/api/nft-population/status'
+            ];
+            
+            let results = [];
+            for (const endpoint of endpoints) {
+                const result = await makeRequest(baseURL + endpoint);
+                results.push({
+                    endpoint,
+                    status: result.status,
+                    working: result.ok || result.status === 404 // 404 means endpoint exists but no data
+                });
+            }
+            
+            let html = '';
+            results.forEach(result => {
+                const statusClass = result.working ? 'status-working' : 'status-error';
+                html += `<div class="status-indicator ${statusClass}">${result.endpoint} (${result.status})</div>`;
+            });
+            
+            statusDiv.innerHTML = html;
+        }
+
+        async function createProfile() {
+            const profileData = {
+                player_name: document.getElementById('playerName').value,
+                commander_class: document.getElementById('commanderClass').value
+            };
+            
+            const response = await makeRequest(baseURL + '/api/gaming/player/profile', {
+                method: 'POST',
+                body: JSON.stringify(profileData)
+            });
+            
+            updateResponse('profileResponse', response);
+        }
+
+        async function verifyNFTs() {
+            const response = await makeRequest(baseURL + '/api/gaming/player/verify-nfts', {
+                method: 'POST'
+            });
+            
+            updateResponse('nftResponse', response);
+        }
+
+        async function checkNFTStatus() {
+            const response = await makeRequest(baseURL + '/api/nft-population/status');
+            updateResponse('nftResponse', response);
+        }
+
+        async function getDashboard() {
+            const response = await makeRequest(baseURL + '/api/gaming/player/dashboard');
+            updateResponse('dashboardResponse', response);
+        }
+
+        async function getPlayerData() {
+            const response = await makeRequest(baseURL + '/api/nft-gaming/riddle-wallet-users');
+            updateResponse('dashboardResponse', response);
+        }
+
+        async function completeWizard() {
+            const wizardData = {
+                civilization_name: document.getElementById('civilizationName').value,
+                motto: document.getElementById('motto').value,
+                primary_color: '#8B4513',
+                secondary_color: '#DAA520',
+                accent_color: '#DC143C'
+            };
+            
+            const response = await makeRequest(baseURL + '/api/nft-gaming/civilization', {
+                method: 'POST',
+                body: JSON.stringify(wizardData)
+            });
+            
+            updateResponse('wizardResponse', response);
+        }
+
+        async function checkDatabase() {
+            const response = await makeRequest(baseURL + '/api/nft-population/status');
+            updateResponse('databaseResponse', response);
+        }
+
+        async function checkPlayerTable() {
+            const response = await makeRequest(baseURL + '/api/nft-gaming/riddle-wallet-users');
+            updateResponse('databaseResponse', response);
+        }
+
+        // Auto-check endpoints on page load
+        window.onload = function() {
+            checkAllEndpoints();
+        };
+    </script>
+</body>
+</html>

@@ -1,0 +1,43 @@
+on() called - current sessionData: true
+Console.js:61 🌐 SessionManager: Making Riddle wallet session request to /api/riddle-wallet/session
+Console.js:61 ✅ AuthGuard: User authenticated, allowing access
+Console.js:61 🎨 [THEME] Applied theme: dark, dark class: true
+Console.js:61 🔄 App.tsx: useEffect running - recovering wallet state
+Console.js:61 ✅ SessionManager: Valid session for dippydoge
+Console.js:61 ✅ SessionManager: Updated session data: Object
+Console.js:61 🔍 SessionManager.getSession() returning: Object
+Console.js:61 🔍 SessionManager.getSession() returning: Object
+Console.js:61 🔔 SessionManager: Notified 2 listeners
+Console.js:61 🔍 SessionManager.getSession() returning: Object
+Console.js:61 🔍 SessionManager.getSession() returning: Object
+Console.js:61 🔍 [SOL WALLET] authData: null
+Console.js:61 🔍 [SOL WALLET] walletData: undefined
+Console.js:61 🔍 [SOL WALLET] solAddress: undefined
+6Console.js:61 🔍 [AUTH CHECK] Session token found: YES
+Console.js:61 🔍 [AUTH CHECK] Session data found: YES
+Console.js:61 ✅ [AUTH CHECK] Valid session for user: dippydoge
+Console.js:61 🔍 [SOL WALLET] authData: Object
+Console.js:61 🔍 [SOL WALLET] walletData: undefined
+Console.js:61 🔍 [SOL WALLET] solAddress: undefined
+Console.js:61 🔍 [AUTH CHECK] Session data found: YES
+Console.js:61 ✅ [AUTH CHECK] Valid session for user: dippydoge
+Console.js:61 🔍 [SOL WALLET] authData: Object
+Console.js:61 🔍 [SOL WALLET] walletData: undefined
+Console.js:61 🔍 [SOL WALLET] solAddress: undefined
+Console.js:61 🔍 [AUTH CHECK] Session data found: YES
+Console.js:61 ✅ [AUTH CHECK] Valid session for user: dippydoge
+Console.js:61 🔍 [AUTH CHECK] Session data found: YES
+Console.js:61 ✅ [AUTH CHECK] Valid session for user: dippydoge
+Console.js:61 🔍 [SOL WALLET] authData: Object
+Console.js:61 🔍 [SOL WALLET] walletData: undefined
+Console.js:61 🔍 [SOL WALLET] solAddress: undefined
+Console.js:61 🔍 [AUTH CHECK] Session data found: YES
+Console.js:61 ✅ [AUTH CHECK] Valid session for user: dippydoge
+Console.js:61 🔍 [SOL WALLET] authData: Object
+Console.js:61 🔍 [SOL WALLET] walletData: undefined
+Console.js:61 🔍 [SOL WALLET] solAddress: undefined
+Console.js:61 🔍 [AUTH CHECK] Session data found: YES
+Console.js:61 ✅ [AUTH CHECK] Valid session for user: dippydoge
+Console.js:61 🔍 [SOL WALLET] authData: Object
+Console.js:61 🔍 [SOL WALLET] walletData: undefined
+Console.js:61 🔍 [SOL WALLET] solAddress: undefined

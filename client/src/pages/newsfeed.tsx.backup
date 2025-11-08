@@ -1,0 +1,1135 @@
+import { useState, useEffect, useRef } from "react";
+import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
+import { apiRequest } from "@/lib/queryClient";
+import {
+  Box,
+  Card,
+  CardContent,
+  Button,
+  Avatar,
+  Badge,
+  TextField,
+  Typography,
+  IconButton,
+  Chip,
+  CircularProgress,
+  Divider,
+  Dialog,
+  DialogTitle,
+  DialogContent,
+  DialogActions,
+  Paper,
+  Grid,
+  InputAdornment
+} from "@mui/material";
+import { useToast } from "@/hooks/use-toast";
+import { useAuth } from "@/hooks/useAuth";
+import { 
+  Heart, 
+  MessageCircle, 
+  Repeat2, 
+  Share,
+  TrendingUp,
+  Settings,
+  Sparkles,
+  BarChart3,
+  RefreshCw,
+  Zap,
+  Quote,
+  Send,
+  ChevronDown,
+  ChevronUp,
+  Image,
+  X,
+  Plus
+} from "lucide-react";
+import { FaFacebook, FaInstagram, FaTiktok, FaSnapchat, FaTwitter } from "react-icons/fa";
+import { Link, useLocation } from "wouter";
+import { PhotoUploader } from "@/components/PhotoUploader";
+
+interface NewsfeedPost {
+  id: number;
+  content: string;
+  authorHandle: string;
+  authorDisplayName: string;
+  authorProfileImage: string;
+  createdAt: string;
+  likesCount: number;
+  sharesCount: number;
+  commentsCount: number;
+  algorithmScore: number;
+  imageUrls?: string[];
+  isRetweet?: boolean;
+  isQuote?: boolean;
+  quotedPostId?: string;
+  originalPost?: {
+    id: number;
+    content: string;
+    authorHandle: string;
+    authorDisplayName: string;
+  };
+}
+
+interface PostComment {
+  id: string;
+  content: string;
+  authorHandle: string;
+  authorDisplayName: string;
+  authorProfileImage: string;
+  createdAt: string;
+  likesCount: number;
+  repliesCount: number;
+}
+
+interface AlgorithmStats {
+  totalPosts: number;
+  uniqueAuthors: number;
+  averageAgeHours: number;
+  priorityPosts: number;
+  priorityAccounts: string[];
+  config: any;
+}
+
+// SafeAvatar component - MUI Avatar with error handling
+const SafeAvatar = ({ src, sx = {}, testId, alt = "" }: { 
+  src?: string | null; 
+  sx?: any; 
+  testId?: string; 
+  alt?: string; 
+}) => {
+  const [show, setShow] = useState(Boolean(src));
+  
+  if (!src || !show) return null;
+  
+  return (
+    <Avatar 
+      src={src}
+      alt={alt}
+      sx={sx}
+      data-testid={testId}
+      onError={() => setShow(false)}
+    />
+  );
+};
+
+export default function NewsfeedPage() {
+  const { toast } = useToast();
+  const queryClient = useQueryClient();
+  const { authData, isAuthenticated } = useAuth();
+  const [, setLocation] = useLocation();
+  const [showStats, setShowStats] = useState(false);
+  const [refreshKey, setRefreshKey] = useState(0);
+  const [allPosts, setAllPosts] = useState<NewsfeedPost[]>([]);
+  const [hasMore, setHasMore] = useState(true);
+  const [isLoadingMore, setIsLoadingMore] = useState(false);
+  const loadMoreRef = useRef<HTMLDivElement>(null);
+  const [showCommentsFor, setShowCommentsFor] = useState<number | null>(null);
+  const [newComment, setNewComment] = useState('');
+  const [showQuoteDialog, setShowQuoteDialog] = useState<NewsfeedPost | null>(null);
+  const [quoteText, setQuoteText] = useState('');
+  
+  // Post creation state
+  const [newPostContent, setNewPostContent] = useState('');
+  const [uploadedImageUrl, setUploadedImageUrl] = useState<string | null>(null);
+  const [isCreatingPost, setIsCreatingPost] = useState(false);
+  const maxCharacters = 280;
+
+  // Fetch initial newsfeed posts - no caching for real-time updates
+  const { data: posts, isLoading: postsLoading, refetch: refetchPosts } = useQuery<NewsfeedPost[]>({
+    queryKey: ["/api/social/newsfeed", refreshKey],
+    queryFn: async () => {
+      const response = await apiRequest("/api/social/newsfeed?limit=20&offset=0", { method: "GET" });
+      const data = await response.json() as any;
+      setAllPosts(data);
+      setHasMore(data.length === 20);
+      return data;
+    },
+    enabled: isAuthenticated,
+    staleTime: 0,
+    gcTime: 0,
+    refetchOnWindowFocus: true,
+    refetchOnMount: true,
+  });
+
+  // Load more posts function
+  const loadMorePosts = async () => {
+    if (isLoadingMore || !hasMore) return;
+    
+    setIsLoadingMore(true);
+    try {
+      const response = await apiRequest(`/api/social/newsfeed?limit=20&offset=${allPosts.length}`, { method: "GET" });
+      const newPosts = await response.json() as any;
+      
+      if (newPosts.length === 0) {
+        setHasMore(false);
+      } else {
+        setAllPosts(prev => [...prev, ...newPosts]);
+        setHasMore(newPosts.length === 20);
+      }
+    } catch (error) {
+      console.error("Failed to load more posts:", error);
+    } finally {
+      setIsLoadingMore(false);
+    }
+  };
+
+  // Infinite scroll observer
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting && hasMore && !isLoadingMore) {
+          loadMorePosts();
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    if (loadMoreRef.current) {
+      observer.observe(loadMoreRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, [hasMore, isLoadingMore, allPosts.length]);
+
+  // Fetch algorithm stats
+  const { data: stats, isLoading: statsLoading } = useQuery<AlgorithmStats>({
+    queryKey: ["/api/social/newsfeed/stats"],
+    queryFn: async () => {
+      const response = await apiRequest("/api/social/newsfeed/stats", { method: "GET" });
+      return response.json();
+    },
+    enabled: isAuthenticated && showStats,
+  });
+
+  // Fetch user's liked posts - no caching for real-time updates
+  const { data: likedPostIds, isLoading: likedPostsLoading, refetch: refetchLikedPosts } = useQuery<string[]>({
+    queryKey: ["/api/posts/liked"],
+    queryFn: async () => {
+      const response = await apiRequest("/api/posts/liked", { method: "GET" });
+      const data = await response.json() as any;
+      // Ensure we always return an array
+      return Array.isArray(data) ? data : (data?.likedPostIds || []);
+    },
+    enabled: isAuthenticated,
+    staleTime: 0,
+    gcTime: 0,
+    refetchOnWindowFocus: true,
+    refetchOnMount: true,
+  });
+
+  // Fetch algorithm presets
+  const { data: presets } = useQuery({
+    queryKey: ["/api/social/newsfeed/presets"],
+    queryFn: async () => {
+      const response = await apiRequest("/api/social/newsfeed/presets", { method: "GET" });
+      return response.json();
+    },
+    enabled: isAuthenticated && showStats,
+  });
+
+  // Apply preset mutation
+  const applyPresetMutation = useMutation({
+    mutationFn: async (presetName: string) => {
+      const response = await apiRequest(`/api/social/newsfeed/preset/${presetName}`, {
+        method: "POST",
+      });
+      return response.json();
+    },
+    onSuccess: (data) => {
+      toast({
+        title: "Algorithm Updated",
+        description: data.message,
+      });
+      queryClient.invalidateQueries({ queryKey: ["/api/social/newsfeed"] });
+      setRefreshKey(prev => prev + 1);
+    },
+    onError: (error: Error) => {
+      toast({
+        title: "Failed to Update Algorithm",
+        description: error.message,
+        variant: "destructive",
+      });
+    },
+  });
+
+  // Like post mutation
+  const likePostMutation = useMutation({
+    mutationFn: async (postId: number) => {
+      const response = await apiRequest(`/api/social/posts/${postId}/like`, {
+        method: "POST",
+      });
+      return response.json();
+    },
+    onSuccess: () => {
+      // Force complete refresh to show updated counts
+      setAllPosts([]);
+      setRefreshKey(prev => prev + 1);
+      refetchPosts();
+      refetchLikedPosts();
+      toast({ title: "✓ Updated", description: "Like status changed" });
+    },
+  });
+
+  // Retweet mutation  
+  const retweetMutation = useMutation({
+    mutationFn: async (postId: number) => {
+      const response = await apiRequest(`/api/social/posts/${postId}/retweet`, {
+        method: "POST",
+      });
+      return response.json();
+    },
+    onSuccess: () => {
+      // Force complete refresh to show new retweet
+      setAllPosts([]);
+      setRefreshKey(prev => prev + 1);
+      refetchPosts();
+      toast({ title: "✓ Shared!", description: "Post retweeted successfully" });
+    },
+  });
+
+  // Share mutation (for external sharing)
+  const shareMutation = useMutation({
+    mutationFn: async (postId: number) => {
+      // Copy post link to clipboard
+      const postUrl = `${window.location.origin}/social/post/${postId}`;
+      await navigator.clipboard.writeText(postUrl);
+      return { success: true };
+    },
+    onSuccess: () => {
+      toast({ title: "✓ Copied!", description: "Post link copied to clipboard" });
+    },
+  });
+
+  // Fetch comments for a post
+  const { data: comments, refetch: refetchComments } = useQuery<PostComment[]>({
+    queryKey: [`/api/social/posts/${showCommentsFor}/comments`],
+    queryFn: async () => {
+      const response = await apiRequest(`/api/social/posts/${showCommentsFor}/comments`, { method: "GET" });
+      return response.json();
+    },
+    enabled: !!showCommentsFor,
+  });
+
+  // Add comment mutation
+  const addCommentMutation = useMutation({
+    mutationFn: async ({ postId, content }: { postId: number; content: string }) => {
+      const response = await apiRequest(`/api/social/posts/${postId}/comments`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ content }),
+      });
+      return response.json();
+    },
+    onSuccess: () => {
+      setNewComment('');
+      refetchComments();
+      // Update comments count
+      setAllPosts(prev => prev.map(post => 
+        post.id === showCommentsFor 
+          ? { ...post, commentsCount: post.commentsCount + 1 }
+          : post
+      ));
+      toast({ title: "✓ Comment Added", description: "Your comment has been posted" });
+    },
+  });
+
+  // Quote riddle mutation
+  const quoteRiddleMutation = useMutation({
+    mutationFn: async ({ postId, content }: { postId: number; content: string }) => {
+      const response = await apiRequest(`/api/social/posts/${postId}/quote`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ content }),
+      });
+      return response.json();
+    },
+    onSuccess: () => {
+      setShowQuoteDialog(null);
+      setQuoteText('');
+      handleRefresh();
+      toast({ title: "✓ Quote Riddled!", description: "Your quote has been shared" });
+    },
+  });
+
+  // Create new post mutation
+  const createPostMutation = useMutation({
+    mutationFn: async ({ content, imageUrls }: { content: string; imageUrls?: string[] }) => {
+      const response = await apiRequest("/api/social/posts", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ content, imageUrls }),
+      });
+      return response.json();
+    },
+    onSuccess: () => {
+      // Clear form state
+      setNewPostContent('');
+      setUploadedImageUrl(null);
+      setIsCreatingPost(false);
+      
+      // Force complete refresh to show new post (same pattern as other mutations)
+      setAllPosts([]);
+      setRefreshKey(prev => prev + 1);
+      refetchPosts();
+      refetchLikedPosts();
+      
+      toast({ 
+        title: "✓ Riddle Created!", 
+        description: "Your riddle has been published successfully!" 
+      });
+    },
+    onError: (error: Error) => {
+      toast({
+        title: "Failed to Create Riddle",
+        description: error.message,
+        variant: "destructive",
+      });
+    },
+  });
+
+  const handleRefresh = () => {
+    setAllPosts([]);
+    setHasMore(true);
+    setRefreshKey(prev => prev + 1);
+    refetchPosts();
+    toast({ title: "Refreshing Feed", description: "Getting latest posts..." });
+  };
+
+  const formatTimeAgo = (dateString: string) => {
+    const now = new Date().getTime();
+    const postTime = new Date(dateString).getTime();
+    const diffInMinutes = Math.floor((now - postTime) / (1000 * 60));
+    
+    if (diffInMinutes < 1) return "now";
+    if (diffInMinutes < 60) return `${diffInMinutes}m`;
+    if (diffInMinutes < 1440) return `${Math.floor(diffInMinutes / 60)}h`;
+    return `${Math.floor(diffInMinutes / 1440)}d`;
+  };
+
+  const getScoreColor = (score: number) => {
+    if (score >= 10) return "bg-red-500";
+    if (score >= 5) return "bg-orange-500";
+    if (score >= 2) return "bg-yellow-500";
+    if (score >= 1) return "bg-green-500";
+    return "bg-gray-500";
+  };
+
+  const isPriorityAccount = (handle: string) => {
+    return stats?.priorityAccounts.includes(handle);
+  };
+
+  // Helper function to detect and parse retweets
+  const parsePost = (post: NewsfeedPost) => {
+    // Check if this is a retweet (starts with "RT @username:")
+    const rtMatch = post.content.match(/^RT @(\w+):\s*([\s\S]*)/m);
+    if (rtMatch) {
+      return {
+        ...post,
+        isRetweet: true,
+        originalPost: {
+          id: post.id,
+          content: rtMatch[2],
+          authorHandle: rtMatch[1],
+          authorDisplayName: rtMatch[1]
+        }
+      };
+    }
+    
+    // Check if this is a quote tweet (has quoted content)
+    const quoteMatch = post.content.match(/^([\s\S]*?)\n\n> ([\s\S]*)/m);
+    if (quoteMatch) {
+      return {
+        ...post,
+        isQuote: true,
+        userComment: quoteMatch[1],
+        quotedContent: quoteMatch[2]
+      };
+    }
+    
+    return post;
+  };
+
+  if (!isAuthenticated) {
+    return (
+      <Box sx={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', bgcolor: 'background.default' }}>
+        <Box sx={{ textAlign: 'center' }}>
+          <Typography variant="h4" fontWeight="bold" gutterBottom>
+            Login Required
+          </Typography>
+          <Typography variant="body1" color="text.secondary">
+            Please login to view your personalized newsfeed
+          </Typography>
+        </Box>
+      </Box>
+    );
+  }
+
+  return (
+    <Box sx={{ minHeight: '100vh', bgcolor: 'background.default' }}>
+      {/* Header */}
+      <Paper sx={{ position: 'sticky', top: 0, zIndex: 50, bgcolor: 'background.paper', backdropFilter: 'blur(12px)', boxShadow: 1 }} elevation={2}>
+        <Box sx={{ maxWidth: '896px', mx: 'auto', display: 'flex', alignItems: 'center', justifyContent: 'space-between', px: 2, height: 64 }}>
+          <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
+            <Sparkles className="w-6 h-6 text-blue-500" style={{ color: '#3b82f6' }} />
+            <Typography variant="h6" fontWeight="bold">
+              Smart Feed
+            </Typography>
+            <Chip label="AI Powered" size="small" color="primary" variant="outlined" />
+          </Box>
+          
+          <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+            <IconButton 
+              size="small"
+              onClick={handleRefresh}
+              disabled={postsLoading}
+              color="primary"
+            >
+              <RefreshCw className={`w-4 h-4 ${postsLoading ? 'animate-spin' : ''}`} />
+            </IconButton>
+            
+            <IconButton 
+              size="small"
+              onClick={() => setShowStats(!showStats)}
+              color="primary"
+            >
+              <Settings className="w-4 h-4" />
+            </IconButton>
+          </Box>
+        </Box>
+      </Paper>
+
+      <Box sx={{ maxWidth: '896px', mx: 'auto', px: 2, py: 3 }}>
+        {/* Post Creation Form */}
+        <Card sx={{ mb: 3, background: 'linear-gradient(135deg, #EBF4FF 0%, #E9D5FF 100%)', boxShadow: 3, '&:hover': { boxShadow: 6 }, transition: 'all 0.3s' }}>
+          <CardContent sx={{ p: 3 }}>
+            <div className="flex flex-col sm:flex-row gap-4">
+              {/* User Avatar */}
+              <div className="flex-shrink-0">
+                <SafeAvatar 
+                  src={null}
+                  className="h-12 w-12 border-2 border-white shadow-md"
+                  alt={`${authData?.handle || authData?.username || 'User'}'s avatar`}
+                />
+              </div>
+              
+              {/* Post Form */}
+              <div className="flex-1 space-y-4">
+                <Textarea
+                  data-testid="textarea-new-post"
+                  placeholder="What's on your mind? Share a riddle..."
+                  value={newPostContent}
+                  onChange={(e) => setNewPostContent(e.target.value)}
+                  className="resize-none border-0 bg-white/70 dark:bg-gray-800/70 backdrop-blur text-lg placeholder:text-gray-500 focus-visible:ring-2 focus-visible:ring-blue-500/20 min-h-[120px] rounded-xl px-4 py-3 shadow-inner"
+                  maxLength={maxCharacters}
+                />
+                
+                {/* Character Counter */}
+                <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+                  <div className="flex items-center gap-3">
+                    {/* Image Upload */}
+                    <PhotoUploader
+                      type="post"
+                      onUploadSuccess={(url) => setUploadedImageUrl(url)}
+                      onUploadError={(error) => toast({
+                        title: "Upload Failed",
+                        description: error,
+                        variant: "destructive"
+                      })}
+                      buttonStyle={{
+                        padding: '0.75rem',
+                        borderRadius: '1rem',
+                        border: 'none',
+                        background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+                        color: 'white',
+                        boxShadow: '0 4px 12px rgba(102, 126, 234, 0.3)',
+                        transition: 'all 0.3s ease'
+                      }}
+                    >
+                      <div className="flex items-center gap-2">
+                        <Image className="w-5 h-5" />
+                        <span className="text-sm font-medium hidden sm:inline">Photo</span>
+                      </div>
+                    </PhotoUploader>
+                    
+                    {/* Upload Preview */}
+                    {uploadedImageUrl && (
+                      <div className="relative group">
+                        <img 
+                          src={uploadedImageUrl} 
+                          alt="Upload preview" 
+                          className="w-12 h-12 rounded-xl object-cover border-2 border-white shadow-lg"
+                        />
+                        <button
+                          onClick={() => setUploadedImageUrl(null)}
+                          className="absolute -top-2 -right-2 bg-gradient-to-r from-red-500 to-pink-500 text-white rounded-full w-6 h-6 flex items-center justify-center text-xs shadow-lg hover:scale-110 transition-transform duration-200"
+                        >
+                          <X className="w-3 h-3" />
+                        </button>
+                      </div>
+                    )}
+                  </div>
+                  
+                  <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3 w-full sm:w-auto">
+                    {/* Character Count */}
+                    <div className="flex items-center gap-2">
+                      <div className={`w-8 h-8 rounded-full border-4 flex items-center justify-center text-xs font-bold ${
+                        newPostContent.length > maxCharacters - 20
+                          ? newPostContent.length > maxCharacters ? 'border-red-500 text-red-500 bg-red-50' : 'border-orange-500 text-orange-500 bg-orange-50'
+                          : 'border-green-500 text-green-500 bg-green-50'
+                      }`}>
+                        {Math.max(0, maxCharacters - newPostContent.length)}
+                      </div>
+                      <span className={`text-sm font-medium ${
+                        newPostContent.length > maxCharacters - 20
+                          ? newPostContent.length > maxCharacters ? 'text-red-500' : 'text-orange-500'
+                          : 'text-gray-500'
+                      }`}>
+                        {newPostContent.length}/{maxCharacters}
+                      </span>
+                    </div>
+                    
+                    {/* Post Button */}
+                    <Button
+                      data-testid="button-submit-post"
+                      onClick={() => createPostMutation.mutate({ 
+                        content: newPostContent, 
+                        imageUrls: uploadedImageUrl ? [uploadedImageUrl] : [] 
+                      })}
+                      disabled={(!newPostContent.trim() && !uploadedImageUrl) || createPostMutation.isPending || newPostContent.length > maxCharacters}
+                      className="bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 hover:from-blue-700 hover:via-purple-700 hover:to-pink-700 text-white font-bold px-8 py-3 rounded-xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none w-full sm:w-auto"
+                    >
+                      {createPostMutation.isPending ? (
+                        <>
+                          <RefreshCw className="w-5 h-5 mr-2 animate-spin" />
+                          <span className="text-sm sm:text-base">Posting...</span>
+                        </>
+                      ) : (
+                        <>
+                          <Send className="w-5 h-5 mr-2" />
+                          <span className="text-sm sm:text-base">Post Riddle</span>
+                        </>
+                      )}
+                    </Button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+
+        {/* Algorithm Stats Panel */}
+        {showStats && (
+          <Card className="mb-6">
+            <CardHeader>
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-2">
+                  <BarChart3 className="w-5 h-5 text-blue-500" />
+                  <h3 className="text-lg font-semibold">Algorithm Dashboard</h3>
+                </div>
+                <Badge variant="outline">Admin Only</Badge>
+              </div>
+            </CardHeader>
+            <CardContent className="space-y-4">
+              {statsLoading ? (
+                <div className="text-center py-4">Loading stats...</div>
+              ) : stats ? (
+                <>
+                  <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                    <div className="text-center">
+                      <div className="text-2xl font-bold text-blue-600">{stats.totalPosts}</div>
+                      <div className="text-sm text-gray-600">Total Posts</div>
+                    </div>
+                    <div className="text-center">
+                      <div className="text-2xl font-bold text-green-600">{stats.uniqueAuthors}</div>
+                      <div className="text-sm text-gray-600">Authors</div>
+                    </div>
+                    <div className="text-center">
+                      <div className="text-2xl font-bold text-orange-600">{stats.averageAgeHours.toFixed(1)}h</div>
+                      <div className="text-sm text-gray-600">Avg Age</div>
+                    </div>
+                    <div className="text-center">
+                      <div className="text-2xl font-bold text-purple-600">{stats.priorityPosts}</div>
+                      <div className="text-sm text-gray-600">Priority Posts</div>
+                    </div>
+                  </div>
+                  
+                  <div>
+                    <h4 className="font-medium mb-2">Priority Accounts:</h4>
+                    <div className="flex gap-2">
+                      {stats.priorityAccounts.map(account => (
+                        <Badge key={account} variant="secondary">
+                          <Zap className="w-3 h-3 mr-1" />
+                          @{account}
+                        </Badge>
+                      ))}
+                    </div>
+                  </div>
+
+                  {presets && (
+                    <div>
+                      <h4 className="font-medium mb-2">Algorithm Presets:</h4>
+                      <div className="flex gap-2">
+                        {Object.keys(presets.presets).map(presetName => (
+                          <Button
+                            key={presetName}
+                            variant="outline"
+                            size="sm"
+                            className="bg-gradient-to-r from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-700 hover:from-blue-50 hover:to-purple-50 dark:hover:from-blue-900/20 dark:hover:to-purple-900/20 border-gray-200 dark:border-gray-600 hover:border-blue-300 dark:hover:border-blue-500 transition-all duration-300 shadow-sm hover:shadow-md font-medium"
+                            onClick={() => applyPresetMutation.mutate(presetName)}
+                            disabled={applyPresetMutation.isPending}
+                          >
+                            {presetName}
+                          </Button>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+                </>
+              ) : (
+                <div className="text-center py-4 text-gray-500">Failed to load stats</div>
+              )}
+            </CardContent>
+          </Card>
+        )}
+
+        {/* Posts Feed */}
+        <div className="space-y-4">
+          {postsLoading ? (
+            <div className="space-y-4">
+              {[...Array(5)].map((_, i) => (
+                <Card key={i} className="animate-pulse">
+                  <CardContent className="p-6">
+                    <div className="flex gap-3">
+                      <div className="w-12 h-12 bg-gray-200 rounded-full"></div>
+                      <div className="flex-1 space-y-2">
+                        <div className="h-4 bg-gray-200 rounded w-1/4"></div>
+                        <div className="h-4 bg-gray-200 rounded w-3/4"></div>
+                        <div className="h-4 bg-gray-200 rounded w-1/2"></div>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          ) : allPosts && allPosts.length > 0 ? (
+            <>
+            {allPosts.map((post) => {
+              const parsedPost = parsePost(post);
+              return (
+                <Card key={post.id} className="hover:shadow-md transition-shadow">
+                  <CardContent className="p-6">
+                    {/* Retweet indicator */}
+                    {parsedPost.isRetweet && (
+                      <div className="flex items-center gap-2 mb-3 text-gray-500">
+                        <Repeat2 className="w-4 h-4" />
+                        <span className="text-sm">
+                          <span 
+                            className="font-medium hover:text-blue-600 cursor-pointer"
+                            onClick={() => setLocation(`/social/profile/${post.authorHandle}`)}
+                          >
+                            {post.authorDisplayName || post.authorHandle}
+                          </span> retweeted
+                        </span>
+                      </div>
+                    )}
+                    
+                    <div className="flex gap-3">
+                      <div onClick={() => setLocation(`/social/profile/${parsedPost.isRetweet ? parsedPost.originalPost!.authorHandle : post.authorHandle}`)}>
+                        <SafeAvatar 
+                          src={post.authorProfileImage}
+                          className="w-12 h-12 cursor-pointer hover:opacity-80 transition-opacity"
+                          alt={`${parsedPost.isRetweet ? parsedPost.originalPost!.authorDisplayName : post.authorDisplayName}'s avatar`}
+                        />
+                      </div>
+                      
+                      <div className="flex-1">
+                        <div className="flex items-center gap-2 mb-2">
+                          <span 
+                            className="font-bold text-gray-900 dark:text-gray-100 cursor-pointer hover:text-blue-600"
+                            onClick={() => setLocation(`/social/profile/${parsedPost.isRetweet ? parsedPost.originalPost!.authorHandle : post.authorHandle}`)}
+                          >
+                            {parsedPost.isRetweet 
+                              ? parsedPost.originalPost!.authorDisplayName || parsedPost.originalPost!.authorHandle
+                              : post.authorDisplayName || post.authorHandle
+                            }
+                          </span>
+                          <span className="text-gray-500">
+                            @{parsedPost.isRetweet ? parsedPost.originalPost!.authorHandle : post.authorHandle}
+                          </span>
+                          {isPriorityAccount(parsedPost.isRetweet ? parsedPost.originalPost!.authorHandle : post.authorHandle) && (
+                            <Badge variant="secondary" className="text-xs">
+                              <Zap className="w-3 h-3 mr-1" />
+                              Priority
+                            </Badge>
+                          )}
+                          <span className="text-gray-500">·</span>
+                          <span className="text-gray-500">{formatTimeAgo(post.createdAt)}</span>
+                          
+                          {/* Algorithm Score */}
+                          <div className="ml-auto flex items-center gap-1">
+                            <div className={`w-2 h-2 rounded-full ${getScoreColor(post.algorithmScore)}`}></div>
+                            <span className="text-xs text-gray-400">{post.algorithmScore.toFixed(1)}</span>
+                          </div>
+                        </div>
+                        
+                        <p className="text-gray-900 dark:text-gray-100 whitespace-pre-wrap mb-3">
+                          {parsedPost.isRetweet ? parsedPost.originalPost!.content : post.content}
+                        </p>
+                        
+                        {/* Image display */}
+                        {post.imageUrls && post.imageUrls.length > 0 && (
+                          <div className="mb-3 rounded-lg overflow-hidden border border-gray-200 dark:border-gray-700">
+                            <img 
+                              src={post.imageUrls[0]} 
+                              alt="Post image"
+                              className="w-full max-h-96 object-cover"
+                            />
+                          </div>
+                        )}
+                        
+                        <div className="flex items-center justify-between text-gray-500 mt-4">
+                          <div className="flex items-center gap-2 sm:gap-4">
+                            <Button 
+                              variant="ghost" 
+                              size="sm" 
+                              className={`flex items-center gap-1 px-3 py-2 rounded-xl hover:bg-blue-50 dark:hover:bg-blue-900/20 transition-all duration-200 ${
+                                showCommentsFor === post.id ? 'text-blue-600 bg-blue-50 dark:bg-blue-900/20' : 'hover:text-blue-600'
+                              }`}
+                              onClick={() => setShowCommentsFor(showCommentsFor === post.id ? null : post.id)}
+                              data-testid={`button-comment-${post.id}`}
+                            >
+                              <MessageCircle className="w-4 h-4" />
+                              <span className="text-xs sm:text-sm font-medium">{post.commentsCount}</span>
+                            </Button>
+                            
+                            <Button 
+                              variant="ghost" 
+                              size="sm" 
+                              className="flex items-center gap-1 px-3 py-2 rounded-xl hover:bg-green-50 dark:hover:bg-green-900/20 hover:text-green-600 transition-all duration-200 disabled:opacity-50"
+                              onClick={() => retweetMutation.mutate(post.id)}
+                              disabled={retweetMutation.isPending}
+                              data-testid={`button-retweet-${post.id}`}
+                            >
+                              <Repeat2 className={`w-4 h-4 ${retweetMutation.isPending ? 'animate-spin' : ''}`} />
+                              <span className="text-xs sm:text-sm font-medium">{post.sharesCount}</span>
+                            </Button>
+
+                            <Button 
+                              variant="ghost" 
+                              size="sm" 
+                              className="flex items-center gap-1 px-3 py-2 rounded-xl hover:bg-purple-50 dark:hover:bg-purple-900/20 hover:text-purple-600 transition-all duration-200"
+                              onClick={() => setShowQuoteDialog(post)}
+                              data-testid={`button-quote-${post.id}`}
+                            >
+                              <Quote className="w-4 h-4" />
+                              <span className="text-xs sm:text-sm font-medium hidden sm:inline">Quote</span>
+                            </Button>
+                            
+                            <Button 
+                              variant="ghost" 
+                              size="sm" 
+                              className={`flex items-center gap-1 px-3 py-2 rounded-xl transition-all duration-200 disabled:opacity-50 ${
+                                Array.isArray(likedPostIds) && likedPostIds.includes(post.id.toString()) 
+                                  ? 'text-red-600 bg-red-50 dark:bg-red-900/20' 
+                                  : 'text-gray-500 hover:text-red-600 hover:bg-red-50 dark:hover:bg-red-900/20'
+                              }`}
+                              onClick={() => likePostMutation.mutate(post.id)}
+                              disabled={likePostMutation.isPending}
+                              data-testid={`button-like-${post.id}`}
+                            >
+                              <Heart className={`w-4 h-4 transition-transform duration-200 ${
+                                Array.isArray(likedPostIds) && likedPostIds.includes(post.id.toString()) 
+                                  ? 'fill-current scale-110' 
+                                  : likePostMutation.isPending ? 'animate-pulse' : ''
+                              }`} />
+                              <span className="text-xs sm:text-sm font-medium">{post.likesCount}</span>
+                            </Button>
+                          </div>
+                          
+                          <div className="flex items-center gap-2">
+                            <span className="text-xs text-gray-500 hidden sm:inline">Share:</span>
+                            
+                            {/* Twitter */}
+                            <Button 
+                              variant="ghost" 
+                              size="sm" 
+                              className="p-2 rounded-full hover:bg-blue-50 dark:hover:bg-blue-900/20 transition-all duration-200 group"
+                              onClick={() => {
+                                const shareUrl = `${window.location.origin}/riddle/${post.id}`;
+                                const text = `Check out this riddle from ${post.authorDisplayName}!\n\n"${post.content.substring(0, 200)}${post.content.length > 200 ? '...' : ''}"\n\n`;
+                                const twitterUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(shareUrl)}`;
+                                window.open(twitterUrl, '_blank', 'width=550,height=420');
+                              }}
+                              data-testid={`button-share-twitter-${post.id}`}
+                              title="Share on Twitter/X"
+                            >
+                              <FaTwitter className="w-4 h-4 text-blue-500 group-hover:scale-110 transition-transform" />
+                            </Button>
+
+                            {/* Facebook */}
+                            <Button 
+                              variant="ghost" 
+                              size="sm" 
+                              className="p-2 rounded-full hover:bg-blue-50 dark:hover:bg-blue-900/20 transition-all duration-200 group"
+                              onClick={() => {
+                                const shareUrl = `${window.location.origin}/riddle/${post.id}`;
+                                const facebookUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}`;
+                                window.open(facebookUrl, '_blank', 'width=550,height=420');
+                              }}
+                              data-testid={`button-share-facebook-${post.id}`}
+                              title="Share on Facebook"
+                            >
+                              <FaFacebook className="w-4 h-4 text-blue-600 group-hover:scale-110 transition-transform" />
+                            </Button>
+
+                            {/* Instagram */}
+                            <Button 
+                              variant="ghost" 
+                              size="sm" 
+                              className="p-2 rounded-full hover:bg-pink-50 dark:hover:bg-pink-900/20 transition-all duration-200 group"
+                              onClick={() => {
+                                const shareUrl = `${window.location.origin}/riddle/${post.id}`;
+                                navigator.clipboard.writeText(shareUrl);
+                                toast({ 
+                                  title: "Link Copied!", 
+                                  description: "Paste in Instagram bio or story" 
+                                });
+                              }}
+                              data-testid={`button-share-instagram-${post.id}`}
+                              title="Copy for Instagram"
+                            >
+                              <FaInstagram className="w-4 h-4 text-pink-600 group-hover:scale-110 transition-transform" />
+                            </Button>
+
+                            {/* TikTok */}
+                            <Button 
+                              variant="ghost" 
+                              size="sm" 
+                              className="p-2 rounded-full hover:bg-gray-50 dark:hover:bg-gray-700/20 transition-all duration-200 group"
+                              onClick={() => {
+                                const shareUrl = `${window.location.origin}/riddle/${post.id}`;
+                                navigator.clipboard.writeText(shareUrl);
+                                toast({ 
+                                  title: "Link Copied!", 
+                                  description: "Paste in TikTok bio or comments" 
+                                });
+                              }}
+                              data-testid={`button-share-tiktok-${post.id}`}
+                              title="Copy for TikTok"
+                            >
+                              <FaTiktok className="w-4 h-4 text-gray-900 dark:text-white group-hover:scale-110 transition-transform" />
+                            </Button>
+
+                            {/* Snapchat */}
+                            <Button 
+                              variant="ghost" 
+                              size="sm" 
+                              className="p-2 rounded-full hover:bg-yellow-50 dark:hover:bg-yellow-900/20 transition-all duration-200 group"
+                              onClick={() => {
+                                const shareUrl = `${window.location.origin}/riddle/${post.id}`;
+                                navigator.clipboard.writeText(shareUrl);
+                                toast({ 
+                                  title: "Link Copied!", 
+                                  description: "Paste in Snapchat story or chat" 
+                                });
+                              }}
+                              data-testid={`button-share-snapchat-${post.id}`}
+                              title="Copy for Snapchat"
+                            >
+                              <FaSnapchat className="w-4 h-4 text-yellow-500 group-hover:scale-110 transition-transform" />
+                            </Button>
+                          </div>
+                        </div>
+
+                        {/* Comments Section */}
+                        {showCommentsFor === post.id && (
+                          <div className="mt-4 border-t border-gray-200 dark:border-gray-700 pt-4">
+                            {/* Add Comment */}
+                            <div className="flex gap-3 mb-4">
+                              <SafeAvatar 
+                                src={null}
+                                className="w-8 h-8"
+                                alt={`${authData?.handle || authData?.username || 'User'}'s avatar`}
+                              />
+                              <div className="flex-1 flex gap-2">
+                                <Input
+                                  placeholder="Add a comment..."
+                                  value={newComment}
+                                  onChange={(e) => setNewComment(e.target.value)}
+                                  onKeyPress={(e) => {
+                                    if (e.key === 'Enter' && newComment.trim()) {
+                                      addCommentMutation.mutate({ postId: post.id, content: newComment });
+                                    }
+                                  }}
+                                  className="text-sm"
+                                />
+                                <Button 
+                                  size="sm"
+                                  onClick={() => addCommentMutation.mutate({ postId: post.id, content: newComment })}
+                                  disabled={!newComment.trim() || addCommentMutation.isPending}
+                                  className="bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white px-4 py-2 rounded-lg shadow-md hover:shadow-lg transition-all duration-200 disabled:opacity-50"
+                                  data-testid={`button-add-comment-${post.id}`}
+                                >
+                                  <Send className={`w-4 h-4 ${addCommentMutation.isPending ? 'animate-pulse' : ''}`} />
+                                </Button>
+                              </div>
+                            </div>
+
+                            {/* Comments List */}
+                            {comments && comments.length > 0 && (
+                              <div className="space-y-3">
+                                {comments.map((comment) => (
+                                  <div key={comment.id} className="flex gap-3">
+                                    <SafeAvatar 
+                                      src={comment.authorProfileImage}
+                                      className="w-8 h-8"
+                                      alt={`${comment.authorDisplayName || comment.authorHandle}'s avatar`}
+                                    />
+                                    <div className="flex-1">
+                                      <div className="bg-gray-50 dark:bg-gray-800 rounded-lg px-3 py-2">
+                                        <div className="flex items-center gap-2 mb-1">
+                                          <span className="font-medium text-sm">
+                                            {comment.authorDisplayName || comment.authorHandle}
+                                          </span>
+                                          <span className="text-xs text-gray-500">
+                                            {formatTimeAgo(comment.createdAt)}
+                                          </span>
+                                        </div>
+                                        <p className="text-sm text-gray-900 dark:text-gray-100">
+                                          {comment.content}
+                                        </p>
+                                      </div>
+                                      <div className="flex items-center gap-4 mt-1 text-xs text-gray-500">
+                                        <button className="hover:text-red-600 flex items-center gap-1 px-2 py-1 rounded-lg hover:bg-red-50 dark:hover:bg-red-900/20 transition-all duration-200">
+                                          <Heart className="w-3 h-3" />
+                                          <span className="font-medium">{comment.likesCount}</span>
+                                        </button>
+                                        <button className="hover:text-blue-600 px-2 py-1 rounded-lg hover:bg-blue-50 dark:hover:bg-blue-900/20 transition-all duration-200 font-medium">Reply</button>
+                                      </div>
+                                    </div>
+                                  </div>
+                                ))}
+                              </div>
+                            )}
+                          </div>
+                        )}
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+              );
+            })}
+            
+            {/* Infinite scroll trigger */}
+            {hasMore && (
+              <div ref={loadMoreRef} className="py-4 text-center">
+                {isLoadingMore ? (
+                  <div className="flex items-center justify-center gap-2">
+                    <RefreshCw className="w-4 h-4 animate-spin" />
+                    <span className="text-gray-500">Loading more riddles...</span>
+                  </div>
+                ) : (
+                  <span className="text-gray-400">Scroll for more riddles</span>
+                )}
+              </div>
+            )}
+            </>
+          ) : (
+            <Card>
+              <CardContent className="p-12 text-center">
+                <TrendingUp className="w-12 h-12 text-gray-400 mx-auto mb-4" />
+                <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-2">
+                  No Posts Yet
+                </h3>
+                <p className="text-gray-600 dark:text-gray-400 mb-4">
+                  Your smart feed is ready! Posts will appear here when people start sharing riddles.
+                </p>
+                <Button 
+                  onClick={handleRefresh} 
+                  variant="outline"
+                  className="bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-900/20 dark:to-purple-900/20 hover:from-blue-100 hover:to-purple-100 dark:hover:from-blue-800/30 dark:hover:to-purple-800/30 border-blue-200 dark:border-blue-600 hover:border-blue-300 dark:hover:border-blue-500 transition-all duration-300 shadow-sm hover:shadow-md font-medium"
+                >
+                  <RefreshCw className="w-4 h-4 mr-2" />
+                  Refresh Feed
+                </Button>
+              </CardContent>
+            </Card>
+          )}
+        </div>
+
+        {/* Quote Riddle Dialog */}
+        {showQuoteDialog && (
+          <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
+            <div className="bg-white dark:bg-gray-800 rounded-lg max-w-2xl w-full max-h-[80vh] overflow-y-auto">
+              <div className="p-6">
+                <h2 className="text-xl font-bold mb-4">Quote Riddle</h2>
+                
+                {/* Quote Text Area */}
+                <Textarea
+                  placeholder="Add your thoughts..."
+                  value={quoteText}
+                  onChange={(e) => setQuoteText(e.target.value)}
+                  className="mb-4"
+                  rows={3}
+                />
+
+                {/* Original Post Preview */}
+                <div className="border border-gray-200 dark:border-gray-700 rounded-lg p-4 mb-4 bg-gray-50 dark:bg-gray-900">
+                  <div className="flex gap-3">
+                    <SafeAvatar 
+                      src={showQuoteDialog.authorProfileImage}
+                      className="w-10 h-10"
+                      alt={`${showQuoteDialog.authorDisplayName || showQuoteDialog.authorHandle}'s avatar`}
+                    />
+                    <div className="flex-1">
+                      <div className="flex items-center gap-2 mb-2">
+                        <span className="font-bold text-sm">
+                          {showQuoteDialog.authorDisplayName || showQuoteDialog.authorHandle}
+                        </span>
+                        <span className="text-gray-500 text-sm">
+                          @{showQuoteDialog.authorHandle}
+                        </span>
+                        <span className="text-gray-500 text-sm">·</span>
+                        <span className="text-gray-500 text-sm">
+                          {formatTimeAgo(showQuoteDialog.createdAt)}
+                        </span>
+                      </div>
+                      <p className="text-gray-900 dark:text-gray-100 text-sm whitespace-pre-wrap">
+                        {showQuoteDialog.content}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Buttons */}
+                <div className="flex gap-3">
+                  <Button
+                    variant="outline"
+                    onClick={() => setShowQuoteDialog(null)}
+                    className="flex-1 bg-gradient-to-r from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-700 hover:from-gray-100 hover:to-gray-200 dark:hover:from-gray-700 dark:hover:to-gray-600 border-gray-200 dark:border-gray-600 transition-all duration-300 font-medium"
+                  >
+                    Cancel
+                  </Button>
+                  <Button
+                    onClick={() => quoteRiddleMutation.mutate({ postId: showQuoteDialog.id, content: quoteText })}
+                    disabled={quoteRiddleMutation.isPending}
+                    className="flex-1 bg-gradient-to-r from-purple-600 via-blue-600 to-indigo-600 hover:from-purple-700 hover:via-blue-700 hover:to-indigo-700 text-white font-bold shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 disabled:opacity-50 disabled:transform-none"
+                  >
+                    {quoteRiddleMutation.isPending ? (
+                      <>
+                        <RefreshCw className="w-4 h-4 mr-2 animate-spin" />
+                        Posting...
+                      </>
+                    ) : (
+                      'Quote Riddle'
+                    )}
+                  </Button>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
+      </Box>
+    </Box>
+  );
+}

@@ -1,0 +1,44 @@
+Manager.ts:517 🔍 SessionManager.getSession() returning: {isLoggedIn: true, handle: 'dippydoge', hasWalletData: true, hasSessionToken: true, walletDataKeys: Array(7)}
+wallet-connection-dashboard.tsx:152 🔍 Found local wallet connections: []
+nft-detail.tsx:944 🔐 [OWNERSHIP CHECK] User: rEVrTKUKSLx5nxdfV8SAFTxS9FGFrfHRLo, NFT Owner: rfLzAt7mVN6Yg7Rn1dQM2yg8nE4P51qGSC, Is Owner: false
+nft-detail.tsx:685  POST https://301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/api/broker/create-buy-offer 400 (Bad Request)
+submitOffer @ nft-detail.tsx:685
+handleSubmit @ MakeOfferDialog.tsx:41
+callCallback2 @ chunk-SM3OW2QE.js?v=f202566d:3674
+invokeGuardedCallbackDev @ chunk-SM3OW2QE.js?v=f202566d:3699
+invokeGuardedCallback @ chunk-SM3OW2QE.js?v=f202566d:3733
+invokeGuardedCallbackAndCatchFirstError @ chunk-SM3OW2QE.js?v=f202566d:3736
+executeDispatch @ chunk-SM3OW2QE.js?v=f202566d:7014
+processDispatchQueueItemsInOrder @ chunk-SM3OW2QE.js?v=f202566d:7034
+processDispatchQueue @ chunk-SM3OW2QE.js?v=f202566d:7043
+dispatchEventsForPlugins @ chunk-SM3OW2QE.js?v=f202566d:7051
+(anonymous) @ chunk-SM3OW2QE.js?v=f202566d:7174
+batchedUpdates$1 @ chunk-SM3OW2QE.js?v=f202566d:18913
+batchedUpdates @ chunk-SM3OW2QE.js?v=f202566d:3579
+dispatchEventForPluginEventSystem @ chunk-SM3OW2QE.js?v=f202566d:7173
+dispatchEventWithEnableCapturePhaseSelectiveHydrationWithoutDiscreteEventReplay @ chunk-SM3OW2QE.js?v=f202566d:5478
+dispatchEvent @ chunk-SM3OW2QE.js?v=f202566d:5472
+dispatchDiscreteEvent @ chunk-SM3OW2QE.js?v=f202566d:5449
+MakeOfferDialog.tsx:45 Offer submission error: Error: Password required to sign transaction
+    at submitOffer (nft-detail.tsx:728:13)
+    at async handleSubmit (MakeOfferDialog.tsx:41:7)
+handleSubmit @ MakeOfferDialog.tsx:45
+await in handleSubmit
+callCallback2 @ chunk-SM3OW2QE.js?v=f202566d:3674
+invokeGuardedCallbackDev @ chunk-SM3OW2QE.js?v=f202566d:3699
+invokeGuardedCallback @ chunk-SM3OW2QE.js?v=f202566d:3733
+invokeGuardedCallbackAndCatchFirstError @ chunk-SM3OW2QE.js?v=f202566d:3736
+executeDispatch @ chunk-SM3OW2QE.js?v=f202566d:7014
+processDispatchQueueItemsInOrder @ chunk-SM3OW2QE.js?v=f202566d:7034
+processDispatchQueue @ chunk-SM3OW2QE.js?v=f202566d:7043
+dispatchEventsForPlugins @ chunk-SM3OW2QE.js?v=f202566d:7051
+(anonymous) @ chunk-SM3OW2QE.js?v=f202566d:7174
+batchedUpdates$1 @ chunk-SM3OW2QE.js?v=f202566d:18913
+batchedUpdates @ chunk-SM3OW2QE.js?v=f202566d:3579
+dispatchEventForPluginEventSystem @ chunk-SM3OW2QE.js?v=f202566d:7173
+dispatchEventWithEnableCapturePhaseSelectiveHydrationWithoutDiscreteEventReplay @ chunk-SM3OW2QE.js?v=f202566d:5478
+dispatchEvent @ chunk-SM3OW2QE.js?v=f202566d:5472
+dispatchDiscreteEvent @ chunk-SM3OW2QE.js?v=f202566d:5449
+sessionManager.ts:517 🔍 SessionManager.getSession() returning: {isLoggedIn: true, handle: 'dippydoge', hasWalletData: true, hasSessionToken: true, walletDataKeys: Array(7)}
+wallet-connection-dashboard.tsx:152 🔍 Found local wallet connections: []
+nft-detail.tsx:944 🔐 [OWNERSHIP CHECK] User: rEVrTKUKSLx5nxdfV8SAFTxS9FGFrfHRLo, NFT Owner: 

@@ -1,0 +1,1159 @@
+Data: true, hasSessionToken: true, walletDataKeys: Array(7)}
+injected.js:27 🔍 SessionManager.getSession() returning: {isLoggedIn: true, handle: 'dippydoge', hasWalletData: true, hasSessionToken: true, walletDataKeys: Array(7)}
+injected.js:27 🔍 [AUTH CHECK] Session token found: YES
+injected.js:27 🔍 SessionManager: checkSession() called - current sessionData: true
+injected.js:27 🌐 SessionManager: Making Riddle wallet session request to /api/riddle-wallet/session
+injected.js:27 🔍 [XRP WALLET] Auth data: {walletAddress: 'rEVrTKUKSLx5nxdfV8SAFTxS9FGFrfHRLo', hasSessionWalletData: true, hasSessionAddresses: true, hasUser: true, hasWalletData: false, …}
+injected.js:204  GET https://301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/api/session-check 404 (Not Found)
+apply @ injected.js:204
+checkAuth @ xrp-wallet-redesigned.tsx:207
+(anonymous) @ xrp-wallet-redesigned.tsx:226
+commitHookEffectListMount @ chunk-SM3OW2QE.js?v=dd132bec:16915
+commitPassiveMountOnFiber @ chunk-SM3OW2QE.js?v=dd132bec:18156
+commitPassiveMountEffects_complete @ chunk-SM3OW2QE.js?v=dd132bec:18129
+commitPassiveMountEffects_begin @ chunk-SM3OW2QE.js?v=dd132bec:18119
+commitPassiveMountEffects @ chunk-SM3OW2QE.js?v=dd132bec:18109
+flushPassiveEffectsImpl @ chunk-SM3OW2QE.js?v=dd132bec:19490
+flushPassiveEffects @ chunk-SM3OW2QE.js?v=dd132bec:19447
+(anonymous) @ chunk-SM3OW2QE.js?v=dd132bec:19328
+workLoop @ chunk-SM3OW2QE.js?v=dd132bec:197
+flushWork @ chunk-SM3OW2QE.js?v=dd132bec:176
+performWorkUntilDeadline @ chunk-SM3OW2QE.js?v=dd132bec:384
+_ @ inpage.js:166
+w @ inpage.js:166
+Y @ inpage.js:166
+postMessage
+h @ inpage.js:166
+b @ inpage.js:166
+schedulePerformWorkUntilDeadline @ chunk-SM3OW2QE.js?v=dd132bec:400
+performWorkUntilDeadline @ chunk-SM3OW2QE.js?v=dd132bec:387
+_ @ inpage.js:166
+w @ inpage.js:166
+Y @ inpage.js:166
+postMessage
+h @ inpage.js:166
+b @ inpage.js:166
+schedulePerformWorkUntilDeadline @ chunk-SM3OW2QE.js?v=dd132bec:400
+requestHostCallback @ chunk-SM3OW2QE.js?v=dd132bec:418
+unstable_scheduleCallback @ chunk-SM3OW2QE.js?v=dd132bec:330
+scheduleCallback$1 @ chunk-SM3OW2QE.js?v=dd132bec:19826
+ensureRootIsScheduled @ chunk-SM3OW2QE.js?v=dd132bec:18652
+retryTimedOutBoundary @ chunk-SM3OW2QE.js?v=dd132bec:19619
+resolveRetryWakeable @ chunk-SM3OW2QE.js?v=dd132bec:19650
+Promise.then
+(anonymous) @ chunk-SM3OW2QE.js?v=dd132bec:17654
+attachSuspenseRetryListeners @ chunk-SM3OW2QE.js?v=dd132bec:17641
+commitMutationEffectsOnFiber @ chunk-SM3OW2QE.js?v=dd132bec:17839
+recursivelyTraverseMutationEffects @ chunk-SM3OW2QE.js?v=dd132bec:17685
+commitMutationEffectsOnFiber @ chunk-SM3OW2QE.js?v=dd132bec:17699
+recursivelyTraverseMutationEffects @ chunk-SM3OW2QE.js?v=dd132bec:17685
+commitMutationEffectsOnFiber @ chunk-SM3OW2QE.js?v=dd132bec:17699
+recursivelyTraverseMutationEffects @ chunk-SM3OW2QE.js?v=dd132bec:17685
+commitMutationEffectsOnFiber @ chunk-SM3OW2QE.js?v=dd132bec:17896
+recursivelyTraverseMutationEffects @ chunk-SM3OW2QE.js?v=dd132bec:17685
+commitMutationEffectsOnFiber @ chunk-SM3OW2QE.js?v=dd132bec:17699
+recursivelyTraverseMutationEffects @ chunk-SM3OW2QE.js?v=dd132bec:17685
+commitMutationEffectsOnFiber @ chunk-SM3OW2QE.js?v=dd132bec:17699
+recursivelyTraverseMutationEffects @ chunk-SM3OW2QE.js?v=dd132bec:17685
+commitMutationEffectsOnFiber @ chunk-SM3OW2QE.js?v=dd132bec:17851
+recursivelyTraverseMutationEffects @ chunk-SM3OW2QE.js?v=dd132bec:17685
+commitMutationEffectsOnFiber @ chunk-SM3OW2QE.js?v=dd132bec:17818
+recursivelyTraverseMutationEffects @ chunk-SM3OW2QE.js?v=dd132bec:17685
+commitMutationEffectsOnFiber @ chunk-SM3OW2QE.js?v=dd132bec:17737
+recursivelyTraverseMutationEffects @ chunk-SM3OW2QE.js?v=dd132bec:17685
+commitMutationEffectsOnFiber @ chunk-SM3OW2QE.js?v=dd132bec:17737
+recursivelyTraverseMutationEffects @ chunk-SM3OW2QE.js?v=dd132bec:17685
+commitMutationEffectsOnFiber @ chunk-SM3OW2QE.js?v=dd132bec:17699
+recursivelyTraverseMutationEffects @ chunk-SM3OW2QE.js?v=dd132bec:17685
+commitMutationEffectsOnFiber @ chunk-SM3OW2QE.js?v=dd132bec:17896
+recursivelyTraverseMutationEffects @ chunk-SM3OW2QE.js?v=dd132bec:17685
+commitMutationEffectsOnFiber @ chunk-SM3OW2QE.js?v=dd132bec:17699
+recursivelyTraverseMutationEffects @ chunk-SM3OW2QE.js?v=dd132bec:17685
+commitMutationEffectsOnFiber @ chunk-SM3OW2QE.js?v=dd132bec:17699
+recursivelyTraverseMutationEffects @ chunk-SM3OW2QE.js?v=dd132bec:17685
+commitMutationEffectsOnFiber @ chunk-SM3OW2QE.js?v=dd132bec:17896
+recursivelyTraverseMutationEffects @ chunk-SM3OW2QE.js?v=dd132bec:17685
+commitMutationEffectsOnFiber @ chunk-SM3OW2QE.js?v=dd132bec:17699
+recursivelyTraverseMutationEffects @ chunk-SM3OW2QE.js?v=dd132bec:17685
+commitMutationEffectsOnFiber @ chunk-SM3OW2QE.js?v=dd132bec:17896
+recursivelyTraverseMutationEffects @ chunk-SM3OW2QE.js?v=dd132bec:17685
+commitMutationEffectsOnFiber @ chunk-SM3OW2QE.js?v=dd132bec:17699
+recursivelyTraverseMutationEffects @ chunk-SM3OW2QE.js?v=dd132bec:17685
+commitMutationEffectsOnFiber @ chunk-SM3OW2QE.js?v=dd132bec:17727
+recursivelyTraverseMutationEffects @ chunk-SM3OW2QE.js?v=dd132bec:17685
+commitMutationEffectsOnFiber @ chunk-SM3OW2QE.js?v=dd132bec:17699
+recursivelyTraverseMutationEffects @ chunk-SM3OW2QE.js?v=dd132bec:17685
+commitMutationEffectsOnFiber @ chunk-SM3OW2QE.js?v=dd132bec:17794
+commitMutationEffects @ chunk-SM3OW2QE.js?v=dd132bec:17663
+commitRootImpl @ chunk-SM3OW2QE.js?v=dd132bec:19347
+commitRoot @ chunk-SM3OW2QE.js?v=dd132bec:19277
+performSyncWorkOnRoot @ chunk-SM3OW2QE.js?v=dd132bec:18895
+flushSyncCallbacks @ chunk-SM3OW2QE.js?v=dd132bec:9119
+(anonymous) @ chunk-SM3OW2QE.js?v=dd132bec:18627
+injected.js:27 🔍 SessionManager.getSession() returning: {isLoggedIn: true, handle: 'dippydoge', hasWalletData: true, hasSessionToken: true, walletDataKeys: Array(7)}
+injected.js:27 🔍 [XRP WALLET] Auth data: {walletAddress: 'rEVrTKUKSLx5nxdfV8SAFTxS9FGFrfHRLo', hasSessionWalletData: true, hasSessionAddresses: true, hasUser: true, hasWalletData: false, …}
+injected.js:27 🔍 [AUTH CHECK] Server response: {success: true, authenticated: true, username: 'dippydoge', handle: 'dippydoge', expiresAt: 1760444390995, …}
+injected.js:27 ✅ [AUTH CHECK] Valid session for user: dippydoge
+injected.js:27 🔍 SessionManager.getSession() returning: {isLoggedIn: true, handle: 'dippydoge', hasWalletData: true, hasSessionToken: true, walletDataKeys: Array(7)}
+injected.js:27 Warning: React has detected a change in the order of Hooks called by XRPWalletRedesigned. This will lead to bugs and errors if not fixed. For more information, read the Rules of Hooks: https://reactjs.org/link/rules-of-hooks
+
+   Previous render            Next render
+   ------------------------------------------------------
+1. useState                   useState
+2. useEffect                  useEffect
+3. useContext                 useContext
+4. useSyncExternalStore       useSyncExternalStore
+5. useRef                     useRef
+6. useInsertionEffect         useInsertionEffect
+7. useState                   useState
+8. useEffect                  useEffect
+9. useState                   useState
+10. useState                  useState
+11. useState                  useState
+12. useEffect                 useEffect
+13. useState                  useState
+14. useEffect                 useEffect
+15. useContext                useContext
+16. useSyncExternalStore      useSyncExternalStore
+17. useRef                    useRef
+18. useInsertionEffect        useInsertionEffect
+19. useState                  useState
+20. useState                  useState
+21. useState                  useState
+22. useState                  useState
+23. useState                  useState
+24. useState                  useState
+25. useState                  useState
+26. useState                  useState
+27. useState                  useState
+28. useState                  useState
+29. useState                  useState
+30. useState                  useState
+31. useState                  useState
+32. useState                  useState
+33. useState                  useState
+34. useState                  useState
+35. useState                  useState
+36. useState                  useState
+37. useState                  useState
+38. useState                  useState
+39. useState                  useState
+40. useState                  useState
+41. useState                  useState
+42. useState                  useState
+43. useState                  useState
+44. useState                  useState
+45. useState                  useState
+46. useState                  useState
+47. useState                  useState
+48. useState                  useState
+49. useState                  useState
+50. useState                  useState
+51. useState                  useState
+52. useState                  useState
+53. useState                  useState
+54. useState                  useState
+55. useState                  useState
+56. useState                  useState
+57. useState                  useState
+58. useState                  useState
+59. useState                  useState
+60. useState                  useState
+61. useState                  useState
+62. useState                  useState
+63. useEffect                 useEffect
+64. useEffect                 useEffect
+65. useContext                useContext
+66. useContext                useContext
+67. useContext                useContext
+68. useEffect                 useEffect
+69. useState                  useState
+70. useCallback               useCallback
+71. useSyncExternalStore      useSyncExternalStore
+72. useEffect                 useEffect
+73. useContext                useContext
+74. useContext                useContext
+75. useContext                useContext
+76. useEffect                 useEffect
+77. useState                  useState
+78. useCallback               useCallback
+79. useSyncExternalStore      useSyncExternalStore
+80. useEffect                 useEffect
+81. useContext                useContext
+82. useContext                useContext
+83. useContext                useContext
+84. useEffect                 useEffect
+85. useState                  useState
+86. useCallback               useCallback
+87. useSyncExternalStore      useSyncExternalStore
+88. useEffect                 useEffect
+89. useContext                useContext
+90. useContext                useContext
+91. useContext                useContext
+92. useEffect                 useEffect
+93. useState                  useState
+94. useCallback               useCallback
+95. useSyncExternalStore      useSyncExternalStore
+96. useEffect                 useEffect
+97. useContext                useContext
+98. useContext                useContext
+99. useContext                useContext
+100. useEffect                useEffect
+101. useState                 useState
+102. useCallback              useCallback
+103. useSyncExternalStore     useSyncExternalStore
+104. useEffect                useEffect
+105. useContext               useContext
+106. useContext               useContext
+107. useContext               useContext
+108. useEffect                useEffect
+109. useState                 useState
+110. useCallback              useCallback
+111. useSyncExternalStore     useSyncExternalStore
+112. useEffect                useEffect
+113. undefined                useEffect
+   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+    at XRPWalletRedesigned (https://301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/src/pages/xrp-wallet-redesigned.tsx:66:21)
+    at Suspense
+    at AuthGuard (https://301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/src/components/AuthGuard.tsx:22:29)
+    at XRPWalletRoute
+    at Route (https://301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/@fs/home/runner/workspace/node_modules/.vite/deps/wouter.js?v=dd132bec:205:16)
+    at Switch (https://301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/@fs/home/runner/workspace/node_modules/.vite/deps/wouter.js?v=dd132bec:261:17)
+    at Suspense
+    at div
+    at div
+    at Router (https://301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/src/App.tsx?v=w-xPf9957GcaGs5SX23P6:758:22)
+    at Provider (https://301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/@fs/home/runner/workspace/node_modules/.vite/deps/chunk-SJJUTGFJ.js?v=dd132bec:37:15)
+    at TooltipProvider (https://301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/@fs/home/runner/workspace/node_modules/.vite/deps/@radix-ui_react-tooltip.js?v=dd132bec:65:5)
+    at ThemeProvider (https://301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/src/contexts/theme-context.tsx:20:33)
+    at QueryClientProvider (https://301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/@fs/home/runner/workspace/node_modules/.vite/deps/@tanstack_react-query.js?v=dd132bec:2884:3)
+    at ErrorBoundary (https://301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/src/components/ErrorBoundary.tsx:24:5)
+    at App (https://301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/src/App.tsx?v=w-xPf9957GcaGs5SX23P6:1759:3)
+(anonymous) @ injected.js:27
+(anonymous) @ injected.js:27
+(anonymous) @ injected.js:27
+(anonymous) @ injected.js:27
+(anonymous) @ injected.js:27
+(anonymous) @ injected.js:27
+(anonymous) @ injected.js:27
+(anonymous) @ injected.js:27
+(anonymous) @ injected.js:27
+(anonymous) @ injected.js:27
+(anonymous) @ injected.js:27
+(anonymous) @ injected.js:27
+(anonymous) @ injected.js:27
+printWarning @ chunk-SM3OW2QE.js?v=dd132bec:521
+error @ chunk-SM3OW2QE.js?v=dd132bec:505
+warnOnHookMismatchInDev @ chunk-SM3OW2QE.js?v=dd132bec:11495
+updateHookTypesDev @ chunk-SM3OW2QE.js?v=dd132bec:11465
+useEffect @ chunk-SM3OW2QE.js?v=dd132bec:12702
+useEffect @ chunk-7SNDHR3H.js?v=dd132bec:1078
+XRPWalletRedesigned @ xrp-wallet-redesigned.tsx:1010
+renderWithHooks @ chunk-SM3OW2QE.js?v=dd132bec:11548
+updateFunctionComponent @ chunk-SM3OW2QE.js?v=dd132bec:14582
+beginWork @ chunk-SM3OW2QE.js?v=dd132bec:15924
+beginWork$1 @ chunk-SM3OW2QE.js?v=dd132bec:19753
+performUnitOfWork @ chunk-SM3OW2QE.js?v=dd132bec:19198
+workLoopSync @ chunk-SM3OW2QE.js?v=dd132bec:19137
+renderRootSync @ chunk-SM3OW2QE.js?v=dd132bec:19116
+performConcurrentWorkOnRoot @ chunk-SM3OW2QE.js?v=dd132bec:18678
+workLoop @ chunk-SM3OW2QE.js?v=dd132bec:197
+flushWork @ chunk-SM3OW2QE.js?v=dd132bec:176
+performWorkUntilDeadline @ chunk-SM3OW2QE.js?v=dd132bec:384
+_ @ inpage.js:166
+w @ inpage.js:166
+Y @ inpage.js:166
+postMessage
+h @ inpage.js:166
+b @ inpage.js:166
+schedulePerformWorkUntilDeadline @ chunk-SM3OW2QE.js?v=dd132bec:400
+requestHostCallback @ chunk-SM3OW2QE.js?v=dd132bec:418
+unstable_scheduleCallback @ chunk-SM3OW2QE.js?v=dd132bec:330
+scheduleCallback$1 @ chunk-SM3OW2QE.js?v=dd132bec:19826
+ensureRootIsScheduled @ chunk-SM3OW2QE.js?v=dd132bec:18652
+scheduleUpdateOnFiber @ chunk-SM3OW2QE.js?v=dd132bec:18562
+dispatchSetState @ chunk-SM3OW2QE.js?v=dd132bec:12403
+checkAuth @ useAuth.ts:55
+await in checkAuth
+(anonymous) @ useAuth.ts:106
+commitHookEffectListMount @ chunk-SM3OW2QE.js?v=dd132bec:16915
+commitPassiveMountOnFiber @ chunk-SM3OW2QE.js?v=dd132bec:18156
+commitPassiveMountEffects_complete @ chunk-SM3OW2QE.js?v=dd132bec:18129
+commitPassiveMountEffects_begin @ chunk-SM3OW2QE.js?v=dd132bec:18119
+commitPassiveMountEffects @ chunk-SM3OW2QE.js?v=dd132bec:18109
+flushPassiveEffectsImpl @ chunk-SM3OW2QE.js?v=dd132bec:19490
+flushPassiveEffects @ chunk-SM3OW2QE.js?v=dd132bec:19447
+(anonymous) @ chunk-SM3OW2QE.js?v=dd132bec:19328
+workLoop @ chunk-SM3OW2QE.js?v=dd132bec:197
+flushWork @ chunk-SM3OW2QE.js?v=dd132bec:176
+performWorkUntilDeadline @ chunk-SM3OW2QE.js?v=dd132bec:384
+_ @ inpage.js:166
+w @ inpage.js:166
+Y @ inpage.js:166
+postMessage
+h @ inpage.js:166
+b @ inpage.js:166
+schedulePerformWorkUntilDeadline @ chunk-SM3OW2QE.js?v=dd132bec:400
+performWorkUntilDeadline @ chunk-SM3OW2QE.js?v=dd132bec:387
+_ @ inpage.js:166
+w @ inpage.js:166
+Y @ inpage.js:166
+postMessage
+h @ inpage.js:166
+b @ inpage.js:166
+schedulePerformWorkUntilDeadline @ chunk-SM3OW2QE.js?v=dd132bec:400
+requestHostCallback @ chunk-SM3OW2QE.js?v=dd132bec:418
+unstable_scheduleCallback @ chunk-SM3OW2QE.js?v=dd132bec:330
+scheduleCallback$1 @ chunk-SM3OW2QE.js?v=dd132bec:19826
+ensureRootIsScheduled @ chunk-SM3OW2QE.js?v=dd132bec:18652
+retryTimedOutBoundary @ chunk-SM3OW2QE.js?v=dd132bec:19619
+resolveRetryWakeable @ chunk-SM3OW2QE.js?v=dd132bec:19650
+Promise.then
+(anonymous) @ chunk-SM3OW2QE.js?v=dd132bec:17654
+attachSuspenseRetryListeners @ chunk-SM3OW2QE.js?v=dd132bec:17641
+commitMutationEffectsOnFiber @ chunk-SM3OW2QE.js?v=dd132bec:17839
+recursivelyTraverseMutationEffects @ chunk-SM3OW2QE.js?v=dd132bec:17685
+commitMutationEffectsOnFiber @ chunk-SM3OW2QE.js?v=dd132bec:17699
+recursivelyTraverseMutationEffects @ chunk-SM3OW2QE.js?v=dd132bec:17685
+commitMutationEffectsOnFiber @ chunk-SM3OW2QE.js?v=dd132bec:17699
+recursivelyTraverseMutationEffects @ chunk-SM3OW2QE.js?v=dd132bec:17685
+commitMutationEffectsOnFiber @ chunk-SM3OW2QE.js?v=dd132bec:17896
+recursivelyTraverseMutationEffects @ chunk-SM3OW2QE.js?v=dd132bec:17685
+commitMutationEffectsOnFiber @ chunk-SM3OW2QE.js?v=dd132bec:17699
+recursivelyTraverseMutationEffects @ chunk-SM3OW2QE.js?v=dd132bec:17685
+commitMutationEffectsOnFiber @ chunk-SM3OW2QE.js?v=dd132bec:17699
+recursivelyTraverseMutationEffects @ chunk-SM3OW2QE.js?v=dd132bec:17685
+commitMutationEffectsOnFiber @ chunk-SM3OW2QE.js?v=dd132bec:17851
+recursivelyTraverseMutationEffects @ chunk-SM3OW2QE.js?v=dd132bec:17685
+commitMutationEffectsOnFiber @ chunk-SM3OW2QE.js?v=dd132bec:17818
+recursivelyTraverseMutationEffects @ chunk-SM3OW2QE.js?v=dd132bec:17685
+commitMutationEffectsOnFiber @ chunk-SM3OW2QE.js?v=dd132bec:17737
+recursivelyTraverseMutationEffects @ chunk-SM3OW2QE.js?v=dd132bec:17685
+commitMutationEffectsOnFiber @ chunk-SM3OW2QE.js?v=dd132bec:17737
+recursivelyTraverseMutationEffects @ chunk-SM3OW2QE.js?v=dd132bec:17685
+commitMutationEffectsOnFiber @ chunk-SM3OW2QE.js?v=dd132bec:17699
+recursivelyTraverseMutationEffects @ chunk-SM3OW2QE.js?v=dd132bec:17685
+commitMutationEffectsOnFiber @ chunk-SM3OW2QE.js?v=dd132bec:17896
+recursivelyTraverseMutationEffects @ chunk-SM3OW2QE.js?v=dd132bec:17685
+commitMutationEffectsOnFiber @ chunk-SM3OW2QE.js?v=dd132bec:17699
+recursivelyTraverseMutationEffects @ chunk-SM3OW2QE.js?v=dd132bec:17685
+commitMutationEffectsOnFiber @ chunk-SM3OW2QE.js?v=dd132bec:17699
+recursivelyTraverseMutationEffects @ chunk-SM3OW2QE.js?v=dd132bec:17685
+commitMutationEffectsOnFiber @ chunk-SM3OW2QE.js?v=dd132bec:17896
+recursivelyTraverseMutationEffects @ chunk-SM3OW2QE.js?v=dd132bec:17685
+commitMutationEffectsOnFiber @ chunk-SM3OW2QE.js?v=dd132bec:17699
+recursivelyTraverseMutationEffects @ chunk-SM3OW2QE.js?v=dd132bec:17685
+commitMutationEffectsOnFiber @ chunk-SM3OW2QE.js?v=dd132bec:17896
+recursivelyTraverseMutationEffects @ chunk-SM3OW2QE.js?v=dd132bec:17685
+commitMutationEffectsOnFiber @ chunk-SM3OW2QE.js?v=dd132bec:17699
+recursivelyTraverseMutationEffects @ chunk-SM3OW2QE.js?v=dd132bec:17685
+commitMutationEffectsOnFiber @ chunk-SM3OW2QE.js?v=dd132bec:17727
+recursivelyTraverseMutationEffects @ chunk-SM3OW2QE.js?v=dd132bec:17685
+commitMutationEffectsOnFiber @ chunk-SM3OW2QE.js?v=dd132bec:17699
+recursivelyTraverseMutationEffects @ chunk-SM3OW2QE.js?v=dd132bec:17685
+commitMutationEffectsOnFiber @ chunk-SM3OW2QE.js?v=dd132bec:17794
+commitMutationEffects @ chunk-SM3OW2QE.js?v=dd132bec:17663
+commitRootImpl @ chunk-SM3OW2QE.js?v=dd132bec:19347
+commitRoot @ chunk-SM3OW2QE.js?v=dd132bec:19277
+performSyncWorkOnRoot @ chunk-SM3OW2QE.js?v=dd132bec:18895
+flushSyncCallbacks @ chunk-SM3OW2QE.js?v=dd132bec:9119
+(anonymous) @ chunk-SM3OW2QE.js?v=dd132bec:18627
+injected.js:27 🔍 SessionManager.getSession() returning: {isLoggedIn: true, handle: 'dippydoge', hasWalletData: true, hasSessionToken: true, walletDataKeys: Array(7)}
+injected.js:27 🚨 AUTO-LOGGED ERROR: ErrorEvent {isTrusted: true, message: 'Uncaught Error: Rendered more hooks than during the previous render.', filename: 'https://301a997e-224f-466a-90b9-f0f77a76de50-00-uo…e_modules/.vite/deps/chunk-SM3OW2QE.js?v=dd132bec', lineno: 11678, colno: 21, …}
+(anonymous) @ injected.js:27
+(anonymous) @ injected.js:27
+(anonymous) @ injected.js:27
+(anonymous) @ injected.js:27
+(anonymous) @ injected.js:27
+(anonymous) @ injected.js:27
+(anonymous) @ injected.js:27
+(anonymous) @ injected.js:27
+(anonymous) @ injected.js:27
+(anonymous) @ injected.js:27
+(anonymous) @ injected.js:27
+(anonymous) @ injected.js:27
+(anonymous) @ injected.js:27
+(anonymous) @ main.tsx:53
+invokeGuardedCallbackDev @ chunk-SM3OW2QE.js?v=dd132bec:3699
+invokeGuardedCallback @ chunk-SM3OW2QE.js?v=dd132bec:3733
+beginWork$1 @ chunk-SM3OW2QE.js?v=dd132bec:19765
+performUnitOfWork @ chunk-SM3OW2QE.js?v=dd132bec:19198
+workLoopSync @ chunk-SM3OW2QE.js?v=dd132bec:19137
+renderRootSync @ chunk-SM3OW2QE.js?v=dd132bec:19116
+performConcurrentWorkOnRoot @ chunk-SM3OW2QE.js?v=dd132bec:18678
+workLoop @ chunk-SM3OW2QE.js?v=dd132bec:197
+flushWork @ chunk-SM3OW2QE.js?v=dd132bec:176
+performWorkUntilDeadline @ chunk-SM3OW2QE.js?v=dd132bec:384
+_ @ inpage.js:166
+w @ inpage.js:166
+Y @ inpage.js:166
+postMessage
+h @ inpage.js:166
+b @ inpage.js:166
+schedulePerformWorkUntilDeadline @ chunk-SM3OW2QE.js?v=dd132bec:400
+requestHostCallback @ chunk-SM3OW2QE.js?v=dd132bec:418
+unstable_scheduleCallback @ chunk-SM3OW2QE.js?v=dd132bec:330
+scheduleCallback$1 @ chunk-SM3OW2QE.js?v=dd132bec:19826
+ensureRootIsScheduled @ chunk-SM3OW2QE.js?v=dd132bec:18652
+scheduleUpdateOnFiber @ chunk-SM3OW2QE.js?v=dd132bec:18562
+dispatchSetState @ chunk-SM3OW2QE.js?v=dd132bec:12403
+checkAuth @ useAuth.ts:55
+await in checkAuth
+(anonymous) @ useAuth.ts:106
+commitHookEffectListMount @ chunk-SM3OW2QE.js?v=dd132bec:16915
+commitPassiveMountOnFiber @ chunk-SM3OW2QE.js?v=dd132bec:18156
+commitPassiveMountEffects_complete @ chunk-SM3OW2QE.js?v=dd132bec:18129
+commitPassiveMountEffects_begin @ chunk-SM3OW2QE.js?v=dd132bec:18119
+commitPassiveMountEffects @ chunk-SM3OW2QE.js?v=dd132bec:18109
+flushPassiveEffectsImpl @ chunk-SM3OW2QE.js?v=dd132bec:19490
+flushPassiveEffects @ chunk-SM3OW2QE.js?v=dd132bec:19447
+(anonymous) @ chunk-SM3OW2QE.js?v=dd132bec:19328
+workLoop @ chunk-SM3OW2QE.js?v=dd132bec:197
+flushWork @ chunk-SM3OW2QE.js?v=dd132bec:176
+performWorkUntilDeadline @ chunk-SM3OW2QE.js?v=dd132bec:384
+_ @ inpage.js:166
+w @ inpage.js:166
+Y @ inpage.js:166
+postMessage
+h @ inpage.js:166
+b @ inpage.js:166
+schedulePerformWorkUntilDeadline @ chunk-SM3OW2QE.js?v=dd132bec:400
+performWorkUntilDeadline @ chunk-SM3OW2QE.js?v=dd132bec:387
+_ @ inpage.js:166
+w @ inpage.js:166
+Y @ inpage.js:166
+postMessage
+h @ inpage.js:166
+b @ inpage.js:166
+schedulePerformWorkUntilDeadline @ chunk-SM3OW2QE.js?v=dd132bec:400
+requestHostCallback @ chunk-SM3OW2QE.js?v=dd132bec:418
+unstable_scheduleCallback @ chunk-SM3OW2QE.js?v=dd132bec:330
+scheduleCallback$1 @ chunk-SM3OW2QE.js?v=dd132bec:19826
+ensureRootIsScheduled @ chunk-SM3OW2QE.js?v=dd132bec:18652
+retryTimedOutBoundary @ chunk-SM3OW2QE.js?v=dd132bec:19619
+resolveRetryWakeable @ chunk-SM3OW2QE.js?v=dd132bec:19650
+Promise.then
+(anonymous) @ chunk-SM3OW2QE.js?v=dd132bec:17654
+attachSuspenseRetryListeners @ chunk-SM3OW2QE.js?v=dd132bec:17641
+commitMutationEffectsOnFiber @ chunk-SM3OW2QE.js?v=dd132bec:17839
+recursivelyTraverseMutationEffects @ chunk-SM3OW2QE.js?v=dd132bec:17685
+commitMutationEffectsOnFiber @ chunk-SM3OW2QE.js?v=dd132bec:17699
+recursivelyTraverseMutationEffects @ chunk-SM3OW2QE.js?v=dd132bec:17685
+commitMutationEffectsOnFiber @ chunk-SM3OW2QE.js?v=dd132bec:17699
+recursivelyTraverseMutationEffects @ chunk-SM3OW2QE.js?v=dd132bec:17685
+commitMutationEffectsOnFiber @ chunk-SM3OW2QE.js?v=dd132bec:17896
+recursivelyTraverseMutationEffects @ chunk-SM3OW2QE.js?v=dd132bec:17685
+commitMutationEffectsOnFiber @ chunk-SM3OW2QE.js?v=dd132bec:17699
+recursivelyTraverseMutationEffects @ chunk-SM3OW2QE.js?v=dd132bec:17685
+commitMutationEffectsOnFiber @ chunk-SM3OW2QE.js?v=dd132bec:17699
+recursivelyTraverseMutationEffects @ chunk-SM3OW2QE.js?v=dd132bec:17685
+commitMutationEffectsOnFiber @ chunk-SM3OW2QE.js?v=dd132bec:17851
+recursivelyTraverseMutationEffects @ chunk-SM3OW2QE.js?v=dd132bec:17685
+commitMutationEffectsOnFiber @ chunk-SM3OW2QE.js?v=dd132bec:17818
+recursivelyTraverseMutationEffects @ chunk-SM3OW2QE.js?v=dd132bec:17685
+commitMutationEffectsOnFiber @ chunk-SM3OW2QE.js?v=dd132bec:17737
+recursivelyTraverseMutationEffects @ chunk-SM3OW2QE.js?v=dd132bec:17685
+commitMutationEffectsOnFiber @ chunk-SM3OW2QE.js?v=dd132bec:17737
+recursivelyTraverseMutationEffects @ chunk-SM3OW2QE.js?v=dd132bec:17685
+commitMutationEffectsOnFiber @ chunk-SM3OW2QE.js?v=dd132bec:17699
+recursivelyTraverseMutationEffects @ chunk-SM3OW2QE.js?v=dd132bec:17685
+commitMutationEffectsOnFiber @ chunk-SM3OW2QE.js?v=dd132bec:17896
+recursivelyTraverseMutationEffects @ chunk-SM3OW2QE.js?v=dd132bec:17685
+commitMutationEffectsOnFiber @ chunk-SM3OW2QE.js?v=dd132bec:17699
+recursivelyTraverseMutationEffects @ chunk-SM3OW2QE.js?v=dd132bec:17685
+commitMutationEffectsOnFiber @ chunk-SM3OW2QE.js?v=dd132bec:17699
+recursivelyTraverseMutationEffects @ chunk-SM3OW2QE.js?v=dd132bec:17685
+commitMutationEffectsOnFiber @ chunk-SM3OW2QE.js?v=dd132bec:17896
+recursivelyTraverseMutationEffects @ chunk-SM3OW2QE.js?v=dd132bec:17685
+commitMutationEffectsOnFiber @ chunk-SM3OW2QE.js?v=dd132bec:17699
+recursivelyTraverseMutationEffects @ chunk-SM3OW2QE.js?v=dd132bec:17685
+commitMutationEffectsOnFiber @ chunk-SM3OW2QE.js?v=dd132bec:17896
+recursivelyTraverseMutationEffects @ chunk-SM3OW2QE.js?v=dd132bec:17685
+commitMutationEffectsOnFiber @ chunk-SM3OW2QE.js?v=dd132bec:17699
+recursivelyTraverseMutationEffects @ chunk-SM3OW2QE.js?v=dd132bec:17685
+commitMutationEffectsOnFiber @ chunk-SM3OW2QE.js?v=dd132bec:17727
+recursivelyTraverseMutationEffects @ chunk-SM3OW2QE.js?v=dd132bec:17685
+commitMutationEffectsOnFiber @ chunk-SM3OW2QE.js?v=dd132bec:17699
+recursivelyTraverseMutationEffects @ chunk-SM3OW2QE.js?v=dd132bec:17685
+commitMutationEffectsOnFiber @ chunk-SM3OW2QE.js?v=dd132bec:17794
+commitMutationEffects @ chunk-SM3OW2QE.js?v=dd132bec:17663
+commitRootImpl @ chunk-SM3OW2QE.js?v=dd132bec:19347
+commitRoot @ chunk-SM3OW2QE.js?v=dd132bec:19277
+performSyncWorkOnRoot @ chunk-SM3OW2QE.js?v=dd132bec:18895
+flushSyncCallbacks @ chunk-SM3OW2QE.js?v=dd132bec:9119
+(anonymous) @ chunk-SM3OW2QE.js?v=dd132bec:18627
+chunk-SM3OW2QE.js?v=dd132bec:11678 Uncaught Error: Rendered more hooks than during the previous render.
+    at updateWorkInProgressHook (chunk-SM3OW2QE.js?v=dd132bec:11678:21)
+    at updateEffectImpl (chunk-SM3OW2QE.js?v=dd132bec:12074:22)
+    at updateEffect (chunk-SM3OW2QE.js?v=dd132bec:12099:18)
+    at Object.useEffect (chunk-SM3OW2QE.js?v=dd132bec:12703:22)
+    at useEffect (chunk-7SNDHR3H.js?v=dd132bec:1078:29)
+    at XRPWalletRedesigned (xrp-wallet-redesigned.tsx:1010:3)
+    at renderWithHooks (chunk-SM3OW2QE.js?v=dd132bec:11548:26)
+    at updateFunctionComponent (chunk-SM3OW2QE.js?v=dd132bec:14582:28)
+    at beginWork (chunk-SM3OW2QE.js?v=dd132bec:15924:22)
+    at HTMLUnknownElement.callCallback2 (chunk-SM3OW2QE.js?v=dd132bec:3674:22)
+updateWorkInProgressHook @ chunk-SM3OW2QE.js?v=dd132bec:11678
+updateEffectImpl @ chunk-SM3OW2QE.js?v=dd132bec:12074
+updateEffect @ chunk-SM3OW2QE.js?v=dd132bec:12099
+useEffect @ chunk-SM3OW2QE.js?v=dd132bec:12703
+useEffect @ chunk-7SNDHR3H.js?v=dd132bec:1078
+XRPWalletRedesigned @ xrp-wallet-redesigned.tsx:1010
+renderWithHooks @ chunk-SM3OW2QE.js?v=dd132bec:11548
+updateFunctionComponent @ chunk-SM3OW2QE.js?v=dd132bec:14582
+beginWork @ chunk-SM3OW2QE.js?v=dd132bec:15924
+callCallback2 @ chunk-SM3OW2QE.js?v=dd132bec:3674
+invokeGuardedCallbackDev @ chunk-SM3OW2QE.js?v=dd132bec:3699
+invokeGuardedCallback @ chunk-SM3OW2QE.js?v=dd132bec:3733
+beginWork$1 @ chunk-SM3OW2QE.js?v=dd132bec:19765
+performUnitOfWork @ chunk-SM3OW2QE.js?v=dd132bec:19198
+workLoopSync @ chunk-SM3OW2QE.js?v=dd132bec:19137
+renderRootSync @ chunk-SM3OW2QE.js?v=dd132bec:19116
+performConcurrentWorkOnRoot @ chunk-SM3OW2QE.js?v=dd132bec:18678
+workLoop @ chunk-SM3OW2QE.js?v=dd132bec:197
+flushWork @ chunk-SM3OW2QE.js?v=dd132bec:176
+performWorkUntilDeadline @ chunk-SM3OW2QE.js?v=dd132bec:384
+_ @ inpage.js:166
+w @ inpage.js:166
+Y @ inpage.js:166
+postMessage
+h @ inpage.js:166
+b @ inpage.js:166
+schedulePerformWorkUntilDeadline @ chunk-SM3OW2QE.js?v=dd132bec:400
+requestHostCallback @ chunk-SM3OW2QE.js?v=dd132bec:418
+unstable_scheduleCallback @ chunk-SM3OW2QE.js?v=dd132bec:330
+scheduleCallback$1 @ chunk-SM3OW2QE.js?v=dd132bec:19826
+ensureRootIsScheduled @ chunk-SM3OW2QE.js?v=dd132bec:18652
+scheduleUpdateOnFiber @ chunk-SM3OW2QE.js?v=dd132bec:18562
+dispatchSetState @ chunk-SM3OW2QE.js?v=dd132bec:12403
+checkAuth @ useAuth.ts:55
+await in checkAuth
+(anonymous) @ useAuth.ts:106
+commitHookEffectListMount @ chunk-SM3OW2QE.js?v=dd132bec:16915
+commitPassiveMountOnFiber @ chunk-SM3OW2QE.js?v=dd132bec:18156
+commitPassiveMountEffects_complete @ chunk-SM3OW2QE.js?v=dd132bec:18129
+commitPassiveMountEffects_begin @ chunk-SM3OW2QE.js?v=dd132bec:18119
+commitPassiveMountEffects @ chunk-SM3OW2QE.js?v=dd132bec:18109
+flushPassiveEffectsImpl @ chunk-SM3OW2QE.js?v=dd132bec:19490
+flushPassiveEffects @ chunk-SM3OW2QE.js?v=dd132bec:19447
+(anonymous) @ chunk-SM3OW2QE.js?v=dd132bec:19328
+workLoop @ chunk-SM3OW2QE.js?v=dd132bec:197
+flushWork @ chunk-SM3OW2QE.js?v=dd132bec:176
+performWorkUntilDeadline @ chunk-SM3OW2QE.js?v=dd132bec:384
+_ @ inpage.js:166
+w @ inpage.js:166
+Y @ inpage.js:166
+postMessage
+h @ inpage.js:166
+b @ inpage.js:166
+schedulePerformWorkUntilDeadline @ chunk-SM3OW2QE.js?v=dd132bec:400
+performWorkUntilDeadline @ chunk-SM3OW2QE.js?v=dd132bec:387
+_ @ inpage.js:166
+w @ inpage.js:166
+Y @ inpage.js:166
+postMessage
+h @ inpage.js:166
+b @ inpage.js:166
+schedulePerformWorkUntilDeadline @ chunk-SM3OW2QE.js?v=dd132bec:400
+requestHostCallback @ chunk-SM3OW2QE.js?v=dd132bec:418
+unstable_scheduleCallback @ chunk-SM3OW2QE.js?v=dd132bec:330
+scheduleCallback$1 @ chunk-SM3OW2QE.js?v=dd132bec:19826
+ensureRootIsScheduled @ chunk-SM3OW2QE.js?v=dd132bec:18652
+retryTimedOutBoundary @ chunk-SM3OW2QE.js?v=dd132bec:19619
+resolveRetryWakeable @ chunk-SM3OW2QE.js?v=dd132bec:19650
+Promise.then
+(anonymous) @ chunk-SM3OW2QE.js?v=dd132bec:17654
+attachSuspenseRetryListeners @ chunk-SM3OW2QE.js?v=dd132bec:17641
+commitMutationEffectsOnFiber @ chunk-SM3OW2QE.js?v=dd132bec:17839
+recursivelyTraverseMutationEffects @ chunk-SM3OW2QE.js?v=dd132bec:17685
+commitMutationEffectsOnFiber @ chunk-SM3OW2QE.js?v=dd132bec:17699
+recursivelyTraverseMutationEffects @ chunk-SM3OW2QE.js?v=dd132bec:17685
+commitMutationEffectsOnFiber @ chunk-SM3OW2QE.js?v=dd132bec:17699
+recursivelyTraverseMutationEffects @ chunk-SM3OW2QE.js?v=dd132bec:17685
+commitMutationEffectsOnFiber @ chunk-SM3OW2QE.js?v=dd132bec:17896
+recursivelyTraverseMutationEffects @ chunk-SM3OW2QE.js?v=dd132bec:17685
+commitMutationEffectsOnFiber @ chunk-SM3OW2QE.js?v=dd132bec:17699
+recursivelyTraverseMutationEffects @ chunk-SM3OW2QE.js?v=dd132bec:17685
+commitMutationEffectsOnFiber @ chunk-SM3OW2QE.js?v=dd132bec:17699
+recursivelyTraverseMutationEffects @ chunk-SM3OW2QE.js?v=dd132bec:17685
+commitMutationEffectsOnFiber @ chunk-SM3OW2QE.js?v=dd132bec:17851
+recursivelyTraverseMutationEffects @ chunk-SM3OW2QE.js?v=dd132bec:17685
+commitMutationEffectsOnFiber @ chunk-SM3OW2QE.js?v=dd132bec:17818
+recursivelyTraverseMutationEffects @ chunk-SM3OW2QE.js?v=dd132bec:17685
+commitMutationEffectsOnFiber @ chunk-SM3OW2QE.js?v=dd132bec:17737
+recursivelyTraverseMutationEffects @ chunk-SM3OW2QE.js?v=dd132bec:17685
+commitMutationEffectsOnFiber @ chunk-SM3OW2QE.js?v=dd132bec:17737
+recursivelyTraverseMutationEffects @ chunk-SM3OW2QE.js?v=dd132bec:17685
+commitMutationEffectsOnFiber @ chunk-SM3OW2QE.js?v=dd132bec:17699
+recursivelyTraverseMutationEffects @ chunk-SM3OW2QE.js?v=dd132bec:17685
+commitMutationEffectsOnFiber @ chunk-SM3OW2QE.js?v=dd132bec:17896
+recursivelyTraverseMutationEffects @ chunk-SM3OW2QE.js?v=dd132bec:17685
+commitMutationEffectsOnFiber @ chunk-SM3OW2QE.js?v=dd132bec:17699
+recursivelyTraverseMutationEffects @ chunk-SM3OW2QE.js?v=dd132bec:17685
+commitMutationEffectsOnFiber @ chunk-SM3OW2QE.js?v=dd132bec:17699
+recursivelyTraverseMutationEffects @ chunk-SM3OW2QE.js?v=dd132bec:17685
+commitMutationEffectsOnFiber @ chunk-SM3OW2QE.js?v=dd132bec:17896
+recursivelyTraverseMutationEffects @ chunk-SM3OW2QE.js?v=dd132bec:17685
+commitMutationEffectsOnFiber @ chunk-SM3OW2QE.js?v=dd132bec:17699
+recursivelyTraverseMutationEffects @ chunk-SM3OW2QE.js?v=dd132bec:17685
+commitMutationEffectsOnFiber @ chunk-SM3OW2QE.js?v=dd132bec:17896
+recursivelyTraverseMutationEffects @ chunk-SM3OW2QE.js?v=dd132bec:17685
+commitMutationEffectsOnFiber @ chunk-SM3OW2QE.js?v=dd132bec:17699
+recursivelyTraverseMutationEffects @ chunk-SM3OW2QE.js?v=dd132bec:17685
+commitMutationEffectsOnFiber @ chunk-SM3OW2QE.js?v=dd132bec:17727
+recursivelyTraverseMutationEffects @ chunk-SM3OW2QE.js?v=dd132bec:17685
+commitMutationEffectsOnFiber @ chunk-SM3OW2QE.js?v=dd132bec:17699
+recursivelyTraverseMutationEffects @ chunk-SM3OW2QE.js?v=dd132bec:17685
+commitMutationEffectsOnFiber @ chunk-SM3OW2QE.js?v=dd132bec:17794
+commitMutationEffects @ chunk-SM3OW2QE.js?v=dd132bec:17663
+commitRootImpl @ chunk-SM3OW2QE.js?v=dd132bec:19347
+commitRoot @ chunk-SM3OW2QE.js?v=dd132bec:19277
+performSyncWorkOnRoot @ chunk-SM3OW2QE.js?v=dd132bec:18895
+flushSyncCallbacks @ chunk-SM3OW2QE.js?v=dd132bec:9119
+(anonymous) @ chunk-SM3OW2QE.js?v=dd132bec:18627
+injected.js:27 🔍 SessionManager.getSession() returning: {isLoggedIn: true, handle: 'dippydoge', hasWalletData: true, hasSessionToken: true, walletDataKeys: Array(7)}
+injected.js:27 🔍 SessionManager.getSession() returning: {isLoggedIn: true, handle: 'dippydoge', hasWalletData: true, hasSessionToken: true, walletDataKeys: Array(7)}
+injected.js:27 🚨 AUTO-LOGGED ERROR: ErrorEvent {isTrusted: true, message: 'Uncaught Error: Rendered more hooks than during the previous render.', filename: 'https://301a997e-224f-466a-90b9-f0f77a76de50-00-uo…e_modules/.vite/deps/chunk-SM3OW2QE.js?v=dd132bec', lineno: 11678, colno: 21, …}
+(anonymous) @ injected.js:27
+(anonymous) @ injected.js:27
+(anonymous) @ injected.js:27
+(anonymous) @ injected.js:27
+(anonymous) @ injected.js:27
+(anonymous) @ injected.js:27
+(anonymous) @ injected.js:27
+(anonymous) @ injected.js:27
+(anonymous) @ injected.js:27
+(anonymous) @ injected.js:27
+(anonymous) @ injected.js:27
+(anonymous) @ injected.js:27
+(anonymous) @ injected.js:27
+(anonymous) @ main.tsx:53
+invokeGuardedCallbackDev @ chunk-SM3OW2QE.js?v=dd132bec:3699
+invokeGuardedCallback @ chunk-SM3OW2QE.js?v=dd132bec:3733
+beginWork$1 @ chunk-SM3OW2QE.js?v=dd132bec:19765
+performUnitOfWork @ chunk-SM3OW2QE.js?v=dd132bec:19198
+workLoopSync @ chunk-SM3OW2QE.js?v=dd132bec:19137
+renderRootSync @ chunk-SM3OW2QE.js?v=dd132bec:19116
+recoverFromConcurrentError @ chunk-SM3OW2QE.js?v=dd132bec:18736
+performConcurrentWorkOnRoot @ chunk-SM3OW2QE.js?v=dd132bec:18684
+workLoop @ chunk-SM3OW2QE.js?v=dd132bec:197
+flushWork @ chunk-SM3OW2QE.js?v=dd132bec:176
+performWorkUntilDeadline @ chunk-SM3OW2QE.js?v=dd132bec:384
+_ @ inpage.js:166
+w @ inpage.js:166
+Y @ inpage.js:166
+postMessage
+h @ inpage.js:166
+b @ inpage.js:166
+schedulePerformWorkUntilDeadline @ chunk-SM3OW2QE.js?v=dd132bec:400
+requestHostCallback @ chunk-SM3OW2QE.js?v=dd132bec:418
+unstable_scheduleCallback @ chunk-SM3OW2QE.js?v=dd132bec:330
+scheduleCallback$1 @ chunk-SM3OW2QE.js?v=dd132bec:19826
+ensureRootIsScheduled @ chunk-SM3OW2QE.js?v=dd132bec:18652
+scheduleUpdateOnFiber @ chunk-SM3OW2QE.js?v=dd132bec:18562
+dispatchSetState @ chunk-SM3OW2QE.js?v=dd132bec:12403
+checkAuth @ useAuth.ts:55
+await in checkAuth
+(anonymous) @ useAuth.ts:106
+commitHookEffectListMount @ chunk-SM3OW2QE.js?v=dd132bec:16915
+commitPassiveMountOnFiber @ chunk-SM3OW2QE.js?v=dd132bec:18156
+commitPassiveMountEffects_complete @ chunk-SM3OW2QE.js?v=dd132bec:18129
+commitPassiveMountEffects_begin @ chunk-SM3OW2QE.js?v=dd132bec:18119
+commitPassiveMountEffects @ chunk-SM3OW2QE.js?v=dd132bec:18109
+flushPassiveEffectsImpl @ chunk-SM3OW2QE.js?v=dd132bec:19490
+flushPassiveEffects @ chunk-SM3OW2QE.js?v=dd132bec:19447
+(anonymous) @ chunk-SM3OW2QE.js?v=dd132bec:19328
+workLoop @ chunk-SM3OW2QE.js?v=dd132bec:197
+flushWork @ chunk-SM3OW2QE.js?v=dd132bec:176
+performWorkUntilDeadline @ chunk-SM3OW2QE.js?v=dd132bec:384
+_ @ inpage.js:166
+w @ inpage.js:166
+Y @ inpage.js:166
+postMessage
+h @ inpage.js:166
+b @ inpage.js:166
+schedulePerformWorkUntilDeadline @ chunk-SM3OW2QE.js?v=dd132bec:400
+performWorkUntilDeadline @ chunk-SM3OW2QE.js?v=dd132bec:387
+_ @ inpage.js:166
+w @ inpage.js:166
+Y @ inpage.js:166
+postMessage
+h @ inpage.js:166
+b @ inpage.js:166
+schedulePerformWorkUntilDeadline @ chunk-SM3OW2QE.js?v=dd132bec:400
+requestHostCallback @ chunk-SM3OW2QE.js?v=dd132bec:418
+unstable_scheduleCallback @ chunk-SM3OW2QE.js?v=dd132bec:330
+scheduleCallback$1 @ chunk-SM3OW2QE.js?v=dd132bec:19826
+ensureRootIsScheduled @ chunk-SM3OW2QE.js?v=dd132bec:18652
+retryTimedOutBoundary @ chunk-SM3OW2QE.js?v=dd132bec:19619
+resolveRetryWakeable @ chunk-SM3OW2QE.js?v=dd132bec:19650
+Promise.then
+(anonymous) @ chunk-SM3OW2QE.js?v=dd132bec:17654
+attachSuspenseRetryListeners @ chunk-SM3OW2QE.js?v=dd132bec:17641
+commitMutationEffectsOnFiber @ chunk-SM3OW2QE.js?v=dd132bec:17839
+recursivelyTraverseMutationEffects @ chunk-SM3OW2QE.js?v=dd132bec:17685
+commitMutationEffectsOnFiber @ chunk-SM3OW2QE.js?v=dd132bec:17699
+recursivelyTraverseMutationEffects @ chunk-SM3OW2QE.js?v=dd132bec:17685
+commitMutationEffectsOnFiber @ chunk-SM3OW2QE.js?v=dd132bec:17699
+recursivelyTraverseMutationEffects @ chunk-SM3OW2QE.js?v=dd132bec:17685
+commitMutationEffectsOnFiber @ chunk-SM3OW2QE.js?v=dd132bec:17896
+recursivelyTraverseMutationEffects @ chunk-SM3OW2QE.js?v=dd132bec:17685
+commitMutationEffectsOnFiber @ chunk-SM3OW2QE.js?v=dd132bec:17699
+recursivelyTraverseMutationEffects @ chunk-SM3OW2QE.js?v=dd132bec:17685
+commitMutationEffectsOnFiber @ chunk-SM3OW2QE.js?v=dd132bec:17699
+recursivelyTraverseMutationEffects @ chunk-SM3OW2QE.js?v=dd132bec:17685
+commitMutationEffectsOnFiber @ chunk-SM3OW2QE.js?v=dd132bec:17851
+recursivelyTraverseMutationEffects @ chunk-SM3OW2QE.js?v=dd132bec:17685
+commitMutationEffectsOnFiber @ chunk-SM3OW2QE.js?v=dd132bec:17818
+recursivelyTraverseMutationEffects @ chunk-SM3OW2QE.js?v=dd132bec:17685
+commitMutationEffectsOnFiber @ chunk-SM3OW2QE.js?v=dd132bec:17737
+recursivelyTraverseMutationEffects @ chunk-SM3OW2QE.js?v=dd132bec:17685
+commitMutationEffectsOnFiber @ chunk-SM3OW2QE.js?v=dd132bec:17737
+recursivelyTraverseMutationEffects @ chunk-SM3OW2QE.js?v=dd132bec:17685
+commitMutationEffectsOnFiber @ chunk-SM3OW2QE.js?v=dd132bec:17699
+recursivelyTraverseMutationEffects @ chunk-SM3OW2QE.js?v=dd132bec:17685
+commitMutationEffectsOnFiber @ chunk-SM3OW2QE.js?v=dd132bec:17896
+recursivelyTraverseMutationEffects @ chunk-SM3OW2QE.js?v=dd132bec:17685
+commitMutationEffectsOnFiber @ chunk-SM3OW2QE.js?v=dd132bec:17699
+recursivelyTraverseMutationEffects @ chunk-SM3OW2QE.js?v=dd132bec:17685
+commitMutationEffectsOnFiber @ chunk-SM3OW2QE.js?v=dd132bec:17699
+recursivelyTraverseMutationEffects @ chunk-SM3OW2QE.js?v=dd132bec:17685
+commitMutationEffectsOnFiber @ chunk-SM3OW2QE.js?v=dd132bec:17896
+recursivelyTraverseMutationEffects @ chunk-SM3OW2QE.js?v=dd132bec:17685
+commitMutationEffectsOnFiber @ chunk-SM3OW2QE.js?v=dd132bec:17699
+recursivelyTraverseMutationEffects @ chunk-SM3OW2QE.js?v=dd132bec:17685
+commitMutationEffectsOnFiber @ chunk-SM3OW2QE.js?v=dd132bec:17896
+recursivelyTraverseMutationEffects @ chunk-SM3OW2QE.js?v=dd132bec:17685
+commitMutationEffectsOnFiber @ chunk-SM3OW2QE.js?v=dd132bec:17699
+recursivelyTraverseMutationEffects @ chunk-SM3OW2QE.js?v=dd132bec:17685
+commitMutationEffectsOnFiber @ chunk-SM3OW2QE.js?v=dd132bec:17727
+recursivelyTraverseMutationEffects @ chunk-SM3OW2QE.js?v=dd132bec:17685
+commitMutationEffectsOnFiber @ chunk-SM3OW2QE.js?v=dd132bec:17699
+recursivelyTraverseMutationEffects @ chunk-SM3OW2QE.js?v=dd132bec:17685
+commitMutationEffectsOnFiber @ chunk-SM3OW2QE.js?v=dd132bec:17794
+commitMutationEffects @ chunk-SM3OW2QE.js?v=dd132bec:17663
+commitRootImpl @ chunk-SM3OW2QE.js?v=dd132bec:19347
+commitRoot @ chunk-SM3OW2QE.js?v=dd132bec:19277
+performSyncWorkOnRoot @ chunk-SM3OW2QE.js?v=dd132bec:18895
+flushSyncCallbacks @ chunk-SM3OW2QE.js?v=dd132bec:9119
+(anonymous) @ chunk-SM3OW2QE.js?v=dd132bec:18627
+chunk-SM3OW2QE.js?v=dd132bec:11678 Uncaught Error: Rendered more hooks than during the previous render.
+    at updateWorkInProgressHook (chunk-SM3OW2QE.js?v=dd132bec:11678:21)
+    at updateEffectImpl (chunk-SM3OW2QE.js?v=dd132bec:12074:22)
+    at updateEffect (chunk-SM3OW2QE.js?v=dd132bec:12099:18)
+    at Object.useEffect (chunk-SM3OW2QE.js?v=dd132bec:12703:22)
+    at useEffect (chunk-7SNDHR3H.js?v=dd132bec:1078:29)
+    at XRPWalletRedesigned (xrp-wallet-redesigned.tsx:1010:3)
+    at renderWithHooks (chunk-SM3OW2QE.js?v=dd132bec:11548:26)
+    at updateFunctionComponent (chunk-SM3OW2QE.js?v=dd132bec:14582:28)
+    at beginWork (chunk-SM3OW2QE.js?v=dd132bec:15924:22)
+    at HTMLUnknownElement.callCallback2 (chunk-SM3OW2QE.js?v=dd132bec:3674:22)
+updateWorkInProgressHook @ chunk-SM3OW2QE.js?v=dd132bec:11678
+updateEffectImpl @ chunk-SM3OW2QE.js?v=dd132bec:12074
+updateEffect @ chunk-SM3OW2QE.js?v=dd132bec:12099
+useEffect @ chunk-SM3OW2QE.js?v=dd132bec:12703
+useEffect @ chunk-7SNDHR3H.js?v=dd132bec:1078
+XRPWalletRedesigned @ xrp-wallet-redesigned.tsx:1010
+renderWithHooks @ chunk-SM3OW2QE.js?v=dd132bec:11548
+updateFunctionComponent @ chunk-SM3OW2QE.js?v=dd132bec:14582
+beginWork @ chunk-SM3OW2QE.js?v=dd132bec:15924
+callCallback2 @ chunk-SM3OW2QE.js?v=dd132bec:3674
+invokeGuardedCallbackDev @ chunk-SM3OW2QE.js?v=dd132bec:3699
+invokeGuardedCallback @ chunk-SM3OW2QE.js?v=dd132bec:3733
+beginWork$1 @ chunk-SM3OW2QE.js?v=dd132bec:19765
+performUnitOfWork @ chunk-SM3OW2QE.js?v=dd132bec:19198
+workLoopSync @ chunk-SM3OW2QE.js?v=dd132bec:19137
+renderRootSync @ chunk-SM3OW2QE.js?v=dd132bec:19116
+recoverFromConcurrentError @ chunk-SM3OW2QE.js?v=dd132bec:18736
+performConcurrentWorkOnRoot @ chunk-SM3OW2QE.js?v=dd132bec:18684
+workLoop @ chunk-SM3OW2QE.js?v=dd132bec:197
+flushWork @ chunk-SM3OW2QE.js?v=dd132bec:176
+performWorkUntilDeadline @ chunk-SM3OW2QE.js?v=dd132bec:384
+_ @ inpage.js:166
+w @ inpage.js:166
+Y @ inpage.js:166
+postMessage
+h @ inpage.js:166
+b @ inpage.js:166
+schedulePerformWorkUntilDeadline @ chunk-SM3OW2QE.js?v=dd132bec:400
+requestHostCallback @ chunk-SM3OW2QE.js?v=dd132bec:418
+unstable_scheduleCallback @ chunk-SM3OW2QE.js?v=dd132bec:330
+scheduleCallback$1 @ chunk-SM3OW2QE.js?v=dd132bec:19826
+ensureRootIsScheduled @ chunk-SM3OW2QE.js?v=dd132bec:18652
+scheduleUpdateOnFiber @ chunk-SM3OW2QE.js?v=dd132bec:18562
+dispatchSetState @ chunk-SM3OW2QE.js?v=dd132bec:12403
+checkAuth @ useAuth.ts:55
+await in checkAuth
+(anonymous) @ useAuth.ts:106
+commitHookEffectListMount @ chunk-SM3OW2QE.js?v=dd132bec:16915
+commitPassiveMountOnFiber @ chunk-SM3OW2QE.js?v=dd132bec:18156
+commitPassiveMountEffects_complete @ chunk-SM3OW2QE.js?v=dd132bec:18129
+commitPassiveMountEffects_begin @ chunk-SM3OW2QE.js?v=dd132bec:18119
+commitPassiveMountEffects @ chunk-SM3OW2QE.js?v=dd132bec:18109
+flushPassiveEffectsImpl @ chunk-SM3OW2QE.js?v=dd132bec:19490
+flushPassiveEffects @ chunk-SM3OW2QE.js?v=dd132bec:19447
+(anonymous) @ chunk-SM3OW2QE.js?v=dd132bec:19328
+workLoop @ chunk-SM3OW2QE.js?v=dd132bec:197
+flushWork @ chunk-SM3OW2QE.js?v=dd132bec:176
+performWorkUntilDeadline @ chunk-SM3OW2QE.js?v=dd132bec:384
+_ @ inpage.js:166
+w @ inpage.js:166
+Y @ inpage.js:166
+postMessage
+h @ inpage.js:166
+b @ inpage.js:166
+schedulePerformWorkUntilDeadline @ chunk-SM3OW2QE.js?v=dd132bec:400
+performWorkUntilDeadline @ chunk-SM3OW2QE.js?v=dd132bec:387
+_ @ inpage.js:166
+w @ inpage.js:166
+Y @ inpage.js:166
+postMessage
+h @ inpage.js:166
+b @ inpage.js:166
+schedulePerformWorkUntilDeadline @ chunk-SM3OW2QE.js?v=dd132bec:400
+requestHostCallback @ chunk-SM3OW2QE.js?v=dd132bec:418
+unstable_scheduleCallback @ chunk-SM3OW2QE.js?v=dd132bec:330
+scheduleCallback$1 @ chunk-SM3OW2QE.js?v=dd132bec:19826
+ensureRootIsScheduled @ chunk-SM3OW2QE.js?v=dd132bec:18652
+retryTimedOutBoundary @ chunk-SM3OW2QE.js?v=dd132bec:19619
+resolveRetryWakeable @ chunk-SM3OW2QE.js?v=dd132bec:19650
+Promise.then
+(anonymous) @ chunk-SM3OW2QE.js?v=dd132bec:17654
+attachSuspenseRetryListeners @ chunk-SM3OW2QE.js?v=dd132bec:17641
+commitMutationEffectsOnFiber @ chunk-SM3OW2QE.js?v=dd132bec:17839
+recursivelyTraverseMutationEffects @ chunk-SM3OW2QE.js?v=dd132bec:17685
+commitMutationEffectsOnFiber @ chunk-SM3OW2QE.js?v=dd132bec:17699
+recursivelyTraverseMutationEffects @ chunk-SM3OW2QE.js?v=dd132bec:17685
+commitMutationEffectsOnFiber @ chunk-SM3OW2QE.js?v=dd132bec:17699
+recursivelyTraverseMutationEffects @ chunk-SM3OW2QE.js?v=dd132bec:17685
+commitMutationEffectsOnFiber @ chunk-SM3OW2QE.js?v=dd132bec:17896
+recursivelyTraverseMutationEffects @ chunk-SM3OW2QE.js?v=dd132bec:17685
+commitMutationEffectsOnFiber @ chunk-SM3OW2QE.js?v=dd132bec:17699
+recursivelyTraverseMutationEffects @ chunk-SM3OW2QE.js?v=dd132bec:17685
+commitMutationEffectsOnFiber @ chunk-SM3OW2QE.js?v=dd132bec:17699
+recursivelyTraverseMutationEffects @ chunk-SM3OW2QE.js?v=dd132bec:17685
+commitMutationEffectsOnFiber @ chunk-SM3OW2QE.js?v=dd132bec:17851
+recursivelyTraverseMutationEffects @ chunk-SM3OW2QE.js?v=dd132bec:17685
+commitMutationEffectsOnFiber @ chunk-SM3OW2QE.js?v=dd132bec:17818
+recursivelyTraverseMutationEffects @ chunk-SM3OW2QE.js?v=dd132bec:17685
+commitMutationEffectsOnFiber @ chunk-SM3OW2QE.js?v=dd132bec:17737
+recursivelyTraverseMutationEffects @ chunk-SM3OW2QE.js?v=dd132bec:17685
+commitMutationEffectsOnFiber @ chunk-SM3OW2QE.js?v=dd132bec:17737
+recursivelyTraverseMutationEffects @ chunk-SM3OW2QE.js?v=dd132bec:17685
+commitMutationEffectsOnFiber @ chunk-SM3OW2QE.js?v=dd132bec:17699
+recursivelyTraverseMutationEffects @ chunk-SM3OW2QE.js?v=dd132bec:17685
+commitMutationEffectsOnFiber @ chunk-SM3OW2QE.js?v=dd132bec:17896
+recursivelyTraverseMutationEffects @ chunk-SM3OW2QE.js?v=dd132bec:17685
+commitMutationEffectsOnFiber @ chunk-SM3OW2QE.js?v=dd132bec:17699
+recursivelyTraverseMutationEffects @ chunk-SM3OW2QE.js?v=dd132bec:17685
+commitMutationEffectsOnFiber @ chunk-SM3OW2QE.js?v=dd132bec:17699
+recursivelyTraverseMutationEffects @ chunk-SM3OW2QE.js?v=dd132bec:17685
+commitMutationEffectsOnFiber @ chunk-SM3OW2QE.js?v=dd132bec:17896
+recursivelyTraverseMutationEffects @ chunk-SM3OW2QE.js?v=dd132bec:17685
+commitMutationEffectsOnFiber @ chunk-SM3OW2QE.js?v=dd132bec:17699
+recursivelyTraverseMutationEffects @ chunk-SM3OW2QE.js?v=dd132bec:17685
+commitMutationEffectsOnFiber @ chunk-SM3OW2QE.js?v=dd132bec:17896
+recursivelyTraverseMutationEffects @ chunk-SM3OW2QE.js?v=dd132bec:17685
+commitMutationEffectsOnFiber @ chunk-SM3OW2QE.js?v=dd132bec:17699
+recursivelyTraverseMutationEffects @ chunk-SM3OW2QE.js?v=dd132bec:17685
+commitMutationEffectsOnFiber @ chunk-SM3OW2QE.js?v=dd132bec:17727
+recursivelyTraverseMutationEffects @ chunk-SM3OW2QE.js?v=dd132bec:17685
+commitMutationEffectsOnFiber @ chunk-SM3OW2QE.js?v=dd132bec:17699
+recursivelyTraverseMutationEffects @ chunk-SM3OW2QE.js?v=dd132bec:17685
+commitMutationEffectsOnFiber @ chunk-SM3OW2QE.js?v=dd132bec:17794
+commitMutationEffects @ chunk-SM3OW2QE.js?v=dd132bec:17663
+commitRootImpl @ chunk-SM3OW2QE.js?v=dd132bec:19347
+commitRoot @ chunk-SM3OW2QE.js?v=dd132bec:19277
+performSyncWorkOnRoot @ chunk-SM3OW2QE.js?v=dd132bec:18895
+flushSyncCallbacks @ chunk-SM3OW2QE.js?v=dd132bec:9119
+(anonymous) @ chunk-SM3OW2QE.js?v=dd132bec:18627
+injected.js:27 The above error occurred in the <XRPWalletRedesigned> component:
+
+    at XRPWalletRedesigned (https://301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/src/pages/xrp-wallet-redesigned.tsx:66:21)
+    at Suspense
+    at AuthGuard (https://301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/src/components/AuthGuard.tsx:22:29)
+    at XRPWalletRoute
+    at Route (https://301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/@fs/home/runner/workspace/node_modules/.vite/deps/wouter.js?v=dd132bec:205:16)
+    at Switch (https://301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/@fs/home/runner/workspace/node_modules/.vite/deps/wouter.js?v=dd132bec:261:17)
+    at Suspense
+    at div
+    at div
+    at Router (https://301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/src/App.tsx?v=w-xPf9957GcaGs5SX23P6:758:22)
+    at Provider (https://301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/@fs/home/runner/workspace/node_modules/.vite/deps/chunk-SJJUTGFJ.js?v=dd132bec:37:15)
+    at TooltipProvider (https://301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/@fs/home/runner/workspace/node_modules/.vite/deps/@radix-ui_react-tooltip.js?v=dd132bec:65:5)
+    at ThemeProvider (https://301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/src/contexts/theme-context.tsx:20:33)
+    at QueryClientProvider (https://301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/@fs/home/runner/workspace/node_modules/.vite/deps/@tanstack_react-query.js?v=dd132bec:2884:3)
+    at ErrorBoundary (https://301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/src/components/ErrorBoundary.tsx:24:5)
+    at App (https://301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/src/App.tsx?v=w-xPf9957GcaGs5SX23P6:1759:3)
+
+React will try to recreate this component tree from scratch using the error boundary you provided, ErrorBoundary.
+(anonymous) @ injected.js:27
+(anonymous) @ injected.js:27
+(anonymous) @ injected.js:27
+(anonymous) @ injected.js:27
+(anonymous) @ injected.js:27
+(anonymous) @ injected.js:27
+(anonymous) @ injected.js:27
+(anonymous) @ injected.js:27
+(anonymous) @ injected.js:27
+(anonymous) @ injected.js:27
+(anonymous) @ injected.js:27
+(anonymous) @ injected.js:27
+(anonymous) @ injected.js:27
+logCapturedError @ chunk-SM3OW2QE.js?v=dd132bec:14032
+callback @ chunk-SM3OW2QE.js?v=dd132bec:14078
+callCallback @ chunk-SM3OW2QE.js?v=dd132bec:11248
+commitUpdateQueue @ chunk-SM3OW2QE.js?v=dd132bec:11265
+commitLayoutEffectOnFiber @ chunk-SM3OW2QE.js?v=dd132bec:17075
+commitLayoutMountEffects_complete @ chunk-SM3OW2QE.js?v=dd132bec:17980
+commitLayoutEffects_begin @ chunk-SM3OW2QE.js?v=dd132bec:17969
+commitLayoutEffects @ chunk-SM3OW2QE.js?v=dd132bec:17920
+commitRootImpl @ chunk-SM3OW2QE.js?v=dd132bec:19353
+commitRoot @ chunk-SM3OW2QE.js?v=dd132bec:19277
+finishConcurrentRender @ chunk-SM3OW2QE.js?v=dd132bec:18760
+performConcurrentWorkOnRoot @ chunk-SM3OW2QE.js?v=dd132bec:18718
+workLoop @ chunk-SM3OW2QE.js?v=dd132bec:197
+flushWork @ chunk-SM3OW2QE.js?v=dd132bec:176
+performWorkUntilDeadline @ chunk-SM3OW2QE.js?v=dd132bec:384
+_ @ inpage.js:166
+w @ inpage.js:166
+Y @ inpage.js:166
+postMessage
+h @ inpage.js:166
+b @ inpage.js:166
+schedulePerformWorkUntilDeadline @ chunk-SM3OW2QE.js?v=dd132bec:400
+requestHostCallback @ chunk-SM3OW2QE.js?v=dd132bec:418
+unstable_scheduleCallback @ chunk-SM3OW2QE.js?v=dd132bec:330
+scheduleCallback$1 @ chunk-SM3OW2QE.js?v=dd132bec:19826
+ensureRootIsScheduled @ chunk-SM3OW2QE.js?v=dd132bec:18652
+scheduleUpdateOnFiber @ chunk-SM3OW2QE.js?v=dd132bec:18562
+dispatchSetState @ chunk-SM3OW2QE.js?v=dd132bec:12403
+checkAuth @ useAuth.ts:55
+await in checkAuth
+(anonymous) @ useAuth.ts:106
+commitHookEffectListMount @ chunk-SM3OW2QE.js?v=dd132bec:16915
+commitPassiveMountOnFiber @ chunk-SM3OW2QE.js?v=dd132bec:18156
+commitPassiveMountEffects_complete @ chunk-SM3OW2QE.js?v=dd132bec:18129
+commitPassiveMountEffects_begin @ chunk-SM3OW2QE.js?v=dd132bec:18119
+commitPassiveMountEffects @ chunk-SM3OW2QE.js?v=dd132bec:18109
+flushPassiveEffectsImpl @ chunk-SM3OW2QE.js?v=dd132bec:19490
+flushPassiveEffects @ chunk-SM3OW2QE.js?v=dd132bec:19447
+(anonymous) @ chunk-SM3OW2QE.js?v=dd132bec:19328
+workLoop @ chunk-SM3OW2QE.js?v=dd132bec:197
+flushWork @ chunk-SM3OW2QE.js?v=dd132bec:176
+performWorkUntilDeadline @ chunk-SM3OW2QE.js?v=dd132bec:384
+_ @ inpage.js:166
+w @ inpage.js:166
+Y @ inpage.js:166
+postMessage
+h @ inpage.js:166
+b @ inpage.js:166
+schedulePerformWorkUntilDeadline @ chunk-SM3OW2QE.js?v=dd132bec:400
+performWorkUntilDeadline @ chunk-SM3OW2QE.js?v=dd132bec:387
+_ @ inpage.js:166
+w @ inpage.js:166
+Y @ inpage.js:166
+postMessage
+h @ inpage.js:166
+b @ inpage.js:166
+schedulePerformWorkUntilDeadline @ chunk-SM3OW2QE.js?v=dd132bec:400
+requestHostCallback @ chunk-SM3OW2QE.js?v=dd132bec:418
+unstable_scheduleCallback @ chunk-SM3OW2QE.js?v=dd132bec:330
+scheduleCallback$1 @ chunk-SM3OW2QE.js?v=dd132bec:19826
+ensureRootIsScheduled @ chunk-SM3OW2QE.js?v=dd132bec:18652
+retryTimedOutBoundary @ chunk-SM3OW2QE.js?v=dd132bec:19619
+resolveRetryWakeable @ chunk-SM3OW2QE.js?v=dd132bec:19650
+Promise.then
+(anonymous) @ chunk-SM3OW2QE.js?v=dd132bec:17654
+attachSuspenseRetryListeners @ chunk-SM3OW2QE.js?v=dd132bec:17641
+commitMutationEffectsOnFiber @ chunk-SM3OW2QE.js?v=dd132bec:17839
+recursivelyTraverseMutationEffects @ chunk-SM3OW2QE.js?v=dd132bec:17685
+commitMutationEffectsOnFiber @ chunk-SM3OW2QE.js?v=dd132bec:17699
+recursivelyTraverseMutationEffects @ chunk-SM3OW2QE.js?v=dd132bec:17685
+commitMutationEffectsOnFiber @ chunk-SM3OW2QE.js?v=dd132bec:17699
+recursivelyTraverseMutationEffects @ chunk-SM3OW2QE.js?v=dd132bec:17685
+commitMutationEffectsOnFiber @ chunk-SM3OW2QE.js?v=dd132bec:17896
+recursivelyTraverseMutationEffects @ chunk-SM3OW2QE.js?v=dd132bec:17685
+commitMutationEffectsOnFiber @ chunk-SM3OW2QE.js?v=dd132bec:17699
+recursivelyTraverseMutationEffects @ chunk-SM3OW2QE.js?v=dd132bec:17685
+commitMutationEffectsOnFiber @ chunk-SM3OW2QE.js?v=dd132bec:17699
+recursivelyTraverseMutationEffects @ chunk-SM3OW2QE.js?v=dd132bec:17685
+commitMutationEffectsOnFiber @ chunk-SM3OW2QE.js?v=dd132bec:17851
+recursivelyTraverseMutationEffects @ chunk-SM3OW2QE.js?v=dd132bec:17685
+commitMutationEffectsOnFiber @ chunk-SM3OW2QE.js?v=dd132bec:17818
+recursivelyTraverseMutationEffects @ chunk-SM3OW2QE.js?v=dd132bec:17685
+commitMutationEffectsOnFiber @ chunk-SM3OW2QE.js?v=dd132bec:17737
+recursivelyTraverseMutationEffects @ chunk-SM3OW2QE.js?v=dd132bec:17685
+commitMutationEffectsOnFiber @ chunk-SM3OW2QE.js?v=dd132bec:17737
+recursivelyTraverseMutationEffects @ chunk-SM3OW2QE.js?v=dd132bec:17685
+commitMutationEffectsOnFiber @ chunk-SM3OW2QE.js?v=dd132bec:17699
+recursivelyTraverseMutationEffects @ chunk-SM3OW2QE.js?v=dd132bec:17685
+commitMutationEffectsOnFiber @ chunk-SM3OW2QE.js?v=dd132bec:17896
+recursivelyTraverseMutationEffects @ chunk-SM3OW2QE.js?v=dd132bec:17685
+commitMutationEffectsOnFiber @ chunk-SM3OW2QE.js?v=dd132bec:17699
+recursivelyTraverseMutationEffects @ chunk-SM3OW2QE.js?v=dd132bec:17685
+commitMutationEffectsOnFiber @ chunk-SM3OW2QE.js?v=dd132bec:17699
+recursivelyTraverseMutationEffects @ chunk-SM3OW2QE.js?v=dd132bec:17685
+commitMutationEffectsOnFiber @ chunk-SM3OW2QE.js?v=dd132bec:17896
+recursivelyTraverseMutationEffects @ chunk-SM3OW2QE.js?v=dd132bec:17685
+commitMutationEffectsOnFiber @ chunk-SM3OW2QE.js?v=dd132bec:17699
+recursivelyTraverseMutationEffects @ chunk-SM3OW2QE.js?v=dd132bec:17685
+commitMutationEffectsOnFiber @ chunk-SM3OW2QE.js?v=dd132bec:17896
+recursivelyTraverseMutationEffects @ chunk-SM3OW2QE.js?v=dd132bec:17685
+commitMutationEffectsOnFiber @ chunk-SM3OW2QE.js?v=dd132bec:17699
+recursivelyTraverseMutationEffects @ chunk-SM3OW2QE.js?v=dd132bec:17685
+commitMutationEffectsOnFiber @ chunk-SM3OW2QE.js?v=dd132bec:17727
+recursivelyTraverseMutationEffects @ chunk-SM3OW2QE.js?v=dd132bec:17685
+commitMutationEffectsOnFiber @ chunk-SM3OW2QE.js?v=dd132bec:17699
+recursivelyTraverseMutationEffects @ chunk-SM3OW2QE.js?v=dd132bec:17685
+commitMutationEffectsOnFiber @ chunk-SM3OW2QE.js?v=dd132bec:17794
+commitMutationEffects @ chunk-SM3OW2QE.js?v=dd132bec:17663
+commitRootImpl @ chunk-SM3OW2QE.js?v=dd132bec:19347
+commitRoot @ chunk-SM3OW2QE.js?v=dd132bec:19277
+performSyncWorkOnRoot @ chunk-SM3OW2QE.js?v=dd132bec:18895
+flushSyncCallbacks @ chunk-SM3OW2QE.js?v=dd132bec:9119
+(anonymous) @ chunk-SM3OW2QE.js?v=dd132bec:18627
+injected.js:27 ErrorBoundary caught an error: Error: Rendered more hooks than during the previous render.
+    at updateWorkInProgressHook (chunk-SM3OW2QE.js?v=dd132bec:11678:21)
+    at updateEffectImpl (chunk-SM3OW2QE.js?v=dd132bec:12074:22)
+    at updateEffect (chunk-SM3OW2QE.js?v=dd132bec:12099:18)
+    at Object.useEffect (chunk-SM3OW2QE.js?v=dd132bec:12703:22)
+    at useEffect (chunk-7SNDHR3H.js?v=dd132bec:1078:29)
+    at XRPWalletRedesigned (xrp-wallet-redesigned.tsx:1010:3)
+    at renderWithHooks (chunk-SM3OW2QE.js?v=dd132bec:11548:26)
+    at updateFunctionComponent (chunk-SM3OW2QE.js?v=dd132bec:14582:28)
+    at beginWork (chunk-SM3OW2QE.js?v=dd132bec:15924:22)
+    at beginWork$1 (chunk-SM3OW2QE.js?v=dd132bec:19753:22) {componentStack: '\n    at XRPWalletRedesigned (https://301a997e-224f…t.dev/src/App.tsx?v=w-xPf9957GcaGs5SX23P6:1759:3)'}
+(anonymous) @ injected.js:27
+(anonymous) @ injected.js:27
+(anonymous) @ injected.js:27
+(anonymous) @ injected.js:27
+(anonymous) @ injected.js:27
+(anonymous) @ injected.js:27
+(anonymous) @ injected.js:27
+(anonymous) @ injected.js:27
+(anonymous) @ injected.js:27
+(anonymous) @ injected.js:27
+(anonymous) @ injected.js:27
+(anonymous) @ injected.js:27
+(anonymous) @ injected.js:27
+componentDidCatch @ ErrorBoundary.tsx:36
+callback @ chunk-SM3OW2QE.js?v=dd132bec:14084
+callCallback @ chunk-SM3OW2QE.js?v=dd132bec:11248
+commitUpdateQueue @ chunk-SM3OW2QE.js?v=dd132bec:11265
+commitLayoutEffectOnFiber @ chunk-SM3OW2QE.js?v=dd132bec:17075
+commitLayoutMountEffects_complete @ chunk-SM3OW2QE.js?v=dd132bec:17980
+commitLayoutEffects_begin @ chunk-SM3OW2QE.js?v=dd132bec:17969
+commitLayoutEffects @ chunk-SM3OW2QE.js?v=dd132bec:17920
+commitRootImpl @ chunk-SM3OW2QE.js?v=dd132bec:19353
+commitRoot @ chunk-SM3OW2QE.js?v=dd132bec:19277
+finishConcurrentRender @ chunk-SM3OW2QE.js?v=dd132bec:18760
+performConcurrentWorkOnRoot @ chunk-SM3OW2QE.js?v=dd132bec:18718
+workLoop @ chunk-SM3OW2QE.js?v=dd132bec:197
+flushWork @ chunk-SM3OW2QE.js?v=dd132bec:176
+performWorkUntilDeadline @ chunk-SM3OW2QE.js?v=dd132bec:384
+_ @ inpage.js:166
+w @ inpage.js:166
+Y @ inpage.js:166
+postMessage
+h @ inpage.js:166
+b @ inpage.js:166
+schedulePerformWorkUntilDeadline @ chunk-SM3OW2QE.js?v=dd132bec:400
+requestHostCallback @ chunk-SM3OW2QE.js?v=dd132bec:418
+unstable_scheduleCallback @ chunk-SM3OW2QE.js?v=dd132bec:330
+scheduleCallback$1 @ chunk-SM3OW2QE.js?v=dd132bec:19826
+ensureRootIsScheduled @ chunk-SM3OW2QE.js?v=dd132bec:18652
+scheduleUpdateOnFiber @ chunk-SM3OW2QE.js?v=dd132bec:18562
+dispatchSetState @ chunk-SM3OW2QE.js?v=dd132bec:12403
+checkAuth @ useAuth.ts:55
+await in checkAuth
+(anonymous) @ useAuth.ts:106
+commitHookEffectListMount @ chunk-SM3OW2QE.js?v=dd132bec:16915
+commitPassiveMountOnFiber @ chunk-SM3OW2QE.js?v=dd132bec:18156
+commitPassiveMountEffects_complete @ chunk-SM3OW2QE.js?v=dd132bec:18129
+commitPassiveMountEffects_begin @ chunk-SM3OW2QE.js?v=dd132bec:18119
+commitPassiveMountEffects @ chunk-SM3OW2QE.js?v=dd132bec:18109
+flushPassiveEffectsImpl @ chunk-SM3OW2QE.js?v=dd132bec:19490
+flushPassiveEffects @ chunk-SM3OW2QE.js?v=dd132bec:19447
+(anonymous) @ chunk-SM3OW2QE.js?v=dd132bec:19328
+workLoop @ chunk-SM3OW2QE.js?v=dd132bec:197
+flushWork @ chunk-SM3OW2QE.js?v=dd132bec:176
+performWorkUntilDeadline @ chunk-SM3OW2QE.js?v=dd132bec:384
+_ @ inpage.js:166
+w @ inpage.js:166
+Y @ inpage.js:166
+postMessage
+h @ inpage.js:166
+b @ inpage.js:166
+schedulePerformWorkUntilDeadline @ chunk-SM3OW2QE.js?v=dd132bec:400
+performWorkUntilDeadline @ chunk-SM3OW2QE.js?v=dd132bec:387
+_ @ inpage.js:166
+w @ inpage.js:166
+Y @ inpage.js:166
+postMessage
+h @ inpage.js:166
+b @ inpage.js:166
+schedulePerformWorkUntilDeadline @ chunk-SM3OW2QE.js?v=dd132bec:400
+requestHostCallback @ chunk-SM3OW2QE.js?v=dd132bec:418
+unstable_scheduleCallback @ chunk-SM3OW2QE.js?v=dd132bec:330
+scheduleCallback$1 @ chunk-SM3OW2QE.js?v=dd132bec:19826
+ensureRootIsScheduled @ chunk-SM3OW2QE.js?v=dd132bec:18652
+retryTimedOutBoundary @ chunk-SM3OW2QE.js?v=dd132bec:19619
+resolveRetryWakeable @ chunk-SM3OW2QE.js?v=dd132bec:19650
+Promise.then
+(anonymous) @ chunk-SM3OW2QE.js?v=dd132bec:17654
+attachSuspenseRetryListeners @ chunk-SM3OW2QE.js?v=dd132bec:17641
+commitMutationEffectsOnFiber @ chunk-SM3OW2QE.js?v=dd132bec:17839
+recursivelyTraverseMutationEffects @ chunk-SM3OW2QE.js?v=dd132bec:17685
+commitMutationEffectsOnFiber @ chunk-SM3OW2QE.js?v=dd132bec:17699
+recursivelyTraverseMutationEffects @ chunk-SM3OW2QE.js?v=dd132bec:17685
+commitMutationEffectsOnFiber @ chunk-SM3OW2QE.js?v=dd132bec:17699
+recursivelyTraverseMutationEffects @ chunk-SM3OW2QE.js?v=dd132bec:17685
+commitMutationEffectsOnFiber @ chunk-SM3OW2QE.js?v=dd132bec:17896
+recursivelyTraverseMutationEffects @ chunk-SM3OW2QE.js?v=dd132bec:17685
+commitMutationEffectsOnFiber @ chunk-SM3OW2QE.js?v=dd132bec:17699
+recursivelyTraverseMutationEffects @ chunk-SM3OW2QE.js?v=dd132bec:17685
+commitMutationEffectsOnFiber @ chunk-SM3OW2QE.js?v=dd132bec:17699
+recursivelyTraverseMutationEffects @ chunk-SM3OW2QE.js?v=dd132bec:17685
+commitMutationEffectsOnFiber @ chunk-SM3OW2QE.js?v=dd132bec:17851
+recursivelyTraverseMutationEffects @ chunk-SM3OW2QE.js?v=dd132bec:17685
+commitMutationEffectsOnFiber @ chunk-SM3OW2QE.js?v=dd132bec:17818
+recursivelyTraverseMutationEffects @ chunk-SM3OW2QE.js?v=dd132bec:17685
+commitMutationEffectsOnFiber @ chunk-SM3OW2QE.js?v=dd132bec:17737
+recursivelyTraverseMutationEffects @ chunk-SM3OW2QE.js?v=dd132bec:17685
+commitMutationEffectsOnFiber @ chunk-SM3OW2QE.js?v=dd132bec:17737
+recursivelyTraverseMutationEffects @ chunk-SM3OW2QE.js?v=dd132bec:17685
+commitMutationEffectsOnFiber @ chunk-SM3OW2QE.js?v=dd132bec:17699
+recursivelyTraverseMutationEffects @ chunk-SM3OW2QE.js?v=dd132bec:17685
+commitMutationEffectsOnFiber @ chunk-SM3OW2QE.js?v=dd132bec:17896
+recursivelyTraverseMutationEffects @ chunk-SM3OW2QE.js?v=dd132bec:17685
+commitMutationEffectsOnFiber @ chunk-SM3OW2QE.js?v=dd132bec:17699
+recursivelyTraverseMutationEffects @ chunk-SM3OW2QE.js?v=dd132bec:17685
+commitMutationEffectsOnFiber @ chunk-SM3OW2QE.js?v=dd132bec:17699
+recursivelyTraverseMutationEffects @ chunk-SM3OW2QE.js?v=dd132bec:17685
+commitMutationEffectsOnFiber @ chunk-SM3OW2QE.js?v=dd132bec:17896
+recursivelyTraverseMutationEffects @ chunk-SM3OW2QE.js?v=dd132bec:17685
+commitMutationEffectsOnFiber @ chunk-SM3OW2QE.js?v=dd132bec:17699
+recursivelyTraverseMutationEffects @ chunk-SM3OW2QE.js?v=dd132bec:17685
+commitMutationEffectsOnFiber @ chunk-SM3OW2QE.js?v=dd132bec:17896
+recursivelyTraverseMutationEffects @ chunk-SM3OW2QE.js?v=dd132bec:17685
+commitMutationEffectsOnFiber @ chunk-SM3OW2QE.js?v=dd132bec:17699
+recursivelyTraverseMutationEffects @ chunk-SM3OW2QE.js?v=dd132bec:17685
+commitMutationEffectsOnFiber @ chunk-SM3OW2QE.js?v=dd132bec:17727
+recursivelyTraverseMutationEffects @ chunk-SM3OW2QE.js?v=dd132bec:17685
+commitMutationEffectsOnFiber @ chunk-SM3OW2QE.js?v=dd132bec:17699
+recursivelyTraverseMutationEffects @ chunk-SM3OW2QE.js?v=dd132bec:17685
+commitMutationEffectsOnFiber @ chunk-SM3OW2QE.js?v=dd132bec:17794
+commitMutationEffects @ chunk-SM3OW2QE.js?v=dd132bec:17663
+commitRootImpl @ chunk-SM3OW2QE.js?v=dd132bec:19347
+commitRoot @ chunk-SM3OW2QE.js?v=dd132bec:19277
+performSyncWorkOnRoot @ chunk-SM3OW2QE.js?v=dd132bec:18895
+flushSyncCallbacks @ chunk-SM3OW2QE.js?v=dd132bec:9119
+(anonymous) @ chunk-SM3OW2QE.js?v=dd132bec:18627
+injected.js:27 ✅ Balance fetched for xrp/rEVrTKUKSLx5nxdfV8SAFTxS9FGFrfHRLo: {success: true, address: 'rEVrTKUKSLx5nxdfV8SAFTxS9FGFrfHRLo', balance: '6.999942', balanceUsd: 17.92, availableBalance: '1.999942', …}
+injected.js:27 ✅ SessionManager: Valid session for dippydoge
+injected.js:27 ✅ SessionManager: Updated session data: {handle: 'dippydoge', hasWalletData: true, authenticated: true, listeners: 0}
+injected.js:27 🔔 SessionManager: Notified 0 listeners
+injected.js:27 Error logged successfully
+injected.js:27 ✅ Portfolio fetched for xrp/rEVrTKUKSLx5nxdfV8SAFTxS9FGFrfHRLo: {success: true, chain: 'xrp', address: 'rEVrTKUKSLx5nxdfV8SAFTxS9FGFrfHRLo', totalUsd: '111.71', balance: {…}, …}

@@ -1,0 +1,80 @@
+2025-10-30 03:49:29.56
+d8550c6d
+User
+⚠️ Expired DALL-E URL found in gaming_nfts.ai_generated_image_url: https://oaidalleapiprodscus.blob.core.windows.net/private/or...
+2025-10-30 03:49:29.56
+d8550c6d
+User
+⚠️ Expired DALL-E URL found in gaming_nfts.ai_generated_image_url: https://oaidalleapiprodscus.blob.core.windows.net/private/or...
+2025-10-30 03:49:29.56
+d8550c6d
+User
+⚠️ Expired DALL-E URL found in gaming_nfts.ai_generated_image_url: https://oaidalleapiprodscus.blob.core.windows.net/private/or...
+2025-10-30 03:49:29.56
+d8550c6d
+User
+⚠️ Expired DALL-E URL found in gaming_nfts.ai_generated_image_url: https://oaidalleapiprodscus.blob.core.windows.net/private/or...
+2025-10-30 03:49:29.56
+d8550c6d
+User
+⚠️ Expired DALL-E URL found in gaming_nfts.ai_generated_image_url: https://oaidalleapiprodscus.blob.core.windows.net/private/or...
+2025-10-30 03:49:29.56
+d8550c6d
+User
+⚠️ Expired DALL-E URL found in gaming_nfts.ai_generated_image_url: https://oaidalleapiprodscus.blob.core.windows.net/private/or...
+2025-10-30 03:49:29.56
+d8550c6d
+User
+⚠️ Expired DALL-E URL found in gaming_nfts.ai_generated_image_url: https://oaidalleapiprodscus.blob.core.windows.net/private/or...
+2025-10-30 03:49:29.56
+d8550c6d
+User
+⚠️ Expired DALL-E URL found in gaming_nfts.ai_generated_image_url: https://oaidalleapiprodscus.blob.core.windows.net/private/or...
+2025-10-30 03:49:29.56
+d8550c6d
+User
+⚠️ Expired DALL-E URL found in gaming_nfts.ai_generated_image_url: https://oaidalleapiprodscus.blob.core.windows.net/private/or...
+2025-10-30 03:49:29.56
+d8550c6d
+User
+⚠️ Expired DALL-E URL found in gaming_nfts.ai_generated_image_url: https://oaidalleapiprodscus.blob.core.windows.net/private/or...
+2025-10-30 03:49:29.56
+d8550c6d
+User
+⚠️ Expired DALL-E URL found in gaming_nfts.ai_generated_image_url: https://oaidalleapiprodscus.blob.core.windows.net/private/or...
+2025-10-30 03:49:29.56
+d8550c6d
+User
+⚠️ Expired DALL-E URL found in gaming_nfts.ai_generated_image_url: https://oaidalleapiprodscus.blob.core.windows.net/private/or...
+2025-10-30 03:49:29.56
+d8550c6d
+User
+⚠️ Expired DALL-E URL found in gaming_nfts.ai_generated_image_url: https://oaidalleapiprodscus.blob.core.windows.net/private/or...
+2025-10-30 03:49:29.56
+d8550c6d
+User
+⚠️ Expired DALL-E URL found in gaming_nfts.ai_generated_image_url: https://oaidalleapiprodscus.blob.core.windows.net/private/or...
+2025-10-30 03:49:29.56
+d8550c6d
+User
+⚠️ Expired DALL-E URL found in gaming_nfts.ai_generated_image_url: https://oaidalleapiprodscus.blob.core.windows.net/private/or...
+2025-10-30 03:49:29.56
+d8550c6d
+User
+⚠️ Expired DALL-E URL found in gaming_nfts.ai_generated_image_url: https://oaidalleapiprodscus.blob.core.windows.net/private/or...
+2025-10-30 03:49:29.56
+d8550c6d
+User
+✅ Fixed 0 rows in gaming_nfts
+2025-10-30 03:49:29.56
+d8550c6d
+User
+⚠️ Found 17 expired DALL-E URLs that need regeneration
+2025-10-30 03:49:29.56
+d8550c6d
+User
+🔍 Checking ai_generated_images...
+2025-10-30 03:49:29.57
+d8550c6d
+User
+🐦 [SCHEDULER] Starting THE

@@ -1,0 +1,1925 @@
+nManager.getSession() returning: {isLoggedIn: true, handle: 'dippydoge', hasWalletData: true, hasSessionToken: true, walletDataKeys: Array(7)}
+injected.js:27 🔍 SessionManager: checkSession() called - current sessionData: true
+injected.js:27 🌐 SessionManager: Making Riddle wallet session request to /api/riddle-wallet/session
+injected.js:27 ✅ SessionManager: Valid session for dippydoge
+injected.js:27 ✅ SessionManager: Updated session data: {handle: 'dippydoge', hasWalletData: true, authenticated: true, listeners: 4}
+injected.js:27 🔍 SessionManager.getSession() returning: {isLoggedIn: true, handle: 'dippydoge', hasWalletData: true, hasSessionToken: true, walletDataKeys: Array(7)}
+injected.js:27 🔍 SessionManager.getSession() returning: {isLoggedIn: true, handle: 'dippydoge', hasWalletData: true, hasSessionToken: true, walletDataKeys: Array(7)}
+injected.js:27 🔍 SessionManager.getSession() returning: {isLoggedIn: true, handle: 'dippydoge', hasWalletData: true, hasSessionToken: true, walletDataKeys: Array(7)}
+injected.js:27 🔍 SessionManager.getSession() returning: {isLoggedIn: true, handle: 'dippydoge', hasWalletData: true, hasSessionToken: true, walletDataKeys: Array(7)}
+injected.js:27 🔔 SessionManager: Notified 4 listeners
+injected.js:27 🔍 SessionManager.getSession() returning: {isLoggedIn: true, handle: 'dippydoge', hasWalletData: true, hasSessionToken: true, walletDataKeys: Array(7)}
+injected.js:27 🔍 SessionManager.getSession() returning: {isLoggedIn: true, handle: 'dippydoge', hasWalletData: true, hasSessionToken: true, walletDataKeys: Array(7)}
+injected.js:27 🔍 SessionManager.getSession() returning: {isLoggedIn: true, handle: 'dippydoge', hasWalletData: true, hasSessionToken: true, walletDataKeys: Array(7)}
+injected.js:27 🔍 Found local wallet connections: []
+injected.js:27 🔍 getQueryFn - SessionManager sessionToken: FOUND
+injected.js:204  GET https://301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/api/messaging/messages 404 (Not Found)
+apply @ injected.js:204
+(anonymous) @ queryClient.ts:161
+fetchFn @ @tanstack_react-query.js?v=664b3655:868
+run @ @tanstack_react-query.js?v=664b3655:506
+start @ @tanstack_react-query.js?v=664b3655:547
+fetch @ @tanstack_react-query.js?v=664b3655:951
+executeFetch_fn @ @tanstack_react-query.js?v=664b3655:2244
+(anonymous) @ @tanstack_react-query.js?v=664b3655:2278
+setInterval
+updateRefetchInterval_fn @ @tanstack_react-query.js?v=664b3655:2276
+updateTimers_fn @ @tanstack_react-query.js?v=664b3655:2283
+onQueryUpdate @ @tanstack_react-query.js?v=664b3655:2239
+(anonymous) @ @tanstack_react-query.js?v=664b3655:1024
+(anonymous) @ @tanstack_react-query.js?v=664b3655:1023
+batch @ @tanstack_react-query.js?v=664b3655:595
+dispatch_fn @ @tanstack_react-query.js?v=664b3655:1022
+onError @ @tanstack_react-query.js?v=664b3655:890
+reject @ @tanstack_react-query.js?v=664b3655:479
+(anonymous) @ @tanstack_react-query.js?v=664b3655:519
+Promise.catch
+run @ @tanstack_react-query.js?v=664b3655:510
+start @ @tanstack_react-query.js?v=664b3655:547
+fetch @ @tanstack_react-query.js?v=664b3655:951
+executeFetch_fn @ @tanstack_react-query.js?v=664b3655:2244
+(anonymous) @ @tanstack_react-query.js?v=664b3655:2278
+setInterval
+updateRefetchInterval_fn @ @tanstack_react-query.js?v=664b3655:2276
+updateTimers_fn @ @tanstack_react-query.js?v=664b3655:2283
+onQueryUpdate @ @tanstack_react-query.js?v=664b3655:2239
+(anonymous) @ @tanstack_react-query.js?v=664b3655:1024
+(anonymous) @ @tanstack_react-query.js?v=664b3655:1023
+batch @ @tanstack_react-query.js?v=664b3655:595
+dispatch_fn @ @tanstack_react-query.js?v=664b3655:1022
+onError @ @tanstack_react-query.js?v=664b3655:890
+reject @ @tanstack_react-query.js?v=664b3655:479
+(anonymous) @ @tanstack_react-query.js?v=664b3655:519
+Promise.catch
+run @ @tanstack_react-query.js?v=664b3655:510
+start @ @tanstack_react-query.js?v=664b3655:547
+fetch @ @tanstack_react-query.js?v=664b3655:951
+executeFetch_fn @ @tanstack_react-query.js?v=664b3655:2244
+(anonymous) @ @tanstack_react-query.js?v=664b3655:2278
+setInterval
+updateRefetchInterval_fn @ @tanstack_react-query.js?v=664b3655:2276
+updateTimers_fn @ @tanstack_react-query.js?v=664b3655:2283
+onQueryUpdate @ @tanstack_react-query.js?v=664b3655:2239
+(anonymous) @ @tanstack_react-query.js?v=664b3655:1024
+(anonymous) @ @tanstack_react-query.js?v=664b3655:1023
+batch @ @tanstack_react-query.js?v=664b3655:595
+dispatch_fn @ @tanstack_react-query.js?v=664b3655:1022
+onError @ @tanstack_react-query.js?v=664b3655:890
+reject @ @tanstack_react-query.js?v=664b3655:479
+(anonymous) @ @tanstack_react-query.js?v=664b3655:519
+Promise.catch
+run @ @tanstack_react-query.js?v=664b3655:510
+start @ @tanstack_react-query.js?v=664b3655:547
+fetch @ @tanstack_react-query.js?v=664b3655:951
+executeFetch_fn @ @tanstack_react-query.js?v=664b3655:2244
+(anonymous) @ @tanstack_react-query.js?v=664b3655:2278
+setInterval
+updateRefetchInterval_fn @ @tanstack_react-query.js?v=664b3655:2276
+updateTimers_fn @ @tanstack_react-query.js?v=664b3655:2283
+onQueryUpdate @ @tanstack_react-query.js?v=664b3655:2239
+(anonymous) @ @tanstack_react-query.js?v=664b3655:1024
+(anonymous) @ @tanstack_react-query.js?v=664b3655:1023
+batch @ @tanstack_react-query.js?v=664b3655:595
+dispatch_fn @ @tanstack_react-query.js?v=664b3655:1022
+onError @ @tanstack_react-query.js?v=664b3655:890
+reject @ @tanstack_react-query.js?v=664b3655:479
+(anonymous) @ @tanstack_react-query.js?v=664b3655:519
+Promise.catch
+run @ @tanstack_react-query.js?v=664b3655:510
+start @ @tanstack_react-query.js?v=664b3655:547
+fetch @ @tanstack_react-query.js?v=664b3655:951
+executeFetch_fn @ @tanstack_react-query.js?v=664b3655:2244
+setOptions @ @tanstack_react-query.js?v=664b3655:2005
+(anonymous) @ @tanstack_react-query.js?v=664b3655:3105
+commitHookEffectListMount @ chunk-SM3OW2QE.js?v=664b3655:16915
+commitPassiveMountOnFiber @ chunk-SM3OW2QE.js?v=664b3655:18156
+commitPassiveMountEffects_complete @ chunk-SM3OW2QE.js?v=664b3655:18129
+commitPassiveMountEffects_begin @ chunk-SM3OW2QE.js?v=664b3655:18119
+commitPassiveMountEffects @ chunk-SM3OW2QE.js?v=664b3655:18109
+flushPassiveEffectsImpl @ chunk-SM3OW2QE.js?v=664b3655:19490
+flushPassiveEffects @ chunk-SM3OW2QE.js?v=664b3655:19447
+performSyncWorkOnRoot @ chunk-SM3OW2QE.js?v=664b3655:18868
+flushSyncCallbacks @ chunk-SM3OW2QE.js?v=664b3655:9119
+commitRootImpl @ chunk-SM3OW2QE.js?v=664b3655:19432
+commitRoot @ chunk-SM3OW2QE.js?v=664b3655:19277
+finishConcurrentRender @ chunk-SM3OW2QE.js?v=664b3655:18805
+performConcurrentWorkOnRoot @ chunk-SM3OW2QE.js?v=664b3655:18718
+workLoop @ chunk-SM3OW2QE.js?v=664b3655:197
+flushWork @ chunk-SM3OW2QE.js?v=664b3655:176
+performWorkUntilDeadline @ chunk-SM3OW2QE.js?v=664b3655:384
+_ @ inpage.js:166
+w @ inpage.js:166
+Y @ inpage.js:166
+postMessage
+h @ inpage.js:166
+b @ inpage.js:166
+schedulePerformWorkUntilDeadline @ chunk-SM3OW2QE.js?v=664b3655:400
+requestHostCallback @ chunk-SM3OW2QE.js?v=664b3655:418
+unstable_scheduleCallback @ chunk-SM3OW2QE.js?v=664b3655:330
+scheduleCallback$1 @ chunk-SM3OW2QE.js?v=664b3655:19826
+ensureRootIsScheduled @ chunk-SM3OW2QE.js?v=664b3655:18652
+scheduleUpdateOnFiber @ chunk-SM3OW2QE.js?v=664b3655:18562
+dispatchSetState @ chunk-SM3OW2QE.js?v=664b3655:12403
+onSuccess @ messaging-system.tsx:550
+execute @ @tanstack_react-query.js?v=664b3655:1258
+await in execute
+mutate @ @tanstack_react-query.js?v=664b3655:2650
+(anonymous) @ @tanstack_react-query.js?v=664b3655:3362
+onClick @ messaging-system.tsx:763
+callCallback2 @ chunk-SM3OW2QE.js?v=664b3655:3674
+invokeGuardedCallbackDev @ chunk-SM3OW2QE.js?v=664b3655:3699
+invokeGuardedCallback @ chunk-SM3OW2QE.js?v=664b3655:3733
+invokeGuardedCallbackAndCatchFirstError @ chunk-SM3OW2QE.js?v=664b3655:3736
+executeDispatch @ chunk-SM3OW2QE.js?v=664b3655:7014
+processDispatchQueueItemsInOrder @ chunk-SM3OW2QE.js?v=664b3655:7034
+processDispatchQueue @ chunk-SM3OW2QE.js?v=664b3655:7043
+dispatchEventsForPlugins @ chunk-SM3OW2QE.js?v=664b3655:7051
+(anonymous) @ chunk-SM3OW2QE.js?v=664b3655:7174
+batchedUpdates$1 @ chunk-SM3OW2QE.js?v=664b3655:18913
+batchedUpdates @ chunk-SM3OW2QE.js?v=664b3655:3579
+dispatchEventForPluginEventSystem @ chunk-SM3OW2QE.js?v=664b3655:7173
+dispatchEventWithEnableCapturePhaseSelectiveHydrationWithoutDiscreteEventReplay @ chunk-SM3OW2QE.js?v=664b3655:5478
+dispatchEvent @ chunk-SM3OW2QE.js?v=664b3655:5472
+dispatchDiscreteEvent @ chunk-SM3OW2QE.js?v=664b3655:5449
+injected.js:27 🔍 getQueryFn - SessionManager sessionToken: FOUND
+injected.js:27 🔍 SessionManager.getSession() returning: {isLoggedIn: true, handle: 'dippydoge', hasWalletData: true, hasSessionToken: true, walletDataKeys: Array(7)}
+injected.js:27 🔍 getQueryFn - SessionManager sessionToken: FOUND
+injected.js:204  GET https://301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/api/messaging/messages 404 (Not Found)
+apply @ injected.js:204
+(anonymous) @ queryClient.ts:161
+fetchFn @ @tanstack_react-query.js?v=664b3655:868
+run @ @tanstack_react-query.js?v=664b3655:506
+start @ @tanstack_react-query.js?v=664b3655:547
+fetch @ @tanstack_react-query.js?v=664b3655:951
+executeFetch_fn @ @tanstack_react-query.js?v=664b3655:2244
+(anonymous) @ @tanstack_react-query.js?v=664b3655:2278
+setInterval
+updateRefetchInterval_fn @ @tanstack_react-query.js?v=664b3655:2276
+updateTimers_fn @ @tanstack_react-query.js?v=664b3655:2283
+onQueryUpdate @ @tanstack_react-query.js?v=664b3655:2239
+(anonymous) @ @tanstack_react-query.js?v=664b3655:1024
+(anonymous) @ @tanstack_react-query.js?v=664b3655:1023
+batch @ @tanstack_react-query.js?v=664b3655:595
+dispatch_fn @ @tanstack_react-query.js?v=664b3655:1022
+onError @ @tanstack_react-query.js?v=664b3655:890
+reject @ @tanstack_react-query.js?v=664b3655:479
+(anonymous) @ @tanstack_react-query.js?v=664b3655:519
+Promise.catch
+run @ @tanstack_react-query.js?v=664b3655:510
+start @ @tanstack_react-query.js?v=664b3655:547
+fetch @ @tanstack_react-query.js?v=664b3655:951
+executeFetch_fn @ @tanstack_react-query.js?v=664b3655:2244
+(anonymous) @ @tanstack_react-query.js?v=664b3655:2278
+setInterval
+updateRefetchInterval_fn @ @tanstack_react-query.js?v=664b3655:2276
+updateTimers_fn @ @tanstack_react-query.js?v=664b3655:2283
+onQueryUpdate @ @tanstack_react-query.js?v=664b3655:2239
+(anonymous) @ @tanstack_react-query.js?v=664b3655:1024
+(anonymous) @ @tanstack_react-query.js?v=664b3655:1023
+batch @ @tanstack_react-query.js?v=664b3655:595
+dispatch_fn @ @tanstack_react-query.js?v=664b3655:1022
+onError @ @tanstack_react-query.js?v=664b3655:890
+reject @ @tanstack_react-query.js?v=664b3655:479
+(anonymous) @ @tanstack_react-query.js?v=664b3655:519
+Promise.catch
+run @ @tanstack_react-query.js?v=664b3655:510
+start @ @tanstack_react-query.js?v=664b3655:547
+fetch @ @tanstack_react-query.js?v=664b3655:951
+executeFetch_fn @ @tanstack_react-query.js?v=664b3655:2244
+(anonymous) @ @tanstack_react-query.js?v=664b3655:2278
+setInterval
+updateRefetchInterval_fn @ @tanstack_react-query.js?v=664b3655:2276
+updateTimers_fn @ @tanstack_react-query.js?v=664b3655:2283
+onQueryUpdate @ @tanstack_react-query.js?v=664b3655:2239
+(anonymous) @ @tanstack_react-query.js?v=664b3655:1024
+(anonymous) @ @tanstack_react-query.js?v=664b3655:1023
+batch @ @tanstack_react-query.js?v=664b3655:595
+dispatch_fn @ @tanstack_react-query.js?v=664b3655:1022
+onError @ @tanstack_react-query.js?v=664b3655:890
+reject @ @tanstack_react-query.js?v=664b3655:479
+(anonymous) @ @tanstack_react-query.js?v=664b3655:519
+Promise.catch
+run @ @tanstack_react-query.js?v=664b3655:510
+start @ @tanstack_react-query.js?v=664b3655:547
+fetch @ @tanstack_react-query.js?v=664b3655:951
+executeFetch_fn @ @tanstack_react-query.js?v=664b3655:2244
+(anonymous) @ @tanstack_react-query.js?v=664b3655:2278
+setInterval
+updateRefetchInterval_fn @ @tanstack_react-query.js?v=664b3655:2276
+updateTimers_fn @ @tanstack_react-query.js?v=664b3655:2283
+onQueryUpdate @ @tanstack_react-query.js?v=664b3655:2239
+(anonymous) @ @tanstack_react-query.js?v=664b3655:1024
+(anonymous) @ @tanstack_react-query.js?v=664b3655:1023
+batch @ @tanstack_react-query.js?v=664b3655:595
+dispatch_fn @ @tanstack_react-query.js?v=664b3655:1022
+onError @ @tanstack_react-query.js?v=664b3655:890
+reject @ @tanstack_react-query.js?v=664b3655:479
+(anonymous) @ @tanstack_react-query.js?v=664b3655:519
+Promise.catch
+run @ @tanstack_react-query.js?v=664b3655:510
+start @ @tanstack_react-query.js?v=664b3655:547
+fetch @ @tanstack_react-query.js?v=664b3655:951
+executeFetch_fn @ @tanstack_react-query.js?v=664b3655:2244
+(anonymous) @ @tanstack_react-query.js?v=664b3655:2278
+setInterval
+updateRefetchInterval_fn @ @tanstack_react-query.js?v=664b3655:2276
+updateTimers_fn @ @tanstack_react-query.js?v=664b3655:2283
+onQueryUpdate @ @tanstack_react-query.js?v=664b3655:2239
+(anonymous) @ @tanstack_react-query.js?v=664b3655:1024
+(anonymous) @ @tanstack_react-query.js?v=664b3655:1023
+batch @ @tanstack_react-query.js?v=664b3655:595
+dispatch_fn @ @tanstack_react-query.js?v=664b3655:1022
+onError @ @tanstack_react-query.js?v=664b3655:890
+reject @ @tanstack_react-query.js?v=664b3655:479
+(anonymous) @ @tanstack_react-query.js?v=664b3655:519
+Promise.catch
+run @ @tanstack_react-query.js?v=664b3655:510
+start @ @tanstack_react-query.js?v=664b3655:547
+fetch @ @tanstack_react-query.js?v=664b3655:951
+executeFetch_fn @ @tanstack_react-query.js?v=664b3655:2244
+setOptions @ @tanstack_react-query.js?v=664b3655:2005
+(anonymous) @ @tanstack_react-query.js?v=664b3655:3105
+commitHookEffectListMount @ chunk-SM3OW2QE.js?v=664b3655:16915
+commitPassiveMountOnFiber @ chunk-SM3OW2QE.js?v=664b3655:18156
+commitPassiveMountEffects_complete @ chunk-SM3OW2QE.js?v=664b3655:18129
+commitPassiveMountEffects_begin @ chunk-SM3OW2QE.js?v=664b3655:18119
+commitPassiveMountEffects @ chunk-SM3OW2QE.js?v=664b3655:18109
+flushPassiveEffectsImpl @ chunk-SM3OW2QE.js?v=664b3655:19490
+flushPassiveEffects @ chunk-SM3OW2QE.js?v=664b3655:19447
+performSyncWorkOnRoot @ chunk-SM3OW2QE.js?v=664b3655:18868
+flushSyncCallbacks @ chunk-SM3OW2QE.js?v=664b3655:9119
+commitRootImpl @ chunk-SM3OW2QE.js?v=664b3655:19432
+commitRoot @ chunk-SM3OW2QE.js?v=664b3655:19277
+finishConcurrentRender @ chunk-SM3OW2QE.js?v=664b3655:18805
+performConcurrentWorkOnRoot @ chunk-SM3OW2QE.js?v=664b3655:18718
+workLoop @ chunk-SM3OW2QE.js?v=664b3655:197
+flushWork @ chunk-SM3OW2QE.js?v=664b3655:176
+performWorkUntilDeadline @ chunk-SM3OW2QE.js?v=664b3655:384
+_ @ inpage.js:166
+w @ inpage.js:166
+Y @ inpage.js:166
+postMessage
+h @ inpage.js:166
+b @ inpage.js:166
+schedulePerformWorkUntilDeadline @ chunk-SM3OW2QE.js?v=664b3655:400
+requestHostCallback @ chunk-SM3OW2QE.js?v=664b3655:418
+unstable_scheduleCallback @ chunk-SM3OW2QE.js?v=664b3655:330
+scheduleCallback$1 @ chunk-SM3OW2QE.js?v=664b3655:19826
+ensureRootIsScheduled @ chunk-SM3OW2QE.js?v=664b3655:18652
+scheduleUpdateOnFiber @ chunk-SM3OW2QE.js?v=664b3655:18562
+dispatchSetState @ chunk-SM3OW2QE.js?v=664b3655:12403
+onSuccess @ messaging-system.tsx:550
+execute @ @tanstack_react-query.js?v=664b3655:1258
+await in execute
+mutate @ @tanstack_react-query.js?v=664b3655:2650
+(anonymous) @ @tanstack_react-query.js?v=664b3655:3362
+onClick @ messaging-system.tsx:763
+callCallback2 @ chunk-SM3OW2QE.js?v=664b3655:3674
+invokeGuardedCallbackDev @ chunk-SM3OW2QE.js?v=664b3655:3699
+invokeGuardedCallback @ chunk-SM3OW2QE.js?v=664b3655:3733
+invokeGuardedCallbackAndCatchFirstError @ chunk-SM3OW2QE.js?v=664b3655:3736
+executeDispatch @ chunk-SM3OW2QE.js?v=664b3655:7014
+processDispatchQueueItemsInOrder @ chunk-SM3OW2QE.js?v=664b3655:7034
+processDispatchQueue @ chunk-SM3OW2QE.js?v=664b3655:7043
+dispatchEventsForPlugins @ chunk-SM3OW2QE.js?v=664b3655:7051
+(anonymous) @ chunk-SM3OW2QE.js?v=664b3655:7174
+batchedUpdates$1 @ chunk-SM3OW2QE.js?v=664b3655:18913
+batchedUpdates @ chunk-SM3OW2QE.js?v=664b3655:3579
+dispatchEventForPluginEventSystem @ chunk-SM3OW2QE.js?v=664b3655:7173
+dispatchEventWithEnableCapturePhaseSelectiveHydrationWithoutDiscreteEventReplay @ chunk-SM3OW2QE.js?v=664b3655:5478
+dispatchEvent @ chunk-SM3OW2QE.js?v=664b3655:5472
+dispatchDiscreteEvent @ chunk-SM3OW2QE.js?v=664b3655:5449
+injected.js:27 🔍 getQueryFn - SessionManager sessionToken: FOUND
+injected.js:204  GET https://301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/api/messaging/messages 404 (Not Found)
+apply @ injected.js:204
+(anonymous) @ queryClient.ts:161
+fetchFn @ @tanstack_react-query.js?v=664b3655:868
+run @ @tanstack_react-query.js?v=664b3655:506
+start @ @tanstack_react-query.js?v=664b3655:547
+fetch @ @tanstack_react-query.js?v=664b3655:951
+executeFetch_fn @ @tanstack_react-query.js?v=664b3655:2244
+(anonymous) @ @tanstack_react-query.js?v=664b3655:2278
+setInterval
+updateRefetchInterval_fn @ @tanstack_react-query.js?v=664b3655:2276
+updateTimers_fn @ @tanstack_react-query.js?v=664b3655:2283
+onQueryUpdate @ @tanstack_react-query.js?v=664b3655:2239
+(anonymous) @ @tanstack_react-query.js?v=664b3655:1024
+(anonymous) @ @tanstack_react-query.js?v=664b3655:1023
+batch @ @tanstack_react-query.js?v=664b3655:595
+dispatch_fn @ @tanstack_react-query.js?v=664b3655:1022
+onError @ @tanstack_react-query.js?v=664b3655:890
+reject @ @tanstack_react-query.js?v=664b3655:479
+(anonymous) @ @tanstack_react-query.js?v=664b3655:519
+Promise.catch
+run @ @tanstack_react-query.js?v=664b3655:510
+start @ @tanstack_react-query.js?v=664b3655:547
+fetch @ @tanstack_react-query.js?v=664b3655:951
+executeFetch_fn @ @tanstack_react-query.js?v=664b3655:2244
+(anonymous) @ @tanstack_react-query.js?v=664b3655:2278
+setInterval
+updateRefetchInterval_fn @ @tanstack_react-query.js?v=664b3655:2276
+updateTimers_fn @ @tanstack_react-query.js?v=664b3655:2283
+onQueryUpdate @ @tanstack_react-query.js?v=664b3655:2239
+(anonymous) @ @tanstack_react-query.js?v=664b3655:1024
+(anonymous) @ @tanstack_react-query.js?v=664b3655:1023
+batch @ @tanstack_react-query.js?v=664b3655:595
+dispatch_fn @ @tanstack_react-query.js?v=664b3655:1022
+onError @ @tanstack_react-query.js?v=664b3655:890
+reject @ @tanstack_react-query.js?v=664b3655:479
+(anonymous) @ @tanstack_react-query.js?v=664b3655:519
+Promise.catch
+run @ @tanstack_react-query.js?v=664b3655:510
+start @ @tanstack_react-query.js?v=664b3655:547
+fetch @ @tanstack_react-query.js?v=664b3655:951
+executeFetch_fn @ @tanstack_react-query.js?v=664b3655:2244
+(anonymous) @ @tanstack_react-query.js?v=664b3655:2278
+setInterval
+updateRefetchInterval_fn @ @tanstack_react-query.js?v=664b3655:2276
+updateTimers_fn @ @tanstack_react-query.js?v=664b3655:2283
+onQueryUpdate @ @tanstack_react-query.js?v=664b3655:2239
+(anonymous) @ @tanstack_react-query.js?v=664b3655:1024
+(anonymous) @ @tanstack_react-query.js?v=664b3655:1023
+batch @ @tanstack_react-query.js?v=664b3655:595
+dispatch_fn @ @tanstack_react-query.js?v=664b3655:1022
+onError @ @tanstack_react-query.js?v=664b3655:890
+reject @ @tanstack_react-query.js?v=664b3655:479
+(anonymous) @ @tanstack_react-query.js?v=664b3655:519
+Promise.catch
+run @ @tanstack_react-query.js?v=664b3655:510
+start @ @tanstack_react-query.js?v=664b3655:547
+fetch @ @tanstack_react-query.js?v=664b3655:951
+executeFetch_fn @ @tanstack_react-query.js?v=664b3655:2244
+(anonymous) @ @tanstack_react-query.js?v=664b3655:2278
+setInterval
+updateRefetchInterval_fn @ @tanstack_react-query.js?v=664b3655:2276
+updateTimers_fn @ @tanstack_react-query.js?v=664b3655:2283
+onQueryUpdate @ @tanstack_react-query.js?v=664b3655:2239
+(anonymous) @ @tanstack_react-query.js?v=664b3655:1024
+(anonymous) @ @tanstack_react-query.js?v=664b3655:1023
+batch @ @tanstack_react-query.js?v=664b3655:595
+dispatch_fn @ @tanstack_react-query.js?v=664b3655:1022
+onError @ @tanstack_react-query.js?v=664b3655:890
+reject @ @tanstack_react-query.js?v=664b3655:479
+(anonymous) @ @tanstack_react-query.js?v=664b3655:519
+Promise.catch
+run @ @tanstack_react-query.js?v=664b3655:510
+start @ @tanstack_react-query.js?v=664b3655:547
+fetch @ @tanstack_react-query.js?v=664b3655:951
+executeFetch_fn @ @tanstack_react-query.js?v=664b3655:2244
+(anonymous) @ @tanstack_react-query.js?v=664b3655:2278
+setInterval
+updateRefetchInterval_fn @ @tanstack_react-query.js?v=664b3655:2276
+updateTimers_fn @ @tanstack_react-query.js?v=664b3655:2283
+onQueryUpdate @ @tanstack_react-query.js?v=664b3655:2239
+(anonymous) @ @tanstack_react-query.js?v=664b3655:1024
+(anonymous) @ @tanstack_react-query.js?v=664b3655:1023
+batch @ @tanstack_react-query.js?v=664b3655:595
+dispatch_fn @ @tanstack_react-query.js?v=664b3655:1022
+onError @ @tanstack_react-query.js?v=664b3655:890
+reject @ @tanstack_react-query.js?v=664b3655:479
+(anonymous) @ @tanstack_react-query.js?v=664b3655:519
+Promise.catch
+run @ @tanstack_react-query.js?v=664b3655:510
+start @ @tanstack_react-query.js?v=664b3655:547
+fetch @ @tanstack_react-query.js?v=664b3655:951
+executeFetch_fn @ @tanstack_react-query.js?v=664b3655:2244
+(anonymous) @ @tanstack_react-query.js?v=664b3655:2278
+setInterval
+updateRefetchInterval_fn @ @tanstack_react-query.js?v=664b3655:2276
+updateTimers_fn @ @tanstack_react-query.js?v=664b3655:2283
+onQueryUpdate @ @tanstack_react-query.js?v=664b3655:2239
+(anonymous) @ @tanstack_react-query.js?v=664b3655:1024
+(anonymous) @ @tanstack_react-query.js?v=664b3655:1023
+batch @ @tanstack_react-query.js?v=664b3655:595
+dispatch_fn @ @tanstack_react-query.js?v=664b3655:1022
+onError @ @tanstack_react-query.js?v=664b3655:890
+reject @ @tanstack_react-query.js?v=664b3655:479
+(anonymous) @ @tanstack_react-query.js?v=664b3655:519
+Promise.catch
+run @ @tanstack_react-query.js?v=664b3655:510
+start @ @tanstack_react-query.js?v=664b3655:547
+fetch @ @tanstack_react-query.js?v=664b3655:951
+executeFetch_fn @ @tanstack_react-query.js?v=664b3655:2244
+setOptions @ @tanstack_react-query.js?v=664b3655:2005
+(anonymous) @ @tanstack_react-query.js?v=664b3655:3105
+commitHookEffectListMount @ chunk-SM3OW2QE.js?v=664b3655:16915
+commitPassiveMountOnFiber @ chunk-SM3OW2QE.js?v=664b3655:18156
+commitPassiveMountEffects_complete @ chunk-SM3OW2QE.js?v=664b3655:18129
+commitPassiveMountEffects_begin @ chunk-SM3OW2QE.js?v=664b3655:18119
+commitPassiveMountEffects @ chunk-SM3OW2QE.js?v=664b3655:18109
+flushPassiveEffectsImpl @ chunk-SM3OW2QE.js?v=664b3655:19490
+flushPassiveEffects @ chunk-SM3OW2QE.js?v=664b3655:19447
+performSyncWorkOnRoot @ chunk-SM3OW2QE.js?v=664b3655:18868
+flushSyncCallbacks @ chunk-SM3OW2QE.js?v=664b3655:9119
+commitRootImpl @ chunk-SM3OW2QE.js?v=664b3655:19432
+commitRoot @ chunk-SM3OW2QE.js?v=664b3655:19277
+finishConcurrentRender @ chunk-SM3OW2QE.js?v=664b3655:18805
+performConcurrentWorkOnRoot @ chunk-SM3OW2QE.js?v=664b3655:18718
+workLoop @ chunk-SM3OW2QE.js?v=664b3655:197
+flushWork @ chunk-SM3OW2QE.js?v=664b3655:176
+performWorkUntilDeadline @ chunk-SM3OW2QE.js?v=664b3655:384
+_ @ inpage.js:166
+w @ inpage.js:166
+Y @ inpage.js:166
+postMessage
+h @ inpage.js:166
+b @ inpage.js:166
+schedulePerformWorkUntilDeadline @ chunk-SM3OW2QE.js?v=664b3655:400
+requestHostCallback @ chunk-SM3OW2QE.js?v=664b3655:418
+unstable_scheduleCallback @ chunk-SM3OW2QE.js?v=664b3655:330
+scheduleCallback$1 @ chunk-SM3OW2QE.js?v=664b3655:19826
+ensureRootIsScheduled @ chunk-SM3OW2QE.js?v=664b3655:18652
+scheduleUpdateOnFiber @ chunk-SM3OW2QE.js?v=664b3655:18562
+dispatchSetState @ chunk-SM3OW2QE.js?v=664b3655:12403
+onSuccess @ messaging-system.tsx:550
+execute @ @tanstack_react-query.js?v=664b3655:1258
+await in execute
+mutate @ @tanstack_react-query.js?v=664b3655:2650
+(anonymous) @ @tanstack_react-query.js?v=664b3655:3362
+onClick @ messaging-system.tsx:763
+callCallback2 @ chunk-SM3OW2QE.js?v=664b3655:3674
+invokeGuardedCallbackDev @ chunk-SM3OW2QE.js?v=664b3655:3699
+invokeGuardedCallback @ chunk-SM3OW2QE.js?v=664b3655:3733
+invokeGuardedCallbackAndCatchFirstError @ chunk-SM3OW2QE.js?v=664b3655:3736
+executeDispatch @ chunk-SM3OW2QE.js?v=664b3655:7014
+processDispatchQueueItemsInOrder @ chunk-SM3OW2QE.js?v=664b3655:7034
+processDispatchQueue @ chunk-SM3OW2QE.js?v=664b3655:7043
+dispatchEventsForPlugins @ chunk-SM3OW2QE.js?v=664b3655:7051
+(anonymous) @ chunk-SM3OW2QE.js?v=664b3655:7174
+batchedUpdates$1 @ chunk-SM3OW2QE.js?v=664b3655:18913
+batchedUpdates @ chunk-SM3OW2QE.js?v=664b3655:3579
+dispatchEventForPluginEventSystem @ chunk-SM3OW2QE.js?v=664b3655:7173
+dispatchEventWithEnableCapturePhaseSelectiveHydrationWithoutDiscreteEventReplay @ chunk-SM3OW2QE.js?v=664b3655:5478
+dispatchEvent @ chunk-SM3OW2QE.js?v=664b3655:5472
+dispatchDiscreteEvent @ chunk-SM3OW2QE.js?v=664b3655:5449
+2injected.js:27 🔍 getQueryFn - SessionManager sessionToken: FOUND
+injected.js:204  GET https://301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/api/messaging/messages 404 (Not Found)
+apply @ injected.js:204
+(anonymous) @ queryClient.ts:161
+fetchFn @ @tanstack_react-query.js?v=664b3655:868
+run @ @tanstack_react-query.js?v=664b3655:506
+start @ @tanstack_react-query.js?v=664b3655:547
+fetch @ @tanstack_react-query.js?v=664b3655:951
+executeFetch_fn @ @tanstack_react-query.js?v=664b3655:2244
+(anonymous) @ @tanstack_react-query.js?v=664b3655:2278
+setInterval
+updateRefetchInterval_fn @ @tanstack_react-query.js?v=664b3655:2276
+updateTimers_fn @ @tanstack_react-query.js?v=664b3655:2283
+onQueryUpdate @ @tanstack_react-query.js?v=664b3655:2239
+(anonymous) @ @tanstack_react-query.js?v=664b3655:1024
+(anonymous) @ @tanstack_react-query.js?v=664b3655:1023
+batch @ @tanstack_react-query.js?v=664b3655:595
+dispatch_fn @ @tanstack_react-query.js?v=664b3655:1022
+onError @ @tanstack_react-query.js?v=664b3655:890
+reject @ @tanstack_react-query.js?v=664b3655:479
+(anonymous) @ @tanstack_react-query.js?v=664b3655:519
+Promise.catch
+run @ @tanstack_react-query.js?v=664b3655:510
+start @ @tanstack_react-query.js?v=664b3655:547
+fetch @ @tanstack_react-query.js?v=664b3655:951
+executeFetch_fn @ @tanstack_react-query.js?v=664b3655:2244
+(anonymous) @ @tanstack_react-query.js?v=664b3655:2278
+setInterval
+updateRefetchInterval_fn @ @tanstack_react-query.js?v=664b3655:2276
+updateTimers_fn @ @tanstack_react-query.js?v=664b3655:2283
+onQueryUpdate @ @tanstack_react-query.js?v=664b3655:2239
+(anonymous) @ @tanstack_react-query.js?v=664b3655:1024
+(anonymous) @ @tanstack_react-query.js?v=664b3655:1023
+batch @ @tanstack_react-query.js?v=664b3655:595
+dispatch_fn @ @tanstack_react-query.js?v=664b3655:1022
+onError @ @tanstack_react-query.js?v=664b3655:890
+reject @ @tanstack_react-query.js?v=664b3655:479
+(anonymous) @ @tanstack_react-query.js?v=664b3655:519
+Promise.catch
+run @ @tanstack_react-query.js?v=664b3655:510
+start @ @tanstack_react-query.js?v=664b3655:547
+fetch @ @tanstack_react-query.js?v=664b3655:951
+executeFetch_fn @ @tanstack_react-query.js?v=664b3655:2244
+(anonymous) @ @tanstack_react-query.js?v=664b3655:2278
+setInterval
+updateRefetchInterval_fn @ @tanstack_react-query.js?v=664b3655:2276
+updateTimers_fn @ @tanstack_react-query.js?v=664b3655:2283
+onQueryUpdate @ @tanstack_react-query.js?v=664b3655:2239
+(anonymous) @ @tanstack_react-query.js?v=664b3655:1024
+(anonymous) @ @tanstack_react-query.js?v=664b3655:1023
+batch @ @tanstack_react-query.js?v=664b3655:595
+dispatch_fn @ @tanstack_react-query.js?v=664b3655:1022
+onError @ @tanstack_react-query.js?v=664b3655:890
+reject @ @tanstack_react-query.js?v=664b3655:479
+(anonymous) @ @tanstack_react-query.js?v=664b3655:519
+Promise.catch
+run @ @tanstack_react-query.js?v=664b3655:510
+start @ @tanstack_react-query.js?v=664b3655:547
+fetch @ @tanstack_react-query.js?v=664b3655:951
+executeFetch_fn @ @tanstack_react-query.js?v=664b3655:2244
+(anonymous) @ @tanstack_react-query.js?v=664b3655:2278
+setInterval
+updateRefetchInterval_fn @ @tanstack_react-query.js?v=664b3655:2276
+updateTimers_fn @ @tanstack_react-query.js?v=664b3655:2283
+onQueryUpdate @ @tanstack_react-query.js?v=664b3655:2239
+(anonymous) @ @tanstack_react-query.js?v=664b3655:1024
+(anonymous) @ @tanstack_react-query.js?v=664b3655:1023
+batch @ @tanstack_react-query.js?v=664b3655:595
+dispatch_fn @ @tanstack_react-query.js?v=664b3655:1022
+onError @ @tanstack_react-query.js?v=664b3655:890
+reject @ @tanstack_react-query.js?v=664b3655:479
+(anonymous) @ @tanstack_react-query.js?v=664b3655:519
+Promise.catch
+run @ @tanstack_react-query.js?v=664b3655:510
+start @ @tanstack_react-query.js?v=664b3655:547
+fetch @ @tanstack_react-query.js?v=664b3655:951
+executeFetch_fn @ @tanstack_react-query.js?v=664b3655:2244
+(anonymous) @ @tanstack_react-query.js?v=664b3655:2278
+setInterval
+updateRefetchInterval_fn @ @tanstack_react-query.js?v=664b3655:2276
+updateTimers_fn @ @tanstack_react-query.js?v=664b3655:2283
+onQueryUpdate @ @tanstack_react-query.js?v=664b3655:2239
+(anonymous) @ @tanstack_react-query.js?v=664b3655:1024
+(anonymous) @ @tanstack_react-query.js?v=664b3655:1023
+batch @ @tanstack_react-query.js?v=664b3655:595
+dispatch_fn @ @tanstack_react-query.js?v=664b3655:1022
+onError @ @tanstack_react-query.js?v=664b3655:890
+reject @ @tanstack_react-query.js?v=664b3655:479
+(anonymous) @ @tanstack_react-query.js?v=664b3655:519
+Promise.catch
+run @ @tanstack_react-query.js?v=664b3655:510
+start @ @tanstack_react-query.js?v=664b3655:547
+fetch @ @tanstack_react-query.js?v=664b3655:951
+executeFetch_fn @ @tanstack_react-query.js?v=664b3655:2244
+(anonymous) @ @tanstack_react-query.js?v=664b3655:2278
+setInterval
+updateRefetchInterval_fn @ @tanstack_react-query.js?v=664b3655:2276
+updateTimers_fn @ @tanstack_react-query.js?v=664b3655:2283
+onQueryUpdate @ @tanstack_react-query.js?v=664b3655:2239
+(anonymous) @ @tanstack_react-query.js?v=664b3655:1024
+(anonymous) @ @tanstack_react-query.js?v=664b3655:1023
+batch @ @tanstack_react-query.js?v=664b3655:595
+dispatch_fn @ @tanstack_react-query.js?v=664b3655:1022
+onError @ @tanstack_react-query.js?v=664b3655:890
+reject @ @tanstack_react-query.js?v=664b3655:479
+(anonymous) @ @tanstack_react-query.js?v=664b3655:519
+Promise.catch
+run @ @tanstack_react-query.js?v=664b3655:510
+start @ @tanstack_react-query.js?v=664b3655:547
+fetch @ @tanstack_react-query.js?v=664b3655:951
+executeFetch_fn @ @tanstack_react-query.js?v=664b3655:2244
+(anonymous) @ @tanstack_react-query.js?v=664b3655:2278
+setInterval
+updateRefetchInterval_fn @ @tanstack_react-query.js?v=664b3655:2276
+updateTimers_fn @ @tanstack_react-query.js?v=664b3655:2283
+onQueryUpdate @ @tanstack_react-query.js?v=664b3655:2239
+(anonymous) @ @tanstack_react-query.js?v=664b3655:1024
+(anonymous) @ @tanstack_react-query.js?v=664b3655:1023
+batch @ @tanstack_react-query.js?v=664b3655:595
+dispatch_fn @ @tanstack_react-query.js?v=664b3655:1022
+onError @ @tanstack_react-query.js?v=664b3655:890
+reject @ @tanstack_react-query.js?v=664b3655:479
+(anonymous) @ @tanstack_react-query.js?v=664b3655:519
+Promise.catch
+run @ @tanstack_react-query.js?v=664b3655:510
+start @ @tanstack_react-query.js?v=664b3655:547
+fetch @ @tanstack_react-query.js?v=664b3655:951
+executeFetch_fn @ @tanstack_react-query.js?v=664b3655:2244
+setOptions @ @tanstack_react-query.js?v=664b3655:2005
+(anonymous) @ @tanstack_react-query.js?v=664b3655:3105
+commitHookEffectListMount @ chunk-SM3OW2QE.js?v=664b3655:16915
+commitPassiveMountOnFiber @ chunk-SM3OW2QE.js?v=664b3655:18156
+commitPassiveMountEffects_complete @ chunk-SM3OW2QE.js?v=664b3655:18129
+commitPassiveMountEffects_begin @ chunk-SM3OW2QE.js?v=664b3655:18119
+commitPassiveMountEffects @ chunk-SM3OW2QE.js?v=664b3655:18109
+flushPassiveEffectsImpl @ chunk-SM3OW2QE.js?v=664b3655:19490
+flushPassiveEffects @ chunk-SM3OW2QE.js?v=664b3655:19447
+performSyncWorkOnRoot @ chunk-SM3OW2QE.js?v=664b3655:18868
+flushSyncCallbacks @ chunk-SM3OW2QE.js?v=664b3655:9119
+commitRootImpl @ chunk-SM3OW2QE.js?v=664b3655:19432
+commitRoot @ chunk-SM3OW2QE.js?v=664b3655:19277
+finishConcurrentRender @ chunk-SM3OW2QE.js?v=664b3655:18805
+performConcurrentWorkOnRoot @ chunk-SM3OW2QE.js?v=664b3655:18718
+workLoop @ chunk-SM3OW2QE.js?v=664b3655:197
+flushWork @ chunk-SM3OW2QE.js?v=664b3655:176
+performWorkUntilDeadline @ chunk-SM3OW2QE.js?v=664b3655:384
+_ @ inpage.js:166
+w @ inpage.js:166
+Y @ inpage.js:166
+postMessage
+h @ inpage.js:166
+b @ inpage.js:166
+schedulePerformWorkUntilDeadline @ chunk-SM3OW2QE.js?v=664b3655:400
+requestHostCallback @ chunk-SM3OW2QE.js?v=664b3655:418
+unstable_scheduleCallback @ chunk-SM3OW2QE.js?v=664b3655:330
+scheduleCallback$1 @ chunk-SM3OW2QE.js?v=664b3655:19826
+ensureRootIsScheduled @ chunk-SM3OW2QE.js?v=664b3655:18652
+scheduleUpdateOnFiber @ chunk-SM3OW2QE.js?v=664b3655:18562
+dispatchSetState @ chunk-SM3OW2QE.js?v=664b3655:12403
+onSuccess @ messaging-system.tsx:550
+execute @ @tanstack_react-query.js?v=664b3655:1258
+await in execute
+mutate @ @tanstack_react-query.js?v=664b3655:2650
+(anonymous) @ @tanstack_react-query.js?v=664b3655:3362
+onClick @ messaging-system.tsx:763
+callCallback2 @ chunk-SM3OW2QE.js?v=664b3655:3674
+invokeGuardedCallbackDev @ chunk-SM3OW2QE.js?v=664b3655:3699
+invokeGuardedCallback @ chunk-SM3OW2QE.js?v=664b3655:3733
+invokeGuardedCallbackAndCatchFirstError @ chunk-SM3OW2QE.js?v=664b3655:3736
+executeDispatch @ chunk-SM3OW2QE.js?v=664b3655:7014
+processDispatchQueueItemsInOrder @ chunk-SM3OW2QE.js?v=664b3655:7034
+processDispatchQueue @ chunk-SM3OW2QE.js?v=664b3655:7043
+dispatchEventsForPlugins @ chunk-SM3OW2QE.js?v=664b3655:7051
+(anonymous) @ chunk-SM3OW2QE.js?v=664b3655:7174
+batchedUpdates$1 @ chunk-SM3OW2QE.js?v=664b3655:18913
+batchedUpdates @ chunk-SM3OW2QE.js?v=664b3655:3579
+dispatchEventForPluginEventSystem @ chunk-SM3OW2QE.js?v=664b3655:7173
+dispatchEventWithEnableCapturePhaseSelectiveHydrationWithoutDiscreteEventReplay @ chunk-SM3OW2QE.js?v=664b3655:5478
+dispatchEvent @ chunk-SM3OW2QE.js?v=664b3655:5472
+dispatchDiscreteEvent @ chunk-SM3OW2QE.js?v=664b3655:5449
+injected.js:27 🔍 getQueryFn - SessionManager sessionToken: FOUND
+injected.js:204  GET https://301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/api/messaging/messages 404 (Not Found)
+apply @ injected.js:204
+(anonymous) @ queryClient.ts:161
+fetchFn @ @tanstack_react-query.js?v=664b3655:868
+run @ @tanstack_react-query.js?v=664b3655:506
+start @ @tanstack_react-query.js?v=664b3655:547
+fetch @ @tanstack_react-query.js?v=664b3655:951
+executeFetch_fn @ @tanstack_react-query.js?v=664b3655:2244
+(anonymous) @ @tanstack_react-query.js?v=664b3655:2278
+setInterval
+updateRefetchInterval_fn @ @tanstack_react-query.js?v=664b3655:2276
+updateTimers_fn @ @tanstack_react-query.js?v=664b3655:2283
+onQueryUpdate @ @tanstack_react-query.js?v=664b3655:2239
+(anonymous) @ @tanstack_react-query.js?v=664b3655:1024
+(anonymous) @ @tanstack_react-query.js?v=664b3655:1023
+batch @ @tanstack_react-query.js?v=664b3655:595
+dispatch_fn @ @tanstack_react-query.js?v=664b3655:1022
+onError @ @tanstack_react-query.js?v=664b3655:890
+reject @ @tanstack_react-query.js?v=664b3655:479
+(anonymous) @ @tanstack_react-query.js?v=664b3655:519
+Promise.catch
+run @ @tanstack_react-query.js?v=664b3655:510
+start @ @tanstack_react-query.js?v=664b3655:547
+fetch @ @tanstack_react-query.js?v=664b3655:951
+executeFetch_fn @ @tanstack_react-query.js?v=664b3655:2244
+(anonymous) @ @tanstack_react-query.js?v=664b3655:2278
+setInterval
+updateRefetchInterval_fn @ @tanstack_react-query.js?v=664b3655:2276
+updateTimers_fn @ @tanstack_react-query.js?v=664b3655:2283
+onQueryUpdate @ @tanstack_react-query.js?v=664b3655:2239
+(anonymous) @ @tanstack_react-query.js?v=664b3655:1024
+(anonymous) @ @tanstack_react-query.js?v=664b3655:1023
+batch @ @tanstack_react-query.js?v=664b3655:595
+dispatch_fn @ @tanstack_react-query.js?v=664b3655:1022
+onError @ @tanstack_react-query.js?v=664b3655:890
+reject @ @tanstack_react-query.js?v=664b3655:479
+(anonymous) @ @tanstack_react-query.js?v=664b3655:519
+Promise.catch
+run @ @tanstack_react-query.js?v=664b3655:510
+start @ @tanstack_react-query.js?v=664b3655:547
+fetch @ @tanstack_react-query.js?v=664b3655:951
+executeFetch_fn @ @tanstack_react-query.js?v=664b3655:2244
+(anonymous) @ @tanstack_react-query.js?v=664b3655:2278
+setInterval
+updateRefetchInterval_fn @ @tanstack_react-query.js?v=664b3655:2276
+updateTimers_fn @ @tanstack_react-query.js?v=664b3655:2283
+onQueryUpdate @ @tanstack_react-query.js?v=664b3655:2239
+(anonymous) @ @tanstack_react-query.js?v=664b3655:1024
+(anonymous) @ @tanstack_react-query.js?v=664b3655:1023
+batch @ @tanstack_react-query.js?v=664b3655:595
+dispatch_fn @ @tanstack_react-query.js?v=664b3655:1022
+onError @ @tanstack_react-query.js?v=664b3655:890
+reject @ @tanstack_react-query.js?v=664b3655:479
+(anonymous) @ @tanstack_react-query.js?v=664b3655:519
+Promise.catch
+run @ @tanstack_react-query.js?v=664b3655:510
+start @ @tanstack_react-query.js?v=664b3655:547
+fetch @ @tanstack_react-query.js?v=664b3655:951
+executeFetch_fn @ @tanstack_react-query.js?v=664b3655:2244
+(anonymous) @ @tanstack_react-query.js?v=664b3655:2278
+setInterval
+updateRefetchInterval_fn @ @tanstack_react-query.js?v=664b3655:2276
+updateTimers_fn @ @tanstack_react-query.js?v=664b3655:2283
+onQueryUpdate @ @tanstack_react-query.js?v=664b3655:2239
+(anonymous) @ @tanstack_react-query.js?v=664b3655:1024
+(anonymous) @ @tanstack_react-query.js?v=664b3655:1023
+batch @ @tanstack_react-query.js?v=664b3655:595
+dispatch_fn @ @tanstack_react-query.js?v=664b3655:1022
+onError @ @tanstack_react-query.js?v=664b3655:890
+reject @ @tanstack_react-query.js?v=664b3655:479
+(anonymous) @ @tanstack_react-query.js?v=664b3655:519
+Promise.catch
+run @ @tanstack_react-query.js?v=664b3655:510
+start @ @tanstack_react-query.js?v=664b3655:547
+fetch @ @tanstack_react-query.js?v=664b3655:951
+executeFetch_fn @ @tanstack_react-query.js?v=664b3655:2244
+(anonymous) @ @tanstack_react-query.js?v=664b3655:2278
+setInterval
+updateRefetchInterval_fn @ @tanstack_react-query.js?v=664b3655:2276
+updateTimers_fn @ @tanstack_react-query.js?v=664b3655:2283
+onQueryUpdate @ @tanstack_react-query.js?v=664b3655:2239
+(anonymous) @ @tanstack_react-query.js?v=664b3655:1024
+(anonymous) @ @tanstack_react-query.js?v=664b3655:1023
+batch @ @tanstack_react-query.js?v=664b3655:595
+dispatch_fn @ @tanstack_react-query.js?v=664b3655:1022
+onError @ @tanstack_react-query.js?v=664b3655:890
+reject @ @tanstack_react-query.js?v=664b3655:479
+(anonymous) @ @tanstack_react-query.js?v=664b3655:519
+Promise.catch
+run @ @tanstack_react-query.js?v=664b3655:510
+start @ @tanstack_react-query.js?v=664b3655:547
+fetch @ @tanstack_react-query.js?v=664b3655:951
+executeFetch_fn @ @tanstack_react-query.js?v=664b3655:2244
+(anonymous) @ @tanstack_react-query.js?v=664b3655:2278
+setInterval
+updateRefetchInterval_fn @ @tanstack_react-query.js?v=664b3655:2276
+updateTimers_fn @ @tanstack_react-query.js?v=664b3655:2283
+onQueryUpdate @ @tanstack_react-query.js?v=664b3655:2239
+(anonymous) @ @tanstack_react-query.js?v=664b3655:1024
+(anonymous) @ @tanstack_react-query.js?v=664b3655:1023
+batch @ @tanstack_react-query.js?v=664b3655:595
+dispatch_fn @ @tanstack_react-query.js?v=664b3655:1022
+onError @ @tanstack_react-query.js?v=664b3655:890
+reject @ @tanstack_react-query.js?v=664b3655:479
+(anonymous) @ @tanstack_react-query.js?v=664b3655:519
+Promise.catch
+run @ @tanstack_react-query.js?v=664b3655:510
+start @ @tanstack_react-query.js?v=664b3655:547
+fetch @ @tanstack_react-query.js?v=664b3655:951
+executeFetch_fn @ @tanstack_react-query.js?v=664b3655:2244
+(anonymous) @ @tanstack_react-query.js?v=664b3655:2278
+setInterval
+updateRefetchInterval_fn @ @tanstack_react-query.js?v=664b3655:2276
+updateTimers_fn @ @tanstack_react-query.js?v=664b3655:2283
+onQueryUpdate @ @tanstack_react-query.js?v=664b3655:2239
+(anonymous) @ @tanstack_react-query.js?v=664b3655:1024
+(anonymous) @ @tanstack_react-query.js?v=664b3655:1023
+batch @ @tanstack_react-query.js?v=664b3655:595
+dispatch_fn @ @tanstack_react-query.js?v=664b3655:1022
+onError @ @tanstack_react-query.js?v=664b3655:890
+reject @ @tanstack_react-query.js?v=664b3655:479
+(anonymous) @ @tanstack_react-query.js?v=664b3655:519
+Promise.catch
+run @ @tanstack_react-query.js?v=664b3655:510
+start @ @tanstack_react-query.js?v=664b3655:547
+fetch @ @tanstack_react-query.js?v=664b3655:951
+executeFetch_fn @ @tanstack_react-query.js?v=664b3655:2244
+(anonymous) @ @tanstack_react-query.js?v=664b3655:2278
+setInterval
+updateRefetchInterval_fn @ @tanstack_react-query.js?v=664b3655:2276
+updateTimers_fn @ @tanstack_react-query.js?v=664b3655:2283
+onQueryUpdate @ @tanstack_react-query.js?v=664b3655:2239
+(anonymous) @ @tanstack_react-query.js?v=664b3655:1024
+(anonymous) @ @tanstack_react-query.js?v=664b3655:1023
+batch @ @tanstack_react-query.js?v=664b3655:595
+dispatch_fn @ @tanstack_react-query.js?v=664b3655:1022
+onError @ @tanstack_react-query.js?v=664b3655:890
+reject @ @tanstack_react-query.js?v=664b3655:479
+(anonymous) @ @tanstack_react-query.js?v=664b3655:519
+Promise.catch
+run @ @tanstack_react-query.js?v=664b3655:510
+start @ @tanstack_react-query.js?v=664b3655:547
+fetch @ @tanstack_react-query.js?v=664b3655:951
+executeFetch_fn @ @tanstack_react-query.js?v=664b3655:2244
+setOptions @ @tanstack_react-query.js?v=664b3655:2005
+(anonymous) @ @tanstack_react-query.js?v=664b3655:3105
+commitHookEffectListMount @ chunk-SM3OW2QE.js?v=664b3655:16915
+commitPassiveMountOnFiber @ chunk-SM3OW2QE.js?v=664b3655:18156
+commitPassiveMountEffects_complete @ chunk-SM3OW2QE.js?v=664b3655:18129
+commitPassiveMountEffects_begin @ chunk-SM3OW2QE.js?v=664b3655:18119
+commitPassiveMountEffects @ chunk-SM3OW2QE.js?v=664b3655:18109
+flushPassiveEffectsImpl @ chunk-SM3OW2QE.js?v=664b3655:19490
+flushPassiveEffects @ chunk-SM3OW2QE.js?v=664b3655:19447
+performSyncWorkOnRoot @ chunk-SM3OW2QE.js?v=664b3655:18868
+flushSyncCallbacks @ chunk-SM3OW2QE.js?v=664b3655:9119
+commitRootImpl @ chunk-SM3OW2QE.js?v=664b3655:19432
+commitRoot @ chunk-SM3OW2QE.js?v=664b3655:19277
+finishConcurrentRender @ chunk-SM3OW2QE.js?v=664b3655:18805
+performConcurrentWorkOnRoot @ chunk-SM3OW2QE.js?v=664b3655:18718
+workLoop @ chunk-SM3OW2QE.js?v=664b3655:197
+flushWork @ chunk-SM3OW2QE.js?v=664b3655:176
+performWorkUntilDeadline @ chunk-SM3OW2QE.js?v=664b3655:384
+_ @ inpage.js:166
+w @ inpage.js:166
+Y @ inpage.js:166
+postMessage
+h @ inpage.js:166
+b @ inpage.js:166
+schedulePerformWorkUntilDeadline @ chunk-SM3OW2QE.js?v=664b3655:400
+requestHostCallback @ chunk-SM3OW2QE.js?v=664b3655:418
+unstable_scheduleCallback @ chunk-SM3OW2QE.js?v=664b3655:330
+scheduleCallback$1 @ chunk-SM3OW2QE.js?v=664b3655:19826
+ensureRootIsScheduled @ chunk-SM3OW2QE.js?v=664b3655:18652
+scheduleUpdateOnFiber @ chunk-SM3OW2QE.js?v=664b3655:18562
+dispatchSetState @ chunk-SM3OW2QE.js?v=664b3655:12403
+onSuccess @ messaging-system.tsx:550
+execute @ @tanstack_react-query.js?v=664b3655:1258
+await in execute
+mutate @ @tanstack_react-query.js?v=664b3655:2650
+(anonymous) @ @tanstack_react-query.js?v=664b3655:3362
+onClick @ messaging-system.tsx:763
+callCallback2 @ chunk-SM3OW2QE.js?v=664b3655:3674
+invokeGuardedCallbackDev @ chunk-SM3OW2QE.js?v=664b3655:3699
+invokeGuardedCallback @ chunk-SM3OW2QE.js?v=664b3655:3733
+invokeGuardedCallbackAndCatchFirstError @ chunk-SM3OW2QE.js?v=664b3655:3736
+executeDispatch @ chunk-SM3OW2QE.js?v=664b3655:7014
+processDispatchQueueItemsInOrder @ chunk-SM3OW2QE.js?v=664b3655:7034
+processDispatchQueue @ chunk-SM3OW2QE.js?v=664b3655:7043
+dispatchEventsForPlugins @ chunk-SM3OW2QE.js?v=664b3655:7051
+(anonymous) @ chunk-SM3OW2QE.js?v=664b3655:7174
+batchedUpdates$1 @ chunk-SM3OW2QE.js?v=664b3655:18913
+batchedUpdates @ chunk-SM3OW2QE.js?v=664b3655:3579
+dispatchEventForPluginEventSystem @ chunk-SM3OW2QE.js?v=664b3655:7173
+dispatchEventWithEnableCapturePhaseSelectiveHydrationWithoutDiscreteEventReplay @ chunk-SM3OW2QE.js?v=664b3655:5478
+dispatchEvent @ chunk-SM3OW2QE.js?v=664b3655:5472
+dispatchDiscreteEvent @ chunk-SM3OW2QE.js?v=664b3655:5449
+2injected.js:27 🔍 getQueryFn - SessionManager sessionToken: FOUND
+injected.js:204  GET https://301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/api/messaging/messages 404 (Not Found)
+apply @ injected.js:204
+(anonymous) @ queryClient.ts:161
+fetchFn @ @tanstack_react-query.js?v=664b3655:868
+run @ @tanstack_react-query.js?v=664b3655:506
+start @ @tanstack_react-query.js?v=664b3655:547
+fetch @ @tanstack_react-query.js?v=664b3655:951
+executeFetch_fn @ @tanstack_react-query.js?v=664b3655:2244
+(anonymous) @ @tanstack_react-query.js?v=664b3655:2278
+setInterval
+updateRefetchInterval_fn @ @tanstack_react-query.js?v=664b3655:2276
+updateTimers_fn @ @tanstack_react-query.js?v=664b3655:2283
+onQueryUpdate @ @tanstack_react-query.js?v=664b3655:2239
+(anonymous) @ @tanstack_react-query.js?v=664b3655:1024
+(anonymous) @ @tanstack_react-query.js?v=664b3655:1023
+batch @ @tanstack_react-query.js?v=664b3655:595
+dispatch_fn @ @tanstack_react-query.js?v=664b3655:1022
+onError @ @tanstack_react-query.js?v=664b3655:890
+reject @ @tanstack_react-query.js?v=664b3655:479
+(anonymous) @ @tanstack_react-query.js?v=664b3655:519
+Promise.catch
+run @ @tanstack_react-query.js?v=664b3655:510
+start @ @tanstack_react-query.js?v=664b3655:547
+fetch @ @tanstack_react-query.js?v=664b3655:951
+executeFetch_fn @ @tanstack_react-query.js?v=664b3655:2244
+(anonymous) @ @tanstack_react-query.js?v=664b3655:2278
+setInterval
+updateRefetchInterval_fn @ @tanstack_react-query.js?v=664b3655:2276
+updateTimers_fn @ @tanstack_react-query.js?v=664b3655:2283
+onQueryUpdate @ @tanstack_react-query.js?v=664b3655:2239
+(anonymous) @ @tanstack_react-query.js?v=664b3655:1024
+(anonymous) @ @tanstack_react-query.js?v=664b3655:1023
+batch @ @tanstack_react-query.js?v=664b3655:595
+dispatch_fn @ @tanstack_react-query.js?v=664b3655:1022
+onError @ @tanstack_react-query.js?v=664b3655:890
+reject @ @tanstack_react-query.js?v=664b3655:479
+(anonymous) @ @tanstack_react-query.js?v=664b3655:519
+Promise.catch
+run @ @tanstack_react-query.js?v=664b3655:510
+start @ @tanstack_react-query.js?v=664b3655:547
+fetch @ @tanstack_react-query.js?v=664b3655:951
+executeFetch_fn @ @tanstack_react-query.js?v=664b3655:2244
+(anonymous) @ @tanstack_react-query.js?v=664b3655:2278
+setInterval
+updateRefetchInterval_fn @ @tanstack_react-query.js?v=664b3655:2276
+updateTimers_fn @ @tanstack_react-query.js?v=664b3655:2283
+onQueryUpdate @ @tanstack_react-query.js?v=664b3655:2239
+(anonymous) @ @tanstack_react-query.js?v=664b3655:1024
+(anonymous) @ @tanstack_react-query.js?v=664b3655:1023
+batch @ @tanstack_react-query.js?v=664b3655:595
+dispatch_fn @ @tanstack_react-query.js?v=664b3655:1022
+onError @ @tanstack_react-query.js?v=664b3655:890
+reject @ @tanstack_react-query.js?v=664b3655:479
+(anonymous) @ @tanstack_react-query.js?v=664b3655:519
+Promise.catch
+run @ @tanstack_react-query.js?v=664b3655:510
+start @ @tanstack_react-query.js?v=664b3655:547
+fetch @ @tanstack_react-query.js?v=664b3655:951
+executeFetch_fn @ @tanstack_react-query.js?v=664b3655:2244
+(anonymous) @ @tanstack_react-query.js?v=664b3655:2278
+setInterval
+updateRefetchInterval_fn @ @tanstack_react-query.js?v=664b3655:2276
+updateTimers_fn @ @tanstack_react-query.js?v=664b3655:2283
+onQueryUpdate @ @tanstack_react-query.js?v=664b3655:2239
+(anonymous) @ @tanstack_react-query.js?v=664b3655:1024
+(anonymous) @ @tanstack_react-query.js?v=664b3655:1023
+batch @ @tanstack_react-query.js?v=664b3655:595
+dispatch_fn @ @tanstack_react-query.js?v=664b3655:1022
+onError @ @tanstack_react-query.js?v=664b3655:890
+reject @ @tanstack_react-query.js?v=664b3655:479
+(anonymous) @ @tanstack_react-query.js?v=664b3655:519
+Promise.catch
+run @ @tanstack_react-query.js?v=664b3655:510
+start @ @tanstack_react-query.js?v=664b3655:547
+fetch @ @tanstack_react-query.js?v=664b3655:951
+executeFetch_fn @ @tanstack_react-query.js?v=664b3655:2244
+(anonymous) @ @tanstack_react-query.js?v=664b3655:2278
+setInterval
+updateRefetchInterval_fn @ @tanstack_react-query.js?v=664b3655:2276
+updateTimers_fn @ @tanstack_react-query.js?v=664b3655:2283
+onQueryUpdate @ @tanstack_react-query.js?v=664b3655:2239
+(anonymous) @ @tanstack_react-query.js?v=664b3655:1024
+(anonymous) @ @tanstack_react-query.js?v=664b3655:1023
+batch @ @tanstack_react-query.js?v=664b3655:595
+dispatch_fn @ @tanstack_react-query.js?v=664b3655:1022
+onError @ @tanstack_react-query.js?v=664b3655:890
+reject @ @tanstack_react-query.js?v=664b3655:479
+(anonymous) @ @tanstack_react-query.js?v=664b3655:519
+Promise.catch
+run @ @tanstack_react-query.js?v=664b3655:510
+start @ @tanstack_react-query.js?v=664b3655:547
+fetch @ @tanstack_react-query.js?v=664b3655:951
+executeFetch_fn @ @tanstack_react-query.js?v=664b3655:2244
+(anonymous) @ @tanstack_react-query.js?v=664b3655:2278
+setInterval
+updateRefetchInterval_fn @ @tanstack_react-query.js?v=664b3655:2276
+updateTimers_fn @ @tanstack_react-query.js?v=664b3655:2283
+onQueryUpdate @ @tanstack_react-query.js?v=664b3655:2239
+(anonymous) @ @tanstack_react-query.js?v=664b3655:1024
+(anonymous) @ @tanstack_react-query.js?v=664b3655:1023
+batch @ @tanstack_react-query.js?v=664b3655:595
+dispatch_fn @ @tanstack_react-query.js?v=664b3655:1022
+onError @ @tanstack_react-query.js?v=664b3655:890
+reject @ @tanstack_react-query.js?v=664b3655:479
+(anonymous) @ @tanstack_react-query.js?v=664b3655:519
+Promise.catch
+run @ @tanstack_react-query.js?v=664b3655:510
+start @ @tanstack_react-query.js?v=664b3655:547
+fetch @ @tanstack_react-query.js?v=664b3655:951
+executeFetch_fn @ @tanstack_react-query.js?v=664b3655:2244
+(anonymous) @ @tanstack_react-query.js?v=664b3655:2278
+setInterval
+updateRefetchInterval_fn @ @tanstack_react-query.js?v=664b3655:2276
+updateTimers_fn @ @tanstack_react-query.js?v=664b3655:2283
+onQueryUpdate @ @tanstack_react-query.js?v=664b3655:2239
+(anonymous) @ @tanstack_react-query.js?v=664b3655:1024
+(anonymous) @ @tanstack_react-query.js?v=664b3655:1023
+batch @ @tanstack_react-query.js?v=664b3655:595
+dispatch_fn @ @tanstack_react-query.js?v=664b3655:1022
+onError @ @tanstack_react-query.js?v=664b3655:890
+reject @ @tanstack_react-query.js?v=664b3655:479
+(anonymous) @ @tanstack_react-query.js?v=664b3655:519
+Promise.catch
+run @ @tanstack_react-query.js?v=664b3655:510
+start @ @tanstack_react-query.js?v=664b3655:547
+fetch @ @tanstack_react-query.js?v=664b3655:951
+executeFetch_fn @ @tanstack_react-query.js?v=664b3655:2244
+(anonymous) @ @tanstack_react-query.js?v=664b3655:2278
+setInterval
+updateRefetchInterval_fn @ @tanstack_react-query.js?v=664b3655:2276
+updateTimers_fn @ @tanstack_react-query.js?v=664b3655:2283
+onQueryUpdate @ @tanstack_react-query.js?v=664b3655:2239
+(anonymous) @ @tanstack_react-query.js?v=664b3655:1024
+(anonymous) @ @tanstack_react-query.js?v=664b3655:1023
+batch @ @tanstack_react-query.js?v=664b3655:595
+dispatch_fn @ @tanstack_react-query.js?v=664b3655:1022
+onError @ @tanstack_react-query.js?v=664b3655:890
+reject @ @tanstack_react-query.js?v=664b3655:479
+(anonymous) @ @tanstack_react-query.js?v=664b3655:519
+Promise.catch
+run @ @tanstack_react-query.js?v=664b3655:510
+start @ @tanstack_react-query.js?v=664b3655:547
+fetch @ @tanstack_react-query.js?v=664b3655:951
+executeFetch_fn @ @tanstack_react-query.js?v=664b3655:2244
+(anonymous) @ @tanstack_react-query.js?v=664b3655:2278
+setInterval
+updateRefetchInterval_fn @ @tanstack_react-query.js?v=664b3655:2276
+updateTimers_fn @ @tanstack_react-query.js?v=664b3655:2283
+onQueryUpdate @ @tanstack_react-query.js?v=664b3655:2239
+(anonymous) @ @tanstack_react-query.js?v=664b3655:1024
+(anonymous) @ @tanstack_react-query.js?v=664b3655:1023
+batch @ @tanstack_react-query.js?v=664b3655:595
+dispatch_fn @ @tanstack_react-query.js?v=664b3655:1022
+onError @ @tanstack_react-query.js?v=664b3655:890
+reject @ @tanstack_react-query.js?v=664b3655:479
+(anonymous) @ @tanstack_react-query.js?v=664b3655:519
+Promise.catch
+run @ @tanstack_react-query.js?v=664b3655:510
+start @ @tanstack_react-query.js?v=664b3655:547
+fetch @ @tanstack_react-query.js?v=664b3655:951
+executeFetch_fn @ @tanstack_react-query.js?v=664b3655:2244
+setOptions @ @tanstack_react-query.js?v=664b3655:2005
+(anonymous) @ @tanstack_react-query.js?v=664b3655:3105
+commitHookEffectListMount @ chunk-SM3OW2QE.js?v=664b3655:16915
+commitPassiveMountOnFiber @ chunk-SM3OW2QE.js?v=664b3655:18156
+commitPassiveMountEffects_complete @ chunk-SM3OW2QE.js?v=664b3655:18129
+commitPassiveMountEffects_begin @ chunk-SM3OW2QE.js?v=664b3655:18119
+commitPassiveMountEffects @ chunk-SM3OW2QE.js?v=664b3655:18109
+flushPassiveEffectsImpl @ chunk-SM3OW2QE.js?v=664b3655:19490
+flushPassiveEffects @ chunk-SM3OW2QE.js?v=664b3655:19447
+performSyncWorkOnRoot @ chunk-SM3OW2QE.js?v=664b3655:18868
+flushSyncCallbacks @ chunk-SM3OW2QE.js?v=664b3655:9119
+commitRootImpl @ chunk-SM3OW2QE.js?v=664b3655:19432
+commitRoot @ chunk-SM3OW2QE.js?v=664b3655:19277
+finishConcurrentRender @ chunk-SM3OW2QE.js?v=664b3655:18805
+performConcurrentWorkOnRoot @ chunk-SM3OW2QE.js?v=664b3655:18718
+workLoop @ chunk-SM3OW2QE.js?v=664b3655:197
+flushWork @ chunk-SM3OW2QE.js?v=664b3655:176
+performWorkUntilDeadline @ chunk-SM3OW2QE.js?v=664b3655:384
+_ @ inpage.js:166
+w @ inpage.js:166
+Y @ inpage.js:166
+postMessage
+h @ inpage.js:166
+b @ inpage.js:166
+schedulePerformWorkUntilDeadline @ chunk-SM3OW2QE.js?v=664b3655:400
+requestHostCallback @ chunk-SM3OW2QE.js?v=664b3655:418
+unstable_scheduleCallback @ chunk-SM3OW2QE.js?v=664b3655:330
+scheduleCallback$1 @ chunk-SM3OW2QE.js?v=664b3655:19826
+ensureRootIsScheduled @ chunk-SM3OW2QE.js?v=664b3655:18652
+scheduleUpdateOnFiber @ chunk-SM3OW2QE.js?v=664b3655:18562
+dispatchSetState @ chunk-SM3OW2QE.js?v=664b3655:12403
+onSuccess @ messaging-system.tsx:550
+execute @ @tanstack_react-query.js?v=664b3655:1258
+await in execute
+mutate @ @tanstack_react-query.js?v=664b3655:2650
+(anonymous) @ @tanstack_react-query.js?v=664b3655:3362
+onClick @ messaging-system.tsx:763
+callCallback2 @ chunk-SM3OW2QE.js?v=664b3655:3674
+invokeGuardedCallbackDev @ chunk-SM3OW2QE.js?v=664b3655:3699
+invokeGuardedCallback @ chunk-SM3OW2QE.js?v=664b3655:3733
+invokeGuardedCallbackAndCatchFirstError @ chunk-SM3OW2QE.js?v=664b3655:3736
+executeDispatch @ chunk-SM3OW2QE.js?v=664b3655:7014
+processDispatchQueueItemsInOrder @ chunk-SM3OW2QE.js?v=664b3655:7034
+processDispatchQueue @ chunk-SM3OW2QE.js?v=664b3655:7043
+dispatchEventsForPlugins @ chunk-SM3OW2QE.js?v=664b3655:7051
+(anonymous) @ chunk-SM3OW2QE.js?v=664b3655:7174
+batchedUpdates$1 @ chunk-SM3OW2QE.js?v=664b3655:18913
+batchedUpdates @ chunk-SM3OW2QE.js?v=664b3655:3579
+dispatchEventForPluginEventSystem @ chunk-SM3OW2QE.js?v=664b3655:7173
+dispatchEventWithEnableCapturePhaseSelectiveHydrationWithoutDiscreteEventReplay @ chunk-SM3OW2QE.js?v=664b3655:5478
+dispatchEvent @ chunk-SM3OW2QE.js?v=664b3655:5472
+dispatchDiscreteEvent @ chunk-SM3OW2QE.js?v=664b3655:5449
+injected.js:27 🔍 getQueryFn - SessionManager sessionToken: FOUND
+injected.js:204  GET https://301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/api/messaging/messages 404 (Not Found)
+apply @ injected.js:204
+(anonymous) @ queryClient.ts:161
+fetchFn @ @tanstack_react-query.js?v=664b3655:868
+run @ @tanstack_react-query.js?v=664b3655:506
+start @ @tanstack_react-query.js?v=664b3655:547
+fetch @ @tanstack_react-query.js?v=664b3655:951
+executeFetch_fn @ @tanstack_react-query.js?v=664b3655:2244
+(anonymous) @ @tanstack_react-query.js?v=664b3655:2278
+setInterval
+updateRefetchInterval_fn @ @tanstack_react-query.js?v=664b3655:2276
+updateTimers_fn @ @tanstack_react-query.js?v=664b3655:2283
+onQueryUpdate @ @tanstack_react-query.js?v=664b3655:2239
+(anonymous) @ @tanstack_react-query.js?v=664b3655:1024
+(anonymous) @ @tanstack_react-query.js?v=664b3655:1023
+batch @ @tanstack_react-query.js?v=664b3655:595
+dispatch_fn @ @tanstack_react-query.js?v=664b3655:1022
+onError @ @tanstack_react-query.js?v=664b3655:890
+reject @ @tanstack_react-query.js?v=664b3655:479
+(anonymous) @ @tanstack_react-query.js?v=664b3655:519
+Promise.catch
+run @ @tanstack_react-query.js?v=664b3655:510
+start @ @tanstack_react-query.js?v=664b3655:547
+fetch @ @tanstack_react-query.js?v=664b3655:951
+executeFetch_fn @ @tanstack_react-query.js?v=664b3655:2244
+(anonymous) @ @tanstack_react-query.js?v=664b3655:2278
+setInterval
+updateRefetchInterval_fn @ @tanstack_react-query.js?v=664b3655:2276
+updateTimers_fn @ @tanstack_react-query.js?v=664b3655:2283
+onQueryUpdate @ @tanstack_react-query.js?v=664b3655:2239
+(anonymous) @ @tanstack_react-query.js?v=664b3655:1024
+(anonymous) @ @tanstack_react-query.js?v=664b3655:1023
+batch @ @tanstack_react-query.js?v=664b3655:595
+dispatch_fn @ @tanstack_react-query.js?v=664b3655:1022
+onError @ @tanstack_react-query.js?v=664b3655:890
+reject @ @tanstack_react-query.js?v=664b3655:479
+(anonymous) @ @tanstack_react-query.js?v=664b3655:519
+Promise.catch
+run @ @tanstack_react-query.js?v=664b3655:510
+start @ @tanstack_react-query.js?v=664b3655:547
+fetch @ @tanstack_react-query.js?v=664b3655:951
+executeFetch_fn @ @tanstack_react-query.js?v=664b3655:2244
+(anonymous) @ @tanstack_react-query.js?v=664b3655:2278
+setInterval
+updateRefetchInterval_fn @ @tanstack_react-query.js?v=664b3655:2276
+updateTimers_fn @ @tanstack_react-query.js?v=664b3655:2283
+onQueryUpdate @ @tanstack_react-query.js?v=664b3655:2239
+(anonymous) @ @tanstack_react-query.js?v=664b3655:1024
+(anonymous) @ @tanstack_react-query.js?v=664b3655:1023
+batch @ @tanstack_react-query.js?v=664b3655:595
+dispatch_fn @ @tanstack_react-query.js?v=664b3655:1022
+onError @ @tanstack_react-query.js?v=664b3655:890
+reject @ @tanstack_react-query.js?v=664b3655:479
+(anonymous) @ @tanstack_react-query.js?v=664b3655:519
+Promise.catch
+run @ @tanstack_react-query.js?v=664b3655:510
+start @ @tanstack_react-query.js?v=664b3655:547
+fetch @ @tanstack_react-query.js?v=664b3655:951
+executeFetch_fn @ @tanstack_react-query.js?v=664b3655:2244
+(anonymous) @ @tanstack_react-query.js?v=664b3655:2278
+setInterval
+updateRefetchInterval_fn @ @tanstack_react-query.js?v=664b3655:2276
+updateTimers_fn @ @tanstack_react-query.js?v=664b3655:2283
+onQueryUpdate @ @tanstack_react-query.js?v=664b3655:2239
+(anonymous) @ @tanstack_react-query.js?v=664b3655:1024
+(anonymous) @ @tanstack_react-query.js?v=664b3655:1023
+batch @ @tanstack_react-query.js?v=664b3655:595
+dispatch_fn @ @tanstack_react-query.js?v=664b3655:1022
+onError @ @tanstack_react-query.js?v=664b3655:890
+reject @ @tanstack_react-query.js?v=664b3655:479
+(anonymous) @ @tanstack_react-query.js?v=664b3655:519
+Promise.catch
+run @ @tanstack_react-query.js?v=664b3655:510
+start @ @tanstack_react-query.js?v=664b3655:547
+fetch @ @tanstack_react-query.js?v=664b3655:951
+executeFetch_fn @ @tanstack_react-query.js?v=664b3655:2244
+(anonymous) @ @tanstack_react-query.js?v=664b3655:2278
+setInterval
+updateRefetchInterval_fn @ @tanstack_react-query.js?v=664b3655:2276
+updateTimers_fn @ @tanstack_react-query.js?v=664b3655:2283
+onQueryUpdate @ @tanstack_react-query.js?v=664b3655:2239
+(anonymous) @ @tanstack_react-query.js?v=664b3655:1024
+(anonymous) @ @tanstack_react-query.js?v=664b3655:1023
+batch @ @tanstack_react-query.js?v=664b3655:595
+dispatch_fn @ @tanstack_react-query.js?v=664b3655:1022
+onError @ @tanstack_react-query.js?v=664b3655:890
+reject @ @tanstack_react-query.js?v=664b3655:479
+(anonymous) @ @tanstack_react-query.js?v=664b3655:519
+Promise.catch
+run @ @tanstack_react-query.js?v=664b3655:510
+start @ @tanstack_react-query.js?v=664b3655:547
+fetch @ @tanstack_react-query.js?v=664b3655:951
+executeFetch_fn @ @tanstack_react-query.js?v=664b3655:2244
+(anonymous) @ @tanstack_react-query.js?v=664b3655:2278
+setInterval
+updateRefetchInterval_fn @ @tanstack_react-query.js?v=664b3655:2276
+updateTimers_fn @ @tanstack_react-query.js?v=664b3655:2283
+onQueryUpdate @ @tanstack_react-query.js?v=664b3655:2239
+(anonymous) @ @tanstack_react-query.js?v=664b3655:1024
+(anonymous) @ @tanstack_react-query.js?v=664b3655:1023
+batch @ @tanstack_react-query.js?v=664b3655:595
+dispatch_fn @ @tanstack_react-query.js?v=664b3655:1022
+onError @ @tanstack_react-query.js?v=664b3655:890
+reject @ @tanstack_react-query.js?v=664b3655:479
+(anonymous) @ @tanstack_react-query.js?v=664b3655:519
+Promise.catch
+run @ @tanstack_react-query.js?v=664b3655:510
+start @ @tanstack_react-query.js?v=664b3655:547
+fetch @ @tanstack_react-query.js?v=664b3655:951
+executeFetch_fn @ @tanstack_react-query.js?v=664b3655:2244
+(anonymous) @ @tanstack_react-query.js?v=664b3655:2278
+setInterval
+updateRefetchInterval_fn @ @tanstack_react-query.js?v=664b3655:2276
+updateTimers_fn @ @tanstack_react-query.js?v=664b3655:2283
+onQueryUpdate @ @tanstack_react-query.js?v=664b3655:2239
+(anonymous) @ @tanstack_react-query.js?v=664b3655:1024
+(anonymous) @ @tanstack_react-query.js?v=664b3655:1023
+batch @ @tanstack_react-query.js?v=664b3655:595
+dispatch_fn @ @tanstack_react-query.js?v=664b3655:1022
+onError @ @tanstack_react-query.js?v=664b3655:890
+reject @ @tanstack_react-query.js?v=664b3655:479
+(anonymous) @ @tanstack_react-query.js?v=664b3655:519
+Promise.catch
+run @ @tanstack_react-query.js?v=664b3655:510
+start @ @tanstack_react-query.js?v=664b3655:547
+fetch @ @tanstack_react-query.js?v=664b3655:951
+executeFetch_fn @ @tanstack_react-query.js?v=664b3655:2244
+(anonymous) @ @tanstack_react-query.js?v=664b3655:2278
+setInterval
+updateRefetchInterval_fn @ @tanstack_react-query.js?v=664b3655:2276
+updateTimers_fn @ @tanstack_react-query.js?v=664b3655:2283
+onQueryUpdate @ @tanstack_react-query.js?v=664b3655:2239
+(anonymous) @ @tanstack_react-query.js?v=664b3655:1024
+(anonymous) @ @tanstack_react-query.js?v=664b3655:1023
+batch @ @tanstack_react-query.js?v=664b3655:595
+dispatch_fn @ @tanstack_react-query.js?v=664b3655:1022
+onError @ @tanstack_react-query.js?v=664b3655:890
+reject @ @tanstack_react-query.js?v=664b3655:479
+(anonymous) @ @tanstack_react-query.js?v=664b3655:519
+Promise.catch
+run @ @tanstack_react-query.js?v=664b3655:510
+start @ @tanstack_react-query.js?v=664b3655:547
+fetch @ @tanstack_react-query.js?v=664b3655:951
+executeFetch_fn @ @tanstack_react-query.js?v=664b3655:2244
+(anonymous) @ @tanstack_react-query.js?v=664b3655:2278
+setInterval
+updateRefetchInterval_fn @ @tanstack_react-query.js?v=664b3655:2276
+updateTimers_fn @ @tanstack_react-query.js?v=664b3655:2283
+onQueryUpdate @ @tanstack_react-query.js?v=664b3655:2239
+(anonymous) @ @tanstack_react-query.js?v=664b3655:1024
+(anonymous) @ @tanstack_react-query.js?v=664b3655:1023
+batch @ @tanstack_react-query.js?v=664b3655:595
+dispatch_fn @ @tanstack_react-query.js?v=664b3655:1022
+onError @ @tanstack_react-query.js?v=664b3655:890
+reject @ @tanstack_react-query.js?v=664b3655:479
+(anonymous) @ @tanstack_react-query.js?v=664b3655:519
+Promise.catch
+run @ @tanstack_react-query.js?v=664b3655:510
+start @ @tanstack_react-query.js?v=664b3655:547
+fetch @ @tanstack_react-query.js?v=664b3655:951
+executeFetch_fn @ @tanstack_react-query.js?v=664b3655:2244
+(anonymous) @ @tanstack_react-query.js?v=664b3655:2278
+setInterval
+updateRefetchInterval_fn @ @tanstack_react-query.js?v=664b3655:2276
+updateTimers_fn @ @tanstack_react-query.js?v=664b3655:2283
+onQueryUpdate @ @tanstack_react-query.js?v=664b3655:2239
+(anonymous) @ @tanstack_react-query.js?v=664b3655:1024
+(anonymous) @ @tanstack_react-query.js?v=664b3655:1023
+batch @ @tanstack_react-query.js?v=664b3655:595
+dispatch_fn @ @tanstack_react-query.js?v=664b3655:1022
+onError @ @tanstack_react-query.js?v=664b3655:890
+reject @ @tanstack_react-query.js?v=664b3655:479
+(anonymous) @ @tanstack_react-query.js?v=664b3655:519
+Promise.catch
+run @ @tanstack_react-query.js?v=664b3655:510
+start @ @tanstack_react-query.js?v=664b3655:547
+fetch @ @tanstack_react-query.js?v=664b3655:951
+executeFetch_fn @ @tanstack_react-query.js?v=664b3655:2244
+setOptions @ @tanstack_react-query.js?v=664b3655:2005
+(anonymous) @ @tanstack_react-query.js?v=664b3655:3105
+commitHookEffectListMount @ chunk-SM3OW2QE.js?v=664b3655:16915
+commitPassiveMountOnFiber @ chunk-SM3OW2QE.js?v=664b3655:18156
+commitPassiveMountEffects_complete @ chunk-SM3OW2QE.js?v=664b3655:18129
+commitPassiveMountEffects_begin @ chunk-SM3OW2QE.js?v=664b3655:18119
+commitPassiveMountEffects @ chunk-SM3OW2QE.js?v=664b3655:18109
+flushPassiveEffectsImpl @ chunk-SM3OW2QE.js?v=664b3655:19490
+flushPassiveEffects @ chunk-SM3OW2QE.js?v=664b3655:19447
+performSyncWorkOnRoot @ chunk-SM3OW2QE.js?v=664b3655:18868
+flushSyncCallbacks @ chunk-SM3OW2QE.js?v=664b3655:9119
+commitRootImpl @ chunk-SM3OW2QE.js?v=664b3655:19432
+commitRoot @ chunk-SM3OW2QE.js?v=664b3655:19277
+finishConcurrentRender @ chunk-SM3OW2QE.js?v=664b3655:18805
+performConcurrentWorkOnRoot @ chunk-SM3OW2QE.js?v=664b3655:18718
+workLoop @ chunk-SM3OW2QE.js?v=664b3655:197
+flushWork @ chunk-SM3OW2QE.js?v=664b3655:176
+performWorkUntilDeadline @ chunk-SM3OW2QE.js?v=664b3655:384
+_ @ inpage.js:166
+w @ inpage.js:166
+Y @ inpage.js:166
+postMessage
+h @ inpage.js:166
+b @ inpage.js:166
+schedulePerformWorkUntilDeadline @ chunk-SM3OW2QE.js?v=664b3655:400
+requestHostCallback @ chunk-SM3OW2QE.js?v=664b3655:418
+unstable_scheduleCallback @ chunk-SM3OW2QE.js?v=664b3655:330
+scheduleCallback$1 @ chunk-SM3OW2QE.js?v=664b3655:19826
+ensureRootIsScheduled @ chunk-SM3OW2QE.js?v=664b3655:18652
+scheduleUpdateOnFiber @ chunk-SM3OW2QE.js?v=664b3655:18562
+dispatchSetState @ chunk-SM3OW2QE.js?v=664b3655:12403
+onSuccess @ messaging-system.tsx:550
+execute @ @tanstack_react-query.js?v=664b3655:1258
+await in execute
+mutate @ @tanstack_react-query.js?v=664b3655:2650
+(anonymous) @ @tanstack_react-query.js?v=664b3655:3362
+onClick @ messaging-system.tsx:763
+callCallback2 @ chunk-SM3OW2QE.js?v=664b3655:3674
+invokeGuardedCallbackDev @ chunk-SM3OW2QE.js?v=664b3655:3699
+invokeGuardedCallback @ chunk-SM3OW2QE.js?v=664b3655:3733
+invokeGuardedCallbackAndCatchFirstError @ chunk-SM3OW2QE.js?v=664b3655:3736
+executeDispatch @ chunk-SM3OW2QE.js?v=664b3655:7014
+processDispatchQueueItemsInOrder @ chunk-SM3OW2QE.js?v=664b3655:7034
+processDispatchQueue @ chunk-SM3OW2QE.js?v=664b3655:7043
+dispatchEventsForPlugins @ chunk-SM3OW2QE.js?v=664b3655:7051
+(anonymous) @ chunk-SM3OW2QE.js?v=664b3655:7174
+batchedUpdates$1 @ chunk-SM3OW2QE.js?v=664b3655:18913
+batchedUpdates @ chunk-SM3OW2QE.js?v=664b3655:3579
+dispatchEventForPluginEventSystem @ chunk-SM3OW2QE.js?v=664b3655:7173
+dispatchEventWithEnableCapturePhaseSelectiveHydrationWithoutDiscreteEventReplay @ chunk-SM3OW2QE.js?v=664b3655:5478
+dispatchEvent @ chunk-SM3OW2QE.js?v=664b3655:5472
+dispatchDiscreteEvent @ chunk-SM3OW2QE.js?v=664b3655:5449
+2injected.js:27 🔍 getQueryFn - SessionManager sessionToken: FOUND
+injected.js:27 🔍 SessionManager.getSession() returning: {isLoggedIn: true, handle: 'dippydoge', hasWalletData: true, hasSessionToken: true, walletDataKeys: Array(7)}
+injected.js:27 🔍 getQueryFn - SessionManager sessionToken: FOUND
+injected.js:204  GET https://301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/api/messaging/messages 404 (Not Found)
+apply @ injected.js:204
+(anonymous) @ queryClient.ts:161
+fetchFn @ @tanstack_react-query.js?v=664b3655:868
+run @ @tanstack_react-query.js?v=664b3655:506
+start @ @tanstack_react-query.js?v=664b3655:547
+fetch @ @tanstack_react-query.js?v=664b3655:951
+executeFetch_fn @ @tanstack_react-query.js?v=664b3655:2244
+(anonymous) @ @tanstack_react-query.js?v=664b3655:2278
+setInterval
+updateRefetchInterval_fn @ @tanstack_react-query.js?v=664b3655:2276
+updateTimers_fn @ @tanstack_react-query.js?v=664b3655:2283
+onQueryUpdate @ @tanstack_react-query.js?v=664b3655:2239
+(anonymous) @ @tanstack_react-query.js?v=664b3655:1024
+(anonymous) @ @tanstack_react-query.js?v=664b3655:1023
+batch @ @tanstack_react-query.js?v=664b3655:595
+dispatch_fn @ @tanstack_react-query.js?v=664b3655:1022
+onError @ @tanstack_react-query.js?v=664b3655:890
+reject @ @tanstack_react-query.js?v=664b3655:479
+(anonymous) @ @tanstack_react-query.js?v=664b3655:519
+Promise.catch
+run @ @tanstack_react-query.js?v=664b3655:510
+start @ @tanstack_react-query.js?v=664b3655:547
+fetch @ @tanstack_react-query.js?v=664b3655:951
+executeFetch_fn @ @tanstack_react-query.js?v=664b3655:2244
+(anonymous) @ @tanstack_react-query.js?v=664b3655:2278
+setInterval
+updateRefetchInterval_fn @ @tanstack_react-query.js?v=664b3655:2276
+updateTimers_fn @ @tanstack_react-query.js?v=664b3655:2283
+onQueryUpdate @ @tanstack_react-query.js?v=664b3655:2239
+(anonymous) @ @tanstack_react-query.js?v=664b3655:1024
+(anonymous) @ @tanstack_react-query.js?v=664b3655:1023
+batch @ @tanstack_react-query.js?v=664b3655:595
+dispatch_fn @ @tanstack_react-query.js?v=664b3655:1022
+onError @ @tanstack_react-query.js?v=664b3655:890
+reject @ @tanstack_react-query.js?v=664b3655:479
+(anonymous) @ @tanstack_react-query.js?v=664b3655:519
+Promise.catch
+run @ @tanstack_react-query.js?v=664b3655:510
+start @ @tanstack_react-query.js?v=664b3655:547
+fetch @ @tanstack_react-query.js?v=664b3655:951
+executeFetch_fn @ @tanstack_react-query.js?v=664b3655:2244
+(anonymous) @ @tanstack_react-query.js?v=664b3655:2278
+setInterval
+updateRefetchInterval_fn @ @tanstack_react-query.js?v=664b3655:2276
+updateTimers_fn @ @tanstack_react-query.js?v=664b3655:2283
+onQueryUpdate @ @tanstack_react-query.js?v=664b3655:2239
+(anonymous) @ @tanstack_react-query.js?v=664b3655:1024
+(anonymous) @ @tanstack_react-query.js?v=664b3655:1023
+batch @ @tanstack_react-query.js?v=664b3655:595
+dispatch_fn @ @tanstack_react-query.js?v=664b3655:1022
+onError @ @tanstack_react-query.js?v=664b3655:890
+reject @ @tanstack_react-query.js?v=664b3655:479
+(anonymous) @ @tanstack_react-query.js?v=664b3655:519
+Promise.catch
+run @ @tanstack_react-query.js?v=664b3655:510
+start @ @tanstack_react-query.js?v=664b3655:547
+fetch @ @tanstack_react-query.js?v=664b3655:951
+executeFetch_fn @ @tanstack_react-query.js?v=664b3655:2244
+(anonymous) @ @tanstack_react-query.js?v=664b3655:2278
+setInterval
+updateRefetchInterval_fn @ @tanstack_react-query.js?v=664b3655:2276
+updateTimers_fn @ @tanstack_react-query.js?v=664b3655:2283
+onQueryUpdate @ @tanstack_react-query.js?v=664b3655:2239
+(anonymous) @ @tanstack_react-query.js?v=664b3655:1024
+(anonymous) @ @tanstack_react-query.js?v=664b3655:1023
+batch @ @tanstack_react-query.js?v=664b3655:595
+dispatch_fn @ @tanstack_react-query.js?v=664b3655:1022
+onError @ @tanstack_react-query.js?v=664b3655:890
+reject @ @tanstack_react-query.js?v=664b3655:479
+(anonymous) @ @tanstack_react-query.js?v=664b3655:519
+Promise.catch
+run @ @tanstack_react-query.js?v=664b3655:510
+start @ @tanstack_react-query.js?v=664b3655:547
+fetch @ @tanstack_react-query.js?v=664b3655:951
+executeFetch_fn @ @tanstack_react-query.js?v=664b3655:2244
+(anonymous) @ @tanstack_react-query.js?v=664b3655:2278
+setInterval
+updateRefetchInterval_fn @ @tanstack_react-query.js?v=664b3655:2276
+updateTimers_fn @ @tanstack_react-query.js?v=664b3655:2283
+onQueryUpdate @ @tanstack_react-query.js?v=664b3655:2239
+(anonymous) @ @tanstack_react-query.js?v=664b3655:1024
+(anonymous) @ @tanstack_react-query.js?v=664b3655:1023
+batch @ @tanstack_react-query.js?v=664b3655:595
+dispatch_fn @ @tanstack_react-query.js?v=664b3655:1022
+onError @ @tanstack_react-query.js?v=664b3655:890
+reject @ @tanstack_react-query.js?v=664b3655:479
+(anonymous) @ @tanstack_react-query.js?v=664b3655:519
+Promise.catch
+run @ @tanstack_react-query.js?v=664b3655:510
+start @ @tanstack_react-query.js?v=664b3655:547
+fetch @ @tanstack_react-query.js?v=664b3655:951
+executeFetch_fn @ @tanstack_react-query.js?v=664b3655:2244
+(anonymous) @ @tanstack_react-query.js?v=664b3655:2278
+setInterval
+updateRefetchInterval_fn @ @tanstack_react-query.js?v=664b3655:2276
+updateTimers_fn @ @tanstack_react-query.js?v=664b3655:2283
+onQueryUpdate @ @tanstack_react-query.js?v=664b3655:2239
+(anonymous) @ @tanstack_react-query.js?v=664b3655:1024
+(anonymous) @ @tanstack_react-query.js?v=664b3655:1023
+batch @ @tanstack_react-query.js?v=664b3655:595
+dispatch_fn @ @tanstack_react-query.js?v=664b3655:1022
+onError @ @tanstack_react-query.js?v=664b3655:890
+reject @ @tanstack_react-query.js?v=664b3655:479
+(anonymous) @ @tanstack_react-query.js?v=664b3655:519
+Promise.catch
+run @ @tanstack_react-query.js?v=664b3655:510
+start @ @tanstack_react-query.js?v=664b3655:547
+fetch @ @tanstack_react-query.js?v=664b3655:951
+executeFetch_fn @ @tanstack_react-query.js?v=664b3655:2244
+(anonymous) @ @tanstack_react-query.js?v=664b3655:2278
+setInterval
+updateRefetchInterval_fn @ @tanstack_react-query.js?v=664b3655:2276
+updateTimers_fn @ @tanstack_react-query.js?v=664b3655:2283
+onQueryUpdate @ @tanstack_react-query.js?v=664b3655:2239
+(anonymous) @ @tanstack_react-query.js?v=664b3655:1024
+(anonymous) @ @tanstack_react-query.js?v=664b3655:1023
+batch @ @tanstack_react-query.js?v=664b3655:595
+dispatch_fn @ @tanstack_react-query.js?v=664b3655:1022
+onError @ @tanstack_react-query.js?v=664b3655:890
+reject @ @tanstack_react-query.js?v=664b3655:479
+(anonymous) @ @tanstack_react-query.js?v=664b3655:519
+Promise.catch
+run @ @tanstack_react-query.js?v=664b3655:510
+start @ @tanstack_react-query.js?v=664b3655:547
+fetch @ @tanstack_react-query.js?v=664b3655:951
+executeFetch_fn @ @tanstack_react-query.js?v=664b3655:2244
+(anonymous) @ @tanstack_react-query.js?v=664b3655:2278
+setInterval
+updateRefetchInterval_fn @ @tanstack_react-query.js?v=664b3655:2276
+updateTimers_fn @ @tanstack_react-query.js?v=664b3655:2283
+onQueryUpdate @ @tanstack_react-query.js?v=664b3655:2239
+(anonymous) @ @tanstack_react-query.js?v=664b3655:1024
+(anonymous) @ @tanstack_react-query.js?v=664b3655:1023
+batch @ @tanstack_react-query.js?v=664b3655:595
+dispatch_fn @ @tanstack_react-query.js?v=664b3655:1022
+onError @ @tanstack_react-query.js?v=664b3655:890
+reject @ @tanstack_react-query.js?v=664b3655:479
+(anonymous) @ @tanstack_react-query.js?v=664b3655:519
+Promise.catch
+run @ @tanstack_react-query.js?v=664b3655:510
+start @ @tanstack_react-query.js?v=664b3655:547
+fetch @ @tanstack_react-query.js?v=664b3655:951
+executeFetch_fn @ @tanstack_react-query.js?v=664b3655:2244
+(anonymous) @ @tanstack_react-query.js?v=664b3655:2278
+setInterval
+updateRefetchInterval_fn @ @tanstack_react-query.js?v=664b3655:2276
+updateTimers_fn @ @tanstack_react-query.js?v=664b3655:2283
+onQueryUpdate @ @tanstack_react-query.js?v=664b3655:2239
+(anonymous) @ @tanstack_react-query.js?v=664b3655:1024
+(anonymous) @ @tanstack_react-query.js?v=664b3655:1023
+batch @ @tanstack_react-query.js?v=664b3655:595
+dispatch_fn @ @tanstack_react-query.js?v=664b3655:1022
+onError @ @tanstack_react-query.js?v=664b3655:890
+reject @ @tanstack_react-query.js?v=664b3655:479
+(anonymous) @ @tanstack_react-query.js?v=664b3655:519
+Promise.catch
+run @ @tanstack_react-query.js?v=664b3655:510
+start @ @tanstack_react-query.js?v=664b3655:547
+fetch @ @tanstack_react-query.js?v=664b3655:951
+executeFetch_fn @ @tanstack_react-query.js?v=664b3655:2244
+(anonymous) @ @tanstack_react-query.js?v=664b3655:2278
+setInterval
+updateRefetchInterval_fn @ @tanstack_react-query.js?v=664b3655:2276
+updateTimers_fn @ @tanstack_react-query.js?v=664b3655:2283
+onQueryUpdate @ @tanstack_react-query.js?v=664b3655:2239
+(anonymous) @ @tanstack_react-query.js?v=664b3655:1024
+(anonymous) @ @tanstack_react-query.js?v=664b3655:1023
+batch @ @tanstack_react-query.js?v=664b3655:595
+dispatch_fn @ @tanstack_react-query.js?v=664b3655:1022
+onError @ @tanstack_react-query.js?v=664b3655:890
+reject @ @tanstack_react-query.js?v=664b3655:479
+(anonymous) @ @tanstack_react-query.js?v=664b3655:519
+Promise.catch
+run @ @tanstack_react-query.js?v=664b3655:510
+start @ @tanstack_react-query.js?v=664b3655:547
+fetch @ @tanstack_react-query.js?v=664b3655:951
+executeFetch_fn @ @tanstack_react-query.js?v=664b3655:2244
+(anonymous) @ @tanstack_react-query.js?v=664b3655:2278
+setInterval
+updateRefetchInterval_fn @ @tanstack_react-query.js?v=664b3655:2276
+updateTimers_fn @ @tanstack_react-query.js?v=664b3655:2283
+onQueryUpdate @ @tanstack_react-query.js?v=664b3655:2239
+(anonymous) @ @tanstack_react-query.js?v=664b3655:1024
+(anonymous) @ @tanstack_react-query.js?v=664b3655:1023
+batch @ @tanstack_react-query.js?v=664b3655:595
+dispatch_fn @ @tanstack_react-query.js?v=664b3655:1022
+onError @ @tanstack_react-query.js?v=664b3655:890
+reject @ @tanstack_react-query.js?v=664b3655:479
+(anonymous) @ @tanstack_react-query.js?v=664b3655:519
+Promise.catch
+run @ @tanstack_react-query.js?v=664b3655:510
+start @ @tanstack_react-query.js?v=664b3655:547
+fetch @ @tanstack_react-query.js?v=664b3655:951
+executeFetch_fn @ @tanstack_react-query.js?v=664b3655:2244
+setOptions @ @tanstack_react-query.js?v=664b3655:2005
+(anonymous) @ @tanstack_react-query.js?v=664b3655:3105
+commitHookEffectListMount @ chunk-SM3OW2QE.js?v=664b3655:16915
+commitPassiveMountOnFiber @ chunk-SM3OW2QE.js?v=664b3655:18156
+commitPassiveMountEffects_complete @ chunk-SM3OW2QE.js?v=664b3655:18129
+commitPassiveMountEffects_begin @ chunk-SM3OW2QE.js?v=664b3655:18119
+commitPassiveMountEffects @ chunk-SM3OW2QE.js?v=664b3655:18109
+flushPassiveEffectsImpl @ chunk-SM3OW2QE.js?v=664b3655:19490
+flushPassiveEffects @ chunk-SM3OW2QE.js?v=664b3655:19447
+performSyncWorkOnRoot @ chunk-SM3OW2QE.js?v=664b3655:18868
+flushSyncCallbacks @ chunk-SM3OW2QE.js?v=664b3655:9119
+commitRootImpl @ chunk-SM3OW2QE.js?v=664b3655:19432
+commitRoot @ chunk-SM3OW2QE.js?v=664b3655:19277
+finishConcurrentRender @ chunk-SM3OW2QE.js?v=664b3655:18805
+performConcurrentWorkOnRoot @ chunk-SM3OW2QE.js?v=664b3655:18718
+workLoop @ chunk-SM3OW2QE.js?v=664b3655:197
+flushWork @ chunk-SM3OW2QE.js?v=664b3655:176
+performWorkUntilDeadline @ chunk-SM3OW2QE.js?v=664b3655:384
+_ @ inpage.js:166
+w @ inpage.js:166
+Y @ inpage.js:166
+postMessage
+h @ inpage.js:166
+b @ inpage.js:166
+schedulePerformWorkUntilDeadline @ chunk-SM3OW2QE.js?v=664b3655:400
+requestHostCallback @ chunk-SM3OW2QE.js?v=664b3655:418
+unstable_scheduleCallback @ chunk-SM3OW2QE.js?v=664b3655:330
+scheduleCallback$1 @ chunk-SM3OW2QE.js?v=664b3655:19826
+ensureRootIsScheduled @ chunk-SM3OW2QE.js?v=664b3655:18652
+scheduleUpdateOnFiber @ chunk-SM3OW2QE.js?v=664b3655:18562
+dispatchSetState @ chunk-SM3OW2QE.js?v=664b3655:12403
+onSuccess @ messaging-system.tsx:550
+execute @ @tanstack_react-query.js?v=664b3655:1258
+await in execute
+mutate @ @tanstack_react-query.js?v=664b3655:2650
+(anonymous) @ @tanstack_react-query.js?v=664b3655:3362
+onClick @ messaging-system.tsx:763
+callCallback2 @ chunk-SM3OW2QE.js?v=664b3655:3674
+invokeGuardedCallbackDev @ chunk-SM3OW2QE.js?v=664b3655:3699
+invokeGuardedCallback @ chunk-SM3OW2QE.js?v=664b3655:3733
+invokeGuardedCallbackAndCatchFirstError @ chunk-SM3OW2QE.js?v=664b3655:3736
+executeDispatch @ chunk-SM3OW2QE.js?v=664b3655:7014
+processDispatchQueueItemsInOrder @ chunk-SM3OW2QE.js?v=664b3655:7034
+processDispatchQueue @ chunk-SM3OW2QE.js?v=664b3655:7043
+dispatchEventsForPlugins @ chunk-SM3OW2QE.js?v=664b3655:7051
+(anonymous) @ chunk-SM3OW2QE.js?v=664b3655:7174
+batchedUpdates$1 @ chunk-SM3OW2QE.js?v=664b3655:18913
+batchedUpdates @ chunk-SM3OW2QE.js?v=664b3655:3579
+dispatchEventForPluginEventSystem @ chunk-SM3OW2QE.js?v=664b3655:7173
+dispatchEventWithEnableCapturePhaseSelectiveHydrationWithoutDiscreteEventReplay @ chunk-SM3OW2QE.js?v=664b3655:5478
+dispatchEvent @ chunk-SM3OW2QE.js?v=664b3655:5472
+dispatchDiscreteEvent @ chunk-SM3OW2QE.js?v=664b3655:5449
+injected.js:27 🔄 Sending message: {conversationId: 'c2d44ec3-410e-4db0-8664-ef964e5d439a', content: 'dds'}
+injected.js:27 🔍 SessionManager sessionToken: FOUND
+injected.js:27 🔍 getQueryFn - SessionManager sessionToken: FOUND
+injected.js:27 🔍 getQueryFn - SessionManager sessionToken: FOUND
+injected.js:27 ✅ Message sent successfully
+injected.js:204  GET https://301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/api/messaging/messages 404 (Not Found)
+apply @ injected.js:204
+(anonymous) @ queryClient.ts:161
+fetchFn @ @tanstack_react-query.js?v=664b3655:868
+run @ @tanstack_react-query.js?v=664b3655:506
+start @ @tanstack_react-query.js?v=664b3655:547
+fetch @ @tanstack_react-query.js?v=664b3655:951
+(anonymous) @ @tanstack_react-query.js?v=664b3655:1776
+(anonymous) @ @tanstack_react-query.js?v=664b3655:1775
+batch @ @tanstack_react-query.js?v=664b3655:595
+refetchQueries @ @tanstack_react-query.js?v=664b3655:1774
+(anonymous) @ @tanstack_react-query.js?v=664b3655:1760
+batch @ @tanstack_react-query.js?v=664b3655:595
+invalidateQueries @ @tanstack_react-query.js?v=664b3655:1753
+onSuccess @ messaging-system.tsx:528
+execute @ @tanstack_react-query.js?v=664b3655:1258
+await in execute
+mutate @ @tanstack_react-query.js?v=664b3655:2650
+(anonymous) @ @tanstack_react-query.js?v=664b3655:3362
+handleSendMessage @ messaging-system.tsx:670
+callCallback2 @ chunk-SM3OW2QE.js?v=664b3655:3674
+invokeGuardedCallbackDev @ chunk-SM3OW2QE.js?v=664b3655:3699
+invokeGuardedCallback @ chunk-SM3OW2QE.js?v=664b3655:3733
+invokeGuardedCallbackAndCatchFirstError @ chunk-SM3OW2QE.js?v=664b3655:3736
+executeDispatch @ chunk-SM3OW2QE.js?v=664b3655:7014
+processDispatchQueueItemsInOrder @ chunk-SM3OW2QE.js?v=664b3655:7034
+processDispatchQueue @ chunk-SM3OW2QE.js?v=664b3655:7043
+dispatchEventsForPlugins @ chunk-SM3OW2QE.js?v=664b3655:7051
+(anonymous) @ chunk-SM3OW2QE.js?v=664b3655:7174
+batchedUpdates$1 @ chunk-SM3OW2QE.js?v=664b3655:18913
+batchedUpdates @ chunk-SM3OW2QE.js?v=664b3655:3579
+dispatchEventForPluginEventSystem @ chunk-SM3OW2QE.js?v=664b3655:7173
+dispatchEventWithEnableCapturePhaseSelectiveHydrationWithoutDiscreteEventReplay @ chunk-SM3OW2QE.js?v=664b3655:5478
+dispatchEvent @ chunk-SM3OW2QE.js?v=664b3655:5472
+dispatchDiscreteEvent @ chunk-SM3OW2QE.js?v=664b3655:5449
+injected.js:27 🔍 SessionManager.getSession() returning: {isLoggedIn: true, handle: 'dippydoge', hasWalletData: true, hasSessionToken: true, walletDataKeys: Array(7)}
+injected.js:27 🔍 getQueryFn - SessionManager sessionToken: FOUND
+injected.js:204  GET https://301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/api/messaging/messages 404 (Not Found)
+apply @ injected.js:204
+(anonymous) @ queryClient.ts:161
+fetchFn @ @tanstack_react-query.js?v=664b3655:868
+run @ @tanstack_react-query.js?v=664b3655:506
+start @ @tanstack_react-query.js?v=664b3655:547
+fetch @ @tanstack_react-query.js?v=664b3655:951
+executeFetch_fn @ @tanstack_react-query.js?v=664b3655:2244
+(anonymous) @ @tanstack_react-query.js?v=664b3655:2278
+setInterval
+updateRefetchInterval_fn @ @tanstack_react-query.js?v=664b3655:2276
+updateTimers_fn @ @tanstack_react-query.js?v=664b3655:2283
+onQueryUpdate @ @tanstack_react-query.js?v=664b3655:2239
+(anonymous) @ @tanstack_react-query.js?v=664b3655:1024
+(anonymous) @ @tanstack_react-query.js?v=664b3655:1023
+batch @ @tanstack_react-query.js?v=664b3655:595
+dispatch_fn @ @tanstack_react-query.js?v=664b3655:1022
+onError @ @tanstack_react-query.js?v=664b3655:890
+reject @ @tanstack_react-query.js?v=664b3655:479
+(anonymous) @ @tanstack_react-query.js?v=664b3655:519
+Promise.catch
+run @ @tanstack_react-query.js?v=664b3655:510
+start @ @tanstack_react-query.js?v=664b3655:547
+fetch @ @tanstack_react-query.js?v=664b3655:951
+(anonymous) @ @tanstack_react-query.js?v=664b3655:1776
+(anonymous) @ @tanstack_react-query.js?v=664b3655:1775
+batch @ @tanstack_react-query.js?v=664b3655:595
+refetchQueries @ @tanstack_react-query.js?v=664b3655:1774
+(anonymous) @ @tanstack_react-query.js?v=664b3655:1760
+batch @ @tanstack_react-query.js?v=664b3655:595
+invalidateQueries @ @tanstack_react-query.js?v=664b3655:1753
+onSuccess @ messaging-system.tsx:528
+execute @ @tanstack_react-query.js?v=664b3655:1258
+await in execute
+mutate @ @tanstack_react-query.js?v=664b3655:2650
+(anonymous) @ @tanstack_react-query.js?v=664b3655:3362
+handleSendMessage @ messaging-system.tsx:670
+callCallback2 @ chunk-SM3OW2QE.js?v=664b3655:3674
+invokeGuardedCallbackDev @ chunk-SM3OW2QE.js?v=664b3655:3699
+invokeGuardedCallback @ chunk-SM3OW2QE.js?v=664b3655:3733
+invokeGuardedCallbackAndCatchFirstError @ chunk-SM3OW2QE.js?v=664b3655:3736
+executeDispatch @ chunk-SM3OW2QE.js?v=664b3655:7014
+processDispatchQueueItemsInOrder @ chunk-SM3OW2QE.js?v=664b3655:7034
+processDispatchQueue @ chunk-SM3OW2QE.js?v=664b3655:7043
+dispatchEventsForPlugins @ chunk-SM3OW2QE.js?v=664b3655:7051
+(anonymous) @ chunk-SM3OW2QE.js?v=664b3655:7174
+batchedUpdates$1 @ chunk-SM3OW2QE.js?v=664b3655:18913
+batchedUpdates @ chunk-SM3OW2QE.js?v=664b3655:3579
+dispatchEventForPluginEventSystem @ chunk-SM3OW2QE.js?v=664b3655:7173
+dispatchEventWithEnableCapturePhaseSelectiveHydrationWithoutDiscreteEventReplay @ chunk-SM3OW2QE.js?v=664b3655:5478
+dispatchEvent @ chunk-SM3OW2QE.js?v=664b3655:5472
+dispatchDiscreteEvent @ chunk-SM3OW2QE.js?v=664b3655:5449
+injected.js:27 🔍 getQueryFn - SessionManager sessionToken: FOUND
+injected.js:204  GET https://301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/api/messaging/messages 404 (Not Found)
+apply @ injected.js:204
+(anonymous) @ queryClient.ts:161
+fetchFn @ @tanstack_react-query.js?v=664b3655:868
+run @ @tanstack_react-query.js?v=664b3655:506
+start @ @tanstack_react-query.js?v=664b3655:547
+fetch @ @tanstack_react-query.js?v=664b3655:951
+executeFetch_fn @ @tanstack_react-query.js?v=664b3655:2244
+(anonymous) @ @tanstack_react-query.js?v=664b3655:2278
+setInterval
+updateRefetchInterval_fn @ @tanstack_react-query.js?v=664b3655:2276
+updateTimers_fn @ @tanstack_react-query.js?v=664b3655:2283
+onQueryUpdate @ @tanstack_react-query.js?v=664b3655:2239
+(anonymous) @ @tanstack_react-query.js?v=664b3655:1024
+(anonymous) @ @tanstack_react-query.js?v=664b3655:1023
+batch @ @tanstack_react-query.js?v=664b3655:595
+dispatch_fn @ @tanstack_react-query.js?v=664b3655:1022
+onError @ @tanstack_react-query.js?v=664b3655:890
+reject @ @tanstack_react-query.js?v=664b3655:479
+(anonymous) @ @tanstack_react-query.js?v=664b3655:519
+Promise.catch
+run @ @tanstack_react-query.js?v=664b3655:510
+start @ @tanstack_react-query.js?v=664b3655:547
+fetch @ @tanstack_react-query.js?v=664b3655:951
+executeFetch_fn @ @tanstack_react-query.js?v=664b3655:2244
+(anonymous) @ @tanstack_react-query.js?v=664b3655:2278
+setInterval
+updateRefetchInterval_fn @ @tanstack_react-query.js?v=664b3655:2276
+updateTimers_fn @ @tanstack_react-query.js?v=664b3655:2283
+onQueryUpdate @ @tanstack_react-query.js?v=664b3655:2239
+(anonymous) @ @tanstack_react-query.js?v=664b3655:1024
+(anonymous) @ @tanstack_react-query.js?v=664b3655:1023
+batch @ @tanstack_react-query.js?v=664b3655:595
+dispatch_fn @ @tanstack_react-query.js?v=664b3655:1022
+onError @ @tanstack_react-query.js?v=664b3655:890
+reject @ @tanstack_react-query.js?v=664b3655:479
+(anonymous) @ @tanstack_react-query.js?v=664b3655:519
+Promise.catch
+run @ @tanstack_react-query.js?v=664b3655:510
+start @ @tanstack_react-query.js?v=664b3655:547
+fetch @ @tanstack_react-query.js?v=664b3655:951
+(anonymous) @ @tanstack_react-query.js?v=664b3655:1776
+(anonymous) @ @tanstack_react-query.js?v=664b3655:1775
+batch @ @tanstack_react-query.js?v=664b3655:595
+refetchQueries @ @tanstack_react-query.js?v=664b3655:1774
+(anonymous) @ @tanstack_react-query.js?v=664b3655:1760
+batch @ @tanstack_react-query.js?v=664b3655:595
+invalidateQueries @ @tanstack_react-query.js?v=664b3655:1753
+onSuccess @ messaging-system.tsx:528
+execute @ @tanstack_react-query.js?v=664b3655:1258
+await in execute
+mutate @ @tanstack_react-query.js?v=664b3655:2650
+(anonymous) @ @tanstack_react-query.js?v=664b3655:3362
+handleSendMessage @ messaging-system.tsx:670
+callCallback2 @ chunk-SM3OW2QE.js?v=664b3655:3674
+invokeGuardedCallbackDev @ chunk-SM3OW2QE.js?v=664b3655:3699
+invokeGuardedCallback @ chunk-SM3OW2QE.js?v=664b3655:3733
+invokeGuardedCallbackAndCatchFirstError @ chunk-SM3OW2QE.js?v=664b3655:3736
+executeDispatch @ chunk-SM3OW2QE.js?v=664b3655:7014
+processDispatchQueueItemsInOrder @ chunk-SM3OW2QE.js?v=664b3655:7034
+processDispatchQueue @ chunk-SM3OW2QE.js?v=664b3655:7043
+dispatchEventsForPlugins @ chunk-SM3OW2QE.js?v=664b3655:7051
+(anonymous) @ chunk-SM3OW2QE.js?v=664b3655:7174
+batchedUpdates$1 @ chunk-SM3OW2QE.js?v=664b3655:18913
+batchedUpdates @ chunk-SM3OW2QE.js?v=664b3655:3579
+dispatchEventForPluginEventSystem @ chunk-SM3OW2QE.js?v=664b3655:7173
+dispatchEventWithEnableCapturePhaseSelectiveHydrationWithoutDiscreteEventReplay @ chunk-SM3OW2QE.js?v=664b3655:5478
+dispatchEvent @ chunk-SM3OW2QE.js?v=664b3655:5472
+dispatchDiscreteEvent @ chunk-SM3OW2QE.js?v=664b3655:5449
+injected.js:27 🔍 getQueryFn - SessionManager sessionToken: FOUND
+dippydoge1-10-11:1 Access to XMLHttpRequest at 'https://events.launchdarkly.com/events/bulk/62b35a865152ab14c5942820' from origin 'https://replit.com' has been blocked by CORS policy: Response to preflight request doesn't pass access control check: No 'Access-Control-Allow-Origin' header is present on the requested resource.
+_app-39dea94da059629e.js:28  POST https://events.launchdarkly.com/events/bulk/62b35a865152ab14c5942820 net::ERR_FAILED
+(anonymous) @ _app-39dea94da059629e.js:28
+(anonymous) @ _app-39dea94da059629e.js:28
+(anonymous) @ _app-39dea94da059629e.js:30
+(anonymous) @ _app-39dea94da059629e.js:30
+(anonymous) @ _app-39dea94da059629e.js:30
+t @ _app-39dea94da059629e.js:30
+(anonymous) @ _app-39dea94da059629e.js:30
+(anonymous) @ _app-39dea94da059629e.js:30
+(anonymous) @ _app-39dea94da059629e.js:30
+e @ _app-39dea94da059629e.js:30
+n @ _app-39dea94da059629e.js:28
+dippydoge1-10-11:1 Access to XMLHttpRequest at 'https://events.launchdarkly.com/events/bulk/62b35a865152ab14c5942820' from origin 'https://replit.com' has been blocked by CORS policy: Response to preflight request doesn't pass access control check: No 'Access-Control-Allow-Origin' header is present on the requested resource.
+_app-39dea94da059629e.js:28  POST https://events.launchdarkly.com/events/bulk/62b35a865152ab14c5942820 net::ERR_FAILED
+(anonymous) @ _app-39dea94da059629e.js:28
+(anonymous) @ _app-39dea94da059629e.js:28
+(anonymous) @ _app-39dea94da059629e.js:30
+(anonymous) @ _app-39dea94da059629e.js:30
+(anonymous) @ _app-39dea94da059629e.js:30
+t @ _app-39dea94da059629e.js:30
+(anonymous) @ _app-39dea94da059629e.js:30
+Promise.catch
+t @ _app-39dea94da059629e.js:30
+(anonymous) @ _app-39dea94da059629e.js:30
+(anonymous) @ _app-39dea94da059629e.js:30
+(anonymous) @ _app-39dea94da059629e.js:30
+e @ _app-39dea94da059629e.js:30
+n @ _app-39dea94da059629e.js:28
+injected.js:27 🔍 getQueryFn - SessionManager sessionToken: FOUND
+injected.js:204  GET https://301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/api/messaging/messages 404 (Not Found)
+apply @ injected.js:204
+(anonymous) @ queryClient.ts:161
+fetchFn @ @tanstack_react-query.js?v=664b3655:868
+run @ @tanstack_react-query.js?v=664b3655:506
+start @ @tanstack_react-query.js?v=664b3655:547
+fetch @ @tanstack_react-query.js?v=664b3655:951
+executeFetch_fn @ @tanstack_react-query.js?v=664b3655:2244
+(anonymous) @ @tanstack_react-query.js?v=664b3655:2278
+setInterval
+updateRefetchInterval_fn @ @tanstack_react-query.js?v=664b3655:2276
+updateTimers_fn @ @tanstack_react-query.js?v=664b3655:2283
+onQueryUpdate @ @tanstack_react-query.js?v=664b3655:2239
+(anonymous) @ @tanstack_react-query.js?v=664b3655:1024
+(anonymous) @ @tanstack_react-query.js?v=664b3655:1023
+batch @ @tanstack_react-query.js?v=664b3655:595
+dispatch_fn @ @tanstack_react-query.js?v=664b3655:1022
+onError @ @tanstack_react-query.js?v=664b3655:890
+reject @ @tanstack_react-query.js?v=664b3655:479
+(anonymous) @ @tanstack_react-query.js?v=664b3655:519
+Promise.catch
+run @ @tanstack_react-query.js?v=664b3655:510
+start @ @tanstack_react-query.js?v=664b3655:547
+fetch @ @tanstack_react-query.js?v=664b3655:951
+executeFetch_fn @ @tanstack_react-query.js?v=664b3655:2244
+(anonymous) @ @tanstack_react-query.js?v=664b3655:2278
+setInterval
+updateRefetchInterval_fn @ @tanstack_react-query.js?v=664b3655:2276
+updateTimers_fn @ @tanstack_react-query.js?v=664b3655:2283
+onQueryUpdate @ @tanstack_react-query.js?v=664b3655:2239
+(anonymous) @ @tanstack_react-query.js?v=664b3655:1024
+(anonymous) @ @tanstack_react-query.js?v=664b3655:1023
+batch @ @tanstack_react-query.js?v=664b3655:595
+dispatch_fn @ @tanstack_react-query.js?v=664b3655:1022
+onError @ @tanstack_react-query.js?v=664b3655:890
+reject @ @tanstack_react-query.js?v=664b3655:479
+(anonymous) @ @tanstack_react-query.js?v=664b3655:519
+Promise.catch
+run @ @tanstack_react-query.js?v=664b3655:510
+start @ @tanstack_react-query.js?v=664b3655:547
+fetch @ @tanstack_react-query.js?v=664b3655:951
+executeFetch_fn @ @tanstack_react-query.js?v=664b3655:2244
+(anonymous) @ @tanstack_react-query.js?v=664b3655:2278
+setInterval
+updateRefetchInterval_fn @ @tanstack_react-query.js?v=664b3655:2276
+updateTimers_fn @ @tanstack_react-query.js?v=664b3655:2283
+onQueryUpdate @ @tanstack_react-query.js?v=664b3655:2239
+(anonymous) @ @tanstack_react-query.js?v=664b3655:1024
+(anonymous) @ @tanstack_react-query.js?v=664b3655:1023
+batch @ @tanstack_react-query.js?v=664b3655:595
+dispatch_fn @ @tanstack_react-query.js?v=664b3655:1022
+onError @ @tanstack_react-query.js?v=664b3655:890
+reject @ @tanstack_react-query.js?v=664b3655:479
+(anonymous) @ @tanstack_react-query.js?v=664b3655:519
+Promise.catch
+run @ @tanstack_react-query.js?v=664b3655:510
+start @ @tanstack_react-query.js?v=664b3655:547
+fetch @ @tanstack_react-query.js?v=664b3655:951
+(anonymous) @ @tanstack_react-query.js?v=664b3655:1776
+(anonymous) @ @tanstack_react-query.js?v=664b3655:1775
+batch @ @tanstack_react-query.js?v=664b3655:595
+refetchQueries @ @tanstack_react-query.js?v=664b3655:1774
+(anonymous) @ @tanstack_react-query.js?v=664b3655:1760
+batch @ @tanstack_react-query.js?v=664b3655:595
+invalidateQueries @ @tanstack_react-query.js?v=664b3655:1753
+onSuccess @ messaging-system.tsx:528
+execute @ @tanstack_react-query.js?v=664b3655:1258
+await in execute
+mutate @ @tanstack_react-query.js?v=664b3655:2650
+(anonymous) @ @tanstack_react-query.js?v=664b3655:3362
+handleSendMessage @ messaging-system.tsx:670
+callCallback2 @ chunk-SM3OW2QE.js?v=664b3655:3674
+invokeGuardedCallbackDev @ chunk-SM3OW2QE.js?v=664b3655:3699
+invokeGuardedCallback @ chunk-SM3OW2QE.js?v=664b3655:3733
+invokeGuardedCallbackAndCatchFirstError @ chunk-SM3OW2QE.js?v=664b3655:3736
+executeDispatch @ chunk-SM3OW2QE.js?v=664b3655:7014
+processDispatchQueueItemsInOrder @ chunk-SM3OW2QE.js?v=664b3655:7034
+processDispatchQueue @ chunk-SM3OW2QE.js?v=664b3655:7043
+dispatchEventsForPlugins @ chunk-SM3OW2QE.js?v=664b3655:7051
+(anonymous) @ chunk-SM3OW2QE.js?v=664b3655:7174
+batchedUpdates$1 @ chunk-SM3OW2QE.js?v=664b3655:18913
+batchedUpdates @ chunk-SM3OW2QE.js?v=664b3655:3579
+dispatchEventForPluginEventSystem @ chunk-SM3OW2QE.js?v=664b3655:7173
+dispatchEventWithEnableCapturePhaseSelectiveHydrationWithoutDiscreteEventReplay @ chunk-SM3OW2QE.js?v=664b3655:5478
+dispatchEvent @ chunk-SM3OW2QE.js?v=664b3655:5472
+dispatchDiscreteEvent @ chunk-SM3OW2QE.js?v=664b3655:5449
+injected.js:27 🔍 SessionManager: checkSession() called - current sessionData: true
+injected.js:27 🌐 SessionManager: Making Riddle wallet session request to /api/riddle-wallet/session
+injected.js:27 ✅ SessionManager: Valid session for dippydoge
+injected.js:27 ✅ SessionManager: Updated session data: {handle: 'dippydoge', hasWalletData: true, authenticated: true, listeners: 4}
+injected.js:27 🔍 SessionManager.getSession() returning: {isLoggedIn: true, handle: 'dippydoge', hasWalletData: true, hasSessionToken: true, walletDataKeys: Array(7)}
+injected.js:27 🔍 SessionManager.getSession() returning: {isLoggedIn: true, handle: 'dippydoge', hasWalletData: true, hasSessionToken: true, walletDataKeys: Array(7)}
+injected.js:27 🔍 SessionManager.getSession() returning: {isLoggedIn: true, handle: 'dippydoge', hasWalletData: true, hasSessionToken: true, walletDataKeys: Array(7)}
+injected.js:27 🔍 SessionManager.getSession() returning: {isLoggedIn: true, handle: 'dippydoge', hasWalletData: true, hasSessionToken: true, walletDataKeys: Array(7)}
+injected.js:27 🔔 SessionManager: Notified 4 listeners
+injected.js:27 🔍 SessionManager.getSession() returning: {isLoggedIn: true, handle: 'dippydoge', hasWalletData: true, hasSessionToken: true, walletDataKeys: Array(7)}
+injected.js:27 🔍 SessionManager.getSession() returning: {isLoggedIn: true, handle: 'dippydoge', hasWalletData: true, hasSessionToken: true, walletDataKeys: Array(7)}
+injected.js:27 🔍 SessionManager.getSession() returning: {isLoggedIn: true, handle: 'dippydoge', hasWalletData: true, hasSessionToken: true, walletDataKeys: Array(7)}
+injected.js:27 🔍 Found local wallet connections: []
+injected.js:27 🔍 getQueryFn - SessionManager sessionToken: FOUND
+injected.js:204  GET https://301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/api/messaging/messages 404 (Not Found)
+apply @ injected.js:204
+(anonymous) @ queryClient.ts:161
+fetchFn @ @tanstack_react-query.js?v=664b3655:868
+run @ @tanstack_react-query.js?v=664b3655:506
+start @ @tanstack_react-query.js?v=664b3655:547
+fetch @ @tanstack_react-query.js?v=664b3655:951
+executeFetch_fn @ @tanstack_react-query.js?v=664b3655:2244
+(anonymous) @ @tanstack_react-query.js?v=664b3655:2278
+setInterval
+updateRefetchInterval_fn @ @tanstack_react-query.js?v=664b3655:2276
+updateTimers_fn @ @tanstack_react-query.js?v=664b3655:2283
+onQueryUpdate @ @tanstack_react-query.js?v=664b3655:2239
+(anonymous) @ @tanstack_react-query.js?v=664b3655:1024
+(anonymous) @ @tanstack_react-query.js?v=664b3655:1023
+batch @ @tanstack_react-query.js?v=664b3655:595
+dispatch_fn @ @tanstack_react-query.js?v=664b3655:1022
+onError @ @tanstack_react-query.js?v=664b3655:890
+reject @ @tanstack_react-query.js?v=664b3655:479
+(anonymous) @ @tanstack_react-query.js?v=664b3655:519
+Promise.catch
+run @ @tanstack_react-query.js?v=664b3655:510
+start @ @tanstack_react-query.js?v=664b3655:547
+fetch @ @tanstack_react-query.js?v=664b3655:951
+executeFetch_fn @ @tanstack_react-query.js?v=664b3655:2244
+(anonymous) @ @tanstack_react-query.js?v=664b3655:2278
+setInterval
+updateRefetchInterval_fn @ @tanstack_react-query.js?v=664b3655:2276
+updateTimers_fn @ @tanstack_react-query.js?v=664b3655:2283
+onQueryUpdate @ @tanstack_react-query.js?v=664b3655:2239
+(anonymous) @ @tanstack_react-query.js?v=664b3655:1024
+(anonymous) @ @tanstack_react-query.js?v=664b3655:1023
+batch @ @tanstack_react-query.js?v=664b3655:595
+dispatch_fn @ @tanstack_react-query.js?v=664b3655:1022
+onError @ @tanstack_react-query.js?v=664b3655:890
+reject @ @tanstack_react-query.js?v=664b3655:479
+(anonymous) @ @tanstack_react-query.js?v=664b3655:519
+Promise.catch
+run @ @tanstack_react-query.js?v=664b3655:510
+start @ @tanstack_react-query.js?v=664b3655:547
+fetch @ @tanstack_react-query.js?v=664b3655:951
+executeFetch_fn @ @tanstack_react-query.js?v=664b3655:2244
+(anonymous) @ @tanstack_react-query.js?v=664b3655:2278
+setInterval
+updateRefetchInterval_fn @ @tanstack_react-query.js?v=664b3655:2276
+updateTimers_fn @ @tanstack_react-query.js?v=664b3655:2283
+onQueryUpdate @ @tanstack_react-query.js?v=664b3655:2239
+(anonymous) @ @tanstack_react-query.js?v=664b3655:1024
+(anonymous) @ @tanstack_react-query.js?v=664b3655:1023
+batch @ @tanstack_react-query.js?v=664b3655:595
+dispatch_fn @ @tanstack_react-query.js?v=664b3655:1022
+onError @ @tanstack_react-query.js?v=664b3655:890
+reject @ @tanstack_react-query.js?v=664b3655:479
+(anonymous) @ @tanstack_react-query.js?v=664b3655:519
+Promise.catch
+run @ @tanstack_react-query.js?v=664b3655:510
+start @ @tanstack_react-query.js?v=664b3655:547
+fetch @ @tanstack_react-query.js?v=664b3655:951
+executeFetch_fn @ @tanstack_react-query.js?v=664b3655:2244
+(anonymous) @ @tanstack_react-query.js?v=664b3655:2278
+setInterval
+updateRefetchInterval_fn @ @tanstack_react-query.js?v=664b3655:2276
+updateTimers_fn @ @tanstack_react-query.js?v=664b3655:2283
+onQueryUpdate @ @tanstack_react-query.js?v=664b3655:2239
+(anonymous) @ @tanstack_react-query.js?v=664b3655:1024
+(anonymous) @ @tanstack_react-query.js?v=664b3655:1023
+batch @ @tanstack_react-query.js?v=664b3655:595
+dispatch_fn @ @tanstack_react-query.js?v=664b3655:1022
+onError @ @tanstack_react-query.js?v=664b3655:890
+reject @ @tanstack_react-query.js?v=664b3655:479
+(anonymous) @ @tanstack_react-query.js?v=664b3655:519
+Promise.catch
+run @ @tanstack_react-query.js?v=664b3655:510
+start @ @tanstack_react-query.js?v=664b3655:547
+fetch @ @tanstack_react-query.js?v=664b3655:951
+(anonymous) @ @tanstack_react-query.js?v=664b3655:1776
+(anonymous) @ @tanstack_react-query.js?v=664b3655:1775
+batch @ @tanstack_react-query.js?v=664b3655:595
+refetchQueries @ @tanstack_react-query.js?v=664b3655:1774
+(anonymous) @ @tanstack_react-query.js?v=664b3655:1760
+batch @ @tanstack_react-query.js?v=664b3655:595
+invalidateQueries @ @tanstack_react-query.js?v=664b3655:1753
+onSuccess @ messaging-system.tsx:528
+execute @ @tanstack_react-query.js?v=664b3655:1258
+await in execute
+mutate @ @tanstack_react-query.js?v=664b3655:2650
+(anonymous) @ @tanstack_react-query.js?v=664b3655:3362
+handleSendMessage @ messaging-system.tsx:670
+callCallback2 @ chunk-SM3OW2QE.js?v=664b3655:3674
+invokeGuardedCallbackDev @ chunk-SM3OW2QE.js?v=664b3655:3699
+invokeGuardedCallback @ chunk-SM3OW2QE.js?v=664b3655:3733
+invokeGuardedCallbackAndCatchFirstError @ chunk-SM3OW2QE.js?v=664b3655:3736
+executeDispatch @ chunk-SM3OW2QE.js?v=664b3655:7014
+processDispatchQueueItemsInOrder @ chunk-SM3OW2QE.js?v=664b3655:7034
+processDispatchQueue @ chunk-SM3OW2QE.js?v=664b3655:7043
+dispatchEventsForPlugins @ chunk-SM3OW2QE.js?v=664b3655:7051
+(anonymous) @ chunk-SM3OW2QE.js?v=664b3655:7174
+batchedUpdates$1 @ chunk-SM3OW2QE.js?v=664b3655:18913
+batchedUpdates @ chunk-SM3OW2QE.js?v=664b3655:3579
+dispatchEventForPluginEventSystem @ chunk-SM3OW2QE.js?v=664b3655:7173
+dispatchEventWithEnableCapturePhaseSelectiveHydrationWithoutDiscreteEventReplay @ chunk-SM3OW2QE.js?v=664b3655:5478
+dispatchEvent @ chunk-SM3OW2QE.js?v=664b3655:5472
+dispatchDiscreteEvent @ chunk-SM3OW2QE.js?v=664b3655:5449
+injected.js:27 🔍 getQueryFn - SessionManager sessionToken: FOUND

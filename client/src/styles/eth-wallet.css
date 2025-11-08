@@ -1,0 +1,705 @@
+/* Ethereum Wallet Dedicated Styles */
+/* Blue Ethereum Theme with Mobile Responsiveness */
+
+/* ETH Wallet Container with scoped CSS variables */
+.eth-wallet-container {
+  --eth-primary: #627EEA;
+  --eth-secondary: #5788FF;
+  --eth-accent: #95B7FF;
+  --eth-dark: #4A5ABA;
+  --eth-light: #E6EFFF;
+  --eth-gradient-from: #627EEA;
+  --eth-gradient-to: #95B7FF;
+  --eth-success: #10B981;
+  --eth-error: #EF4444;
+  --eth-warning: #F59E0B;
+  
+  background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
+  min-height: 100vh;
+}
+
+/* ETH Header Styling */
+.eth-header-card {
+  background: linear-gradient(135deg, var(--eth-gradient-from) 0%, var(--eth-gradient-to) 100%);
+  border: 1px solid rgba(98, 126, 234, 0.3);
+  box-shadow: 0 4px 20px rgba(98, 126, 234, 0.2);
+}
+
+.eth-header-icon {
+  background: linear-gradient(135deg, var(--eth-primary) 0%, var(--eth-secondary) 100%);
+  border-radius: 16px;
+  padding: 16px;
+}
+
+/* ETH Balance Cards */
+.eth-balance-card {
+  background: linear-gradient(135deg, rgba(98, 126, 234, 0.1) 0%, rgba(149, 183, 255, 0.1) 100%);
+  border: 1px solid rgba(98, 126, 234, 0.2);
+  border-radius: 12px;
+}
+
+.eth-balance-text {
+  color: var(--eth-accent);
+  font-weight: 600;
+}
+
+.eth-price-text {
+  color: rgba(149, 183, 255, 0.8);
+}
+
+/* ETH Action Buttons */
+.eth-action-buttons {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+}
+
+@media (min-width: 640px) {
+  .eth-action-buttons {
+    display: flex;
+    flex-direction: row;
+    gap: 12px;
+  }
+}
+
+.eth-send-button {
+  background: linear-gradient(135deg, var(--eth-primary) 0%, var(--eth-secondary) 100%);
+  border: none;
+  color: white;
+  transition: all 0.3s ease;
+}
+
+.eth-send-button:hover {
+  background: linear-gradient(135deg, var(--eth-dark) 0%, var(--eth-primary) 100%);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(98, 126, 234, 0.3);
+}
+
+.eth-receive-button {
+  background: linear-gradient(135deg, var(--eth-success) 0%, #059669 100%);
+  border: none;
+  color: white;
+  transition: all 0.3s ease;
+}
+
+.eth-receive-button:hover {
+  background: linear-gradient(135deg, #059669 0%, #047857 100%);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+}
+
+.eth-swap-button {
+  background: linear-gradient(135deg, var(--eth-secondary) 0%, var(--eth-accent) 100%);
+  border: none;
+  color: white;
+  transition: all 0.3s ease;
+}
+
+.eth-swap-button:hover {
+  background: linear-gradient(135deg, var(--eth-accent) 0%, var(--eth-primary) 100%);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(87, 136, 255, 0.3);
+}
+
+/* Mobile Button Fixes */
+@media (max-width: 639px) {
+  .eth-action-buttons button {
+    font-size: 12px;
+    padding: 8px 12px;
+    min-height: 36px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  
+  .eth-action-buttons button svg {
+    width: 12px;
+    height: 12px;
+    margin-right: 4px;
+  }
+}
+
+/* ETH Tabs Styling */
+.eth-tabs-list {
+  background: rgba(98, 126, 234, 0.1);
+  border: 1px solid rgba(98, 126, 234, 0.2);
+}
+
+.eth-tab-trigger {
+  color: rgba(255, 255, 255, 0.7);
+  transition: all 0.3s ease;
+}
+
+.eth-tab-trigger[data-state="active"] {
+  background: linear-gradient(135deg, var(--eth-primary) 0%, var(--eth-secondary) 100%);
+  color: white;
+  border-radius: 6px;
+}
+
+.eth-tab-trigger:hover {
+  background: rgba(98, 126, 234, 0.1);
+  color: var(--eth-accent);
+}
+
+/* ETH Token Cards */
+.eth-token-card {
+  background: rgba(98, 126, 234, 0.05);
+  border: 1px solid rgba(98, 126, 234, 0.1);
+  border-radius: 12px;
+  transition: all 0.3s ease;
+}
+
+.eth-token-card:hover {
+  background: rgba(98, 126, 234, 0.1);
+  border-color: rgba(98, 126, 234, 0.3);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(98, 126, 234, 0.2);
+}
+
+.eth-token-actions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 639px) {
+  .eth-token-actions {
+    flex-direction: column;
+    gap: 4px;
+  }
+  
+  .eth-token-actions button {
+    font-size: 11px;
+    padding: 4px 8px;
+    min-height: 28px;
+  }
+  
+  .eth-token-actions button svg {
+    width: 10px;
+    height: 10px;
+    margin-right: 2px;
+  }
+}
+
+/* ETH NFT Cards */
+.eth-nft-card {
+  background: rgba(98, 126, 234, 0.05);
+  border: 1px solid rgba(98, 126, 234, 0.1);
+  transition: all 0.3s ease;
+}
+
+.eth-nft-card:hover {
+  background: rgba(98, 126, 234, 0.1);
+  border-color: var(--eth-primary);
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 8px 24px rgba(98, 126, 234, 0.3);
+}
+
+/* ETH Address Display */
+.eth-address-container {
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(98, 126, 234, 0.2);
+  border-radius: 8px;
+  padding: 12px;
+}
+
+.eth-address-text {
+  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+  color: var(--eth-accent);
+  font-size: 14px;
+}
+
+@media (max-width: 639px) {
+  .eth-address-text {
+    font-size: 12px;
+  }
+}
+
+/* ETH Modal Styling */
+.eth-modal-content {
+  background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
+  border: 1px solid rgba(98, 126, 234, 0.3);
+}
+
+.eth-modal-header {
+  border-bottom: 1px solid rgba(98, 126, 234, 0.2);
+  padding-bottom: 12px;
+  margin-bottom: 16px;
+}
+
+.eth-modal-title {
+  color: var(--eth-accent);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* ETH Form Elements */
+.eth-form-input {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(98, 126, 234, 0.3);
+  color: white;
+  transition: all 0.3s ease;
+}
+
+.eth-form-input:focus {
+  border-color: var(--eth-primary);
+  box-shadow: 0 0 0 2px rgba(98, 126, 234, 0.2);
+}
+
+.eth-form-input::placeholder {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.eth-form-select {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(98, 126, 234, 0.3);
+  color: white;
+}
+
+.eth-form-label {
+  color: var(--eth-accent);
+  font-weight: 500;
+}
+
+/* ETH Loading States */
+.eth-loading-spinner {
+  color: var(--eth-primary);
+}
+
+.eth-loading-text {
+  color: rgba(149, 183, 255, 0.8);
+}
+
+/* ETH Success/Error States */
+.eth-success {
+  background: rgba(16, 185, 129, 0.1);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+  color: var(--eth-success);
+}
+
+.eth-error {
+  background: rgba(239, 68, 68, 0.1);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  color: var(--eth-error);
+}
+
+.eth-warning {
+  background: rgba(245, 158, 11, 0.1);
+  border: 1px solid rgba(245, 158, 11, 0.3);
+  color: var(--eth-warning);
+}
+
+/* ETH QR Code Container */
+.eth-qr-container {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* ETH Quick Stats Card */
+.eth-stats-card {
+  background: rgba(98, 126, 234, 0.05);
+  border: 1px solid rgba(98, 126, 234, 0.1);
+  border-radius: 12px;
+}
+
+.eth-stats-item {
+  border-bottom: 1px solid rgba(98, 126, 234, 0.1);
+  padding: 8px 0;
+}
+
+.eth-stats-item:last-child {
+  border-bottom: none;
+}
+
+/* ETH Quick Actions */
+.eth-quick-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.eth-quick-action-button {
+  background: linear-gradient(135deg, rgba(98, 126, 234, 0.2) 0%, rgba(149, 183, 255, 0.2) 100%);
+  border: 1px solid rgba(98, 126, 234, 0.3);
+  color: var(--eth-accent);
+  transition: all 0.3s ease;
+  justify-content: flex-start;
+}
+
+.eth-quick-action-button:hover {
+  background: linear-gradient(135deg, var(--eth-primary) 0%, var(--eth-secondary) 100%);
+  color: white;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(98, 126, 234, 0.3);
+}
+
+/* ETH Refresh Button */
+.eth-refresh-button {
+  border: 1px solid rgba(98, 126, 234, 0.5);
+  color: var(--eth-accent);
+  background: rgba(98, 126, 234, 0.1);
+  transition: all 0.3s ease;
+}
+
+.eth-refresh-button:hover {
+  background: rgba(98, 126, 234, 0.2);
+  border-color: var(--eth-primary);
+  color: white;
+}
+
+/* Mobile Responsive Improvements */
+@media (max-width: 375px) {
+  .eth-wallet-container {
+    padding: 8px;
+  }
+  
+  .eth-header-card {
+    margin-bottom: 16px;
+  }
+  
+  .eth-balance-card {
+    padding: 12px;
+  }
+  
+  .eth-wallet-container .container {
+    padding-left: 8px;
+    padding-right: 8px;
+  }
+}
+
+@media (max-width: 390px) {
+  .eth-action-buttons {
+    grid-template-columns: 1fr;
+    gap: 6px;
+  }
+}
+
+@media (max-width: 414px) {
+  .eth-token-actions {
+    flex-direction: column;
+    gap: 4px;
+  }
+  
+  .eth-nft-card {
+    margin-bottom: 12px;
+  }
+}
+
+/* Container overflow fixes for mobile */
+@media (max-width: 639px) {
+  .eth-wallet-container .wallet-page {
+    overflow-x: hidden;
+  }
+  
+  .eth-wallet-container .container {
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+  
+  /* Prevent button overflow */
+  .eth-action-buttons,
+  .eth-token-actions {
+    min-width: 0;
+    overflow: hidden;
+  }
+  
+  .eth-action-buttons button,
+  .eth-token-actions button {
+    min-width: 0;
+    flex: 1;
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
+}
+
+/* ETH Portfolio Value Highlights */
+.eth-portfolio-value {
+  background: linear-gradient(135deg, var(--eth-gradient-from) 0%, var(--eth-gradient-to) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: bold;
+}
+
+/* ETH Asset Breakdown */
+.eth-asset-breakdown {
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(98, 126, 234, 0.2);
+  border-radius: 12px;
+}
+
+.eth-asset-item {
+  border-bottom: 1px solid rgba(98, 126, 234, 0.1);
+  padding: 8px 0;
+}
+
+.eth-asset-item:last-child {
+  border-bottom: none;
+  border-top: 1px solid rgba(98, 126, 234, 0.2);
+  padding-top: 12px;
+  margin-top: 8px;
+}
+
+/* Animation for ETH elements */
+@keyframes eth-glow {
+  0%, 100% {
+    box-shadow: 0 0 5px rgba(98, 126, 234, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(98, 126, 234, 0.8), 0 0 30px rgba(149, 183, 255, 0.4);
+  }
+}
+
+.eth-glow-animation {
+  animation: eth-glow 2s ease-in-out infinite;
+}
+
+/* Dark mode specific ETH styling */
+@media (prefers-color-scheme: dark) {
+  .eth-wallet-container {
+    background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+  }
+}
+
+/* ETH Network Status Badge */
+.eth-network-badge {
+  background: rgba(98, 126, 234, 0.1);
+  border: 1px solid rgba(98, 126, 234, 0.3);
+  color: var(--eth-accent);
+  font-size: 12px;
+  font-weight: 500;
+  padding: 4px 8px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.eth-network-status-dot {
+  width: 8px;
+  height: 8px;
+  background: #10B981;
+  border-radius: 50%;
+  animation: eth-pulse 2s infinite;
+}
+
+@keyframes eth-pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+/* Transaction History Styling */
+.eth-transaction-list {
+  background: rgba(98, 126, 234, 0.05);
+  border: 1px solid rgba(98, 126, 234, 0.1);
+  border-radius: 8px;
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.eth-transaction-item {
+  display: flex;
+  align-items: center;
+  padding: 12px 16px;
+  border-bottom: 1px solid rgba(98, 126, 234, 0.1);
+  transition: all 0.2s ease;
+}
+
+.eth-transaction-item:last-child {
+  border-bottom: none;
+}
+
+.eth-transaction-item:hover {
+  background: rgba(98, 126, 234, 0.1);
+}
+
+.eth-transaction-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 12px;
+  flex-shrink: 0;
+}
+
+.eth-transaction-icon.send {
+  background: rgba(239, 68, 68, 0.2);
+  color: #EF4444;
+}
+
+.eth-transaction-icon.receive {
+  background: rgba(16, 185, 129, 0.2);
+  color: #10B981;
+}
+
+.eth-transaction-details {
+  flex: 1;
+  min-width: 0;
+}
+
+.eth-transaction-type {
+  font-weight: 500;
+  color: white;
+  font-size: 14px;
+  margin-bottom: 2px;
+}
+
+.eth-transaction-address {
+  font-family: ui-monospace, SFMono-Regular, "SF Mono", Consolas, "Liberation Mono", Menlo, monospace;
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.eth-transaction-amount {
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.eth-transaction-amount-value {
+  font-weight: 600;
+  font-size: 14px;
+  margin-bottom: 2px;
+}
+
+.eth-transaction-amount-value.positive {
+  color: #10B981;
+}
+
+.eth-transaction-amount-value.negative {
+  color: #EF4444;
+}
+
+.eth-transaction-amount-usd {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+/* NFT Grid Styling */
+.eth-nft-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 16px;
+  margin-top: 16px;
+}
+
+@media (max-width: 640px) {
+  .eth-nft-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .eth-nft-grid {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+}
+
+.eth-nft-item {
+  background: rgba(98, 126, 234, 0.05);
+  border: 1px solid rgba(98, 126, 234, 0.1);
+  border-radius: 12px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.eth-nft-item:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(98, 126, 234, 0.3);
+  border-color: var(--eth-primary);
+}
+
+.eth-nft-image {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  background: rgba(98, 126, 234, 0.1);
+}
+
+.eth-nft-details {
+  padding: 12px;
+}
+
+.eth-nft-name {
+  font-weight: 600;
+  color: white;
+  font-size: 14px;
+  margin-bottom: 4px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.eth-nft-collection {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.6);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Status indicators */
+.eth-status-success {
+  color: #10B981;
+  background: rgba(16, 185, 129, 0.1);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.eth-status-pending {
+  color: #F59E0B;
+  background: rgba(245, 158, 11, 0.1);
+  border: 1px solid rgba(245, 158, 11, 0.3);
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.eth-status-error {
+  color: #EF4444;
+  background: rgba(239, 68, 68, 0.1);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+/* Additional responsive improvements for very small screens */
+@media (max-width: 320px) {
+  .eth-header-card .flex {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  
+  .eth-action-buttons {
+    grid-template-columns: 1fr;
+    gap: 4px;
+  }
+  
+  .eth-balance-card {
+    padding: 8px;
+  }
+  
+  .eth-address-container {
+    padding: 8px;
+  }
+}
+

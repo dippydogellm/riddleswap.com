@@ -1,0 +1,541 @@
+/* Airdrop Tool Styles - Scoped to prevent global interference */
+
+.airdrop-tool-container {
+  min-height: 100vh;
+  background: var(--background);
+  color: var(--foreground);
+}
+
+.dark .airdrop-tool-container {
+  background: var(--background);
+  color: var(--foreground);
+}
+
+/* Header - Scoped within airdrop tool */
+.airdrop-tool-container .airdrop-header {
+  padding: 32px 20px;
+  border-bottom: 1px solid var(--border);
+  background: var(--card);
+}
+
+.airdrop-tool-container .header-content {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.airdrop-tool-container .back-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--muted-foreground);
+  text-decoration: none;
+  font-weight: 500;
+  margin-bottom: 24px;
+  transition: color 0.2s ease;
+}
+
+.airdrop-tool-container .back-button:hover {
+  color: var(--foreground);
+}
+
+.airdrop-tool-container .header-info {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.airdrop-tool-container .header-icon {
+  background: var(--muted);
+  border-radius: 16px;
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--muted-foreground);
+}
+
+.airdrop-tool-container .header-title {
+  font-size: 2rem;
+  font-weight: 800;
+  margin-bottom: 4px;
+  color: var(--foreground);
+}
+
+.airdrop-tool-container .header-subtitle {
+  font-size: 1.125rem;
+  color: var(--muted-foreground);
+}
+
+/* Wallet Info Card */
+.wallet-info-card {
+  max-width: 1200px;
+  margin: 0 auto 32px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  color: var(--foreground);
+}
+
+.wallet-info-card .card-title {
+  color: var(--foreground);
+  font-weight: 700;
+}
+
+.wallet-info-card .card-description {
+  color: var(--muted-foreground);
+}
+
+.wallet-addresses {
+  display: grid;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.address-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+  background: var(--muted);
+  border-radius: 8px;
+}
+
+.address-label {
+  font-weight: 600;
+  color: var(--muted-foreground);
+  min-width: 80px;
+  font-size: 0.875rem;
+}
+
+.address-value {
+  font-family: 'SF Mono', 'Monaco', 'Inconsolata', 'Fira Code', monospace;
+  font-size: 0.875rem;
+  color: var(--foreground);
+  background: var(--background);
+  padding: 4px 8px;
+  border-radius: 4px;
+  border: 1px solid var(--border);
+}
+
+.wallet-info-card .alert {
+  background: rgba(251, 146, 60, 0.2);
+  border: 1px solid rgba(251, 146, 60, 0.4);
+  color: white;
+}
+
+.wallet-info-card .alert-title {
+  color: white;
+  font-weight: 600;
+}
+
+.wallet-info-card .alert-description {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+/* Progress Steps */
+.progress-section {
+  padding: 40px 20px;
+  background: var(--muted);
+}
+
+.progress-steps {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 24px;
+}
+
+.progress-step {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 20px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  transition: all 0.3s ease;
+  opacity: 0.6;
+}
+
+.progress-step.active {
+  opacity: 1;
+  background: var(--accent);
+  border-color: var(--accent-foreground);
+  color: var(--accent-foreground);
+}
+
+.progress-step.completed {
+  opacity: 1;
+  background: var(--primary);
+  border-color: var(--primary);
+  color: var(--primary-foreground);
+}
+
+.step-number {
+  width: 40px;
+  height: 40px;
+  background: var(--muted);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  flex-shrink: 0;
+  color: var(--muted-foreground);
+}
+
+.progress-step.completed .step-number {
+  background: var(--primary-foreground);
+  color: var(--primary);
+}
+
+.step-title {
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.step-description {
+  font-size: 0.875rem;
+  opacity: 0.8;
+}
+
+/* Form Content */
+.airdrop-content {
+  padding: 40px 20px 80px;
+}
+
+.airdrop-form {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.airdrop-form-step {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 40px;
+  margin-bottom: 32px;
+}
+
+/* Form Elements */
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-bottom: 24px;
+}
+
+.form-item-flex {
+  flex: 1;
+}
+
+.input-with-icon {
+  position: relative;
+}
+
+.input-icon {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  opacity: 0.6;
+  z-index: 1;
+}
+
+.input-with-icon input {
+  padding-left: 40px;
+}
+
+/* Chain and Type Options */
+.chain-option,
+.type-option {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  gap: 8px;
+}
+
+.type-option {
+  justify-content: flex-start;
+}
+
+/* Recipients */
+.recipients-textarea {
+  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
+
+.recipients-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 8px;
+}
+
+.upload-card {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  margin-top: 24px;
+}
+
+/* Settings Cards */
+.settings-card,
+.claim-settings {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  margin-bottom: 24px;
+}
+
+.claim-features {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.feature-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.875rem;
+  opacity: 0.9;
+}
+
+/* Review Step */
+.review-step {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.review-card {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.review-grid {
+  display: grid;
+  gap: 16px;
+}
+
+.review-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.review-item:last-child {
+  border-bottom: none;
+}
+
+.review-label {
+  font-weight: 600;
+  opacity: 0.8;
+}
+
+.review-value {
+  font-weight: 500;
+}
+
+.review-value.capitalize {
+  text-transform: capitalize;
+}
+
+.launch-info {
+  background: rgba(239, 68, 68, 0.2);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+}
+
+.launch-details {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.launch-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.875rem;
+}
+
+.launch-item span:first-child {
+  opacity: 0.8;
+}
+
+.launch-item span:last-child {
+  font-weight: 600;
+}
+
+/* Navigation */
+.form-navigation {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 32px;
+}
+
+.launch-button {
+  background: linear-gradient(135deg, #ef4444, #dc2626);
+  border: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.launch-button:hover {
+  background: linear-gradient(135deg, #dc2626, #b91c1c);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(239, 68, 68, 0.3);
+}
+
+.launch-button:disabled {
+  opacity: 0.6;
+  transform: none;
+  box-shadow: none;
+}
+
+/* Custom Form Styles */
+.airdrop-form label {
+  color: white;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.airdrop-form input,
+.airdrop-form textarea,
+.airdrop-form [role="combobox"] {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: white;
+  backdrop-filter: blur(5px);
+}
+
+.airdrop-form input::placeholder,
+.airdrop-form textarea::placeholder {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.airdrop-form input:focus,
+.airdrop-form textarea:focus,
+.airdrop-form [role="combobox"]:focus {
+  border-color: rgba(255, 255, 255, 0.4);
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.1);
+}
+
+/* Switch Styles */
+.airdrop-form [role="switch"] {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.airdrop-form [role="switch"][aria-checked="true"] {
+  background: #ef4444;
+}
+
+/* Badge Styles */
+.airdrop-form .badge {
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+/* Card Styles */
+.airdrop-form .card {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: white;
+}
+
+.airdrop-form .card-header h3,
+.airdrop-form .card-header h2 {
+  color: white;
+}
+
+.airdrop-form .card-description {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .airdrop-header {
+    padding: 24px 20px;
+  }
+  
+  .header-info {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+  
+  .header-icon {
+    padding: 12px;
+  }
+  
+  .header-title {
+    font-size: 1.75rem;
+  }
+  
+  .progress-steps {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  
+  .progress-step {
+    padding: 16px;
+  }
+  
+  .airdrop-form-step {
+    padding: 24px;
+  }
+  
+  .form-row {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  
+  .form-navigation {
+    flex-direction: column;
+    gap: 16px;
+  }
+  
+  .form-navigation button {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .airdrop-header {
+    padding: 20px 16px;
+  }
+  
+  .airdrop-content {
+    padding: 32px 16px 60px;
+  }
+  
+  .airdrop-form-step {
+    padding: 20px;
+  }
+  
+  .progress-section {
+    padding: 32px 16px;
+  }
+  
+  .progress-step {
+    padding: 12px;
+  }
+  
+  .step-number {
+    width: 36px;
+    height: 36px;
+  }
+  
+  .recipients-textarea {
+    font-size: 0.8rem;
+  }
+}

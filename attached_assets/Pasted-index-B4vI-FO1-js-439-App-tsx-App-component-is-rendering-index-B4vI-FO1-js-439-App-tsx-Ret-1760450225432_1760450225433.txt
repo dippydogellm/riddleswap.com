@@ -1,0 +1,47 @@
+index-B4vI-FO1.js:439 🎨 App.tsx: App component is rendering
+index-B4vI-FO1.js:439 🏗️ App.tsx: Returning JSX with all providers
+index-B4vI-FO1.js:439 🚫 SessionMonitor: DISABLED - Using unified SessionManager instead
+index-B4vI-FO1.js:439 🗺️ Router: Router component is rendering
+index-B4vI-FO1.js:439 📍 Router: Current location: /
+index-B4vI-FO1.js:439 💳 Router: Initializing wallet data state
+index-B4vI-FO1.js:439 🔓 Router: No session token found
+index-B4vI-FO1.js:54 🔍 SessionManager.getSession() returning: Object
+content.js:1 Object
+index-B4vI-FO1.js:439 🎨 App.tsx: App component is rendering
+index-B4vI-FO1.js:439 🏗️ App.tsx: Returning JSX with all providers
+index-B4vI-FO1.js:439 🚫 SessionMonitor: DISABLED - Using unified SessionManager instead
+index-B4vI-FO1.js:439 🗺️ Router: Router component is rendering
+index-B4vI-FO1.js:439 📍 Router: Current location: /
+index-B4vI-FO1.js:439 💳 Router: Initializing wallet data state
+index-B4vI-FO1.js:439 🔓 Router: No session token found
+index-B4vI-FO1.js:54 🔍 SessionManager.getSession() returning: Object
+index-B4vI-FO1.js:54 🔍 SessionManager: checkSession() called - current sessionData: false
+index-B4vI-FO1.js:54 🔓 SessionManager: No token found locally, checking backend session
+index-B4vI-FO1.js:54 🔍 SessionManager: Checking backend session via cookies/session storage
+index-B4vI-FO1.js:324 🎨 [THEME] Applied theme: dark, dark class: true
+index-B4vI-FO1.js:439 🔄 App.tsx: useEffect running - recovering wallet state
+index-B4vI-FO1.js:439 ⚡ App.tsx: Skipping wallet recovery for faster login page loading
+index-B4vI-FO1.js:54 🔍 SessionManager.getSession() returning: Object
+index-B4vI-FO1.js:54 📊 SessionManager: No backend session found
+install-prompt-D_NyjDtM.js:1 🔧 Before install prompt event fired
+(index):1 Banner not shown: beforeinstallpromptevent.preventDefault() called. The page must call beforeinstallpromptevent.prompt() to show the banner.
+index-B4vI-FO1.js:54 🔍 SessionManager.getSession() returning: Object
+index-B4vI-FO1.js:54 🔍 getQueryFn - SessionManager sessionToken: NOT FOUND
+index-B4vI-FO1.js:368 Warning: Missing Description or aria-describedby={undefined} for {DialogContent}.
+(anonymous) @ index-B4vI-FO1.js:368
+index-B4vI-FO1.js:54 🔍 getQueryFn - SessionManager sessionToken: NOT FOUND
+index-B4vI-FO1.js:368 DialogContent requires a DialogTitle for the component to be accessible for screen reader users.
+
+If you want to hide the DialogTitle, you can wrap it with our VisuallyHidden component.
+
+For more information, see https://radix-ui.com/primitives/docs/components/dialog
+(anonymous) @ index-B4vI-FO1.js:368
+index-B4vI-FO1.js:368 Warning: Missing Description or aria-describedby={undefined} for {DialogContent}.
+(anonymous) @ index-B4vI-FO1.js:368
+/api/external-wallets/xaman/connect:1  Failed to load resource: the server responded with a status of 429 ()
+index-B4vI-FO1.js:368 Failed to create auth payload: Error: Failed to create authentication payload
+    at index-B4vI-FO1.js:368:7946
+(anonymous) @ index-B4vI-FO1.js:368
+index-B4vI-FO1.js:54 🔍 SessionManager.getSession() returning: Object
+index-B4vI-FO1.js:54 🔍 SessionManager.getSession() returning: Object
+index-B4vI-FO1.js:54 🔍 SessionManager.getSession() returning: {isLoggedIn: false, handle: undefined, hasWalletData: false, hasSessionToken: false, walletDataKeys: Array(0)}

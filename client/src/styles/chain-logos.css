@@ -1,0 +1,96 @@
+/* Chain Logos - Centralized styling for all blockchain logos */
+
+/* Base chain logo styles */
+.chain-logo {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.chain-logo-small {
+  width: 16px;
+  height: 16px;
+}
+
+.chain-logo-medium {
+  width: 32px;
+  height: 32px;
+}
+
+.chain-logo-large {
+  width: 48px;
+  height: 48px;
+}
+
+/* Chain-specific logo adjustments */
+.chain-logo-xrp {
+  background: #000000;
+  padding: 4px;
+}
+
+.chain-logo-xrp img {
+  filter: invert(1);
+}
+
+.chain-logo-ethereum {
+  background: #627EEA;
+}
+
+.chain-logo-bnb {
+  background: #F3BA2F;
+}
+
+.chain-logo-polygon {
+  background: #8247E5;
+}
+
+.chain-logo-arbitrum {
+  background: #2D374B;
+}
+
+.chain-logo-optimism {
+  background: #FF0420;
+}
+
+.chain-logo-base {
+  background: #0052FF;
+}
+
+.chain-logo-solana {
+  background: linear-gradient(135deg, #9945FF 0%, #14F195 100%);
+}
+
+.chain-logo-bitcoin {
+  background: #F7931A;
+}
+
+/* Chain logo container for consistent spacing */
+.chain-logo-container {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+/* Token logo styles (for consistency) */
+.token-logo {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+  border-radius: 50%;
+}
+
+.token-logo-fallback {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.75rem;
+  color: white;
+  background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+}

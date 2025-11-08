@@ -1,0 +1,61 @@
+ WebSocket connection to 'wss://20a5a677-e8db-426b-93ca-0ab4131b22a7-00-pwrlj8iul6vd.janeway.replit.dev/?token=E4OwdCbTC_t9' failed: 
+window.WebSocket @ init.js:41
+ 🔧 Fixed WebSocket URL for Replit: wss://localhost:undefined/?token=E4OwdCbTC_t9 → wss://20a5a677-e8db-426b-93ca-0ab4131b22a7-00-pwrlj8iul6vd.janeway.replit.dev/?token=E4OwdCbTC_t9
+ WebSocket connection to 'wss://20a5a677-e8db-426b-93ca-0ab4131b22a7-00-pwrlj8iul6vd.janeway.replit.dev/?token=E4OwdCbTC_t9' failed: 
+window.WebSocket @ init.js:41
+ [vite] failed to connect to websocket.
+your current setup:
+  (browser) 20a5a677-e8db-426b-93ca-0ab4131b22a7-00-pwrlj8iul6vd.janeway.replit.dev/ <--[HTTP]--> localhost:undefined/ (server)
+  (browser) 20a5a677-e8db-426b-93ca-0ab4131b22a7-00-pwrlj8iul6vd.janeway.replit.dev:/ <--[WebSocket (failing)]--> localhost:undefined/ (server)
+Check out your Vite / network configuration and https://vite.dev/config/server-options.html#server-hmr .
+(anonymous) @ client:512
+ Download the React DevTools for a better development experience: https://reactjs.org/link/react-devtools
+ 🔍 SessionManager.getSession() returning: Object
+ 🎯 WalletOrchestrator initialized with 0 connections
+ 🚀 Universal Wallet Manager (Orchestrator) initialized
+ 🚨 IMMEDIATE: main.tsx file is being executed!
+ 🚨 IMMEDIATE: typeof window: object
+ 🚨 IMMEDIATE: window.location: https://20a5a677-e8db-426b-93ca-0ab4131b22a7-00-pwrlj8iul6vd.janeway.replit.dev/
+ 🎯 IMMEDIATE: Root element exists: true
+ 🎯 IMMEDIATE: Root element innerHTML: 317
+ 🚨 EMERGENCY: Added red text to root element for visual confirmation
+ 🔧 main.tsx: STARTING - About to import polyfills
+ ✅ main.tsx: Polyfills imported successfully
+main.tsx:22 📦 main.tsx: About to import React createRoot
+main.tsx:24 ✅ main.tsx: createRoot imported successfully
+main.tsx:26 🎨 main.tsx: About to import App component
+main.tsx:28 ✅ main.tsx: App component imported successfully
+main.tsx:30 🎨 main.tsx: About to import CSS files
+main.tsx:34 ✅ main.tsx: CSS files imported successfully
+main.tsx:49 🚀 main.tsx: Starting React app initialization
+main.tsx:52 🛡️ main.tsx: Setting up automatic error logging...
+main.tsx:116 ✅ main.tsx: Automatic error logging set up
+main.tsx:119 🎯 main.tsx: Root element found: true
+main.tsx:122 📦 main.tsx: Creating React root and rendering App component
+main.tsx:125 ✅ main.tsx: App component rendered successfully
+App.tsx:438 🎨 App.tsx: App component is rendering
+App.tsx:455 🏗️ App.tsx: Returning JSX with all providers
+SessionMonitor.tsx:10 🚫 SessionMonitor: DISABLED - Using unified SessionManager instead
+App.tsx:186 🗺️ Router: Router component is rendering
+App.tsx:189 📍 Router: Current location: /
+App.tsx:192 💳 Router: Initializing wallet data state
+App.tsx:196 🔓 Router: No session token found
+sessionManager.ts:350 🔍 SessionManager.getSession() returning: Object
+sessionManager.ts:91 🔍 SessionManager: checkSession() called - current sessionData: false
+sessionManager.ts:97 🔓 SessionManager: No token found
+theme-context.tsx:50 🎨 [THEME] Applied theme: dark, dark class: true
+App.tsx:441 🔄 App.tsx: useEffect running - recovering wallet state
+App.tsx:451 ⚡ App.tsx: Skipping wallet recovery for faster login page loading
+install-prompt.tsx:34 🔧 Before install prompt event fired
+(index):1 Banner not shown: beforeinstallpromptevent.preventDefault() called. The page must call beforeinstallpromptevent.prompt() to show the banner.
+queryClient.ts:135 🔍 getQueryFn - SessionManager sessionToken: NOT FOUND
+queryClient.ts:135 🔍 getQueryFn - SessionManager sessionToken: NOT FOUND
+sessionManager.ts:350 🔍 SessionManager.getSession() returning: Object
+sessionManager.ts:350 🔍 SessionManager.getSession() returning: Object
+sessionManager.ts:350 🔍 SessionManager.getSession() returning: Object
+queryClient.ts:135 🔍 getQueryFn - SessionManager sessionToken: NOT FOUND
+chunk-DZFBY7BQ.js?v=8eacc640:340 Warning: Missing `Description` or `aria-describedby={undefined}` for {DialogContent}.
+(anonymous) @ chunk-DZFBY7BQ.js?v=8eacc640:340
+queryClient.ts:135 🔍 getQueryFn - SessionManager sessionToken: NOT FOUND
+sessionManager.ts:350 🔍 SessionManager.getSession() returning: Object
+sessionManager.ts:350 🔍 SessionManager.getSession() returning: Object

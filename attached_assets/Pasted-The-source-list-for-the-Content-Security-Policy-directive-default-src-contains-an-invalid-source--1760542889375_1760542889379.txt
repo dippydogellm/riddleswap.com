@@ -1,0 +1,477 @@
+The source list for the Content Security Policy directive 'default-src' contains an invalid source: ''unsafe-dynamic''. It will be ignored.
+The source list for the Content Security Policy directive 'default-src' contains an invalid source: ''unsafe-dynamic''. It will be ignored.
+The source list for the Content Security Policy directive 'default-src' contains an invalid source: ''unsafe-dynamic''. It will be ignored.
+The source list for the Content Security Policy directive 'default-src' contains an invalid source: ''unsafe-dynamic''. It will be ignored.
+The source list for the Content Security Policy directive 'default-src' contains an invalid source: ''unsafe-dynamic''. It will be ignored.
+The source list for the Content Security Policy directive 'default-src' contains an invalid source: ''unsafe-dynamic''. It will be ignored.
+The source list for the Content Security Policy directive 'default-src' contains an invalid source: ''unsafe-dynamic''. It will be ignored.
+The source list for the Content Security Policy directive 'default-src' contains an invalid source: ''unsafe-dynamic''. It will be ignored.
+The source list for the Content Security Policy directive 'default-src' contains an invalid source: ''unsafe-dynamic''. It will be ignored.
+The source list for the Content Security Policy directive 'default-src' contains an invalid source: ''unsafe-dynamic''. It will be ignored.
+The source list for the Content Security Policy directive 'default-src' contains an invalid source: ''unsafe-dynamic''. It will be ignored.
+The source list for the Content Security Policy directive 'default-src' contains an invalid source: ''unsafe-dynamic''. It will be ignored.
+The source list for the Content Security Policy directive 'default-src' contains an invalid source: ''unsafe-dynamic''. It will be ignored.
+The source list for the Content Security Policy directive 'default-src' contains an invalid source: ''unsafe-dynamic''. It will be ignored.
+The source list for the Content Security Policy directive 'default-src' contains an invalid source: ''unsafe-dynamic''. It will be ignored.
+The source list for the Content Security Policy directive 'default-src' contains an invalid source: ''unsafe-dynamic''. It will be ignored.
+The source list for the Content Security Policy directive 'default-src' contains an invalid source: ''unsafe-dynamic''. It will be ignored.
+The source list for the Content Security Policy directive 'default-src' contains an invalid source: ''unsafe-dynamic''. It will be ignored.
+The source list for the Content Security Policy directive 'default-src' contains an invalid source: ''unsafe-dynamic''. It will be ignored.
+The source list for the Content Security Policy directive 'default-src' contains an invalid source: ''unsafe-dynamic''. It will be ignored.
+The source list for the Content Security Policy directive 'default-src' contains an invalid source: ''unsafe-dynamic''. It will be ignored.
+The source list for the Content Security Policy directive 'default-src' contains an invalid source: ''unsafe-dynamic''. It will be ignored.
+The source list for the Content Security Policy directive 'default-src' contains an invalid source: ''unsafe-dynamic''. It will be ignored.
+The source list for the Content Security Policy directive 'default-src' contains an invalid source: ''unsafe-dynamic''. It will be ignored.
+The Content-Security-Policy directive 'default-src' contains 'report-uri' as a source expression. Did you want to add it as a directive and forget a semicolon?
+The Content-Security-Policy directive 'default-src' contains 'report-uri' as a source expression. Did you want to add it as a directive and forget a semicolon?
+The Content-Security-Policy directive 'default-src' contains 'report-uri' as a source expression. Did you want to add it as a directive and forget a semicolon?
+The Content-Security-Policy directive 'default-src' contains 'report-uri' as a source expression. Did you want to add it as a directive and forget a semicolon?
+The Content-Security-Policy directive 'default-src' contains 'report-uri' as a source expression. Did you want to add it as a directive and forget a semicolon?
+The Content-Security-Policy directive 'default-src' contains 'report-uri' as a source expression. Did you want to add it as a directive and forget a semicolon?
+The Content-Security-Policy directive 'default-src' contains 'report-uri' as a source expression. Did you want to add it as a directive and forget a semicolon?
+The Content-Security-Policy directive 'default-src' contains 'report-uri' as a source expression. Did you want to add it as a directive and forget a semicolon?
+The Content-Security-Policy directive 'default-src' contains 'report-uri' as a source expression. Did you want to add it as a directive and forget a semicolon?
+The Content-Security-Policy directive 'default-src' contains 'report-uri' as a source expression. Did you want to add it as a directive and forget a semicolon?
+The Content-Security-Policy directive 'default-src' contains 'report-uri' as a source expression. Did you want to add it as a directive and forget a semicolon?
+The Content-Security-Policy directive 'default-src' contains 'report-uri' as a source expression. Did you want to add it as a directive and forget a semicolon?
+The Content-Security-Policy directive 'default-src' contains 'report-uri' as a source expression. Did you want to add it as a directive and forget a semicolon?
+The Content-Security-Policy directive 'default-src' contains 'report-uri' as a source expression. Did you want to add it as a directive and forget a semicolon?
+The Content-Security-Policy directive 'default-src' contains 'report-uri' as a source expression. Did you want to add it as a directive and forget a semicolon?
+The Content-Security-Policy directive 'default-src' contains 'report-uri' as a source expression. Did you want to add it as a directive and forget a semicolon?
+The Content-Security-Policy directive 'default-src' contains 'report-uri' as a source expression. Did you want to add it as a directive and forget a semicolon?
+The Content-Security-Policy directive 'default-src' contains 'report-uri' as a source expression. Did you want to add it as a directive and forget a semicolon?
+The Content-Security-Policy directive 'default-src' contains 'report-uri' as a source expression. Did you want to add it as a directive and forget a semicolon?
+The Content-Security-Policy directive 'default-src' contains 'report-uri' as a source expression. Did you want to add it as a directive and forget a semicolon?
+The Content-Security-Policy directive 'default-src' contains 'report-uri' as a source expression. Did you want to add it as a directive and forget a semicolon?
+The Content-Security-Policy directive 'default-src' contains 'report-uri' as a source expression. Did you want to add it as a directive and forget a semicolon?
+The Content-Security-Policy directive 'default-src' contains 'report-uri' as a source expression. Did you want to add it as a directive and forget a semicolon?
+The Content-Security-Policy directive 'default-src' contains 'report-uri' as a source expression. Did you want to add it as a directive and forget a semicolon?
+The source list for Content Security Policy directive 'default-src' contains a source with an invalid path: '/api/4509669501698048/security/?sentry_key=7eb3d90eb4660416caf507087367e67e'. The query component, including the '?', will be ignored.
+The source list for Content Security Policy directive 'default-src' contains a source with an invalid path: '/api/4509669501698048/security/?sentry_key=7eb3d90eb4660416caf507087367e67e'. The query component, including the '?', will be ignored.
+The source list for Content Security Policy directive 'default-src' contains a source with an invalid path: '/api/4509669501698048/security/?sentry_key=7eb3d90eb4660416caf507087367e67e'. The query component, including the '?', will be ignored.
+The source list for Content Security Policy directive 'default-src' contains a source with an invalid path: '/api/4509669501698048/security/?sentry_key=7eb3d90eb4660416caf507087367e67e'. The query component, including the '?', will be ignored.
+The source list for Content Security Policy directive 'default-src' contains a source with an invalid path: '/api/4509669501698048/security/?sentry_key=7eb3d90eb4660416caf507087367e67e'. The query component, including the '?', will be ignored.
+The source list for Content Security Policy directive 'default-src' contains a source with an invalid path: '/api/4509669501698048/security/?sentry_key=7eb3d90eb4660416caf507087367e67e'. The query component, including the '?', will be ignored.
+The source list for Content Security Policy directive 'default-src' contains a source with an invalid path: '/api/4509669501698048/security/?sentry_key=7eb3d90eb4660416caf507087367e67e'. The query component, including the '?', will be ignored.
+The source list for Content Security Policy directive 'default-src' contains a source with an invalid path: '/api/4509669501698048/security/?sentry_key=7eb3d90eb4660416caf507087367e67e'. The query component, including the '?', will be ignored.
+The source list for Content Security Policy directive 'default-src' contains a source with an invalid path: '/api/4509669501698048/security/?sentry_key=7eb3d90eb4660416caf507087367e67e'. The query component, including the '?', will be ignored.
+The source list for Content Security Policy directive 'default-src' contains a source with an invalid path: '/api/4509669501698048/security/?sentry_key=7eb3d90eb4660416caf507087367e67e'. The query component, including the '?', will be ignored.
+The source list for Content Security Policy directive 'default-src' contains a source with an invalid path: '/api/4509669501698048/security/?sentry_key=7eb3d90eb4660416caf507087367e67e'. The query component, including the '?', will be ignored.
+The source list for Content Security Policy directive 'default-src' contains a source with an invalid path: '/api/4509669501698048/security/?sentry_key=7eb3d90eb4660416caf507087367e67e'. The query component, including the '?', will be ignored.
+The source list for Content Security Policy directive 'default-src' contains a source with an invalid path: '/api/4509669501698048/security/?sentry_key=7eb3d90eb4660416caf507087367e67e'. The query component, including the '?', will be ignored.
+The source list for Content Security Policy directive 'default-src' contains a source with an invalid path: '/api/4509669501698048/security/?sentry_key=7eb3d90eb4660416caf507087367e67e'. The query component, including the '?', will be ignored.
+The source list for Content Security Policy directive 'default-src' contains a source with an invalid path: '/api/4509669501698048/security/?sentry_key=7eb3d90eb4660416caf507087367e67e'. The query component, including the '?', will be ignored.
+The source list for Content Security Policy directive 'default-src' contains a source with an invalid path: '/api/4509669501698048/security/?sentry_key=7eb3d90eb4660416caf507087367e67e'. The query component, including the '?', will be ignored.
+The source list for Content Security Policy directive 'default-src' contains a source with an invalid path: '/api/4509669501698048/security/?sentry_key=7eb3d90eb4660416caf507087367e67e'. The query component, including the '?', will be ignored.
+The source list for Content Security Policy directive 'default-src' contains a source with an invalid path: '/api/4509669501698048/security/?sentry_key=7eb3d90eb4660416caf507087367e67e'. The query component, including the '?', will be ignored.
+The source list for Content Security Policy directive 'default-src' contains a source with an invalid path: '/api/4509669501698048/security/?sentry_key=7eb3d90eb4660416caf507087367e67e'. The query component, including the '?', will be ignored.
+The source list for Content Security Policy directive 'default-src' contains a source with an invalid path: '/api/4509669501698048/security/?sentry_key=7eb3d90eb4660416caf507087367e67e'. The query component, including the '?', will be ignored.
+The source list for Content Security Policy directive 'default-src' contains a source with an invalid path: '/api/4509669501698048/security/?sentry_key=7eb3d90eb4660416caf507087367e67e'. The query component, including the '?', will be ignored.
+The source list for Content Security Policy directive 'default-src' contains a source with an invalid path: '/api/4509669501698048/security/?sentry_key=7eb3d90eb4660416caf507087367e67e'. The query component, including the '?', will be ignored.
+The source list for Content Security Policy directive 'default-src' contains a source with an invalid path: '/api/4509669501698048/security/?sentry_key=7eb3d90eb4660416caf507087367e67e'. The query component, including the '?', will be ignored.
+The source list for Content Security Policy directive 'default-src' contains a source with an invalid path: '/api/4509669501698048/security/?sentry_key=7eb3d90eb4660416caf507087367e67e'. The query component, including the '?', will be ignored.
+ 
+      /////////////////////
+   ///////////////////////////
+  ////////@@@@@@@//////////////
+  ////////@@@@@@@//////////////
+  ////////@@@@@@@//////////////        Curious and driven?
+  ///////////////@@@@@@@///////        Work with us!
+  ///////////////@@@@@@@///////
+  ///////////////@@@@@@@///////        https://join.replit.com/hack.with.us
+  ////////@@@@@@@//////////////
+  ////////@@@@@@@//////////////
+  ////////@@@@@@#//////////////
+   ///////////////////////////
+      /////////////////////
+      
+/~:1 The source list for the Content Security Policy directive 'default-src' contains an invalid source: ''unsafe-dynamic''. It will be ignored.
+/~:1 The Content-Security-Policy directive 'default-src' contains 'report-uri' as a source expression. Did you want to add it as a directive and forget a semicolon?
+/~:1 The source list for Content Security Policy directive 'default-src' contains a source with an invalid path: '/api/4509669501698048/security/?sentry_key=7eb3d90eb4660416caf507087367e67e'. The query component, including the '?', will be ignored.
+ [LaunchDarkly] LaunchDarkly client initialized
+analytics.tiktok.com/i18n/pixel/events.js?sdkid=D004GE3C77U8PIVDSDJG&lib=ttq:1  Failed to load resource: net::ERR_NAME_NOT_RESOLVED
+/t/riddle-qc8e92:1 Banner not shown: beforeinstallpromptevent.preventDefault() called. The page must call beforeinstallpromptevent.prompt() to show the banner.
+Error while parsing the 'sandbox' attribute: 'allow-downloads-without-user-activation' is an invalid sandbox flag.
+Error while parsing the 'sandbox' attribute: 'allow-downloads-without-user-activation' is an invalid sandbox flag.
+Error while parsing the 'sandbox' attribute: 'allow-downloads-without-user-activation' is an invalid sandbox flag.
+Error while parsing the 'sandbox' attribute: 'allow-downloads-without-user-activation' is an invalid sandbox flag.
+Error while parsing the 'sandbox' attribute: 'allow-downloads-without-user-activation' is an invalid sandbox flag.
+Error while parsing the 'sandbox' attribute: 'allow-downloads-without-user-activation' is an invalid sandbox flag.
+Error while parsing the 'sandbox' attribute: 'allow-downloads-without-user-activation' is an invalid sandbox flag.
+Error while parsing the 'sandbox' attribute: 'allow-downloads-without-user-activation' is an invalid sandbox flag.
+Error while parsing the 'sandbox' attribute: 'allow-downloads-without-user-activation' is an invalid sandbox flag.
+Error while parsing the 'sandbox' attribute: 'allow-downloads-without-user-activation' is an invalid sandbox flag.
+Error while parsing the 'sandbox' attribute: 'allow-downloads-without-user-activation' is an invalid sandbox flag.
+Error while parsing the 'sandbox' attribute: 'allow-downloads-without-user-activation' is an invalid sandbox flag.
+ Unrecognized feature: 'ambient-light-sensor'.
+_ @ framework-a9c93489e40d8584.js:1
+ Unrecognized feature: 'battery'.
+_ @ framework-a9c93489e40d8584.js:1
+ Unrecognized feature: 'execution-while-not-rendered'.
+_ @ framework-a9c93489e40d8584.js:1
+ Unrecognized feature: 'execution-while-out-of-viewport'.
+_ @ framework-a9c93489e40d8584.js:1
+ Unrecognized feature: 'layout-animations'.
+_ @ framework-a9c93489e40d8584.js:1
+ Unrecognized feature: 'legacy-image-formats'.
+_ @ framework-a9c93489e40d8584.js:1
+ Unrecognized feature: 'navigation-override'.
+_ @ framework-a9c93489e40d8584.js:1
+ Unrecognized feature: 'oversized-images'.
+_ @ framework-a9c93489e40d8584.js:1
+ Unrecognized feature: 'publickey-credentials'.
+_ @ framework-a9c93489e40d8584.js:1
+ Unrecognized feature: 'speaker-selection'.
+_ @ framework-a9c93489e40d8584.js:1
+ Unrecognized feature: 'unoptimized-images'.
+_ @ framework-a9c93489e40d8584.js:1
+ Unrecognized feature: 'unsized-media'.
+_ @ framework-a9c93489e40d8584.js:1
+ Unrecognized feature: 'pointer-lock'.
+_ @ framework-a9c93489e40d8584.js:1
+ Allow attribute will take precedence over 'allowfullscreen'.
+_ @ framework-a9c93489e40d8584.js:1
+ Allow attribute will take precedence over 'allowpaymentrequest'.
+_ @ framework-a9c93489e40d8584.js:1
+ WebSocket connection to 'wss://eval.worf.platform.replit.com/wsv2/v2.public.Q2dZSTRjRyt4d1lTQmdpQTNyN0hCaUlFZDI5eVpqQUFPb2dDQ2lRek1ERmhPVGszWlMweU1qUm1MVFEyTm1FdE9UQmlPUzFtTUdZM04yRTNObVJsTlRBU0EyNXBlQm9XY21Wd2JHbDBMWEpsY0d3dFptbHNaWE10ZDI5eVppSVFaR2x3Y0hsa2IyZGxNUzB4TUMweE1Tb0taR2x3Y0hsa2IyZGxNVUpPQ2hkeVpYQnNhWFF0Y21Wd2JDMWliRzlqYTNNdGQyOXlaaElWY21Wd2JHbDBMWEpsY0d3dGJXVjBZUzEzYjNKbUdoeHlaWEJzYVhRdGJXRnlaMkZ5YVc1bExXSnNiMk5yY3kxM2IzSm1TZ2NJbDYyb0V4QUJVQUJhRDJsdWRHVnVkRjlpZFhOcGJtVnpjMW9TYjI1aWIyRnlaR2x1WjE5cWIySmZaVzVuV2hkdmJtSnZZ...HUlRoTmNYUmlOQ1V5UW5acFRrNUJPRTB6ZUVsUWF5VXlRblprVnlVeVJtRm5WME13V1ZJeWMwdFRPRmt3UWpkMFltRm1TMEpUTnpsRWVqUjRkbGRRWWxCamR5VXlRbmRyY1hnbE1rSkNTMU5FTTNOaGJIUjFUazE2TUhCUVUxZFRRbmRsU25OYVVYY3hPVkZTZGpOaWJXSjNXRUoyUkRaeFRFUlhZblp6U1ZKa2NIa3pKVEpDTW1oQmVIaEJiRWxJTmpaSE5IcFJWVlJwVjBJM1pEYzJiMjFFT1V4UE9YYzFUemh0WVZkMFRVTnRWVzkxUjJnbE1rWjVWemxxZFdkVlMxaE5SMmxKYmxSNVVURTNVV0pEVlVoUkpUTkVKVE5FIrB67-aLsC9rFOR74gsut96dxJ6LfZ0DNGh_nxMvvtjM5n4r_rSZrJua7u97UaIhNNWQKMTPjZLk2Iia8qoPDg.Q2dad2NtOWtPak1pQ25KbGNHeHBkQzVqYjIwPQ' failed: WebSocket is closed before the connection is established.
+cleanupSocket @ 6504-afd154cec4e32dae.js:1
+r.stripe.com/b:1  Failed to load resource: net::ERR_INTERNET_DISCONNECTED
+r.stripe.com/b:1  Failed to load resource: net::ERR_INTERNET_DISCONNECTED
+beyondwickedmapping.org/v1/rgstr?k=client-Bp7m7pNB6H0fnSGjVtxN5BeWQw4BSAat4OFsXa3VcTF&st=javascript-client-react&sv=3.26.0&t=1760535515440&sid=3a635cb3-1282-4ac7-9983-9bb443f63eca&ec=1&gz=1:1  Failed to load resource: net::ERR_INTERNET_DISCONNECTED
+ingest.app.coframe.com/ingest/v2/batched_monitoring/68c9ad4d4cddb58cf3a1f93d/:1  Failed to load resource: net::ERR_INTERNET_DISCONNECTED
+cloudflare-dns.com/dns-query:1  Failed to load resource: net::ERR_INTERNET_DISCONNECTED
+   WARN  [Statsig] Caught error in _tryFetchFallbackUrlsFromNetwork Object
+(anonymous) @ _app-c9ca3a552390b735.js:28
+statsigapi.net/v1/sdk_exception:1  Failed to load resource: net::ERR_INTERNET_DISCONNECTED
+ingest.app.coframe.com/ingest/v2/batched_events/68c9ad4d4cddb58cf3a1f93d/:1  Failed to load resource: net::ERR_INTERNET_DISCONNECTED
+graphql:1  Failed to load resource: net::ERR_INTERNET_DISCONNECTED
+api.sorryapp.com/v1/pages/27c7b5fc:1  Failed to load resource: net::ERR_INTERNET_DISCONNECTED
+api.sorryapp.com/v1/pages/27c7b5fc:1  Failed to load resource: net::ERR_INTERNET_DISCONNECTED
+api.sorryapp.com/v1/pages/27c7b5fc:1  Failed to load resource: net::ERR_INTERNET_DISCONNECTED
+logs.browser-intake-us5-datadoghq.com/api/v2/logs?ddsource=browser&ddtags=sdk_version%3A4.46.0%2Capi%3Afetch%2Cenv%3Aproduction%2Cservice%3Awebsite%2Cversion%3A6c443e5e&dd-api-key=pub31a5047a3a4692afb84a423db984dc57&dd-evp-origin-version=4.46.0&dd-evp-origin=browser&dd-request-id=09ddeb64-5cf6-457b-8271-8c3bfce8f45e:1  Failed to load resource: net::ERR_INTERNET_DISCONNECTED
+/data/repls/301a997e-224f-466a-90b9-f0f77a76de50/get_connection_metadata:1  Failed to load resource: net::ERR_INTERNET_DISCONNECTED
+beyondwickedmapping.org/v1/rgstr?k=client-Bp7m7pNB6H0fnSGjVtxN5BeWQw4BSAat4OFsXa3VcTF&st=javascript-client-react&sv=3.26.0&t=1760535516603&sid=3a635cb3-1282-4ac7-9983-9bb443f63eca&ec=1&gz=1:1  Failed to load resource: net::ERR_INTERNET_DISCONNECTED
+logs.browser-intake-us5-datadoghq.com/api/v2/logs?ddsource=browser&ddtags=sdk_version%3A4.46.0%2Capi%3Axhr%2Cenv%3Aproduction%2Cservice%3Awebsite%2Cversion%3A6c443e5e&dd-api-key=pub31a5047a3a4692afb84a423db984dc57&dd-evp-origin-version=4.46.0&dd-evp-origin=browser&dd-request-id=3d0687f1-b440-4fde-aa4a-c56e6d316cb9:1  Failed to load resource: net::ERR_INTERNET_DISCONNECTED
+graphql:1  Failed to load resource: net::ERR_INTERNET_DISCONNECTED
+graphql:1  Failed to load resource: net::ERR_INTERNET_DISCONNECTED
+logs.browser-intake-us5-datadoghq.com/api/v2/logs?ddsource=browser&ddtags=sdk_version%3A4.46.0%2Capi%3Afetch%2Cenv%3Aproduction%2Cservice%3Awebsite%2Cversion%3A6c443e5e%2Cretry_count%3A1%2Cretry_after%3A0&dd-api-key=pub31a5047a3a4692afb84a423db984dc57&dd-evp-origin-version=4.46.0&dd-evp-origin=browser&dd-request-id=87107230-2400-465b-8024-d497d2d4a95a:1  Failed to load resource: net::ERR_INTERNET_DISCONNECTED
+ WebSocket connection to 'wss://replit.com/graphql_subscriptions' failed: 
+(anonymous) @ _app-c9ca3a552390b735.js:4
+logs.browser-intake-us5-datadoghq.com/api/v2/logs?ddsource=browser&ddtags=sdk_version%3A4.46.0%2Capi%3Axhr%2Cenv%3Aproduction%2Cservice%3Awebsite%2Cversion%3A6c443e5e%2Cretry_count%3A1%2Cretry_after%3A0&dd-api-key=pub31a5047a3a4692afb84a423db984dc57&dd-evp-origin-version=4.46.0&dd-evp-origin=browser&dd-request-id=abb6a39e-05cf-4e5e-abfa-5f3585d664c3:1  Failed to load resource: net::ERR_INTERNET_DISCONNECTED
+beyondwickedmapping.org/v1/rgstr?k=client-Bp7m7pNB6H0fnSGjVtxN5BeWQw4BSAat4OFsXa3VcTF&st=javascript-client-react&sv=3.26.0&t=1760535876326&sid=3a635cb3-1282-4ac7-9983-9bb443f63eca&ec=1&gz=1:1  Failed to load resource: net::ERR_NAME_NOT_RESOLVED
+/data/repls/301a997e-224f-466a-90b9-f0f77a76de50/get_connection_metadata:1  Failed to load resource: net::ERR_NAME_NOT_RESOLVED
+ WebSocket connection to 'wss://production-ai-chat.replit.com/river?auth_token=eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjQwNTA3MDMxLCJ1c2VyVGltZUNyZWF0ZWQiOiIyMDI1LTAzLTE0VDE4OjMxOjE0Ljg1M1oiLCJyZXBsSWQiOiIzMDFhOTk3ZS0yMjRmLTQ2NmEtOTBiOS1mMGY3N2E3NmRlNTAiLCJtZW1iZXJzaGlwIjoidGVhbXMiLCJpc3N1ZXIiOiJodHRwczovL3JlcGxpdC13ZWItcHJvZC5wLnJlcGxpdC5jb20iLCJyb2xlcyI6WyJpbnRlbnRfYnVzaW5lc3MiLCJvbmJvYXJkaW5nX2pvYl9lbmciLCJvbmJvYXJkaW5nX3JvbGVfbWFuYWdlciJdLCJjYW5Xcml0ZSI6dHJ1ZSwiaGFzUmVwbGl0QWlQcm8iOnRydWUsIm9yZ0lkIjoicWM4ZTkyIiwiZmxhZ...b3duZXJcIixcInJvbGVzXCI6W10sXCJpc190ZWFtXCI6dHJ1ZSxcIm1lbWJlcnNoaXBcIjpcInRlYW1zXCJ9IiwibW9kZWxmYXJtRGlzYWJsZWQiOmZhbHNlLCJpYXQiOjE3NjA1MzQ3NjgsImV4cCI6MTc2MDUzODM2OH0.YH15CjFHQH1yifImvfh1NSPMUHOTP3DN90DuVFtDNRSOpSfepEkLs7wBu3R9XAiXY67-PziH7fUwaX5P7RaH8xQIPw3DhcLF36M7EYCpgjeCbNrLjKd6USz0UQre0tq7ddQK-gdRJImCyImRzoZFR3MOW1nns_i8FWhgFFwh4MHi7HfWUNx69WO3oAVdA07q76UMBXOVuNsVwmv16qc1xYQjB5tx-A6eYlLEo9ZkZTACB5gzrqbRNKzD06jGAEbVEWyvUsyuxPYVGydJT8hgeOBC-wmBFLqrra2DimYKw4gEGMacpKE8bumJnrLcNwrzB53hNtGWR3iYWD1cNXCAfQ' failed: 
+(anonymous) @ 719-289a3c4e732f842e.js:1
+events.launchdarkly.com/events/bulk/62b35a865152ab14c5942820:1  Failed to load resource: net::ERR_NAME_NOT_RESOLVED
+ingest.app.coframe.com/ingest/v2/batched_events/68c9ad4d4cddb58cf3a1f93d/:1  Failed to load resource: net::ERR_NAME_NOT_RESOLVED
+logs.browser-intake-us5-datadoghq.com/api/v2/logs?ddsource=browser&ddtags=sdk_version%3A4.46.0%2Capi%3Afetch%2Cenv%3Aproduction%2Cservice%3Awebsite%2Cversion%3A6c443e5e%2Cretry_count%3A2%2Cretry_after%3A0&dd-api-key=pub31a5047a3a4692afb84a423db984dc57&dd-evp-origin-version=4.46.0&dd-evp-origin=browser&dd-request-id=9ce986bf-a7e8-48fe-9929-2f53f6a126c7:1  Failed to load resource: net::ERR_NAME_NOT_RESOLVED
+ WebSocket connection to 'wss://production-chort.replit.com/api/river' failed: 
+(anonymous) @ 719-289a3c4e732f842e.js:1
+ stallwart: failed ping 1
+r.stripe.com/b:1  Failed to load resource: net::ERR_INTERNET_DISCONNECTED
+r.stripe.com/b:1  Failed to load resource: net::ERR_INTERNET_DISCONNECTED
+graphql:1  Failed to load resource: net::ERR_INTERNET_DISCONNECTED
+logs.browser-intake-us5-datadoghq.com/api/v2/logs?ddsource=browser&ddtags=sdk_version%3A4.46.0%2Capi%3Abeacon%2Cenv%3Aproduction%2Cservice%3Awebsite%2Cversion%3A6c443e5e&dd-api-key=pub31a5047a3a4692afb84a423db984dc57&dd-evp-origin-version=4.46.0&dd-evp-origin=browser&dd-request-id=21b3a3ab-3488-4201-a06d-397d5f1468bc:1  Failed to load resource: net::ERR_INTERNET_DISCONNECTED
+ WebSocket connection to 'wss://eval.worf.platform.replit.com/wsv2/v2.public.Q2dZSXRjcSt4d1lTQmdqVTVyN0hCaUlFZDI5eVpqQUFPb2dDQ2lRek1ERmhPVGszWlMweU1qUm1MVFEyTm1FdE9UQmlPUzFtTUdZM04yRTNObVJsTlRBU0EyNXBlQm9XY21Wd2JHbDBMWEpsY0d3dFptbHNaWE10ZDI5eVppSVFaR2x3Y0hsa2IyZGxNUzB4TUMweE1Tb0taR2x3Y0hsa2IyZGxNVUpPQ2hkeVpYQnNhWFF0Y21Wd2JDMWliRzlqYTNNdGQyOXlaaElWY21Wd2JHbDBMWEpsY0d3dGJXVjBZUzEzYjNKbUdoeHlaWEJzYVhRdGJXRnlaMkZ5YVc1bExXSnNiMk5yY3kxM2IzSm1TZ2NJbDYyb0V4QUJVQUJhRDJsdWRHVnVkRjlpZFhOcGJtVnpjMW9TYjI1aWIyRnlaR2x1WjE5cWIySmZaVzVuV2hkdmJtSnZZ...MVRUUXpSM05OUkZSTGFEZHNaRFZ0YzJKMU1rRXhVVEJ1ZVVnM1ZqTm1SemxyYkdkTVdrSnRWMVZVTlZrMVFtWjJRVTV1Y205S1pqUlpjRUV3ZW1GRWRUVklKVEpHYm5acVYxSnJRbUpoY0dwck1HaDNNbmhOU0ZZeVozRnliMnMyY2pONFRVZ2xNa1l6T1RacU5VSlhTV3BFUzFremMxTjRXbUpFWVZwTGIzZENNMFJKWlZGM2NuQnpkVXMxZUhkMWJTVXlSak5zUm1VMmRGSnJjWHBYUkdSS1JVdE1TRTFJYmtjMFZEQmpVbWswSlRKR1ozRkRXVWQzUWxSbU1EZFNWV1pWT1hsRFZqWmtiazFxUVhwRFp5VXpSQ1V6UkE9PUEPEJE_8dDC9p3zs4urW4-gmH3B5nxK_RLzS0__cbC8jZZpP5EJdn_0Hr_pD1hRwXsdob6XKoy0DgsMfBs9AgU.Q2dad2NtOWtPak1pQ25KbGNHeHBkQzVqYjIwPQ' failed: 
+connect @ 6504-afd154cec4e32dae.js:1
+ingest.app.coframe.com/ingest/v2/batched_events/68c9ad4d4cddb58cf3a1f93d/:1  Failed to load resource: net::ERR_INTERNET_DISCONNECTED
+ WebSocket connection to 'wss://eval.worf.platform.replit.com/wsv2/v2.public.Q2dZSXRjcSt4d1lTQmdqVTVyN0hCaUlFZDI5eVpqQUFPb2dDQ2lRek1ERmhPVGszWlMweU1qUm1MVFEyTm1FdE9UQmlPUzFtTUdZM04yRTNObVJsTlRBU0EyNXBlQm9XY21Wd2JHbDBMWEpsY0d3dFptbHNaWE10ZDI5eVppSVFaR2x3Y0hsa2IyZGxNUzB4TUMweE1Tb0taR2x3Y0hsa2IyZGxNVUpPQ2hkeVpYQnNhWFF0Y21Wd2JDMWliRzlqYTNNdGQyOXlaaElWY21Wd2JHbDBMWEpsY0d3dGJXVjBZUzEzYjNKbUdoeHlaWEJzYVhRdGJXRnlaMkZ5YVc1bExXSnNiMk5yY3kxM2IzSm1TZ2NJbDYyb0V4QUJVQUJhRDJsdWRHVnVkRjlpZFhOcGJtVnpjMW9TYjI1aWIyRnlaR2x1WjE5cWIySmZaVzVuV2hkdmJtSnZZ...MVRUUXpSM05OUkZSTGFEZHNaRFZ0YzJKMU1rRXhVVEJ1ZVVnM1ZqTm1SemxyYkdkTVdrSnRWMVZVTlZrMVFtWjJRVTV1Y205S1pqUlpjRUV3ZW1GRWRUVklKVEpHYm5acVYxSnJRbUpoY0dwck1HaDNNbmhOU0ZZeVozRnliMnMyY2pONFRVZ2xNa1l6T1RacU5VSlhTV3BFUzFremMxTjRXbUpFWVZwTGIzZENNMFJKWlZGM2NuQnpkVXMxZUhkMWJTVXlSak5zUm1VMmRGSnJjWHBYUkdSS1JVdE1TRTFJYmtjMFZEQmpVbWswSlRKR1ozRkRXVWQzUWxSbU1EZFNWV1pWT1hsRFZqWmtiazFxUVhwRFp5VXpSQ1V6UkE9PUEPEJE_8dDC9p3zs4urW4-gmH3B5nxK_RLzS0__cbC8jZZpP5EJdn_0Hr_pD1hRwXsdob6XKoy0DgsMfBs9AgU.Q2dad2NtOWtPak1pQ25KbGNHeHBkQzVqYjIwPQ' failed: WebSocket is closed before the connection is established.
+cleanupSocket @ 6504-afd154cec4e32dae.js:1
+sp.replit.com/v1/m:1  Failed to load resource: net::ERR_INTERNET_DISCONNECTED
+ Error sending segment performance metrics 
+(anonymous) @ _app-c9ca3a552390b735.js:28
+graphql:1  Failed to load resource: net::ERR_INTERNET_DISCONNECTED
+logs.browser-intake-us5-datadoghq.com/api/v2/logs?ddsource=browser&ddtags=sdk_version%3A4.46.0%2Capi%3Afetch%2Cenv%3Aproduction%2Cservice%3Awebsite%2Cversion%3A6c443e5e&dd-api-key=pub31a5047a3a4692afb84a423db984dc57&dd-evp-origin-version=4.46.0&dd-evp-origin=browser&dd-request-id=6ef12f34-acb7-4754-a127-d37764b7f00b:1  Failed to load resource: net::ERR_INTERNET_DISCONNECTED
+/data/repls/301a997e-224f-466a-90b9-f0f77a76de50/get_connection_metadata:1  Failed to load resource: net::ERR_INTERNET_DISCONNECTED
+logs.browser-intake-us5-datadoghq.com/api/v2/logs?ddsource=browser&ddtags=sdk_version%3A4.46.0%2Capi%3Axhr%2Cenv%3Aproduction%2Cservice%3Awebsite%2Cversion%3A6c443e5e&dd-api-key=pub31a5047a3a4692afb84a423db984dc57&dd-evp-origin-version=4.46.0&dd-evp-origin=browser&dd-request-id=27829461-ace0-4b12-af16-f15ef96c20dc:1  Failed to load resource: net::ERR_INTERNET_DISCONNECTED
+graphql:1  Failed to load resource: net::ERR_INTERNET_DISCONNECTED
+r.stripe.com/b:1  Failed to load resource: net::ERR_INTERNET_DISCONNECTED
+r.stripe.com/b:1  Failed to load resource: net::ERR_INTERNET_DISCONNECTED
+ WebSocket connection to 'wss://replit.com/graphql_subscriptions' failed: 
+(anonymous) @ _app-c9ca3a552390b735.js:4
+/data/repls/301a997e-224f-466a-90b9-f0f77a76de50/get_connection_metadata:1  Failed to load resource: net::ERR_INTERNET_DISCONNECTED
+graphql:1  Failed to load resource: net::ERR_INTERNET_DISCONNECTED
+logs.browser-intake-us5-datadoghq.com/api/v2/logs?ddsource=browser&ddtags=sdk_version%3A4.46.0%2Capi%3Afetch%2Cenv%3Aproduction%2Cservice%3Awebsite%2Cversion%3A6c443e5e%2Cretry_count%3A1%2Cretry_after%3A0&dd-api-key=pub31a5047a3a4692afb84a423db984dc57&dd-evp-origin-version=4.46.0&dd-evp-origin=browser&dd-request-id=3bb49966-f1bf-4e14-890f-b61abb991128:1  Failed to load resource: net::ERR_INTERNET_DISCONNECTED
+api.sorryapp.com/v1/pages/27c7b5fc:1  Failed to load resource: net::ERR_INTERNET_DISCONNECTED
+cf.js?config=%257B%2…22startTime%252…:10 Uncaught (in promise) Error: Timeout waiting for command after 3600000ms for:
+e=>!("treatmentApplied"!==e.subscribe||!e.callback)
+api.sorryapp.com/v1/pages/27c7b5fc:1  Failed to load resource: net::ERR_INTERNET_DISCONNECTED
+api.sorryapp.com/v1/pages/27c7b5fc:1  Failed to load resource: net::ERR_INTERNET_DISCONNECTED
+graphql:1  Failed to load resource: net::ERR_INTERNET_DISCONNECTED
+events.launchdarkly.com/events/diagnostic/62b35a865152ab14c5942820:1  Failed to load resource: net::ERR_INTERNET_DISCONNECTED
+securetoken.googleapis.com/v1/token?key=AIzaSyARAzVTWc_KOBojIholLo2wzwNOQ6VKcB8:1  Failed to load resource: net::ERR_INTERNET_DISCONNECTED
+graphql:1  Failed to load resource: net::ERR_INTERNET_DISCONNECTED
+logs.browser-intake-us5-datadoghq.com/api/v2/logs?ddsource=browser&ddtags=sdk_version%3A4.46.0%2Capi%3Axhr%2Cenv%3Aproduction%2Cservice%3Awebsite%2Cversion%3A6c443e5e%2Cretry_count%3A1%2Cretry_after%3A0&dd-api-key=pub31a5047a3a4692afb84a423db984dc57&dd-evp-origin-version=4.46.0&dd-evp-origin=browser&dd-request-id=1d7eb43c-8057-49c1-babb-11ee24c04267:1  Failed to load resource: net::ERR_INTERNET_DISCONNECTED
+events.launchdarkly.com/events/diagnostic/62b35a865152ab14c5942820:1  Failed to load resource: net::ERR_INTERNET_DISCONNECTED
+o1151714.ingest.sentry.io/api/6318792/envelope/?sentry_key=8aa91189a4274b5a8c9b7b01d46ea360&sentry_version=7&sentry_client=sentry.javascript.browser%2F7.112.0:1  Failed to load resource: net::ERR_INTERNET_DISCONNECTED
+o1151714.ingest.sentry.io/api/6318792/envelope/?sentry_key=8aa91189a4274b5a8c9b7b01d46ea360&sentry_version=7&sentry_client=sentry.javascript.browser%2F7.112.0:1  Failed to load resource: net::ERR_INTERNET_DISCONNECTED
+ingest.app.coframe.com/ingest/v2/batched_events/68c9ad4d4cddb58cf3a1f93d/:1  Failed to load resource: net::ERR_INTERNET_DISCONNECTED
+events.launchdarkly.com/events/bulk/62b35a865152ab14c5942820:1  Failed to load resource: net::ERR_INTERNET_DISCONNECTED
+events.launchdarkly.com/events/bulk/62b35a865152ab14c5942820:1  Failed to load resource: net::ERR_INTERNET_DISCONNECTED
+graphql:1  Failed to load resource: net::ERR_INTERNET_DISCONNECTED
+logs.browser-intake-us5-datadoghq.com/api/v2/logs?ddsource=browser&ddtags=sdk_version%3A4.46.0%2Capi%3Afetch%2Cenv%3Aproduction%2Cservice%3Awebsite%2Cversion%3A6c443e5e%2Cretry_count%3A2%2Cretry_after%3A0&dd-api-key=pub31a5047a3a4692afb84a423db984dc57&dd-evp-origin-version=4.46.0&dd-evp-origin=browser&dd-request-id=72d75089-3e2b-42a4-be5c-cc22b49a4f9c:1  Failed to load resource: net::ERR_INTERNET_DISCONNECTED
+_app-c9ca3a552390b735.js:1 Uncaught (in promise) 
+logs.browser-intake-us5-datadoghq.com/api/v2/logs?ddsource=browser&ddtags=sdk_version%3A4.46.0%2Capi%3Axhr%2Cenv%3Aproduction%2Cservice%3Awebsite%2Cversion%3A6c443e5e%2Cretry_count%3A2%2Cretry_after%3A0&dd-api-key=pub31a5047a3a4692afb84a423db984dc57&dd-evp-origin-version=4.46.0&dd-evp-origin=browser&dd-request-id=6e11ae77-a60d-4919-82c1-63d315ab3808:1  Failed to load resource: net::ERR_INTERNET_DISCONNECTED
+o1151714.ingest.sentry.io/api/6318792/envelope/?sentry_key=8aa91189a4274b5a8c9b7b01d46ea360&sentry_version=7&sentry_client=sentry.javascript.browser%2F7.112.0:1  Failed to load resource: net::ERR_INTERNET_DISCONNECTED
+ WebSocket connection to 'wss://replit.com/graphql_subscriptions' failed: 
+(anonymous) @ _app-c9ca3a552390b735.js:4
+/data/repls/301a997e-224f-466a-90b9-f0f77a76de50/get_connection_metadata:1  Failed to load resource: net::ERR_INTERNET_DISCONNECTED
+graphql:1  Failed to load resource: net::ERR_INTERNET_DISCONNECTED
+ingest.app.coframe.com/ingest/v2/batched_events/68c9ad4d4cddb58cf3a1f93d/:1  Failed to load resource: net::ERR_INTERNET_DISCONNECTED
+events.launchdarkly.com/events/bulk/62b35a865152ab14c5942820:1  Failed to load resource: net::ERR_INTERNET_DISCONNECTED
+events.launchdarkly.com/events/bulk/62b35a865152ab14c5942820:1  Failed to load resource: net::ERR_INTERNET_DISCONNECTED
+7276-368cd92e9985fef8.js:1 Uncaught (in promise) 
+ WebSocket is already in CLOSING or CLOSED state.
+send @ 6631-5375d89843d6f286.js:1
+ WebSocket connection to 'wss://eval.worf.platform.replit.com/wsv2/v2.public.Q2dZSXgrMit4d1lTQmdqbWliL0hCaUlFZDI5eVpqQUFPb2dDQ2lRek1ERmhPVGszWlMweU1qUm1MVFEyTm1FdE9UQmlPUzFtTUdZM04yRTNObVJsTlRBU0EyNXBlQm9XY21Wd2JHbDBMWEpsY0d3dFptbHNaWE10ZDI5eVppSVFaR2x3Y0hsa2IyZGxNUzB4TUMweE1Tb0taR2x3Y0hsa2IyZGxNVUpPQ2hkeVpYQnNhWFF0Y21Wd2JDMWliRzlqYTNNdGQyOXlaaElWY21Wd2JHbDBMWEpsY0d3dGJXVjBZUzEzYjNKbUdoeHlaWEJzYVhRdGJXRnlaMkZ5YVc1bExXSnNiMk5yY3kxM2IzSm1TZ2NJbDYyb0V4QUJVQUJhRDJsdWRHVnVkRjlpZFhOcGJtVnpjMW9TYjI1aWIyRnlaR2x1WjE5cWIySmZaVzVuV2hkdmJtSnZZ...alNVMU5SMDVGT1hVbE1rWm9NVFZwVUVsTFpDVXlSamhMV0dWWVdYQTFUSGxNWVRacVFqWmhkbUpqTkRCV1IzWlNjMDlvYTAxcGNURkhURXQyYkZsbGVFZ3pVbWRzTVhGNFREQlRVR1V5Y0hVd2VYUnNOalpyU210elZFaHVaQ1V5UmlVeVFqbHRkVWRyVTBsSk5YaERNa3BOTTI1aWFHOUZWVzFMVDBwb1owcHNjemh5VVU1SGFVTnJOV1FsTWtaSFNWUmFTMXBVUjFOQ1ZsVkZVSGh1UW1Gb2FWVkdSbVpJUW05VFZqaGtlVTluTXpGcVJIZEpObnAwWmsxNGVVazVSRFpzVWpCQlpreE1VSEVsTWtaSE56RkJKVE5FSlRORYs_Uzp2WLyyiS4_23yOtBU6xl_XS8Gf9HHroPzaInriIL5uIX6eRu_uz5j3RoSIakremzkcmV_DwMxHP35DrA4.Q2dad2NtOWtPak1pQ25KbGNHeHBkQzVqYjIwPQ' failed: WebSocket is closed before the connection is established.
+cleanupSocket @ 6504-afd154cec4e32dae.js:1
+ WebSocket connection to 'wss://eval.worf.platform.replit.com/wsv2/v2.public.Q2dZSXgrMit4d1lTQmdqbWliL0hCaUlFZDI5eVpqQUFPb2dDQ2lRek1ERmhPVGszWlMweU1qUm1MVFEyTm1FdE9UQmlPUzFtTUdZM04yRTNObVJsTlRBU0EyNXBlQm9XY21Wd2JHbDBMWEpsY0d3dFptbHNaWE10ZDI5eVppSVFaR2x3Y0hsa2IyZGxNUzB4TUMweE1Tb0taR2x3Y0hsa2IyZGxNVUpPQ2hkeVpYQnNhWFF0Y21Wd2JDMWliRzlqYTNNdGQyOXlaaElWY21Wd2JHbDBMWEpsY0d3dGJXVjBZUzEzYjNKbUdoeHlaWEJzYVhRdGJXRnlaMkZ5YVc1bExXSnNiMk5yY3kxM2IzSm1TZ2NJbDYyb0V4QUJVQUJhRDJsdWRHVnVkRjlpZFhOcGJtVnpjMW9TYjI1aWIyRnlaR2x1WjE5cWIySmZaVzVuV2hkdmJtSnZZ...alNVMU5SMDVGT1hVbE1rWm9NVFZwVUVsTFpDVXlSamhMV0dWWVdYQTFUSGxNWVRacVFqWmhkbUpqTkRCV1IzWlNjMDlvYTAxcGNURkhURXQyYkZsbGVFZ3pVbWRzTVhGNFREQlRVR1V5Y0hVd2VYUnNOalpyU210elZFaHVaQ1V5UmlVeVFqbHRkVWRyVTBsSk5YaERNa3BOTTI1aWFHOUZWVzFMVDBwb1owcHNjemh5VVU1SGFVTnJOV1FsTWtaSFNWUmFTMXBVUjFOQ1ZsVkZVSGh1UW1Gb2FWVkdSbVpJUW05VFZqaGtlVTluTXpGcVJIZEpObnAwWmsxNGVVazVSRFpzVWpCQlpreE1VSEVsTWtaSE56RkJKVE5FSlRORYs_Uzp2WLyyiS4_23yOtBU6xl_XS8Gf9HHroPzaInriIL5uIX6eRu_uz5j3RoSIakremzkcmV_DwMxHP35DrA4.Q2dad2NtOWtPak1pQ25KbGNHeHBkQzVqYjIwPQ' failed: WebSocket is closed before the connection is established.
+cleanupSocket @ 6504-afd154cec4e32dae.js:1
+events.launchdarkly.com/events/bulk/62b35a865152ab14c5942820:1  Failed to load resource: net::ERR_NETWORK_CHANGED
+graphql:1  Failed to load resource: net::ERR_NETWORK_CHANGED
+graphql:1  Failed to load resource: net::ERR_NETWORK_CHANGED
+/data/repls/301a997e-224f-466a-90b9-f0f77a76de50/get_connection_metadata:1  Failed to load resource: net::ERR_NETWORK_CHANGED
+graphql:1  Failed to load resource: net::ERR_NETWORK_CHANGED
+logs.browser-intake-us5-datadoghq.com/api/v2/logs?ddsource=browser&ddtags=sdk_version%3A4.46.0%2Capi%3Afetch%2Cenv%3Aproduction%2Cservice%3Awebsite%2Cversion%3A6c443e5e&dd-api-key=pub31a5047a3a4692afb84a423db984dc57&dd-evp-origin-version=4.46.0&dd-evp-origin=browser&dd-request-id=d967b24e-0cc4-4780-b350-92ff3b64c2e6:1  Failed to load resource: net::ERR_NETWORK_CHANGED
+logs.browser-intake-us5-datadoghq.com/api/v2/logs?ddsource=browser&ddtags=sdk_version%3A4.46.0%2Capi%3Axhr%2Cenv%3Aproduction%2Cservice%3Awebsite%2Cversion%3A6c443e5e&dd-api-key=pub31a5047a3a4692afb84a423db984dc57&dd-evp-origin-version=4.46.0&dd-evp-origin=browser&dd-request-id=f1be85c9-a768-452f-879d-1607abb369de:1  Failed to load resource: net::ERR_INTERNET_DISCONNECTED
+graphql:1  Failed to load resource: net::ERR_INTERNET_DISCONNECTED
+graphql:1  Failed to load resource: net::ERR_INTERNET_DISCONNECTED
+events.launchdarkly.com/events/bulk/62b35a865152ab14c5942820:1  Failed to load resource: net::ERR_INTERNET_DISCONNECTED
+ WebSocket connection to 'wss://replit.com/graphql_subscriptions' failed: 
+(anonymous) @ _app-c9ca3a552390b735.js:4
+logs.browser-intake-us5-datadoghq.com/api/v2/logs?ddsource=browser&ddtags=sdk_version%3A4.46.0%2Capi%3Afetch%2Cenv%3Aproduction%2Cservice%3Awebsite%2Cversion%3A6c443e5e%2Cretry_count%3A1%2Cretry_after%3A0&dd-api-key=pub31a5047a3a4692afb84a423db984dc57&dd-evp-origin-version=4.46.0&dd-evp-origin=browser&dd-request-id=0c2e7e95-be7b-4af0-ba83-482bc941753a:1  Failed to load resource: net::ERR_INTERNET_DISCONNECTED
+graphql:1  Failed to load resource: net::ERR_INTERNET_DISCONNECTED
+graphql:1  Failed to load resource: net::ERR_INTERNET_DISCONNECTED
+_app-c9ca3a552390b735.js:1 Uncaught (in promise) 
+ WebSocket connection to 'wss://replit.com/graphql_subscriptions' failed: 
+(anonymous) @ _app-c9ca3a552390b735.js:4
+logs.browser-intake-us5-datadoghq.com/api/v2/logs?ddsource=browser&ddtags=sdk_version%3A4.46.0%2Capi%3Axhr%2Cenv%3Aproduction%2Cservice%3Awebsite%2Cversion%3A6c443e5e%2Cretry_count%3A1%2Cretry_after%3A0&dd-api-key=pub31a5047a3a4692afb84a423db984dc57&dd-evp-origin-version=4.46.0&dd-evp-origin=browser&dd-request-id=b29c806e-a76e-48f7-abb1-1714befa79d2:1  Failed to load resource: net::ERR_NAME_NOT_RESOLVED
+o1151714.ingest.sentry.io/api/6318792/envelope/?sentry_key=8aa91189a4274b5a8c9b7b01d46ea360&sentry_version=7&sentry_client=sentry.javascript.browser%2F7.112.0:1  Failed to load resource: net::ERR_NAME_NOT_RESOLVED
+7276-368cd92e9985fef8.js:1 Uncaught (in promise) 
+workspace_iframe.html?initialPath=%2F&id=%3Ar15g%3A:32 Unrecognized feature: 'ambient-light-sensor'.
+workspace_iframe.html?initialPath=%2F&id=%3Ar15g%3A:32 Unrecognized feature: 'battery'.
+workspace_iframe.html?initialPath=%2F&id=%3Ar15g%3A:32 Unrecognized feature: 'execution-while-not-rendered'.
+workspace_iframe.html?initialPath=%2F&id=%3Ar15g%3A:32 Unrecognized feature: 'execution-while-out-of-viewport'.
+workspace_iframe.html?initialPath=%2F&id=%3Ar15g%3A:32 Unrecognized feature: 'layout-animations'.
+workspace_iframe.html?initialPath=%2F&id=%3Ar15g%3A:32 Unrecognized feature: 'legacy-image-formats'.
+workspace_iframe.html?initialPath=%2F&id=%3Ar15g%3A:32 Unrecognized feature: 'navigation-override'.
+workspace_iframe.html?initialPath=%2F&id=%3Ar15g%3A:32 Unrecognized feature: 'oversized-images'.
+workspace_iframe.html?initialPath=%2F&id=%3Ar15g%3A:32 Unrecognized feature: 'publickey-credentials'.
+workspace_iframe.html?initialPath=%2F&id=%3Ar15g%3A:32 Unrecognized feature: 'speaker-selection'.
+workspace_iframe.html?initialPath=%2F&id=%3Ar15g%3A:32 Unrecognized feature: 'unoptimized-images'.
+workspace_iframe.html?initialPath=%2F&id=%3Ar15g%3A:32 Unrecognized feature: 'unsized-media'.
+workspace_iframe.html?initialPath=%2F&id=%3Ar15g%3A:32 Allow attribute will take precedence over 'allowfullscreen'.
+workspace_iframe.html?initialPath=%2F&id=%3Ar15g%3A:32 Allow attribute will take precedence over 'allowpaymentrequest'.
+301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/:1  Failed to load resource: the server responded with a status of 404 (Not Found)
+301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/:1 Refused to load the script 'https://301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/__replco/static/devtools/injected.js' because it violates the following Content Security Policy directive: "default-src 'none'". Note that 'script-src-elem' was not explicitly set, so 'default-src' is used as a fallback.
+
+301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/:1 Refused to execute inline event handler because it violates the following Content Security Policy directive: "default-src 'none'". Either the 'unsafe-inline' keyword, a hash ('sha256-...'), or a nonce ('nonce-...') is required to enable inline execution. Note that hashes do not apply to event handlers, style attributes and javascript: navigations unless the 'unsafe-hashes' keyword is present. Note also that 'script-src' was not explicitly set, so 'default-src' is used as a fallback.
+
+ Refused to load the script 'https://replit.com/public/js/beacon.js' because it violates the following Content Security Policy directive: "default-src 'none'". Note that 'script-src-elem' was not explicitly set, so 'default-src' is used as a fallback.
+
+onIframeLoad @ workspace_iframe.htm…F&id=%3Ar15g%3A:142
+ [Coframe] Mutation callback infinite loop protection triggered, disconnecting mutation observer Object
+(anonymous) @ _app-c9ca3a552390b735.js:28
+ WebSocket connection to 'wss://301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/?token=HitwT2Kzidk9' failed: 
+window.WebSocket @ init.js:53
+ 🔧 Fixed WebSocket URL for Replit: wss://localhost:undefined/?token=HitwT2Kzidk9 → wss://301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/?token=HitwT2Kzidk9
+ WebSocket connection to 'wss://301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/?token=HitwT2Kzidk9' failed: 
+window.WebSocket @ init.js:53
+ [vite] failed to connect to websocket.
+your current setup:
+  (browser) 301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/ <--[HTTP]--> localhost:undefined/ (server)
+  (browser) 301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev:/ <--[WebSocket (failing)]--> localhost:undefined/ (server)
+Check out your Vite / network configuration and https://vite.dev/config/server-options.html#server-hmr .
+(anonymous) @ injected.js:27
+ 🎨 App.tsx: App component is rendering
+ 🏗️ App.tsx: Returning JSX with all providers
+ 🚫 SessionMonitor: DISABLED - Using unified SessionManager instead
+ 🗺️ Router: Router component is rendering
+ 📍 Router: Current location: /
+ 💳 Router: Initializing wallet data state
+ 📭 Router: No saved wallet data found
+ 🔍 SessionManager.getSession() returning: Object
+ 🔍 Found local wallet connections: Array(0)
+ 🎨 App.tsx: App component is rendering
+ 🏗️ App.tsx: Returning JSX with all providers
+ 🚫 SessionMonitor: DISABLED - Using unified SessionManager instead
+ 🗺️ Router: Router component is rendering
+ 📍 Router: Current location: /
+ 💳 Router: Initializing wallet data state
+ 📭 Router: No saved wallet data found
+ 🔍 SessionManager.getSession() returning: Object
+ 🔍 Found local wallet connections: Array(0)
+ 🔍 SessionManager: checkSession() called - current sessionData: true
+ 🌐 SessionManager: Making Riddle wallet session request to /api/riddle-wallet/session
+ 🎨 [THEME] Applied theme: dark, dark class: true
+ 🔄 App.tsx: useEffect running - recovering wallet state
+ ✅ SessionManager: Valid session for dippydoge
+ ✅ SessionManager: Updated session data: Object
+ 🔍 SessionManager.getSession() returning: Object
+ 🔔 SessionManager: Notified 1 listeners
+ 🔍 SessionManager.getSession() returning: Object
+ 🔍 Found local wallet connections: Array(0)
+ 🔍 SessionManager.getSession() returning: Object
+ 🔍 Found local wallet connections: Array(0)
+ 🔍 getQueryFn - SessionManager sessionToken: FOUND
+ 🗺️ Router: Router component is rendering
+ 📍 Router: Current location: /multi-chain-dashboard
+ 🔍 SessionManager.getSession() returning: Object
+ 🔍 Found local wallet connections: Array(0)
+ 🔍 SessionManager.getSession() returning: Object
+ 🔍 SessionManager: checkSession() called - current sessionData: true
+ 🌐 SessionManager: Making Riddle wallet session request to /api/riddle-wallet/session
+ ✅ AuthGuard: User authenticated, allowing access
+ 🗺️ Router: Router component is rendering
+ 📍 Router: Current location: /wallet-dashboard
+ 🔍 SessionManager.getSession() returning: Object
+ 🔍 Found local wallet connections: Array(0)
+ 🔍 SessionManager.getSession() returning: Object
+ ✅ AuthGuard: User authenticated, allowing access
+ ✅ SessionManager: Valid session for dippydoge
+ ✅ SessionManager: Updated session data: Object
+ 🔍 SessionManager.getSession() returning: Object
+ 🔍 SessionManager.getSession() returning: Object
+ 🔔 SessionManager: Notified 2 listeners
+ 🔍 SessionManager.getSession() returning: Object
+ 🔍 Found local wallet connections: Array(0)
+ 🔍 SessionManager.getSession() returning: Object
+ 🔍 [AUTH CHECK] Session token found: YES
+ 🔍 [AUTH CHECK] Server response: Object
+ ✅ [AUTH CHECK] Valid session for user: dippydoge
+ 🔍 getQueryFn - SessionManager sessionToken: FOUND
+ 🔍 getQueryFn - SessionManager sessionToken: FOUND
+ 📊 [WALLET DASHBOARD] Fetching portfolio from separate endpoints...
+ 🔗 [WALLET DASHBOARD] Using addresses: Object
+ 🔍 Found local wallet connections: Array(0)
+ 🔗 Found 0 linked projects
+ 🔍 Found local wallet connections: Array(0)
+ ✅ [XRP] Balance: 15.997953 | USD: $39.19
+ ✅ [ETH] Balance: 0.001436 | USD: $5.73
+ ✅ [ARBITRUM] Balance: 0.000000 | USD: $0
+ ✅ [OPTIMISM] Balance: 0.000000 | USD: $0
+ ✅ [BASE] Balance: 0.000000 | USD: $0
+ ✅ [POLYGON] Balance: 0.000000 | USD: $0
+ ✅ [BNB] Balance: 0.000000 | USD: $0
+ ✅ [LINEA] Balance: 0.000000 | USD: $0
+ ✅ [ZKSYNC] Balance: 0.000000 | USD: $0
+ ✅ [SOL] Balance: 0.007038 | USD: $1.76
+ ✅ [BTC] Balance: 0.00027633 | USD: $30.4
+ ✅ [WALLET DASHBOARD] Aggregated portfolio: Object
+ Loading logo for eth: /images/chains/ethereum-logo.png
+ Loading logo for xrp: /images/chains/xrp-logo.png
+ Loading logo for btc: /images/chains/bitcoin-logo.png
+ Loading logo for sol: /images/chains/solana-logo.png
+ Loading logo for arbitrum: /images/chains/arbitrum-logo.png
+ Loading logo for optimism: /images/chains/optimism-logo.png
+ Loading logo for base: /images/chains/base-logo.png
+ Loading logo for polygon: /images/chains/polygon-logo.png
+ Loading logo for zksync: /images/chains/zksync-logo.png
+ Loading logo for linea: /images/chains/linea-logo.png
+ Loading logo for scroll: /images/chains/scroll-logo.png
+ Loading logo for mantle: /images/chains/mantle-logo.png
+ Loading logo for metis: /images/chains/metis-logo.png
+ Loading logo for taiko: /images/chains/taiko-logo.png
+ Loading logo for unichain: /images/chains/unichain-logo.png
+ Loading logo for soneium: /images/chains/soneium-logo.png
+ Loading logo for avax: /images/chains/avalanche-logo.png
+ Loading logo for bnb: /images/chains/bnb-logo.png
+ 🔍 [AUTH CHECK] Session token found: YES
+ Loading logo for xrp: /images/chains/xrp-logo.png
+ Loading logo for eth: /images/chains/ethereum-logo.png
+ Loading logo for btc: /images/chains/bitcoin-logo.png
+ 🔍 [AUTH CHECK] Server response: Object
+ ✅ [AUTH CHECK] Valid session for user: dippydoge
+ 🔍 getQueryFn - SessionManager sessionToken: FOUND
+ Loading logo for sol: /images/chains/solana-logo.png
+ Loading logo for arbitrum: /images/chains/arbitrum-logo.png
+ Loading logo for optimism: /images/chains/optimism-logo.png
+ Loading logo for base: /images/chains/base-logo.png
+ Loading logo for polygon: /images/chains/polygon-logo.png
+ Loading logo for zksync: /images/chains/zksync-logo.png
+ Loading logo for linea: /images/chains/linea-logo.png
+ Loading logo for mantle: /images/chains/mantle-logo.png
+ Loading logo for scroll: /images/chains/scroll-logo.png
+ Loading logo for metis: /images/chains/metis-logo.png
+ Loading logo for taiko: /images/chains/taiko-logo.png
+ Loading logo for unichain: /images/chains/unichain-logo.png
+ Loading logo for soneium: /images/chains/soneium-logo.png
+ Loading logo for avax: /images/chains/avalanche-logo.png
+ Loading logo for bnb: /images/chains/bnb-logo.png
+ 🗺️ Router: Router component is rendering
+ 📍 Router: Current location: /xrp-wallet
+ 🔍 SessionManager.getSession() returning: Object
+ 🔍 Found local wallet connections: Array(0)
+ 🔍 SessionManager.getSession() returning: Object
+ 🔍 SessionManager: checkSession() called - current sessionData: true
+ 🌐 SessionManager: Making Riddle wallet session request to /api/riddle-wallet/session
+ ✅ AuthGuard: User authenticated, allowing access
+ ✅ SessionManager: Valid session for dippydoge
+ ✅ SessionManager: Updated session data: Object
+ 🔍 SessionManager.getSession() returning: Object
+ 🔍 SessionManager.getSession() returning: Object
+ 🔔 SessionManager: Notified 2 listeners
+ 🔍 SessionManager.getSession() returning: Object
+ 🔍 Found local wallet connections: Array(0)
+ 🔍 SessionManager.getSession() returning: Object
+ 🔍 SessionManager.getSession() returning: Object
+ 🔍 [AUTH CHECK] Session token found: YES
+ 🔍 SessionManager: checkSession() called - current sessionData: true
+ 🌐 SessionManager: Making Riddle wallet session request to /api/riddle-wallet/session
+ 🔍 [XRP WALLET] Auth data: Object
+ 🔍 [AUTH CHECK] Server response: Object
+ ✅ [AUTH CHECK] Valid session for user: dippydoge
+ 🔍 SessionManager.getSession() returning: Object
+ 🔍 [XRP WALLET] Auth data: Object
+301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/api/session-check:1  Failed to load resource: the server responded with a status of 404 (Not Found)
+injected.js:27 🔍 SessionManager.getSession() returning: Object
+injected.js:27 🔍 [XRP WALLET] Auth data: Object
+injected.js:27 ✅ Balance fetched for xrp/rEVrTKUKSLx5nxdfV8SAFTxS9FGFrfHRLo: Object
+injected.js:27 🔍 SessionManager.getSession() returning: Object
+injected.js:27 🔍 [XRP WALLET] Auth data: Object
+injected.js:27 ✅ SessionManager: Valid session for dippydoge
+injected.js:27 ✅ SessionManager: Updated session data: Object
+injected.js:27 🔍 SessionManager.getSession() returning: Object
+injected.js:27 🔍 SessionManager.getSession() returning: Object
+injected.js:27 🔍 SessionManager.getSession() returning: Object
+injected.js:27 🔔 SessionManager: Notified 3 listeners
+injected.js:27 🔍 SessionManager.getSession() returning: Object
+injected.js:27 🔍 Found local wallet connections: Array(0)
+injected.js:27 🔍 SessionManager.getSession() returning: Object
+injected.js:27 🔍 SessionManager.getSession() returning: Object
+injected.js:27 🔍 [XRP WALLET] Auth data: Object
+injected.js:27 🔍 SessionManager.getSession() returning: Object
+injected.js:27 🔍 [XRP WALLET] Auth data: Object
+injected.js:27 🔍 SessionManager.getSession() returning: Object
+injected.js:27 🔍 [XRP WALLET] Auth data: Object
+injected.js:27 🔍 SessionManager.getSession() returning: Object
+injected.js:27 🔍 [XRP WALLET] Auth data: Object
+injected.js:27 ✅ Portfolio fetched for xrp/rEVrTKUKSLx5nxdfV8SAFTxS9FGFrfHRLo: Object
+injected.js:27 🔍 SessionManager.getSession() returning: Object
+injected.js:27 🔍 [XRP WALLET] Auth data: Object
+injected.js:27 🔍 SessionManager.getSession() returning: Object
+injected.js:27 🔍 [XRP WALLET] Auth data: Object
+injected.js:27 🔍 SessionManager.getSession() returning: Object
+injected.js:27 🔍 [XRP WALLET] Auth data: Object
+injected.js:27 ✅ [TOKEN IMAGE] Successfully loaded icon for LOX
+injected.js:27 ✅ [TOKEN IMAGE] Successfully loaded icon for ARMY
+injected.js:27 ✅ [TOKEN IMAGE] Successfully loaded icon for XMEME
+injected.js:27 ✅ [TOKEN IMAGE] Successfully loaded icon for SIG
+injected.js:27 ✅ [TOKEN IMAGE] Successfully loaded icon for ATM
+injected.js:27 ✅ [TOKEN IMAGE] Successfully loaded icon for FUZZY
+injected.js:27 ✅ [TOKEN IMAGE] Successfully loaded icon for BCHAMP
+injected.js:27 ✅ [TOKEN IMAGE] Successfully loaded icon for STIMPY
+injected.js:27 ✅ [TOKEN IMAGE] Successfully loaded icon for CBIRD
+injected.js:27 ✅ [TOKEN IMAGE] Successfully loaded icon for RDL
+injected.js:27 ✅ [TOKEN IMAGE] Successfully loaded icon for BKT
+injected.js:27 ✅ [TOKEN IMAGE] Successfully loaded icon for SIGMA
+injected.js:27 ✅ [TOKEN IMAGE] Successfully loaded icon for ARMY
+injected.js:27 ✅ [TOKEN IMAGE] Successfully loaded icon for GEN
+injected.js:27 ✅ [TOKEN IMAGE] Successfully loaded icon for GRIM
+injected.js:27 🔍 SessionManager.getSession() returning: Object
+injected.js:27 🔍 getQueryFn - SessionManager sessionToken: FOUND
+injected.js:27 🔍 [XRP WALLET] Auth data: Object
+injected.js:27 Warning: Missing `Description` or `aria-describedby={undefined}` for {DialogContent}.
+(anonymous) @ injected.js:27
+301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/api/xrpl/wallet/tokens/sellable:1  Failed to load resource: the server responded with a status of 401 (Unauthorized)
+injected.js:27 🔓 Got 401 error - NOT clearing session data automatically

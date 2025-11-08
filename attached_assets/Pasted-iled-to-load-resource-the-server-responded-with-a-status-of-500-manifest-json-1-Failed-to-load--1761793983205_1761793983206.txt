@@ -1,0 +1,278 @@
+iled to load resource: the server responded with a status of 500 ()
+manifest.json:1  Failed to load resource: the server responded with a status of 500 ()
+init.js:1  Failed to load resource: the server responded with a status of 500 ()
+index-fRTpeB7G.js:559 🎨 App.tsx: App component is rendering
+index-fRTpeB7G.js:559 🏗️ App.tsx: Returning JSX with all providers
+index-fRTpeB7G.js:559 🚫 SessionMonitor: DISABLED - Using unified SessionManager instead
+index-fRTpeB7G.js:559 🗺️ Router: Router component is rendering
+index-fRTpeB7G.js:559 📍 Router: Current location: /
+index-fRTpeB7G.js:559 💳 Router: Initializing wallet data state
+index-fRTpeB7G.js:559 🔓 Router: No session token found
+index-fRTpeB7G.js:559 🔐 [GLOBAL RENEWAL] Handler initialized
+index-fRTpeB7G.js:434 🎨 [THEME] Applied theme: dark, dark class: true
+index-fRTpeB7G.js:559 🔄 App.tsx: useEffect running - recovering wallet state
+index-fRTpeB7G.js:559 ⚡ App.tsx: Skipping wallet recovery for faster login page loading
+favicon.ico:1  GET https://dippydoge-1-10-11-dippyriddle.replit.app/favicon.ico 503 (Service Unavailable)
+Image
+(anonymous) @ inpage.js:1
+u @ inpage.js:1
+a @ inpage.js:1
+(anonymous) @ inpage.js:1
+r.sendSiteMetadata @ inpage.js:1
+e @ inpage.js:1
+logo.jpg:1  GET https://dippydoge-1-10-11-dippyriddle.replit.app/logo.jpg 503 (Service Unavailable)
+(index):1 Error while trying to use the following icon from the Manifest: https://dippydoge-1-10-11-dippyriddle.replit.app/logo.jpg (Download error or resource isn't a valid image)
+index-fRTpeB7G.js:559 🗺️ Router: Router component is rendering
+index-fRTpeB7G.js:559 📍 Router: Current location: /login
+index-fRTpeB7G.js:46  GET https://dippydoge-1-10-11-dippyriddle.replit.app/assets/wallet-login-8yiDjLMG.css net::ERR_ABORTED 500 (Internal Server Error)
+(anonymous) @ index-fRTpeB7G.js:46
+ie @ index-fRTpeB7G.js:46
+(anonymous) @ index-fRTpeB7G.js:559
+LV @ index-fRTpeB7G.js:10
+TT @ index-fRTpeB7G.js:44
+b @ index-fRTpeB7G.js:44
+sr @ index-fRTpeB7G.js:46
+vD @ index-fRTpeB7G.js:46
+mD @ index-fRTpeB7G.js:46
+Vq @ index-fRTpeB7G.js:46
+s0 @ index-fRTpeB7G.js:46
+KT @ index-fRTpeB7G.js:46
+rl @ index-fRTpeB7G.js:44
+(anonymous) @ index-fRTpeB7G.js:46
+index-fRTpeB7G.js:559 🗺️ Router: Router component is rendering
+index-fRTpeB7G.js:559 🎨 App.tsx: App component is rendering
+index-fRTpeB7G.js:559 🏗️ App.tsx: Returning JSX with all providers
+index-fRTpeB7G.js:559 🗺️ Router: Router component is rendering
+index-fRTpeB7G.js:559 🎨 App.tsx: App component is rendering
+index-fRTpeB7G.js:559 🏗️ App.tsx: Returning JSX with all providers
+index-fRTpeB7G.js:46 Error: Unable to preload CSS for /assets/wallet-login-8yiDjLMG.css
+    at HTMLLinkElement.<anonymous> (index-fRTpeB7G.js:46:58500)
+kx @ index-fRTpeB7G.js:46
+JN.s.componentDidCatch.n.callback @ index-fRTpeB7G.js:46
+IT @ index-fRTpeB7G.js:44
+WT @ index-fRTpeB7G.js:46
+fD @ index-fRTpeB7G.js:46
+Bq @ index-fRTpeB7G.js:46
+qq @ index-fRTpeB7G.js:46
+El @ index-fRTpeB7G.js:46
+hD @ index-fRTpeB7G.js:46
+k @ index-fRTpeB7G.js:31
+U @ index-fRTpeB7G.js:31
+_ @ inpage.js:166
+w @ inpage.js:166
+Y @ inpage.js:166
+postMessage
+h @ inpage.js:166
+b @ inpage.js:166
+q @ index-fRTpeB7G.js:31
+K @ index-fRTpeB7G.js:31
+e.unstable_scheduleCallback @ index-fRTpeB7G.js:31
+xD @ index-fRTpeB7G.js:46
+Mr @ index-fRTpeB7G.js:46
+wD @ index-fRTpeB7G.js:46
+Gq @ index-fRTpeB7G.js:46
+Promise.then
+(anonymous) @ index-fRTpeB7G.js:46
+VT @ index-fRTpeB7G.js:46
+dD @ index-fRTpeB7G.js:46
+Hi @ index-fRTpeB7G.js:46
+dD @ index-fRTpeB7G.js:46
+Hi @ index-fRTpeB7G.js:46
+dD @ index-fRTpeB7G.js:46
+Hi @ index-fRTpeB7G.js:46
+dD @ index-fRTpeB7G.js:46
+Hi @ index-fRTpeB7G.js:46
+dD @ index-fRTpeB7G.js:46
+Hi @ index-fRTpeB7G.js:46
+dD @ index-fRTpeB7G.js:46
+Hi @ index-fRTpeB7G.js:46
+dD @ index-fRTpeB7G.js:46
+Hi @ index-fRTpeB7G.js:46
+dD @ index-fRTpeB7G.js:46
+Hi @ index-fRTpeB7G.js:46
+dD @ index-fRTpeB7G.js:46
+Hi @ index-fRTpeB7G.js:46
+dD @ index-fRTpeB7G.js:46
+Hi @ index-fRTpeB7G.js:46
+dD @ index-fRTpeB7G.js:46
+Hi @ index-fRTpeB7G.js:46
+dD @ index-fRTpeB7G.js:46
+Hi @ index-fRTpeB7G.js:46
+dD @ index-fRTpeB7G.js:46
+Hi @ index-fRTpeB7G.js:46
+dD @ index-fRTpeB7G.js:46
+Hi @ index-fRTpeB7G.js:46
+dD @ index-fRTpeB7G.js:46
+qq @ index-fRTpeB7G.js:46
+El @ index-fRTpeB7G.js:46
+KT @ index-fRTpeB7G.js:46
+rl @ index-fRTpeB7G.js:44
+(anonymous) @ index-fRTpeB7G.js:46
+index-fRTpeB7G.js:559 ErrorBoundary caught an error: Error: Unable to preload CSS for /assets/wallet-login-8yiDjLMG.css
+    at HTMLLinkElement.<anonymous> (index-fRTpeB7G.js:46:58500) {componentStack: '\n    at G (https://dippydoge-1-10-11-dippyriddle.r…app/assets/index-fRTpeB7G.js:559:1046)\n    at Jbe'}
+componentDidCatch @ index-fRTpeB7G.js:559
+JN.s.componentDidCatch.n.callback @ index-fRTpeB7G.js:46
+IT @ index-fRTpeB7G.js:44
+WT @ index-fRTpeB7G.js:46
+fD @ index-fRTpeB7G.js:46
+Bq @ index-fRTpeB7G.js:46
+qq @ index-fRTpeB7G.js:46
+El @ index-fRTpeB7G.js:46
+hD @ index-fRTpeB7G.js:46
+k @ index-fRTpeB7G.js:31
+U @ index-fRTpeB7G.js:31
+_ @ inpage.js:166
+w @ inpage.js:166
+Y @ inpage.js:166
+postMessage
+h @ inpage.js:166
+b @ inpage.js:166
+q @ index-fRTpeB7G.js:31
+K @ index-fRTpeB7G.js:31
+e.unstable_scheduleCallback @ index-fRTpeB7G.js:31
+xD @ index-fRTpeB7G.js:46
+Mr @ index-fRTpeB7G.js:46
+wD @ index-fRTpeB7G.js:46
+Gq @ index-fRTpeB7G.js:46
+Promise.then
+(anonymous) @ index-fRTpeB7G.js:46
+VT @ index-fRTpeB7G.js:46
+dD @ index-fRTpeB7G.js:46
+Hi @ index-fRTpeB7G.js:46
+dD @ index-fRTpeB7G.js:46
+Hi @ index-fRTpeB7G.js:46
+dD @ index-fRTpeB7G.js:46
+Hi @ index-fRTpeB7G.js:46
+dD @ index-fRTpeB7G.js:46
+Hi @ index-fRTpeB7G.js:46
+dD @ index-fRTpeB7G.js:46
+Hi @ index-fRTpeB7G.js:46
+dD @ index-fRTpeB7G.js:46
+Hi @ index-fRTpeB7G.js:46
+dD @ index-fRTpeB7G.js:46
+Hi @ index-fRTpeB7G.js:46
+dD @ index-fRTpeB7G.js:46
+Hi @ index-fRTpeB7G.js:46
+dD @ index-fRTpeB7G.js:46
+Hi @ index-fRTpeB7G.js:46
+dD @ index-fRTpeB7G.js:46
+Hi @ index-fRTpeB7G.js:46
+dD @ index-fRTpeB7G.js:46
+Hi @ index-fRTpeB7G.js:46
+dD @ index-fRTpeB7G.js:46
+Hi @ index-fRTpeB7G.js:46
+dD @ index-fRTpeB7G.js:46
+Hi @ index-fRTpeB7G.js:46
+dD @ index-fRTpeB7G.js:46
+Hi @ index-fRTpeB7G.js:46
+dD @ index-fRTpeB7G.js:46
+qq @ index-fRTpeB7G.js:46
+El @ index-fRTpeB7G.js:46
+KT @ index-fRTpeB7G.js:46
+rl @ index-fRTpeB7G.js:44
+(anonymous) @ index-fRTpeB7G.js:46
+icon-512.png:1  GET https://dippydoge-1-10-11-dippyriddle.replit.app/icon-512.png 500 (Internal Server Error)
+index-fRTpeB7G.js:46  GET https://dippydoge-1-10-11-dippyriddle.replit.app/assets/wallet-login-CKxlFT6X.js net::ERR_ABORTED 500 (Internal Server Error)
+(anonymous) @ index-fRTpeB7G.js:46
+ie @ index-fRTpeB7G.js:46
+(anonymous) @ index-fRTpeB7G.js:559
+LV @ index-fRTpeB7G.js:10
+TT @ index-fRTpeB7G.js:44
+b @ index-fRTpeB7G.js:44
+sr @ index-fRTpeB7G.js:46
+vD @ index-fRTpeB7G.js:46
+mD @ index-fRTpeB7G.js:46
+Vq @ index-fRTpeB7G.js:46
+s0 @ index-fRTpeB7G.js:46
+KT @ index-fRTpeB7G.js:46
+rl @ index-fRTpeB7G.js:44
+(anonymous) @ index-fRTpeB7G.js:46
+index-fRTpeB7G.js:54  GET https://dippydoge-1-10-11-dippyriddle.replit.app/api/riddle-wallet/session-info 500 (Internal Server Error)
+checkBackendSession @ index-fRTpeB7G.js:54
+checkSession @ index-fRTpeB7G.js:54
+(anonymous) @ index-fRTpeB7G.js:54
+ry @ index-fRTpeB7G.js:46
+bu @ index-fRTpeB7G.js:46
+qq @ index-fRTpeB7G.js:46
+El @ index-fRTpeB7G.js:46
+KT @ index-fRTpeB7G.js:46
+rl @ index-fRTpeB7G.js:44
+(anonymous) @ index-fRTpeB7G.js:46
+index-fRTpeB7G.js:46  GET https://dippydoge-1-10-11-dippyriddle.replit.app/assets/key-DKpktpyR.js net::ERR_ABORTED 500 (Internal Server Error)
+(anonymous) @ index-fRTpeB7G.js:46
+ie @ index-fRTpeB7G.js:46
+(anonymous) @ index-fRTpeB7G.js:559
+LV @ index-fRTpeB7G.js:10
+TT @ index-fRTpeB7G.js:44
+b @ index-fRTpeB7G.js:44
+sr @ index-fRTpeB7G.js:46
+vD @ index-fRTpeB7G.js:46
+mD @ index-fRTpeB7G.js:46
+Vq @ index-fRTpeB7G.js:46
+s0 @ index-fRTpeB7G.js:46
+KT @ index-fRTpeB7G.js:46
+rl @ index-fRTpeB7G.js:44
+(anonymous) @ index-fRTpeB7G.js:46
+index-fRTpeB7G.js:559  POST https://dippydoge-1-10-11-dippyriddle.replit.app/api/errors/log 503 (Service Unavailable)
+logError @ index-fRTpeB7G.js:559
+componentDidCatch @ index-fRTpeB7G.js:559
+JN.s.componentDidCatch.n.callback @ index-fRTpeB7G.js:46
+IT @ index-fRTpeB7G.js:44
+WT @ index-fRTpeB7G.js:46
+fD @ index-fRTpeB7G.js:46
+Bq @ index-fRTpeB7G.js:46
+qq @ index-fRTpeB7G.js:46
+El @ index-fRTpeB7G.js:46
+hD @ index-fRTpeB7G.js:46
+k @ index-fRTpeB7G.js:31
+U @ index-fRTpeB7G.js:31
+_ @ inpage.js:166
+w @ inpage.js:166
+Y @ inpage.js:166
+postMessage
+h @ inpage.js:166
+b @ inpage.js:166
+q @ index-fRTpeB7G.js:31
+K @ index-fRTpeB7G.js:31
+e.unstable_scheduleCallback @ index-fRTpeB7G.js:31
+xD @ index-fRTpeB7G.js:46
+Mr @ index-fRTpeB7G.js:46
+wD @ index-fRTpeB7G.js:46
+Gq @ index-fRTpeB7G.js:46
+Promise.then
+(anonymous) @ index-fRTpeB7G.js:46
+VT @ index-fRTpeB7G.js:46
+dD @ index-fRTpeB7G.js:46
+Hi @ index-fRTpeB7G.js:46
+dD @ index-fRTpeB7G.js:46
+Hi @ index-fRTpeB7G.js:46
+dD @ index-fRTpeB7G.js:46
+Hi @ index-fRTpeB7G.js:46
+dD @ index-fRTpeB7G.js:46
+Hi @ index-fRTpeB7G.js:46
+dD @ index-fRTpeB7G.js:46
+Hi @ index-fRTpeB7G.js:46
+dD @ index-fRTpeB7G.js:46
+Hi @ index-fRTpeB7G.js:46
+dD @ index-fRTpeB7G.js:46
+Hi @ index-fRTpeB7G.js:46
+dD @ index-fRTpeB7G.js:46
+Hi @ index-fRTpeB7G.js:46
+dD @ index-fRTpeB7G.js:46
+Hi @ index-fRTpeB7G.js:46
+dD @ index-fRTpeB7G.js:46
+Hi @ index-fRTpeB7G.js:46
+dD @ index-fRTpeB7G.js:46
+Hi @ index-fRTpeB7G.js:46
+dD @ index-fRTpeB7G.js:46
+Hi @ index-fRTpeB7G.js:46
+dD @ index-fRTpeB7G.js:46
+Hi @ index-fRTpeB7G.js:46
+dD @ index-fRTpeB7G.js:46
+Hi @ index-fRTpeB7G.js:46
+dD @ index-fRTpeB7G.js:46
+qq @ index-fRTpeB7G.js:46
+El @ index-fRTpeB7G.js:46
+KT @ index-fRTpeB7G.js:46
+rl @ index-fRTpeB7G.js:44
+(anonymous) @ index-fRTpeB7G.js:46

@@ -1,0 +1,362 @@
+The source list for the Content Security Policy directive 'default-src' contains an invalid source: ''unsafe-dynamic''. It will be ignored.
+The source list for the Content Security Policy directive 'default-src' contains an invalid source: ''unsafe-dynamic''. It will be ignored.
+The source list for the Content Security Policy directive 'default-src' contains an invalid source: ''unsafe-dynamic''. It will be ignored.
+The source list for the Content Security Policy directive 'default-src' contains an invalid source: ''unsafe-dynamic''. It will be ignored.
+The source list for the Content Security Policy directive 'default-src' contains an invalid source: ''unsafe-dynamic''. It will be ignored.
+The source list for the Content Security Policy directive 'default-src' contains an invalid source: ''unsafe-dynamic''. It will be ignored.
+The source list for the Content Security Policy directive 'default-src' contains an invalid source: ''unsafe-dynamic''. It will be ignored.
+The source list for the Content Security Policy directive 'default-src' contains an invalid source: ''unsafe-dynamic''. It will be ignored.
+The source list for the Content Security Policy directive 'default-src' contains an invalid source: ''unsafe-dynamic''. It will be ignored.
+The source list for the Content Security Policy directive 'default-src' contains an invalid source: ''unsafe-dynamic''. It will be ignored.
+The source list for the Content Security Policy directive 'default-src' contains an invalid source: ''unsafe-dynamic''. It will be ignored.
+The source list for the Content Security Policy directive 'default-src' contains an invalid source: ''unsafe-dynamic''. It will be ignored.
+The source list for the Content Security Policy directive 'default-src' contains an invalid source: ''unsafe-dynamic''. It will be ignored.
+The source list for the Content Security Policy directive 'default-src' contains an invalid source: ''unsafe-dynamic''. It will be ignored.
+The source list for the Content Security Policy directive 'default-src' contains an invalid source: ''unsafe-dynamic''. It will be ignored.
+The source list for the Content Security Policy directive 'default-src' contains an invalid source: ''unsafe-dynamic''. It will be ignored.
+The source list for the Content Security Policy directive 'default-src' contains an invalid source: ''unsafe-dynamic''. It will be ignored.
+The source list for the Content Security Policy directive 'default-src' contains an invalid source: ''unsafe-dynamic''. It will be ignored.
+The Content-Security-Policy directive 'default-src' contains 'report-uri' as a source expression. Did you want to add it as a directive and forget a semicolon?
+The Content-Security-Policy directive 'default-src' contains 'report-uri' as a source expression. Did you want to add it as a directive and forget a semicolon?
+The Content-Security-Policy directive 'default-src' contains 'report-uri' as a source expression. Did you want to add it as a directive and forget a semicolon?
+The Content-Security-Policy directive 'default-src' contains 'report-uri' as a source expression. Did you want to add it as a directive and forget a semicolon?
+The Content-Security-Policy directive 'default-src' contains 'report-uri' as a source expression. Did you want to add it as a directive and forget a semicolon?
+The Content-Security-Policy directive 'default-src' contains 'report-uri' as a source expression. Did you want to add it as a directive and forget a semicolon?
+The Content-Security-Policy directive 'default-src' contains 'report-uri' as a source expression. Did you want to add it as a directive and forget a semicolon?
+The Content-Security-Policy directive 'default-src' contains 'report-uri' as a source expression. Did you want to add it as a directive and forget a semicolon?
+The Content-Security-Policy directive 'default-src' contains 'report-uri' as a source expression. Did you want to add it as a directive and forget a semicolon?
+The Content-Security-Policy directive 'default-src' contains 'report-uri' as a source expression. Did you want to add it as a directive and forget a semicolon?
+The Content-Security-Policy directive 'default-src' contains 'report-uri' as a source expression. Did you want to add it as a directive and forget a semicolon?
+The Content-Security-Policy directive 'default-src' contains 'report-uri' as a source expression. Did you want to add it as a directive and forget a semicolon?
+The Content-Security-Policy directive 'default-src' contains 'report-uri' as a source expression. Did you want to add it as a directive and forget a semicolon?
+The Content-Security-Policy directive 'default-src' contains 'report-uri' as a source expression. Did you want to add it as a directive and forget a semicolon?
+The Content-Security-Policy directive 'default-src' contains 'report-uri' as a source expression. Did you want to add it as a directive and forget a semicolon?
+The Content-Security-Policy directive 'default-src' contains 'report-uri' as a source expression. Did you want to add it as a directive and forget a semicolon?
+The Content-Security-Policy directive 'default-src' contains 'report-uri' as a source expression. Did you want to add it as a directive and forget a semicolon?
+The Content-Security-Policy directive 'default-src' contains 'report-uri' as a source expression. Did you want to add it as a directive and forget a semicolon?
+The source list for Content Security Policy directive 'default-src' contains a source with an invalid path: '/api/4509669501698048/security/?sentry_key=7eb3d90eb4660416caf507087367e67e'. The query component, including the '?', will be ignored.
+The source list for Content Security Policy directive 'default-src' contains a source with an invalid path: '/api/4509669501698048/security/?sentry_key=7eb3d90eb4660416caf507087367e67e'. The query component, including the '?', will be ignored.
+The source list for Content Security Policy directive 'default-src' contains a source with an invalid path: '/api/4509669501698048/security/?sentry_key=7eb3d90eb4660416caf507087367e67e'. The query component, including the '?', will be ignored.
+The source list for Content Security Policy directive 'default-src' contains a source with an invalid path: '/api/4509669501698048/security/?sentry_key=7eb3d90eb4660416caf507087367e67e'. The query component, including the '?', will be ignored.
+The source list for Content Security Policy directive 'default-src' contains a source with an invalid path: '/api/4509669501698048/security/?sentry_key=7eb3d90eb4660416caf507087367e67e'. The query component, including the '?', will be ignored.
+The source list for Content Security Policy directive 'default-src' contains a source with an invalid path: '/api/4509669501698048/security/?sentry_key=7eb3d90eb4660416caf507087367e67e'. The query component, including the '?', will be ignored.
+The source list for Content Security Policy directive 'default-src' contains a source with an invalid path: '/api/4509669501698048/security/?sentry_key=7eb3d90eb4660416caf507087367e67e'. The query component, including the '?', will be ignored.
+The source list for Content Security Policy directive 'default-src' contains a source with an invalid path: '/api/4509669501698048/security/?sentry_key=7eb3d90eb4660416caf507087367e67e'. The query component, including the '?', will be ignored.
+The source list for Content Security Policy directive 'default-src' contains a source with an invalid path: '/api/4509669501698048/security/?sentry_key=7eb3d90eb4660416caf507087367e67e'. The query component, including the '?', will be ignored.
+The source list for Content Security Policy directive 'default-src' contains a source with an invalid path: '/api/4509669501698048/security/?sentry_key=7eb3d90eb4660416caf507087367e67e'. The query component, including the '?', will be ignored.
+The source list for Content Security Policy directive 'default-src' contains a source with an invalid path: '/api/4509669501698048/security/?sentry_key=7eb3d90eb4660416caf507087367e67e'. The query component, including the '?', will be ignored.
+The source list for Content Security Policy directive 'default-src' contains a source with an invalid path: '/api/4509669501698048/security/?sentry_key=7eb3d90eb4660416caf507087367e67e'. The query component, including the '?', will be ignored.
+The source list for Content Security Policy directive 'default-src' contains a source with an invalid path: '/api/4509669501698048/security/?sentry_key=7eb3d90eb4660416caf507087367e67e'. The query component, including the '?', will be ignored.
+The source list for Content Security Policy directive 'default-src' contains a source with an invalid path: '/api/4509669501698048/security/?sentry_key=7eb3d90eb4660416caf507087367e67e'. The query component, including the '?', will be ignored.
+The source list for Content Security Policy directive 'default-src' contains a source with an invalid path: '/api/4509669501698048/security/?sentry_key=7eb3d90eb4660416caf507087367e67e'. The query component, including the '?', will be ignored.
+The source list for Content Security Policy directive 'default-src' contains a source with an invalid path: '/api/4509669501698048/security/?sentry_key=7eb3d90eb4660416caf507087367e67e'. The query component, including the '?', will be ignored.
+The source list for Content Security Policy directive 'default-src' contains a source with an invalid path: '/api/4509669501698048/security/?sentry_key=7eb3d90eb4660416caf507087367e67e'. The query component, including the '?', will be ignored.
+The source list for Content Security Policy directive 'default-src' contains a source with an invalid path: '/api/4509669501698048/security/?sentry_key=7eb3d90eb4660416caf507087367e67e'. The query component, including the '?', will be ignored.
+riddle:1 The source list for the Content Security Policy directive 'default-src' contains an invalid source: ''unsafe-dynamic''. It will be ignored.
+riddle:1 The Content-Security-Policy directive 'default-src' contains 'report-uri' as a source expression. Did you want to add it as a directive and forget a semicolon?
+riddle:1 The source list for Content Security Policy directive 'default-src' contains a source with an invalid path: '/api/4509669501698048/security/?sentry_key=7eb3d90eb4660416caf507087367e67e'. The query component, including the '?', will be ignored.
+ 
+      /////////////////////
+   ///////////////////////////
+  ////////@@@@@@@//////////////
+  ////////@@@@@@@//////////////
+  ////////@@@@@@@//////////////        Curious and driven?
+  ///////////////@@@@@@@///////        Work with us!
+  ///////////////@@@@@@@///////
+  ///////////////@@@@@@@///////        https://join.replit.com/hack.with.us
+  ////////@@@@@@@//////////////
+  ////////@@@@@@@//////////////
+  ////////@@@@@@#//////////////
+   ///////////////////////////
+      /////////////////////
+      
+analytics.tiktok.com/i18n/pixel/events.js?sdkid=D004GE3C77U8PIVDSDJG&lib=ttq:1  Failed to load resource: net::ERR_NAME_NOT_RESOLVED
+ [LaunchDarkly] LaunchDarkly client initialized
+Error while parsing the 'sandbox' attribute: 'allow-downloads-without-user-activation' is an invalid sandbox flag.
+Error while parsing the 'sandbox' attribute: 'allow-downloads-without-user-activation' is an invalid sandbox flag.
+Error while parsing the 'sandbox' attribute: 'allow-downloads-without-user-activation' is an invalid sandbox flag.
+Error while parsing the 'sandbox' attribute: 'allow-downloads-without-user-activation' is an invalid sandbox flag.
+Error while parsing the 'sandbox' attribute: 'allow-downloads-without-user-activation' is an invalid sandbox flag.
+Error while parsing the 'sandbox' attribute: 'allow-downloads-without-user-activation' is an invalid sandbox flag.
+Error while parsing the 'sandbox' attribute: 'allow-downloads-without-user-activation' is an invalid sandbox flag.
+Error while parsing the 'sandbox' attribute: 'allow-downloads-without-user-activation' is an invalid sandbox flag.
+Error while parsing the 'sandbox' attribute: 'allow-downloads-without-user-activation' is an invalid sandbox flag.
+Error while parsing the 'sandbox' attribute: 'allow-downloads-without-user-activation' is an invalid sandbox flag.
+ Unrecognized feature: 'ambient-light-sensor'.
+_ @ framework-e5aca608244dc06c.js:1
+ Unrecognized feature: 'battery'.
+_ @ framework-e5aca608244dc06c.js:1
+ Unrecognized feature: 'execution-while-not-rendered'.
+_ @ framework-e5aca608244dc06c.js:1
+ Unrecognized feature: 'execution-while-out-of-viewport'.
+_ @ framework-e5aca608244dc06c.js:1
+ Unrecognized feature: 'layout-animations'.
+_ @ framework-e5aca608244dc06c.js:1
+ Unrecognized feature: 'legacy-image-formats'.
+_ @ framework-e5aca608244dc06c.js:1
+ Unrecognized feature: 'navigation-override'.
+_ @ framework-e5aca608244dc06c.js:1
+ Unrecognized feature: 'oversized-images'.
+_ @ framework-e5aca608244dc06c.js:1
+ Unrecognized feature: 'publickey-credentials'.
+_ @ framework-e5aca608244dc06c.js:1
+ Unrecognized feature: 'speaker-selection'.
+_ @ framework-e5aca608244dc06c.js:1
+ Unrecognized feature: 'unoptimized-images'.
+_ @ framework-e5aca608244dc06c.js:1
+ Unrecognized feature: 'unsized-media'.
+_ @ framework-e5aca608244dc06c.js:1
+ Unrecognized feature: 'pointer-lock'.
+_ @ framework-e5aca608244dc06c.js:1
+ Allow attribute will take precedence over 'allowfullscreen'.
+_ @ framework-e5aca608244dc06c.js:1
+ Allow attribute will take precedence over 'allowpaymentrequest'.
+_ @ framework-e5aca608244dc06c.js:1
+riddle:1 Banner not shown: beforeinstallpromptevent.preventDefault() called. The page must call beforeinstallpromptevent.prompt() to show the banner.
+ stallwart: failed ping 1
+workspace_iframe.html?initialPath=%2F&id=%3Armj%3A:32 Unrecognized feature: 'ambient-light-sensor'.
+workspace_iframe.html?initialPath=%2F&id=%3Armj%3A:32 Unrecognized feature: 'battery'.
+workspace_iframe.html?initialPath=%2F&id=%3Armj%3A:32 Unrecognized feature: 'execution-while-not-rendered'.
+workspace_iframe.html?initialPath=%2F&id=%3Armj%3A:32 Unrecognized feature: 'execution-while-out-of-viewport'.
+workspace_iframe.html?initialPath=%2F&id=%3Armj%3A:32 Unrecognized feature: 'layout-animations'.
+workspace_iframe.html?initialPath=%2F&id=%3Armj%3A:32 Unrecognized feature: 'legacy-image-formats'.
+workspace_iframe.html?initialPath=%2F&id=%3Armj%3A:32 Unrecognized feature: 'navigation-override'.
+workspace_iframe.html?initialPath=%2F&id=%3Armj%3A:32 Unrecognized feature: 'oversized-images'.
+workspace_iframe.html?initialPath=%2F&id=%3Armj%3A:32 Unrecognized feature: 'publickey-credentials'.
+workspace_iframe.html?initialPath=%2F&id=%3Armj%3A:32 Unrecognized feature: 'speaker-selection'.
+workspace_iframe.html?initialPath=%2F&id=%3Armj%3A:32 Unrecognized feature: 'unoptimized-images'.
+workspace_iframe.html?initialPath=%2F&id=%3Armj%3A:32 Unrecognized feature: 'unsized-media'.
+workspace_iframe.html?initialPath=%2F&id=%3Armj%3A:32 Allow attribute will take precedence over 'allowfullscreen'.
+workspace_iframe.html?initialPath=%2F&id=%3Armj%3A:32 Allow attribute will take precedence over 'allowpaymentrequest'.
+20a5a677-e8db-426b-93ca-0ab4131b22a7-00-pwrlj8iul6vd.janeway.replit.dev/:1 The Content-Security-Policy directive 'frame-ancestors' does not support the source expression ''unsafe-inline''
+ WebSocket connection to 'wss://20a5a677-e8db-426b-93ca-0ab4131b22a7-00-pwrlj8iul6vd.janeway.replit.dev/?token=e56cJvVn28P8' failed: 
+t @ eruda.js:2
+ 🔧 Fixed WebSocket URL for Replit: wss://localhost:undefined/?token=e56cJvVn28P8 → wss://20a5a677-e8db-426b-93ca-0ab4131b22a7-00-pwrlj8iul6vd.janeway.replit.dev/?token=e56cJvVn28P8
+ WebSocket connection to 'wss://20a5a677-e8db-426b-93ca-0ab4131b22a7-00-pwrlj8iul6vd.janeway.replit.dev/?token=e56cJvVn28P8' failed: 
+t @ eruda.js:2
+ [vite] failed to connect to websocket.
+your current setup:
+  (browser) 20a5a677-e8db-426b-93ca-0ab4131b22a7-00-pwrlj8iul6vd.janeway.replit.dev/ <--[HTTP]--> localhost:undefined/ (server)
+  (browser) 20a5a677-e8db-426b-93ca-0ab4131b22a7-00-pwrlj8iul6vd.janeway.replit.dev:/ <--[WebSocket (failing)]--> localhost:undefined/ (server)
+Check out your Vite / network configuration and https://vite.dev/config/server-options.html#server-hmr .
+Mt.forEach.n.<computed> @ eruda.js:2
+ 🔍 SessionManager.getSession() returning: Object
+ 🎯 Set active wallet for evm: riddle-primary
+ 🎯 Set active wallet for xrpl: riddle-primary
+ 🎯 Set active wallet for solana: riddle-primary
+ 🎯 Set active wallet for bitcoin: riddle-primary
+ 🔗 Synced Riddle wallet from session
+ 🎯 WalletOrchestrator initialized with 1 connections
+ 🚀 Universal Wallet Manager (Orchestrator) initialized
+ 🚨 IMMEDIATE: main.tsx file is being executed!
+ 🚨 IMMEDIATE: typeof window: object
+ 🚨 IMMEDIATE: window.location: https://20a5a677-e8db-426b-93ca-0ab4131b22a7-00-pwrlj8iul6vd.janeway.replit.dev/
+ 🎯 IMMEDIATE: Root element exists: true
+ 🎯 IMMEDIATE: Root element innerHTML: 317
+ 🚨 EMERGENCY: Added red text to root element for visual confirmation
+ 🔧 main.tsx: STARTING - About to import polyfills
+ ✅ main.tsx: Polyfills imported successfully
+ 📦 main.tsx: About to import React createRoot
+ ✅ main.tsx: createRoot imported successfully
+ 🎨 main.tsx: About to import App component
+ ✅ main.tsx: App component imported successfully
+ 🎨 main.tsx: About to import CSS files
+ ✅ main.tsx: CSS files imported successfully
+ 🚀 main.tsx: Starting React app initialization
+ 🛡️ main.tsx: Setting up automatic error logging...
+ ✅ main.tsx: Automatic error logging set up
+ 🎯 main.tsx: Root element found: true
+ 📦 main.tsx: Creating React root and rendering App component
+ ✅ main.tsx: App component rendered successfully
+ 🎨 App.tsx: App component is rendering
+ 🏗️ App.tsx: Returning JSX with all providers
+ 🚫 SessionMonitor: DISABLED - Using unified SessionManager instead
+ 🗺️ Router: Router component is rendering
+ 📍 Router: Current location: /
+ 💳 Router: Initializing wallet data state
+ 📭 Router: No saved wallet data found
+ 🔍 SessionManager.getSession() returning: Object
+ 🔍 SessionManager: checkSession() called - current sessionData: true
+ 🌐 SessionManager: Making Riddle wallet session request to /api/riddle-wallet/session
+ 🎨 [THEME] Applied theme: dark, dark class: true
+ 🔄 App.tsx: useEffect running - recovering wallet state
+ ✅ SessionManager: Valid session for dippydoge
+ ✅ SessionManager: Updated session data: Object
+ 🔍 SessionManager.getSession() returning: Object
+ 🎯 Set active wallet for evm: riddle-primary
+ 🎯 Set active wallet for xrpl: riddle-primary
+ 🎯 Set active wallet for solana: riddle-primary
+ 🎯 Set active wallet for bitcoin: riddle-primary
+ 🔗 Synced Riddle wallet from session
+ 🔍 SessionManager.getSession() returning: Object
+ 🔔 SessionManager: Notified 2 listeners
+ 🔍 SessionManager.getSession() returning: Object
+ 🔍 getQueryFn - SessionManager sessionToken: FOUND
+ 🔍 getQueryFn - SessionManager sessionToken: FOUND
+ 🔍 getQueryFn - SessionManager sessionToken: FOUND
+ 🔍 SessionManager: checkSession() called - current sessionData: true
+ 🌐 SessionManager: Making Riddle wallet session request to /api/riddle-wallet/session
+ ✅ SessionManager: Valid session for dippydoge
+ ✅ SessionManager: Updated session data: Object
+ 🔍 SessionManager.getSession() returning: Object
+ 🎯 Set active wallet for evm: riddle-primary
+ 🎯 Set active wallet for xrpl: riddle-primary
+ 🎯 Set active wallet for solana: riddle-primary
+ 🎯 Set active wallet for bitcoin: riddle-primary
+ 🔗 Synced Riddle wallet from session
+ 🔍 SessionManager.getSession() returning: Object
+ 🔔 SessionManager: Notified 2 listeners
+ 🔍 SessionManager.getSession() returning: Object
+ 🔍 SessionManager.getSession() returning: Object
+ 🗺️ Router: Router component is rendering
+ 📍 Router: Current location: /multi-chain-dashboard
+ 🔍 SessionManager.getSession() returning: Object
+ 🔍 SessionManager.getSession() returning: Object
+ 🔍 SessionManager: checkSession() called - current sessionData: true
+ 🌐 SessionManager: Making Riddle wallet session request to /api/riddle-wallet/session
+ ✅ AuthGuard: User authenticated, allowing access
+ 🗺️ Router: Router component is rendering
+ 📍 Router: Current location: /wallet-dashboard
+ 🔍 SessionManager.getSession() returning: Object
+ 🔍 SessionManager.getSession() returning: Object
+ 🔍 [AUTH CHECK] Session token found: YES
+ ✅ AuthGuard: User authenticated, allowing access
+ ✅ SessionManager: Valid session for dippydoge
+ ✅ SessionManager: Updated session data: Object
+ 🔍 SessionManager.getSession() returning: Object
+ 🎯 Set active wallet for evm: riddle-primary
+ 🎯 Set active wallet for xrpl: riddle-primary
+ 🎯 Set active wallet for solana: riddle-primary
+ 🎯 Set active wallet for bitcoin: riddle-primary
+ 🔗 Synced Riddle wallet from session
+ 🔍 SessionManager.getSession() returning: Object
+ 🔍 SessionManager.getSession() returning: Object
+ 🔔 SessionManager: Notified 3 listeners
+ 🔍 SessionManager.getSession() returning: Object
+ 🔍 SessionManager.getSession() returning: Object
+ 🔍 [AUTH CHECK] Session data found: YES
+ ✅ [AUTH CHECK] Valid session for user: dippydoge
+ 🔍 getQueryFn - SessionManager sessionToken: FOUND
+ 📊 [WALLET DASHBOARD] Fetching portfolio from separate endpoints...
+ 🔗 [WALLET DASHBOARD] Using addresses: Object
+ 🔗 Found 0 linked projects
+ ✅ [XRP] Balance: 6.039418 | USD: $0
+ ✅ [ETH] Balance: 0.001436 | USD: $6.42
+ ✅ [ARBITRUM] Balance: 0.000000 | USD: $0
+ ✅ [OPTIMISM] Balance: 0.000000 | USD: $0
+ ✅ [BASE] Balance: 0.000000 | USD: $0
+ ✅ [POLYGON] Balance: 0.000000 | USD: $0
+ ❌ [BNB] Failed to parse response: 
+Mt.forEach.n.<computed> @ eruda.js:2
+ ✅ [SOL] Balance: 0.007248 | USD: $1.81
+ ✅ [BTC] Balance: 0.00027633 | USD: $30.4
+ ✅ [WALLET DASHBOARD] Aggregated portfolio: Object
+ 🔍 SessionManager.getSession() returning: Object
+ 🔍 SessionManager.getSession() returning: Object
+ 🔍 SessionManager.getSession() returning: Object
+ 🔍 SessionManager.getSession() returning: Object
+ 🔍 getQueryFn - SessionManager sessionToken: FOUND
+ 🔍 SessionManager.getSession() returning: Object
+ 🔍 SessionManager.getSession() returning: Object
+ 🔍 SessionManager.getSession() returning: Object
+ 🔍 getQueryFn - SessionManager sessionToken: FOUND
+ 🔍 SessionManager.getSession() returning: Object
+ 🔍 SessionManager.getSession() returning: Object
+ 🔍 SessionManager.getSession() returning: Object
+ 🔍 SessionManager.getSession() returning: Object
+ 🔍 getQueryFn - SessionManager sessionToken: FOUND
+ 🔍 SessionManager.getSession() returning: Object
+ 🔍 SessionManager.getSession() returning: Object
+ 🔍 getQueryFn - SessionManager sessionToken: FOUND
+ 🔍 SessionManager.getSession() returning: Object
+ 🔍 SessionManager.getSession() returning: Object
+ 🔍 getQueryFn - SessionManager sessionToken: FOUND
+ 🔍 SessionManager.getSession() returning: Object
+ 🔍 SessionManager.getSession() returning: Object
+ 🔍 SessionManager.getSession() returning: Object
+ 🔍 SessionManager: checkSession() called - current sessionData: true
+ 🌐 SessionManager: Making Riddle wallet session request to /api/riddle-wallet/session
+ ✅ SessionManager: Valid session for dippydoge
+ ✅ SessionManager: Updated session data: Object
+ 🔍 SessionManager.getSession() returning: Object
+ 🎯 Set active wallet for evm: riddle-primary
+ 🎯 Set active wallet for xrpl: riddle-primary
+ 🎯 Set active wallet for solana: riddle-primary
+ 🎯 Set active wallet for bitcoin: riddle-primary
+ 🔗 Synced Riddle wallet from session
+ 🔍 SessionManager.getSession() returning: Object
+ 🔍 SessionManager.getSession() returning: Object
+ 🔔 SessionManager: Notified 3 listeners
+ 🔍 SessionManager.getSession() returning: Object
+ 🔍 SessionManager.getSession() returning: Object
+ 🗺️ Router: Router component is rendering
+ 📍 Router: Current location: /xrp-wallet
+ 🔍 SessionManager.getSession() returning: Object
+ 🔍 SessionManager.getSession() returning: Object
+ 🔍 [AUTH CHECK] Session token found: YES
+ 🔍 [XRP WALLET] Auth data: Object
+ 🔍 SessionManager: checkSession() called - current sessionData: true
+ 🌐 SessionManager: Making Riddle wallet session request to /api/riddle-wallet/session
+ ✅ AuthGuard: User authenticated, allowing access
+ 🔍 [AUTH CHECK] Session data found: YES
+ ✅ [AUTH CHECK] Valid session for user: dippydoge
+ 🔍 [XRP WALLET] Auth data: Object
+ ✅ SessionManager: Valid session for dippydoge
+ ✅ SessionManager: Updated session data: Object
+ 🔍 SessionManager.getSession() returning: Object
+ 🎯 Set active wallet for evm: riddle-primary
+ 🎯 Set active wallet for xrpl: riddle-primary
+ 🎯 Set active wallet for solana: riddle-primary
+ 🎯 Set active wallet for bitcoin: riddle-primary
+ 🔗 Synced Riddle wallet from session
+ 🔍 SessionManager.getSession() returning: Object
+ 🔍 SessionManager.getSession() returning: Object
+ 🔔 SessionManager: Notified 3 listeners
+ 🔍 SessionManager.getSession() returning: Object
+ 🔍 SessionManager.getSession() returning: Object
+ ✅ Balance fetched for xrp/rEVrTKUKSLx5nxdfV8SAFTxS9FGFrfHRLo: Object
+ 🔍 [XRP WALLET] Auth data: Object
+ 🔍 [XRP WALLET] Auth data: Object
+ 🔍 [XRP WALLET] Auth data: Object
+Console.js:61 🔍 [XRP WALLET] Auth data: Object
+Console.js:61 ✅ Portfolio fetched for xrp/rEVrTKUKSLx5nxdfV8SAFTxS9FGFrfHRLo: Object
+Console.js:61 🔍 [XRP WALLET] Auth data: Object
+Console.js:61 🎨 [NFT DEBUG] NFT data: Object NFT ID: 00080BB84047A9C1CA01632DCBE55AE16223C3C86C3D44D2D5B3FCA905D2560D
+Console.js:61 🎨 [NFT DEBUG] NFT data: Object NFT ID: 00080BB812C36A8E1C6C8B3DCE5BA3902299EF5B6EB51C8F5135507605BA1DD9
+Console.js:61 🎨 [NFT DEBUG] NFT data: Object NFT ID: 00080BB812C36A8E1C6C8B3DCE5BA3902299EF5B6EB51C8FDC0717BE05BA1D21
+Console.js:61 🎨 [NFT DEBUG] NFT data: Object NFT ID: 00080BB812C36A8E1C6C8B3DCE5BA3902299EF5B6EB51C8FF0A7308705BA1CEA
+Console.js:61 🎨 [NFT DEBUG] NFT data: Object NFT ID: 00081388ED0CAB5CF36A7B9A5408FACEA72660FB7E2EB5335354FF8D05B8C1F4
+Console.js:61 🔍 [XRP WALLET] Auth data: Object
+Console.js:61 🎨 [NFT DEBUG] NFT data: Object NFT ID: 00080BB84047A9C1CA01632DCBE55AE16223C3C86C3D44D2D5B3FCA905D2560D
+Console.js:61 🎨 [NFT DEBUG] NFT data: Object NFT ID: 00080BB812C36A8E1C6C8B3DCE5BA3902299EF5B6EB51C8F5135507605BA1DD9
+Console.js:61 🎨 [NFT DEBUG] NFT data: Object NFT ID: 00080BB812C36A8E1C6C8B3DCE5BA3902299EF5B6EB51C8FDC0717BE05BA1D21
+Console.js:61 🎨 [NFT DEBUG] NFT data: Object NFT ID: 00080BB812C36A8E1C6C8B3DCE5BA3902299EF5B6EB51C8FF0A7308705BA1CEA
+Console.js:61 🎨 [NFT DEBUG] NFT data: Object NFT ID: 00081388ED0CAB5CF36A7B9A5408FACEA72660FB7E2EB5335354FF8D05B8C1F4
+Console.js:61 🔍 [XRP WALLET] Auth data: Object
+Console.js:61 🎨 [NFT DEBUG] NFT data: Object NFT ID: 00080BB84047A9C1CA01632DCBE55AE16223C3C86C3D44D2D5B3FCA905D2560D
+Console.js:61 🎨 [NFT DEBUG] NFT data: Object NFT ID: 00080BB812C36A8E1C6C8B3DCE5BA3902299EF5B6EB51C8F5135507605BA1DD9
+Console.js:61 🎨 [NFT DEBUG] NFT data: Object NFT ID: 00080BB812C36A8E1C6C8B3DCE5BA3902299EF5B6EB51C8FDC0717BE05BA1D21
+Console.js:61 🎨 [NFT DEBUG] NFT data: Object NFT ID: 00080BB812C36A8E1C6C8B3DCE5BA3902299EF5B6EB51C8FF0A7308705BA1CEA
+Console.js:61 🎨 [NFT DEBUG] NFT data: Object NFT ID: 00081388ED0CAB5CF36A7B9A5408FACEA72660FB7E2EB5335354FF8D05B8C1F4
+Console.js:61 🔍 [XRP WALLET] Auth data: Object
+Console.js:61 🎨 [NFT DEBUG] NFT data: Object NFT ID: 00080BB84047A9C1CA01632DCBE55AE16223C3C86C3D44D2D5B3FCA905D2560D
+Console.js:61 🎨 [NFT DEBUG] NFT data: Object NFT ID: 00080BB812C36A8E1C6C8B3DCE5BA3902299EF5B6EB51C8F5135507605BA1DD9
+Console.js:61 🎨 [NFT DEBUG] NFT data: Object NFT ID: 00080BB812C36A8E1C6C8B3DCE5BA3902299EF5B6EB51C8FDC0717BE05BA1D21
+Console.js:61 🎨 [NFT DEBUG] NFT data: Object NFT ID: 00080BB812C36A8E1C6C8B3DCE5BA3902299EF5B6EB51C8FF0A7308705BA1CEA
+Console.js:61 🎨 [NFT DEBUG] NFT data: Object NFT ID: 00081388ED0CAB5CF36A7B9A5408FACEA72660FB7E2EB5335354FF8D05B8C1F4
+Console.js:61 🔍 [XRP WALLET] Auth data: Object
+Console.js:61 🔍 Fetching XRP balance for rEVrTKUKSLx5nxdfV8SAFTxS9FGFrfHRLo
+Console.js:61 ✅ Updated XRP balance: 1.039418 XRP
+Console.js:61 🎨 [NFT DEBUG] NFT data: Object NFT ID: 00080BB84047A9C1CA01632DCBE55AE16223C3C86C3D44D2D5B3FCA905D2560D
+Console.js:61 🎨 [NFT DEBUG] NFT data: Object NFT ID: 00080BB812C36A8E1C6C8B3DCE5BA3902299EF5B6EB51C8F5135507605BA1DD9
+Console.js:61 🎨 [NFT DEBUG] NFT data: Object NFT ID: 00080BB812C36A8E1C6C8B3DCE5BA3902299EF5B6EB51C8FDC0717BE05BA1D21
+Console.js:61 🎨 [NFT DEBUG] NFT data: Object NFT ID: 00080BB812C36A8E1C6C8B3DCE5BA3902299EF5B6EB51C8FF0A7308705BA1CEA
+Console.js:61 🎨 [NFT DEBUG] NFT data: Object NFT ID: 00081388ED0CAB5CF36A7B9A5408FACEA72660FB7E2EB5335354FF8D05B8C1F4
+Console.js:61 🔍 [XRP WALLET] Auth data: Object
+Console.js:61 ✅ Balance fetched for xrp/rEVrTKUKSLx5nxdfV8SAFTxS9FGFrfHRLo: {success: true, address: 'rEVrTKUKSLx5nxdfV8SAFTxS9FGFrfHRLo', balance: '6.039418', totalBalance: '6.039418', availableBalance: '1.039418', …}
+Console.js:61 🎨 [NFT DEBUG] NFT data: {nftokenID: '00080BB84047A9C1CA01632DCBE55AE16223C3C86C3D44D2D5B3FCA905D2560D', uri: '697066733A2F2F62616679626569676F6B6A7A746E797A7768…C32612F526964646C6520526166666C652023352E6A736F6E', issuer: 'raitaXppXqftnQt8Jd2dp6uxh6dKDENDpg', nftokenTaxon: 1, transferFee: 3000, …} NFT ID: 00080BB84047A9C1CA01632DCBE55AE16223C3C86C3D44D2D5B3FCA905D2560D
+Console.js:61 🎨 [NFT DEBUG] NFT data: {nftokenID: '00080BB812C36A8E1C6C8B3DCE5BA3902299EF5B6EB51C8F5135507605BA1DD9', uri: '697066733A2F2F6261667962656964636E626B6C356F726B32…73477363264356362736C6D6979752F323034312E6A736F6E', issuer: 'rp5DGDDFZdQswWfn3sgkQznCAj9SkkCMLH', nftokenTaxon: 2, transferFee: 3000, …} NFT ID: 00080BB812C36A8E1C6C8B3DCE5BA3902299EF5B6EB51C8F5135507605BA1DD9
+Console.js:61 🎨 [NFT DEBUG] NFT data: {nftokenID: '00080BB812C36A8E1C6C8B3DCE5BA3902299EF5B6EB51C8FDC0717BE05BA1D21', uri: '697066733A2F2F6261667962656964636E626B6C356F726B32…4773477363264356362736C6D6979752F3737342E6A736F6E', issuer: 'rp5DGDDFZdQswWfn3sgkQznCAj9SkkCMLH', nftokenTaxon: 2, transferFee: 3000, …} NFT ID: 00080BB812C36A8E1C6C8B3DCE5BA3902299EF5B6EB51C8FDC0717BE05BA1D21
+Console.js:61 🎨 [NFT DEBUG] NFT data: {nftokenID: '00080BB812C36A8E1C6C8B3DCE5BA3902299EF5B6EB51C8FF0A7308705BA1CEA', uri: '697066733A2F2F6261667962656964636E626B6C356F726B32…73477363264356362736C6D6979752F323437322E6A736F6E', issuer: 'rp5DGDDFZdQswWfn3sgkQznCAj9SkkCMLH', nftokenTaxon: 2, transferFee: 3000, …} NFT ID: 00080BB812C36A8E1C6C8B3DCE5BA3902299EF5B6EB51C8FF0A7308705BA1CEA
+Console.js:61 🎨 [NFT DEBUG] NFT data: {nftokenID: '00081388ED0CAB5CF36A7B9A5408FACEA72660FB7E2EB5335354FF8D05B8C1F4', uri: '697066733A2F2F626166796265696278676562376363347070…E6C77367A636B692F427269636B7920233433312E6A736F6E', issuer: 'r4cQKkQ3bGLVoNSPicZ6mZFNJx4MybNKLQ', nftokenTaxon: 2, transferFee: 5000, …} NFT ID: 00081388ED0CAB5CF36A7B9A5408FACEA72660FB7E2EB5335354FF8D05B8C1F4
+Console.js:61 🔍 [XRP WALLET] Auth data: {isAuthenticated: true, walletAddress: 'rEVrTKUKSLx5nxdfV8SAFTxS9FGFrfHRLo', hasUser: true, hasWalletData: false, hasWalletAddresses: true}

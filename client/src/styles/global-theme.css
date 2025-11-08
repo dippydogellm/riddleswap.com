@@ -1,0 +1,944 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom CSS Variables for Modern Theme */
+:root {
+  --bg-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  --bg-secondary: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  --bg-dark: linear-gradient(135deg, #0c0c0c 0%, #1a1a1a 100%);
+  --glass-bg: rgba(255, 255, 255, 0.1);
+  --glass-border: rgba(255, 255, 255, 0.2);
+  --glass-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  --text-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  --accent-purple: #8b5cf6;
+  --accent-blue: #3b82f6;
+  --accent-pink: #ec4899;
+}
+
+.dark {
+  --glass-bg: rgba(17, 25, 40, 0.3);
+  --glass-border: rgba(255, 255, 255, 0.1);
+  --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
+}
+
+/* Minimal reset - target only the spacing issue */
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+/* Fix header spacing specifically */
+.header-fix {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+/* Remove any top margin/padding from root app */
+#root {
+  margin: 0;
+  padding: 0;
+}
+
+/* Ensure no space above countdown banner */
+#root > div:first-child {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+
+/* Force remove any margin from body and html */
+body, html {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+
+/* Wallet module dark mode theming */
+.wallet-module {
+  @apply bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 text-gray-900 dark:text-gray-100;
+}
+
+.wallet-card {
+  @apply bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 text-gray-900 dark:text-gray-100;
+}
+
+.wallet-balance {
+  color: hsl(var(--foreground));
+}
+
+.wallet-address {
+  color: hsl(var(--muted-foreground));
+}
+
+/* NFT card theming */
+.nft-card {
+  @apply bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 text-gray-900 dark:text-gray-100;
+}
+
+/* Enhanced Global Theme System with Professional Day/Night Modes */
+
+:root {
+  /* Base Radius */
+  --radius: 0.5rem;
+  
+  /* Light Mode - Day Theme - Enhanced Text Prominence */
+  --background: 210 11% 98%;      /* #F5F7FA */
+  --foreground: 222 47% 10%;      /* Darker for better prominence */
+  
+  --card: 0 0% 100%;              /* #FFFFFF */
+  --card-foreground: 222 47% 10%; /* Darker for better prominence */
+  
+  --popover: 0 0% 100%;           /* #FFFFFF */
+  --popover-foreground: 222 47% 10%; /* Darker for better prominence */
+  
+  --primary: 221 83% 53%;         /* #3B82F6 */
+  --primary-foreground: 210 40% 98%; /* #F8FAFC */
+  
+  --secondary: 210 40% 96%;       /* #F1F5F9 */
+  --secondary-foreground: 222 47% 10%; /* Darker for better prominence */
+  
+  --muted: 210 40% 96%;           /* #F1F5F9 */
+  --muted-foreground: 215 20% 36%; /* Much darker for better readability */
+  
+  --accent: 210 40% 94%;          /* #E2E8F0 */
+  --accent-foreground: 222 47% 10%; /* Darker for better prominence */
+  
+  --destructive: 0 84% 60%;       /* #EF4444 */
+  --destructive-foreground: 210 40% 98%; /* #F8FAFC */
+  
+  --border: 214 32% 86%;          /* Darker borders for better definition */
+  --input: 214 32% 91%;           /* #D1D5DB */
+  --ring: 221 83% 53%;            /* #3B82F6 */
+  
+  /* Success & Status Colors */
+  --success: 142 76% 36%;         /* #059669 */
+  --warning: 32 95% 44%;          /* #D97706 */
+  --info: 204 94% 94%;            /* #DBEAFE */
+  
+  /* Enhanced Shadows for Light Mode */
+  --shadow-light: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+  --shadow-medium: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --shadow-heavy: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  --shadow-intense: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+  
+  /* Sidebar Colors for Light Mode */
+  --sidebar-background: 0 0% 100%;        /* #FFFFFF - White background */
+  --sidebar-foreground: 222 47% 10%;      /* Aligned with enhanced foreground */
+  --sidebar-primary: 221 83% 53%;         /* #3B82F6 - Blue primary */
+  --sidebar-primary-foreground: 210 40% 98%; /* #F8FAFC - Light text on primary */
+  --sidebar-accent: 210 40% 96%;          /* #F1F5F9 - Light gray accent */
+  --sidebar-accent-foreground: 222 47% 10%; /* Aligned with enhanced foreground */
+  --sidebar-border: 214 32% 86%;          /* Aligned with enhanced border */
+  --sidebar-ring: 221 83% 53%;            /* #3B82F6 - Focus ring color */
+}
+
+/* Custom Scrollbar Styles */
+@layer utilities {
+  .scrollbar-thin {
+    scrollbar-width: thin;
+    scrollbar-color: hsl(var(--muted-foreground)) transparent;
+  }
+  
+  .scrollbar-thin::-webkit-scrollbar {
+    width: 6px;
+  }
+  
+  .scrollbar-thin::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  
+  .scrollbar-thin::-webkit-scrollbar-thumb {
+    background-color: hsl(var(--muted-foreground) / 0.3);
+    border-radius: 3px;
+  }
+  
+  .scrollbar-thin::-webkit-scrollbar-thumb:hover {
+    background-color: hsl(var(--muted-foreground) / 0.5);
+  }
+  
+  .scrollbar-thumb-gray-300::-webkit-scrollbar-thumb {
+    background-color: rgb(209 213 219);
+  }
+  
+  .dark .scrollbar-thumb-gray-600::-webkit-scrollbar-thumb {
+    background-color: rgb(75 85 99);
+  }
+  
+  .scrollbar-track-transparent::-webkit-scrollbar-track {
+    background: transparent;
+  }
+}
+
+.dark {
+  /* Dark Mode - Night Theme */
+  --background: 222 47% 11%;      /* #1F2937 */
+  --foreground: 210 40% 98%;      /* #F8FAFC */
+  
+  --card: 224 71% 4%;             /* #0F172A */
+  --card-foreground: 210 40% 98%; /* #F8FAFC */
+  
+  --popover: 224 71% 4%;          /* #0F172A */
+  --popover-foreground: 210 40% 98%; /* #F8FAFC */
+  
+  --primary: 217 91% 60%;         /* #3B82F6 */
+  --primary-foreground: 222 47% 11%; /* #1F2937 */
+  
+  --secondary: 215 28% 17%;       /* #334155 */
+  --secondary-foreground: 210 40% 98%; /* #F8FAFC */
+  
+  --muted: 215 28% 17%;           /* #334155 */
+  --muted-foreground: 217 19% 57%; /* #94A3B8 */
+  
+  --accent: 215 28% 17%;          /* #334155 */
+  --accent-foreground: 210 40% 98%; /* #F8FAFC */
+  
+  --destructive: 0 63% 31%;       /* #7F1D1D */
+  --destructive-foreground: 210 40% 98%; /* #F8FAFC */
+  
+  --border: 215 28% 17%;          /* #334155 */
+  --input: 215 28% 17%;           /* #334155 */
+  --ring: 217 91% 60%;            /* #3B82F6 */
+  
+  /* Success & Status Colors for Dark Mode */
+  --success: 142 71% 45%;         /* #10B981 */
+  --warning: 32 95% 44%;          /* #D97706 */
+  --info: 221 39% 11%;            /* #1E3A8A */
+  
+  /* Enhanced Shadows for Dark Mode */
+  --shadow-light: 0 1px 3px 0 rgb(0 0 0 / 0.3), 0 1px 2px -1px rgb(0 0 0 / 0.3);
+  --shadow-medium: 0 4px 6px -1px rgb(0 0 0 / 0.2), 0 2px 4px -2px rgb(0 0 0 / 0.2);
+  --shadow-heavy: 0 10px 15px -3px rgb(0 0 0 / 0.3), 0 4px 6px -4px rgb(0 0 0 / 0.3);
+  --shadow-intense: 0 20px 25px -5px rgb(0 0 0 / 0.4), 0 8px 10px -6px rgb(0 0 0 / 0.4);
+  
+  /* Sidebar Colors for Dark Mode */
+  --sidebar-background: 224 71% 4%;       /* #0F172A - Very dark blue background */
+  --sidebar-foreground: 210 40% 98%;      /* #F8FAFC - Light text */
+  --sidebar-primary: 217 91% 60%;         /* #3B82F6 - Blue primary */
+  --sidebar-primary-foreground: 222 47% 11%; /* #1F2937 - Dark text on primary */
+  --sidebar-accent: 215 28% 17%;          /* #334155 - Dark gray accent */
+  --sidebar-accent-foreground: 210 40% 98%; /* #F8FAFC - Light text on accent */
+  --sidebar-border: 215 28% 17%;          /* #334155 - Dark border */
+  --sidebar-ring: 217 91% 60%;            /* #3B82F6 - Focus ring color */
+}
+
+/* Theme-Specific Body Backgrounds */
+body {
+  background-color: hsl(var(--background));
+  color: hsl(var(--foreground));
+  font-feature-settings: "rlig" 1, "calt" 1;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Light Mode - Professional Day Theme */
+body:not(.dark) {
+  background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 25%, #e2e8f0 100%);
+}
+
+/* Dark Mode - Professional Night Theme */
+.dark body {
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 25%, #334155 100%);
+}
+
+/* Sidebar Utility Classes - FULLY OPAQUE with Maximum Specificity */
+@layer components {
+  /* Main sidebar background - SOLID, NO TRANSPARENCY */
+  .bg-sidebar, 
+  [data-sidebar="sidebar"].bg-sidebar,
+  .bg-sidebar.flex,
+  .fixed.bg-sidebar,
+  div.bg-sidebar { 
+    background-color: hsl(var(--sidebar-background)) !important;
+    background-image: none !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    opacity: 1 !important;
+  }
+  
+  /* Force opaque sidebar - use this class to override ALL transparency */
+  .sidebar-opaque {
+    background-color: hsl(var(--sidebar-background)) !important;
+    background-image: none !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    opacity: 1 !important;
+    isolation: isolate !important;
+    z-index: 200 !important;
+  }
+  
+  /* Navigation sidebar specific override */
+  .navigation-sidebar,
+  .fixed.left-0.top-0.h-full {
+    background-color: hsl(var(--sidebar-background)) !important;
+    background-image: none !important;
+    backdrop-filter: none !important;
+    opacity: 1 !important;
+  }
+  
+  .text-sidebar-foreground { 
+    color: hsl(var(--sidebar-foreground)) !important; 
+  }
+  
+  .border-sidebar, .border-sidebar-border { 
+    border-color: hsl(var(--sidebar-border)) !important; 
+  }
+  
+  .bg-sidebar-primary { 
+    background-color: hsl(var(--sidebar-primary)) !important; 
+    color: hsl(var(--sidebar-primary-foreground)) !important; 
+  }
+  
+  .bg-sidebar-accent { 
+    background-color: hsl(var(--sidebar-accent)) !important; 
+  }
+  
+  .text-sidebar-accent-foreground { 
+    color: hsl(var(--sidebar-accent-foreground)) !important; 
+  }
+  
+  .hover\:bg-sidebar-accent:hover { 
+    background-color: hsl(var(--sidebar-accent)) !important; 
+    color: hsl(var(--sidebar-accent-foreground)) !important; 
+  }
+  
+  .ring-sidebar-ring { 
+    --tw-ring-color: hsl(var(--sidebar-ring)); 
+  }
+}
+
+/* Enhanced Component Styling */
+.card {
+  background-color: hsl(var(--card));
+  color: hsl(var(--card-foreground));
+  border: 1px solid hsl(var(--border));
+  border-radius: calc(var(--radius) + 2px);
+  box-shadow: var(--shadow-light);
+  transition: all 0.2s ease;
+}
+
+/* Improved text prominence site-wide */
+body {
+  line-height: 1.6;
+}
+
+/* Enhanced input field placeholder contrast */
+::placeholder {
+  color: hsl(var(--muted-foreground));
+  opacity: 0.8;
+}
+
+/* Better text emphasis utilities */
+.text-emphasis-high {
+  color: hsl(var(--foreground));
+  font-weight: 600;
+}
+
+.text-emphasis-medium {
+  color: hsl(215 18% 42%);
+  font-weight: 500;
+}
+
+.text-emphasis-low {
+  color: hsl(var(--muted-foreground));
+}
+
+.card:hover {
+  box-shadow: var(--shadow-medium);
+  border-color: hsl(var(--border) / 0.8);
+}
+
+.card-enhanced {
+  box-shadow: var(--shadow-heavy);
+  border: 1px solid hsl(var(--border) / 0.5);
+}
+
+.card-enhanced:hover {
+  box-shadow: var(--shadow-intense);
+  transform: translateY(-2px);
+}
+
+/* ===== UNIFIED SUCCESS MODAL & CONFETTI STYLES ===== */
+
+/* Modal Overlay */
+.unified-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9990;
+  padding: 1rem;
+  animation: fadeIn 0.2s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Success Card */
+.success-card {
+  background: hsl(var(--card));
+  border: 1px solid hsl(var(--border));
+  border-radius: 1.5rem;
+  padding: 3rem;
+  max-width: 500px;
+  width: 100%;
+  position: relative;
+  box-shadow: var(--shadow-intense);
+  animation: slideIn 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  text-align: center;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95) translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* Close Button */
+.unified-modal-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  width: 2.5rem;
+  height: 2.5rem;
+  border: none;
+  background: hsl(var(--secondary));
+  color: hsl(var(--secondary-foreground));
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  z-index: 1;
+}
+
+.unified-modal-close:hover {
+  background: hsl(var(--muted));
+  transform: scale(1.05);
+}
+
+/* Success Icon */
+.success-icon-container {
+  width: 5rem;
+  height: 5rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 2rem;
+  animation: bounceIn 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+@keyframes bounceIn {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.success-state-payment {
+  background: linear-gradient(135deg, #10b981, #059669);
+  color: white;
+}
+
+.success-state-swap {
+  background: linear-gradient(135deg, #3b82f6, #2563eb);
+  color: white;
+}
+
+.success-state-bridge {
+  background: linear-gradient(135deg, #8b5cf6, #7c3aed);
+  color: white;
+}
+
+.success-icon {
+  width: 2.5rem;
+  height: 2.5rem;
+}
+
+/* Success Title & Description */
+.success-title {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: hsl(var(--foreground));
+  margin-bottom: 1rem;
+  line-height: 1.2;
+}
+
+.success-description {
+  font-size: 1rem;
+  color: hsl(var(--muted-foreground));
+  margin-bottom: 2rem;
+  line-height: 1.5;
+}
+
+/* Success Details */
+.success-details {
+  background: hsl(var(--secondary));
+  border: 1px solid hsl(var(--border));
+  border-radius: 1rem;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+  text-align: left;
+}
+
+.success-detail-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid hsl(var(--border));
+}
+
+.success-detail-row:last-child {
+  border-bottom: none;
+}
+
+.success-detail-label {
+  font-weight: 600;
+  color: hsl(var(--muted-foreground));
+  font-size: 0.875rem;
+}
+
+.success-detail-value {
+  font-weight: 600;
+  color: hsl(var(--foreground));
+  font-size: 0.875rem;
+  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+}
+
+/* Action Buttons */
+.success-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.success-action-primary {
+  width: 100%;
+  height: 3rem;
+  background: linear-gradient(135deg, #3b82f6, #2563eb);
+  color: white;
+  border: none;
+  border-radius: 0.75rem;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.success-action-primary:hover {
+  background: linear-gradient(135deg, #2563eb, #1d4ed8);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4);
+}
+
+.success-action-secondary {
+  width: 100%;
+  height: 2.75rem;
+  background: hsl(var(--secondary));
+  color: hsl(var(--secondary-foreground));
+  border: 1px solid hsl(var(--border));
+  border-radius: 0.75rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  text-decoration: none;
+}
+
+.success-action-secondary:hover {
+  background: hsl(var(--muted));
+  transform: translateY(-1px);
+}
+
+.unified-button-icon {
+  background: none;
+  border: none;
+  color: hsl(var(--muted-foreground));
+  cursor: pointer;
+  transition: all 0.2s ease;
+  padding: 0.25rem;
+  border-radius: 0.25rem;
+}
+
+.unified-button-icon:hover {
+  color: hsl(var(--foreground));
+  background: hsl(var(--muted));
+}
+
+/* ===== CONFETTI ANIMATION SYSTEM ===== */
+
+/* Confetti Container - Full Screen */
+.confetti-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 9992;
+  overflow: hidden;
+}
+
+/* Individual Confetti Pieces */
+.confetti-piece {
+  position: absolute;
+  top: -10px;
+  font-size: 1.5rem;
+  animation: confettiFall 3s linear forwards;
+  opacity: 0.9;
+  user-select: none;
+}
+
+/* Confetti Fall Animation */
+@keyframes confettiFall {
+  0% {
+    transform: translateY(-100px) rotate(0deg);
+    opacity: 1;
+  }
+  50% {
+    transform: translateY(50vh) rotate(180deg);
+    opacity: 0.8;
+  }
+  100% {
+    transform: translateY(100vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+/* Alternative confetti animations for variety */
+.confetti-piece:nth-child(odd) {
+  animation: confettiSwirl 3s ease-in-out forwards;
+}
+
+@keyframes confettiSwirl {
+  0% {
+    transform: translateY(-100px) translateX(0) rotate(0deg) scale(1);
+    opacity: 1;
+  }
+  25% {
+    transform: translateY(25vh) translateX(20px) rotate(90deg) scale(0.8);
+    opacity: 0.9;
+  }
+  50% {
+    transform: translateY(50vh) translateX(-10px) rotate(180deg) scale(1.1);
+    opacity: 0.8;
+  }
+  75% {
+    transform: translateY(75vh) translateX(15px) rotate(270deg) scale(0.9);
+    opacity: 0.6;
+  }
+  100% {
+    transform: translateY(100vh) translateX(0) rotate(360deg) scale(0.7);
+    opacity: 0;
+  }
+}
+
+/* Prevent modal from being affected by confetti */
+.modal-open {
+  overflow: hidden;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 640px) {
+  .success-card {
+    padding: 2rem 1.5rem;
+    margin: 1rem;
+    max-height: 95vh;
+  }
+  
+  .success-icon-container {
+    width: 4rem;
+    height: 4rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .success-icon {
+    width: 2rem;
+    height: 2rem;
+  }
+  
+  .success-title {
+    font-size: 1.5rem;
+  }
+  
+  .success-details {
+    padding: 1rem;
+  }
+  
+  .success-actions {
+    gap: 0.5rem;
+  }
+  
+  .success-action-primary,
+  .success-action-secondary {
+    height: 2.5rem;
+    font-size: 0.875rem;
+  }
+  
+  .confetti-piece {
+    font-size: 1.25rem;
+  }
+}
+
+/* Button Enhancements */
+.btn-enhanced {
+  box-shadow: var(--shadow-light);
+  border: 1px solid hsl(var(--border));
+  transition: all 0.2s ease;
+}
+
+.btn-enhanced:hover {
+  box-shadow: var(--shadow-medium);
+  transform: translateY(-1px);
+}
+
+.btn-primary-enhanced {
+  background: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--primary) / 0.8) 100%);
+  color: hsl(var(--primary-foreground));
+  box-shadow: var(--shadow-medium);
+  border: 1px solid hsl(var(--primary) / 0.8);
+}
+
+.btn-primary-enhanced:hover {
+  background: linear-gradient(135deg, hsl(var(--primary) / 0.9) 0%, hsl(var(--primary) / 0.7) 100%);
+  box-shadow: var(--shadow-heavy);
+  transform: translateY(-2px);
+}
+
+/* Input Field Enhancements */
+.input-enhanced {
+  background-color: hsl(var(--background));
+  border: 1px solid hsl(var(--border));
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-light);
+  transition: all 0.2s ease;
+}
+
+.input-enhanced:focus {
+  border-color: hsl(var(--primary));
+  box-shadow: var(--shadow-medium), 0 0 0 3px hsl(var(--primary) / 0.1);
+}
+
+/* Modal and Dialog Enhancements */
+.modal-overlay {
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(8px);
+}
+
+.modal-content {
+  background-color: hsl(var(--card));
+  border: 1px solid hsl(var(--border));
+  border-radius: calc(var(--radius) + 4px);
+  box-shadow: var(--shadow-intense);
+}
+
+/* Navigation Enhancements */
+.nav-enhanced {
+  background-color: hsl(var(--card) / 0.8);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid hsl(var(--border));
+  box-shadow: var(--shadow-light);
+}
+
+/* Gradient Text Effects */
+.gradient-text {
+  background: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--accent-foreground)) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Status Indicators */
+.status-success {
+  color: hsl(var(--success));
+  background-color: hsl(var(--success) / 0.1);
+  border: 1px solid hsl(var(--success) / 0.2);
+}
+
+.status-warning {
+  color: hsl(var(--warning));
+  background-color: hsl(var(--warning) / 0.1);
+  border: 1px solid hsl(var(--warning) / 0.2);
+}
+
+.status-error {
+  color: hsl(var(--destructive));
+  background-color: hsl(var(--destructive) / 0.1);
+  border: 1px solid hsl(var(--destructive) / 0.2);
+}
+
+/* Responsive Enhancements */
+@media (max-width: 768px) {
+  .card-enhanced {
+    box-shadow: var(--shadow-medium);
+  }
+  
+  .card-enhanced:hover {
+    box-shadow: var(--shadow-heavy);
+    transform: none;
+  }
+  
+  .btn-enhanced:hover {
+    transform: none;
+  }
+  
+  .btn-primary-enhanced:hover {
+    transform: none;
+  }
+}
+
+/* Animation Classes */
+.animate-fade-in {
+  animation: fadeIn 0.3s ease-out;
+}
+
+.animate-slide-up {
+  animation: slideUp 0.3s ease-out;
+}
+
+.animate-scale-in {
+  animation: scaleIn 0.2s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { 
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to { 
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scaleIn {
+  from { 
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to { 
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Wallet-specific enhancements */
+.wallet-card-enhanced {
+  background: linear-gradient(135deg, hsl(var(--card)) 0%, hsl(var(--muted)) 100%);
+  border: 1px solid hsl(var(--border) / 0.5);
+  box-shadow: var(--shadow-heavy);
+  transition: all 0.3s ease;
+}
+
+.wallet-card-enhanced:hover {
+  box-shadow: var(--shadow-intense);
+  transform: translateY(-4px);
+  border-color: hsl(var(--primary) / 0.3);
+}
+
+/* Chain-specific gradient backgrounds */
+.chain-gradient-eth {
+  background: linear-gradient(135deg, #627eea 0%, #8a92b2 100%);
+}
+
+.chain-gradient-xrp {
+  background: linear-gradient(135deg, #000000 0%, #4d4d4d 100%);
+}
+
+.chain-gradient-sol {
+  background: linear-gradient(135deg, #9945ff 0%, #14f195 100%);
+}
+
+.chain-gradient-btc {
+  background: linear-gradient(135deg, #f7931a 0%, #ffae42 100%);
+}
+
+/* Vertical Trustline Layout Styles */
+.trustline-item-vertical {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 20px;
+  transition: all 0.2s ease;
+}
+
+.trustline-item-vertical:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.remove-trustline-button-full {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: all 0.2s ease;
+}
+/* NFT Detail Page Styling */
+.nft-detail-container {
+  min-height: 100vh;
+  background: linear-gradient(to bottom, #1e3a8a 0%, #1e40af 50%, #1e3a8a 100%);
+  color: white;
+}
+
+.nft-metadata-card {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  color: white;
+}
+
+.nft-image-container {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.nft-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.nft-badge-collection {
+  background: rgba(59, 130, 246, 0.2);
+  color: #60a5fa;
+  border: 1px solid rgba(59, 130, 246, 0.3);
+}

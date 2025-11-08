@@ -1,0 +1,121 @@
+PrerequisitesXRPL Knowledge: Familiarity with XRPL accounts, transactions, and NFTs (XLS-20 standard).
+Tech Stack: Basic JavaScript (Node.js) or Python for backend; React or similar for frontend.
+Broker Wallet: A dedicated XRPL account for your platform to hold and transfer NFTs.
+Security: Store wallet secrets securely (e.g., AWS Secrets Manager, never in code).
+Testing: Use XRPL Testnet (wss://s.altnet.rippletest.net:51233, free XRP at testnet.xrpl.org).
+Costs: XRPL fees: ~0.00001 XRP ($0.000005) per transaction.
+Reserves: 10 XRP ($5 at $0.50/XRP) for wallet + 2 XRP per NFT held.
+Optional: IPFS pinning (~$0.01/NFT/month via Pinata).
+System 1: Basic Buy SystemThis system allows users to purchase NFTs listed on riddleswap.com. The broker wallet holds NFTs, receives payments, transfers NFTs to buyers, and ensures royalties are paid automatically.Step 1: Set Up the Broker WalletGenerate Wallet:Use the xrpl JavaScript library (Node.js) for automation.
+Install: npm install xrpl
+Code to create wallet:javascript
+
+const xrpl = require('xrpl');
+async function createBrokerWallet() {
+  const wallet = xrpl.Wallet.create();
+  console.log('Address:', wallet.classicAddress);
+  console.log('Secret:', wallet.seed); // Store securely in .env or vault
+  return wallet;
+}
+createBrokerWallet();
+Alternative: Use Xaman app (iOS/Android) to create manually, then export the seed securely.
+Security: Store the seed in an environment variable (e.g., .env with BROKER_SEED=your_seed) or a secure vault. Never expose it publicly.
+Fund Wallet:Send 20+ XRP to the wallet’s address (starts with 'r') via an exchange (e.g., Uphold).
+Reserve: 10 XRP base + 2 XRP per NFT held.
+Verify activation: https://livenet.xrpl.org (mainnet) or testnet explorer.
+Step 2: Backend Setup for PurchasesSet up a Node.js/Express server to handle transactions securely. This connects to XRPL and uses the broker wallet to sign transactions.javascript
+
+const xrpl = require('xrpl');
+const express = require('express');
+const app = express();
+app.use(express.json());
+
+const client = new xrpl.Client('wss://s1.ripple.com'); // Mainnet (use testnet for dev)
+const BROKER_SEED = process.env.BROKER_SEED; // Load from .env
+const brokerWallet = xrpl.Wallet.fromSeed(BROKER_SEED);
+
+async function start() {
+  await client.connect();
+  console.log('Connected to XRPL');
+}
+start();
+
+app.listen(3000, () => console.log('Server running on port 3000'));
+
+Step 3: List NFTs for SaleThe broker wallet holds NFTs and creates sell offers for users to browse.Hold NFTs:Receive NFTs into the broker wallet (via minting, below, or transfers from creators).
+Query NFTs: Use XRPL’s account_nfts method.javascript
+
+async function listBrokerNFTs() {
+  const response = await client.request({
+    command: 'account_nfts',
+    account: brokerWallet.classicAddress
+  });
+  return response.result.account_nfts; // Array of NFTs
+}
+Create Sell Offer:For each NFT, create a sell offer with a price in XRP.
+Example (for an NFT already in the wallet):javascript
+
+async function createSellOffer(nftId, priceXrp) {
+  const tx = await client.autofill({
+    TransactionType: 'NFTokenCreateOffer',
+    Account: brokerWallet.classicAddress,
+    NFTokenID: nftId, // From account_nfts
+    Amount: xrpl.xrpToDrops(priceXrp), // e.g., '10' for 10 XRP
+    Flags: 1 // Sell offer
+  });
+  const signed = brokerWallet.sign(tx);
+  const result = await client.submitAndWait(signed.tx_blob);
+  return result.result.meta.offer_id; // Save offer ID
+}
+Call this for each NFT to list (e.g., createSellOffer('nft_id_here', '10')).
+Step 4: Process User PurchasesUsers browse NFTs on riddleswap.com, connect their wallet (via Xaman), and buy.Frontend Integration:Use Xaman SDK (@xaman/app-kit) for wallet connection.
+Display NFTs: Fetch from backend API (which queries account_nfts).
+"Buy" button: Triggers user to sign a buy offer.
+Purchase Flow:User clicks "Buy" → Frontend sends request to backend.
+Backend creates an escrow for the payment:javascript
+
+async function createEscrow(userAddress, amountXrp, nftId) {
+  const tx = await client.autofill({
+    TransactionType: 'EscrowCreate',
+    Account: userAddress, // User’s wallet
+    Destination: brokerWallet.classicAddress,
+    Amount: xrpl.xrpToDrops(amountXrp), // Sale price
+    Condition: 'NFT_PURCHASE', // Custom condition
+    FinishAfter: Math.floor(Date.now() / 1000) + 3600 // 1-hour escrow
+  });
+  // User signs via Xaman (frontend handles)
+  return tx;
+}
+User signs payment to escrow via Xaman.
+Backend monitors escrow, then accepts the buy offer:javascript
+
+async function acceptBuyOffer(offerId, nftId) {
+  const tx = await client.autofill({
+    TransactionType: 'NFTokenAcceptOffer',
+    Account: brokerWallet.classicAddress,
+    NFTokenID: nftId,
+    NFTokenSellOffer: offerId
+  });
+  const signed = brokerWallet.sign(tx);
+  await client.submitAndWait(signed.tx_blob);
+}
+This transfers: NFT to buyer, XRP to broker (minus royalties), royalties to creator.
+Royalties:Royalties are auto-paid if the NFT was minted with a TransferFee (e.g., 500 = 5%).
+XRPL deducts the fee from the sale price and sends it to the NFT issuer.
+Step 5: Frontend Example (React)javascript
+
+import { Xumm } from '@xaman/app-kit';
+const xumm = new Xumm('your-xumm-api-key');
+
+async function buyNFT(nftId, price) {
+  const payload = await xumm.payload.create({
+    TransactionType: 'EscrowCreate',
+    // Backend provides tx details
+  });
+  const subscription = await payload.subscribe();
+  subscription.on('success', async () => {
+    // Notify backend to accept offer
+    fetch('/api/accept-offer', { method: 'POST', body: JSON.stringify({ nftId, offerId }) });
+  });
+}
+

@@ -1,0 +1,42 @@
+sion() returning: {isLoggedIn: true, handle: 'riddlbroker', hasWalletData: true, hasSessionToken: true, walletDataKeys: Array(7)}
+injected.js:27 🔍 SessionManager.getSession() returning: {isLoggedIn: true, handle: 'riddlbroker', hasWalletData: true, hasSessionToken: true, walletDataKeys: Array(7)}
+injected.js:27 🔍 SessionManager.getSession() returning: {isLoggedIn: true, handle: 'riddlbroker', hasWalletData: true, hasSessionToken: true, walletDataKeys: Array(7)}
+injected.js:27 🔍 SessionManager.getSession() returning: {isLoggedIn: true, handle: 'riddlbroker', hasWalletData: true, hasSessionToken: true, walletDataKeys: Array(7)}
+injected.js:27 🔍 SessionManager.getSession() returning: {isLoggedIn: true, handle: 'riddlbroker', hasWalletData: true, hasSessionToken: true, walletDataKeys: Array(7)}
+injected.js:27 🔍 SessionManager.getSession() returning: {isLoggedIn: true, handle: 'riddlbroker', hasWalletData: true, hasSessionToken: true, walletDataKeys: Array(7)}
+injected.js:27 🔍 SessionManager.getSession() returning: {isLoggedIn: true, handle: 'riddlbroker', hasWalletData: true, hasSessionToken: true, walletDataKeys: Array(7)}
+injected.js:27 🔍 SessionManager.getSession() returning: {isLoggedIn: true, handle: 'riddlbroker', hasWalletData: true, hasSessionToken: true, walletDataKeys: Array(7)}
+injected.js:27 🔍 SessionManager.getSession() returning: {isLoggedIn: true, handle: 'riddlbroker', hasWalletData: true, hasSessionToken: true, walletDataKeys: Array(7)}
+injected.js:27 🔍 getQueryFn - SessionManager sessionToken: FOUND
+injected.js:27 🔍 SessionManager.getSession() returning: {isLoggedIn: true, handle: 'riddlbroker', hasWalletData: true, hasSessionToken: true, walletDataKeys: Array(7)}
+injected.js:27 🔍 SessionManager.getSession() returning: {isLoggedIn: true, handle: 'riddlbroker', hasWalletData: true, hasSessionToken: true, walletDataKeys: Array(7)}
+injected.js:27 🔍 SessionManager.getSession() returning: {isLoggedIn: true, handle: 'riddlbroker', hasWalletData: true, hasSessionToken: true, walletDataKeys: Array(7)}
+injected.js:27 🔍 SessionManager.getSession() returning: {isLoggedIn: true, handle: 'riddlbroker', hasWalletData: true, hasSessionToken: true, walletDataKeys: Array(7)}
+injected.js:27 Squadron creation error: TypeError: Cannot read properties of undefined (reading 'squadron_name')
+    at Object.onSuccess (inquisition-gaming-v2.tsx:784:35)
+    at _a6.execute (@tanstack_react-query.js?v=2a52c0ac:1258:37)
+    at async onClick (inquisition-gaming-v2.tsx:2197:42)
+(anonymous) @ injected.js:27
+onClick @ inquisition-gaming-v2.tsx:2220
+await in onClick
+callCallback2 @ chunk-SM3OW2QE.js?v=2a52c0ac:3674
+invokeGuardedCallbackDev @ chunk-SM3OW2QE.js?v=2a52c0ac:3699
+invokeGuardedCallback @ chunk-SM3OW2QE.js?v=2a52c0ac:3733
+invokeGuardedCallbackAndCatchFirstError @ chunk-SM3OW2QE.js?v=2a52c0ac:3736
+executeDispatch @ chunk-SM3OW2QE.js?v=2a52c0ac:7014
+processDispatchQueueItemsInOrder @ chunk-SM3OW2QE.js?v=2a52c0ac:7034
+processDispatchQueue @ chunk-SM3OW2QE.js?v=2a52c0ac:7043
+dispatchEventsForPlugins @ chunk-SM3OW2QE.js?v=2a52c0ac:7051
+(anonymous) @ chunk-SM3OW2QE.js?v=2a52c0ac:7174
+batchedUpdates$1 @ chunk-SM3OW2QE.js?v=2a52c0ac:18913
+batchedUpdates @ chunk-SM3OW2QE.js?v=2a52c0ac:3579
+dispatchEventForPluginEventSystem @ chunk-SM3OW2QE.js?v=2a52c0ac:7173
+dispatchEventWithEnableCapturePhaseSelectiveHydrationWithoutDiscreteEventReplay @ chunk-SM3OW2QE.js?v=2a52c0ac:5478
+dispatchEvent @ chunk-SM3OW2QE.js?v=2a52c0ac:5472
+dispatchDiscreteEvent @ chunk-SM3OW2QE.js?v=2a52c0ac:5449
+injected.js:27 🔍 SessionManager.getSession() returning: {isLoggedIn: true, handle: 'riddlbroker', hasWalletData: true, hasSessionToken: true, walletDataKeys: Array(7)}
+injected.js:27 🔍 SessionManager.getSession() returning: {isLoggedIn: true, handle: 'riddlbroker', hasWalletData: true, hasSessionToken: true, walletDataKeys: Array(7)}
+injected.js:27 🔍 SessionManager.getSession() returning: {isLoggedIn: true, handle: 'riddlbroker', hasWalletData: true, hasSessionToken: true, walletDataKeys: Array(7)}
+injected.js:27 🔍 Found local wallet connections: []
+injected.js:27 🔍 SessionManager.getSession() returning: {isLoggedIn: true, handle: 'riddlbroker', hasWalletData: true, hasSessionToken: true, walletDataKeys: Array(7)}
+injected.js:27 🔍 getQueryFn - SessionManager sessionToken: FOUND

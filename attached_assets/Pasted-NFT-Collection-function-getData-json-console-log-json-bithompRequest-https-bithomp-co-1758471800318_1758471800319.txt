@@ -1,0 +1,97 @@
+NFT Collection
+function getData(json) {
+  console.log(json)
+}
+bithompRequest("https://bithomp.com/api/v2/nft-collection/ra59pDJcuqKJcQws7Xpuu1S8UYKmKnpUkW:1?floorPrice=true&statistics=true&assets=true", getData);
+The above command returns JSON structured like this:
+
+{
+  "type": "xls20",
+  "floorPrice": true,
+  "assets": true,
+  "statistics": true,
+  "collection": {
+    "collection": "ra59pDJcuqKJcQws7Xpuu1S8UYKmKnpUkW:1",
+    "name": "xSPECTAR",
+    "family": "8888",
+    "description": null,
+    "image": "QmWyX21PY7DDLpEPNqAyEcLKASEJznVKiB9VrUCwvEmZBc",
+    "createdAt": 1670361970,
+    "updatedAt": 1671008552,
+    "issuer": "ra59pDJcuqKJcQws7Xpuu1S8UYKmKnpUkW",
+    "issuerDetails": {
+      "address": "ra59pDJcuqKJcQws7Xpuu1S8UYKmKnpUkW",
+      "username": "xSPECTAR",
+      "service": "xSPECTAR"
+    },
+    "taxon": 1,
+    "floorPrices": [
+      {
+        "open": {
+          "amount": "139000000"
+        },
+        "private": {
+          "amount": "49250000",
+          "destination": "rpZqTPC8GvrSvEfFsUuHkmPCg29GdQuXhC",
+          "destinationDetails": {
+            "username": null,
+            "service": "bidds"
+          }
+        }
+      },
+      {
+        "open": {
+          "amount": {
+            "currency": "7853504543544152000000000000000000000000",
+            "issuer": "rh5jzTCdMRCVjQ7LT6zucjezC47KATkuvv",
+            "value": "10000"
+          }
+        },
+        "private": null
+      }
+    ],
+    "assets": {
+      "image": "https://cdn.bithomp.com/image/hash",
+      "preview": "https://cdn.bithomp.com/preview/hash",
+      "thumbnail": "https://cdn.bithomp.com/thumbnail/hash"
+    },
+    "statistics": {
+      "owners": 1622,
+      "nfts": 8887,
+      "all": {
+        "buyers": 900,
+        "tradedNfts": 3167
+      },
+      "day": {
+        "buyers": 7,
+        "tradedNfts": 7
+      },
+      "week": {
+        "buyers": 19,
+        "tradedNfts": 52
+      },
+      "month": {
+        "buyers": 74,
+        "tradedNfts": 272
+      },
+      "year": {
+        "buyers": 316,
+        "tradedNfts": 1086
+      }
+    }
+  }
+}
+This endpoint retrieves NFT Collection details, including floor price, sale statistics, owner count etc.
+
+HTTP Request
+GET https://bithomp.com/api/v2/nft-collection/<collectionId>
+
+URL Parameters
+Parameter	Description
+collectionId	The collectionId in the format issuer:taxon for Standard collections or issuer for Sologenic collections. (you can find collection ids in the NFT Collections endpoint)
+Query Parameters
+Parameter	Default	Description
+statistics	false	(Only available on paid API plans) If set to true, returns statistics with owner count and NFT count for the present time, it also includes count of buyers and traded NFTs for the last 24 hours, 7 days, 30 days, or 365 days.
+floorPrice	false	(Only available on paid API plans) If set to true, returns floorPrices with the lowest price for the NFT collection.
+assets	false	(Only available on the Standard API plan or greater) If set to true, returns assets with direct urls for NFT collection image 700px x 700px, video 15s, preview 360px x 360px (image, otherwise video frame) and thumbnail 64px x 64px. (See plans for NFT contents for more details or contact us)
+NFT Collections

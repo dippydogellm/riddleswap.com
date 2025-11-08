@@ -1,0 +1,20 @@
+tail for: 00080BB86C429EE66CE731CAA492445DFF564F9CB8A46A30AA28538405A83FEA
+injected.js:27 🔍 SessionManager.getSession() returning: Object
+injected.js:27 ⚠️ No authenticated wallet found - user is not logged in
+injected.js:27 📜 [HISTORY] Fetching transaction history from Bithomp for: 00080BB86C429EE66CE731CAA492445DFF564F9CB8A46A30AA28538405A83FEA
+injected.js:27 💰 [OFFERS] Fetching active offers for NFT: 00080BB86C429EE66CE731CAA492445DFF564F9CB8A46A30AA28538405A83FEA
+injected.js:27 No session token for offers
+301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/api/gaming/nft/00080BB86C429EE66CE731CAA492445DFF564F9CB8A46A30AA28538405A83FEA?t=1761140349058:1  Failed to load resource: the server responded with a status of 404 (Not Found)
+injected.js:27 🔍 Trying regular NFT endpoint for: 00080BB86C429EE66CE731CAA492445DFF564F9CB8A46A30AA28538405A83FEA
+injected.js:27 ✅ [OFFERS] Found 0 buy offers, 0 sell offers
+injected.js:27 ✅ Found NFT via detail endpoint: Fuzzybear #2198
+injected.js:27 📊 [RARITY] Fetching rarity data for NFT: 00080BB86C429EE66CE731CAA492445DFF564F9CB8A46A30AA28538405A83FEA
+injected.js:27 🔐 [OWNERSHIP CHECK] User: null, NFT Owner: rJSuG1fyt4Lggh18URNmdCdUzoC3FvhHqk, Is Owner: null
+injected.js:27 📊 [RARITY] Fetching rarity data for NFT: 00080BB86C429EE66CE731CAA492445DFF564F9CB8A46A30AA28538405A83FEA
+injected.js:27 🔐 [OWNERSHIP CHECK] User: null, NFT Owner: rJSuG1fyt4Lggh18URNmdCdUzoC3FvhHqk, Is Owner: null
+injected.js:27 ✅ [HISTORY] Found 5 transactions
+injected.js:27 🔐 [OWNERSHIP CHECK] User: null, NFT Owner: rJSuG1fyt4Lggh18URNmdCdUzoC3FvhHqk, Is Owner: null
+injected.js:27 ❌ NFT image failed to load: https://ipfs.io/ipfs/bafybeid5gaqiyien2ao2nzlta5p4fdxptty5t7hpbsma4joxzv4s5hvmii/fuzzybear-#2198.png
+injected.js:27 📬 Found 1 pending buy offers for NFT 00080BB86C429EE66CE731CAA492445DFF564F9CB8A46A30AA28538405A83FEA
+injected.js:27 🔐 [OWNERSHIP CHECK] User: null, NFT Owner: rJSuG1fyt4Lggh18URNmdCdUzoC3FvhHqk, Is Owner: null
+injected.js:27 💰 Found 1 sell offers for NFT 00080BB86C429EE66CE731CAA492445DFF564F9CB8A46A30AA28538405A83FEA

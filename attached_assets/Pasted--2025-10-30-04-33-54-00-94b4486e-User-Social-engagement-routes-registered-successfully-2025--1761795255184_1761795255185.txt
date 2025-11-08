@@ -1,0 +1,139 @@
+
+2025-10-30 04:33:54.00
+94b4486e
+User
+📱 Social engagement routes registered successfully
+2025-10-30 04:33:55.80
+94b4486e
+User
+✅ Fixed 0 rows in inquisition_player_profiles
+2025-10-30 04:33:55.80
+94b4486e
+User
+2025-10-30 04:33:55.80
+94b4486e
+User
+🔍 Checking inquisition_nft_audit...
+2025-10-30 04:33:55.82
+94b4486e
+User
+✅ Restored session for user: jake
+2025-10-30 04:33:55.93
+94b4486e
+User
+✅ Restored session for user: jake
+2025-10-30 04:33:56.08
+94b4486e
+User
+✅ Restored session for user: dippydoge
+2025-10-30 04:33:56.29
+94b4486e
+User
+📊 Found 5924 total rows
+2025-10-30 04:33:56.30
+94b4486e
+User
+✅ Fixed 0 rows in inquisition_nft_audit
+2025-10-30 04:33:56.30
+94b4486e
+User
+2025-10-30 04:33:56.30
+94b4486e
+User
+🔍 Checking medieval_land_plots...
+2025-10-30 04:33:56.30
+94b4486e
+User
+✅ Restored session for user: cosmar
+2025-10-30 04:33:56.33
+94b4486e
+User
+✅ Restored session for user: orangepeels
+2025-10-30 04:33:56.49
+94b4486e
+User
+📊 Found 500 total rows
+2025-10-30 04:33:56.49
+94b4486e
+User
+✅ Fixed 0 rows in medieval_land_plots
+2025-10-30 04:33:56.49
+94b4486e
+User
+============================================================
+2025-10-30 04:33:56.49
+94b4486e
+User
+📊 MIGRATION SUMMARY
+2025-10-30 04:33:56.49
+94b4486e
+User
+============================================================
+2025-10-30 04:33:56.49
+94b4486e
+User
+2025-10-30 04:33:56.49
+94b4486e
+User
+gaming_nfts:
+2025-10-30 04:33:56.49
+94b4486e
+User
+Total rows: 5509
+2025-10-30 04:33:56.49
+94b4486e
+User
+Fixed: 0
+2025-10-30 04:33:56.49
+94b4486e
+User
+Expired URLs: 17
+2025-10-30 04:33:56.49
+94b4486e
+User
+2025-10-30 04:33:56.49
+94b4486e
+User
+ai_generated_images:
+2025-10-30 04:33:56.49
+94b4486e
+User
+Total rows: 0
+2025-10-30 04:33:56.49
+94b4486e
+User
+Fixed: 0
+2025-10-30 04:33:56.49
+94b4486e
+User
+Expired URLs: 0
+2025-10-30 04:33:56.49
+94b4486e
+User
+2025-10-30 04:33:56.49
+94b4486e
+User
+inquisition_player_profiles:
+2025-10-30 04:33:56.49
+94b4486e
+User
+Total rows: 0
+2025-10-30 04:33:56.49
+94b4486e
+User
+Fixed: 0
+2025-10-30 04:33:56.49
+94b4486e
+User
+Expired URLs: 0
+2025-10-30 04:33:56.49
+94b4486e
+User
+2025-10-30 04:33:56.49
+94b4486e
+User
+inquisition_nft_audit:
+2025-10-30 04:33:56.49
+94b4486e
+User
+Total rows: 5924

@@ -1,0 +1,10 @@
+{
+  "BTC": {
+    "symbol": "BTC",
+    "name": "Bitcoin",
+    "isNative": true,
+    "decimals": 8,
+    "coingeckoId": "bitcoin",
+    "dexScreener": "BTC"
+  }
+}

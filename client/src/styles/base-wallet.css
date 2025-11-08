@@ -1,0 +1,659 @@
+/* Base Wallet Dedicated Styles */
+/* Blue Base Theme with Mobile Responsiveness */
+
+/* Base Wallet Container with scoped CSS variables */
+.base-wallet-container {
+  --base-primary: #0052FF;
+  --base-secondary: #3366FF;
+  --base-accent: #6699FF;
+  --base-dark: #0041CC;
+  --base-light: #E6EDFF;
+  --base-gradient-from: #0052FF;
+  --base-gradient-to: #6699FF;
+  --base-success: #10B981;
+  --base-error: #EF4444;
+  --base-warning: #F59E0B;
+  
+  background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
+  min-height: 100vh;
+}
+
+/* Base Header Styling */
+.base-header-card {
+  background: linear-gradient(135deg, var(--base-gradient-from) 0%, var(--base-gradient-to) 100%);
+  border: 1px solid rgba(0, 82, 255, 0.3);
+  box-shadow: 0 4px 20px rgba(0, 82, 255, 0.2);
+}
+
+.base-header-icon {
+  background: linear-gradient(135deg, var(--base-primary) 0%, var(--base-secondary) 100%);
+  border-radius: 16px;
+  padding: 16px;
+}
+
+/* Base Balance Cards */
+.base-balance-card {
+  background: linear-gradient(135deg, rgba(0, 82, 255, 0.1) 0%, rgba(102, 153, 255, 0.1) 100%);
+  border: 1px solid rgba(0, 82, 255, 0.2);
+  border-radius: 12px;
+}
+
+.base-balance-text {
+  color: var(--base-accent);
+  font-weight: 600;
+}
+
+.base-price-text {
+  color: rgba(102, 153, 255, 0.8);
+}
+
+/* Base Action Buttons */
+.base-action-buttons {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+}
+
+@media (min-width: 640px) {
+  .base-action-buttons {
+    display: flex;
+    flex-direction: row;
+    gap: 12px;
+  }
+}
+
+.base-send-button {
+  background: linear-gradient(135deg, var(--base-primary) 0%, var(--base-dark) 100%);
+  border: none;
+  color: white;
+  transition: all 0.3s ease;
+}
+
+.base-send-button:hover {
+  background: linear-gradient(135deg, var(--base-dark) 0%, var(--base-primary) 100%);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 82, 255, 0.3);
+}
+
+.base-receive-button {
+  background: linear-gradient(135deg, var(--base-success) 0%, #059669 100%);
+  border: none;
+  color: white;
+  transition: all 0.3s ease;
+}
+
+.base-receive-button:hover {
+  background: linear-gradient(135deg, #059669 0%, #047857 100%);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+}
+
+.base-swap-button {
+  background: linear-gradient(135deg, var(--base-secondary) 0%, var(--base-accent) 100%);
+  border: none;
+  color: white;
+  transition: all 0.3s ease;
+}
+
+.base-swap-button:hover {
+  background: linear-gradient(135deg, var(--base-accent) 0%, var(--base-secondary) 100%);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(51, 102, 255, 0.3);
+}
+
+/* Mobile Button Fixes */
+@media (max-width: 639px) {
+  .base-action-buttons button {
+    font-size: 12px;
+    padding: 8px 12px;
+    min-height: 36px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  
+  .base-action-buttons button svg {
+    width: 12px;
+    height: 12px;
+    margin-right: 4px;
+  }
+}
+
+/* Base Tabs Styling */
+.base-tabs-list {
+  background: rgba(0, 82, 255, 0.1);
+  border: 1px solid rgba(0, 82, 255, 0.2);
+}
+
+.base-tab-trigger {
+  color: rgba(255, 255, 255, 0.7);
+  transition: all 0.3s ease;
+}
+
+.base-tab-trigger[data-state="active"] {
+  background: linear-gradient(135deg, var(--base-primary) 0%, var(--base-secondary) 100%);
+  color: white;
+  border-radius: 6px;
+}
+
+.base-tab-trigger:hover {
+  background: rgba(0, 82, 255, 0.1);
+  color: var(--base-accent);
+}
+
+/* Base Token Cards */
+.base-token-card {
+  background: rgba(0, 82, 255, 0.05);
+  border: 1px solid rgba(0, 82, 255, 0.1);
+  border-radius: 12px;
+  transition: all 0.3s ease;
+}
+
+.base-token-card:hover {
+  background: rgba(0, 82, 255, 0.1);
+  border-color: rgba(0, 82, 255, 0.3);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(0, 82, 255, 0.2);
+}
+
+.base-token-actions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 639px) {
+  .base-token-actions {
+    flex-direction: column;
+    gap: 4px;
+  }
+  
+  .base-token-actions button {
+    font-size: 11px;
+    padding: 4px 8px;
+    min-height: 28px;
+  }
+  
+  .base-token-actions button svg {
+    width: 10px;
+    height: 10px;
+    margin-right: 2px;
+  }
+}
+
+/* Base NFT Cards */
+.base-nft-card {
+  background: rgba(0, 82, 255, 0.05);
+  border: 1px solid rgba(0, 82, 255, 0.1);
+  transition: all 0.3s ease;
+}
+
+.base-nft-card:hover {
+  background: rgba(0, 82, 255, 0.1);
+  border-color: var(--base-primary);
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 8px 24px rgba(0, 82, 255, 0.3);
+}
+
+/* Base Address Display */
+.base-address-container {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  justify-content: space-between;
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(0, 82, 255, 0.2);
+  border-radius: 8px;
+  padding: 12px;
+}
+
+.base-address-text {
+  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+  color: var(--base-accent);
+  font-size: 14px;
+}
+
+@media (max-width: 639px) {
+  .base-address-text {
+    font-size: 12px;
+  }
+}
+
+/* Base Modal Styling */
+.base-modal-content {
+  background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
+  border: 1px solid rgba(0, 82, 255, 0.3);
+}
+
+.base-modal-header {
+  border-bottom: 1px solid rgba(0, 82, 255, 0.2);
+  padding-bottom: 12px;
+  margin-bottom: 16px;
+}
+
+.base-modal-title {
+  color: var(--base-accent);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Base Form Elements */
+.base-form-input {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(0, 82, 255, 0.3);
+  color: white;
+  transition: all 0.3s ease;
+}
+
+.base-form-input:focus {
+  border-color: var(--base-primary);
+  box-shadow: 0 0 0 2px rgba(0, 82, 255, 0.2);
+}
+
+.base-form-input::placeholder {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.base-form-select {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(0, 82, 255, 0.3);
+  color: white;
+}
+
+.base-form-label {
+  color: var(--base-accent);
+  font-weight: 500;
+}
+
+/* Base Loading States */
+.base-loading-spinner {
+  color: var(--base-primary);
+}
+
+.base-loading-text {
+  color: rgba(102, 153, 255, 0.8);
+}
+
+/* Base Success/Error States */
+.base-success {
+  background: rgba(16, 185, 129, 0.1);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+  color: var(--base-success);
+}
+
+.base-error {
+  background: rgba(239, 68, 68, 0.1);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  color: var(--base-error);
+}
+
+.base-warning {
+  background: rgba(245, 158, 11, 0.1);
+  border: 1px solid rgba(245, 158, 11, 0.3);
+  color: var(--base-warning);
+}
+
+/* Base QR Code Container */
+.base-qr-container {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Base Quick Stats Card */
+.base-stats-card {
+  background: rgba(0, 82, 255, 0.05);
+  border: 1px solid rgba(0, 82, 255, 0.1);
+  border-radius: 12px;
+}
+
+.base-stats-item {
+  border-bottom: 1px solid rgba(0, 82, 255, 0.1);
+  padding: 8px 0;
+}
+
+.base-stats-item:last-child {
+  border-bottom: none;
+}
+
+/* Base Quick Actions */
+.base-quick-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.base-quick-action-button {
+  background: linear-gradient(135deg, rgba(0, 82, 255, 0.2) 0%, rgba(102, 153, 255, 0.2) 100%);
+  border: 1px solid rgba(0, 82, 255, 0.3);
+  color: var(--base-accent);
+  transition: all 0.3s ease;
+  justify-content: flex-start;
+}
+
+.base-quick-action-button:hover {
+  background: linear-gradient(135deg, var(--base-primary) 0%, var(--base-secondary) 100%);
+  color: white;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 82, 255, 0.3);
+}
+
+/* Base Refresh Button */
+.base-refresh-button {
+  border: 1px solid rgba(0, 82, 255, 0.5);
+  color: var(--base-accent);
+  background: rgba(0, 82, 255, 0.1);
+  transition: all 0.3s ease;
+}
+
+.base-refresh-button:hover {
+  background: rgba(0, 82, 255, 0.2);
+  border-color: var(--base-primary);
+  color: white;
+}
+
+/* Mobile Responsive Improvements */
+@media (max-width: 375px) {
+  .base-wallet-container {
+    padding: 8px;
+  }
+  
+  .base-header-card {
+    margin-bottom: 16px;
+  }
+  
+  .base-balance-card {
+    padding: 12px;
+  }
+  
+  .base-wallet-container .container {
+    padding-left: 8px;
+    padding-right: 8px;
+  }
+}
+
+@media (max-width: 390px) {
+  .base-action-buttons {
+    grid-template-columns: 1fr;
+    gap: 6px;
+  }
+}
+
+@media (max-width: 414px) {
+  .base-token-actions {
+    flex-direction: column;
+    gap: 4px;
+  }
+  
+  .base-nft-card {
+    margin-bottom: 12px;
+  }
+}
+
+/* Container overflow fixes for mobile */
+@media (max-width: 639px) {
+  .base-wallet-container .wallet-page {
+    overflow-x: hidden;
+  }
+  
+  .base-wallet-container .container {
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+  
+  /* Prevent button overflow */
+  .base-action-buttons,
+  .base-token-actions {
+    min-width: 0;
+    overflow: hidden;
+  }
+  
+  .base-action-buttons button,
+  .base-token-actions button {
+    min-width: 0;
+    flex: 1;
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
+}
+
+/* Base Portfolio Value Highlights */
+.base-portfolio-value {
+  background: linear-gradient(135deg, var(--base-gradient-from) 0%, var(--base-gradient-to) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: bold;
+}
+
+/* Base Asset Breakdown */
+.base-asset-breakdown {
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(0, 82, 255, 0.2);
+  border-radius: 12px;
+}
+
+.base-asset-item {
+  border-bottom: 1px solid rgba(0, 82, 255, 0.1);
+  padding: 8px 0;
+}
+
+.base-asset-item:last-child {
+  border-bottom: none;
+  border-top: 1px solid rgba(0, 82, 255, 0.2);
+  padding-top: 12px;
+  margin-top: 8px;
+}
+
+/* Animation for Base elements */
+@keyframes base-glow {
+  0%, 100% {
+    box-shadow: 0 0 5px rgba(0, 82, 255, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(0, 82, 255, 0.8), 0 0 30px rgba(102, 153, 255, 0.4);
+  }
+}
+
+.base-glow-animation {
+  animation: base-glow 2s ease-in-out infinite;
+}
+
+/* Dark mode specific Base styling */
+@media (prefers-color-scheme: dark) {
+  .base-wallet-container {
+    background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+  }
+}
+
+/* Base Network Status Badge */
+.base-network-badge {
+  background: rgba(0, 82, 255, 0.1);
+  border: 1px solid rgba(0, 82, 255, 0.3);
+  color: var(--base-accent);
+  font-size: 12px;
+  font-weight: 500;
+  padding: 4px 8px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.base-network-status-dot {
+  width: 8px;
+  height: 8px;
+  background: #10B981;
+  border-radius: 50%;
+  animation: base-pulse 2s infinite;
+}
+
+@keyframes base-pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+/* Transaction History Styling */
+.base-transaction-list {
+  background: rgba(0, 82, 255, 0.05);
+  border: 1px solid rgba(0, 82, 255, 0.1);
+  border-radius: 8px;
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.base-transaction-item {
+  display: flex;
+  align-items: center;
+  padding: 12px 16px;
+  border-bottom: 1px solid rgba(0, 82, 255, 0.1);
+  transition: all 0.2s ease;
+}
+
+.base-transaction-item:last-child {
+  border-bottom: none;
+}
+
+.base-transaction-item:hover {
+  background: rgba(0, 82, 255, 0.1);
+}
+
+.base-transaction-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 12px;
+  flex-shrink: 0;
+}
+
+.base-transaction-icon.send {
+  background: rgba(239, 68, 68, 0.2);
+  color: #EF4444;
+}
+
+.base-transaction-icon.receive {
+  background: rgba(16, 185, 129, 0.2);
+  color: #10B981;
+}
+
+.base-transaction-details {
+  flex: 1;
+  min-width: 0;
+}
+
+.base-transaction-type {
+  font-weight: 500;
+  color: white;
+  font-size: 14px;
+  margin-bottom: 2px;
+}
+
+.base-transaction-address {
+  font-family: ui-monospace, SFMono-Regular, "SF Mono", Consolas, "Liberation Mono", Menlo, monospace;
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.6);
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.base-transaction-amount {
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.base-transaction-value {
+  font-weight: 600;
+  color: white;
+  font-size: 14px;
+  margin-bottom: 2px;
+}
+
+.base-transaction-usd {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.base-transaction-time {
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.5);
+  margin-top: 2px;
+}
+
+/* Base specific gradients and effects */
+.base-gradient-bg {
+  background: linear-gradient(135deg, var(--base-gradient-from) 0%, var(--base-gradient-to) 100%);
+}
+
+.base-border-glow {
+  border: 1px solid rgba(0, 82, 255, 0.3);
+  box-shadow: 0 0 10px rgba(0, 82, 255, 0.1);
+}
+
+.base-text-gradient {
+  background: linear-gradient(135deg, var(--base-primary) 0%, var(--base-accent) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Base Staking Card */
+.base-staking-card {
+  background: linear-gradient(135deg, rgba(0, 82, 255, 0.1) 0%, rgba(102, 153, 255, 0.05) 100%);
+  border: 1px solid rgba(0, 82, 255, 0.2);
+  border-radius: 12px;
+  position: relative;
+  overflow: hidden;
+}
+
+.base-staking-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(135deg, var(--base-primary) 0%, var(--base-accent) 100%);
+}
+
+/* Base DeFi Integration Cards */
+.base-defi-card {
+  background: rgba(0, 82, 255, 0.05);
+  border: 1px solid rgba(0, 82, 255, 0.15);
+  border-radius: 10px;
+  transition: all 0.3s ease;
+}
+
+.base-defi-card:hover {
+  background: rgba(0, 82, 255, 0.08);
+  border-color: rgba(0, 82, 255, 0.25);
+  transform: translateY(-2px);
+}
+
+/* Base Fee Estimation */
+.base-fee-estimate {
+  background: rgba(0, 82, 255, 0.1);
+  border: 1px solid rgba(0, 82, 255, 0.2);
+  border-radius: 8px;
+  padding: 8px 12px;
+  font-size: 12px;
+  color: var(--base-accent);
+}
+
+/* Base Price Chart Integration */
+.base-price-chart {
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(0, 82, 255, 0.1);
+  border-radius: 8px;
+  padding: 16px;
+}

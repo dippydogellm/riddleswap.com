@@ -1,0 +1,211 @@
+/* NFT Detail Page Styles */
+
+.nft-detail-container {
+  min-height: 100vh;
+  background: linear-gradient(to bottom, #1e3a8a, #1e40af, #2563eb);
+  color: white;
+}
+
+.nft-image-container {
+  position: relative;
+  overflow: hidden;
+  border-radius: 1rem;
+  background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05));
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,0.2);
+}
+
+.nft-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: transform 0.3s ease;
+}
+
+.nft-image:hover {
+  transform: scale(1.02);
+}
+
+.nft-metadata-card {
+  background: rgba(255,255,255,0.1);
+  backdrop-filter: blur(15px);
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 1rem;
+  transition: all 0.3s ease;
+}
+
+.nft-metadata-card:hover {
+  background: rgba(255,255,255,0.15);
+  transform: translateY(-2px);
+}
+
+.nft-trait-item {
+  background: linear-gradient(135deg, rgba(99,102,241,0.2), rgba(59,130,246,0.2));
+  border: 1px solid rgba(99,102,241,0.3);
+  border-radius: 0.75rem;
+  padding: 0.75rem;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.nft-trait-item:hover {
+  background: linear-gradient(135deg, rgba(99,102,241,0.3), rgba(59,130,246,0.3));
+  transform: translateY(-1px);
+}
+
+.nft-trait-type {
+  font-size: 0.75rem;
+  color: rgba(255,255,255,0.7);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.025em;
+}
+
+.nft-trait-value {
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: white;
+  margin-top: 0.25rem;
+}
+
+.nft-action-button {
+  background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+  border: none;
+  color: white;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  border-radius: 0.75rem;
+}
+
+.nft-action-button:hover {
+  background: linear-gradient(135deg, #2563eb, #1e40af);
+  transform: translateY(-1px);
+  box-shadow: 0 10px 25px rgba(59,130,246,0.3);
+}
+
+.nft-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+}
+
+.nft-stat-card {
+  background: rgba(255,255,255,0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 1rem;
+  padding: 1.5rem;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.nft-stat-card:hover {
+  background: rgba(255,255,255,0.15);
+  transform: translateY(-2px);
+}
+
+.nft-stat-value {
+  font-size: 2rem;
+  font-weight: 800;
+  color: white;
+  margin-bottom: 0.5rem;
+}
+
+.nft-stat-label {
+  font-size: 0.875rem;
+  color: rgba(255,255,255,0.7);
+  font-weight: 500;
+}
+
+.nft-transaction-item {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 0.75rem;
+  padding: 1rem;
+  transition: all 0.3s ease;
+}
+
+.nft-transaction-item:hover {
+  background: rgba(255,255,255,0.1);
+  border-color: rgba(255,255,255,0.2);
+}
+
+.nft-loading-shimmer {
+  background: linear-gradient(90deg, 
+    rgba(255,255,255,0.1) 0%, 
+    rgba(255,255,255,0.2) 50%, 
+    rgba(255,255,255,0.1) 100%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  border-radius: 0.75rem;
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.nft-badge-rarity {
+  background: linear-gradient(135deg, #f59e0b, #d97706);
+  color: white;
+  font-weight: 600;
+  border: none;
+}
+
+.nft-badge-collection {
+  background: linear-gradient(135deg, #8b5cf6, #7c3aed);
+  color: white;
+  font-weight: 600;
+  border: none;
+}
+
+.nft-badge-verified {
+  background: linear-gradient(135deg, #10b981, #059669);
+  color: white;
+  font-weight: 600;
+  border: none;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .nft-stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .nft-stat-value {
+    font-size: 1.5rem;
+  }
+  
+  .nft-image {
+    max-height: 300px;
+  }
+}
+
+/* Dark mode adjustments */
+.dark .nft-detail-container {
+  background: linear-gradient(to bottom, #0f172a, #1e293b, #334155);
+}
+
+.dark .nft-metadata-card {
+  background: rgba(0,0,0,0.3);
+  border-color: rgba(255,255,255,0.1);
+}
+
+.dark .nft-trait-item {
+  background: linear-gradient(135deg, rgba(99,102,241,0.15), rgba(59,130,246,0.15));
+  border-color: rgba(99,102,241,0.2);
+}
+
+.dark .nft-transaction-item {
+  background: rgba(0,0,0,0.2);
+  border-color: rgba(255,255,255,0.05);
+}
+
+.dark .nft-transaction-item:hover {
+  background: rgba(0,0,0,0.3);
+  border-color: rgba(255,255,255,0.1);
+}

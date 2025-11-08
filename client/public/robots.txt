@@ -1,0 +1,27 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://riddleswap.com/sitemap.xml
+
+# Crawl-delay for respectful crawling
+Crawl-delay: 1
+
+# Allow all search engines to index the site
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Slurp
+Allow: /
+
+# Block admin areas from indexing
+User-agent: *
+Disallow: /api/
+Disallow: /admin/
+
+# Allow manifest and service worker
+Allow: /manifest.json
+Allow: /sw.js

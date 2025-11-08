@@ -1,0 +1,161 @@
+To get all NFT offers (both buy and sell) for a specific NFT using the `xrpl.js` library, you can use the XRPL's `nft_buy_offers` and `nft_sell_offers` RPC methods via the client. These return offers separated by type inherently (buy vs. sell). If you want to fetch them together and then separate/filter by type in code (e.g., based on the `Flags` field: `0` for buy offers, `1` for sell offers), that's straightforward too.
+
+For broader "all offers" across an account, first fetch the account's NFTs using `account_nft`, then loop over each NFT ID to get its offers. Note: Global "all offers" across the ledger isn't directly supported (the ledger uses directories per NFT), so you'd paginate via markers if needed.
+
+### Prerequisites
+- Install `xrpl`: `npm install xrpl`
+- Use a connected XRPL client (e.g., to mainnet, testnet, or devnet).
+- Replace placeholders like `YOUR_NFT_ID` or `YOUR_ACCOUNT_ADDRESS` with real values.
+
+### Step 1: Basic Setup with xrpl.js
+```javascript
+const xrpl = require('xrpl');
+
+// Connect to an XRPL node (e.g., testnet for dev)
+async function connect() {
+  const client = new xrpl.Client('wss://s.altnet.rippletest.net:51233');
+  await client.connect();
+  return client;
+}
+```
+
+### Step 2: Get All Offers for a Specific NFT (Separated by Type)
+Use separate calls for buy/sell to get them pre-separated, or one call and filter.
+
+```javascript
+async function getNftOffers(client, nftId) {
+  // Get sell offers
+  const sellResponse = await client.request({
+    command: 'nft_sell_offers',
+    nft_id: nftId,
+    limit: 100  // Paginate with 'marker' if more
+  });
+  const sellOffers = sellResponse.result.offers || [];
+
+  // Get buy offers
+  const buyResponse = await client.request({
+    command: 'nft_buy_offers',
+    nft_id: nftId,
+    limit: 100
+  });
+  const buyOffers = buyResponse.result.offers || [];
+
+  // Already separated by type here
+  console.log('Sell Offers:', sellOffers);
+  console.log('Buy Offers:', buyOffers);
+
+  // Or fetch all via one method (e.g., book_offers for order books, but for NFTs use above)
+  // To combine and filter by Flags (if using a generic offers fetch):
+  // const allOffers = [...sellOffers, ...buyOffers];
+  // const separated = {
+  //   buy: allOffers.filter(offer => (offer.Flags & 1) === 0),  // Flags 0 = buy
+  //   sell: allOffers.filter(offer => (offer.Flags & 1) === 1)  // Flags 1 = sell
+  // };
+
+  return { sellOffers, buyOffers };
+}
+
+// Usage
+(async () => {
+  const client = await connect();
+  const nftId = 'YOUR_NFT_ID';  // e.g., '0000000000000000000000000000000000000000000000000000000000000000'
+  await getNftOffers(client, nftId);
+  await client.disconnect();
+})();
+```
+
+- **Output Structure**: Each offer includes `index` (offer ID), `nft_id`, `amount` (XRP or IOU price), `owner` (account), `flags`, `expired`, etc.
+- **Pagination**: If `marker` is in the response, use it in the next request: `{ ..., marker: response.result.marker }`.
+- **Errors**: Handle `tecNO_DST` (no offers) or connection issues.
+
+### Step 3: Get All Offers for an Account's NFTs
+Loop over the account's NFTs first.
+
+```javascript
+async function getAccountNftOffers(client, accountAddress) {
+  // Get all NFTs owned by the account
+  const nftResponse = await client.request({
+    command: 'account_nft',
+    account: accountAddress,
+    limit: 400  // Max per call; paginate if more
+  });
+  const nfts = nftResponse.result.account_nfts || [];
+
+  let allSellOffers = [];
+  let allBuyOffers = [];
+
+  for (const nft of nfts) {
+    const { sellOffers, buyOffers } = await getNftOffers(client, nft.NFTokenID);
+    allSellOffers.push(...sellOffers);
+    allBuyOffers.push(...buyOffers);
+  }
+
+  // Now separated by type across all NFTs
+  console.log('All Sell Offers for Account:', allSellOffers);
+  console.log('All Buy Offers for Account:', allBuyOffers);
+
+  return { allSellOffers, allBuyOffers };
+}
+
+// Usage
+(async () => {
+  const client = await connect();
+  const account = 'YOUR_ACCOUNT_ADDRESS';  // e.g., 'rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh'
+  await getAccountNftOffers(client, account);
+  await client.disconnect();
+})();
+```
+
+### Using Bithomp API to Separate/Enhance Offers
+Bithomp provides enriched NFT data (e.g., metadata, assets, validation) and separates buy/sell offers in responses. Use it alongside xrpl.js for validation or richer details (requires API key from bithomp.com). It's HTTP-based, so use `fetch` or `axios`.
+
+- **Get Offers for a Specific NFT** (includes separated `sellOffers` and `buyOffers` arrays):
+  ```javascript
+  async function getOffersViaBithomp(nftId, apiKey) {
+    const url = `https://bithomp.com/api/v2/nft/${nftId}?sellOffers=true&buyOffers=true&uri=true&assets=true&metadata=true`;
+    const response = await fetch(url, {
+      headers: { 'x-bithomp-token': apiKey }
+    });
+    const data = await response.json();
+
+    // Already separated
+    const { sellOffers, buyOffers } = data;
+    console.log('Sell Offers (Bithomp):', sellOffers);
+    console.log('Buy Offers (Bithomp):', buyOffers);
+
+    // Optional: Validate a specific offer (POST, paid plans only)
+    const validateUrl = 'https://bithomp.com/api/v2/nftoken-offer/validateOffer';
+    const validateBody = {
+      Account: 'OFFER_CREATOR_ADDRESS',
+      NFTokenID: nftId,
+      Amount: '1000000',  // Drops
+      Flags: 1,  // 0=buy, 1=sell
+      // Destination, Expiration optional
+    };
+    const validateRes = await fetch(validateUrl, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'x-bithomp-token': apiKey
+      },
+      body: JSON.stringify(validateBody)
+    });
+    const validated = await validateRes.json();
+    console.log('Offer Valid?', validated.valid);
+
+    return { sellOffers, buyOffers };
+  }
+
+  // Usage (get API key at bithomp.com/admin)
+  getOffersViaBithomp('YOUR_NFT_ID', 'YOUR_BITHOMP_API_KEY');
+  ```
+
+- **For Account-Level Offers**: Bithomp doesn't have a direct `/account/nft-offers` endpoint, but fetch account NFTs first via xrpl.js (as above), then loop with the NFT endpoint. Or use their explorer API for bulk (paid tiers support `list=onSale` for sell offers).
+
+### Notes
+- **Rate Limits**: xrpl.js depends on your node's limits; Bithomp has tiers (free/basic limited, paid for validation/assets).
+- **Testnet**: Use testnet for dev; fund accounts via xrpl.org/xrp-testnet-faucet.html.
+- **Separation Logic**: Buy offers (Flags=0) are bids to purchase; sell offers (Flags=1) are asks to sell. Filter as shown if combining.
+- Docs: XRPL NFTs (xrpl.org/nft-overview.html), xrpl.js (js.xrpl.org), Bithomp (docs.bithomp.com).
+
+If this isn't what you meant (e.g., specific account/NFT or global offers), provide more details!

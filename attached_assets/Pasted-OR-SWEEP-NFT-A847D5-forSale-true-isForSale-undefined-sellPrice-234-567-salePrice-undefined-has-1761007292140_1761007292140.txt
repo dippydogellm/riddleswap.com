@@ -1,0 +1,142 @@
+OR SWEEP] NFT A847D5: forSale=true, isForSale=undefined, sellPrice=234.567, salePrice=undefined, hasPrice=true, isForSale=true
+injected.js:27 🔍 [FLOOR SWEEP] NFT A83FEA: forSale=true, isForSale=undefined, sellPrice=250, salePrice=undefined, hasPrice=true, isForSale=true
+injected.js:27 🔍 [FLOOR SWEEP] NFT A84683: forSale=true, isForSale=undefined, sellPrice=268, salePrice=undefined, hasPrice=true, isForSale=true
+injected.js:27 🔍 [FLOOR SWEEP] NFT A84706: forSale=true, isForSale=undefined, sellPrice=269, salePrice=undefined, hasPrice=true, isForSale=true
+injected.js:27 🔍 [FLOOR SWEEP] NFT A83FD3: forSale=true, isForSale=undefined, sellPrice=270, salePrice=undefined, hasPrice=true, isForSale=true
+injected.js:27 🔍 [FLOOR SWEEP] NFT A840BC: forSale=true, isForSale=undefined, sellPrice=275, salePrice=undefined, hasPrice=true, isForSale=true
+injected.js:27 🔍 [FLOOR SWEEP] NFT A84404: forSale=true, isForSale=undefined, sellPrice=275.8, salePrice=undefined, hasPrice=true, isForSale=true
+injected.js:27 🔍 [FLOOR SWEEP] NFT A8463A: forSale=true, isForSale=undefined, sellPrice=280, salePrice=undefined, hasPrice=true, isForSale=true
+injected.js:27 🔍 [FLOOR SWEEP] NFT A83F19: forSale=true, isForSale=undefined, sellPrice=280, salePrice=undefined, hasPrice=true, isForSale=true
+injected.js:27 🔍 [FLOOR SWEEP] NFT A8440B: forSale=true, isForSale=undefined, sellPrice=285, salePrice=undefined, hasPrice=true, isForSale=true
+injected.js:27 🔍 [FLOOR SWEEP] NFT A84199: forSale=true, isForSale=undefined, sellPrice=294, salePrice=undefined, hasPrice=true, isForSale=true
+injected.js:27 🔍 [FLOOR SWEEP] NFT A84383: forSale=true, isForSale=undefined, sellPrice=294, salePrice=undefined, hasPrice=true, isForSale=true
+injected.js:27 🔍 [FLOOR SWEEP] NFT A84493: forSale=true, isForSale=undefined, sellPrice=295, salePrice=undefined, hasPrice=true, isForSale=true
+injected.js:27 🔍 [FLOOR SWEEP] NFT A83EB3: forSale=true, isForSale=undefined, sellPrice=300, salePrice=undefined, hasPrice=true, isForSale=true
+injected.js:27 🔍 [FLOOR SWEEP] NFT A8438C: forSale=true, isForSale=undefined, sellPrice=300, salePrice=undefined, hasPrice=true, isForSale=true
+injected.js:27 🔍 [FLOOR SWEEP] NFT A8433B: forSale=true, isForSale=undefined, sellPrice=300, salePrice=undefined, hasPrice=true, isForSale=true
+injected.js:27 🔍 [FLOOR SWEEP] NFT A84007: forSale=true, isForSale=undefined, sellPrice=300, salePrice=undefined, hasPrice=true, isForSale=true
+injected.js:27 🔍 [FLOOR SWEEP] NFT A84444: forSale=true, isForSale=undefined, sellPrice=300, salePrice=undefined, hasPrice=true, isForSale=true
+injected.js:27 🔍 [FLOOR SWEEP] NFT A84273: forSale=true, isForSale=undefined, sellPrice=300, salePrice=undefined, hasPrice=true, isForSale=true
+injected.js:27 🔍 [FLOOR SWEEP] NFT A842F6: forSale=true, isForSale=undefined, sellPrice=300, salePrice=undefined, hasPrice=true, isForSale=true
+injected.js:27 🔍 [FLOOR SWEEP] NFT A842E8: forSale=true, isForSale=undefined, sellPrice=300, salePrice=undefined, hasPrice=true, isForSale=true
+injected.js:27 🔍 [FLOOR SWEEP] NFT A83DDE: forSale=true, isForSale=undefined, sellPrice=303, salePrice=undefined, hasPrice=true, isForSale=true
+injected.js:27 🔍 [FLOOR SWEEP] NFT A84413: forSale=true, isForSale=undefined, sellPrice=305, salePrice=undefined, hasPrice=true, isForSale=true
+injected.js:27 🔍 [FLOOR SWEEP] NFT A846BC: forSale=true, isForSale=undefined, sellPrice=310, salePrice=undefined, hasPrice=true, isForSale=true
+injected.js:27 🔍 [FLOOR SWEEP] NFT A84713: forSale=true, isForSale=undefined, sellPrice=320, salePrice=undefined, hasPrice=true, isForSale=true
+injected.js:27 🔍 [FLOOR SWEEP] NFT A8444E: forSale=true, isForSale=undefined, sellPrice=321, salePrice=undefined, hasPrice=true, isForSale=true
+injected.js:27 🔍 [FLOOR SWEEP] NFT A83EB5: forSale=true, isForSale=undefined, sellPrice=321, salePrice=undefined, hasPrice=true, isForSale=true
+injected.js:27 🔍 [FLOOR SWEEP] NFT A83E6E: forSale=true, isForSale=undefined, sellPrice=321, salePrice=undefined, hasPrice=true, isForSale=true
+injected.js:27 🔍 [FLOOR SWEEP] NFT A846FA: forSale=true, isForSale=undefined, sellPrice=321, salePrice=undefined, hasPrice=true, isForSale=true
+injected.js:27 🔍 [FLOOR SWEEP] NFT A8412F: forSale=true, isForSale=undefined, sellPrice=321, salePrice=undefined, hasPrice=true, isForSale=true
+injected.js:27 🔍 [FLOOR SWEEP] NFT A8421B: forSale=true, isForSale=undefined, sellPrice=321, salePrice=undefined, hasPrice=true, isForSale=true
+injected.js:27 🔍 [FLOOR SWEEP] NFT A8437B: forSale=true, isForSale=undefined, sellPrice=321.589, salePrice=undefined, hasPrice=true, isForSale=true
+injected.js:27 🔍 [FLOOR SWEEP] NFT A8445F: forSale=true, isForSale=undefined, sellPrice=333, salePrice=undefined, hasPrice=true, isForSale=true
+injected.js:27 🔍 [FLOOR SWEEP] NFT A8467F: forSale=true, isForSale=undefined, sellPrice=333, salePrice=undefined, hasPrice=true, isForSale=true
+injected.js:27 🔍 [FLOOR SWEEP] NFT A84565: forSale=true, isForSale=undefined, sellPrice=333, salePrice=undefined, hasPrice=true, isForSale=true
+injected.js:27 🔍 [FLOOR SWEEP] NFT A8434E: forSale=true, isForSale=undefined, sellPrice=333, salePrice=undefined, hasPrice=true, isForSale=true
+injected.js:27 🔍 [FLOOR SWEEP] NFT A83E97: forSale=true, isForSale=undefined, sellPrice=340, salePrice=undefined, hasPrice=true, isForSale=true
+injected.js:27 🔍 [FLOOR SWEEP] NFT A83D12: forSale=true, isForSale=undefined, sellPrice=344, salePrice=undefined, hasPrice=true, isForSale=true
+injected.js:27 🔍 [FLOOR SWEEP] NFT A841FE: forSale=true, isForSale=undefined, sellPrice=349, salePrice=undefined, hasPrice=true, isForSale=true
+injected.js:27 🔍 [FLOOR SWEEP] NFT A840B7: forSale=true, isForSale=undefined, sellPrice=350, salePrice=undefined, hasPrice=true, isForSale=true
+injected.js:27 🔍 [FLOOR SWEEP] NFT A83E19: forSale=true, isForSale=undefined, sellPrice=350, salePrice=undefined, hasPrice=true, isForSale=true
+injected.js:27 🔍 [FLOOR SWEEP] NFT A842A7: forSale=true, isForSale=undefined, sellPrice=350, salePrice=undefined, hasPrice=true, isForSale=true
+injected.js:27 🔍 [FLOOR SWEEP] NFT A84206: forSale=true, isForSale=undefined, sellPrice=350, salePrice=undefined, hasPrice=true, isForSale=true
+injected.js:27 🔍 [FLOOR SWEEP] NFT A844C5: forSale=true, isForSale=undefined, sellPrice=370, salePrice=undefined, hasPrice=true, isForSale=true
+injected.js:27 ✅ [FLOOR SWEEP] Found 46 NFTs available for floor sweep
+injected.js:27 🔍 [FLOOR SWEEP] NFT A8467A: forSale=true, isForSale=undefined, sellPrice=0, salePrice=undefined, hasPrice=undefined, isForSale=true
+injected.js:27 🔍 [FLOOR SWEEP] NFT A84776: forSale=true, isForSale=undefined, sellPrice=0, salePrice=undefined, hasPrice=undefined, isForSale=true
+injected.js:27 🔍 [FLOOR SWEEP] NFT A83E2C: forSale=true, isForSale=undefined, sellPrice=0, salePrice=undefined, hasPrice=undefined, isForSale=true
+injected.js:27 🔍 [FLOOR SWEEP] NFT A84177: forSale=true, isForSale=undefined, sellPrice=0, salePrice=undefined, hasPrice=undefined, isForSale=true
+injected.js:27 🔍 [FLOOR SWEEP] NFT A83EC0: forSale=true, isForSale=undefined, sellPrice=219, salePrice=undefined, hasPrice=true, isForSale=true
+injected.js:27 🔍 [FLOOR SWEEP] NFT A84591: forSale=true, isForSale=undefined, sellPrice=230, salePrice=undefined, hasPrice=true, isForSale=true
+injected.js:27 🔍 [FLOOR SWEEP] NFT A847D5: forSale=true, isForSale=undefined, sellPrice=234.567, salePrice=undefined, hasPrice=true, isForSale=true
+injected.js:27 🔍 [FLOOR SWEEP] NFT A83FEA: forSale=true, isForSale=undefined, sellPrice=250, salePrice=undefined, hasPrice=true, isForSale=true
+injected.js:27 🔍 [FLOOR SWEEP] NFT A84683: forSale=true, isForSale=undefined, sellPrice=268, salePrice=undefined, hasPrice=true, isForSale=true
+injected.js:27 🔍 [FLOOR SWEEP] NFT A84706: forSale=true, isForSale=undefined, sellPrice=269, salePrice=undefined, hasPrice=true, isForSale=true
+injected.js:27 🔍 [FLOOR SWEEP] NFT A83FD3: forSale=true, isForSale=undefined, sellPrice=270, salePrice=undefined, hasPrice=true, isForSale=true
+injected.js:27 🔍 [FLOOR SWEEP] NFT A840BC: forSale=true, isForSale=undefined, sellPrice=275, salePrice=undefined, hasPrice=true, isForSale=true
+injected.js:27 🔍 [FLOOR SWEEP] NFT A84404: forSale=true, isForSale=undefined, sellPrice=275.8, salePrice=undefined, hasPrice=true, isForSale=true
+injected.js:27 🔍 [FLOOR SWEEP] NFT A8463A: forSale=true, isForSale=undefined, sellPrice=280, salePrice=undefined, hasPrice=true, isForSale=true
+injected.js:27 🔍 [FLOOR SWEEP] NFT A83F19: forSale=true, isForSale=undefined, sellPrice=280, salePrice=undefined, hasPrice=true, isForSale=true
+injected.js:27 🔍 [FLOOR SWEEP] NFT A8440B: forSale=true, isForSale=undefined, sellPrice=285, salePrice=undefined, hasPrice=true, isForSale=true
+injected.js:27 🔍 [FLOOR SWEEP] NFT A84199: forSale=true, isForSale=undefined, sellPrice=294, salePrice=undefined, hasPrice=true, isForSale=true
+injected.js:27 🔍 [FLOOR SWEEP] NFT A84383: forSale=true, isForSale=undefined, sellPrice=294, salePrice=undefined, hasPrice=true, isForSale=true
+injected.js:27 🔍 [FLOOR SWEEP] NFT A84493: forSale=true, isForSale=undefined, sellPrice=295, salePrice=undefined, hasPrice=true, isForSale=true
+injected.js:27 🔍 [FLOOR SWEEP] NFT A83EB3: forSale=true, isForSale=undefined, sellPrice=300, salePrice=undefined, hasPrice=true, isForSale=true
+injected.js:27 🔍 [FLOOR SWEEP] NFT A8438C: forSale=true, isForSale=undefined, sellPrice=300, salePrice=undefined, hasPrice=true, isForSale=true
+injected.js:27 🔍 [FLOOR SWEEP] NFT A8433B: forSale=true, isForSale=undefined, sellPrice=300, salePrice=undefined, hasPrice=true, isForSale=true
+injected.js:27 🔍 [FLOOR SWEEP] NFT A84007: forSale=true, isForSale=undefined, sellPrice=300, salePrice=undefined, hasPrice=true, isForSale=true
+injected.js:27 🔍 [FLOOR SWEEP] NFT A84444: forSale=true, isForSale=undefined, sellPrice=300, salePrice=undefined, hasPrice=true, isForSale=true
+injected.js:27 🔍 [FLOOR SWEEP] NFT A84273: forSale=true, isForSale=undefined, sellPrice=300, salePrice=undefined, hasPrice=true, isForSale=true
+injected.js:27 🔍 [FLOOR SWEEP] NFT A842F6: forSale=true, isForSale=undefined, sellPrice=300, salePrice=undefined, hasPrice=true, isForSale=true
+injected.js:27 🔍 [FLOOR SWEEP] NFT A842E8: forSale=true, isForSale=undefined, sellPrice=300, salePrice=undefined, hasPrice=true, isForSale=true
+injected.js:27 🔍 [FLOOR SWEEP] NFT A83DDE: forSale=true, isForSale=undefined, sellPrice=303, salePrice=undefined, hasPrice=true, isForSale=true
+injected.js:27 🔍 [FLOOR SWEEP] NFT A84413: forSale=true, isForSale=undefined, sellPrice=305, salePrice=undefined, hasPrice=true, isForSale=true
+injected.js:27 🔍 [FLOOR SWEEP] NFT A846BC: forSale=true, isForSale=undefined, sellPrice=310, salePrice=undefined, hasPrice=true, isForSale=true
+injected.js:27 🔍 [FLOOR SWEEP] NFT A84713: forSale=true, isForSale=undefined, sellPrice=320, salePrice=undefined, hasPrice=true, isForSale=true
+injected.js:27 🔍 [FLOOR SWEEP] NFT A8444E: forSale=true, isForSale=undefined, sellPrice=321, salePrice=undefined, hasPrice=true, isForSale=true
+injected.js:27 🔍 [FLOOR SWEEP] NFT A83EB5: forSale=true, isForSale=undefined, sellPrice=321, salePrice=undefined, hasPrice=true, isForSale=true
+injected.js:27 🔍 [FLOOR SWEEP] NFT A83E6E: forSale=true, isForSale=undefined, sellPrice=321, salePrice=undefined, hasPrice=true, isForSale=true
+injected.js:27 🔍 [FLOOR SWEEP] NFT A846FA: forSale=true, isForSale=undefined, sellPrice=321, salePrice=undefined, hasPrice=true, isForSale=true
+injected.js:27 🔍 [FLOOR SWEEP] NFT A8412F: forSale=true, isForSale=undefined, sellPrice=321, salePrice=undefined, hasPrice=true, isForSale=true
+injected.js:27 🔍 [FLOOR SWEEP] NFT A8421B: forSale=true, isForSale=undefined, sellPrice=321, salePrice=undefined, hasPrice=true, isForSale=true
+injected.js:27 🔍 [FLOOR SWEEP] NFT A8437B: forSale=true, isForSale=undefined, sellPrice=321.589, salePrice=undefined, hasPrice=true, isForSale=true
+injected.js:27 🔍 [FLOOR SWEEP] NFT A8445F: forSale=true, isForSale=undefined, sellPrice=333, salePrice=undefined, hasPrice=true, isForSale=true
+injected.js:27 🔍 [FLOOR SWEEP] NFT A8467F: forSale=true, isForSale=undefined, sellPrice=333, salePrice=undefined, hasPrice=true, isForSale=true
+injected.js:27 🔍 [FLOOR SWEEP] NFT A84565: forSale=true, isForSale=undefined, sellPrice=333, salePrice=undefined, hasPrice=true, isForSale=true
+injected.js:27 🔍 [FLOOR SWEEP] NFT A8434E: forSale=true, isForSale=undefined, sellPrice=333, salePrice=undefined, hasPrice=true, isForSale=true
+injected.js:27 🔍 [FLOOR SWEEP] NFT A83E97: forSale=true, isForSale=undefined, sellPrice=340, salePrice=undefined, hasPrice=true, isForSale=true
+injected.js:27 🔍 [FLOOR SWEEP] NFT A83D12: forSale=true, isForSale=undefined, sellPrice=344, salePrice=undefined, hasPrice=true, isForSale=true
+injected.js:27 🔍 [FLOOR SWEEP] NFT A841FE: forSale=true, isForSale=undefined, sellPrice=349, salePrice=undefined, hasPrice=true, isForSale=true
+injected.js:27 🔍 [FLOOR SWEEP] NFT A840B7: forSale=true, isForSale=undefined, sellPrice=350, salePrice=undefined, hasPrice=true, isForSale=true
+injected.js:27 🔍 [FLOOR SWEEP] NFT A83E19: forSale=true, isForSale=undefined, sellPrice=350, salePrice=undefined, hasPrice=true, isForSale=true
+injected.js:27 🔍 [FLOOR SWEEP] NFT A842A7: forSale=true, isForSale=undefined, sellPrice=350, salePrice=undefined, hasPrice=true, isForSale=true
+injected.js:27 🔍 [FLOOR SWEEP] NFT A84206: forSale=true, isForSale=undefined, sellPrice=350, salePrice=undefined, hasPrice=true, isForSale=true
+injected.js:27 🔍 [FLOOR SWEEP] NFT A844C5: forSale=true, isForSale=undefined, sellPrice=370, salePrice=undefined, hasPrice=true, isForSale=true
+injected.js:27 ✅ [FLOOR SWEEP] Found 46 NFTs available for floor sweep
+injected.js:27 🗺️ Router: Router component is rendering
+injected.js:27 📍 Router: Current location: /nft/00080BB86C429EE66CE731CAA492445DFF564F9CB8A46A301728B02D05A84591
+injected.js:27 🔍 SessionManager.getSession() returning: Object
+injected.js:27 🔍 SessionManager.getSession() returning: Object
+injected.js:27 🔍 SessionManager.getSession() returning: Object
+injected.js:27 🔍 Found local wallet connections: Array(1)
+injected.js:27 ✅ Added local wallet to display: xaman - rp5DGDDFZdQswWfn3sgkQznCAj9SkkCMLH
+injected.js:27 🔍 Fetching LIVE NFT detail for: 00080BB86C429EE66CE731CAA492445DFF564F9CB8A46A301728B02D05A84591
+injected.js:27 🔍 SessionManager.getSession() returning: Object
+injected.js:27 🔍 Using authenticated wallet address: rGLzXKif4ksBZe2MY6RZT9m69hdgzsXG4X
+injected.js:27 📜 [HISTORY] Fetching transaction history from Bithomp for: 00080BB86C429EE66CE731CAA492445DFF564F9CB8A46A301728B02D05A84591
+injected.js:27 💰 [OFFERS] Fetching active offers for NFT: 00080BB86C429EE66CE731CAA492445DFF564F9CB8A46A301728B02D05A84591
+injected.js:27 🔍 [INCOMING OFFERS] Fetching offers...
+301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/api/gaming/nft/00080BB86C429EE66CE731CAA492445DFF564F9CB8A46A301728B02D05A84591?t=1761007260723:1  Failed to load resource: the server responded with a status of 404 (Not Found)
+injected.js:27 🔍 Trying regular NFT endpoint for: 00080BB86C429EE66CE731CAA492445DFF564F9CB8A46A301728B02D05A84591
+injected.js:27 ✅ [OFFERS] Found 0 buy offers, 0 sell offers
+injected.js:27 📬 Found 3 pending buy offers for NFT 00080BB86C429EE66CE731CAA492445DFF564F9CB8A46A301728B02D05A84591
+injected.js:27 💰 Found 1 sell offers for NFT 00080BB86C429EE66CE731CAA492445DFF564F9CB8A46A301728B02D05A84591
+injected.js:27 ✅ Found NFT via detail endpoint: Fuzzybear #1934
+injected.js:27 📊 [RARITY] Fetching rarity data for NFT: 00080BB86C429EE66CE731CAA492445DFF564F9CB8A46A301728B02D05A84591
+injected.js:27 🔐 [OWNERSHIP CHECK] User: rGLzXKif4ksBZe2MY6RZT9m69hdgzsXG4X, NFT Owner: r4jLymkcQR7xQVq7vRaj23wDGoPAFYxejd, Is Owner: false
+injected.js:27 📊 [RARITY] Fetching rarity data for NFT: 00080BB86C429EE66CE731CAA492445DFF564F9CB8A46A301728B02D05A84591
+injected.js:27 🔐 [OWNERSHIP CHECK] User: rGLzXKif4ksBZe2MY6RZT9m69hdgzsXG4X, NFT Owner: r4jLymkcQR7xQVq7vRaj23wDGoPAFYxejd, Is Owner: false
+injected.js:27 ✅ [HISTORY] Found 3 transactions
+injected.js:27 ✅ [INCOMING OFFERS] Found offers: 0
+injected.js:27 🔐 [OWNERSHIP CHECK] User: rGLzXKif4ksBZe2MY6RZT9m69hdgzsXG4X, NFT Owner: r4jLymkcQR7xQVq7vRaj23wDGoPAFYxejd, Is Owner: false
+injected.js:27 ❌ NFT image failed to load: https://cdn.bithomp.com/nft/00080BB86C429EE66CE731CAA492445DFF564F9CB8A46A301728B02D05A84591.webp
+2injected.js:27 🔐 [OWNERSHIP CHECK] User: rGLzXKif4ksBZe2MY6RZT9m69hdgzsXG4X, NFT Owner: r4jLymkcQR7xQVq7vRaj23wDGoPAFYxejd, Is Owner: false
+injected.js:27 🔍 SessionManager: checkSession() called - current sessionData: true
+injected.js:27 🌐 SessionManager: Making Riddle wallet session request to /api/riddle-wallet/session
+injected.js:27 ✅ SessionManager: Valid session for riddlbroker
+injected.js:27 ✅ SessionManager: Updated session data: Object
+injected.js:27 🔍 SessionManager.getSession() returning: Object
+injected.js:27 🔍 SessionManager.getSession() returning: Object
+injected.js:27 🔍 SessionManager.getSession() returning: Object
+injected.js:27 🔍 SessionManager.getSession() returning: Object
+injected.js:27 🔔 SessionManager: Notified 4 listeners
+injected.js:27 🔍 SessionManager.getSession() returning: Object
+injected.js:27 🔍 SessionManager.getSession() returning: Object
+injected.js:27 🔍 SessionManager.getSession() returning: Object
+injected.js:27 🔍 Found local wallet connections: Array(1)
+injected.js:27 ✅ Added local wallet to display: xaman - rp5DGDDFZdQswWfn3sgkQznCAj9SkkCMLH
+injected.js:27 🔍 getQueryFn - SessionManager sessionToken: FOUND
+injected.js:27 🔍 getQueryFn - SessionManager sessionToken: FOUND
+injected.js:27 🔍 SessionManager.getSession() returning: {isLoggedIn: true, handle: 'riddlbroker', hasWalletData: true, hasSessionToken: true, walletDataKeys: Array(7)}
+injected.js:27 🔍 SessionManager.getSession() returning: {isLoggedIn: true, handle: 'riddlbroker', hasWalletData: true, hasSessionToken: true, walletDataKeys: Array(7)}

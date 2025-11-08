@@ -1,0 +1,150 @@
+Search
+
+
+Errors only
+
+Date
+Time
+Deployment
+Source
+Log
+2025-10-30 07:53:24.61
+1e32aac3
+User
+💰 Registering subscription service routes...
+2025-10-30 07:56:48.83
+1e32aac3
+User
+📱 Setting up social media profile routes...
+2025-10-30 07:56:48.83
+1e32aac3
+User
+✅ Social media profile routes registered
+2025-10-30 07:56:48.83
+1e32aac3
+User
+💬 Setting up messaging API routes...
+2025-10-30 07:56:48.83
+1e32aac3
+User
+💬 Setting up messaging API routes...
+2025-10-30 07:56:48.83
+1e32aac3
+User
+✅ Messaging API routes setup complete!
+2025-10-30 07:56:48.83
+1e32aac3
+User
+✅ Messaging API routes registered
+2025-10-30 07:56:48.83
+1e32aac3
+User
+🔔 Setting up notification API routes...
+2025-10-30 07:56:48.84
+1e32aac3
+User
+🔔 Setting up notification API routes...
+2025-10-30 07:56:48.84
+1e32aac3
+User
+✅ Notification API routes setup complete
+2025-10-30 07:56:48.84
+1e32aac3
+User
+✅ Notification API routes registered
+2025-10-30 07:56:48.84
+1e32aac3
+User
+📸 Setting up photo upload routes...
+2025-10-30 07:56:48.84
+1e32aac3
+User
+✅ Photo upload routes registered
+2025-10-30 07:56:48.84
+1e32aac3
+User
+📁 Social media images are stored in Replit Object Storage
+2025-10-30 07:56:48.84
+1e32aac3
+User
+🖼️ Setting up Image Storage Admin routes...
+2025-10-30 07:56:48.84
+1e32aac3
+User
+🔍 Starting comprehensive wallet profile population...
+2025-10-30 07:56:48.84
+1e32aac3
+User
+📊 Fetching all Riddle wallets...
+2025-10-30 07:56:48.84
+1e32aac3
+User
+✅ Image Storage Admin routes registered
+2025-10-30 07:56:48.84
+1e32aac3
+User
+✅ Authentication middleware applied to ALL protected endpoints
+2025-10-30 07:56:48.84
+1e32aac3
+User
+🔓 Only login, logout, health check, and bridge prices are accessible without authentication
+2025-10-30 07:56:48.84
+1e32aac3
+User
+💰 Rewards routes registered successfully
+2025-10-30 07:56:48.84
+1e32aac3
+User
+🎨 NFT rewards routes registered successfully
+2025-10-30 07:56:48.84
+1e32aac3
+User
+🏦 Comprehensive wallet data routes registered successfully
+2025-10-30 07:56:48.84
+1e32aac3
+User
+🎯 Registering NFT offers routes...
+2025-10-30 07:56:48.85
+1e32aac3
+User
+💼 Registering NFT Offers routes...
+2025-10-30 07:56:48.85
+1e32aac3
+User
+✅ NFT Offers routes registered successfully
+2025-10-30 07:56:48.85
+1e32aac3
+User
+✅ NFT offers routes registered successfully
+2025-10-30 07:56:48.85
+1e32aac3
+User
+🎨 Registering NFT detail routes...
+2025-10-30 07:56:48.85
+1e32aac3
+User
+✅ NFT detail routes registered successfully
+2025-10-30 07:56:48.85
+1e32aac3
+User
+🖼️ Registering NFT image proxy...
+2025-10-30 07:56:48.85
+1e32aac3
+User
+✅ NFT image proxy registered successfully
+2025-10-30 07:56:48.85
+1e32aac3
+User
+🎨 Registering NFT Wallet routes...
+2025-10-30 07:56:48.85
+1e32aac3
+User
+✅ NFT Wallet routes registered successfully
+2025-10-30 07:56:48.85
+1e32aac3
+User
+🎨 NFT wallet routes registered successfully
+2025-10-30 07:56:48.85
+1e32aac3
+User
+🎨 NFT transfer, offer, and fee calculation routes registered successfully

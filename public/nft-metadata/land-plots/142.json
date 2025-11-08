@@ -1,0 +1,76 @@
+{
+  "id": 142,
+  "name": "Trolls Inquisition Land Plot #142",
+  "description": "A plains domain at coordinates (21, 3) in the Trolls Inquisition realm. This 1x sizeable plot contains Grain, Horses, Cattle and offers 8.71% yearly yield. Part of the legendary 1000-plot medieval kingdom where epic battles and alliances are forged.",
+  "image": "https://riddleswap.replit.app/api/nft-images/land-plots/142.png",
+  "external_url": "https://riddleswap.replit.app/nft-gaming-dashboard?plot=142",
+  "attributes": [
+    {
+      "trait_type": "Terrain Type",
+      "value": "plains"
+    },
+    {
+      "trait_type": "X Coordinate",
+      "value": 21
+    },
+    {
+      "trait_type": "Y Coordinate",
+      "value": 3
+    },
+    {
+      "trait_type": "Size Multiplier",
+      "value": "1x"
+    },
+    {
+      "trait_type": "Resources Count",
+      "value": 3
+    },
+    {
+      "trait_type": "Primary Resource",
+      "value": "Grain"
+    },
+    {
+      "trait_type": "Rarity Score",
+      "value": 25
+    },
+    {
+      "trait_type": "XRP Price",
+      "value": 64
+    },
+    {
+      "trait_type": "Early Bird Eligible",
+      "value": "Yes"
+    },
+    {
+      "trait_type": "Yearly Yield (XRP)",
+      "value": 5
+    },
+    {
+      "trait_type": "Yield Percentage",
+      "value": "8.71%"
+    },
+    {
+      "trait_type": "Position Type",
+      "value": "Inner"
+    }
+  ],
+  "properties": {
+    "coordinates": {
+      "x": 21,
+      "y": 3
+    },
+    "terrain_type": "plains",
+    "resources": [
+      "Grain",
+      "Horses",
+      "Cattle"
+    ],
+    "size_multiplier": 1,
+    "xrp_price": 64,
+    "rdl_price": 64000,
+    "early_bird_discount": 75,
+    "yearly_yield": 5,
+    "yield_percentage": 8.71,
+    "rarity_score": 25
+  }
+}

@@ -1,0 +1,458 @@
+/* Our Story Page Styles */
+
+.our-story-page {
+  min-height: 100vh;
+  background: hsl(var(--background));
+  padding: 2rem 1rem;
+}
+
+.story-container {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.story-header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.story-title {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: hsl(var(--foreground));
+  margin-bottom: 1rem;
+  background: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary) / 0.7));
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.story-subtitle {
+  font-size: 1.25rem;
+  color: hsl(var(--muted-foreground));
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+.story-hero-section {
+  background: hsl(var(--card));
+  border: 1px solid hsl(var(--border));
+  border-radius: 2rem;
+  padding: 4rem 3rem;
+  text-align: center;
+  margin-bottom: 4rem;
+  box-shadow: var(--shadow-medium);
+  position: relative;
+  overflow: hidden;
+}
+
+.story-hero-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, hsl(var(--primary)), hsl(var(--primary) / 0.7));
+}
+
+.story-hero-content {
+  position: relative;
+  z-index: 2;
+}
+
+.story-hero-title {
+  font-size: 2rem;
+  font-weight: 800;
+  color: hsl(var(--foreground));
+  margin-bottom: 1.5rem;
+}
+
+.story-hero-text {
+  font-size: 1.125rem;
+  color: hsl(var(--muted-foreground));
+  line-height: 1.8;
+  margin-bottom: 2rem;
+}
+
+.story-hero-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.story-hero-stat {
+  text-align: center;
+}
+
+.story-hero-stat-value {
+  font-size: 2rem;
+  font-weight: 800;
+  color: hsl(var(--primary));
+  margin-bottom: 0.5rem;
+}
+
+.story-hero-stat-label {
+  font-size: 0.875rem;
+  color: hsl(var(--muted-foreground));
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.story-timeline {
+  position: relative;
+  margin: 4rem 0;
+}
+
+.story-timeline::before {
+  content: '';
+  position: absolute;
+  left: 2rem;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: hsl(var(--border));
+}
+
+.story-timeline-item {
+  position: relative;
+  margin-bottom: 3rem;
+  padding-left: 5rem;
+}
+
+.story-timeline-item::before {
+  content: '';
+  position: absolute;
+  left: 1.25rem;
+  top: 0.75rem;
+  width: 1.5rem;
+  height: 1.5rem;
+  background: hsl(var(--primary));
+  border: 4px solid hsl(var(--background));
+  border-radius: 50%;
+  z-index: 2;
+}
+
+.story-timeline-date {
+  font-size: 0.875rem;
+  color: hsl(var(--primary));
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.5rem;
+}
+
+.story-timeline-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: hsl(var(--foreground));
+  margin-bottom: 1rem;
+}
+
+.story-timeline-content {
+  font-size: 1rem;
+  color: hsl(var(--muted-foreground));
+  line-height: 1.6;
+}
+
+.story-mission-section {
+  background: linear-gradient(135deg, 
+    hsl(var(--primary)) 0%, 
+    hsl(var(--primary) / 0.8) 100%);
+  color: white;
+  padding: 4rem 3rem;
+  border-radius: 2rem;
+  text-align: center;
+  margin: 4rem 0;
+}
+
+.story-mission-title {
+  font-size: 2.5rem;
+  font-weight: 800;
+  margin-bottom: 1.5rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.story-mission-text {
+  font-size: 1.25rem;
+  line-height: 1.8;
+  opacity: 0.95;
+  max-width: 800px;
+  margin: 0 auto 2rem;
+}
+
+.story-mission-values {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+.story-mission-value {
+  text-align: center;
+}
+
+.story-mission-value-icon {
+  width: 3rem;
+  height: 3rem;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1rem;
+  color: white;
+}
+
+.story-mission-value-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 0.75rem;
+}
+
+.story-mission-value-text {
+  font-size: 0.875rem;
+  opacity: 0.9;
+  line-height: 1.5;
+}
+
+.story-achievements-section {
+  margin: 4rem 0;
+}
+
+.story-achievements-title {
+  font-size: 2rem;
+  font-weight: 800;
+  color: hsl(var(--foreground));
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.story-achievements-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.story-achievement-card {
+  background: hsl(var(--card));
+  border: 1px solid hsl(var(--border));
+  border-radius: 1rem;
+  padding: 2rem;
+  text-align: center;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.story-achievement-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, hsl(var(--primary)), hsl(var(--primary) / 0.7));
+}
+
+.story-achievement-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-heavy);
+  border-color: hsl(var(--primary) / 0.3);
+}
+
+.story-achievement-icon {
+  width: 3rem;
+  height: 3rem;
+  background: hsl(var(--primary) / 0.1);
+  border-radius: 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1.5rem;
+  color: hsl(var(--primary));
+}
+
+.story-achievement-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: hsl(var(--foreground));
+  margin-bottom: 1rem;
+}
+
+.story-achievement-description {
+  font-size: 0.875rem;
+  color: hsl(var(--muted-foreground));
+  line-height: 1.6;
+}
+
+.story-future-section {
+  background: hsl(var(--card));
+  border: 1px solid hsl(var(--border));
+  border-radius: 2rem;
+  padding: 4rem 3rem;
+  text-align: center;
+  margin: 4rem 0;
+  box-shadow: var(--shadow-medium);
+}
+
+.story-future-title {
+  font-size: 2rem;
+  font-weight: 800;
+  color: hsl(var(--foreground));
+  margin-bottom: 1.5rem;
+}
+
+.story-future-text {
+  font-size: 1.125rem;
+  color: hsl(var(--muted-foreground));
+  line-height: 1.8;
+  max-width: 800px;
+  margin: 0 auto 2rem;
+}
+
+.story-future-roadmap {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+.story-roadmap-item {
+  background: hsl(var(--secondary) / 0.5);
+  border: 1px solid hsl(var(--border));
+  border-radius: 1rem;
+  padding: 1.5rem;
+  text-align: center;
+  transition: all 0.2s ease;
+}
+
+.story-roadmap-item:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-small);
+}
+
+.story-roadmap-quarter {
+  font-size: 0.875rem;
+  color: hsl(var(--primary));
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.75rem;
+}
+
+.story-roadmap-title {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: hsl(var(--foreground));
+  margin-bottom: 0.75rem;
+}
+
+.story-roadmap-description {
+  font-size: 0.875rem;
+  color: hsl(var(--muted-foreground));
+  line-height: 1.5;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .our-story-page {
+    padding: 1rem 0.5rem;
+  }
+  
+  .story-title {
+    font-size: 2rem;
+  }
+  
+  .story-hero-section {
+    padding: 3rem 2rem;
+    border-radius: 1rem;
+  }
+  
+  .story-hero-title {
+    font-size: 1.5rem;
+  }
+  
+  .story-hero-stats {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .story-timeline::before {
+    left: 1rem;
+  }
+  
+  .story-timeline-item {
+    padding-left: 3rem;
+  }
+  
+  .story-timeline-item::before {
+    left: 0.25rem;
+  }
+  
+  .story-mission-section {
+    padding: 3rem 2rem;
+    border-radius: 1rem;
+  }
+  
+  .story-mission-title {
+    font-size: 2rem;
+  }
+  
+  .story-mission-values {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .story-achievements-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .story-future-section {
+    padding: 3rem 2rem;
+    border-radius: 1rem;
+  }
+  
+  .story-future-roadmap {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .story-title {
+    font-size: 1.5rem;
+  }
+  
+  .story-hero-section {
+    padding: 2rem 1rem;
+  }
+  
+  .story-hero-title {
+    font-size: 1.25rem;
+  }
+  
+  .story-mission-section {
+    padding: 2rem 1rem;
+  }
+  
+  .story-mission-title {
+    font-size: 1.5rem;
+  }
+  
+  .story-achievement-card {
+    padding: 1.5rem;
+  }
+  
+  .story-future-section {
+    padding: 2rem 1rem;
+  }
+  
+  .story-future-title {
+    font-size: 1.5rem;
+  }
+}

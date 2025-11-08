@@ -1,0 +1,436 @@
+The source list for the Content Security Policy directive 'default-src' contains an invalid source: ''unsafe-dynamic''. It will be ignored.
+The source list for the Content Security Policy directive 'default-src' contains an invalid source: ''unsafe-dynamic''. It will be ignored.
+The source list for the Content Security Policy directive 'default-src' contains an invalid source: ''unsafe-dynamic''. It will be ignored.
+The source list for the Content Security Policy directive 'default-src' contains an invalid source: ''unsafe-dynamic''. It will be ignored.
+The source list for the Content Security Policy directive 'default-src' contains an invalid source: ''unsafe-dynamic''. It will be ignored.
+The source list for the Content Security Policy directive 'default-src' contains an invalid source: ''unsafe-dynamic''. It will be ignored.
+The source list for the Content Security Policy directive 'default-src' contains an invalid source: ''unsafe-dynamic''. It will be ignored.
+The source list for the Content Security Policy directive 'default-src' contains an invalid source: ''unsafe-dynamic''. It will be ignored.
+The source list for the Content Security Policy directive 'default-src' contains an invalid source: ''unsafe-dynamic''. It will be ignored.
+The source list for the Content Security Policy directive 'default-src' contains an invalid source: ''unsafe-dynamic''. It will be ignored.
+The source list for the Content Security Policy directive 'default-src' contains an invalid source: ''unsafe-dynamic''. It will be ignored.
+The source list for the Content Security Policy directive 'default-src' contains an invalid source: ''unsafe-dynamic''. It will be ignored.
+The source list for the Content Security Policy directive 'default-src' contains an invalid source: ''unsafe-dynamic''. It will be ignored.
+The source list for the Content Security Policy directive 'default-src' contains an invalid source: ''unsafe-dynamic''. It will be ignored.
+The Content-Security-Policy directive 'default-src' contains 'report-uri' as a source expression. Did you want to add it as a directive and forget a semicolon?
+The Content-Security-Policy directive 'default-src' contains 'report-uri' as a source expression. Did you want to add it as a directive and forget a semicolon?
+The Content-Security-Policy directive 'default-src' contains 'report-uri' as a source expression. Did you want to add it as a directive and forget a semicolon?
+The Content-Security-Policy directive 'default-src' contains 'report-uri' as a source expression. Did you want to add it as a directive and forget a semicolon?
+The Content-Security-Policy directive 'default-src' contains 'report-uri' as a source expression. Did you want to add it as a directive and forget a semicolon?
+The Content-Security-Policy directive 'default-src' contains 'report-uri' as a source expression. Did you want to add it as a directive and forget a semicolon?
+The Content-Security-Policy directive 'default-src' contains 'report-uri' as a source expression. Did you want to add it as a directive and forget a semicolon?
+The Content-Security-Policy directive 'default-src' contains 'report-uri' as a source expression. Did you want to add it as a directive and forget a semicolon?
+The Content-Security-Policy directive 'default-src' contains 'report-uri' as a source expression. Did you want to add it as a directive and forget a semicolon?
+The Content-Security-Policy directive 'default-src' contains 'report-uri' as a source expression. Did you want to add it as a directive and forget a semicolon?
+The Content-Security-Policy directive 'default-src' contains 'report-uri' as a source expression. Did you want to add it as a directive and forget a semicolon?
+The Content-Security-Policy directive 'default-src' contains 'report-uri' as a source expression. Did you want to add it as a directive and forget a semicolon?
+The Content-Security-Policy directive 'default-src' contains 'report-uri' as a source expression. Did you want to add it as a directive and forget a semicolon?
+The Content-Security-Policy directive 'default-src' contains 'report-uri' as a source expression. Did you want to add it as a directive and forget a semicolon?
+The source list for Content Security Policy directive 'default-src' contains a source with an invalid path: '/api/4509669501698048/security/?sentry_key=7eb3d90eb4660416caf507087367e67e'. The query component, including the '?', will be ignored.
+The source list for Content Security Policy directive 'default-src' contains a source with an invalid path: '/api/4509669501698048/security/?sentry_key=7eb3d90eb4660416caf507087367e67e'. The query component, including the '?', will be ignored.
+The source list for Content Security Policy directive 'default-src' contains a source with an invalid path: '/api/4509669501698048/security/?sentry_key=7eb3d90eb4660416caf507087367e67e'. The query component, including the '?', will be ignored.
+The source list for Content Security Policy directive 'default-src' contains a source with an invalid path: '/api/4509669501698048/security/?sentry_key=7eb3d90eb4660416caf507087367e67e'. The query component, including the '?', will be ignored.
+The source list for Content Security Policy directive 'default-src' contains a source with an invalid path: '/api/4509669501698048/security/?sentry_key=7eb3d90eb4660416caf507087367e67e'. The query component, including the '?', will be ignored.
+The source list for Content Security Policy directive 'default-src' contains a source with an invalid path: '/api/4509669501698048/security/?sentry_key=7eb3d90eb4660416caf507087367e67e'. The query component, including the '?', will be ignored.
+The source list for Content Security Policy directive 'default-src' contains a source with an invalid path: '/api/4509669501698048/security/?sentry_key=7eb3d90eb4660416caf507087367e67e'. The query component, including the '?', will be ignored.
+The source list for Content Security Policy directive 'default-src' contains a source with an invalid path: '/api/4509669501698048/security/?sentry_key=7eb3d90eb4660416caf507087367e67e'. The query component, including the '?', will be ignored.
+The source list for Content Security Policy directive 'default-src' contains a source with an invalid path: '/api/4509669501698048/security/?sentry_key=7eb3d90eb4660416caf507087367e67e'. The query component, including the '?', will be ignored.
+The source list for Content Security Policy directive 'default-src' contains a source with an invalid path: '/api/4509669501698048/security/?sentry_key=7eb3d90eb4660416caf507087367e67e'. The query component, including the '?', will be ignored.
+The source list for Content Security Policy directive 'default-src' contains a source with an invalid path: '/api/4509669501698048/security/?sentry_key=7eb3d90eb4660416caf507087367e67e'. The query component, including the '?', will be ignored.
+The source list for Content Security Policy directive 'default-src' contains a source with an invalid path: '/api/4509669501698048/security/?sentry_key=7eb3d90eb4660416caf507087367e67e'. The query component, including the '?', will be ignored.
+The source list for Content Security Policy directive 'default-src' contains a source with an invalid path: '/api/4509669501698048/security/?sentry_key=7eb3d90eb4660416caf507087367e67e'. The query component, including the '?', will be ignored.
+The source list for Content Security Policy directive 'default-src' contains a source with an invalid path: '/api/4509669501698048/security/?sentry_key=7eb3d90eb4660416caf507087367e67e'. The query component, including the '?', will be ignored.
+dippydoge1-10-11:1 The source list for the Content Security Policy directive 'default-src' contains an invalid source: ''unsafe-dynamic''. It will be ignored.
+dippydoge1-10-11:1 The Content-Security-Policy directive 'default-src' contains 'report-uri' as a source expression. Did you want to add it as a directive and forget a semicolon?
+dippydoge1-10-11:1 The source list for Content Security Policy directive 'default-src' contains a source with an invalid path: '/api/4509669501698048/security/?sentry_key=7eb3d90eb4660416caf507087367e67e'. The query component, including the '?', will be ignored.
+ 
+      /////////////////////
+   ///////////////////////////
+  ////////@@@@@@@//////////////
+  ////////@@@@@@@//////////////
+  ////////@@@@@@@//////////////        Curious and driven?
+  ///////////////@@@@@@@///////        Work with us!
+  ///////////////@@@@@@@///////
+  ///////////////@@@@@@@///////        https://join.replit.com/hack.with.us
+  ////////@@@@@@@//////////////
+  ////////@@@@@@@//////////////
+  ////////@@@@@@#//////////////
+   ///////////////////////////
+      /////////////////////
+      
+analytics.tiktok.com/i18n/pixel/events.js?sdkid=D004GE3C77U8PIVDSDJG&lib=ttq:1  Failed to load resource: net::ERR_NAME_NOT_RESOLVED
+ [LaunchDarkly] LaunchDarkly client initialized
+dippydoge1-10-11:1 Banner not shown: beforeinstallpromptevent.preventDefault() called. The page must call beforeinstallpromptevent.prompt() to show the banner.
+Error while parsing the 'sandbox' attribute: 'allow-downloads-without-user-activation' is an invalid sandbox flag.
+Error while parsing the 'sandbox' attribute: 'allow-downloads-without-user-activation' is an invalid sandbox flag.
+Error while parsing the 'sandbox' attribute: 'allow-downloads-without-user-activation' is an invalid sandbox flag.
+Error while parsing the 'sandbox' attribute: 'allow-downloads-without-user-activation' is an invalid sandbox flag.
+Error while parsing the 'sandbox' attribute: 'allow-downloads-without-user-activation' is an invalid sandbox flag.
+ Unrecognized feature: 'ambient-light-sensor'.
+_ @ framework-3657452a98147308.js:1
+ Unrecognized feature: 'battery'.
+_ @ framework-3657452a98147308.js:1
+ Unrecognized feature: 'execution-while-not-rendered'.
+_ @ framework-3657452a98147308.js:1
+ Unrecognized feature: 'execution-while-out-of-viewport'.
+_ @ framework-3657452a98147308.js:1
+ Unrecognized feature: 'layout-animations'.
+_ @ framework-3657452a98147308.js:1
+ Unrecognized feature: 'legacy-image-formats'.
+_ @ framework-3657452a98147308.js:1
+ Unrecognized feature: 'navigation-override'.
+_ @ framework-3657452a98147308.js:1
+ Unrecognized feature: 'oversized-images'.
+_ @ framework-3657452a98147308.js:1
+ Unrecognized feature: 'publickey-credentials'.
+_ @ framework-3657452a98147308.js:1
+ Unrecognized feature: 'speaker-selection'.
+_ @ framework-3657452a98147308.js:1
+ Unrecognized feature: 'unoptimized-images'.
+_ @ framework-3657452a98147308.js:1
+ Unrecognized feature: 'unsized-media'.
+_ @ framework-3657452a98147308.js:1
+ Unrecognized feature: 'pointer-lock'.
+_ @ framework-3657452a98147308.js:1
+ Allow attribute will take precedence over 'allowfullscreen'.
+_ @ framework-3657452a98147308.js:1
+ Allow attribute will take precedence over 'allowpaymentrequest'.
+_ @ framework-3657452a98147308.js:1
+workspace_iframe.html?initialPath=%2F&id=%3Ar1ea%3A:32 Unrecognized feature: 'ambient-light-sensor'.
+workspace_iframe.html?initialPath=%2F&id=%3Ar1ea%3A:32 Unrecognized feature: 'battery'.
+workspace_iframe.html?initialPath=%2F&id=%3Ar1ea%3A:32 Unrecognized feature: 'execution-while-not-rendered'.
+workspace_iframe.html?initialPath=%2F&id=%3Ar1ea%3A:32 Unrecognized feature: 'execution-while-out-of-viewport'.
+workspace_iframe.html?initialPath=%2F&id=%3Ar1ea%3A:32 Unrecognized feature: 'layout-animations'.
+workspace_iframe.html?initialPath=%2F&id=%3Ar1ea%3A:32 Unrecognized feature: 'legacy-image-formats'.
+workspace_iframe.html?initialPath=%2F&id=%3Ar1ea%3A:32 Unrecognized feature: 'navigation-override'.
+workspace_iframe.html?initialPath=%2F&id=%3Ar1ea%3A:32 Unrecognized feature: 'oversized-images'.
+workspace_iframe.html?initialPath=%2F&id=%3Ar1ea%3A:32 Unrecognized feature: 'publickey-credentials'.
+workspace_iframe.html?initialPath=%2F&id=%3Ar1ea%3A:32 Unrecognized feature: 'speaker-selection'.
+workspace_iframe.html?initialPath=%2F&id=%3Ar1ea%3A:32 Unrecognized feature: 'unoptimized-images'.
+workspace_iframe.html?initialPath=%2F&id=%3Ar1ea%3A:32 Unrecognized feature: 'unsized-media'.
+workspace_iframe.html?initialPath=%2F&id=%3Ar1ea%3A:32 Allow attribute will take precedence over 'allowfullscreen'.
+workspace_iframe.html?initialPath=%2F&id=%3Ar1ea%3A:32 Allow attribute will take precedence over 'allowpaymentrequest'.
+301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/:1  Failed to load resource: the server responded with a status of 404 (Not Found)
+301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/:1 Refused to load the script 'https://301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/__replco/static/devtools/injected.js' because it violates the following Content Security Policy directive: "default-src 'none'". Note that 'script-src-elem' was not explicitly set, so 'default-src' is used as a fallback.
+
+301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/:1 Refused to execute inline event handler because it violates the following Content Security Policy directive: "default-src 'none'". Either the 'unsafe-inline' keyword, a hash ('sha256-...'), or a nonce ('nonce-...') is required to enable inline execution. Note that hashes do not apply to event handlers, style attributes and javascript: navigations unless the 'unsafe-hashes' keyword is present. Note also that 'script-src' was not explicitly set, so 'default-src' is used as a fallback.
+
+ Refused to load the script 'https://replit.com/public/js/beacon.js' because it violates the following Content Security Policy directive: "default-src 'none'". Note that 'script-src-elem' was not explicitly set, so 'default-src' is used as a fallback.
+
+onIframeLoad @ workspace_iframe.htm…F&id=%3Ar1ea%3A:142
+ WebSocket connection to 'wss://301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/?token=Jv0SKKFVmiuv' failed: 
+window.WebSocket @ init.js:53
+ 🔧 Fixed WebSocket URL for Replit: wss://localhost:undefined/?token=Jv0SKKFVmiuv → wss://301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/?token=Jv0SKKFVmiuv
+ WebSocket connection to 'wss://301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/?token=Jv0SKKFVmiuv' failed: 
+window.WebSocket @ init.js:53
+ [vite] failed to connect to websocket.
+your current setup:
+  (browser) 301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/ <--[HTTP]--> localhost:undefined/ (server)
+  (browser) 301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev:/ <--[WebSocket (failing)]--> localhost:undefined/ (server)
+Check out your Vite / network configuration and https://vite.dev/config/server-options.html#server-hmr .
+(anonymous) @ injected.js:27
+ 🎨 App.tsx: App component is rendering
+ 🏗️ App.tsx: Returning JSX with all providers
+ 🚫 SessionMonitor: DISABLED - Using unified SessionManager instead
+ 🗺️ Router: Router component is rendering
+ 📍 Router: Current location: /
+ 💳 Router: Initializing wallet data state
+ 📭 Router: No saved wallet data found
+ 🔍 SessionManager.getSession() returning: Object
+ 🔍 Found local wallet connections: Array(0)
+ 🎨 App.tsx: App component is rendering
+ 🏗️ App.tsx: Returning JSX with all providers
+ 🚫 SessionMonitor: DISABLED - Using unified SessionManager instead
+ 🗺️ Router: Router component is rendering
+ 📍 Router: Current location: /
+ 💳 Router: Initializing wallet data state
+ 📭 Router: No saved wallet data found
+ 🔍 SessionManager.getSession() returning: Object
+ 🔍 Found local wallet connections: Array(0)
+ 🔐 [GLOBAL RENEWAL] Handler initialized
+ 🔍 SessionManager.getSession() returning: Object
+ 🔍 SessionManager: checkSession() called - current sessionData: true
+ 🌐 SessionManager: Making Riddle wallet session request to /api/riddle-wallet/session
+ 🎨 [THEME] Applied theme: dark, dark class: true
+ 🔄 App.tsx: useEffect running - recovering wallet state
+301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/api/riddle-wallet/session:1  Failed to load resource: the server responded with a status of 401 (Unauthorized)
+ ❌ SessionManager: Session explicitly invalid (401/403) - clearing
+ 🧹 SessionManager: Clearing session
+ 🔍 SessionManager.getSession() returning: Object
+ 🔍 SessionManager.getSession() returning: Object
+ 🔍 SessionManager.getSession() returning: Object
+ 🔍 Found local wallet connections: Array(0)
+ 🔍 getQueryFn - SessionManager sessionToken: NOT FOUND
+ 🗺️ Router: Router component is rendering
+ 📍 Router: Current location: /token/FUZZY/rhCAT4hRdi2Y9puNdkpMzxrdKa5wkppR62
+ 🔍 SessionManager.getSession() returning: Object
+ 🔍 Found local wallet connections: Array(0)
+301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/api/search/analytics/click:1  Failed to load resource: the server responded with a status of 400 (Bad Request)
+ 🔍 [TOKEN-ANALYTICS] Parsing URL: /token/FUZZY/rhCAT4hRdi2Y9puNdkpMzxrdKa5wkppR62
+ 🔍 [TOKEN-ANALYTICS] URL params: Object
+ 💾 [CACHE] Query configured with DEFAULT config: /api/collection-lookup/FUZZY/rhCAT4hRdi2Y9puNdkpMzxrdKa5wkppR62
+ 💾 [CACHE] Query configured with ANALYTICS config: /api/analytics/xrpl/token?symbol=FUZZY&issuer=rhCAT4hRdi2Y9puNdkpMzxrdKa5wkppR62
+ 💾 [CACHE] Query configured with METADATA config: /api/search/tokens?q=rhCAT4hRdi2Y9puNdkpMzxrdKa5wkppR62&chain=xrpl&type=token&limit=1
+ 💾 [CACHE] Query configured with METADATA config: /api/metadata/token?issuer=rhCAT4hRdi2Y9puNdkpMzxrdKa5wkppR62&currency=FUZZY
+ 🔍 SessionManager.getSession() returning: Object
+ 🔍 getQueryFn - SessionManager sessionToken: NOT FOUND
+ 🔍 getQueryFn - SessionManager sessionToken: NOT FOUND
+ 🔍 SessionManager: checkSession() called - current sessionData: false
+ 🔓 SessionManager: No token found locally, checking backend session
+ 🔍 SessionManager: Checking backend session via cookies/session storage
+ 🔍 [TOKEN-ANALYTICS] Parsing URL: /token/FUZZY/rhCAT4hRdi2Y9puNdkpMzxrdKa5wkppR62
+ 🔍 [TOKEN-ANALYTICS] URL params: Object
+ 💾 [CACHE] Query configured with DEFAULT config: /api/collection-lookup/FUZZY/rhCAT4hRdi2Y9puNdkpMzxrdKa5wkppR62
+ 💾 [CACHE] Query configured with ANALYTICS config: /api/analytics/xrpl/token?symbol=FUZZY&issuer=rhCAT4hRdi2Y9puNdkpMzxrdKa5wkppR62
+ 💾 [CACHE] Query configured with METADATA config: /api/search/tokens?q=rhCAT4hRdi2Y9puNdkpMzxrdKa5wkppR62&chain=xrpl&type=token&limit=1
+ 💾 [CACHE] Query configured with METADATA config: /api/metadata/token?issuer=rhCAT4hRdi2Y9puNdkpMzxrdKa5wkppR62&currency=FUZZY
+ 🔍 SessionManager.getSession() returning: Object
+ 📊 SessionManager: No backend session found
+ 🔍 [TOKEN-ANALYTICS] Parsing URL: /token/FUZZY/rhCAT4hRdi2Y9puNdkpMzxrdKa5wkppR62
+ 🔍 [TOKEN-ANALYTICS] URL params: Object
+ 💾 [CACHE] Query configured with DEFAULT config: /api/collection-lookup/FUZZY/rhCAT4hRdi2Y9puNdkpMzxrdKa5wkppR62
+ 💾 [CACHE] Query configured with ANALYTICS config: /api/analytics/xrpl/token?symbol=FUZZY&issuer=rhCAT4hRdi2Y9puNdkpMzxrdKa5wkppR62
+ 💾 [CACHE] Query configured with METADATA config: /api/search/tokens?q=rhCAT4hRdi2Y9puNdkpMzxrdKa5wkppR62&chain=xrpl&type=token&limit=1
+ 💾 [CACHE] Query configured with METADATA config: /api/metadata/token?issuer=rhCAT4hRdi2Y9puNdkpMzxrdKa5wkppR62&currency=FUZZY
+ 🔍 SessionManager.getSession() returning: Object
+ 🔍 [TOKEN-ANALYTICS] Parsing URL: /token/FUZZY/rhCAT4hRdi2Y9puNdkpMzxrdKa5wkppR62
+ 🔍 [TOKEN-ANALYTICS] URL params: Object
+ 💾 [CACHE] Query configured with DEFAULT config: /api/collection-lookup/FUZZY/rhCAT4hRdi2Y9puNdkpMzxrdKa5wkppR62
+ 💾 [CACHE] Query configured with ANALYTICS config: /api/analytics/xrpl/token?symbol=FUZZY&issuer=rhCAT4hRdi2Y9puNdkpMzxrdKa5wkppR62
+ 💾 [CACHE] Query configured with METADATA config: /api/search/tokens?q=rhCAT4hRdi2Y9puNdkpMzxrdKa5wkppR62&chain=xrpl&type=token&limit=1
+ 💾 [CACHE] Query configured with METADATA config: /api/metadata/token?issuer=rhCAT4hRdi2Y9puNdkpMzxrdKa5wkppR62&currency=FUZZY
+ 🔍 SessionManager.getSession() returning: Object
+ 🔍 getQueryFn - SessionManager sessionToken: NOT FOUND
+ 🔍 getQueryFn - SessionManager sessionToken: NOT FOUND
+ 🔍 [TOKEN-ANALYTICS] Parsing URL: /token/FUZZY/rhCAT4hRdi2Y9puNdkpMzxrdKa5wkppR62
+ 🔍 [TOKEN-ANALYTICS] URL params: Object
+ 💾 [CACHE] Query configured with DEFAULT config: /api/collection-lookup/FUZZY/rhCAT4hRdi2Y9puNdkpMzxrdKa5wkppR62
+ 💾 [CACHE] Query configured with ANALYTICS config: /api/analytics/xrpl/token?symbol=FUZZY&issuer=rhCAT4hRdi2Y9puNdkpMzxrdKa5wkppR62
+ 💾 [CACHE] Query configured with METADATA config: /api/search/tokens?q=rhCAT4hRdi2Y9puNdkpMzxrdKa5wkppR62&chain=xrpl&type=token&limit=1
+ 💾 [CACHE] Query configured with METADATA config: /api/metadata/token?issuer=rhCAT4hRdi2Y9puNdkpMzxrdKa5wkppR62&currency=FUZZY
+ 🔍 SessionManager.getSession() returning: Object
+ 🔍 [TOKEN-ANALYTICS] Parsing URL: /token/FUZZY/rhCAT4hRdi2Y9puNdkpMzxrdKa5wkppR62
+ 🔍 [TOKEN-ANALYTICS] URL params: Object
+ 💾 [CACHE] Query configured with DEFAULT config: /api/collection-lookup/FUZZY/rhCAT4hRdi2Y9puNdkpMzxrdKa5wkppR62
+ 💾 [CACHE] Query configured with ANALYTICS config: /api/analytics/xrpl/token?symbol=FUZZY&issuer=rhCAT4hRdi2Y9puNdkpMzxrdKa5wkppR62
+ 💾 [CACHE] Query configured with METADATA config: /api/search/tokens?q=rhCAT4hRdi2Y9puNdkpMzxrdKa5wkppR62&chain=xrpl&type=token&limit=1
+ 💾 [CACHE] Query configured with METADATA config: /api/metadata/token?issuer=rhCAT4hRdi2Y9puNdkpMzxrdKa5wkppR62&currency=FUZZY
+ 🔍 SessionManager.getSession() returning: Object
+ 🔍 [TOKEN-ANALYTICS] Parsing URL: /token/FUZZY/rhCAT4hRdi2Y9puNdkpMzxrdKa5wkppR62
+ 🔍 [TOKEN-ANALYTICS] URL params: Object
+ 💾 [CACHE] Query configured with DEFAULT config: /api/collection-lookup/FUZZY/rhCAT4hRdi2Y9puNdkpMzxrdKa5wkppR62
+ 💾 [CACHE] Query configured with ANALYTICS config: /api/analytics/xrpl/token?symbol=FUZZY&issuer=rhCAT4hRdi2Y9puNdkpMzxrdKa5wkppR62
+ 💾 [CACHE] Query configured with METADATA config: /api/search/tokens?q=rhCAT4hRdi2Y9puNdkpMzxrdKa5wkppR62&chain=xrpl&type=token&limit=1
+ 💾 [CACHE] Query configured with METADATA config: /api/metadata/token?issuer=rhCAT4hRdi2Y9puNdkpMzxrdKa5wkppR62&currency=FUZZY
+ 🔍 SessionManager.getSession() returning: Object
+ 🔍 [TOKEN-ANALYTICS] Parsing URL: /token/FUZZY/rhCAT4hRdi2Y9puNdkpMzxrdKa5wkppR62
+ 🔍 [TOKEN-ANALYTICS] URL params: Object
+ 💾 [CACHE] Query configured with DEFAULT config: /api/collection-lookup/FUZZY/rhCAT4hRdi2Y9puNdkpMzxrdKa5wkppR62
+ 💾 [CACHE] Query configured with ANALYTICS config: /api/analytics/xrpl/token?symbol=FUZZY&issuer=rhCAT4hRdi2Y9puNdkpMzxrdKa5wkppR62
+ 💾 [CACHE] Query configured with METADATA config: /api/search/tokens?q=rhCAT4hRdi2Y9puNdkpMzxrdKa5wkppR62&chain=xrpl&type=token&limit=1
+ 💾 [CACHE] Query configured with METADATA config: /api/metadata/token?issuer=rhCAT4hRdi2Y9puNdkpMzxrdKa5wkppR62&currency=FUZZY
+ 🔍 SessionManager.getSession() returning: Object
+Fetch event handler is recognized as no-op. No-op fetch handler may bring overhead during navigation. Consider removing the handler if possible.
+ 🗺️ Router: Router component is rendering
+ 📍 Router: Current location: /wallet-login
+ 🔍 SessionManager.getSession() returning: Object
+ 🔍 Found local wallet connections: Array(0)
+ 🔐 [WALLET LOGIN] Attempting login for handle: riddlbroker
+ 🔍 [WALLET LOGIN] Login response status: 200
+ 🔍 [WALLET LOGIN] Response headers: Headers
+ 📋 [WALLET LOGIN] Login response data: Object
+ ✅ [WALLET LOGIN] Login successful, storing session...
+ 🔑 [WALLET LOGIN] Session token received: t1z9z90m...
+ 🧹 Clearing ALL wallet and session data...
+ 🧹 SessionManager: Clearing session
+ 🔍 SessionManager.getSession() returning: Object
+ 🔍 SessionManager.getSession() returning: Object
+ ✅ All wallet and session data cleared
+ 💾 [WALLET LOGIN] Session stored in sessionStorage
+ 💾 [WALLET LOGIN] Session token stored in all expected locations
+ 🔑 [WALLET LOGIN] Fresh token stored: t1z9z90mqo...
+ 🔍 SessionManager.getSession() returning: Object
+ 🔍 Found local wallet connections: Array(0)
+ 🔐 SessionManager: New session set
+ 🔍 SessionManager.getSession() returning: Object
+ 🔍 SessionManager.getSession() returning: Object
+ 🔍 SessionManager: checkSession() called - current sessionData: true
+ 🌐 SessionManager: Making Riddle wallet session request to /api/riddle-wallet/session
+ 🗺️ Router: Router component is rendering
+ 📍 Router: Current location: /wallet-dashboard
+ 🔍 SessionManager.getSession() returning: Object
+ 🔍 Found local wallet connections: Array(0)
+ 🔍 SessionManager.getSession() returning: Object
+ ✅ AuthGuard: User authenticated, allowing access
+ 🔍 SessionManager.getSession() returning: Object
+ 🔍 Found local wallet connections: Array(0)
+ ✅ SessionManager: Valid session for riddlbroker
+ ✅ SessionManager: Updated session data: Object
+ 🔍 SessionManager.getSession() returning: Object
+ 🔍 SessionManager.getSession() returning: Object
+ 🔍 SessionManager.getSession() returning: Object
+ 🔔 SessionManager: Notified 3 listeners
+ 🔍 SessionManager.getSession() returning: Object
+ 🔍 Found local wallet connections: Array(0)
+ 🔍 SessionManager.getSession() returning: Object
+ 🔍 [AUTH CHECK] Session token found: YES
+ 🔍 [AUTH CHECK] Server response: Object
+ ✅ [AUTH CHECK] Valid session for user: riddlbroker
+ 🔍 getQueryFn - SessionManager sessionToken: FOUND
+ 🔍 getQueryFn - SessionManager sessionToken: FOUND
+ 📊 [WALLET DASHBOARD] Fetching portfolio from separate endpoints...
+ 🔗 [WALLET DASHBOARD] Using addresses: Object
+ 🔍 Found local wallet connections: Array(0)
+ 🔍 Found local wallet connections: Array(0)
+ 🔗 Found 0 linked projects
+ 🔍 SessionManager.getSession() returning: Object
+ 🔍 Found local wallet connections: Array(0)
+ 🔍 SessionManager.getSession() returning: Object
+ 🗺️ Router: Router component is rendering
+ 📍 Router: Current location: /token/FUZZY/rhCAT4hRdi2Y9puNdkpMzxrdKa5wkppR62
+ 🔍 SessionManager.getSession() returning: Object
+ 🔍 Found local wallet connections: Array(0)
+ 🔍 [TOKEN-ANALYTICS] Parsing URL: /token/FUZZY/rhCAT4hRdi2Y9puNdkpMzxrdKa5wkppR62
+ 🔍 [TOKEN-ANALYTICS] URL params: Object
+ 💾 [CACHE] Query configured with DEFAULT config: /api/collection-lookup/FUZZY/rhCAT4hRdi2Y9puNdkpMzxrdKa5wkppR62
+ 💾 [CACHE] Query configured with ANALYTICS config: /api/analytics/xrpl/token?symbol=FUZZY&issuer=rhCAT4hRdi2Y9puNdkpMzxrdKa5wkppR62
+ 💾 [CACHE] Query configured with METADATA config: /api/search/tokens?q=rhCAT4hRdi2Y9puNdkpMzxrdKa5wkppR62&chain=xrpl&type=token&limit=1
+ 💾 [CACHE] Query configured with METADATA config: /api/metadata/token?issuer=rhCAT4hRdi2Y9puNdkpMzxrdKa5wkppR62&currency=FUZZY
+ 🔍 SessionManager.getSession() returning: Object
+ 🔍 getQueryFn - SessionManager sessionToken: FOUND
+ 🔍 getQueryFn - SessionManager sessionToken: FOUND
+ 🔍 SessionManager: checkSession() called - current sessionData: true
+ 🌐 SessionManager: Making Riddle wallet session request to /api/riddle-wallet/session
+ 🔍 [TOKEN-ANALYTICS] Parsing URL: /token/FUZZY/rhCAT4hRdi2Y9puNdkpMzxrdKa5wkppR62
+ 🔍 [TOKEN-ANALYTICS] URL params: Object
+ 💾 [CACHE] Query configured with DEFAULT config: /api/collection-lookup/FUZZY/rhCAT4hRdi2Y9puNdkpMzxrdKa5wkppR62
+ 💾 [CACHE] Query configured with ANALYTICS config: /api/analytics/xrpl/token?symbol=FUZZY&issuer=rhCAT4hRdi2Y9puNdkpMzxrdKa5wkppR62
+ 💾 [CACHE] Query configured with METADATA config: /api/search/tokens?q=rhCAT4hRdi2Y9puNdkpMzxrdKa5wkppR62&chain=xrpl&type=token&limit=1
+ 💾 [CACHE] Query configured with METADATA config: /api/metadata/token?issuer=rhCAT4hRdi2Y9puNdkpMzxrdKa5wkppR62&currency=FUZZY
+ 🔍 SessionManager.getSession() returning: Object
+301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/api/search/analytics/click:1  Failed to load resource: the server responded with a status of 400 (Bad Request)
+ 🔍 [TOKEN-ANALYTICS] Parsing URL: /token/FUZZY/rhCAT4hRdi2Y9puNdkpMzxrdKa5wkppR62
+ 🔍 [TOKEN-ANALYTICS] URL params: Object
+ 💾 [CACHE] Query configured with DEFAULT config: /api/collection-lookup/FUZZY/rhCAT4hRdi2Y9puNdkpMzxrdKa5wkppR62
+ 💾 [CACHE] Query configured with ANALYTICS config: /api/analytics/xrpl/token?symbol=FUZZY&issuer=rhCAT4hRdi2Y9puNdkpMzxrdKa5wkppR62
+ 💾 [CACHE] Query configured with METADATA config: /api/search/tokens?q=rhCAT4hRdi2Y9puNdkpMzxrdKa5wkppR62&chain=xrpl&type=token&limit=1
+ 💾 [CACHE] Query configured with METADATA config: /api/metadata/token?issuer=rhCAT4hRdi2Y9puNdkpMzxrdKa5wkppR62&currency=FUZZY
+ 🔍 SessionManager.getSession() returning: Object
+ ✅ SessionManager: Valid session for riddlbroker
+ ✅ SessionManager: Updated session data: Object
+ 🔍 SessionManager.getSession() returning: Object
+ 🔍 SessionManager.getSession() returning: Object
+ 🔍 SessionManager.getSession() returning: Object
+ 🔔 SessionManager: Notified 3 listeners
+ 🔍 SessionManager.getSession() returning: Object
+ 🔍 Found local wallet connections: Array(0)
+ 🔍 [TOKEN-ANALYTICS] Parsing URL: /token/FUZZY/rhCAT4hRdi2Y9puNdkpMzxrdKa5wkppR62
+ 🔍 [TOKEN-ANALYTICS] URL params: Object
+ 💾 [CACHE] Query configured with DEFAULT config: /api/collection-lookup/FUZZY/rhCAT4hRdi2Y9puNdkpMzxrdKa5wkppR62
+ 💾 [CACHE] Query configured with ANALYTICS config: /api/analytics/xrpl/token?symbol=FUZZY&issuer=rhCAT4hRdi2Y9puNdkpMzxrdKa5wkppR62
+ 💾 [CACHE] Query configured with METADATA config: /api/search/tokens?q=rhCAT4hRdi2Y9puNdkpMzxrdKa5wkppR62&chain=xrpl&type=token&limit=1
+ 💾 [CACHE] Query configured with METADATA config: /api/metadata/token?issuer=rhCAT4hRdi2Y9puNdkpMzxrdKa5wkppR62&currency=FUZZY
+ 🔍 SessionManager.getSession() returning: Object
+ 🔍 [TOKEN-ANALYTICS] Parsing URL: /token/FUZZY/rhCAT4hRdi2Y9puNdkpMzxrdKa5wkppR62
+ 🔍 [TOKEN-ANALYTICS] URL params: Object
+ 💾 [CACHE] Query configured with DEFAULT config: /api/collection-lookup/FUZZY/rhCAT4hRdi2Y9puNdkpMzxrdKa5wkppR62
+ 💾 [CACHE] Query configured with ANALYTICS config: /api/analytics/xrpl/token?symbol=FUZZY&issuer=rhCAT4hRdi2Y9puNdkpMzxrdKa5wkppR62
+ 💾 [CACHE] Query configured with METADATA config: /api/search/tokens?q=rhCAT4hRdi2Y9puNdkpMzxrdKa5wkppR62&chain=xrpl&type=token&limit=1
+ 💾 [CACHE] Query configured with METADATA config: /api/metadata/token?issuer=rhCAT4hRdi2Y9puNdkpMzxrdKa5wkppR62&currency=FUZZY
+ 🔍 SessionManager.getSession() returning: Object
+ 🔍 [TOKEN-ANALYTICS] Parsing URL: /token/FUZZY/rhCAT4hRdi2Y9puNdkpMzxrdKa5wkppR62
+ 🔍 [TOKEN-ANALYTICS] URL params: Object
+ 💾 [CACHE] Query configured with DEFAULT config: /api/collection-lookup/FUZZY/rhCAT4hRdi2Y9puNdkpMzxrdKa5wkppR62
+ 💾 [CACHE] Query configured with ANALYTICS config: /api/analytics/xrpl/token?symbol=FUZZY&issuer=rhCAT4hRdi2Y9puNdkpMzxrdKa5wkppR62
+ 💾 [CACHE] Query configured with METADATA config: /api/search/tokens?q=rhCAT4hRdi2Y9puNdkpMzxrdKa5wkppR62&chain=xrpl&type=token&limit=1
+ 💾 [CACHE] Query configured with METADATA config: /api/metadata/token?issuer=rhCAT4hRdi2Y9puNdkpMzxrdKa5wkppR62&currency=FUZZY
+ 🔍 SessionManager.getSession() returning: Object
+ 🔍 getQueryFn - SessionManager sessionToken: FOUND
+ 🔍 getQueryFn - SessionManager sessionToken: FOUND
+ 🔍 [TOKEN-ANALYTICS] Parsing URL: /token/FUZZY/rhCAT4hRdi2Y9puNdkpMzxrdKa5wkppR62
+ 🔍 [TOKEN-ANALYTICS] URL params: Object
+ 💾 [CACHE] Query configured with DEFAULT config: /api/collection-lookup/FUZZY/rhCAT4hRdi2Y9puNdkpMzxrdKa5wkppR62
+ 💾 [CACHE] Query configured with ANALYTICS config: /api/analytics/xrpl/token?symbol=FUZZY&issuer=rhCAT4hRdi2Y9puNdkpMzxrdKa5wkppR62
+ 💾 [CACHE] Query configured with METADATA config: /api/search/tokens?q=rhCAT4hRdi2Y9puNdkpMzxrdKa5wkppR62&chain=xrpl&type=token&limit=1
+ 💾 [CACHE] Query configured with METADATA config: /api/metadata/token?issuer=rhCAT4hRdi2Y9puNdkpMzxrdKa5wkppR62&currency=FUZZY
+ 🔍 SessionManager.getSession() returning: Object
+ 🎯 Auto-populated swap: XRP → FUZZY (rhCAT4hRdi2Y9puNdkpMzxrdKa5wkppR62)
+injected.js:27 🔍 [TOKEN-ANALYTICS] Parsing URL: /token/FUZZY/rhCAT4hRdi2Y9puNdkpMzxrdKa5wkppR62
+injected.js:27 🔍 [TOKEN-ANALYTICS] URL params: Object
+injected.js:27 💾 [CACHE] Query configured with DEFAULT config: /api/collection-lookup/FUZZY/rhCAT4hRdi2Y9puNdkpMzxrdKa5wkppR62
+injected.js:27 💾 [CACHE] Query configured with ANALYTICS config: /api/analytics/xrpl/token?symbol=FUZZY&issuer=rhCAT4hRdi2Y9puNdkpMzxrdKa5wkppR62
+injected.js:27 💾 [CACHE] Query configured with METADATA config: /api/search/tokens?q=rhCAT4hRdi2Y9puNdkpMzxrdKa5wkppR62&chain=xrpl&type=token&limit=1
+injected.js:27 💾 [CACHE] Query configured with METADATA config: /api/metadata/token?issuer=rhCAT4hRdi2Y9puNdkpMzxrdKa5wkppR62&currency=FUZZY
+injected.js:27 🔍 SessionManager.getSession() returning: Object
+injected.js:27 💰 [BALANCE] Set XRP balance: 0
+injected.js:27 🔍 [TOKEN-ANALYTICS] Parsing URL: /token/FUZZY/rhCAT4hRdi2Y9puNdkpMzxrdKa5wkppR62
+injected.js:27 🔍 [TOKEN-ANALYTICS] URL params: Object
+injected.js:27 💾 [CACHE] Query configured with DEFAULT config: /api/collection-lookup/FUZZY/rhCAT4hRdi2Y9puNdkpMzxrdKa5wkppR62
+injected.js:27 💾 [CACHE] Query configured with ANALYTICS config: /api/analytics/xrpl/token?symbol=FUZZY&issuer=rhCAT4hRdi2Y9puNdkpMzxrdKa5wkppR62
+injected.js:27 💾 [CACHE] Query configured with METADATA config: /api/search/tokens?q=rhCAT4hRdi2Y9puNdkpMzxrdKa5wkppR62&chain=xrpl&type=token&limit=1
+injected.js:27 💾 [CACHE] Query configured with METADATA config: /api/metadata/token?issuer=rhCAT4hRdi2Y9puNdkpMzxrdKa5wkppR62&currency=FUZZY
+injected.js:27 🔍 SessionManager.getSession() returning: Object
+injected.js:27 🔍 [TOKEN-ANALYTICS] Parsing URL: /token/FUZZY/rhCAT4hRdi2Y9puNdkpMzxrdKa5wkppR62
+injected.js:27 🔍 [TOKEN-ANALYTICS] URL params: Object
+injected.js:27 💾 [CACHE] Query configured with DEFAULT config: /api/collection-lookup/FUZZY/rhCAT4hRdi2Y9puNdkpMzxrdKa5wkppR62
+injected.js:27 💾 [CACHE] Query configured with ANALYTICS config: /api/analytics/xrpl/token?symbol=FUZZY&issuer=rhCAT4hRdi2Y9puNdkpMzxrdKa5wkppR62
+injected.js:27 💾 [CACHE] Query configured with METADATA config: /api/search/tokens?q=rhCAT4hRdi2Y9puNdkpMzxrdKa5wkppR62&chain=xrpl&type=token&limit=1
+injected.js:27 💾 [CACHE] Query configured with METADATA config: /api/metadata/token?issuer=rhCAT4hRdi2Y9puNdkpMzxrdKa5wkppR62&currency=FUZZY
+injected.js:27 🔍 SessionManager.getSession() returning: Object
+injected.js:27 🎨 Using logo from backend (DexScreener priority) for FUZZY: https://dd.dexscreener.com/ds-data/tokens/xrpl/46555a5a59000000000000000000000000000000.rhcat4hrdi2y9pundkpmzxrdka5wkppr62.png?key=babbe1
+injected.js:27 ✅ Loaded 2 featured tokens with live data from backend
+injected.js:27 🔍 Featured tokens data: [
+  {
+    "symbol": "XRP",
+    "currency_code": "XRP",
+    "name": "XRP",
+    "issuer": "",
+    "icon_url": "/images/chains/xrp-logo.svg",
+    "logo_url": "/images/chains/xrp-logo.svg",
+    "logoURI": "/images/chains/xrp-logo.svg",
+    "price_usd": 0,
+    "volume_24h": 0,
+    "price_change_24h": 0,
+    "verified": true,
+    "source": "featured"
+  },
+  {
+    "symbol": "RDL",
+    "currency_code": "RDL",
+    "name": "RiddleSwap Token",
+    "issuer": "r9xvnzUWZJpDu3NA6MKHmKhKJQTRqCRgu9",
+    "icon_url": "https://dd.dexscreener.com/ds-data/tokens/xrpl/rdl.r9xvnzuwzjpdu3na6mkhmkhkjqtrqcrgu9.png?key=7c1c6a",
+    "logo_url": "https://dd.dexscreener.com/ds-data/tokens/xrpl/rdl.r9xvnzuwzjpdu3na6mkhmkhkjqtrqcrgu9.png?key=7c1c6a",
+    "logoURI": "https://dd.dexscreener.com/ds-data/tokens/xrpl/rdl.r9xvnzuwzjpdu3na6mkhmkhkjqtrqcrgu9.png?key=7c1c6a",
+    "price_usd": 0.0001012,
+    "volume_24h": 182.52,
+    "price_change_24h": -0.02,
+    "verified": true,
+    "source": "featured"
+  }
+]
+injected.js:27 ⏭️ Skipped auto-populate FROM: user already selected XRP
+injected.js:27 ⏭️ Skipped auto-populate TO: user already selected FUZZY
+injected.js:27 ✅ [XRP] Balance: 2.749927 | USD: $6.6
+injected.js:27 ✅ [ETH] Balance: 0.000000 | USD: $0
+injected.js:27 ✅ [ARBITRUM] Balance: 0.000000 | USD: $0
+injected.js:27 ✅ [OPTIMISM] Balance: 0.000000 | USD: $0
+injected.js:27 ✅ [BASE] Balance: 0.000000 | USD: $0
+injected.js:27 ✅ [POLYGON] Balance: 0.000000 | USD: $0
+injected.js:27 ✅ [BNB] Balance: 0.000000 | USD: $0
+injected.js:27 ✅ [LINEA] Balance: 0.000000 | USD: $0
+injected.js:27 ✅ [ZKSYNC] Balance: 0.000000 | USD: $0
+injected.js:27 ✅ [SOL] Balance: 0.000000 | USD: $0
+injected.js:27 ✅ [BTC] Balance: 0.00000000 | USD: $0
+injected.js:27 ✅ [WALLET DASHBOARD] Aggregated portfolio: Object
+injected.js:27 🔍 SessionManager.getSession() returning: Object
+injected.js:27 🔍 Found local wallet connections: Array(0)
+injected.js:27 🔍 [TOKEN-ANALYTICS] Parsing URL: /token/FUZZY/rhCAT4hRdi2Y9puNdkpMzxrdKa5wkppR62
+injected.js:27 🔍 [TOKEN-ANALYTICS] URL params: Object
+injected.js:27 💾 [CACHE] Query configured with DEFAULT config: /api/collection-lookup/FUZZY/rhCAT4hRdi2Y9puNdkpMzxrdKa5wkppR62
+injected.js:27 💾 [CACHE] Query configured with ANALYTICS config: /api/analytics/xrpl/token?symbol=FUZZY&issuer=rhCAT4hRdi2Y9puNdkpMzxrdKa5wkppR62
+injected.js:27 💾 [CACHE] Query configured with METADATA config: /api/search/tokens?q=rhCAT4hRdi2Y9puNdkpMzxrdKa5wkppR62&chain=xrpl&type=token&limit=1
+injected.js:27 💾 [CACHE] Query configured with METADATA config: /api/metadata/token?issuer=rhCAT4hRdi2Y9puNdkpMzxrdKa5wkppR62&currency=FUZZY
+injected.js:27 🔍 SessionManager.getSession() returning: Object
+injected.js:27 ⚠️ [BALANCE] No balance found for FUZZY, defaulting to 0
+stallwart.build.js:1 stallwart: failed ping 1

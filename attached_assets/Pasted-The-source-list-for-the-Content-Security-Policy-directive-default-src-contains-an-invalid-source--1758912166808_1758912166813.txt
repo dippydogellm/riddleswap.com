@@ -1,0 +1,1531 @@
+The source list for the Content Security Policy directive 'default-src' contains an invalid source: ''unsafe-dynamic''. It will be ignored.
+The source list for the Content Security Policy directive 'default-src' contains an invalid source: ''unsafe-dynamic''. It will be ignored.
+The source list for the Content Security Policy directive 'default-src' contains an invalid source: ''unsafe-dynamic''. It will be ignored.
+The source list for the Content Security Policy directive 'default-src' contains an invalid source: ''unsafe-dynamic''. It will be ignored.
+The source list for the Content Security Policy directive 'default-src' contains an invalid source: ''unsafe-dynamic''. It will be ignored.
+The source list for the Content Security Policy directive 'default-src' contains an invalid source: ''unsafe-dynamic''. It will be ignored.
+The source list for the Content Security Policy directive 'default-src' contains an invalid source: ''unsafe-dynamic''. It will be ignored.
+The source list for the Content Security Policy directive 'default-src' contains an invalid source: ''unsafe-dynamic''. It will be ignored.
+The source list for the Content Security Policy directive 'default-src' contains an invalid source: ''unsafe-dynamic''. It will be ignored.
+The source list for the Content Security Policy directive 'default-src' contains an invalid source: ''unsafe-dynamic''. It will be ignored.
+The source list for the Content Security Policy directive 'default-src' contains an invalid source: ''unsafe-dynamic''. It will be ignored.
+The source list for the Content Security Policy directive 'default-src' contains an invalid source: ''unsafe-dynamic''. It will be ignored.
+The source list for the Content Security Policy directive 'default-src' contains an invalid source: ''unsafe-dynamic''. It will be ignored.
+The source list for the Content Security Policy directive 'default-src' contains an invalid source: ''unsafe-dynamic''. It will be ignored.
+The source list for the Content Security Policy directive 'default-src' contains an invalid source: ''unsafe-dynamic''. It will be ignored.
+The source list for the Content Security Policy directive 'default-src' contains an invalid source: ''unsafe-dynamic''. It will be ignored.
+The source list for the Content Security Policy directive 'default-src' contains an invalid source: ''unsafe-dynamic''. It will be ignored.
+The source list for the Content Security Policy directive 'default-src' contains an invalid source: ''unsafe-dynamic''. It will be ignored.
+The Content-Security-Policy directive 'default-src' contains 'report-uri' as a source expression. Did you want to add it as a directive and forget a semicolon?
+The Content-Security-Policy directive 'default-src' contains 'report-uri' as a source expression. Did you want to add it as a directive and forget a semicolon?
+The Content-Security-Policy directive 'default-src' contains 'report-uri' as a source expression. Did you want to add it as a directive and forget a semicolon?
+The Content-Security-Policy directive 'default-src' contains 'report-uri' as a source expression. Did you want to add it as a directive and forget a semicolon?
+The Content-Security-Policy directive 'default-src' contains 'report-uri' as a source expression. Did you want to add it as a directive and forget a semicolon?
+The Content-Security-Policy directive 'default-src' contains 'report-uri' as a source expression. Did you want to add it as a directive and forget a semicolon?
+The Content-Security-Policy directive 'default-src' contains 'report-uri' as a source expression. Did you want to add it as a directive and forget a semicolon?
+The Content-Security-Policy directive 'default-src' contains 'report-uri' as a source expression. Did you want to add it as a directive and forget a semicolon?
+The Content-Security-Policy directive 'default-src' contains 'report-uri' as a source expression. Did you want to add it as a directive and forget a semicolon?
+The Content-Security-Policy directive 'default-src' contains 'report-uri' as a source expression. Did you want to add it as a directive and forget a semicolon?
+The Content-Security-Policy directive 'default-src' contains 'report-uri' as a source expression. Did you want to add it as a directive and forget a semicolon?
+The Content-Security-Policy directive 'default-src' contains 'report-uri' as a source expression. Did you want to add it as a directive and forget a semicolon?
+The Content-Security-Policy directive 'default-src' contains 'report-uri' as a source expression. Did you want to add it as a directive and forget a semicolon?
+The Content-Security-Policy directive 'default-src' contains 'report-uri' as a source expression. Did you want to add it as a directive and forget a semicolon?
+The Content-Security-Policy directive 'default-src' contains 'report-uri' as a source expression. Did you want to add it as a directive and forget a semicolon?
+The Content-Security-Policy directive 'default-src' contains 'report-uri' as a source expression. Did you want to add it as a directive and forget a semicolon?
+The Content-Security-Policy directive 'default-src' contains 'report-uri' as a source expression. Did you want to add it as a directive and forget a semicolon?
+The Content-Security-Policy directive 'default-src' contains 'report-uri' as a source expression. Did you want to add it as a directive and forget a semicolon?
+The source list for Content Security Policy directive 'default-src' contains a source with an invalid path: '/api/4509669501698048/security/?sentry_key=7eb3d90eb4660416caf507087367e67e'. The query component, including the '?', will be ignored.
+The source list for Content Security Policy directive 'default-src' contains a source with an invalid path: '/api/4509669501698048/security/?sentry_key=7eb3d90eb4660416caf507087367e67e'. The query component, including the '?', will be ignored.
+The source list for Content Security Policy directive 'default-src' contains a source with an invalid path: '/api/4509669501698048/security/?sentry_key=7eb3d90eb4660416caf507087367e67e'. The query component, including the '?', will be ignored.
+The source list for Content Security Policy directive 'default-src' contains a source with an invalid path: '/api/4509669501698048/security/?sentry_key=7eb3d90eb4660416caf507087367e67e'. The query component, including the '?', will be ignored.
+The source list for Content Security Policy directive 'default-src' contains a source with an invalid path: '/api/4509669501698048/security/?sentry_key=7eb3d90eb4660416caf507087367e67e'. The query component, including the '?', will be ignored.
+The source list for Content Security Policy directive 'default-src' contains a source with an invalid path: '/api/4509669501698048/security/?sentry_key=7eb3d90eb4660416caf507087367e67e'. The query component, including the '?', will be ignored.
+The source list for Content Security Policy directive 'default-src' contains a source with an invalid path: '/api/4509669501698048/security/?sentry_key=7eb3d90eb4660416caf507087367e67e'. The query component, including the '?', will be ignored.
+The source list for Content Security Policy directive 'default-src' contains a source with an invalid path: '/api/4509669501698048/security/?sentry_key=7eb3d90eb4660416caf507087367e67e'. The query component, including the '?', will be ignored.
+The source list for Content Security Policy directive 'default-src' contains a source with an invalid path: '/api/4509669501698048/security/?sentry_key=7eb3d90eb4660416caf507087367e67e'. The query component, including the '?', will be ignored.
+The source list for Content Security Policy directive 'default-src' contains a source with an invalid path: '/api/4509669501698048/security/?sentry_key=7eb3d90eb4660416caf507087367e67e'. The query component, including the '?', will be ignored.
+The source list for Content Security Policy directive 'default-src' contains a source with an invalid path: '/api/4509669501698048/security/?sentry_key=7eb3d90eb4660416caf507087367e67e'. The query component, including the '?', will be ignored.
+The source list for Content Security Policy directive 'default-src' contains a source with an invalid path: '/api/4509669501698048/security/?sentry_key=7eb3d90eb4660416caf507087367e67e'. The query component, including the '?', will be ignored.
+The source list for Content Security Policy directive 'default-src' contains a source with an invalid path: '/api/4509669501698048/security/?sentry_key=7eb3d90eb4660416caf507087367e67e'. The query component, including the '?', will be ignored.
+The source list for Content Security Policy directive 'default-src' contains a source with an invalid path: '/api/4509669501698048/security/?sentry_key=7eb3d90eb4660416caf507087367e67e'. The query component, including the '?', will be ignored.
+The source list for Content Security Policy directive 'default-src' contains a source with an invalid path: '/api/4509669501698048/security/?sentry_key=7eb3d90eb4660416caf507087367e67e'. The query component, including the '?', will be ignored.
+The source list for Content Security Policy directive 'default-src' contains a source with an invalid path: '/api/4509669501698048/security/?sentry_key=7eb3d90eb4660416caf507087367e67e'. The query component, including the '?', will be ignored.
+The source list for Content Security Policy directive 'default-src' contains a source with an invalid path: '/api/4509669501698048/security/?sentry_key=7eb3d90eb4660416caf507087367e67e'. The query component, including the '?', will be ignored.
+The source list for Content Security Policy directive 'default-src' contains a source with an invalid path: '/api/4509669501698048/security/?sentry_key=7eb3d90eb4660416caf507087367e67e'. The query component, including the '?', will be ignored.
+ 
+      /////////////////////
+   ///////////////////////////
+  ////////@@@@@@@//////////////
+  ////////@@@@@@@//////////////
+  ////////@@@@@@@//////////////        Curious and driven?
+  ///////////////@@@@@@@///////        Work with us!
+  ///////////////@@@@@@@///////
+  ///////////////@@@@@@@///////        https://join.replit.com/hack.with.us
+  ////////@@@@@@@//////////////
+  ////////@@@@@@@//////////////
+  ////////@@@@@@#//////////////
+   ///////////////////////////
+      /////////////////////
+      
+riddle:1 The source list for the Content Security Policy directive 'default-src' contains an invalid source: ''unsafe-dynamic''. It will be ignored.
+riddle:1 The Content-Security-Policy directive 'default-src' contains 'report-uri' as a source expression. Did you want to add it as a directive and forget a semicolon?
+riddle:1 The source list for Content Security Policy directive 'default-src' contains a source with an invalid path: '/api/4509669501698048/security/?sentry_key=7eb3d90eb4660416caf507087367e67e'. The query component, including the '?', will be ignored.
+ [LaunchDarkly] LaunchDarkly client initialized
+analytics.tiktok.com/i18n/pixel/events.js?sdkid=D004GE3C77U8PIVDSDJG&lib=ttq:1  Failed to load resource: net::ERR_NAME_NOT_RESOLVED
+Error while parsing the 'sandbox' attribute: 'allow-downloads-without-user-activation' is an invalid sandbox flag.
+Error while parsing the 'sandbox' attribute: 'allow-downloads-without-user-activation' is an invalid sandbox flag.
+Error while parsing the 'sandbox' attribute: 'allow-downloads-without-user-activation' is an invalid sandbox flag.
+Error while parsing the 'sandbox' attribute: 'allow-downloads-without-user-activation' is an invalid sandbox flag.
+Error while parsing the 'sandbox' attribute: 'allow-downloads-without-user-activation' is an invalid sandbox flag.
+Error while parsing the 'sandbox' attribute: 'allow-downloads-without-user-activation' is an invalid sandbox flag.
+Error while parsing the 'sandbox' attribute: 'allow-downloads-without-user-activation' is an invalid sandbox flag.
+Error while parsing the 'sandbox' attribute: 'allow-downloads-without-user-activation' is an invalid sandbox flag.
+Error while parsing the 'sandbox' attribute: 'allow-downloads-without-user-activation' is an invalid sandbox flag.
+Error while parsing the 'sandbox' attribute: 'allow-downloads-without-user-activation' is an invalid sandbox flag.
+ Unrecognized feature: 'ambient-light-sensor'.
+_ @ framework-2a1e32d685d2e752.js:1
+ Unrecognized feature: 'battery'.
+_ @ framework-2a1e32d685d2e752.js:1
+ Unrecognized feature: 'execution-while-not-rendered'.
+_ @ framework-2a1e32d685d2e752.js:1
+ Unrecognized feature: 'execution-while-out-of-viewport'.
+_ @ framework-2a1e32d685d2e752.js:1
+ Unrecognized feature: 'layout-animations'.
+_ @ framework-2a1e32d685d2e752.js:1
+ Unrecognized feature: 'legacy-image-formats'.
+_ @ framework-2a1e32d685d2e752.js:1
+ Unrecognized feature: 'navigation-override'.
+_ @ framework-2a1e32d685d2e752.js:1
+ Unrecognized feature: 'oversized-images'.
+_ @ framework-2a1e32d685d2e752.js:1
+ Unrecognized feature: 'publickey-credentials'.
+_ @ framework-2a1e32d685d2e752.js:1
+ Unrecognized feature: 'speaker-selection'.
+_ @ framework-2a1e32d685d2e752.js:1
+ Unrecognized feature: 'unoptimized-images'.
+_ @ framework-2a1e32d685d2e752.js:1
+ Unrecognized feature: 'unsized-media'.
+_ @ framework-2a1e32d685d2e752.js:1
+ Unrecognized feature: 'pointer-lock'.
+_ @ framework-2a1e32d685d2e752.js:1
+ Allow attribute will take precedence over 'allowfullscreen'.
+_ @ framework-2a1e32d685d2e752.js:1
+ Allow attribute will take precedence over 'allowpaymentrequest'.
+_ @ framework-2a1e32d685d2e752.js:1
+riddle:1 Banner not shown: beforeinstallpromptevent.preventDefault() called. The page must call beforeinstallpromptevent.prompt() to show the banner.
+ Failed when connecting: Connection closed (code: 1006)
+(anonymous) @ _app-806746a5d682c312.js:34
+ Failed when connecting: Connection closed (code: 1006)
+(anonymous) @ _app-806746a5d682c312.js:34
+ Failed when connecting: Connection closed (code: 1006)
+(anonymous) @ _app-806746a5d682c312.js:34
+ Failed when connecting: Connection closed (code: 1006)
+(anonymous) @ _app-806746a5d682c312.js:34
+ Failed when connecting: Connection closed (code: 1006)
+(anonymous) @ _app-806746a5d682c312.js:34
+t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://20a5a677-e8db-426b-93ca-0ab4131b22a7-00-pwrlj8iul6vd.janeway.replit.dev&size=32:1  Failed to load resource: the server responded with a status of 404 ()
+t1.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://20a5a677-e8db-426b-93ca-0ab4131b22a7-00-pwrlj8iul6vd.janeway.replit.dev/&size=32:1  Failed to load resource: the server responded with a status of 404 ()
+ Failed when connecting: Connection closed (code: 1006)
+(anonymous) @ _app-806746a5d682c312.js:34
+value @ 5333.56c11b8775e8368a.js:1
+value @ 5333.56c11b8775e8368a.js:1
+_websocket.onclose @ 5333.56c11b8775e8368a.js:1
+ Failed when connecting: Connection closed (code: 1006)
+(anonymous) @ _app-806746a5d682c312.js:34
+value @ 5333.56c11b8775e8368a.js:1
+value @ 5333.56c11b8775e8368a.js:1
+_websocket.onclose @ 5333.56c11b8775e8368a.js:1
+ Failed when connecting: Connection closed (code: 1006)
+(anonymous) @ _app-806746a5d682c312.js:34
+value @ 5333.56c11b8775e8368a.js:1
+value @ 5333.56c11b8775e8368a.js:1
+_websocket.onclose @ 5333.56c11b8775e8368a.js:1
+ Failed when connecting: Connection closed (code: 1006)
+(anonymous) @ _app-806746a5d682c312.js:34
+value @ 5333.56c11b8775e8368a.js:1
+value @ 5333.56c11b8775e8368a.js:1
+_websocket.onclose @ 5333.56c11b8775e8368a.js:1
+ Failed when connecting: Connection closed (code: 1006)
+(anonymous) @ _app-806746a5d682c312.js:34
+value @ 5333.56c11b8775e8368a.js:1
+value @ 5333.56c11b8775e8368a.js:1
+_websocket.onclose @ 5333.56c11b8775e8368a.js:1
+ Failed when connecting: Connection closed (code: 1006)
+(anonymous) @ _app-806746a5d682c312.js:34
+value @ 5333.56c11b8775e8368a.js:1
+value @ 5333.56c11b8775e8368a.js:1
+_websocket.onclose @ 5333.56c11b8775e8368a.js:1
+ Failed when connecting: Connection closed (code: 1006)
+(anonymous) @ _app-806746a5d682c312.js:34
+value @ 5333.56c11b8775e8368a.js:1
+value @ 5333.56c11b8775e8368a.js:1
+_websocket.onclose @ 5333.56c11b8775e8368a.js:1
+ Failed when connecting: Connection closed (code: 1006)
+(anonymous) @ _app-806746a5d682c312.js:34
+value @ 5333.56c11b8775e8368a.js:1
+value @ 5333.56c11b8775e8368a.js:1
+_websocket.onclose @ 5333.56c11b8775e8368a.js:1
+ Failed when connecting: Connection closed (code: 1006)
+(anonymous) @ _app-806746a5d682c312.js:34
+value @ 5333.56c11b8775e8368a.js:1
+value @ 5333.56c11b8775e8368a.js:1
+_websocket.onclose @ 5333.56c11b8775e8368a.js:1
+ Failed when connecting: Connection closed (code: 1006)
+(anonymous) @ _app-806746a5d682c312.js:34
+value @ 5333.56c11b8775e8368a.js:1
+value @ 5333.56c11b8775e8368a.js:1
+_websocket.onclose @ 5333.56c11b8775e8368a.js:1
+ Failed when connecting: Connection closed (code: 1006)
+(anonymous) @ _app-806746a5d682c312.js:34
+value @ 5333.56c11b8775e8368a.js:1
+value @ 5333.56c11b8775e8368a.js:1
+_websocket.onclose @ 5333.56c11b8775e8368a.js:1
+ Failed when connecting: Connection closed (code: 1006)
+(anonymous) @ _app-806746a5d682c312.js:34
+value @ 5333.56c11b8775e8368a.js:1
+value @ 5333.56c11b8775e8368a.js:1
+_websocket.onclose @ 5333.56c11b8775e8368a.js:1
+ Failed when connecting: Connection closed (code: 1006)
+(anonymous) @ _app-806746a5d682c312.js:34
+value @ 5333.56c11b8775e8368a.js:1
+value @ 5333.56c11b8775e8368a.js:1
+_websocket.onclose @ 5333.56c11b8775e8368a.js:1
+ Failed when connecting: Connection closed (code: 1006)
+(anonymous) @ _app-806746a5d682c312.js:34
+value @ 5333.56c11b8775e8368a.js:1
+value @ 5333.56c11b8775e8368a.js:1
+_websocket.onclose @ 5333.56c11b8775e8368a.js:1
+ Failed when connecting: Connection closed (code: 1006)
+(anonymous) @ _app-806746a5d682c312.js:34
+value @ 5333.56c11b8775e8368a.js:1
+value @ 5333.56c11b8775e8368a.js:1
+_websocket.onclose @ 5333.56c11b8775e8368a.js:1
+ Failed when connecting: Connection closed (code: 1006)
+(anonymous) @ _app-806746a5d682c312.js:34
+value @ 5333.56c11b8775e8368a.js:1
+value @ 5333.56c11b8775e8368a.js:1
+_websocket.onclose @ 5333.56c11b8775e8368a.js:1
+ Failed when connecting: Connection closed (code: 1006)
+(anonymous) @ _app-806746a5d682c312.js:34
+value @ 5333.56c11b8775e8368a.js:1
+value @ 5333.56c11b8775e8368a.js:1
+_websocket.onclose @ 5333.56c11b8775e8368a.js:1
+ Failed when connecting: Connection closed (code: 1006)
+(anonymous) @ _app-806746a5d682c312.js:34
+value @ 5333.56c11b8775e8368a.js:1
+value @ 5333.56c11b8775e8368a.js:1
+_websocket.onclose @ 5333.56c11b8775e8368a.js:1
+ Failed when connecting: Connection closed (code: 1006)
+(anonymous) @ _app-806746a5d682c312.js:34
+value @ 5333.56c11b8775e8368a.js:1
+value @ 5333.56c11b8775e8368a.js:1
+_websocket.onclose @ 5333.56c11b8775e8368a.js:1
+ Failed when connecting: Connection closed (code: 1006)
+(anonymous) @ _app-806746a5d682c312.js:34
+value @ 5333.56c11b8775e8368a.js:1
+value @ 5333.56c11b8775e8368a.js:1
+_websocket.onclose @ 5333.56c11b8775e8368a.js:1
+ Failed when connecting: Connection closed (code: 1006)
+(anonymous) @ _app-806746a5d682c312.js:34
+value @ 5333.56c11b8775e8368a.js:1
+value @ 5333.56c11b8775e8368a.js:1
+_websocket.onclose @ 5333.56c11b8775e8368a.js:1
+ Failed when connecting: Connection closed (code: 1006)
+(anonymous) @ _app-806746a5d682c312.js:34
+value @ 5333.56c11b8775e8368a.js:1
+value @ 5333.56c11b8775e8368a.js:1
+_websocket.onclose @ 5333.56c11b8775e8368a.js:1
+ Failed when connecting: Connection closed (code: 1006)
+(anonymous) @ _app-806746a5d682c312.js:34
+value @ 5333.56c11b8775e8368a.js:1
+value @ 5333.56c11b8775e8368a.js:1
+_websocket.onclose @ 5333.56c11b8775e8368a.js:1
+ Failed when connecting: Connection closed (code: 1006)
+(anonymous) @ _app-806746a5d682c312.js:34
+value @ 5333.56c11b8775e8368a.js:1
+value @ 5333.56c11b8775e8368a.js:1
+_websocket.onclose @ 5333.56c11b8775e8368a.js:1
+ Failed when connecting: Connection closed (code: 1006)
+(anonymous) @ _app-806746a5d682c312.js:34
+value @ 5333.56c11b8775e8368a.js:1
+value @ 5333.56c11b8775e8368a.js:1
+_websocket.onclose @ 5333.56c11b8775e8368a.js:1
+ Failed when connecting: Connection closed (code: 1006)
+(anonymous) @ _app-806746a5d682c312.js:34
+value @ 5333.56c11b8775e8368a.js:1
+value @ 5333.56c11b8775e8368a.js:1
+_websocket.onclose @ 5333.56c11b8775e8368a.js:1
+ Failed when connecting: Connection closed (code: 1006)
+(anonymous) @ _app-806746a5d682c312.js:34
+value @ 5333.56c11b8775e8368a.js:1
+value @ 5333.56c11b8775e8368a.js:1
+_websocket.onclose @ 5333.56c11b8775e8368a.js:1
+ Failed when connecting: Connection closed (code: 1006)
+(anonymous) @ _app-806746a5d682c312.js:34
+value @ 5333.56c11b8775e8368a.js:1
+value @ 5333.56c11b8775e8368a.js:1
+_websocket.onclose @ 5333.56c11b8775e8368a.js:1
+ Failed when connecting: Connection closed (code: 1006)
+(anonymous) @ _app-806746a5d682c312.js:34
+value @ 5333.56c11b8775e8368a.js:1
+value @ 5333.56c11b8775e8368a.js:1
+_websocket.onclose @ 5333.56c11b8775e8368a.js:1
+ Failed when connecting: Connection closed (code: 1006)
+(anonymous) @ _app-806746a5d682c312.js:34
+value @ 5333.56c11b8775e8368a.js:1
+value @ 5333.56c11b8775e8368a.js:1
+_websocket.onclose @ 5333.56c11b8775e8368a.js:1
+ Failed when connecting: Connection closed (code: 1006)
+(anonymous) @ _app-806746a5d682c312.js:34
+value @ 5333.56c11b8775e8368a.js:1
+value @ 5333.56c11b8775e8368a.js:1
+_websocket.onclose @ 5333.56c11b8775e8368a.js:1
+ Failed when connecting: Connection closed (code: 1006)
+(anonymous) @ _app-806746a5d682c312.js:34
+value @ 5333.56c11b8775e8368a.js:1
+value @ 5333.56c11b8775e8368a.js:1
+_websocket.onclose @ 5333.56c11b8775e8368a.js:1
+ Failed when connecting: Connection closed (code: 1006)
+(anonymous) @ _app-806746a5d682c312.js:34
+value @ 5333.56c11b8775e8368a.js:1
+value @ 5333.56c11b8775e8368a.js:1
+_websocket.onclose @ 5333.56c11b8775e8368a.js:1
+ Failed when connecting: Connection closed (code: 1006)
+(anonymous) @ _app-806746a5d682c312.js:34
+value @ 5333.56c11b8775e8368a.js:1
+value @ 5333.56c11b8775e8368a.js:1
+_websocket.onclose @ 5333.56c11b8775e8368a.js:1
+ Failed when connecting: Connection closed (code: 1006)
+(anonymous) @ _app-806746a5d682c312.js:34
+value @ 5333.56c11b8775e8368a.js:1
+value @ 5333.56c11b8775e8368a.js:1
+_websocket.onclose @ 5333.56c11b8775e8368a.js:1
+ Failed when connecting: Connection closed (code: 1006)
+(anonymous) @ _app-806746a5d682c312.js:34
+value @ 5333.56c11b8775e8368a.js:1
+value @ 5333.56c11b8775e8368a.js:1
+_websocket.onclose @ 5333.56c11b8775e8368a.js:1
+ Failed when connecting: Connection closed (code: 1006)
+(anonymous) @ _app-806746a5d682c312.js:34
+value @ 5333.56c11b8775e8368a.js:1
+value @ 5333.56c11b8775e8368a.js:1
+_websocket.onclose @ 5333.56c11b8775e8368a.js:1
+ Failed when connecting: Connection closed (code: 1006)
+(anonymous) @ _app-806746a5d682c312.js:34
+value @ 5333.56c11b8775e8368a.js:1
+value @ 5333.56c11b8775e8368a.js:1
+_websocket.onclose @ 5333.56c11b8775e8368a.js:1
+ Failed when connecting: Connection closed (code: 1006)
+(anonymous) @ _app-806746a5d682c312.js:34
+value @ 5333.56c11b8775e8368a.js:1
+value @ 5333.56c11b8775e8368a.js:1
+_websocket.onclose @ 5333.56c11b8775e8368a.js:1
+ Failed when connecting: Connection closed (code: 1006)
+(anonymous) @ _app-806746a5d682c312.js:34
+value @ 5333.56c11b8775e8368a.js:1
+value @ 5333.56c11b8775e8368a.js:1
+_websocket.onclose @ 5333.56c11b8775e8368a.js:1
+ Failed when connecting: Connection closed (code: 1006)
+(anonymous) @ _app-806746a5d682c312.js:34
+value @ 5333.56c11b8775e8368a.js:1
+value @ 5333.56c11b8775e8368a.js:1
+_websocket.onclose @ 5333.56c11b8775e8368a.js:1
+ Failed when connecting: Connection closed (code: 1006)
+(anonymous) @ _app-806746a5d682c312.js:34
+value @ 5333.56c11b8775e8368a.js:1
+value @ 5333.56c11b8775e8368a.js:1
+_websocket.onclose @ 5333.56c11b8775e8368a.js:1
+ Failed when connecting: Connection closed (code: 1006)
+(anonymous) @ _app-806746a5d682c312.js:34
+value @ 5333.56c11b8775e8368a.js:1
+value @ 5333.56c11b8775e8368a.js:1
+_websocket.onclose @ 5333.56c11b8775e8368a.js:1
+ Failed when connecting: Connection closed (code: 1006)
+(anonymous) @ _app-806746a5d682c312.js:34
+value @ 5333.56c11b8775e8368a.js:1
+value @ 5333.56c11b8775e8368a.js:1
+_websocket.onclose @ 5333.56c11b8775e8368a.js:1
+ Failed when connecting: Connection closed (code: 1006)
+(anonymous) @ _app-806746a5d682c312.js:34
+value @ 5333.56c11b8775e8368a.js:1
+value @ 5333.56c11b8775e8368a.js:1
+_websocket.onclose @ 5333.56c11b8775e8368a.js:1
+ Failed when connecting: Connection closed (code: 1006)
+(anonymous) @ _app-806746a5d682c312.js:34
+value @ 5333.56c11b8775e8368a.js:1
+value @ 5333.56c11b8775e8368a.js:1
+_websocket.onclose @ 5333.56c11b8775e8368a.js:1
+ Failed when connecting: Connection closed (code: 1006)
+(anonymous) @ _app-806746a5d682c312.js:34
+value @ 5333.56c11b8775e8368a.js:1
+value @ 5333.56c11b8775e8368a.js:1
+_websocket.onclose @ 5333.56c11b8775e8368a.js:1
+ Failed when connecting: Connection closed (code: 1006)
+(anonymous) @ _app-806746a5d682c312.js:34
+value @ 5333.56c11b8775e8368a.js:1
+value @ 5333.56c11b8775e8368a.js:1
+_websocket.onclose @ 5333.56c11b8775e8368a.js:1
+ Failed when connecting: Connection closed (code: 1006)
+(anonymous) @ _app-806746a5d682c312.js:34
+value @ 5333.56c11b8775e8368a.js:1
+value @ 5333.56c11b8775e8368a.js:1
+_websocket.onclose @ 5333.56c11b8775e8368a.js:1
+ Failed when connecting: Connection closed (code: 1006)
+(anonymous) @ _app-806746a5d682c312.js:34
+value @ 5333.56c11b8775e8368a.js:1
+value @ 5333.56c11b8775e8368a.js:1
+_websocket.onclose @ 5333.56c11b8775e8368a.js:1
+ Failed when connecting: Connection closed (code: 1006)
+(anonymous) @ _app-806746a5d682c312.js:34
+value @ 5333.56c11b8775e8368a.js:1
+value @ 5333.56c11b8775e8368a.js:1
+_websocket.onclose @ 5333.56c11b8775e8368a.js:1
+ Failed when connecting: Connection closed (code: 1006)
+(anonymous) @ _app-806746a5d682c312.js:34
+value @ 5333.56c11b8775e8368a.js:1
+value @ 5333.56c11b8775e8368a.js:1
+_websocket.onclose @ 5333.56c11b8775e8368a.js:1
+ Failed when connecting: Connection closed (code: 1006)
+(anonymous) @ _app-806746a5d682c312.js:34
+value @ 5333.56c11b8775e8368a.js:1
+value @ 5333.56c11b8775e8368a.js:1
+_websocket.onclose @ 5333.56c11b8775e8368a.js:1
+ Failed when connecting: Connection closed (code: 1006)
+(anonymous) @ _app-806746a5d682c312.js:34
+value @ 5333.56c11b8775e8368a.js:1
+value @ 5333.56c11b8775e8368a.js:1
+_websocket.onclose @ 5333.56c11b8775e8368a.js:1
+ Failed when connecting: Connection closed (code: 1006)
+(anonymous) @ _app-806746a5d682c312.js:34
+value @ 5333.56c11b8775e8368a.js:1
+value @ 5333.56c11b8775e8368a.js:1
+_websocket.onclose @ 5333.56c11b8775e8368a.js:1
+ Failed when connecting: Connection closed (code: 1006)
+(anonymous) @ _app-806746a5d682c312.js:34
+value @ 5333.56c11b8775e8368a.js:1
+value @ 5333.56c11b8775e8368a.js:1
+_websocket.onclose @ 5333.56c11b8775e8368a.js:1
+ Failed when connecting: Connection closed (code: 1006)
+(anonymous) @ _app-806746a5d682c312.js:34
+value @ 5333.56c11b8775e8368a.js:1
+value @ 5333.56c11b8775e8368a.js:1
+_websocket.onclose @ 5333.56c11b8775e8368a.js:1
+ Failed when connecting: Connection closed (code: 1006)
+(anonymous) @ _app-806746a5d682c312.js:34
+value @ 5333.56c11b8775e8368a.js:1
+value @ 5333.56c11b8775e8368a.js:1
+_websocket.onclose @ 5333.56c11b8775e8368a.js:1
+ Failed when connecting: Connection closed (code: 1006)
+(anonymous) @ _app-806746a5d682c312.js:34
+value @ 5333.56c11b8775e8368a.js:1
+value @ 5333.56c11b8775e8368a.js:1
+_websocket.onclose @ 5333.56c11b8775e8368a.js:1
+ Failed when connecting: Connection closed (code: 1006)
+(anonymous) @ _app-806746a5d682c312.js:34
+value @ 5333.56c11b8775e8368a.js:1
+value @ 5333.56c11b8775e8368a.js:1
+_websocket.onclose @ 5333.56c11b8775e8368a.js:1
+ Failed when connecting: Connection closed (code: 1006)
+(anonymous) @ _app-806746a5d682c312.js:34
+value @ 5333.56c11b8775e8368a.js:1
+value @ 5333.56c11b8775e8368a.js:1
+_websocket.onclose @ 5333.56c11b8775e8368a.js:1
+ Failed when connecting: Connection closed (code: 1006)
+(anonymous) @ _app-806746a5d682c312.js:34
+value @ 5333.56c11b8775e8368a.js:1
+value @ 5333.56c11b8775e8368a.js:1
+_websocket.onclose @ 5333.56c11b8775e8368a.js:1
+ Failed when connecting: Connection closed (code: 1006)
+(anonymous) @ _app-806746a5d682c312.js:34
+value @ 5333.56c11b8775e8368a.js:1
+value @ 5333.56c11b8775e8368a.js:1
+_websocket.onclose @ 5333.56c11b8775e8368a.js:1
+ Failed when connecting: Connection closed (code: 1006)
+(anonymous) @ _app-806746a5d682c312.js:34
+value @ 5333.56c11b8775e8368a.js:1
+value @ 5333.56c11b8775e8368a.js:1
+_websocket.onclose @ 5333.56c11b8775e8368a.js:1
+ Failed when connecting: Connection closed (code: 1006)
+(anonymous) @ _app-806746a5d682c312.js:34
+value @ 5333.56c11b8775e8368a.js:1
+value @ 5333.56c11b8775e8368a.js:1
+_websocket.onclose @ 5333.56c11b8775e8368a.js:1
+ Failed when connecting: Connection closed (code: 1006)
+(anonymous) @ _app-806746a5d682c312.js:34
+value @ 5333.56c11b8775e8368a.js:1
+value @ 5333.56c11b8775e8368a.js:1
+_websocket.onclose @ 5333.56c11b8775e8368a.js:1
+ Failed when connecting: Connection closed (code: 1006)
+(anonymous) @ _app-806746a5d682c312.js:34
+value @ 5333.56c11b8775e8368a.js:1
+value @ 5333.56c11b8775e8368a.js:1
+_websocket.onclose @ 5333.56c11b8775e8368a.js:1
+ Failed when connecting: Connection closed (code: 1006)
+(anonymous) @ _app-806746a5d682c312.js:34
+value @ 5333.56c11b8775e8368a.js:1
+value @ 5333.56c11b8775e8368a.js:1
+_websocket.onclose @ 5333.56c11b8775e8368a.js:1
+ Failed when connecting: Connection closed (code: 1006)
+(anonymous) @ _app-806746a5d682c312.js:34
+value @ 5333.56c11b8775e8368a.js:1
+value @ 5333.56c11b8775e8368a.js:1
+_websocket.onclose @ 5333.56c11b8775e8368a.js:1
+ Failed when connecting: Connection closed (code: 1006)
+(anonymous) @ _app-806746a5d682c312.js:34
+value @ 5333.56c11b8775e8368a.js:1
+value @ 5333.56c11b8775e8368a.js:1
+_websocket.onclose @ 5333.56c11b8775e8368a.js:1
+ Failed when connecting: Connection closed (code: 1006)
+(anonymous) @ _app-806746a5d682c312.js:34
+value @ 5333.56c11b8775e8368a.js:1
+value @ 5333.56c11b8775e8368a.js:1
+_websocket.onclose @ 5333.56c11b8775e8368a.js:1
+ Failed when connecting: Connection closed (code: 1006)
+(anonymous) @ _app-806746a5d682c312.js:34
+value @ 5333.56c11b8775e8368a.js:1
+value @ 5333.56c11b8775e8368a.js:1
+_websocket.onclose @ 5333.56c11b8775e8368a.js:1
+ Failed when connecting: Connection closed (code: 1006)
+(anonymous) @ _app-806746a5d682c312.js:34
+value @ 5333.56c11b8775e8368a.js:1
+value @ 5333.56c11b8775e8368a.js:1
+_websocket.onclose @ 5333.56c11b8775e8368a.js:1
+ Failed when connecting: Connection closed (code: 1006)
+(anonymous) @ _app-806746a5d682c312.js:34
+value @ 5333.56c11b8775e8368a.js:1
+value @ 5333.56c11b8775e8368a.js:1
+_websocket.onclose @ 5333.56c11b8775e8368a.js:1
+ Failed when connecting: Connection closed (code: 1006)
+(anonymous) @ _app-806746a5d682c312.js:34
+value @ 5333.56c11b8775e8368a.js:1
+value @ 5333.56c11b8775e8368a.js:1
+_websocket.onclose @ 5333.56c11b8775e8368a.js:1
+ Failed when connecting: Connection closed (code: 1006)
+(anonymous) @ _app-806746a5d682c312.js:34
+value @ 5333.56c11b8775e8368a.js:1
+value @ 5333.56c11b8775e8368a.js:1
+_websocket.onclose @ 5333.56c11b8775e8368a.js:1
+ Failed when connecting: Connection closed (code: 1006)
+(anonymous) @ _app-806746a5d682c312.js:34
+value @ 5333.56c11b8775e8368a.js:1
+value @ 5333.56c11b8775e8368a.js:1
+_websocket.onclose @ 5333.56c11b8775e8368a.js:1
+ Failed when connecting: Connection closed (code: 1006)
+(anonymous) @ _app-806746a5d682c312.js:34
+value @ 5333.56c11b8775e8368a.js:1
+value @ 5333.56c11b8775e8368a.js:1
+_websocket.onclose @ 5333.56c11b8775e8368a.js:1
+ Failed when connecting: Connection closed (code: 1006)
+(anonymous) @ _app-806746a5d682c312.js:34
+value @ 5333.56c11b8775e8368a.js:1
+value @ 5333.56c11b8775e8368a.js:1
+_websocket.onclose @ 5333.56c11b8775e8368a.js:1
+ Failed when connecting: Connection closed (code: 1006)
+(anonymous) @ _app-806746a5d682c312.js:34
+value @ 5333.56c11b8775e8368a.js:1
+value @ 5333.56c11b8775e8368a.js:1
+_websocket.onclose @ 5333.56c11b8775e8368a.js:1
+ Failed when connecting: Connection closed (code: 1006)
+(anonymous) @ _app-806746a5d682c312.js:34
+value @ 5333.56c11b8775e8368a.js:1
+value @ 5333.56c11b8775e8368a.js:1
+_websocket.onclose @ 5333.56c11b8775e8368a.js:1
+ Failed when connecting: Connection closed (code: 1006)
+(anonymous) @ _app-806746a5d682c312.js:34
+value @ 5333.56c11b8775e8368a.js:1
+value @ 5333.56c11b8775e8368a.js:1
+_websocket.onclose @ 5333.56c11b8775e8368a.js:1
+ Failed when connecting: Connection closed (code: 1006)
+(anonymous) @ _app-806746a5d682c312.js:34
+value @ 5333.56c11b8775e8368a.js:1
+value @ 5333.56c11b8775e8368a.js:1
+_websocket.onclose @ 5333.56c11b8775e8368a.js:1
+ Failed when connecting: Connection closed (code: 1006)
+(anonymous) @ _app-806746a5d682c312.js:34
+value @ 5333.56c11b8775e8368a.js:1
+value @ 5333.56c11b8775e8368a.js:1
+_websocket.onclose @ 5333.56c11b8775e8368a.js:1
+ Failed when connecting: Connection closed (code: 1006)
+(anonymous) @ _app-806746a5d682c312.js:34
+value @ 5333.56c11b8775e8368a.js:1
+value @ 5333.56c11b8775e8368a.js:1
+_websocket.onclose @ 5333.56c11b8775e8368a.js:1
+ Failed when connecting: Connection closed (code: 1006)
+(anonymous) @ _app-806746a5d682c312.js:34
+value @ 5333.56c11b8775e8368a.js:1
+value @ 5333.56c11b8775e8368a.js:1
+_websocket.onclose @ 5333.56c11b8775e8368a.js:1
+ Failed when connecting: Connection closed (code: 1006)
+(anonymous) @ _app-806746a5d682c312.js:34
+value @ 5333.56c11b8775e8368a.js:1
+value @ 5333.56c11b8775e8368a.js:1
+_websocket.onclose @ 5333.56c11b8775e8368a.js:1
+ Failed when connecting: Connection closed (code: 1006)
+(anonymous) @ _app-806746a5d682c312.js:34
+value @ 5333.56c11b8775e8368a.js:1
+value @ 5333.56c11b8775e8368a.js:1
+_websocket.onclose @ 5333.56c11b8775e8368a.js:1
+ Failed when connecting: Connection closed (code: 1006)
+(anonymous) @ _app-806746a5d682c312.js:34
+value @ 5333.56c11b8775e8368a.js:1
+value @ 5333.56c11b8775e8368a.js:1
+_websocket.onclose @ 5333.56c11b8775e8368a.js:1
+ Failed when connecting: Connection closed (code: 1006)
+(anonymous) @ _app-806746a5d682c312.js:34
+value @ 5333.56c11b8775e8368a.js:1
+value @ 5333.56c11b8775e8368a.js:1
+_websocket.onclose @ 5333.56c11b8775e8368a.js:1
+ Failed when connecting: Connection closed (code: 1006)
+(anonymous) @ _app-806746a5d682c312.js:34
+value @ 5333.56c11b8775e8368a.js:1
+value @ 5333.56c11b8775e8368a.js:1
+_websocket.onclose @ 5333.56c11b8775e8368a.js:1
+r.stripe.com/b:1  Failed to load resource: net::ERR_NETWORK_IO_SUSPENDED
+r.stripe.com/b:1  Failed to load resource: net::ERR_NETWORK_IO_SUSPENDED
+ WebSocket connection to 'wss://eval.janeway.platform.replit.com/wsv2/v2.public.Q2dZSWlLamJ4Z1lTQmdpbnhOdkdCaUlIYW1GdVpYZGhlVEFBT3Y0QkNpUXlNR0UxWVRZM055MWxPR1JpTFRReU5tSXRPVE5qWVMwd1lXSTBNVE14WWpJeVlUY1NBMjVwZUJvWmNtVndiR2wwTFhKbGNHd3RabWxzWlhNdGFtRnVaWGRoZVNJR2NtbGtaR3hsS2dwa2FYQndlV1J2WjJVeFFsY0tHbkpsY0d4cGRDMXlaWEJzTFdKc2IyTnJjeTFxWVc1bGQyRjVFaGh5WlhCc2FYUXRjbVZ3YkMxdFpYUmhMV3BoYm1WM1lYa2FIM0psY0d4cGRDMXRZWEpuWVhKcGJtVXRZbXh2WTJ0ekxXcGhibVYzWVhsS0J3aVhyYWdURUFGUUFGb1BhVzUwWlc1MFgySjFjMmx1WlhOeldoSnZibUp2WVhKa2FXNW5YMnB2WWw5bGJtZ...HY0dZM1UyUXpOa01sTWtZMVkzWm9aMFlsTWtZeVVWbFpNVlZ0YWtzeUpUSkNNa0pvWVVkTlNIVkhNa0p1TTFoUk1WTnNkbWhoWWpOTE1EbE1iRTUwY2xwQlMzYzFhRGdsTWtKc2NDVXlRbFk1ZURGdkpUSkNXVWRNWm1oR1NVUmlhbTlvYjBaMGVrdFFkREZDWjNkYVZtVkpTa1pxTlVjeWRuQkRTM1pTTURRNGJtWlRjMlZyTnpoS04yaERkV0VsTWtaQldVeHVVbVpXZUZJellVOTBWRlpsU1VwaldGRjNOQ1V5UWtod1MwaE5RVkJ5UTFSS1luRmxKVEpDTm1GVWJ5VXlRazgyZUU5NVZHWWxNa1pGYlRSQkpUTkVKVE5FtjhDsMuutAPwsMPTelhBt6cXTwqQpNEBv2EwjqNjVeWZcjDZCP2zg2ZiudveoEU0LMh6eC-2RIT5PGbY22u6AQ.Q2dad2NtOWtPak1pQ25KbGNHeHBkQzVqYjIwPQ' failed: 
+(anonymous) @ 6504-19acd5dd4e2b3010.js:1
+push.54337.constructor.handleClose @ 6504-19acd5dd4e2b3010.js:1
+t @ 6504-19acd5dd4e2b3010.js:1
+ WebSocket connection to 'wss://eval.janeway.platform.replit.com/wsv2/v2.public.Q2dZSWlLamJ4Z1lTQmdpbnhOdkdCaUlIYW1GdVpYZGhlVEFBT3Y0QkNpUXlNR0UxWVRZM055MWxPR1JpTFRReU5tSXRPVE5qWVMwd1lXSTBNVE14WWpJeVlUY1NBMjVwZUJvWmNtVndiR2wwTFhKbGNHd3RabWxzWlhNdGFtRnVaWGRoZVNJR2NtbGtaR3hsS2dwa2FYQndlV1J2WjJVeFFsY0tHbkpsY0d4cGRDMXlaWEJzTFdKc2IyTnJjeTFxWVc1bGQyRjVFaGh5WlhCc2FYUXRjbVZ3YkMxdFpYUmhMV3BoYm1WM1lYa2FIM0psY0d4cGRDMXRZWEpuWVhKcGJtVXRZbXh2WTJ0ekxXcGhibVYzWVhsS0J3aVhyYWdURUFGUUFGb1BhVzUwWlc1MFgySjFjMmx1WlhOeldoSnZibUp2WVhKa2FXNW5YMnB2WWw5bGJtZ...HY0dZM1UyUXpOa01sTWtZMVkzWm9aMFlsTWtZeVVWbFpNVlZ0YWtzeUpUSkNNa0pvWVVkTlNIVkhNa0p1TTFoUk1WTnNkbWhoWWpOTE1EbE1iRTUwY2xwQlMzYzFhRGdsTWtKc2NDVXlRbFk1ZURGdkpUSkNXVWRNWm1oR1NVUmlhbTlvYjBaMGVrdFFkREZDWjNkYVZtVkpTa1pxTlVjeWRuQkRTM1pTTURRNGJtWlRjMlZyTnpoS04yaERkV0VsTWtaQldVeHVVbVpXZUZJellVOTBWRlpsU1VwaldGRjNOQ1V5UWtod1MwaE5RVkJ5UTFSS1luRmxKVEpDTm1GVWJ5VXlRazgyZUU5NVZHWWxNa1pGYlRSQkpUTkVKVE5FtjhDsMuutAPwsMPTelhBt6cXTwqQpNEBv2EwjqNjVeWZcjDZCP2zg2ZiudveoEU0LMh6eC-2RIT5PGbY22u6AQ.Q2dad2NtOWtPak1pQ25KbGNHeHBkQzVqYjIwPQ' failed: 
+(anonymous) @ 6504-19acd5dd4e2b3010.js:1
+push.54337.constructor.handleClose @ 6504-19acd5dd4e2b3010.js:1
+t @ 6504-19acd5dd4e2b3010.js:1
+workspace_iframe.html?initialPath=%2F&id=%3Arq5%3A:32 Unrecognized feature: 'ambient-light-sensor'.
+workspace_iframe.html?initialPath=%2F&id=%3Arq5%3A:32 Unrecognized feature: 'battery'.
+workspace_iframe.html?initialPath=%2F&id=%3Arq5%3A:32 Unrecognized feature: 'execution-while-not-rendered'.
+workspace_iframe.html?initialPath=%2F&id=%3Arq5%3A:32 Unrecognized feature: 'execution-while-out-of-viewport'.
+workspace_iframe.html?initialPath=%2F&id=%3Arq5%3A:32 Unrecognized feature: 'layout-animations'.
+workspace_iframe.html?initialPath=%2F&id=%3Arq5%3A:32 Unrecognized feature: 'legacy-image-formats'.
+workspace_iframe.html?initialPath=%2F&id=%3Arq5%3A:32 Unrecognized feature: 'navigation-override'.
+workspace_iframe.html?initialPath=%2F&id=%3Arq5%3A:32 Unrecognized feature: 'oversized-images'.
+workspace_iframe.html?initialPath=%2F&id=%3Arq5%3A:32 Unrecognized feature: 'publickey-credentials'.
+workspace_iframe.html?initialPath=%2F&id=%3Arq5%3A:32 Unrecognized feature: 'speaker-selection'.
+workspace_iframe.html?initialPath=%2F&id=%3Arq5%3A:32 Unrecognized feature: 'unoptimized-images'.
+workspace_iframe.html?initialPath=%2F&id=%3Arq5%3A:32 Unrecognized feature: 'unsized-media'.
+workspace_iframe.html?initialPath=%2F&id=%3Arq5%3A:32 Allow attribute will take precedence over 'allowfullscreen'.
+workspace_iframe.html?initialPath=%2F&id=%3Arq5%3A:32 Allow attribute will take precedence over 'allowpaymentrequest'.
+inpage.js:1 Uncaught (in promise) 
+ WebSocket connection to 'wss://20a5a677-e8db-426b-93ca-0ab4131b22a7-00-pwrlj8iul6vd.janeway.replit.dev/?token=QofpYNkry3IA' failed: 
+t @ eruda.js:2
+ 🔧 Fixed WebSocket URL for Replit: wss://localhost:undefined/?token=QofpYNkry3IA → wss://20a5a677-e8db-426b-93ca-0ab4131b22a7-00-pwrlj8iul6vd.janeway.replit.dev/?token=QofpYNkry3IA
+ WebSocket connection to 'wss://20a5a677-e8db-426b-93ca-0ab4131b22a7-00-pwrlj8iul6vd.janeway.replit.dev/?token=QofpYNkry3IA' failed: 
+t @ eruda.js:2
+ [vite] failed to connect to websocket.
+your current setup:
+  (browser) 20a5a677-e8db-426b-93ca-0ab4131b22a7-00-pwrlj8iul6vd.janeway.replit.dev/ <--[HTTP]--> localhost:undefined/ (server)
+  (browser) 20a5a677-e8db-426b-93ca-0ab4131b22a7-00-pwrlj8iul6vd.janeway.replit.dev:/ <--[WebSocket (failing)]--> localhost:undefined/ (server)
+Check out your Vite / network configuration and https://vite.dev/config/server-options.html#server-hmr .
+Mt.forEach.n.<computed> @ eruda.js:2
+ 🎨 App.tsx: App component is rendering
+ 🏗️ App.tsx: Returning JSX with all providers
+ 🚫 SessionMonitor: DISABLED - Using unified SessionManager instead
+ 🗺️ Router: Router component is rendering
+ 📍 Router: Current location: /
+ 💳 Router: Initializing wallet data state
+ 📭 Router: No saved wallet data found
+ 🔍 SessionManager.getSession() returning: Object
+ 🎨 App.tsx: App component is rendering
+ 🏗️ App.tsx: Returning JSX with all providers
+ 🚫 SessionMonitor: DISABLED - Using unified SessionManager instead
+ 🗺️ Router: Router component is rendering
+ 📍 Router: Current location: /
+ 💳 Router: Initializing wallet data state
+ 📭 Router: No saved wallet data found
+ 🔍 SessionManager.getSession() returning: Object
+ 🔍 SessionManager: checkSession() called - current sessionData: true
+ 🌐 SessionManager: Making Riddle wallet session request to /api/riddle-wallet/session
+Console.js:61 🎨 [THEME] Applied theme: dark, dark class: true
+Console.js:61 🔄 App.tsx: useEffect running - recovering wallet state
+Console.js:61 ✅ SessionManager: Valid session for dippydoge
+Console.js:61 ✅ SessionManager: Updated session data: Object
+Console.js:61 🔍 SessionManager.getSession() returning: Object
+Console.js:61 🔔 SessionManager: Notified 1 listeners
+Console.js:61 🔍 SessionManager.getSession() returning: Object
+Console.js:61 🔍 SessionManager.getSession() returning: Object
+Console.js:61 🔍 getQueryFn - SessionManager sessionToken: FOUND
+Console.js:61 🗺️ Router: Router component is rendering
+Console.js:61 📍 Router: Current location: /gaming
+Console.js:61 🔍 SessionManager.getSession() returning: Object
+Console.js:61 🔧 [DEPLOYMENT] Configuration Status:
+Console.js:61    Environment: development
+Console.js:61    WalletConnect Project ID: fa5ebbd9...
+Console.js:61    Fee Wallet: 0x9211346f428628d7C84CE1338C0b51FDdf2E8461
+Console.js:61    Connection Timeout: 600s
+Console.js:61    1inch API Key: NOT SET
+Console.js:61 ✅ [DEPLOYMENT] All wallet connection requirements met
+Console.js:61 🔍 [GAMING DASHBOARD] Wallet profile: undefined
+Console.js:61 🔍 [GAMING DASHBOARD] Wallet loading: true
+Console.js:61 🔍 getQueryFn - SessionManager sessionToken: FOUND
+Console.js:61 🔍 getQueryFn - SessionManager sessionToken: FOUND
+Console.js:61 🔍 getQueryFn - SessionManager sessionToken: FOUND
+Console.js:61 🔍 getQueryFn - SessionManager sessionToken: FOUND
+Console.js:61 🔍 [GAMING DASHBOARD] Wallet profile: Object
+Console.js:61 🔍 [GAMING DASHBOARD] Wallet loading: false
+Console.js:61 🔍 getQueryFn - SessionManager sessionToken: FOUND
+Console.js:61 🔍 getQueryFn - SessionManager sessionToken: FOUND
+Console.js:61 🔍 [GAMING DASHBOARD] Wallet profile: Object
+Console.js:61 🔍 [GAMING DASHBOARD] Wallet loading: false
+Console.js:61 🔍 [GAMING DASHBOARD] Wallet profile: Object
+Console.js:61 🔍 [GAMING DASHBOARD] Wallet loading: false
+Console.js:61 🔍 [GAMING DASHBOARD] Wallet profile: Object
+Console.js:61 🔍 [GAMING DASHBOARD] Wallet loading: false
+Console.js:61 🔍 SessionManager.getSession() returning: Object
+Console.js:61 🔍 [GAMING DASHBOARD] Wallet profile: Object
+Console.js:61 🔍 [GAMING DASHBOARD] Wallet loading: false
+Console.js:61 🔍 SessionManager.getSession() returning: Object
+Console.js:61 🔍 [GAMING DASHBOARD] Wallet profile: {walletExists: true, handle: 'dippydoge', addresses: {…}, createdAt: '2025-08-03T12:01:06.295Z'}
+Console.js:61 🔍 [GAMING DASHBOARD] Wallet loading: false
+Console.js:61 🔍 SessionManager.getSession() returning: {isLoggedIn: true, handle: 'dippydoge', hasWalletData: true, hasSessionToken: true, walletDataKeys: Array(7)}
+Console.js:61 🔍 [GAMING DASHBOARD] Wallet profile: {walletExists: true, handle: 'dippydoge', addresses: {…}, createdAt: '2025-08-03T12:01:06.295Z'}
+Console.js:61 🔍 [GAMING DASHBOARD] Wallet loading: false
+Console.js:61 🔍 [GAMING DASHBOARD] Wallet profile: {walletExists: true, handle: 'dippydoge', addresses: {…}, createdAt: '2025-08-03T12:01:06.295Z'}
+Console.js:61 🔍 [GAMING DASHBOARD] Wallet loading: false
+Console.js:61 🔍 SessionManager.getSession() returning: {isLoggedIn: true, handle: 'dippydoge', hasWalletData: true, hasSessionToken: true, walletDataKeys: Array(7)}
+Console.js:61 🔍 [GAMING DASHBOARD] Wallet profile: {walletExists: true, handle: 'dippydoge', addresses: {…}, createdAt: '2025-08-03T12:01:06.295Z'}
+Console.js:61 🔍 [GAMING DASHBOARD] Wallet loading: false
+Console.js:61 🔍 SessionManager.getSession() returning: {isLoggedIn: true, handle: 'dippydoge', hasWalletData: true, hasSessionToken: true, walletDataKeys: Array(7)}
+Console.js:61 Warning: Missing `Description` or `aria-describedby={undefined}` for {DialogContent}.
+Mt.forEach.n.<computed> @ Console.js:61
+(anonymous) @ chunk-QFHDUFTD.js?v=b65356fd:340
+commitHookEffectListMount @ chunk-SM3OW2QE.js?v=b65356fd:16915
+commitPassiveMountOnFiber @ chunk-SM3OW2QE.js?v=b65356fd:18156
+commitPassiveMountEffects_complete @ chunk-SM3OW2QE.js?v=b65356fd:18129
+commitPassiveMountEffects_begin @ chunk-SM3OW2QE.js?v=b65356fd:18119
+commitPassiveMountEffects @ chunk-SM3OW2QE.js?v=b65356fd:18109
+flushPassiveEffectsImpl @ chunk-SM3OW2QE.js?v=b65356fd:19490
+flushPassiveEffects @ chunk-SM3OW2QE.js?v=b65356fd:19447
+commitRootImpl @ chunk-SM3OW2QE.js?v=b65356fd:19416
+commitRoot @ chunk-SM3OW2QE.js?v=b65356fd:19277
+performSyncWorkOnRoot @ chunk-SM3OW2QE.js?v=b65356fd:18895
+flushSyncCallbacks @ chunk-SM3OW2QE.js?v=b65356fd:9119
+(anonymous) @ chunk-SM3OW2QE.js?v=b65356fd:18627
+Console.js:61 🔍 SessionManager sessionToken: FOUND
+Console.js:61 🔍 SessionManager sessionToken: FOUND
+Console.js:61 🔍 [WIZARD] NFT verification complete: {success: true, message: 'Found 5 NFTs on-chain and populated database', total_nfts: 5, total_power: 1100, collections: {…}, …}
+Console.js:61 🔍 [WIZARD] Data type: object
+Console.js:61 🔍 [WIZARD] Data keys: (9) ['success', 'message', 'total_nfts', 'total_power', 'collections', 'wallet_checked', 'scan_duration_ms', 'new_nfts_found', 'on_chain_scan']
+Console.js:61 🔍 SessionManager sessionToken: FOUND
+Console.js:61 🔍 SessionManager.getSession() returning: {isLoggedIn: true, handle: 'dippydoge', hasWalletData: true, hasSessionToken: true, walletDataKeys: Array(7)}
+Console.js:61 🔍 [GAMING DASHBOARD] Wallet profile: {walletExists: true, handle: 'dippydoge', addresses: {…}, createdAt: '2025-08-03T12:01:06.295Z'}
+Console.js:61 🔍 [GAMING DASHBOARD] Wallet loading: false
+Console.js:61 🔍 SessionManager.getSession() returning: {isLoggedIn: true, handle: 'dippydoge', hasWalletData: true, hasSessionToken: true, walletDataKeys: Array(7)}
+Console.js:61 🔍 SessionManager.getSession() returning: {isLoggedIn: true, handle: 'dippydoge', hasWalletData: true, hasSessionToken: true, walletDataKeys: Array(7)}
+Console.js:61 🔍 [GAMING DASHBOARD] Wallet profile: {walletExists: true, handle: 'dippydoge', addresses: {…}, createdAt: '2025-08-03T12:01:06.295Z'}
+Console.js:61 🔍 [GAMING DASHBOARD] Wallet loading: false
+Console.js:61 🔍 SessionManager.getSession() returning: {isLoggedIn: true, handle: 'dippydoge', hasWalletData: true, hasSessionToken: true, walletDataKeys: Array(7)}
+Console.js:61 🔍 SessionManager.getSession() returning: {isLoggedIn: true, handle: 'dippydoge', hasWalletData: true, hasSessionToken: true, walletDataKeys: Array(7)}
+Console.js:61 🔍 [GAMING DASHBOARD] Wallet profile: {walletExists: true, handle: 'dippydoge', addresses: {…}, createdAt: '2025-08-03T12:01:06.295Z'}
+Console.js:61 🔍 [GAMING DASHBOARD] Wallet loading: false
+Console.js:61 🔍 SessionManager.getSession() returning: {isLoggedIn: true, handle: 'dippydoge', hasWalletData: true, hasSessionToken: true, walletDataKeys: Array(7)}
+Console.js:61 🔍 SessionManager: checkSession() called - current sessionData: true
+Console.js:61 🌐 SessionManager: Making Riddle wallet session request to /api/riddle-wallet/session
+Console.js:61 ✅ SessionManager: Valid session for dippydoge
+Console.js:61 ✅ SessionManager: Updated session data: {handle: 'dippydoge', hasWalletData: true, authenticated: true, listeners: 1}
+Console.js:61 🔍 SessionManager.getSession() returning: {isLoggedIn: true, handle: 'dippydoge', hasWalletData: true, hasSessionToken: true, walletDataKeys: Array(7)}
+Console.js:61 🔔 SessionManager: Notified 1 listeners
+Console.js:61 🔍 SessionManager.getSession() returning: {isLoggedIn: true, handle: 'dippydoge', hasWalletData: true, hasSessionToken: true, walletDataKeys: Array(7)}
+Console.js:61 🔍 SessionManager sessionToken: FOUND
+Console.js:61 🔍 SessionManager: checkSession() called - current sessionData: true
+Console.js:61 🌐 SessionManager: Making Riddle wallet session request to /api/riddle-wallet/session
+Console.js:61 ✅ SessionManager: Valid session for dippydoge
+Console.js:61 ✅ SessionManager: Updated session data: {handle: 'dippydoge', hasWalletData: true, authenticated: true, listeners: 1}
+Console.js:61 🔍 SessionManager.getSession() returning: {isLoggedIn: true, handle: 'dippydoge', hasWalletData: true, hasSessionToken: true, walletDataKeys: Array(7)}
+Console.js:61 🔔 SessionManager: Notified 1 listeners
+Console.js:61 🔍 SessionManager.getSession() returning: {isLoggedIn: true, handle: 'dippydoge', hasWalletData: true, hasSessionToken: true, walletDataKeys: Array(7)}
+Console.js:61 🔍 SessionManager sessionToken: FOUND
+injected.js:278  POST https://20a5a677-e8db-426b-93ca-0ab4131b22a7-00-pwrlj8iul6vd.janeway.replit.dev/api/gaming/player/profile 401 (Unauthorized)
+window.fetch @ Network.js:219
+apply @ injected.js:278
+apiRequest @ queryClient.ts:107
+mutationFn @ first-time-wizard.tsx:189
+fn @ @tanstack_react-query.js?v=b65356fd:1236
+run @ @tanstack_react-query.js?v=b65356fd:513
+start @ @tanstack_react-query.js?v=b65356fd:555
+execute @ @tanstack_react-query.js?v=b65356fd:1272
+await in execute
+mutate @ @tanstack_react-query.js?v=b65356fd:2692
+handleFinishWizard @ first-time-wizard.tsx:288
+callCallback2 @ chunk-SM3OW2QE.js?v=b65356fd:3674
+invokeGuardedCallbackDev @ chunk-SM3OW2QE.js?v=b65356fd:3699
+invokeGuardedCallback @ chunk-SM3OW2QE.js?v=b65356fd:3733
+invokeGuardedCallbackAndCatchFirstError @ chunk-SM3OW2QE.js?v=b65356fd:3736
+executeDispatch @ chunk-SM3OW2QE.js?v=b65356fd:7014
+processDispatchQueueItemsInOrder @ chunk-SM3OW2QE.js?v=b65356fd:7034
+processDispatchQueue @ chunk-SM3OW2QE.js?v=b65356fd:7043
+dispatchEventsForPlugins @ chunk-SM3OW2QE.js?v=b65356fd:7051
+(anonymous) @ chunk-SM3OW2QE.js?v=b65356fd:7174
+batchedUpdates$1 @ chunk-SM3OW2QE.js?v=b65356fd:18913
+batchedUpdates @ chunk-SM3OW2QE.js?v=b65356fd:3579
+dispatchEventForPluginEventSystem @ chunk-SM3OW2QE.js?v=b65356fd:7173
+dispatchEventWithEnableCapturePhaseSelectiveHydrationWithoutDiscreteEventReplay @ chunk-SM3OW2QE.js?v=b65356fd:5478
+dispatchEvent @ chunk-SM3OW2QE.js?v=b65356fd:5472
+dispatchDiscreteEvent @ chunk-SM3OW2QE.js?v=b65356fd:5449
+Console.js:61 🔓 apiRequest got 401 - NOT clearing session data automatically
+Console.js:61 🔓 Got 401 error - NOT clearing session data automatically
+Console.js:61 🔍 SessionManager sessionToken: FOUND
+injected.js:278  POST https://20a5a677-e8db-426b-93ca-0ab4131b22a7-00-pwrlj8iul6vd.janeway.replit.dev/api/gaming/player/profile 401 (Unauthorized)
+window.fetch @ Network.js:219
+apply @ injected.js:278
+apiRequest @ queryClient.ts:107
+mutationFn @ first-time-wizard.tsx:189
+fn @ @tanstack_react-query.js?v=b65356fd:1236
+run @ @tanstack_react-query.js?v=b65356fd:513
+(anonymous) @ @tanstack_react-query.js?v=b65356fd:538
+Promise.then
+(anonymous) @ @tanstack_react-query.js?v=b65356fd:534
+Promise.catch
+run @ @tanstack_react-query.js?v=b65356fd:517
+start @ @tanstack_react-query.js?v=b65356fd:555
+execute @ @tanstack_react-query.js?v=b65356fd:1272
+await in execute
+mutate @ @tanstack_react-query.js?v=b65356fd:2692
+handleFinishWizard @ first-time-wizard.tsx:288
+callCallback2 @ chunk-SM3OW2QE.js?v=b65356fd:3674
+invokeGuardedCallbackDev @ chunk-SM3OW2QE.js?v=b65356fd:3699
+invokeGuardedCallback @ chunk-SM3OW2QE.js?v=b65356fd:3733
+invokeGuardedCallbackAndCatchFirstError @ chunk-SM3OW2QE.js?v=b65356fd:3736
+executeDispatch @ chunk-SM3OW2QE.js?v=b65356fd:7014
+processDispatchQueueItemsInOrder @ chunk-SM3OW2QE.js?v=b65356fd:7034
+processDispatchQueue @ chunk-SM3OW2QE.js?v=b65356fd:7043
+dispatchEventsForPlugins @ chunk-SM3OW2QE.js?v=b65356fd:7051
+(anonymous) @ chunk-SM3OW2QE.js?v=b65356fd:7174
+batchedUpdates$1 @ chunk-SM3OW2QE.js?v=b65356fd:18913
+batchedUpdates @ chunk-SM3OW2QE.js?v=b65356fd:3579
+dispatchEventForPluginEventSystem @ chunk-SM3OW2QE.js?v=b65356fd:7173
+dispatchEventWithEnableCapturePhaseSelectiveHydrationWithoutDiscreteEventReplay @ chunk-SM3OW2QE.js?v=b65356fd:5478
+dispatchEvent @ chunk-SM3OW2QE.js?v=b65356fd:5472
+dispatchDiscreteEvent @ chunk-SM3OW2QE.js?v=b65356fd:5449
+Console.js:61 🔓 apiRequest got 401 - NOT clearing session data automatically
+Console.js:61 🔓 Got 401 error - NOT clearing session data automatically
+Console.js:61 Failed to complete wizard: Error: 401: {"error":"Authentication required","code":"UNAUTHORIZED"}
+    at throwIfResNotOk (queryClient.ts:81:11)
+    at async apiRequest (queryClient.ts:119:3)
+Mt.forEach.n.<computed> @ Console.js:61
+handleFinishWizard @ first-time-wizard.tsx:294
+await in handleFinishWizard
+callCallback2 @ chunk-SM3OW2QE.js?v=b65356fd:3674
+invokeGuardedCallbackDev @ chunk-SM3OW2QE.js?v=b65356fd:3699
+invokeGuardedCallback @ chunk-SM3OW2QE.js?v=b65356fd:3733
+invokeGuardedCallbackAndCatchFirstError @ chunk-SM3OW2QE.js?v=b65356fd:3736
+executeDispatch @ chunk-SM3OW2QE.js?v=b65356fd:7014
+processDispatchQueueItemsInOrder @ chunk-SM3OW2QE.js?v=b65356fd:7034
+processDispatchQueue @ chunk-SM3OW2QE.js?v=b65356fd:7043
+dispatchEventsForPlugins @ chunk-SM3OW2QE.js?v=b65356fd:7051
+(anonymous) @ chunk-SM3OW2QE.js?v=b65356fd:7174
+batchedUpdates$1 @ chunk-SM3OW2QE.js?v=b65356fd:18913
+batchedUpdates @ chunk-SM3OW2QE.js?v=b65356fd:3579
+dispatchEventForPluginEventSystem @ chunk-SM3OW2QE.js?v=b65356fd:7173
+dispatchEventWithEnableCapturePhaseSelectiveHydrationWithoutDiscreteEventReplay @ chunk-SM3OW2QE.js?v=b65356fd:5478
+dispatchEvent @ chunk-SM3OW2QE.js?v=b65356fd:5472
+dispatchDiscreteEvent @ chunk-SM3OW2QE.js?v=b65356fd:5449
+Console.js:61 🔍 SessionManager.getSession() returning: {isLoggedIn: true, handle: 'dippydoge', hasWalletData: true, hasSessionToken: true, walletDataKeys: Array(7)}
+Console.js:61 🔍 [GAMING DASHBOARD] Wallet profile: {walletExists: true, handle: 'dippydoge', addresses: {…}, createdAt: '2025-08-03T12:01:06.295Z'}
+Console.js:61 🔍 [GAMING DASHBOARD] Wallet loading: false
+Console.js:61 🔍 SessionManager.getSession() returning: {isLoggedIn: true, handle: 'dippydoge', hasWalletData: true, hasSessionToken: true, walletDataKeys: Array(7)}
+Console.js:61 🔍 SessionManager sessionToken: FOUND
+injected.js:278  POST https://20a5a677-e8db-426b-93ca-0ab4131b22a7-00-pwrlj8iul6vd.janeway.replit.dev/api/gaming/player/profile 401 (Unauthorized)
+window.fetch @ Network.js:219
+apply @ injected.js:278
+apiRequest @ queryClient.ts:107
+mutationFn @ first-time-wizard.tsx:189
+fn @ @tanstack_react-query.js?v=b65356fd:1236
+run @ @tanstack_react-query.js?v=b65356fd:513
+start @ @tanstack_react-query.js?v=b65356fd:555
+execute @ @tanstack_react-query.js?v=b65356fd:1272
+await in execute
+mutate @ @tanstack_react-query.js?v=b65356fd:2692
+handleFinishWizard @ first-time-wizard.tsx:288
+callCallback2 @ chunk-SM3OW2QE.js?v=b65356fd:3674
+invokeGuardedCallbackDev @ chunk-SM3OW2QE.js?v=b65356fd:3699
+invokeGuardedCallback @ chunk-SM3OW2QE.js?v=b65356fd:3733
+invokeGuardedCallbackAndCatchFirstError @ chunk-SM3OW2QE.js?v=b65356fd:3736
+executeDispatch @ chunk-SM3OW2QE.js?v=b65356fd:7014
+processDispatchQueueItemsInOrder @ chunk-SM3OW2QE.js?v=b65356fd:7034
+processDispatchQueue @ chunk-SM3OW2QE.js?v=b65356fd:7043
+dispatchEventsForPlugins @ chunk-SM3OW2QE.js?v=b65356fd:7051
+(anonymous) @ chunk-SM3OW2QE.js?v=b65356fd:7174
+batchedUpdates$1 @ chunk-SM3OW2QE.js?v=b65356fd:18913
+batchedUpdates @ chunk-SM3OW2QE.js?v=b65356fd:3579
+dispatchEventForPluginEventSystem @ chunk-SM3OW2QE.js?v=b65356fd:7173
+dispatchEventWithEnableCapturePhaseSelectiveHydrationWithoutDiscreteEventReplay @ chunk-SM3OW2QE.js?v=b65356fd:5478
+dispatchEvent @ chunk-SM3OW2QE.js?v=b65356fd:5472
+dispatchDiscreteEvent @ chunk-SM3OW2QE.js?v=b65356fd:5449
+Console.js:61 🔓 apiRequest got 401 - NOT clearing session data automatically
+Console.js:61 🔓 Got 401 error - NOT clearing session data automatically
+Console.js:61 🔍 SessionManager sessionToken: FOUND
+injected.js:278  POST https://20a5a677-e8db-426b-93ca-0ab4131b22a7-00-pwrlj8iul6vd.janeway.replit.dev/api/gaming/player/profile 401 (Unauthorized)
+window.fetch @ Network.js:219
+apply @ injected.js:278
+apiRequest @ queryClient.ts:107
+mutationFn @ first-time-wizard.tsx:189
+fn @ @tanstack_react-query.js?v=b65356fd:1236
+run @ @tanstack_react-query.js?v=b65356fd:513
+(anonymous) @ @tanstack_react-query.js?v=b65356fd:538
+Promise.then
+(anonymous) @ @tanstack_react-query.js?v=b65356fd:534
+Promise.catch
+run @ @tanstack_react-query.js?v=b65356fd:517
+start @ @tanstack_react-query.js?v=b65356fd:555
+execute @ @tanstack_react-query.js?v=b65356fd:1272
+await in execute
+mutate @ @tanstack_react-query.js?v=b65356fd:2692
+handleFinishWizard @ first-time-wizard.tsx:288
+callCallback2 @ chunk-SM3OW2QE.js?v=b65356fd:3674
+invokeGuardedCallbackDev @ chunk-SM3OW2QE.js?v=b65356fd:3699
+invokeGuardedCallback @ chunk-SM3OW2QE.js?v=b65356fd:3733
+invokeGuardedCallbackAndCatchFirstError @ chunk-SM3OW2QE.js?v=b65356fd:3736
+executeDispatch @ chunk-SM3OW2QE.js?v=b65356fd:7014
+processDispatchQueueItemsInOrder @ chunk-SM3OW2QE.js?v=b65356fd:7034
+processDispatchQueue @ chunk-SM3OW2QE.js?v=b65356fd:7043
+dispatchEventsForPlugins @ chunk-SM3OW2QE.js?v=b65356fd:7051
+(anonymous) @ chunk-SM3OW2QE.js?v=b65356fd:7174
+batchedUpdates$1 @ chunk-SM3OW2QE.js?v=b65356fd:18913
+batchedUpdates @ chunk-SM3OW2QE.js?v=b65356fd:3579
+dispatchEventForPluginEventSystem @ chunk-SM3OW2QE.js?v=b65356fd:7173
+dispatchEventWithEnableCapturePhaseSelectiveHydrationWithoutDiscreteEventReplay @ chunk-SM3OW2QE.js?v=b65356fd:5478
+dispatchEvent @ chunk-SM3OW2QE.js?v=b65356fd:5472
+dispatchDiscreteEvent @ chunk-SM3OW2QE.js?v=b65356fd:5449
+Console.js:61 🔓 apiRequest got 401 - NOT clearing session data automatically
+Console.js:61 🔓 Got 401 error - NOT clearing session data automatically
+Console.js:61 Failed to complete wizard: Error: 401: {"error":"Authentication required","code":"UNAUTHORIZED"}
+    at throwIfResNotOk (queryClient.ts:81:11)
+    at async apiRequest (queryClient.ts:119:3)
+Mt.forEach.n.<computed> @ Console.js:61
+handleFinishWizard @ first-time-wizard.tsx:294
+await in handleFinishWizard
+callCallback2 @ chunk-SM3OW2QE.js?v=b65356fd:3674
+invokeGuardedCallbackDev @ chunk-SM3OW2QE.js?v=b65356fd:3699
+invokeGuardedCallback @ chunk-SM3OW2QE.js?v=b65356fd:3733
+invokeGuardedCallbackAndCatchFirstError @ chunk-SM3OW2QE.js?v=b65356fd:3736
+executeDispatch @ chunk-SM3OW2QE.js?v=b65356fd:7014
+processDispatchQueueItemsInOrder @ chunk-SM3OW2QE.js?v=b65356fd:7034
+processDispatchQueue @ chunk-SM3OW2QE.js?v=b65356fd:7043
+dispatchEventsForPlugins @ chunk-SM3OW2QE.js?v=b65356fd:7051
+(anonymous) @ chunk-SM3OW2QE.js?v=b65356fd:7174
+batchedUpdates$1 @ chunk-SM3OW2QE.js?v=b65356fd:18913
+batchedUpdates @ chunk-SM3OW2QE.js?v=b65356fd:3579
+dispatchEventForPluginEventSystem @ chunk-SM3OW2QE.js?v=b65356fd:7173
+dispatchEventWithEnableCapturePhaseSelectiveHydrationWithoutDiscreteEventReplay @ chunk-SM3OW2QE.js?v=b65356fd:5478
+dispatchEvent @ chunk-SM3OW2QE.js?v=b65356fd:5472
+dispatchDiscreteEvent @ chunk-SM3OW2QE.js?v=b65356fd:5449
+Console.js:61 🔍 SessionManager.getSession() returning: {isLoggedIn: true, handle: 'dippydoge', hasWalletData: true, hasSessionToken: true, walletDataKeys: Array(7)}
+Console.js:61 🔍 [GAMING DASHBOARD] Wallet profile: {walletExists: true, handle: 'dippydoge', addresses: {…}, createdAt: '2025-08-03T12:01:06.295Z'}
+Console.js:61 🔍 [GAMING DASHBOARD] Wallet loading: false
+Console.js:61 🔍 SessionManager.getSession() returning: {isLoggedIn: true, handle: 'dippydoge', hasWalletData: true, hasSessionToken: true, walletDataKeys: Array(7)}
+Console.js:61 🔍 SessionManager.getSession() returning: {isLoggedIn: true, handle: 'dippydoge', hasWalletData: true, hasSessionToken: true, walletDataKeys: Array(7)}
+Console.js:61 🔍 [GAMING DASHBOARD] Wallet profile: {walletExists: true, handle: 'dippydoge', addresses: {…}, createdAt: '2025-08-03T12:01:06.295Z'}
+Console.js:61 🔍 [GAMING DASHBOARD] Wallet loading: false
+Console.js:61 🔍 SessionManager.getSession() returning: {isLoggedIn: true, handle: 'dippydoge', hasWalletData: true, hasSessionToken: true, walletDataKeys: Array(7)}
+Console.js:61 🔍 SessionManager.getSession() returning: {isLoggedIn: true, handle: 'dippydoge', hasWalletData: true, hasSessionToken: true, walletDataKeys: Array(7)}
+Console.js:61 🔍 [GAMING DASHBOARD] Wallet profile: {walletExists: true, handle: 'dippydoge', addresses: {…}, createdAt: '2025-08-03T12:01:06.295Z'}
+Console.js:61 🔍 [GAMING DASHBOARD] Wallet loading: false
+Console.js:61 🔍 SessionManager.getSession() returning: {isLoggedIn: true, handle: 'dippydoge', hasWalletData: true, hasSessionToken: true, walletDataKeys: Array(7)}
+Console.js:61 🔍 SessionManager: checkSession() called - current sessionData: true
+Console.js:61 🌐 SessionManager: Making Riddle wallet session request to /api/riddle-wallet/session
+Console.js:61 ✅ SessionManager: Valid session for dippydoge
+Console.js:61 ✅ SessionManager: Updated session data: {handle: 'dippydoge', hasWalletData: true, authenticated: true, listeners: 1}
+Console.js:61 🔍 SessionManager.getSession() returning: {isLoggedIn: true, handle: 'dippydoge', hasWalletData: true, hasSessionToken: true, walletDataKeys: Array(7)}
+Console.js:61 🔔 SessionManager: Notified 1 listeners
+Console.js:61 🔍 SessionManager.getSession() returning: {isLoggedIn: true, handle: 'dippydoge', hasWalletData: true, hasSessionToken: true, walletDataKeys: Array(7)}
+Console.js:61 🔍 SessionManager sessionToken: FOUND
+injected.js:278  POST https://20a5a677-e8db-426b-93ca-0ab4131b22a7-00-pwrlj8iul6vd.janeway.replit.dev/api/gaming/player/profile 401 (Unauthorized)
+window.fetch @ Network.js:219
+apply @ injected.js:278
+apiRequest @ queryClient.ts:107
+mutationFn @ first-time-wizard.tsx:189
+fn @ @tanstack_react-query.js?v=b65356fd:1236
+run @ @tanstack_react-query.js?v=b65356fd:513
+start @ @tanstack_react-query.js?v=b65356fd:555
+execute @ @tanstack_react-query.js?v=b65356fd:1272
+await in execute
+mutate @ @tanstack_react-query.js?v=b65356fd:2692
+handleFinishWizard @ first-time-wizard.tsx:288
+callCallback2 @ chunk-SM3OW2QE.js?v=b65356fd:3674
+invokeGuardedCallbackDev @ chunk-SM3OW2QE.js?v=b65356fd:3699
+invokeGuardedCallback @ chunk-SM3OW2QE.js?v=b65356fd:3733
+invokeGuardedCallbackAndCatchFirstError @ chunk-SM3OW2QE.js?v=b65356fd:3736
+executeDispatch @ chunk-SM3OW2QE.js?v=b65356fd:7014
+processDispatchQueueItemsInOrder @ chunk-SM3OW2QE.js?v=b65356fd:7034
+processDispatchQueue @ chunk-SM3OW2QE.js?v=b65356fd:7043
+dispatchEventsForPlugins @ chunk-SM3OW2QE.js?v=b65356fd:7051
+(anonymous) @ chunk-SM3OW2QE.js?v=b65356fd:7174
+batchedUpdates$1 @ chunk-SM3OW2QE.js?v=b65356fd:18913
+batchedUpdates @ chunk-SM3OW2QE.js?v=b65356fd:3579
+dispatchEventForPluginEventSystem @ chunk-SM3OW2QE.js?v=b65356fd:7173
+dispatchEventWithEnableCapturePhaseSelectiveHydrationWithoutDiscreteEventReplay @ chunk-SM3OW2QE.js?v=b65356fd:5478
+dispatchEvent @ chunk-SM3OW2QE.js?v=b65356fd:5472
+dispatchDiscreteEvent @ chunk-SM3OW2QE.js?v=b65356fd:5449
+Console.js:61 🔓 apiRequest got 401 - NOT clearing session data automatically
+Console.js:61 🔓 Got 401 error - NOT clearing session data automatically
+Console.js:61 🔍 SessionManager.getSession() returning: {isLoggedIn: true, handle: 'dippydoge', hasWalletData: true, hasSessionToken: true, walletDataKeys: Array(7)}
+Console.js:61 🔍 [GAMING DASHBOARD] Wallet profile: {walletExists: true, handle: 'dippydoge', addresses: {…}, createdAt: '2025-08-03T12:01:06.295Z'}
+Console.js:61 🔍 [GAMING DASHBOARD] Wallet loading: false
+Console.js:61 🔍 SessionManager.getSession() returning: {isLoggedIn: true, handle: 'dippydoge', hasWalletData: true, hasSessionToken: true, walletDataKeys: Array(7)}
+Console.js:61 🔍 SessionManager sessionToken: FOUND
+Console.js:61 🔍 SessionManager sessionToken: FOUND
+injected.js:278  POST https://20a5a677-e8db-426b-93ca-0ab4131b22a7-00-pwrlj8iul6vd.janeway.replit.dev/api/gaming/player/profile 401 (Unauthorized)
+window.fetch @ Network.js:219
+apply @ injected.js:278
+apiRequest @ queryClient.ts:107
+mutationFn @ first-time-wizard.tsx:189
+fn @ @tanstack_react-query.js?v=b65356fd:1236
+run @ @tanstack_react-query.js?v=b65356fd:513
+start @ @tanstack_react-query.js?v=b65356fd:555
+execute @ @tanstack_react-query.js?v=b65356fd:1272
+await in execute
+mutate @ @tanstack_react-query.js?v=b65356fd:2692
+handleFinishWizard @ first-time-wizard.tsx:288
+callCallback2 @ chunk-SM3OW2QE.js?v=b65356fd:3674
+invokeGuardedCallbackDev @ chunk-SM3OW2QE.js?v=b65356fd:3699
+invokeGuardedCallback @ chunk-SM3OW2QE.js?v=b65356fd:3733
+invokeGuardedCallbackAndCatchFirstError @ chunk-SM3OW2QE.js?v=b65356fd:3736
+executeDispatch @ chunk-SM3OW2QE.js?v=b65356fd:7014
+processDispatchQueueItemsInOrder @ chunk-SM3OW2QE.js?v=b65356fd:7034
+processDispatchQueue @ chunk-SM3OW2QE.js?v=b65356fd:7043
+dispatchEventsForPlugins @ chunk-SM3OW2QE.js?v=b65356fd:7051
+(anonymous) @ chunk-SM3OW2QE.js?v=b65356fd:7174
+batchedUpdates$1 @ chunk-SM3OW2QE.js?v=b65356fd:18913
+batchedUpdates @ chunk-SM3OW2QE.js?v=b65356fd:3579
+dispatchEventForPluginEventSystem @ chunk-SM3OW2QE.js?v=b65356fd:7173
+dispatchEventWithEnableCapturePhaseSelectiveHydrationWithoutDiscreteEventReplay @ chunk-SM3OW2QE.js?v=b65356fd:5478
+dispatchEvent @ chunk-SM3OW2QE.js?v=b65356fd:5472
+dispatchDiscreteEvent @ chunk-SM3OW2QE.js?v=b65356fd:5449
+Console.js:61 🔓 apiRequest got 401 - NOT clearing session data automatically
+Console.js:61 🔓 Got 401 error - NOT clearing session data automatically
+injected.js:278  POST https://20a5a677-e8db-426b-93ca-0ab4131b22a7-00-pwrlj8iul6vd.janeway.replit.dev/api/gaming/player/profile 401 (Unauthorized)
+window.fetch @ Network.js:219
+apply @ injected.js:278
+apiRequest @ queryClient.ts:107
+mutationFn @ first-time-wizard.tsx:189
+fn @ @tanstack_react-query.js?v=b65356fd:1236
+run @ @tanstack_react-query.js?v=b65356fd:513
+(anonymous) @ @tanstack_react-query.js?v=b65356fd:538
+Promise.then
+(anonymous) @ @tanstack_react-query.js?v=b65356fd:534
+Promise.catch
+run @ @tanstack_react-query.js?v=b65356fd:517
+start @ @tanstack_react-query.js?v=b65356fd:555
+execute @ @tanstack_react-query.js?v=b65356fd:1272
+await in execute
+mutate @ @tanstack_react-query.js?v=b65356fd:2692
+handleFinishWizard @ first-time-wizard.tsx:288
+callCallback2 @ chunk-SM3OW2QE.js?v=b65356fd:3674
+invokeGuardedCallbackDev @ chunk-SM3OW2QE.js?v=b65356fd:3699
+invokeGuardedCallback @ chunk-SM3OW2QE.js?v=b65356fd:3733
+invokeGuardedCallbackAndCatchFirstError @ chunk-SM3OW2QE.js?v=b65356fd:3736
+executeDispatch @ chunk-SM3OW2QE.js?v=b65356fd:7014
+processDispatchQueueItemsInOrder @ chunk-SM3OW2QE.js?v=b65356fd:7034
+processDispatchQueue @ chunk-SM3OW2QE.js?v=b65356fd:7043
+dispatchEventsForPlugins @ chunk-SM3OW2QE.js?v=b65356fd:7051
+(anonymous) @ chunk-SM3OW2QE.js?v=b65356fd:7174
+batchedUpdates$1 @ chunk-SM3OW2QE.js?v=b65356fd:18913
+batchedUpdates @ chunk-SM3OW2QE.js?v=b65356fd:3579
+dispatchEventForPluginEventSystem @ chunk-SM3OW2QE.js?v=b65356fd:7173
+dispatchEventWithEnableCapturePhaseSelectiveHydrationWithoutDiscreteEventReplay @ chunk-SM3OW2QE.js?v=b65356fd:5478
+dispatchEvent @ chunk-SM3OW2QE.js?v=b65356fd:5472
+dispatchDiscreteEvent @ chunk-SM3OW2QE.js?v=b65356fd:5449
+Console.js:61 🔓 apiRequest got 401 - NOT clearing session data automatically
+Console.js:61 🔓 Got 401 error - NOT clearing session data automatically
+Console.js:61 Failed to complete wizard: Error: 401: {"error":"Authentication required","code":"UNAUTHORIZED"}
+    at throwIfResNotOk (queryClient.ts:81:11)
+    at async apiRequest (queryClient.ts:119:3)
+Mt.forEach.n.<computed> @ Console.js:61
+handleFinishWizard @ first-time-wizard.tsx:294
+await in handleFinishWizard
+callCallback2 @ chunk-SM3OW2QE.js?v=b65356fd:3674
+invokeGuardedCallbackDev @ chunk-SM3OW2QE.js?v=b65356fd:3699
+invokeGuardedCallback @ chunk-SM3OW2QE.js?v=b65356fd:3733
+invokeGuardedCallbackAndCatchFirstError @ chunk-SM3OW2QE.js?v=b65356fd:3736
+executeDispatch @ chunk-SM3OW2QE.js?v=b65356fd:7014
+processDispatchQueueItemsInOrder @ chunk-SM3OW2QE.js?v=b65356fd:7034
+processDispatchQueue @ chunk-SM3OW2QE.js?v=b65356fd:7043
+dispatchEventsForPlugins @ chunk-SM3OW2QE.js?v=b65356fd:7051
+(anonymous) @ chunk-SM3OW2QE.js?v=b65356fd:7174
+batchedUpdates$1 @ chunk-SM3OW2QE.js?v=b65356fd:18913
+batchedUpdates @ chunk-SM3OW2QE.js?v=b65356fd:3579
+dispatchEventForPluginEventSystem @ chunk-SM3OW2QE.js?v=b65356fd:7173
+dispatchEventWithEnableCapturePhaseSelectiveHydrationWithoutDiscreteEventReplay @ chunk-SM3OW2QE.js?v=b65356fd:5478
+dispatchEvent @ chunk-SM3OW2QE.js?v=b65356fd:5472
+dispatchDiscreteEvent @ chunk-SM3OW2QE.js?v=b65356fd:5449
+Console.js:61 🔍 SessionManager.getSession() returning: {isLoggedIn: true, handle: 'dippydoge', hasWalletData: true, hasSessionToken: true, walletDataKeys: Array(7)}
+Console.js:61 🔍 [GAMING DASHBOARD] Wallet profile: {walletExists: true, handle: 'dippydoge', addresses: {…}, createdAt: '2025-08-03T12:01:06.295Z'}
+Console.js:61 🔍 [GAMING DASHBOARD] Wallet loading: false
+Console.js:61 🔍 SessionManager.getSession() returning: {isLoggedIn: true, handle: 'dippydoge', hasWalletData: true, hasSessionToken: true, walletDataKeys: Array(7)}
+Console.js:61 🔍 SessionManager sessionToken: FOUND
+injected.js:278  POST https://20a5a677-e8db-426b-93ca-0ab4131b22a7-00-pwrlj8iul6vd.janeway.replit.dev/api/gaming/player/profile 401 (Unauthorized)
+window.fetch @ Network.js:219
+apply @ injected.js:278
+apiRequest @ queryClient.ts:107
+mutationFn @ first-time-wizard.tsx:189
+fn @ @tanstack_react-query.js?v=b65356fd:1236
+run @ @tanstack_react-query.js?v=b65356fd:513
+(anonymous) @ @tanstack_react-query.js?v=b65356fd:538
+Promise.then
+(anonymous) @ @tanstack_react-query.js?v=b65356fd:534
+Promise.catch
+run @ @tanstack_react-query.js?v=b65356fd:517
+start @ @tanstack_react-query.js?v=b65356fd:555
+execute @ @tanstack_react-query.js?v=b65356fd:1272
+await in execute
+mutate @ @tanstack_react-query.js?v=b65356fd:2692
+handleFinishWizard @ first-time-wizard.tsx:288
+callCallback2 @ chunk-SM3OW2QE.js?v=b65356fd:3674
+invokeGuardedCallbackDev @ chunk-SM3OW2QE.js?v=b65356fd:3699
+invokeGuardedCallback @ chunk-SM3OW2QE.js?v=b65356fd:3733
+invokeGuardedCallbackAndCatchFirstError @ chunk-SM3OW2QE.js?v=b65356fd:3736
+executeDispatch @ chunk-SM3OW2QE.js?v=b65356fd:7014
+processDispatchQueueItemsInOrder @ chunk-SM3OW2QE.js?v=b65356fd:7034
+processDispatchQueue @ chunk-SM3OW2QE.js?v=b65356fd:7043
+dispatchEventsForPlugins @ chunk-SM3OW2QE.js?v=b65356fd:7051
+(anonymous) @ chunk-SM3OW2QE.js?v=b65356fd:7174
+batchedUpdates$1 @ chunk-SM3OW2QE.js?v=b65356fd:18913
+batchedUpdates @ chunk-SM3OW2QE.js?v=b65356fd:3579
+dispatchEventForPluginEventSystem @ chunk-SM3OW2QE.js?v=b65356fd:7173
+dispatchEventWithEnableCapturePhaseSelectiveHydrationWithoutDiscreteEventReplay @ chunk-SM3OW2QE.js?v=b65356fd:5478
+dispatchEvent @ chunk-SM3OW2QE.js?v=b65356fd:5472
+dispatchDiscreteEvent @ chunk-SM3OW2QE.js?v=b65356fd:5449
+Console.js:61 🔓 apiRequest got 401 - NOT clearing session data automatically
+Console.js:61 🔓 Got 401 error - NOT clearing session data automatically
+Console.js:61 Failed to complete wizard: Error: 401: {"error":"Authentication required","code":"UNAUTHORIZED"}
+    at throwIfResNotOk (queryClient.ts:81:11)
+    at async apiRequest (queryClient.ts:119:3)
+Mt.forEach.n.<computed> @ Console.js:61
+handleFinishWizard @ first-time-wizard.tsx:294
+await in handleFinishWizard
+callCallback2 @ chunk-SM3OW2QE.js?v=b65356fd:3674
+invokeGuardedCallbackDev @ chunk-SM3OW2QE.js?v=b65356fd:3699
+invokeGuardedCallback @ chunk-SM3OW2QE.js?v=b65356fd:3733
+invokeGuardedCallbackAndCatchFirstError @ chunk-SM3OW2QE.js?v=b65356fd:3736
+executeDispatch @ chunk-SM3OW2QE.js?v=b65356fd:7014
+processDispatchQueueItemsInOrder @ chunk-SM3OW2QE.js?v=b65356fd:7034
+processDispatchQueue @ chunk-SM3OW2QE.js?v=b65356fd:7043
+dispatchEventsForPlugins @ chunk-SM3OW2QE.js?v=b65356fd:7051
+(anonymous) @ chunk-SM3OW2QE.js?v=b65356fd:7174
+batchedUpdates$1 @ chunk-SM3OW2QE.js?v=b65356fd:18913
+batchedUpdates @ chunk-SM3OW2QE.js?v=b65356fd:3579
+dispatchEventForPluginEventSystem @ chunk-SM3OW2QE.js?v=b65356fd:7173
+dispatchEventWithEnableCapturePhaseSelectiveHydrationWithoutDiscreteEventReplay @ chunk-SM3OW2QE.js?v=b65356fd:5478
+dispatchEvent @ chunk-SM3OW2QE.js?v=b65356fd:5472
+dispatchDiscreteEvent @ chunk-SM3OW2QE.js?v=b65356fd:5449
+Console.js:61 🔍 SessionManager.getSession() returning: {isLoggedIn: true, handle: 'dippydoge', hasWalletData: true, hasSessionToken: true, walletDataKeys: Array(7)}
+Console.js:61 🔍 [GAMING DASHBOARD] Wallet profile: {walletExists: true, handle: 'dippydoge', addresses: {…}, createdAt: '2025-08-03T12:01:06.295Z'}
+Console.js:61 🔍 [GAMING DASHBOARD] Wallet loading: false
+Console.js:61 🔍 SessionManager.getSession() returning: {isLoggedIn: true, handle: 'dippydoge', hasWalletData: true, hasSessionToken: true, walletDataKeys: Array(7)}
+Console.js:61 🔍 SessionManager.getSession() returning: {isLoggedIn: true, handle: 'dippydoge', hasWalletData: true, hasSessionToken: true, walletDataKeys: Array(7)}
+Console.js:61 🔍 [GAMING DASHBOARD] Wallet profile: {walletExists: true, handle: 'dippydoge', addresses: {…}, createdAt: '2025-08-03T12:01:06.295Z'}
+Console.js:61 🔍 [GAMING DASHBOARD] Wallet loading: false
+Console.js:61 🔍 SessionManager.getSession() returning: {isLoggedIn: true, handle: 'dippydoge', hasWalletData: true, hasSessionToken: true, walletDataKeys: Array(7)}
+Console.js:61 🔍 SessionManager.getSession() returning: {isLoggedIn: true, handle: 'dippydoge', hasWalletData: true, hasSessionToken: true, walletDataKeys: Array(7)}
+Console.js:61 🔍 [GAMING DASHBOARD] Wallet profile: {walletExists: true, handle: 'dippydoge', addresses: {…}, createdAt: '2025-08-03T12:01:06.295Z'}
+Console.js:61 🔍 [GAMING DASHBOARD] Wallet loading: false
+Console.js:61 🔍 SessionManager.getSession() returning: {isLoggedIn: true, handle: 'dippydoge', hasWalletData: true, hasSessionToken: true, walletDataKeys: Array(7)}
+Console.js:61 🔍 SessionManager.getSession() returning: {isLoggedIn: true, handle: 'dippydoge', hasWalletData: true, hasSessionToken: true, walletDataKeys: Array(7)}
+Console.js:61 🔍 [GAMING DASHBOARD] Wallet profile: {walletExists: true, handle: 'dippydoge', addresses: {…}, createdAt: '2025-08-03T12:01:06.295Z'}
+Console.js:61 🔍 [GAMING DASHBOARD] Wallet loading: false
+Console.js:61 🔍 SessionManager.getSession() returning: {isLoggedIn: true, handle: 'dippydoge', hasWalletData: true, hasSessionToken: true, walletDataKeys: Array(7)}
+Console.js:61 🔍 SessionManager.getSession() returning: {isLoggedIn: true, handle: 'dippydoge', hasWalletData: true, hasSessionToken: true, walletDataKeys: Array(7)}
+Console.js:61 🔍 [GAMING DASHBOARD] Wallet profile: {walletExists: true, handle: 'dippydoge', addresses: {…}, createdAt: '2025-08-03T12:01:06.295Z'}
+Console.js:61 🔍 [GAMING DASHBOARD] Wallet loading: false
+Console.js:61 🔍 SessionManager.getSession() returning: {isLoggedIn: true, handle: 'dippydoge', hasWalletData: true, hasSessionToken: true, walletDataKeys: Array(7)}
+Console.js:61 🔍 SessionManager.getSession() returning: {isLoggedIn: true, handle: 'dippydoge', hasWalletData: true, hasSessionToken: true, walletDataKeys: Array(7)}
+Console.js:61 🔍 [GAMING DASHBOARD] Wallet profile: {walletExists: true, handle: 'dippydoge', addresses: {…}, createdAt: '2025-08-03T12:01:06.295Z'}
+Console.js:61 🔍 [GAMING DASHBOARD] Wallet loading: false
+Console.js:61 🔍 SessionManager.getSession() returning: {isLoggedIn: true, handle: 'dippydoge', hasWalletData: true, hasSessionToken: true, walletDataKeys: Array(7)}
+Console.js:61 🔍 SessionManager sessionToken: FOUND
+Console.js:61 🔍 SessionManager sessionToken: FOUND
+injected.js:278  POST https://20a5a677-e8db-426b-93ca-0ab4131b22a7-00-pwrlj8iul6vd.janeway.replit.dev/api/gaming/player/profile 401 (Unauthorized)
+window.fetch @ Network.js:219
+apply @ injected.js:278
+apiRequest @ queryClient.ts:107
+mutationFn @ first-time-wizard.tsx:189
+fn @ @tanstack_react-query.js?v=b65356fd:1236
+run @ @tanstack_react-query.js?v=b65356fd:513
+start @ @tanstack_react-query.js?v=b65356fd:555
+execute @ @tanstack_react-query.js?v=b65356fd:1272
+await in execute
+mutate @ @tanstack_react-query.js?v=b65356fd:2692
+handleFinishWizard @ first-time-wizard.tsx:288
+callCallback2 @ chunk-SM3OW2QE.js?v=b65356fd:3674
+invokeGuardedCallbackDev @ chunk-SM3OW2QE.js?v=b65356fd:3699
+invokeGuardedCallback @ chunk-SM3OW2QE.js?v=b65356fd:3733
+invokeGuardedCallbackAndCatchFirstError @ chunk-SM3OW2QE.js?v=b65356fd:3736
+executeDispatch @ chunk-SM3OW2QE.js?v=b65356fd:7014
+processDispatchQueueItemsInOrder @ chunk-SM3OW2QE.js?v=b65356fd:7034
+processDispatchQueue @ chunk-SM3OW2QE.js?v=b65356fd:7043
+dispatchEventsForPlugins @ chunk-SM3OW2QE.js?v=b65356fd:7051
+(anonymous) @ chunk-SM3OW2QE.js?v=b65356fd:7174
+batchedUpdates$1 @ chunk-SM3OW2QE.js?v=b65356fd:18913
+batchedUpdates @ chunk-SM3OW2QE.js?v=b65356fd:3579
+dispatchEventForPluginEventSystem @ chunk-SM3OW2QE.js?v=b65356fd:7173
+dispatchEventWithEnableCapturePhaseSelectiveHydrationWithoutDiscreteEventReplay @ chunk-SM3OW2QE.js?v=b65356fd:5478
+dispatchEvent @ chunk-SM3OW2QE.js?v=b65356fd:5472
+dispatchDiscreteEvent @ chunk-SM3OW2QE.js?v=b65356fd:5449
+Console.js:61 🔓 apiRequest got 401 - NOT clearing session data automatically
+Console.js:61 🔓 Got 401 error - NOT clearing session data automatically
+injected.js:278  POST https://20a5a677-e8db-426b-93ca-0ab4131b22a7-00-pwrlj8iul6vd.janeway.replit.dev/api/gaming/player/profile 401 (Unauthorized)
+window.fetch @ Network.js:219
+apply @ injected.js:278
+apiRequest @ queryClient.ts:107
+mutationFn @ first-time-wizard.tsx:189
+fn @ @tanstack_react-query.js?v=b65356fd:1236
+run @ @tanstack_react-query.js?v=b65356fd:513
+start @ @tanstack_react-query.js?v=b65356fd:555
+execute @ @tanstack_react-query.js?v=b65356fd:1272
+await in execute
+mutate @ @tanstack_react-query.js?v=b65356fd:2692
+handleFinishWizard @ first-time-wizard.tsx:288
+callCallback2 @ chunk-SM3OW2QE.js?v=b65356fd:3674
+invokeGuardedCallbackDev @ chunk-SM3OW2QE.js?v=b65356fd:3699
+invokeGuardedCallback @ chunk-SM3OW2QE.js?v=b65356fd:3733
+invokeGuardedCallbackAndCatchFirstError @ chunk-SM3OW2QE.js?v=b65356fd:3736
+executeDispatch @ chunk-SM3OW2QE.js?v=b65356fd:7014
+processDispatchQueueItemsInOrder @ chunk-SM3OW2QE.js?v=b65356fd:7034
+processDispatchQueue @ chunk-SM3OW2QE.js?v=b65356fd:7043
+dispatchEventsForPlugins @ chunk-SM3OW2QE.js?v=b65356fd:7051
+(anonymous) @ chunk-SM3OW2QE.js?v=b65356fd:7174
+batchedUpdates$1 @ chunk-SM3OW2QE.js?v=b65356fd:18913
+batchedUpdates @ chunk-SM3OW2QE.js?v=b65356fd:3579
+dispatchEventForPluginEventSystem @ chunk-SM3OW2QE.js?v=b65356fd:7173
+dispatchEventWithEnableCapturePhaseSelectiveHydrationWithoutDiscreteEventReplay @ chunk-SM3OW2QE.js?v=b65356fd:5478
+dispatchEvent @ chunk-SM3OW2QE.js?v=b65356fd:5472
+dispatchDiscreteEvent @ chunk-SM3OW2QE.js?v=b65356fd:5449
+Console.js:61 🔓 apiRequest got 401 - NOT clearing session data automatically
+Console.js:61 🔓 Got 401 error - NOT clearing session data automatically
+Console.js:61 🔍 SessionManager sessionToken: FOUND
+Console.js:61 🔍 SessionManager sessionToken: FOUND
+injected.js:278  POST https://20a5a677-e8db-426b-93ca-0ab4131b22a7-00-pwrlj8iul6vd.janeway.replit.dev/api/gaming/player/profile 401 (Unauthorized)
+window.fetch @ Network.js:219
+apply @ injected.js:278
+apiRequest @ queryClient.ts:107
+mutationFn @ first-time-wizard.tsx:189
+fn @ @tanstack_react-query.js?v=b65356fd:1236
+run @ @tanstack_react-query.js?v=b65356fd:513
+(anonymous) @ @tanstack_react-query.js?v=b65356fd:538
+Promise.then
+(anonymous) @ @tanstack_react-query.js?v=b65356fd:534
+Promise.catch
+run @ @tanstack_react-query.js?v=b65356fd:517
+start @ @tanstack_react-query.js?v=b65356fd:555
+execute @ @tanstack_react-query.js?v=b65356fd:1272
+await in execute
+mutate @ @tanstack_react-query.js?v=b65356fd:2692
+handleFinishWizard @ first-time-wizard.tsx:288
+callCallback2 @ chunk-SM3OW2QE.js?v=b65356fd:3674
+invokeGuardedCallbackDev @ chunk-SM3OW2QE.js?v=b65356fd:3699
+invokeGuardedCallback @ chunk-SM3OW2QE.js?v=b65356fd:3733
+invokeGuardedCallbackAndCatchFirstError @ chunk-SM3OW2QE.js?v=b65356fd:3736
+executeDispatch @ chunk-SM3OW2QE.js?v=b65356fd:7014
+processDispatchQueueItemsInOrder @ chunk-SM3OW2QE.js?v=b65356fd:7034
+processDispatchQueue @ chunk-SM3OW2QE.js?v=b65356fd:7043
+dispatchEventsForPlugins @ chunk-SM3OW2QE.js?v=b65356fd:7051
+(anonymous) @ chunk-SM3OW2QE.js?v=b65356fd:7174
+batchedUpdates$1 @ chunk-SM3OW2QE.js?v=b65356fd:18913
+batchedUpdates @ chunk-SM3OW2QE.js?v=b65356fd:3579
+dispatchEventForPluginEventSystem @ chunk-SM3OW2QE.js?v=b65356fd:7173
+dispatchEventWithEnableCapturePhaseSelectiveHydrationWithoutDiscreteEventReplay @ chunk-SM3OW2QE.js?v=b65356fd:5478
+dispatchEvent @ chunk-SM3OW2QE.js?v=b65356fd:5472
+dispatchDiscreteEvent @ chunk-SM3OW2QE.js?v=b65356fd:5449
+Console.js:61 🔓 apiRequest got 401 - NOT clearing session data automatically
+Console.js:61 🔓 Got 401 error - NOT clearing session data automatically
+Console.js:61 Failed to complete wizard: Error: 401: {"error":"Authentication required","code":"UNAUTHORIZED"}
+    at throwIfResNotOk (queryClient.ts:81:11)
+    at async apiRequest (queryClient.ts:119:3)
+Mt.forEach.n.<computed> @ Console.js:61
+handleFinishWizard @ first-time-wizard.tsx:294
+await in handleFinishWizard
+callCallback2 @ chunk-SM3OW2QE.js?v=b65356fd:3674
+invokeGuardedCallbackDev @ chunk-SM3OW2QE.js?v=b65356fd:3699
+invokeGuardedCallback @ chunk-SM3OW2QE.js?v=b65356fd:3733
+invokeGuardedCallbackAndCatchFirstError @ chunk-SM3OW2QE.js?v=b65356fd:3736
+executeDispatch @ chunk-SM3OW2QE.js?v=b65356fd:7014
+processDispatchQueueItemsInOrder @ chunk-SM3OW2QE.js?v=b65356fd:7034
+processDispatchQueue @ chunk-SM3OW2QE.js?v=b65356fd:7043
+dispatchEventsForPlugins @ chunk-SM3OW2QE.js?v=b65356fd:7051
+(anonymous) @ chunk-SM3OW2QE.js?v=b65356fd:7174
+batchedUpdates$1 @ chunk-SM3OW2QE.js?v=b65356fd:18913
+batchedUpdates @ chunk-SM3OW2QE.js?v=b65356fd:3579
+dispatchEventForPluginEventSystem @ chunk-SM3OW2QE.js?v=b65356fd:7173
+dispatchEventWithEnableCapturePhaseSelectiveHydrationWithoutDiscreteEventReplay @ chunk-SM3OW2QE.js?v=b65356fd:5478
+dispatchEvent @ chunk-SM3OW2QE.js?v=b65356fd:5472
+dispatchDiscreteEvent @ chunk-SM3OW2QE.js?v=b65356fd:5449
+Console.js:61 🔍 SessionManager.getSession() returning: {isLoggedIn: true, handle: 'dippydoge', hasWalletData: true, hasSessionToken: true, walletDataKeys: Array(7)}
+Console.js:61 🔍 [GAMING DASHBOARD] Wallet profile: {walletExists: true, handle: 'dippydoge', addresses: {…}, createdAt: '2025-08-03T12:01:06.295Z'}
+Console.js:61 🔍 [GAMING DASHBOARD] Wallet loading: false
+Console.js:61 🔍 SessionManager.getSession() returning: {isLoggedIn: true, handle: 'dippydoge', hasWalletData: true, hasSessionToken: true, walletDataKeys: Array(7)}
+injected.js:278  POST https://20a5a677-e8db-426b-93ca-0ab4131b22a7-00-pwrlj8iul6vd.janeway.replit.dev/api/gaming/player/profile 401 (Unauthorized)
+window.fetch @ Network.js:219
+apply @ injected.js:278
+apiRequest @ queryClient.ts:107
+mutationFn @ first-time-wizard.tsx:189
+fn @ @tanstack_react-query.js?v=b65356fd:1236
+run @ @tanstack_react-query.js?v=b65356fd:513
+(anonymous) @ @tanstack_react-query.js?v=b65356fd:538
+Promise.then
+(anonymous) @ @tanstack_react-query.js?v=b65356fd:534
+Promise.catch
+run @ @tanstack_react-query.js?v=b65356fd:517
+start @ @tanstack_react-query.js?v=b65356fd:555
+execute @ @tanstack_react-query.js?v=b65356fd:1272
+await in execute
+mutate @ @tanstack_react-query.js?v=b65356fd:2692
+handleFinishWizard @ first-time-wizard.tsx:288
+callCallback2 @ chunk-SM3OW2QE.js?v=b65356fd:3674
+invokeGuardedCallbackDev @ chunk-SM3OW2QE.js?v=b65356fd:3699
+invokeGuardedCallback @ chunk-SM3OW2QE.js?v=b65356fd:3733
+invokeGuardedCallbackAndCatchFirstError @ chunk-SM3OW2QE.js?v=b65356fd:3736
+executeDispatch @ chunk-SM3OW2QE.js?v=b65356fd:7014
+processDispatchQueueItemsInOrder @ chunk-SM3OW2QE.js?v=b65356fd:7034
+processDispatchQueue @ chunk-SM3OW2QE.js?v=b65356fd:7043
+dispatchEventsForPlugins @ chunk-SM3OW2QE.js?v=b65356fd:7051
+(anonymous) @ chunk-SM3OW2QE.js?v=b65356fd:7174
+batchedUpdates$1 @ chunk-SM3OW2QE.js?v=b65356fd:18913
+batchedUpdates @ chunk-SM3OW2QE.js?v=b65356fd:3579
+dispatchEventForPluginEventSystem @ chunk-SM3OW2QE.js?v=b65356fd:7173
+dispatchEventWithEnableCapturePhaseSelectiveHydrationWithoutDiscreteEventReplay @ chunk-SM3OW2QE.js?v=b65356fd:5478
+dispatchEvent @ chunk-SM3OW2QE.js?v=b65356fd:5472
+dispatchDiscreteEvent @ chunk-SM3OW2QE.js?v=b65356fd:5449
+Console.js:61 🔓 apiRequest got 401 - NOT clearing session data automatically
+Console.js:61 🔓 Got 401 error - NOT clearing session data automatically
+Console.js:61 Failed to complete wizard: Error: 401: {"error":"Authentication required","code":"UNAUTHORIZED"}
+    at throwIfResNotOk (queryClient.ts:81:11)
+    at async apiRequest (queryClient.ts:119:3)
+Mt.forEach.n.<computed> @ Console.js:61
+handleFinishWizard @ first-time-wizard.tsx:294
+await in handleFinishWizard
+callCallback2 @ chunk-SM3OW2QE.js?v=b65356fd:3674
+invokeGuardedCallbackDev @ chunk-SM3OW2QE.js?v=b65356fd:3699
+invokeGuardedCallback @ chunk-SM3OW2QE.js?v=b65356fd:3733
+invokeGuardedCallbackAndCatchFirstError @ chunk-SM3OW2QE.js?v=b65356fd:3736
+executeDispatch @ chunk-SM3OW2QE.js?v=b65356fd:7014
+processDispatchQueueItemsInOrder @ chunk-SM3OW2QE.js?v=b65356fd:7034
+processDispatchQueue @ chunk-SM3OW2QE.js?v=b65356fd:7043
+dispatchEventsForPlugins @ chunk-SM3OW2QE.js?v=b65356fd:7051
+(anonymous) @ chunk-SM3OW2QE.js?v=b65356fd:7174
+batchedUpdates$1 @ chunk-SM3OW2QE.js?v=b65356fd:18913
+batchedUpdates @ chunk-SM3OW2QE.js?v=b65356fd:3579
+dispatchEventForPluginEventSystem @ chunk-SM3OW2QE.js?v=b65356fd:7173
+dispatchEventWithEnableCapturePhaseSelectiveHydrationWithoutDiscreteEventReplay @ chunk-SM3OW2QE.js?v=b65356fd:5478
+dispatchEvent @ chunk-SM3OW2QE.js?v=b65356fd:5472
+dispatchDiscreteEvent @ chunk-SM3OW2QE.js?v=b65356fd:5449
+Console.js:61 🔍 SessionManager.getSession() returning: {isLoggedIn: true, handle: 'dippydoge', hasWalletData: true, hasSessionToken: true, walletDataKeys: Array(7)}
+Console.js:61 🔍 [GAMING DASHBOARD] Wallet profile: {walletExists: true, handle: 'dippydoge', addresses: {…}, createdAt: '2025-08-03T12:01:06.295Z'}
+Console.js:61 🔍 [GAMING DASHBOARD] Wallet loading: false
+Console.js:61 🔍 SessionManager.getSession() returning: {isLoggedIn: true, handle: 'dippydoge', hasWalletData: true, hasSessionToken: true, walletDataKeys: Array(7)}
+Console.js:61 🔍 SessionManager.getSession() returning: {isLoggedIn: true, handle: 'dippydoge', hasWalletData: true, hasSessionToken: true, walletDataKeys: Array(7)}
+Console.js:61 🔍 [GAMING DASHBOARD] Wallet profile: {walletExists: true, handle: 'dippydoge', addresses: {…}, createdAt: '2025-08-03T12:01:06.295Z'}
+Console.js:61 🔍 [GAMING DASHBOARD] Wallet loading: false
+Console.js:61 🔍 SessionManager.getSession() returning: {isLoggedIn: true, handle: 'dippydoge', hasWalletData: true, hasSessionToken: true, walletDataKeys: Array(7)}
+Console.js:61 🔍 SessionManager.getSession() returning: {isLoggedIn: true, handle: 'dippydoge', hasWalletData: true, hasSessionToken: true, walletDataKeys: Array(7)}
+Console.js:61 🔍 [GAMING DASHBOARD] Wallet profile: {walletExists: true, handle: 'dippydoge', addresses: {…}, createdAt: '2025-08-03T12:01:06.295Z'}
+Console.js:61 🔍 [GAMING DASHBOARD] Wallet loading: false
+Console.js:61 🔍 SessionManager.getSession() returning: {isLoggedIn: true, handle: 'dippydoge', hasWalletData: true, hasSessionToken: true, walletDataKeys: Array(7)}
+Console.js:61 🔍 SessionManager.getSession() returning: {isLoggedIn: true, handle: 'dippydoge', hasWalletData: true, hasSessionToken: true, walletDataKeys: Array(7)}
+Console.js:61 🔍 [GAMING DASHBOARD] Wallet profile: {walletExists: true, handle: 'dippydoge', addresses: {…}, createdAt: '2025-08-03T12:01:06.295Z'}
+Console.js:61 🔍 [GAMING DASHBOARD] Wallet loading: false
+Console.js:61 🔍 SessionManager.getSession() returning: {isLoggedIn: true, handle: 'dippydoge', hasWalletData: true, hasSessionToken: true, walletDataKeys: Array(7)}
+Console.js:61 🔍 SessionManager.getSession() returning: {isLoggedIn: true, handle: 'dippydoge', hasWalletData: true, hasSessionToken: true, walletDataKeys: Array(7)}
+Console.js:61 🔍 [GAMING DASHBOARD] Wallet profile: {walletExists: true, handle: 'dippydoge', addresses: {…}, createdAt: '2025-08-03T12:01:06.295Z'}
+Console.js:61 🔍 [GAMING DASHBOARD] Wallet loading: false
+Console.js:61 🔍 SessionManager.getSession() returning: {isLoggedIn: true, handle: 'dippydoge', hasWalletData: true, hasSessionToken: true, walletDataKeys: Array(7)}
+Console.js:61 🔍 SessionManager: checkSession() called - current sessionData: true
+Console.js:61 🌐 SessionManager: Making Riddle wallet session request to /api/riddle-wallet/session
+Console.js:61 ✅ SessionManager: Valid session for dippydoge
+Console.js:61 ✅ SessionManager: Updated session data: {handle: 'dippydoge', hasWalletData: true, authenticated: true, listeners: 1}
+Console.js:61 🔍 SessionManager.getSession() returning: {isLoggedIn: true, handle: 'dippydoge', hasWalletData: true, hasSessionToken: true, walletDataKeys: Array(7)}
+Console.js:61 🔔 SessionManager: Notified 1 listeners
+Console.js:61 🔍 SessionManager.getSession() returning: {isLoggedIn: true, handle: 'dippydoge', hasWalletData: true, hasSessionToken: true, walletDataKeys: Array(7)}
+Console.js:61 🔍 SessionManager sessionToken: FOUND
+injected.js:278  POST https://20a5a677-e8db-426b-93ca-0ab4131b22a7-00-pwrlj8iul6vd.janeway.replit.dev/api/gaming/player/profile 401 (Unauthorized)
+window.fetch @ Network.js:219
+apply @ injected.js:278
+apiRequest @ queryClient.ts:107
+mutationFn @ first-time-wizard.tsx:189
+fn @ @tanstack_react-query.js?v=b65356fd:1236
+run @ @tanstack_react-query.js?v=b65356fd:513
+start @ @tanstack_react-query.js?v=b65356fd:555
+execute @ @tanstack_react-query.js?v=b65356fd:1272
+await in execute
+mutate @ @tanstack_react-query.js?v=b65356fd:2692
+handleFinishWizard @ first-time-wizard.tsx:288
+callCallback2 @ chunk-SM3OW2QE.js?v=b65356fd:3674
+invokeGuardedCallbackDev @ chunk-SM3OW2QE.js?v=b65356fd:3699
+invokeGuardedCallback @ chunk-SM3OW2QE.js?v=b65356fd:3733
+invokeGuardedCallbackAndCatchFirstError @ chunk-SM3OW2QE.js?v=b65356fd:3736
+executeDispatch @ chunk-SM3OW2QE.js?v=b65356fd:7014
+processDispatchQueueItemsInOrder @ chunk-SM3OW2QE.js?v=b65356fd:7034
+processDispatchQueue @ chunk-SM3OW2QE.js?v=b65356fd:7043
+dispatchEventsForPlugins @ chunk-SM3OW2QE.js?v=b65356fd:7051
+(anonymous) @ chunk-SM3OW2QE.js?v=b65356fd:7174
+batchedUpdates$1 @ chunk-SM3OW2QE.js?v=b65356fd:18913
+batchedUpdates @ chunk-SM3OW2QE.js?v=b65356fd:3579
+dispatchEventForPluginEventSystem @ chunk-SM3OW2QE.js?v=b65356fd:7173
+dispatchEventWithEnableCapturePhaseSelectiveHydrationWithoutDiscreteEventReplay @ chunk-SM3OW2QE.js?v=b65356fd:5478
+dispatchEvent @ chunk-SM3OW2QE.js?v=b65356fd:5472
+dispatchDiscreteEvent @ chunk-SM3OW2QE.js?v=b65356fd:5449
+Console.js:61 🔓 apiRequest got 401 - NOT clearing session data automatically
+Console.js:61 🔓 Got 401 error - NOT clearing session data automatically
+Console.js:61 🔍 SessionManager sessionToken: FOUND
+injected.js:278  POST https://20a5a677-e8db-426b-93ca-0ab4131b22a7-00-pwrlj8iul6vd.janeway.replit.dev/api/gaming/player/profile 401 (Unauthorized)
+window.fetch @ Network.js:219
+apply @ injected.js:278
+apiRequest @ queryClient.ts:107
+mutationFn @ first-time-wizard.tsx:189
+fn @ @tanstack_react-query.js?v=b65356fd:1236
+run @ @tanstack_react-query.js?v=b65356fd:513
+(anonymous) @ @tanstack_react-query.js?v=b65356fd:538
+Promise.then
+(anonymous) @ @tanstack_react-query.js?v=b65356fd:534
+Promise.catch
+run @ @tanstack_react-query.js?v=b65356fd:517
+start @ @tanstack_react-query.js?v=b65356fd:555
+execute @ @tanstack_react-query.js?v=b65356fd:1272
+await in execute
+mutate @ @tanstack_react-query.js?v=b65356fd:2692
+handleFinishWizard @ first-time-wizard.tsx:288
+callCallback2 @ chunk-SM3OW2QE.js?v=b65356fd:3674
+invokeGuardedCallbackDev @ chunk-SM3OW2QE.js?v=b65356fd:3699
+invokeGuardedCallback @ chunk-SM3OW2QE.js?v=b65356fd:3733
+invokeGuardedCallbackAndCatchFirstError @ chunk-SM3OW2QE.js?v=b65356fd:3736
+executeDispatch @ chunk-SM3OW2QE.js?v=b65356fd:7014
+processDispatchQueueItemsInOrder @ chunk-SM3OW2QE.js?v=b65356fd:7034
+processDispatchQueue @ chunk-SM3OW2QE.js?v=b65356fd:7043
+dispatchEventsForPlugins @ chunk-SM3OW2QE.js?v=b65356fd:7051
+(anonymous) @ chunk-SM3OW2QE.js?v=b65356fd:7174
+batchedUpdates$1 @ chunk-SM3OW2QE.js?v=b65356fd:18913
+batchedUpdates @ chunk-SM3OW2QE.js?v=b65356fd:3579
+dispatchEventForPluginEventSystem @ chunk-SM3OW2QE.js?v=b65356fd:7173
+dispatchEventWithEnableCapturePhaseSelectiveHydrationWithoutDiscreteEventReplay @ chunk-SM3OW2QE.js?v=b65356fd:5478
+dispatchEvent @ chunk-SM3OW2QE.js?v=b65356fd:5472
+dispatchDiscreteEvent @ chunk-SM3OW2QE.js?v=b65356fd:5449
+Console.js:61 🔓 apiRequest got 401 - NOT clearing session data automatically
+Console.js:61 🔓 Got 401 error - NOT clearing session data automatically
+Console.js:61 Failed to complete wizard: Error: 401: {"error":"Authentication required","code":"UNAUTHORIZED"}
+    at throwIfResNotOk (queryClient.ts:81:11)
+    at async apiRequest (queryClient.ts:119:3)
+Mt.forEach.n.<computed> @ Console.js:61
+handleFinishWizard @ first-time-wizard.tsx:294
+await in handleFinishWizard
+callCallback2 @ chunk-SM3OW2QE.js?v=b65356fd:3674
+invokeGuardedCallbackDev @ chunk-SM3OW2QE.js?v=b65356fd:3699
+invokeGuardedCallback @ chunk-SM3OW2QE.js?v=b65356fd:3733
+invokeGuardedCallbackAndCatchFirstError @ chunk-SM3OW2QE.js?v=b65356fd:3736
+executeDispatch @ chunk-SM3OW2QE.js?v=b65356fd:7014
+processDispatchQueueItemsInOrder @ chunk-SM3OW2QE.js?v=b65356fd:7034
+processDispatchQueue @ chunk-SM3OW2QE.js?v=b65356fd:7043
+dispatchEventsForPlugins @ chunk-SM3OW2QE.js?v=b65356fd:7051
+(anonymous) @ chunk-SM3OW2QE.js?v=b65356fd:7174
+batchedUpdates$1 @ chunk-SM3OW2QE.js?v=b65356fd:18913
+batchedUpdates @ chunk-SM3OW2QE.js?v=b65356fd:3579
+dispatchEventForPluginEventSystem @ chunk-SM3OW2QE.js?v=b65356fd:7173
+dispatchEventWithEnableCapturePhaseSelectiveHydrationWithoutDiscreteEventReplay @ chunk-SM3OW2QE.js?v=b65356fd:5478
+dispatchEvent @ chunk-SM3OW2QE.js?v=b65356fd:5472
+dispatchDiscreteEvent @ chunk-SM3OW2QE.js?v=b65356fd:5449
+Console.js:61 🔍 SessionManager.getSession() returning: {isLoggedIn: true, handle: 'dippydoge', hasWalletData: true, hasSessionToken: true, walletDataKeys: Array(7)}
+Console.js:61 🔍 [GAMING DASHBOARD] Wallet profile: {walletExists: true, handle: 'dippydoge', addresses: {…}, createdAt: '2025-08-03T12:01:06.295Z'}
+Console.js:61 🔍 [GAMING DASHBOARD] Wallet loading: false
+Console.js:61 🔍 SessionManager.getSession() returning: {isLoggedIn: true, handle: 'dippydoge', hasWalletData: true, hasSessionToken: true, walletDataKeys: Array(7)}
+Console.js:61 🔍 SessionManager sessionToken: FOUND
+injected.js:278  POST https://20a5a677-e8db-426b-93ca-0ab4131b22a7-00-pwrlj8iul6vd.janeway.replit.dev/api/gaming/player/profile 401 (Unauthorized)
+window.fetch @ Network.js:219
+apply @ injected.js:278
+apiRequest @ queryClient.ts:107
+mutationFn @ first-time-wizard.tsx:189
+fn @ @tanstack_react-query.js?v=b65356fd:1236
+run @ @tanstack_react-query.js?v=b65356fd:513
+start @ @tanstack_react-query.js?v=b65356fd:555
+execute @ @tanstack_react-query.js?v=b65356fd:1272
+await in execute
+mutate @ @tanstack_react-query.js?v=b65356fd:2692
+handleFinishWizard @ first-time-wizard.tsx:288
+callCallback2 @ chunk-SM3OW2QE.js?v=b65356fd:3674
+invokeGuardedCallbackDev @ chunk-SM3OW2QE.js?v=b65356fd:3699
+invokeGuardedCallback @ chunk-SM3OW2QE.js?v=b65356fd:3733
+invokeGuardedCallbackAndCatchFirstError @ chunk-SM3OW2QE.js?v=b65356fd:3736
+executeDispatch @ chunk-SM3OW2QE.js?v=b65356fd:7014
+processDispatchQueueItemsInOrder @ chunk-SM3OW2QE.js?v=b65356fd:7034
+processDispatchQueue @ chunk-SM3OW2QE.js?v=b65356fd:7043
+dispatchEventsForPlugins @ chunk-SM3OW2QE.js?v=b65356fd:7051
+(anonymous) @ chunk-SM3OW2QE.js?v=b65356fd:7174
+batchedUpdates$1 @ chunk-SM3OW2QE.js?v=b65356fd:18913
+batchedUpdates @ chunk-SM3OW2QE.js?v=b65356fd:3579
+dispatchEventForPluginEventSystem @ chunk-SM3OW2QE.js?v=b65356fd:7173
+dispatchEventWithEnableCapturePhaseSelectiveHydrationWithoutDiscreteEventReplay @ chunk-SM3OW2QE.js?v=b65356fd:5478
+dispatchEvent @ chunk-SM3OW2QE.js?v=b65356fd:5472
+dispatchDiscreteEvent @ chunk-SM3OW2QE.js?v=b65356fd:5449
+Console.js:61 🔓 apiRequest got 401 - NOT clearing session data automatically
+Console.js:61 🔓 Got 401 error - NOT clearing session data automatically
+Console.js:61 🔍 SessionManager: checkSession() called - current sessionData: true
+Console.js:61 🌐 SessionManager: Making Riddle wallet session request to /api/riddle-wallet/session
+Console.js:61 ✅ SessionManager: Valid session for dippydoge
+Console.js:61 ✅ SessionManager: Updated session data: {handle: 'dippydoge', hasWalletData: true, authenticated: true, listeners: 1}
+Console.js:61 🔍 SessionManager.getSession() returning: {isLoggedIn: true, handle: 'dippydoge', hasWalletData: true, hasSessionToken: true, walletDataKeys: Array(7)}
+Console.js:61 🔔 SessionManager: Notified 1 listeners
+Console.js:61 🔍 SessionManager.getSession() returning: {isLoggedIn: true, handle: 'dippydoge', hasWalletData: true, hasSessionToken: true, walletDataKeys: Array(7)}
+Console.js:61 🔍 SessionManager sessionToken: FOUND
+injected.js:278  POST https://20a5a677-e8db-426b-93ca-0ab4131b22a7-00-pwrlj8iul6vd.janeway.replit.dev/api/gaming/player/profile 401 (Unauthorized)
+window.fetch @ Network.js:219
+apply @ injected.js:278
+apiRequest @ queryClient.ts:107
+mutationFn @ first-time-wizard.tsx:189
+fn @ @tanstack_react-query.js?v=b65356fd:1236
+run @ @tanstack_react-query.js?v=b65356fd:513
+(anonymous) @ @tanstack_react-query.js?v=b65356fd:538
+Promise.then
+(anonymous) @ @tanstack_react-query.js?v=b65356fd:534
+Promise.catch
+run @ @tanstack_react-query.js?v=b65356fd:517
+start @ @tanstack_react-query.js?v=b65356fd:555
+execute @ @tanstack_react-query.js?v=b65356fd:1272
+await in execute
+mutate @ @tanstack_react-query.js?v=b65356fd:2692
+handleFinishWizard @ first-time-wizard.tsx:288
+callCallback2 @ chunk-SM3OW2QE.js?v=b65356fd:3674
+invokeGuardedCallbackDev @ chunk-SM3OW2QE.js?v=b65356fd:3699
+invokeGuardedCallback @ chunk-SM3OW2QE.js?v=b65356fd:3733
+invokeGuardedCallbackAndCatchFirstError @ chunk-SM3OW2QE.js?v=b65356fd:3736
+executeDispatch @ chunk-SM3OW2QE.js?v=b65356fd:7014
+processDispatchQueueItemsInOrder @ chunk-SM3OW2QE.js?v=b65356fd:7034
+processDispatchQueue @ chunk-SM3OW2QE.js?v=b65356fd:7043
+dispatchEventsForPlugins @ chunk-SM3OW2QE.js?v=b65356fd:7051
+(anonymous) @ chunk-SM3OW2QE.js?v=b65356fd:7174
+batchedUpdates$1 @ chunk-SM3OW2QE.js?v=b65356fd:18913
+batchedUpdates @ chunk-SM3OW2QE.js?v=b65356fd:3579
+dispatchEventForPluginEventSystem @ chunk-SM3OW2QE.js?v=b65356fd:7173
+dispatchEventWithEnableCapturePhaseSelectiveHydrationWithoutDiscreteEventReplay @ chunk-SM3OW2QE.js?v=b65356fd:5478
+dispatchEvent @ chunk-SM3OW2QE.js?v=b65356fd:5472
+dispatchDiscreteEvent @ chunk-SM3OW2QE.js?v=b65356fd:5449
+Console.js:61 🔓 apiRequest got 401 - NOT clearing session data automatically
+Console.js:61 🔓 Got 401 error - NOT clearing session data automatically
+Console.js:61 Failed to complete wizard: Error: 401: {"error":"Authentication required","code":"UNAUTHORIZED"}
+    at throwIfResNotOk (queryClient.ts:81:11)
+    at async apiRequest (queryClient.ts:119:3)
+Mt.forEach.n.<computed> @ Console.js:61
+handleFinishWizard @ first-time-wizard.tsx:294
+await in handleFinishWizard
+callCallback2 @ chunk-SM3OW2QE.js?v=b65356fd:3674
+invokeGuardedCallbackDev @ chunk-SM3OW2QE.js?v=b65356fd:3699
+invokeGuardedCallback @ chunk-SM3OW2QE.js?v=b65356fd:3733
+invokeGuardedCallbackAndCatchFirstError @ chunk-SM3OW2QE.js?v=b65356fd:3736
+executeDispatch @ chunk-SM3OW2QE.js?v=b65356fd:7014
+processDispatchQueueItemsInOrder @ chunk-SM3OW2QE.js?v=b65356fd:7034
+processDispatchQueue @ chunk-SM3OW2QE.js?v=b65356fd:7043
+dispatchEventsForPlugins @ chunk-SM3OW2QE.js?v=b65356fd:7051
+(anonymous) @ chunk-SM3OW2QE.js?v=b65356fd:7174
+batchedUpdates$1 @ chunk-SM3OW2QE.js?v=b65356fd:18913
+batchedUpdates @ chunk-SM3OW2QE.js?v=b65356fd:3579
+dispatchEventForPluginEventSystem @ chunk-SM3OW2QE.js?v=b65356fd:7173
+dispatchEventWithEnableCapturePhaseSelectiveHydrationWithoutDiscreteEventReplay @ chunk-SM3OW2QE.js?v=b65356fd:5478
+dispatchEvent @ chunk-SM3OW2QE.js?v=b65356fd:5472
+dispatchDiscreteEvent @ chunk-SM3OW2QE.js?v=b65356fd:5449
+Console.js:61 🔍 SessionManager.getSession() returning: {isLoggedIn: true, handle: 'dippydoge', hasWalletData: true, hasSessionToken: true, walletDataKeys: Array(7)}
+Console.js:61 🔍 [GAMING DASHBOARD] Wallet profile: {walletExists: true, handle: 'dippydoge', addresses: {…}, createdAt: '2025-08-03T12:01:06.295Z'}
+Console.js:61 🔍 [GAMING DASHBOARD] Wallet loading: false
+Console.js:61 🔍 SessionManager.getSession() returning: {isLoggedIn: true, handle: 'dippydoge', hasWalletData: true, hasSessionToken: true, walletDataKeys: Array(7)}
+Console.js:61 🔍 SessionManager.getSession() returning: {isLoggedIn: true, handle: 'dippydoge', hasWalletData: true, hasSessionToken: true, walletDataKeys: Array(7)}
+Console.js:61 🔍 [GAMING DASHBOARD] Wallet profile: {walletExists: true, handle: 'dippydoge', addresses: {…}, createdAt: '2025-08-03T12:01:06.295Z'}
+Console.js:61 🔍 [GAMING DASHBOARD] Wallet loading: false
+Console.js:61 🔍 SessionManager.getSession() returning: {isLoggedIn: true, handle: 'dippydoge', hasWalletData: true, hasSessionToken: true, walletDataKeys: Array(7)}
+Console.js:61 🔍 SessionManager.getSession() returning: {isLoggedIn: true, handle: 'dippydoge', hasWalletData: true, hasSessionToken: true, walletDataKeys: Array(7)}
+Console.js:61 🔍 [GAMING DASHBOARD] Wallet profile: {walletExists: true, handle: 'dippydoge', addresses: {…}, createdAt: '2025-08-03T12:01:06.295Z'}
+Console.js:61 🔍 [GAMING DASHBOARD] Wallet loading: false
+Console.js:61 🔍 SessionManager.getSession() returning: {isLoggedIn: true, handle: 'dippydoge', hasWalletData: true, hasSessionToken: true, walletDataKeys: Array(7)}handle: "dippydoge"hasSessionToken: truehasWalletData: trueisLoggedIn: truewalletDataKeys: (7) ['handle', 'username', 'xrpAddress', 'ethAddress', 'solAddress', 'btcAddress', 'addresses'][[Prototype]]: Object

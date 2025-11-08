@@ -1,0 +1,187 @@
+Removing Trust Lines on the XRP Ledger (XRPL) to Ensure Complete Token RemovalOn the XRP Ledger, a trust line represents a relationship allowing an account to hold or issue non-XRP tokens (IOUs) from a specific issuer in a given currency. To completely remove a trust line and ensure all associated tokens are eliminated (i.e., balance reduced to zero and the trust line object deleted from the ledger), you must first zero out any non-zero balance by redeeming the tokens back to the issuer, then submit a TrustSet transaction to set the trust limit to zero. This process requires signing transactions with the account's private key (derived from its seed). Once completed successfully, the trust line will no longer appear in queries, freeing up the associated reserve (currently 2 XRP per trust line object).This is a 100% reliable process if prerequisites are met: the balance must be exactly zero before setting the limit to zero, and there must be no freezes or other restrictions preventing redemption or modification. If the trust line is frozen by the issuer, you may need to contact them to lift the freeze before redeeming tokens. The process is atomic per transaction but may require multiple steps for multiple trust lines.Important Notes:You cannot remove a trust line with a non-zero balance; attempts will fail or leave the line intact.
+Negative balances (if you are the issuer) require different handling (e.g., absorbing via payments from holders), but this guide assumes positive balances as a token holder.
+Use XRPL libraries like xrpl.js for implementation. All transactions incur a fee (e.g., 10-12 drops base).
+Security: Handle private keys securely; derive from seeds in memory only. For broker scenarios (from prior context), use multi-signing to avoid sharing client keys.
+Testing: Use Testnet (wss://s.altnet.rippletest.net:51233) to simulate.
+
+Step-by-Step Process for 100% Trust Line and Token RemovalQuery All Trust Lines for the Account:Use the account_lines method to list all trust lines, identifying those with non-zero balances.
+This returns an array of objects with details like balance (string; positive if holding tokens), currency, limit (your trust limit), limit_peer (counterparty's limit), account (issuer), and flags like no_ripple.
+Paginate if >200 lines using marker from responses.
+Request Structure:Field
+Type
+Description/Example
+command
+String
+"account_lines"
+account
+String
+Your account address (e.g., "rYourAddress123")
+ledger_index
+String/Number
+"current" (or specific index)
+limit
+Number
+200 (default; max 400)
+marker
+String
+From previous response for pagination (optional)
+peer
+String
+Issuer address to filter (optional)
+ignore_default
+Boolean
+true to exclude default-state lines (optional)
+Example Pseudocode (xrpl.js):
+
+const xrpl = require('xrpl');
+async function listTrustLines(accountAddress) {
+  const client = new xrpl.Client('wss://xrplcluster.com');
+  await client.connect();
+  let allLines = [];
+  let marker = undefined;
+  do {
+    const response = await client.request({
+      command: 'account_lines',
+      account: accountAddress,
+      limit: 200,
+      marker: marker
+    });
+    allLines = allLines.concat(response.result.lines);
+    marker = response.result.marker;
+  } while (marker);
+  await client.disconnect();
+  return allLines; // Array of {account: issuer, balance, currency, limit, ...}
+}
+Filter for lines where balance !== "0" to identify tokens to remove first. 
+xrpl.org
+Redeem Tokens to Zero Out Balances (If Balance ≠ 0):For each trust line with a positive balance, submit a Payment transaction to send the tokens back to the issuer (redeeming them). This reduces your balance to zero without transfer fees (since it's direct to issuer).
+Use DeliverMax set to your current balance (query via account_lines) to attempt full redemption.
+Enable partial payments (tfPartialPayment flag) if liquidity issues might prevent full delivery, but for direct redemptions, it's often unnecessary.
+If balance is very small or dust, partial payments ensure success.
+Transaction Structure (Payment):Field
+Type
+Description/Example
+TransactionType
+String
+"Payment"
+Account
+String
+Your address
+Destination
+String
+Issuer's address (from account_lines 'account')
+DeliverMax
+Currency Amount
+{currency: "USD", value: balance (e.g., "10.5"), issuer: Destination}
+SendMax
+Currency Amount
+Optional: Same as DeliverMax but issuer: Your address (caps cost)
+Flags
+Number
+131072 (tfPartialPayment) for partials; add 262144 (tfLimitQuality) if needed
+Paths
+Array
+[] (empty for direct; omit)
+Fee
+String
+"12" drops
+Sequence
+Number
+Your next sequence
+Signing: Use your private key/seed.
+Example Pseudocode:
+
+async function redeemTokens(seed, issuer, currency, balance) {
+  const wallet = xrpl.Wallet.fromSeed(seed);
+  const client = new xrpl.Client('wss://xrplcluster.com');
+  await client.connect();
+  const tx = {
+    TransactionType: 'Payment',
+    Account: wallet.address,
+    Destination: issuer,
+    DeliverMax: { currency, value: balance, issuer },
+    SendMax: { currency, value: balance, issuer: wallet.address },
+    Flags: 131072 // Partial payment
+  };
+  const prepared = await client.autofill(tx);
+  const signed = wallet.sign(prepared);
+  const result = await client.submitAndWait(signed.tx_blob);
+  await client.disconnect();
+  if (result.result.meta.TransactionResult === 'tesSUCCESS') {
+    console.log('Redeemed:', result.result.meta.delivered_amount);
+  }
+}
+After submission, re-query account_lines to confirm balance is "0". Repeat if partial. 
+xrpl.org
+Set Trust Limit to Zero to Remove the Trust Line:Once balance is zero for a trust line, submit TrustSet to set limit to "0".
+Include flags to clear any No Ripple or freezes if applicable (e.g., tfClearNoRipple, tfClearFreeze).
+This deletes the trust line object if successful.
+Transaction Structure (TrustSet):Field
+Type
+Description/Example
+TransactionType
+String
+"TrustSet"
+Account
+String
+Your address
+LimitAmount
+Currency Amount
+{currency: "USD", value: "0", issuer: Issuer address}
+Flags
+Number
+e.g., 262144 (tfClearNoRipple) + 2097152 (tfClearFreeze) if needed
+QualityIn
+Number
+Optional: 0 (default)
+QualityOut
+Number
+Optional: 0 (default)
+Fee
+String
+"12" drops
+Sequence
+Number
+Your next sequence
+Signing: Use your private key/seed.
+Example Pseudocode:
+
+async function removeTrustLine(seed, issuer, currency, flags = 0) {
+  const wallet = xrpl.Wallet.fromSeed(seed);
+  const client = new xrpl.Client('wss://xrplcluster.com');
+  await client.connect();
+  const tx = {
+    TransactionType: 'TrustSet',
+    Account: wallet.address,
+    LimitAmount: { currency, value: '0', issuer },
+    Flags: flags // e.g., 262144 for tfClearNoRipple
+  };
+  const prepared = await client.autofill(tx);
+  const signed = wallet.sign(prepared);
+  const result = await client.submitAndWait(signed.tx_blob);
+  await client.disconnect();
+  return result.result.engine_result === 'tesSUCCESS';
+}
+Failure Cases: tecNO_PERMISSION if issuer blocks incoming, or if flags can't be set. 
+xrpl.org
+Verify 100% Removal:Re-query account_lines after each removal.
+The trust line should be absent if balance=0 and limit=0.
+Check account reserve via account_info; it should decrease by 2 XRP per removed line.
+Loop over all lines from step 1, redeeming then removing sequentially.
+Full Automation ExampleCombine steps in a loop:
+
+async function removeAllTrustLines(seed) {
+  const address = xrpl.Wallet.fromSeed(seed).address;
+  const lines = await listTrustLines(address);
+  for (const line of lines) {
+    if (parseFloat(line.balance) !== 0) {
+      await redeemTokens(seed, line.account, line.currency, line.balance);
+    }
+    await removeTrustLine(seed, line.account, line.currency, 262144); // Clear No Ripple
+  }
+  const finalLines = await listTrustLines(address);
+  console.log('Remaining trust lines:', finalLines.length); // Should be 0 for complete removal
+}
+
+This ensures 100% removal by handling balances first and verifying post-transaction. For broker wallets, adapt by using client-signed tx or multi-signing. If issues (e.g., frozen lines), consult issuer.
+

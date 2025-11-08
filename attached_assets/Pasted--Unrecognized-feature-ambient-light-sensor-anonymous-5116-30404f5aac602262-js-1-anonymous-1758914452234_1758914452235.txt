@@ -1,0 +1,641 @@
+ Unrecognized feature: 'ambient-light-sensor'.
+(anonymous) @ 5116-30404f5aac602262.js:1
+(anonymous) @ main-b2506f83e6ea9116.js:1
+n @ main-b2506f83e6ea9116.js:1
+u @ main-b2506f83e6ea9116.js:1
+(anonymous) @ main-b2506f83e6ea9116.js:1
+(anonymous) @ main-b2506f83e6ea9116.js:1
+(anonymous) @ 5116-30404f5aac602262.js:1
+(anonymous) @ 5116-30404f5aac602262.js:1
+(anonymous) @ main-b2506f83e6ea9116.js:1
+n @ main-b2506f83e6ea9116.js:1
+u @ main-b2506f83e6ea9116.js:1
+(anonymous) @ main-b2506f83e6ea9116.js:1
+(anonymous) @ main-b2506f83e6ea9116.js:1
+(anonymous) @ 5116-30404f5aac602262.js:1
+navigateTo @ 5116-30404f5aac602262.js:1
+push.52838.e4.refresh @ 5116-30404f5aac602262.js:1
+(anonymous) @ 5116-30404f5aac602262.js:1
+(anonymous) @ _app-e854231ac4c7c382.js:4
+(anonymous) @ _app-e854231ac4c7c382.js:10
+onClick @ _app-e854231ac4c7c382.js:4
+eB @ framework-9ffe8cfa14a198d5.js:1
+eH @ framework-9ffe8cfa14a198d5.js:1
+(anonymous) @ framework-9ffe8cfa14a198d5.js:1
+re @ framework-9ffe8cfa14a198d5.js:1
+rt @ framework-9ffe8cfa14a198d5.js:1
+(anonymous) @ framework-9ffe8cfa14a198d5.js:1
+uT @ framework-9ffe8cfa14a198d5.js:1
+eM @ framework-9ffe8cfa14a198d5.js:1
+ru @ framework-9ffe8cfa14a198d5.js:1
+tB @ framework-9ffe8cfa14a198d5.js:1
+tD @ framework-9ffe8cfa14a198d5.js:1
+n @ _app-e854231ac4c7c382.js:34
+ Unrecognized feature: 'battery'.
+(anonymous) @ 5116-30404f5aac602262.js:1
+(anonymous) @ main-b2506f83e6ea9116.js:1
+n @ main-b2506f83e6ea9116.js:1
+u @ main-b2506f83e6ea9116.js:1
+(anonymous) @ main-b2506f83e6ea9116.js:1
+(anonymous) @ main-b2506f83e6ea9116.js:1
+(anonymous) @ 5116-30404f5aac602262.js:1
+(anonymous) @ 5116-30404f5aac602262.js:1
+(anonymous) @ main-b2506f83e6ea9116.js:1
+n @ main-b2506f83e6ea9116.js:1
+u @ main-b2506f83e6ea9116.js:1
+(anonymous) @ main-b2506f83e6ea9116.js:1
+(anonymous) @ main-b2506f83e6ea9116.js:1
+(anonymous) @ 5116-30404f5aac602262.js:1
+navigateTo @ 5116-30404f5aac602262.js:1
+push.52838.e4.refresh @ 5116-30404f5aac602262.js:1
+(anonymous) @ 5116-30404f5aac602262.js:1
+(anonymous) @ _app-e854231ac4c7c382.js:4
+(anonymous) @ _app-e854231ac4c7c382.js:10
+onClick @ _app-e854231ac4c7c382.js:4
+eB @ framework-9ffe8cfa14a198d5.js:1
+eH @ framework-9ffe8cfa14a198d5.js:1
+(anonymous) @ framework-9ffe8cfa14a198d5.js:1
+re @ framework-9ffe8cfa14a198d5.js:1
+rt @ framework-9ffe8cfa14a198d5.js:1
+(anonymous) @ framework-9ffe8cfa14a198d5.js:1
+uT @ framework-9ffe8cfa14a198d5.js:1
+eM @ framework-9ffe8cfa14a198d5.js:1
+ru @ framework-9ffe8cfa14a198d5.js:1
+tB @ framework-9ffe8cfa14a198d5.js:1
+tD @ framework-9ffe8cfa14a198d5.js:1
+n @ _app-e854231ac4c7c382.js:34
+ Unrecognized feature: 'execution-while-not-rendered'.
+(anonymous) @ 5116-30404f5aac602262.js:1
+(anonymous) @ main-b2506f83e6ea9116.js:1
+n @ main-b2506f83e6ea9116.js:1
+u @ main-b2506f83e6ea9116.js:1
+(anonymous) @ main-b2506f83e6ea9116.js:1
+(anonymous) @ main-b2506f83e6ea9116.js:1
+(anonymous) @ 5116-30404f5aac602262.js:1
+(anonymous) @ 5116-30404f5aac602262.js:1
+(anonymous) @ main-b2506f83e6ea9116.js:1
+n @ main-b2506f83e6ea9116.js:1
+u @ main-b2506f83e6ea9116.js:1
+(anonymous) @ main-b2506f83e6ea9116.js:1
+(anonymous) @ main-b2506f83e6ea9116.js:1
+(anonymous) @ 5116-30404f5aac602262.js:1
+navigateTo @ 5116-30404f5aac602262.js:1
+push.52838.e4.refresh @ 5116-30404f5aac602262.js:1
+(anonymous) @ 5116-30404f5aac602262.js:1
+(anonymous) @ _app-e854231ac4c7c382.js:4
+(anonymous) @ _app-e854231ac4c7c382.js:10
+onClick @ _app-e854231ac4c7c382.js:4
+eB @ framework-9ffe8cfa14a198d5.js:1
+eH @ framework-9ffe8cfa14a198d5.js:1
+(anonymous) @ framework-9ffe8cfa14a198d5.js:1
+re @ framework-9ffe8cfa14a198d5.js:1
+rt @ framework-9ffe8cfa14a198d5.js:1
+(anonymous) @ framework-9ffe8cfa14a198d5.js:1
+uT @ framework-9ffe8cfa14a198d5.js:1
+eM @ framework-9ffe8cfa14a198d5.js:1
+ru @ framework-9ffe8cfa14a198d5.js:1
+tB @ framework-9ffe8cfa14a198d5.js:1
+tD @ framework-9ffe8cfa14a198d5.js:1
+n @ _app-e854231ac4c7c382.js:34
+ Unrecognized feature: 'execution-while-out-of-viewport'.
+(anonymous) @ 5116-30404f5aac602262.js:1
+(anonymous) @ main-b2506f83e6ea9116.js:1
+n @ main-b2506f83e6ea9116.js:1
+u @ main-b2506f83e6ea9116.js:1
+(anonymous) @ main-b2506f83e6ea9116.js:1
+(anonymous) @ main-b2506f83e6ea9116.js:1
+(anonymous) @ 5116-30404f5aac602262.js:1
+(anonymous) @ 5116-30404f5aac602262.js:1
+(anonymous) @ main-b2506f83e6ea9116.js:1
+n @ main-b2506f83e6ea9116.js:1
+u @ main-b2506f83e6ea9116.js:1
+(anonymous) @ main-b2506f83e6ea9116.js:1
+(anonymous) @ main-b2506f83e6ea9116.js:1
+(anonymous) @ 5116-30404f5aac602262.js:1
+navigateTo @ 5116-30404f5aac602262.js:1
+push.52838.e4.refresh @ 5116-30404f5aac602262.js:1
+(anonymous) @ 5116-30404f5aac602262.js:1
+(anonymous) @ _app-e854231ac4c7c382.js:4
+(anonymous) @ _app-e854231ac4c7c382.js:10
+onClick @ _app-e854231ac4c7c382.js:4
+eB @ framework-9ffe8cfa14a198d5.js:1
+eH @ framework-9ffe8cfa14a198d5.js:1
+(anonymous) @ framework-9ffe8cfa14a198d5.js:1
+re @ framework-9ffe8cfa14a198d5.js:1
+rt @ framework-9ffe8cfa14a198d5.js:1
+(anonymous) @ framework-9ffe8cfa14a198d5.js:1
+uT @ framework-9ffe8cfa14a198d5.js:1
+eM @ framework-9ffe8cfa14a198d5.js:1
+ru @ framework-9ffe8cfa14a198d5.js:1
+tB @ framework-9ffe8cfa14a198d5.js:1
+tD @ framework-9ffe8cfa14a198d5.js:1
+n @ _app-e854231ac4c7c382.js:34
+ Unrecognized feature: 'layout-animations'.
+(anonymous) @ 5116-30404f5aac602262.js:1
+(anonymous) @ main-b2506f83e6ea9116.js:1
+n @ main-b2506f83e6ea9116.js:1
+u @ main-b2506f83e6ea9116.js:1
+(anonymous) @ main-b2506f83e6ea9116.js:1
+(anonymous) @ main-b2506f83e6ea9116.js:1
+(anonymous) @ 5116-30404f5aac602262.js:1
+(anonymous) @ 5116-30404f5aac602262.js:1
+(anonymous) @ main-b2506f83e6ea9116.js:1
+n @ main-b2506f83e6ea9116.js:1
+u @ main-b2506f83e6ea9116.js:1
+(anonymous) @ main-b2506f83e6ea9116.js:1
+(anonymous) @ main-b2506f83e6ea9116.js:1
+(anonymous) @ 5116-30404f5aac602262.js:1
+navigateTo @ 5116-30404f5aac602262.js:1
+push.52838.e4.refresh @ 5116-30404f5aac602262.js:1
+(anonymous) @ 5116-30404f5aac602262.js:1
+(anonymous) @ _app-e854231ac4c7c382.js:4
+(anonymous) @ _app-e854231ac4c7c382.js:10
+onClick @ _app-e854231ac4c7c382.js:4
+eB @ framework-9ffe8cfa14a198d5.js:1
+eH @ framework-9ffe8cfa14a198d5.js:1
+(anonymous) @ framework-9ffe8cfa14a198d5.js:1
+re @ framework-9ffe8cfa14a198d5.js:1
+rt @ framework-9ffe8cfa14a198d5.js:1
+(anonymous) @ framework-9ffe8cfa14a198d5.js:1
+uT @ framework-9ffe8cfa14a198d5.js:1
+eM @ framework-9ffe8cfa14a198d5.js:1
+ru @ framework-9ffe8cfa14a198d5.js:1
+tB @ framework-9ffe8cfa14a198d5.js:1
+tD @ framework-9ffe8cfa14a198d5.js:1
+n @ _app-e854231ac4c7c382.js:34
+ Unrecognized feature: 'legacy-image-formats'.
+(anonymous) @ 5116-30404f5aac602262.js:1
+(anonymous) @ main-b2506f83e6ea9116.js:1
+n @ main-b2506f83e6ea9116.js:1
+u @ main-b2506f83e6ea9116.js:1
+(anonymous) @ main-b2506f83e6ea9116.js:1
+(anonymous) @ main-b2506f83e6ea9116.js:1
+(anonymous) @ 5116-30404f5aac602262.js:1
+(anonymous) @ 5116-30404f5aac602262.js:1
+(anonymous) @ main-b2506f83e6ea9116.js:1
+n @ main-b2506f83e6ea9116.js:1
+u @ main-b2506f83e6ea9116.js:1
+(anonymous) @ main-b2506f83e6ea9116.js:1
+(anonymous) @ main-b2506f83e6ea9116.js:1
+(anonymous) @ 5116-30404f5aac602262.js:1
+navigateTo @ 5116-30404f5aac602262.js:1
+push.52838.e4.refresh @ 5116-30404f5aac602262.js:1
+(anonymous) @ 5116-30404f5aac602262.js:1
+(anonymous) @ _app-e854231ac4c7c382.js:4
+(anonymous) @ _app-e854231ac4c7c382.js:10
+onClick @ _app-e854231ac4c7c382.js:4
+eB @ framework-9ffe8cfa14a198d5.js:1
+eH @ framework-9ffe8cfa14a198d5.js:1
+(anonymous) @ framework-9ffe8cfa14a198d5.js:1
+re @ framework-9ffe8cfa14a198d5.js:1
+rt @ framework-9ffe8cfa14a198d5.js:1
+(anonymous) @ framework-9ffe8cfa14a198d5.js:1
+uT @ framework-9ffe8cfa14a198d5.js:1
+eM @ framework-9ffe8cfa14a198d5.js:1
+ru @ framework-9ffe8cfa14a198d5.js:1
+tB @ framework-9ffe8cfa14a198d5.js:1
+tD @ framework-9ffe8cfa14a198d5.js:1
+n @ _app-e854231ac4c7c382.js:34
+ Unrecognized feature: 'navigation-override'.
+(anonymous) @ 5116-30404f5aac602262.js:1
+(anonymous) @ main-b2506f83e6ea9116.js:1
+n @ main-b2506f83e6ea9116.js:1
+u @ main-b2506f83e6ea9116.js:1
+(anonymous) @ main-b2506f83e6ea9116.js:1
+(anonymous) @ main-b2506f83e6ea9116.js:1
+(anonymous) @ 5116-30404f5aac602262.js:1
+(anonymous) @ 5116-30404f5aac602262.js:1
+(anonymous) @ main-b2506f83e6ea9116.js:1
+n @ main-b2506f83e6ea9116.js:1
+u @ main-b2506f83e6ea9116.js:1
+(anonymous) @ main-b2506f83e6ea9116.js:1
+(anonymous) @ main-b2506f83e6ea9116.js:1
+(anonymous) @ 5116-30404f5aac602262.js:1
+navigateTo @ 5116-30404f5aac602262.js:1
+push.52838.e4.refresh @ 5116-30404f5aac602262.js:1
+(anonymous) @ 5116-30404f5aac602262.js:1
+(anonymous) @ _app-e854231ac4c7c382.js:4
+(anonymous) @ _app-e854231ac4c7c382.js:10
+onClick @ _app-e854231ac4c7c382.js:4
+eB @ framework-9ffe8cfa14a198d5.js:1
+eH @ framework-9ffe8cfa14a198d5.js:1
+(anonymous) @ framework-9ffe8cfa14a198d5.js:1
+re @ framework-9ffe8cfa14a198d5.js:1
+rt @ framework-9ffe8cfa14a198d5.js:1
+(anonymous) @ framework-9ffe8cfa14a198d5.js:1
+uT @ framework-9ffe8cfa14a198d5.js:1
+eM @ framework-9ffe8cfa14a198d5.js:1
+ru @ framework-9ffe8cfa14a198d5.js:1
+tB @ framework-9ffe8cfa14a198d5.js:1
+tD @ framework-9ffe8cfa14a198d5.js:1
+n @ _app-e854231ac4c7c382.js:34
+ Unrecognized feature: 'oversized-images'.
+(anonymous) @ 5116-30404f5aac602262.js:1
+(anonymous) @ main-b2506f83e6ea9116.js:1
+n @ main-b2506f83e6ea9116.js:1
+u @ main-b2506f83e6ea9116.js:1
+(anonymous) @ main-b2506f83e6ea9116.js:1
+(anonymous) @ main-b2506f83e6ea9116.js:1
+(anonymous) @ 5116-30404f5aac602262.js:1
+(anonymous) @ 5116-30404f5aac602262.js:1
+(anonymous) @ main-b2506f83e6ea9116.js:1
+n @ main-b2506f83e6ea9116.js:1
+u @ main-b2506f83e6ea9116.js:1
+(anonymous) @ main-b2506f83e6ea9116.js:1
+(anonymous) @ main-b2506f83e6ea9116.js:1
+(anonymous) @ 5116-30404f5aac602262.js:1
+navigateTo @ 5116-30404f5aac602262.js:1
+push.52838.e4.refresh @ 5116-30404f5aac602262.js:1
+(anonymous) @ 5116-30404f5aac602262.js:1
+(anonymous) @ _app-e854231ac4c7c382.js:4
+(anonymous) @ _app-e854231ac4c7c382.js:10
+onClick @ _app-e854231ac4c7c382.js:4
+eB @ framework-9ffe8cfa14a198d5.js:1
+eH @ framework-9ffe8cfa14a198d5.js:1
+(anonymous) @ framework-9ffe8cfa14a198d5.js:1
+re @ framework-9ffe8cfa14a198d5.js:1
+rt @ framework-9ffe8cfa14a198d5.js:1
+(anonymous) @ framework-9ffe8cfa14a198d5.js:1
+uT @ framework-9ffe8cfa14a198d5.js:1
+eM @ framework-9ffe8cfa14a198d5.js:1
+ru @ framework-9ffe8cfa14a198d5.js:1
+tB @ framework-9ffe8cfa14a198d5.js:1
+tD @ framework-9ffe8cfa14a198d5.js:1
+n @ _app-e854231ac4c7c382.js:34
+ Unrecognized feature: 'publickey-credentials'.
+(anonymous) @ 5116-30404f5aac602262.js:1
+(anonymous) @ main-b2506f83e6ea9116.js:1
+n @ main-b2506f83e6ea9116.js:1
+u @ main-b2506f83e6ea9116.js:1
+(anonymous) @ main-b2506f83e6ea9116.js:1
+(anonymous) @ main-b2506f83e6ea9116.js:1
+(anonymous) @ 5116-30404f5aac602262.js:1
+(anonymous) @ 5116-30404f5aac602262.js:1
+(anonymous) @ main-b2506f83e6ea9116.js:1
+n @ main-b2506f83e6ea9116.js:1
+u @ main-b2506f83e6ea9116.js:1
+(anonymous) @ main-b2506f83e6ea9116.js:1
+(anonymous) @ main-b2506f83e6ea9116.js:1
+(anonymous) @ 5116-30404f5aac602262.js:1
+navigateTo @ 5116-30404f5aac602262.js:1
+push.52838.e4.refresh @ 5116-30404f5aac602262.js:1
+(anonymous) @ 5116-30404f5aac602262.js:1
+(anonymous) @ _app-e854231ac4c7c382.js:4
+(anonymous) @ _app-e854231ac4c7c382.js:10
+onClick @ _app-e854231ac4c7c382.js:4
+eB @ framework-9ffe8cfa14a198d5.js:1
+eH @ framework-9ffe8cfa14a198d5.js:1
+(anonymous) @ framework-9ffe8cfa14a198d5.js:1
+re @ framework-9ffe8cfa14a198d5.js:1
+rt @ framework-9ffe8cfa14a198d5.js:1
+(anonymous) @ framework-9ffe8cfa14a198d5.js:1
+uT @ framework-9ffe8cfa14a198d5.js:1
+eM @ framework-9ffe8cfa14a198d5.js:1
+ru @ framework-9ffe8cfa14a198d5.js:1
+tB @ framework-9ffe8cfa14a198d5.js:1
+tD @ framework-9ffe8cfa14a198d5.js:1
+n @ _app-e854231ac4c7c382.js:34
+ Unrecognized feature: 'speaker-selection'.
+(anonymous) @ 5116-30404f5aac602262.js:1
+(anonymous) @ main-b2506f83e6ea9116.js:1
+n @ main-b2506f83e6ea9116.js:1
+u @ main-b2506f83e6ea9116.js:1
+(anonymous) @ main-b2506f83e6ea9116.js:1
+(anonymous) @ main-b2506f83e6ea9116.js:1
+(anonymous) @ 5116-30404f5aac602262.js:1
+(anonymous) @ 5116-30404f5aac602262.js:1
+(anonymous) @ main-b2506f83e6ea9116.js:1
+n @ main-b2506f83e6ea9116.js:1
+u @ main-b2506f83e6ea9116.js:1
+(anonymous) @ main-b2506f83e6ea9116.js:1
+(anonymous) @ main-b2506f83e6ea9116.js:1
+(anonymous) @ 5116-30404f5aac602262.js:1
+navigateTo @ 5116-30404f5aac602262.js:1
+push.52838.e4.refresh @ 5116-30404f5aac602262.js:1
+(anonymous) @ 5116-30404f5aac602262.js:1
+(anonymous) @ _app-e854231ac4c7c382.js:4
+(anonymous) @ _app-e854231ac4c7c382.js:10
+onClick @ _app-e854231ac4c7c382.js:4
+eB @ framework-9ffe8cfa14a198d5.js:1
+eH @ framework-9ffe8cfa14a198d5.js:1
+(anonymous) @ framework-9ffe8cfa14a198d5.js:1
+re @ framework-9ffe8cfa14a198d5.js:1
+rt @ framework-9ffe8cfa14a198d5.js:1
+(anonymous) @ framework-9ffe8cfa14a198d5.js:1
+uT @ framework-9ffe8cfa14a198d5.js:1
+eM @ framework-9ffe8cfa14a198d5.js:1
+ru @ framework-9ffe8cfa14a198d5.js:1
+tB @ framework-9ffe8cfa14a198d5.js:1
+tD @ framework-9ffe8cfa14a198d5.js:1
+n @ _app-e854231ac4c7c382.js:34
+ Unrecognized feature: 'unoptimized-images'.
+(anonymous) @ 5116-30404f5aac602262.js:1
+(anonymous) @ main-b2506f83e6ea9116.js:1
+n @ main-b2506f83e6ea9116.js:1
+u @ main-b2506f83e6ea9116.js:1
+(anonymous) @ main-b2506f83e6ea9116.js:1
+(anonymous) @ main-b2506f83e6ea9116.js:1
+(anonymous) @ 5116-30404f5aac602262.js:1
+(anonymous) @ 5116-30404f5aac602262.js:1
+(anonymous) @ main-b2506f83e6ea9116.js:1
+n @ main-b2506f83e6ea9116.js:1
+u @ main-b2506f83e6ea9116.js:1
+(anonymous) @ main-b2506f83e6ea9116.js:1
+(anonymous) @ main-b2506f83e6ea9116.js:1
+(anonymous) @ 5116-30404f5aac602262.js:1
+navigateTo @ 5116-30404f5aac602262.js:1
+push.52838.e4.refresh @ 5116-30404f5aac602262.js:1
+(anonymous) @ 5116-30404f5aac602262.js:1
+(anonymous) @ _app-e854231ac4c7c382.js:4
+(anonymous) @ _app-e854231ac4c7c382.js:10
+onClick @ _app-e854231ac4c7c382.js:4
+eB @ framework-9ffe8cfa14a198d5.js:1
+eH @ framework-9ffe8cfa14a198d5.js:1
+(anonymous) @ framework-9ffe8cfa14a198d5.js:1
+re @ framework-9ffe8cfa14a198d5.js:1
+rt @ framework-9ffe8cfa14a198d5.js:1
+(anonymous) @ framework-9ffe8cfa14a198d5.js:1
+uT @ framework-9ffe8cfa14a198d5.js:1
+eM @ framework-9ffe8cfa14a198d5.js:1
+ru @ framework-9ffe8cfa14a198d5.js:1
+tB @ framework-9ffe8cfa14a198d5.js:1
+tD @ framework-9ffe8cfa14a198d5.js:1
+n @ _app-e854231ac4c7c382.js:34
+ Unrecognized feature: 'unsized-media'.
+(anonymous) @ 5116-30404f5aac602262.js:1
+(anonymous) @ main-b2506f83e6ea9116.js:1
+n @ main-b2506f83e6ea9116.js:1
+u @ main-b2506f83e6ea9116.js:1
+(anonymous) @ main-b2506f83e6ea9116.js:1
+(anonymous) @ main-b2506f83e6ea9116.js:1
+(anonymous) @ 5116-30404f5aac602262.js:1
+(anonymous) @ 5116-30404f5aac602262.js:1
+(anonymous) @ main-b2506f83e6ea9116.js:1
+n @ main-b2506f83e6ea9116.js:1
+u @ main-b2506f83e6ea9116.js:1
+(anonymous) @ main-b2506f83e6ea9116.js:1
+(anonymous) @ main-b2506f83e6ea9116.js:1
+(anonymous) @ 5116-30404f5aac602262.js:1
+navigateTo @ 5116-30404f5aac602262.js:1
+push.52838.e4.refresh @ 5116-30404f5aac602262.js:1
+(anonymous) @ 5116-30404f5aac602262.js:1
+(anonymous) @ _app-e854231ac4c7c382.js:4
+(anonymous) @ _app-e854231ac4c7c382.js:10
+onClick @ _app-e854231ac4c7c382.js:4
+eB @ framework-9ffe8cfa14a198d5.js:1
+eH @ framework-9ffe8cfa14a198d5.js:1
+(anonymous) @ framework-9ffe8cfa14a198d5.js:1
+re @ framework-9ffe8cfa14a198d5.js:1
+rt @ framework-9ffe8cfa14a198d5.js:1
+(anonymous) @ framework-9ffe8cfa14a198d5.js:1
+uT @ framework-9ffe8cfa14a198d5.js:1
+eM @ framework-9ffe8cfa14a198d5.js:1
+ru @ framework-9ffe8cfa14a198d5.js:1
+tB @ framework-9ffe8cfa14a198d5.js:1
+tD @ framework-9ffe8cfa14a198d5.js:1
+n @ _app-e854231ac4c7c382.js:34
+ Unrecognized feature: 'pointer-lock'.
+(anonymous) @ 5116-30404f5aac602262.js:1
+(anonymous) @ main-b2506f83e6ea9116.js:1
+n @ main-b2506f83e6ea9116.js:1
+u @ main-b2506f83e6ea9116.js:1
+(anonymous) @ main-b2506f83e6ea9116.js:1
+(anonymous) @ main-b2506f83e6ea9116.js:1
+(anonymous) @ 5116-30404f5aac602262.js:1
+(anonymous) @ 5116-30404f5aac602262.js:1
+(anonymous) @ main-b2506f83e6ea9116.js:1
+n @ main-b2506f83e6ea9116.js:1
+u @ main-b2506f83e6ea9116.js:1
+(anonymous) @ main-b2506f83e6ea9116.js:1
+(anonymous) @ main-b2506f83e6ea9116.js:1
+(anonymous) @ 5116-30404f5aac602262.js:1
+navigateTo @ 5116-30404f5aac602262.js:1
+push.52838.e4.refresh @ 5116-30404f5aac602262.js:1
+(anonymous) @ 5116-30404f5aac602262.js:1
+(anonymous) @ _app-e854231ac4c7c382.js:4
+(anonymous) @ _app-e854231ac4c7c382.js:10
+onClick @ _app-e854231ac4c7c382.js:4
+eB @ framework-9ffe8cfa14a198d5.js:1
+eH @ framework-9ffe8cfa14a198d5.js:1
+(anonymous) @ framework-9ffe8cfa14a198d5.js:1
+re @ framework-9ffe8cfa14a198d5.js:1
+rt @ framework-9ffe8cfa14a198d5.js:1
+(anonymous) @ framework-9ffe8cfa14a198d5.js:1
+uT @ framework-9ffe8cfa14a198d5.js:1
+eM @ framework-9ffe8cfa14a198d5.js:1
+ru @ framework-9ffe8cfa14a198d5.js:1
+tB @ framework-9ffe8cfa14a198d5.js:1
+tD @ framework-9ffe8cfa14a198d5.js:1
+n @ _app-e854231ac4c7c382.js:34
+ Allow attribute will take precedence over 'allowfullscreen'.
+(anonymous) @ 5116-30404f5aac602262.js:1
+(anonymous) @ main-b2506f83e6ea9116.js:1
+n @ main-b2506f83e6ea9116.js:1
+u @ main-b2506f83e6ea9116.js:1
+(anonymous) @ main-b2506f83e6ea9116.js:1
+(anonymous) @ main-b2506f83e6ea9116.js:1
+(anonymous) @ 5116-30404f5aac602262.js:1
+(anonymous) @ 5116-30404f5aac602262.js:1
+(anonymous) @ main-b2506f83e6ea9116.js:1
+n @ main-b2506f83e6ea9116.js:1
+u @ main-b2506f83e6ea9116.js:1
+(anonymous) @ main-b2506f83e6ea9116.js:1
+(anonymous) @ main-b2506f83e6ea9116.js:1
+(anonymous) @ 5116-30404f5aac602262.js:1
+navigateTo @ 5116-30404f5aac602262.js:1
+push.52838.e4.refresh @ 5116-30404f5aac602262.js:1
+(anonymous) @ 5116-30404f5aac602262.js:1
+(anonymous) @ _app-e854231ac4c7c382.js:4
+(anonymous) @ _app-e854231ac4c7c382.js:10
+onClick @ _app-e854231ac4c7c382.js:4
+eB @ framework-9ffe8cfa14a198d5.js:1
+eH @ framework-9ffe8cfa14a198d5.js:1
+(anonymous) @ framework-9ffe8cfa14a198d5.js:1
+re @ framework-9ffe8cfa14a198d5.js:1
+rt @ framework-9ffe8cfa14a198d5.js:1
+(anonymous) @ framework-9ffe8cfa14a198d5.js:1
+uT @ framework-9ffe8cfa14a198d5.js:1
+eM @ framework-9ffe8cfa14a198d5.js:1
+ru @ framework-9ffe8cfa14a198d5.js:1
+tB @ framework-9ffe8cfa14a198d5.js:1
+tD @ framework-9ffe8cfa14a198d5.js:1
+n @ _app-e854231ac4c7c382.js:34
+ Allow attribute will take precedence over 'allowpaymentrequest'.
+(anonymous) @ 5116-30404f5aac602262.js:1
+(anonymous) @ main-b2506f83e6ea9116.js:1
+n @ main-b2506f83e6ea9116.js:1
+u @ main-b2506f83e6ea9116.js:1
+(anonymous) @ main-b2506f83e6ea9116.js:1
+(anonymous) @ main-b2506f83e6ea9116.js:1
+(anonymous) @ 5116-30404f5aac602262.js:1
+(anonymous) @ 5116-30404f5aac602262.js:1
+(anonymous) @ main-b2506f83e6ea9116.js:1
+n @ main-b2506f83e6ea9116.js:1
+u @ main-b2506f83e6ea9116.js:1
+(anonymous) @ main-b2506f83e6ea9116.js:1
+(anonymous) @ main-b2506f83e6ea9116.js:1
+(anonymous) @ 5116-30404f5aac602262.js:1
+navigateTo @ 5116-30404f5aac602262.js:1
+push.52838.e4.refresh @ 5116-30404f5aac602262.js:1
+(anonymous) @ 5116-30404f5aac602262.js:1
+(anonymous) @ _app-e854231ac4c7c382.js:4
+(anonymous) @ _app-e854231ac4c7c382.js:10
+onClick @ _app-e854231ac4c7c382.js:4
+eB @ framework-9ffe8cfa14a198d5.js:1
+eH @ framework-9ffe8cfa14a198d5.js:1
+(anonymous) @ framework-9ffe8cfa14a198d5.js:1
+re @ framework-9ffe8cfa14a198d5.js:1
+rt @ framework-9ffe8cfa14a198d5.js:1
+(anonymous) @ framework-9ffe8cfa14a198d5.js:1
+uT @ framework-9ffe8cfa14a198d5.js:1
+eM @ framework-9ffe8cfa14a198d5.js:1
+ru @ framework-9ffe8cfa14a198d5.js:1
+tB @ framework-9ffe8cfa14a198d5.js:1
+tD @ framework-9ffe8cfa14a198d5.js:1
+n @ _app-e854231ac4c7c382.js:34
+workspace_iframe.html?initialPath=%2Fgaming&id=%3Ar8m%3A:32 Error while parsing the 'sandbox' attribute: 'allow-downloads-without-user-activation' is an invalid sandbox flag.
+workspace_iframe.html?initialPath=%2Fgaming&id=%3Ar8m%3A:32 Unrecognized feature: 'ambient-light-sensor'.
+workspace_iframe.html?initialPath=%2Fgaming&id=%3Ar8m%3A:32 Unrecognized feature: 'battery'.
+workspace_iframe.html?initialPath=%2Fgaming&id=%3Ar8m%3A:32 Unrecognized feature: 'execution-while-not-rendered'.
+workspace_iframe.html?initialPath=%2Fgaming&id=%3Ar8m%3A:32 Unrecognized feature: 'execution-while-out-of-viewport'.
+workspace_iframe.html?initialPath=%2Fgaming&id=%3Ar8m%3A:32 Unrecognized feature: 'layout-animations'.
+workspace_iframe.html?initialPath=%2Fgaming&id=%3Ar8m%3A:32 Unrecognized feature: 'legacy-image-formats'.
+workspace_iframe.html?initialPath=%2Fgaming&id=%3Ar8m%3A:32 Unrecognized feature: 'navigation-override'.
+workspace_iframe.html?initialPath=%2Fgaming&id=%3Ar8m%3A:32 Unrecognized feature: 'oversized-images'.
+workspace_iframe.html?initialPath=%2Fgaming&id=%3Ar8m%3A:32 Unrecognized feature: 'publickey-credentials'.
+workspace_iframe.html?initialPath=%2Fgaming&id=%3Ar8m%3A:32 Unrecognized feature: 'speaker-selection'.
+workspace_iframe.html?initialPath=%2Fgaming&id=%3Ar8m%3A:32 Unrecognized feature: 'unoptimized-images'.
+workspace_iframe.html?initialPath=%2Fgaming&id=%3Ar8m%3A:32 Unrecognized feature: 'unsized-media'.
+workspace_iframe.html?initialPath=%2Fgaming&id=%3Ar8m%3A:32 Allow attribute will take precedence over 'allowfullscreen'.
+workspace_iframe.html?initialPath=%2Fgaming&id=%3Ar8m%3A:32 Allow attribute will take precedence over 'allowpaymentrequest'.
+workspace_iframe.html?initialPath=%2Fgaming&id=%3Ar8m%3A:32 Error while parsing the 'sandbox' attribute: 'allow-downloads-without-user-activation' is an invalid sandbox flag.
+ WebSocket connection to 'wss://20a5a677-e8db-426b-93ca-0ab4131b22a7-00-pwrlj8iul6vd.janeway.replit.dev/?token=TsO-Kyan6Jgl' failed: 
+t @ eruda.js:2
+ WebSocket connection to 'wss://20a5a677-e8db-426b-93ca-0ab4131b22a7-00-pwrlj8iul6vd.janeway.replit.dev/?token=TsO-Kyan6Jgl' failed: 
+t @ eruda.js:2
+20a5a677-e8db-426b-93ca-0ab4131b22a7-00-pwrlj8iul6vd.janeway.replit.dev/api/gaming/player/dashboard/rEVrTKUKSLx5nxdfV8SAFTxS9FGFrfHRLo:1  Failed to load resource: the server responded with a status of 500 (Internal Server Error)
+20a5a677-e8db-426b-93ca-0ab4131b22a7-00-pwrlj8iul6vd.janeway.replit.dev/api/gaming/player/dashboard/rEVrTKUKSLx5nxdfV8SAFTxS9FGFrfHRLo:1  Failed to load resource: the server responded with a status of 500 (Internal Server Error)
+20a5a677-e8db-426b-93ca-0ab4131b22a7-00-pwrlj8iul6vd.janeway.replit.dev/api/gaming/player/dashboard/rEVrTKUKSLx5nxdfV8SAFTxS9FGFrfHRLo:1  Failed to load resource: the server responded with a status of 500 (Internal Server Error)
+workspace_iframe.html?initialPath=%2Fgaming&id=%3Ar8m%3A:32 Error while parsing the 'sandbox' attribute: 'allow-downloads-without-user-activation' is an invalid sandbox flag.
+ WebSocket connection to 'wss://20a5a677-e8db-426b-93ca-0ab4131b22a7-00-pwrlj8iul6vd.janeway.replit.dev/?token=TsO-Kyan6Jgl' failed: 
+t @ eruda.js:2
+ 🔧 Fixed WebSocket URL for Replit: wss://localhost:undefined/?token=TsO-Kyan6Jgl → wss://20a5a677-e8db-426b-93ca-0ab4131b22a7-00-pwrlj8iul6vd.janeway.replit.dev/?token=TsO-Kyan6Jgl
+ WebSocket connection to 'wss://20a5a677-e8db-426b-93ca-0ab4131b22a7-00-pwrlj8iul6vd.janeway.replit.dev/?token=TsO-Kyan6Jgl' failed: 
+t @ eruda.js:2
+ [vite] failed to connect to websocket.
+your current setup:
+  (browser) 20a5a677-e8db-426b-93ca-0ab4131b22a7-00-pwrlj8iul6vd.janeway.replit.dev/ <--[HTTP]--> localhost:undefined/ (server)
+  (browser) 20a5a677-e8db-426b-93ca-0ab4131b22a7-00-pwrlj8iul6vd.janeway.replit.dev:/ <--[WebSocket (failing)]--> localhost:undefined/ (server)
+Check out your Vite / network configuration and https://vite.dev/config/server-options.html#server-hmr .
+Mt.forEach.n.<computed> @ eruda.js:2
+ 🎨 App.tsx: App component is rendering
+ 🏗️ App.tsx: Returning JSX with all providers
+ 🚫 SessionMonitor: DISABLED - Using unified SessionManager instead
+ 🗺️ Router: Router component is rendering
+ 📍 Router: Current location: /gaming
+ 💳 Router: Initializing wallet data state
+ 📭 Router: No saved wallet data found
+ 🔍 SessionManager.getSession() returning: Object
+ 🎨 App.tsx: App component is rendering
+ 🏗️ App.tsx: Returning JSX with all providers
+ 🚫 SessionMonitor: DISABLED - Using unified SessionManager instead
+ 🗺️ Router: Router component is rendering
+ 📍 Router: Current location: /gaming
+ 💳 Router: Initializing wallet data state
+ 📭 Router: No saved wallet data found
+ 🔍 SessionManager.getSession() returning: Object
+ 🔍 SessionManager: checkSession() called - current sessionData: true
+ 🌐 SessionManager: Making Riddle wallet session request to /api/riddle-wallet/session
+ 🎨 [THEME] Applied theme: dark, dark class: true
+ 🔄 App.tsx: useEffect running - recovering wallet state
+ ✅ SessionManager: Valid session for dippydoge
+ ✅ SessionManager: Updated session data: Object
+ 🔍 SessionManager.getSession() returning: Object
+ 🔔 SessionManager: Notified 1 listeners
+ 🔍 SessionManager.getSession() returning: Object
+ 🔧 [DEPLOYMENT] Configuration Status:
+    Environment: development
+    WalletConnect Project ID: fa5ebbd9...
+    Fee Wallet: 0x9211346f428628d7C84CE1338C0b51FDdf2E8461
+    Connection Timeout: 600s
+    1inch API Key: NOT SET
+ ✅ [DEPLOYMENT] All wallet connection requirements met
+Console.js:61 🔍 [GAMING DASHBOARD] Wallet profile: undefined
+Console.js:61 🔍 [GAMING DASHBOARD] Wallet loading: true
+Console.js:61 🔍 getQueryFn - SessionManager sessionToken: FOUND
+Console.js:61 🔍 getQueryFn - SessionManager sessionToken: FOUND
+Console.js:61 🔍 getQueryFn - SessionManager sessionToken: FOUND
+Console.js:61 🔍 getQueryFn - SessionManager sessionToken: FOUND
+Console.js:61 🔍 [GAMING DASHBOARD] Wallet profile: Object
+Console.js:61 🔍 [GAMING DASHBOARD] Wallet loading: false
+Console.js:61 🔍 getQueryFn - SessionManager sessionToken: FOUND
+Console.js:61 🔍 getQueryFn - SessionManager sessionToken: FOUND
+Console.js:61 🔍 [GAMING DASHBOARD] Wallet profile: Object
+Console.js:61 🔍 [GAMING DASHBOARD] Wallet loading: false
+Console.js:61 🔍 [GAMING DASHBOARD] Wallet profile: Object
+Console.js:61 🔍 [GAMING DASHBOARD] Wallet loading: false
+Console.js:61 🔍 SessionManager.getSession() returning: Object
+Console.js:61 🔍 [GAMING DASHBOARD] Wallet profile: Object
+Console.js:61 🔍 [GAMING DASHBOARD] Wallet loading: false
+Console.js:61 🔍 SessionManager.getSession() returning: Object
+Console.js:61 🔍 [GAMING DASHBOARD] Wallet profile: Object
+Console.js:61 🔍 [GAMING DASHBOARD] Wallet loading: false
+Console.js:61 🔍 SessionManager.getSession() returning: Object
+Console.js:61 🔍 [GAMING DASHBOARD] Wallet profile: Object
+Console.js:61 🔍 [GAMING DASHBOARD] Wallet loading: false
+Console.js:61 🔍 SessionManager.getSession() returning: Object
+Console.js:61 🔍 [GAMING DASHBOARD] Wallet profile: Object
+Console.js:61 🔍 [GAMING DASHBOARD] Wallet loading: false
+Console.js:61 🔍 SessionManager.getSession() returning: Object
+Console.js:61 Warning: Missing `Description` or `aria-describedby={undefined}` for {DialogContent}.
+Mt.forEach.n.<computed> @ Console.js:61
+Console.js:61 🔍 SessionManager sessionToken: FOUND
+Console.js:61 🔍 SessionManager sessionToken: FOUND
+Console.js:61 🔍 [WIZARD] NFT verification complete: Object
+Console.js:61 🔍 [WIZARD] Data type: object
+Console.js:61 🔍 [WIZARD] Data keys: Array(9)
+Console.js:61 🔍 SessionManager sessionToken: FOUND
+Console.js:61 🔍 SessionManager.getSession() returning: Object
+Console.js:61 🔍 [GAMING DASHBOARD] Wallet profile: Object
+Console.js:61 🔍 [GAMING DASHBOARD] Wallet loading: false
+Console.js:61 🔍 SessionManager.getSession() returning: Object
+Console.js:61 🔍 SessionManager.getSession() returning: Object
+Console.js:61 🔍 [GAMING DASHBOARD] Wallet profile: Object
+Console.js:61 🔍 [GAMING DASHBOARD] Wallet loading: false
+Console.js:61 🔍 SessionManager.getSession() returning: Object
+Console.js:61 🔍 SessionManager.getSession() returning: Object
+Console.js:61 🔍 [GAMING DASHBOARD] Wallet profile: Object
+Console.js:61 🔍 [GAMING DASHBOARD] Wallet loading: false
+Console.js:61 🔍 SessionManager.getSession() returning: Object
+Console.js:61 🔍 SessionManager sessionToken: FOUND
+Console.js:61 🔍 SessionManager: checkSession() called - current sessionData: true
+Console.js:61 🌐 SessionManager: Making Riddle wallet session request to /api/riddle-wallet/session
+Console.js:61 ✅ SessionManager: Valid session for dippydoge
+Console.js:61 ✅ SessionManager: Updated session data: Object
+Console.js:61 🔍 SessionManager.getSession() returning: Object
+Console.js:61 🔔 SessionManager: Notified 1 listeners
+Console.js:61 🔍 SessionManager.getSession() returning: Object
+Console.js:61 🔍 SessionManager sessionToken: FOUND
+20a5a677-e8db-426b-93ca-0ab4131b22a7-00-pwrlj8iul6vd.janeway.replit.dev/api/gaming/player/profile:1  Failed to load resource: the server responded with a status of 401 (Unauthorized)
+Console.js:61 🔓 apiRequest got 401 - NOT clearing session data automatically
+Console.js:61 🔓 Got 401 error - NOT clearing session data automatically
+Console.js:61 🔍 SessionManager sessionToken: FOUND
+20a5a677-e8db-426b-93ca-0ab4131b22a7-00-pwrlj8iul6vd.janeway.replit.dev/api/gaming/player/profile:1  Failed to load resource: the server responded with a status of 401 (Unauthorized)
+Console.js:61 🔓 apiRequest got 401 - NOT clearing session data automatically
+Console.js:61 🔓 Got 401 error - NOT clearing session data automatically
+Console.js:61 Failed to complete wizard: Error: 401: {"error":"Authentication required","code":"UNAUTHORIZED"}
+    at throwIfResNotOk (queryClient.ts:81:11)
+    at async apiRequest (queryClient.ts:119:3)
+Mt.forEach.n.<computed> @ Console.js:61
+Console.js:61 🔍 SessionManager.getSession() returning: Object
+Console.js:61 🔍 [GAMING DASHBOARD] Wallet profile: Object
+Console.js:61 🔍 [GAMING DASHBOARD] Wallet loading: false
+Console.js:61 🔍 SessionManager.getSession() returning: Object
+Console.js:61 🔍 SessionManager.getSession() returning: {isLoggedIn: true, handle: 'dippydoge', hasWalletData: true, hasSessionToken: true, walletDataKeys: Array(7)}
+Console.js:61 🔍 [GAMING DASHBOARD] Wallet profile: {walletExists: true, handle: 'dippydoge', addresses: {…}, createdAt: '2025-08-03T12:01:06.295Z'}
+Console.js:61 🔍 [GAMING DASHBOARD] Wallet loading: false
+Console.js:61 🔍 SessionManager.getSession() returning: {isLoggedIn: true, handle: 'dippydoge', hasWalletData: true, hasSessionToken: true, walletDataKeys: Array(7)}
+Console.js:61 🔍 SessionManager.getSession() returning: {isLoggedIn: true, handle: 'dippydoge', hasWalletData: true, hasSessionToken: true, walletDataKeys: Array(7)}
+Console.js:61 🔍 [GAMING DASHBOARD] Wallet profile: {walletExists: true, handle: 'dippydoge', addresses: {…}, createdAt: '2025-08-03T12:01:06.295Z'}
+Console.js:61 🔍 [GAMING DASHBOARD] Wallet loading: false
+Console.js:61 🔍 SessionManager.getSession() returning: {isLoggedIn: true, handle: 'dippydoge', hasWalletData: true, hasSessionToken: true, walletDataKeys: Array(7)}

@@ -1,0 +1,659 @@
+/* Metis Wallet Dedicated Styles */
+/* Orange/Yellow Metis Theme with Mobile Responsiveness */
+
+/* Metis Wallet Container with scoped CSS variables */
+.metis-wallet-container {
+  --metis-primary: #00D4FF;
+  --metis-secondary: #1DE9B6;
+  --metis-accent: #64FFDA;
+  --metis-dark: #00ACC1;
+  --metis-light: #E0F8FF;
+  --metis-gradient-from: #00D4FF;
+  --metis-gradient-to: #64FFDA;
+  --metis-success: #10B981;
+  --metis-error: #EF4444;
+  --metis-warning: #F59E0B;
+  
+  background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
+  min-height: 100vh;
+}
+
+/* Metis Header Styling */
+.metis-header-card {
+  background: linear-gradient(135deg, var(--metis-gradient-from) 0%, var(--metis-gradient-to) 100%);
+  border: 1px solid rgba(0, 212, 255, 0.3);
+  box-shadow: 0 4px 20px rgba(0, 212, 255, 0.2);
+}
+
+.metis-header-icon {
+  background: linear-gradient(135deg, var(--metis-primary) 0%, var(--metis-secondary) 100%);
+  border-radius: 16px;
+  padding: 16px;
+}
+
+/* Metis Balance Cards */
+.metis-balance-card {
+  background: linear-gradient(135deg, rgba(0, 212, 255, 0.1) 0%, rgba(100, 255, 218, 0.1) 100%);
+  border: 1px solid rgba(0, 212, 255, 0.2);
+  border-radius: 12px;
+}
+
+.metis-balance-text {
+  color: var(--metis-accent);
+  font-weight: 600;
+}
+
+.metis-price-text {
+  color: rgba(100, 255, 218, 0.8);
+}
+
+/* Metis Action Buttons */
+.metis-action-buttons {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+}
+
+@media (min-width: 640px) {
+  .metis-action-buttons {
+    display: flex;
+    flex-direction: row;
+    gap: 12px;
+  }
+}
+
+.metis-send-button {
+  background: linear-gradient(135deg, var(--metis-primary) 0%, var(--metis-dark) 100%);
+  border: none;
+  color: white;
+  transition: all 0.3s ease;
+}
+
+.metis-send-button:hover {
+  background: linear-gradient(135deg, var(--metis-dark) 0%, var(--metis-primary) 100%);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 212, 255, 0.3);
+}
+
+.metis-receive-button {
+  background: linear-gradient(135deg, var(--metis-success) 0%, #059669 100%);
+  border: none;
+  color: white;
+  transition: all 0.3s ease;
+}
+
+.metis-receive-button:hover {
+  background: linear-gradient(135deg, #059669 0%, #047857 100%);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+}
+
+.metis-swap-button {
+  background: linear-gradient(135deg, var(--metis-secondary) 0%, var(--metis-accent) 100%);
+  border: none;
+  color: white;
+  transition: all 0.3s ease;
+}
+
+.metis-swap-button:hover {
+  background: linear-gradient(135deg, var(--metis-accent) 0%, var(--metis-secondary) 100%);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(29, 233, 182, 0.3);
+}
+
+/* Mobile Button Fixes */
+@media (max-width: 639px) {
+  .metis-action-buttons button {
+    font-size: 12px;
+    padding: 8px 12px;
+    min-height: 36px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  
+  .metis-action-buttons button svg {
+    width: 12px;
+    height: 12px;
+    margin-right: 4px;
+  }
+}
+
+/* Metis Tabs Styling */
+.metis-tabs-list {
+  background: rgba(0, 212, 255, 0.1);
+  border: 1px solid rgba(0, 212, 255, 0.2);
+}
+
+.metis-tab-trigger {
+  color: rgba(255, 255, 255, 0.7);
+  transition: all 0.3s ease;
+}
+
+.metis-tab-trigger[data-state="active"] {
+  background: linear-gradient(135deg, var(--metis-primary) 0%, var(--metis-secondary) 100%);
+  color: white;
+  border-radius: 6px;
+}
+
+.metis-tab-trigger:hover {
+  background: rgba(0, 212, 255, 0.1);
+  color: var(--metis-accent);
+}
+
+/* Metis Token Cards */
+.metis-token-card {
+  background: rgba(0, 212, 255, 0.05);
+  border: 1px solid rgba(0, 212, 255, 0.1);
+  border-radius: 12px;
+  transition: all 0.3s ease;
+}
+
+.metis-token-card:hover {
+  background: rgba(0, 212, 255, 0.1);
+  border-color: rgba(0, 212, 255, 0.3);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(0, 212, 255, 0.2);
+}
+
+.metis-token-actions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 639px) {
+  .metis-token-actions {
+    flex-direction: column;
+    gap: 4px;
+  }
+  
+  .metis-token-actions button {
+    font-size: 11px;
+    padding: 4px 8px;
+    min-height: 28px;
+  }
+  
+  .metis-token-actions button svg {
+    width: 10px;
+    height: 10px;
+    margin-right: 2px;
+  }
+}
+
+/* Metis NFT Cards */
+.metis-nft-card {
+  background: rgba(0, 212, 255, 0.05);
+  border: 1px solid rgba(0, 212, 255, 0.1);
+  transition: all 0.3s ease;
+}
+
+.metis-nft-card:hover {
+  background: rgba(0, 212, 255, 0.1);
+  border-color: var(--metis-primary);
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 8px 24px rgba(0, 212, 255, 0.3);
+}
+
+/* Metis Address Display */
+.metis-address-container {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  justify-content: space-between;
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(0, 212, 255, 0.2);
+  border-radius: 8px;
+  padding: 12px;
+}
+
+.metis-address-text {
+  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+  color: var(--metis-accent);
+  font-size: 14px;
+}
+
+@media (max-width: 639px) {
+  .metis-address-text {
+    font-size: 12px;
+  }
+}
+
+/* Metis Modal Styling */
+.metis-modal-content {
+  background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
+  border: 1px solid rgba(0, 212, 255, 0.3);
+}
+
+.metis-modal-header {
+  border-bottom: 1px solid rgba(0, 212, 255, 0.2);
+  padding-bottom: 12px;
+  margin-bottom: 16px;
+}
+
+.metis-modal-title {
+  color: var(--metis-accent);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Metis Form Elements */
+.metis-form-input {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(0, 212, 255, 0.3);
+  color: white;
+  transition: all 0.3s ease;
+}
+
+.metis-form-input:focus {
+  border-color: var(--metis-primary);
+  box-shadow: 0 0 0 2px rgba(0, 212, 255, 0.2);
+}
+
+.metis-form-input::placeholder {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.metis-form-select {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(0, 212, 255, 0.3);
+  color: white;
+}
+
+.metis-form-label {
+  color: var(--metis-accent);
+  font-weight: 500;
+}
+
+/* Metis Loading States */
+.metis-loading-spinner {
+  color: var(--metis-primary);
+}
+
+.metis-loading-text {
+  color: rgba(100, 255, 218, 0.8);
+}
+
+/* Metis Success/Error States */
+.metis-success {
+  background: rgba(16, 185, 129, 0.1);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+  color: var(--metis-success);
+}
+
+.metis-error {
+  background: rgba(239, 68, 68, 0.1);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  color: var(--metis-error);
+}
+
+.metis-warning {
+  background: rgba(245, 158, 11, 0.1);
+  border: 1px solid rgba(245, 158, 11, 0.3);
+  color: var(--metis-warning);
+}
+
+/* Metis QR Code Container */
+.metis-qr-container {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Metis Quick Stats Card */
+.metis-stats-card {
+  background: rgba(0, 212, 255, 0.05);
+  border: 1px solid rgba(0, 212, 255, 0.1);
+  border-radius: 12px;
+}
+
+.metis-stats-item {
+  border-bottom: 1px solid rgba(0, 212, 255, 0.1);
+  padding: 8px 0;
+}
+
+.metis-stats-item:last-child {
+  border-bottom: none;
+}
+
+/* Metis Quick Actions */
+.metis-quick-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.metis-quick-action-button {
+  background: linear-gradient(135deg, rgba(0, 212, 255, 0.2) 0%, rgba(100, 255, 218, 0.2) 100%);
+  border: 1px solid rgba(0, 212, 255, 0.3);
+  color: var(--metis-accent);
+  transition: all 0.3s ease;
+  justify-content: flex-start;
+}
+
+.metis-quick-action-button:hover {
+  background: linear-gradient(135deg, var(--metis-primary) 0%, var(--metis-secondary) 100%);
+  color: white;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 212, 255, 0.3);
+}
+
+/* Metis Refresh Button */
+.metis-refresh-button {
+  border: 1px solid rgba(0, 212, 255, 0.5);
+  color: var(--metis-accent);
+  background: rgba(0, 212, 255, 0.1);
+  transition: all 0.3s ease;
+}
+
+.metis-refresh-button:hover {
+  background: rgba(0, 212, 255, 0.2);
+  border-color: var(--metis-primary);
+  color: white;
+}
+
+/* Mobile Responsive Improvements */
+@media (max-width: 375px) {
+  .metis-wallet-container {
+    padding: 8px;
+  }
+  
+  .metis-header-card {
+    margin-bottom: 16px;
+  }
+  
+  .metis-balance-card {
+    padding: 12px;
+  }
+  
+  .metis-wallet-container .container {
+    padding-left: 8px;
+    padding-right: 8px;
+  }
+}
+
+@media (max-width: 390px) {
+  .metis-action-buttons {
+    grid-template-columns: 1fr;
+    gap: 6px;
+  }
+}
+
+@media (max-width: 414px) {
+  .metis-token-actions {
+    flex-direction: column;
+    gap: 4px;
+  }
+  
+  .metis-nft-card {
+    margin-bottom: 12px;
+  }
+}
+
+/* Container overflow fixes for mobile */
+@media (max-width: 639px) {
+  .metis-wallet-container .wallet-page {
+    overflow-x: hidden;
+  }
+  
+  .metis-wallet-container .container {
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+  
+  /* Prevent button overflow */
+  .metis-action-buttons,
+  .metis-token-actions {
+    min-width: 0;
+    overflow: hidden;
+  }
+  
+  .metis-action-buttons button,
+  .metis-token-actions button {
+    min-width: 0;
+    flex: 1;
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
+}
+
+/* Metis Portfolio Value Highlights */
+.metis-portfolio-value {
+  background: linear-gradient(135deg, var(--metis-gradient-from) 0%, var(--metis-gradient-to) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: bold;
+}
+
+/* Metis Asset Breakdown */
+.metis-asset-breakdown {
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(0, 212, 255, 0.2);
+  border-radius: 12px;
+}
+
+.metis-asset-item {
+  border-bottom: 1px solid rgba(0, 212, 255, 0.1);
+  padding: 8px 0;
+}
+
+.metis-asset-item:last-child {
+  border-bottom: none;
+  border-top: 1px solid rgba(0, 212, 255, 0.2);
+  padding-top: 12px;
+  margin-top: 8px;
+}
+
+/* Animation for Metis elements */
+@keyframes metis-glow {
+  0%, 100% {
+    box-shadow: 0 0 5px rgba(0, 212, 255, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(0, 212, 255, 0.8), 0 0 30px rgba(100, 255, 218, 0.4);
+  }
+}
+
+.metis-glow-animation {
+  animation: metis-glow 2s ease-in-out infinite;
+}
+
+/* Dark mode specific Metis styling */
+@media (prefers-color-scheme: dark) {
+  .metis-wallet-container {
+    background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+  }
+}
+
+/* Metis Network Status Badge */
+.metis-network-badge {
+  background: rgba(0, 212, 255, 0.1);
+  border: 1px solid rgba(0, 212, 255, 0.3);
+  color: var(--metis-accent);
+  font-size: 12px;
+  font-weight: 500;
+  padding: 4px 8px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.metis-network-status-dot {
+  width: 8px;
+  height: 8px;
+  background: #10B981;
+  border-radius: 50%;
+  animation: metis-pulse 2s infinite;
+}
+
+@keyframes metis-pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+/* Transaction History Styling */
+.metis-transaction-list {
+  background: rgba(0, 212, 255, 0.05);
+  border: 1px solid rgba(0, 212, 255, 0.1);
+  border-radius: 8px;
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.metis-transaction-item {
+  display: flex;
+  align-items: center;
+  padding: 12px 16px;
+  border-bottom: 1px solid rgba(0, 212, 255, 0.1);
+  transition: all 0.2s ease;
+}
+
+.metis-transaction-item:last-child {
+  border-bottom: none;
+}
+
+.metis-transaction-item:hover {
+  background: rgba(0, 212, 255, 0.1);
+}
+
+.metis-transaction-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 12px;
+  flex-shrink: 0;
+}
+
+.metis-transaction-icon.send {
+  background: rgba(239, 68, 68, 0.2);
+  color: #EF4444;
+}
+
+.metis-transaction-icon.receive {
+  background: rgba(16, 185, 129, 0.2);
+  color: #10B981;
+}
+
+.metis-transaction-details {
+  flex: 1;
+  min-width: 0;
+}
+
+.metis-transaction-type {
+  font-weight: 500;
+  color: white;
+  font-size: 14px;
+  margin-bottom: 2px;
+}
+
+.metis-transaction-address {
+  font-family: ui-monospace, SFMono-Regular, "SF Mono", Consolas, "Liberation Mono", Menlo, monospace;
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.6);
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.metis-transaction-amount {
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.metis-transaction-value {
+  font-weight: 600;
+  color: white;
+  font-size: 14px;
+  margin-bottom: 2px;
+}
+
+.metis-transaction-usd {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.metis-transaction-time {
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.5);
+  margin-top: 2px;
+}
+
+/* Metis specific gradients and effects */
+.metis-gradient-bg {
+  background: linear-gradient(135deg, var(--metis-gradient-from) 0%, var(--metis-gradient-to) 100%);
+}
+
+.metis-border-glow {
+  border: 1px solid rgba(0, 212, 255, 0.3);
+  box-shadow: 0 0 10px rgba(0, 212, 255, 0.1);
+}
+
+.metis-text-gradient {
+  background: linear-gradient(135deg, var(--metis-primary) 0%, var(--metis-accent) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Metis Staking Card */
+.metis-staking-card {
+  background: linear-gradient(135deg, rgba(0, 212, 255, 0.1) 0%, rgba(100, 255, 218, 0.05) 100%);
+  border: 1px solid rgba(0, 212, 255, 0.2);
+  border-radius: 12px;
+  position: relative;
+  overflow: hidden;
+}
+
+.metis-staking-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(135deg, var(--metis-primary) 0%, var(--metis-accent) 100%);
+}
+
+/* Metis DeFi Integration Cards */
+.metis-defi-card {
+  background: rgba(0, 212, 255, 0.05);
+  border: 1px solid rgba(0, 212, 255, 0.15);
+  border-radius: 10px;
+  transition: all 0.3s ease;
+}
+
+.metis-defi-card:hover {
+  background: rgba(0, 212, 255, 0.08);
+  border-color: rgba(0, 212, 255, 0.25);
+  transform: translateY(-2px);
+}
+
+/* Metis Fee Estimation */
+.metis-fee-estimate {
+  background: rgba(0, 212, 255, 0.1);
+  border: 1px solid rgba(0, 212, 255, 0.2);
+  border-radius: 8px;
+  padding: 8px 12px;
+  font-size: 12px;
+  color: var(--metis-accent);
+}
+
+/* Metis Price Chart Integration */
+.metis-price-chart {
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(0, 212, 255, 0.1);
+  border-radius: 8px;
+  padding: 16px;
+}

@@ -1,0 +1,93 @@
+NFT Collections
+function getData(json) {
+  console.log(json)
+}
+bithompRequest("https://bithomp.com/api/v2/nft-collections?search=zerpmon&assets=true&floorPrice=true", getData);
+The above command returns JSON structured like this:
+
+{
+  "type": "xls20",
+  "order": "createdNew",
+  "search": "zerpmon",
+  "collections": [
+    {
+      "collection": "rBNmfMkbqnWzht5tv7ndYm23FEE1LrbfUb:223",
+      "name": "Ripple Effect - Side A (Tsunami Pack)",
+      "family": null,
+      "description": "Official Ripple Effect Album NFT with additional files and whitelist snapshot done on 2/23/2024 for all eligible XRPL NFT holders to receive a free NFT or more than one! As of 2/23/2024 if you own NFTs from the following XRPL projects you are eligible to mint this NFT for free!  Astute Scholars, XTAPES, 2023 = 322 NFT (Album), PixelXSkulls, Proof Of Stake NFT (Song), Tree Faces, Zerpmon, XBOT, Shemitah NFT (Song), Donnie, Rich Ducks Club, Enigmatic Ducks, XSpectar, Schmeckles, Astrals, Wahine Punk, XAliens, Power Zerps, JNKZ, Retro Punks, XZombie, Regulator Punk, Monkee Monkee and Chilled Chimps.  WHOA WHOA!",
+      "image": "bafybeiaeywa575ijibphzcxgpyaamjlbflquht63zku2knhvkfavmagrvu/ripple effect side a nft2 animation.gif",
+      "issuer": "rBNmfMkbqnWzht5tv7ndYm23FEE1LrbfUb",
+      "issuerDetails": {
+        "address": "rBNmfMkbqnWzht5tv7ndYm23FEE1LrbfUb",
+        "username": null,
+        "service": null
+      },
+      "taxon": 223,
+      "floorPrices": [],
+      "assets": {
+        "image": "https://cdn.bithomp.com/image/hash/animation.gif",
+        "preview": "https://cdn.bithomp.com/preview/hash/animation.gif",
+        "thumbnail": "https://cdn.bithomp.com/thumbnail/hash/animation.gif"
+      }
+    },
+    {
+      "collection": "rH1phNM38p2Eva5fZV1rvdGdycKLdKiLtJ",
+      "name": "Lil Ninja X Zerpmon",
+      "family": null,
+      "description": "The collection called “Lil Ninja X Zerpmon” reserved for collaboration auction with the legendary Zerpmon! This collection features Lil Ninja X with Zerpmon inspired attire and background scenery! Lil Ninja X NFT&#x27;s are awarded 1 point per Gold Piece in the monthly Rewards System which gives 25% of Sales Profits back to Holders, every single month as Rewards in XRP! This also contributes to your ranking on the LIL NINJA X Elder Scrolls of the Greatest Ripple Ninja Warriors.",
+      "image": "bafybeigbkt6dalehmyojobqt7lpt5y42abzjqav6qvdyotasuc7btanr3a/image.jpeg",
+      "floorPrices": [],
+      "assets": {
+        "image": "https://cdn.bithomp.com/image/hash/image.jpeg",
+        "preview": "https://cdn.bithomp.com/preview/hash/image.jpeg",
+        "thumbnail": "https://cdn.bithomp.com/thumbnail/hash/image.jpeg"
+      }
+    },
+    {
+      "collection": "rBNmfMkbqnWzht5tv7ndYm23FEE1LrbfUb:0",
+      "name": "Zerpmon",
+      "family": null,
+      "description": "Official Zerpmon Song LemFT",
+      "image": "bafybeigk5btpufwykocb2tosmbk3stfjijlmec6puk5ys5pvkfhdx4eita/thumbnail_Image-1 1600.png",
+      "issuer": "rBNmfMkbqnWzht5tv7ndYm23FEE1LrbfUb",
+      "issuerDetails": {
+        "address": "rBNmfMkbqnWzht5tv7ndYm23FEE1LrbfUb",
+        "username": null,
+        "service": null
+      },
+      "taxon": 0,
+      "floorPrices": [
+        {
+          "open": null,
+          "private": {
+            "amount": "589000000",
+            "destination": "rpx9JThQ2y37FaGeeJP7PXDUVEXY3PHZSC",
+            "destinationDetails": {
+              "username": "xrpcafe",
+              "service": "xrp.cafe"
+            }
+          }
+        }
+      ],
+      "assets": {
+        "image": "https://cdn.bithomp.com/image/hash/thumbnail_Image-1%201600.png",
+        "preview": "https://cdn.bithomp.com/preview/hash/thumbnail_Image-1%201600.png",
+        "thumbnail": "https://cdn.bithomp.com/thumbnail/hash/thumbnail_Image-1%201600.png"
+      }
+    }
+  ]
+}
+This endpoint retrieves NFT Collection list for your search creterias.
+
+HTTP Request
+GET https://bithomp.com/api/v2/nft-collections
+
+Query Parameters
+Parameter	Default	Description
+order	createdNew	(optional) createdNew, createdOld, updatedNew, updatedOld (order list by the date when the first or last NFT was issued).
+search	null	(optional) search by NFT Collection Name and Description.
+assets	false	(Only available on the Standard API plan or greater) If set to true, returns assets with direct urls for NFT collection image 700px x 700px, video 15s, preview 360px x 360px (image, otherwise video frame) and thumbnail 64px x 64px. (See plans for NFT contents for more details or contact us)
+floorPrice	false	(Only available on paid API plans) If set to true, returns floorPrices with the lowest price for the NFT collection.
+issuer	null	(optional) The address of the NFT Collection issuer (also works for Sologenic issuers).
+marker	null	The marker from the previous request, if you need a next page of NFT collections
+limit	100	The number of NFTs to return. (More than 100 is available for the Standard pla

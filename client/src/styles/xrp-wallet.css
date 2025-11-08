@@ -1,0 +1,284 @@
+/* XRP Wallet Dedicated Styles */
+/* Orange/Gold XRP Theme with Mobile Responsiveness */
+
+/* XRP Wallet Container */
+.xrp-wallet-container {
+  min-height: 100vh;
+}
+
+/* XRP Header Styling - Material-UI handles colors */
+.xrp-header-icon {
+  border-radius: 16px;
+  padding: 16px;
+}
+
+/* XRP Balance Cards - Let Material-UI handle colors */
+.xrp-balance-card {
+  border-radius: 12px;
+}
+
+.xrp-balance-text {
+  font-weight: 600;
+}
+
+.xrp-price-text {
+  opacity: 0.8;
+}
+
+/* XRP Action Buttons */
+.xrp-action-buttons {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+}
+
+@media (min-width: 640px) {
+  .xrp-action-buttons {
+    display: flex;
+    flex-direction: row;
+    gap: 12px;
+  }
+}
+
+.xrp-send-button {
+  background: #000000;
+  border: 1px solid #FFFFFF;
+  color: white;
+  transition: all 0.3s ease;
+}
+
+.xrp-send-button:hover {
+  background: #FFFFFF;
+  color: #000000;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(255, 255, 255, 0.3);
+}
+
+.xrp-receive-button {
+  background: #000000;
+  border: 1px solid #FFFFFF;
+  color: white;
+  transition: all 0.3s ease;
+}
+
+.xrp-receive-button:hover {
+  background: #FFFFFF;
+  color: #000000;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(255, 255, 255, 0.3);
+}
+
+/* Mobile Button Fixes */
+@media (max-width: 639px) {
+  .xrp-action-buttons button {
+    font-size: 12px;
+    padding: 8px 12px;
+    min-height: 36px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  
+  .xrp-action-buttons button svg {
+    width: 12px;
+    height: 12px;
+    margin-right: 4px;
+  }
+}
+
+/* XRP Tabs Styling - Material-UI handles colors */
+.xrp-tab-trigger {
+  transition: all 0.3s ease;
+}
+
+.xrp-tab-trigger[data-state="active"] {
+  border-radius: 6px;
+}
+
+/* XRP Token Cards - Let Material-UI handle colors */
+.xrp-token-card {
+  border-radius: 12px;
+  transition: all 0.3s ease;
+}
+
+.xrp-token-card:hover {
+  transform: translateY(-2px);
+}
+
+.xrp-token-actions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 639px) {
+  .xrp-token-actions {
+    flex-direction: column;
+    gap: 4px;
+  }
+  
+  .xrp-token-actions button {
+    font-size: 11px;
+    padding: 4px 8px;
+    min-height: 28px;
+  }
+  
+  .xrp-token-actions button svg {
+    width: 10px;
+    height: 10px;
+    margin-right: 2px;
+  }
+}
+
+/* XRP NFT Cards */
+.xrp-nft-card {
+  background: #000000;
+  border: 1px solid #FFFFFF;
+  transition: all 0.3s ease;
+}
+
+.xrp-nft-card:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: #FFFFFF;
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 8px 24px rgba(255, 255, 255, 0.3);
+}
+
+/* XRP Address Display */
+.xrp-address-container {
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 140, 0, 0.2);
+  border-radius: 8px;
+  padding: 12px;
+}
+
+.xrp-address-text {
+  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+  font-size: 14px;
+}
+
+@media (max-width: 639px) {
+  .xrp-address-text {
+    font-size: 12px;
+  }
+}
+
+/* XRP Modal Styling - Material-UI handles colors */
+.xrp-modal-header {
+  padding-bottom: 12px;
+  margin-bottom: 16px;
+}
+
+.xrp-modal-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* XRP Form Elements - Let Material-UI handle colors */
+.xrp-form-input {
+  transition: all 0.3s ease;
+}
+
+.xrp-form-label {
+  font-weight: 500;
+}
+
+/* Material-UI handles all color states for loading, success, error, and warning */
+
+/* XRP QR Code Container */
+.xrp-qr-container {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Mobile Responsive Improvements */
+@media (max-width: 375px) {
+  .xrp-wallet-container {
+    padding: 8px;
+  }
+  
+  .xrp-header-card {
+    margin-bottom: 16px;
+  }
+  
+  .xrp-balance-card {
+    padding: 12px;
+  }
+  
+  .container {
+    padding-left: 8px;
+    padding-right: 8px;
+  }
+}
+
+@media (max-width: 390px) {
+  .xrp-action-buttons {
+    grid-template-columns: 1fr;
+    gap: 6px;
+  }
+}
+
+@media (max-width: 414px) {
+  .xrp-token-actions {
+    flex-direction: column;
+    gap: 4px;
+  }
+  
+  .xrp-nft-card {
+    margin-bottom: 12px;
+  }
+}
+
+/* Container overflow fixes for mobile */
+@media (max-width: 639px) {
+  .wallet-page {
+    overflow-x: hidden;
+  }
+  
+  .container {
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+  
+  /* Prevent button overflow */
+  .xrp-action-buttons,
+  .xrp-token-actions {
+    min-width: 0;
+    overflow: hidden;
+  }
+  
+  .xrp-action-buttons button,
+  .xrp-token-actions button {
+    min-width: 0;
+    flex: 1;
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
+}
+
+/* XRP Portfolio Value Highlights - Material-UI handles colors */
+.xrp-portfolio-value {
+  font-weight: bold;
+}
+
+/* XRP Asset Breakdown - Material-UI handles colors */
+.xrp-asset-breakdown {
+  border-radius: 12px;
+}
+
+.xrp-asset-item {
+  padding: 8px 0;
+}
+
+.xrp-asset-item:last-child {
+  border-bottom: none;
+  padding-top: 12px;
+  margin-top: 8px;
+}
+
+/* Material-UI handles all theme-based colors including dark mode */

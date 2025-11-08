@@ -1,0 +1,279 @@
+/* Unified Profile Page Styles */
+
+/* Main container - consolidated from profile.css and social-profile.css */
+.profile-container {
+  max-width: 64rem;
+  margin: 0 auto;
+  padding: 1.5rem;
+  min-height: 100vh;
+  background: linear-gradient(135deg, 
+    rgb(248, 250, 252) 0%, 
+    rgb(219, 234, 254) 100%);
+}
+
+.dark .profile-container {
+  background: linear-gradient(135deg, 
+    rgb(15, 23, 42) 0%, 
+    rgb(30, 41, 59) 100%);
+}
+
+/* Hero card styling */
+.hero-card {
+  overflow: hidden !important;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25) !important;
+  border: none !important;
+  background: white !important;
+  border-radius: 1rem !important;
+}
+
+.dark .hero-card {
+  background: rgb(30, 41, 59) !important;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5) !important;
+}
+
+/* Unified cover photo styles */
+.profile-cover, .cover-gradient {
+  position: relative;
+  height: 12rem;
+  background: linear-gradient(135deg, 
+    rgb(37, 99, 235) 0%, 
+    rgb(147, 51, 234) 50%, 
+    rgb(79, 70, 229) 100%);
+  border-radius: 0.5rem 0.5rem 0 0;
+}
+
+@media (min-width: 768px) {
+  .profile-cover, .cover-gradient {
+    height: 16rem;
+  }
+}
+
+.profile-cover-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 0.5rem 0.5rem 0 0;
+}
+
+/* Unified avatar styles */
+/* Removed duplicate .profile-picture, .profile-avatar styles - now handled inline in social-profile.tsx */
+
+.profile-avatar-fallback {
+  font-size: 1.5rem;
+}
+
+/* Profile picture gradient fallback */
+.profile-picture-gradient {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, 
+    rgb(59, 130, 246) 0%, 
+    rgb(147, 51, 234) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Edit form card */
+.edit-form-card {
+  border: none;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  background: white;
+  border-radius: 0.75rem;
+}
+
+.dark .edit-form-card {
+  background: rgb(30, 41, 59);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3), 0 4px 6px -2px rgba(0, 0, 0, 0.2);
+}
+
+/* Tab styling */
+.profile-tabs {
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  background: white;
+  border-radius: 0.5rem;
+}
+
+.dark .profile-tabs {
+  background: rgb(30, 41, 59);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
+}
+
+/* Section cards */
+.section-card {
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05) !important;
+  border: none !important;
+  background: white !important;
+  border-radius: 0.75rem !important;
+}
+
+.dark .section-card {
+  background: rgb(30, 41, 59) !important;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3), 0 4px 6px -2px rgba(0, 0, 0, 0.2) !important;
+}
+
+/* Info items */
+.info-item {
+  padding: 0.75rem;
+  border-radius: 0.5rem;
+  background: rgb(248, 250, 252);
+  border: 1px solid rgb(226, 232, 240);
+}
+
+.dark .info-item {
+  background: rgb(51, 65, 85);
+  border-color: rgb(71, 85, 105);
+}
+
+/* Activity cards with specific colors */
+.activity-card-blue {
+  background: rgb(239, 246, 255) !important;
+  border: 1px solid rgb(191, 219, 254) !important;
+  border-radius: 0.5rem !important;
+  padding: 1rem !important;
+}
+
+.dark .activity-card-blue {
+  background: rgba(37, 99, 235, 0.1) !important;
+  border-color: rgba(37, 99, 235, 0.3) !important;
+}
+
+.activity-card-red {
+  background: rgb(254, 242, 242);
+  border: 1px solid rgb(254, 202, 202);
+  border-radius: 0.5rem;
+  padding: 1rem;
+}
+
+.dark .activity-card-red {
+  background: rgba(239, 68, 68, 0.1);
+  border-color: rgba(239, 68, 68, 0.3);
+}
+
+.activity-card-green {
+  background: rgb(240, 253, 244);
+  border: 1px solid rgb(187, 247, 208);
+  border-radius: 0.5rem;
+  padding: 1rem;
+}
+
+.dark .activity-card-green {
+  background: rgba(34, 197, 94, 0.1);
+  border-color: rgba(34, 197, 94, 0.3);
+}
+
+.activity-card-purple {
+  background: rgb(250, 245, 255);
+  border: 1px solid rgb(221, 214, 254);
+  border-radius: 0.5rem;
+  padding: 1rem;
+}
+
+.dark .activity-card-purple {
+  background: rgba(168, 85, 247, 0.1);
+  border-color: rgba(168, 85, 247, 0.3);
+}
+
+/* Button styling */
+.action-button {
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  border: 1px solid rgb(203, 213, 225);
+}
+
+.action-button:hover {
+  background: rgb(248, 250, 252);
+}
+
+.dark .action-button {
+  border-color: rgb(71, 85, 105);
+}
+
+.dark .action-button:hover {
+  background: rgb(51, 65, 85);
+}
+
+/* Text colors */
+.text-primary {
+  color: rgb(15, 23, 42);
+}
+
+.dark .text-primary {
+  color: white;
+}
+
+.text-secondary {
+  color: rgb(71, 85, 105);
+}
+
+.dark .text-secondary {
+  color: rgb(148, 163, 184);
+}
+
+.text-muted {
+  color: rgb(100, 116, 139);
+}
+
+.dark .text-muted {
+  color: rgb(148, 163, 184);
+}
+
+/* Form input styling */
+.profile-label {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: rgb(71, 85, 105);
+}
+
+.dark .profile-label {
+  color: rgb(148, 163, 184);
+}
+
+.profile-input {
+  border: 1px solid rgb(203, 213, 225);
+}
+
+.dark .profile-input {
+  border-color: rgb(71, 85, 105);
+}
+
+/* Loading skeleton */
+.skeleton {
+  background: rgb(226, 232, 240);
+  border-radius: 0.75rem;
+}
+
+.dark .skeleton {
+  background: rgb(51, 65, 85);
+}
+
+/* Input styling */
+.profile-input {
+  border: 1px solid rgb(226, 232, 240);
+  border-radius: 0.375rem;
+}
+
+.profile-input:focus {
+  border-color: rgb(59, 130, 246);
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.dark .profile-input {
+  border-color: rgb(71, 85, 105);
+  background: rgb(30, 41, 59);
+  color: white;
+}
+
+.dark .profile-input:focus {
+  border-color: rgb(59, 130, 246);
+}
+
+/* Label styling */
+.profile-label {
+  color: rgb(51, 65, 85);
+  font-weight: 500;
+  font-size: 0.875rem;
+}
+
+.dark .profile-label {
+  color: rgb(203, 213, 225);
+}

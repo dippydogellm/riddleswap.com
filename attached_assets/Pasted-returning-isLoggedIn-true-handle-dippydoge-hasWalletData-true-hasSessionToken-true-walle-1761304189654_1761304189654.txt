@@ -1,0 +1,144 @@
+returning: {isLoggedIn: true, handle: 'dippydoge', hasWalletData: true, hasSessionToken: true, walletDataKeys: Array(7)}
+injected.js:27 Warning: Missing `Description` or `aria-describedby={undefined}` for {DialogContent}.
+(anonymous) @ injected.js:27
+(anonymous) @ chunk-XVBJWCS7.js?v=2a52c0ac:336
+commitHookEffectListMount @ chunk-SM3OW2QE.js?v=2a52c0ac:16915
+commitPassiveMountOnFiber @ chunk-SM3OW2QE.js?v=2a52c0ac:18156
+commitPassiveMountEffects_complete @ chunk-SM3OW2QE.js?v=2a52c0ac:18129
+commitPassiveMountEffects_begin @ chunk-SM3OW2QE.js?v=2a52c0ac:18119
+commitPassiveMountEffects @ chunk-SM3OW2QE.js?v=2a52c0ac:18109
+flushPassiveEffectsImpl @ chunk-SM3OW2QE.js?v=2a52c0ac:19490
+flushPassiveEffects @ chunk-SM3OW2QE.js?v=2a52c0ac:19447
+commitRootImpl @ chunk-SM3OW2QE.js?v=2a52c0ac:19416
+commitRoot @ chunk-SM3OW2QE.js?v=2a52c0ac:19277
+performSyncWorkOnRoot @ chunk-SM3OW2QE.js?v=2a52c0ac:18895
+flushSyncCallbacks @ chunk-SM3OW2QE.js?v=2a52c0ac:9119
+(anonymous) @ chunk-SM3OW2QE.js?v=2a52c0ac:18627
+ipfs://bafybeiccm34ry3vshh7iopkgjbjza7elirx4ceqoeuhugofvvuho6whyi4/48.png:1  GET ipfs://bafybeiccm34ry3vshh7iopkgjbjza7elirx4ceqoeuhugofvvuho6whyi4/48.png net::ERR_UNKNOWN_URL_SCHEME
+Image
+commitMount @ chunk-SM3OW2QE.js?v=2a52c0ac:8412
+commitLayoutEffectOnFiber @ chunk-SM3OW2QE.js?v=2a52c0ac:17102
+commitLayoutMountEffects_complete @ chunk-SM3OW2QE.js?v=2a52c0ac:17980
+commitLayoutEffects_begin @ chunk-SM3OW2QE.js?v=2a52c0ac:17969
+commitLayoutEffects_begin @ chunk-SM3OW2QE.js?v=2a52c0ac:17950
+commitLayoutEffects @ chunk-SM3OW2QE.js?v=2a52c0ac:17920
+commitRootImpl @ chunk-SM3OW2QE.js?v=2a52c0ac:19353
+commitRoot @ chunk-SM3OW2QE.js?v=2a52c0ac:19277
+performSyncWorkOnRoot @ chunk-SM3OW2QE.js?v=2a52c0ac:18895
+flushSyncCallbacks @ chunk-SM3OW2QE.js?v=2a52c0ac:9119
+(anonymous) @ chunk-SM3OW2QE.js?v=2a52c0ac:18627
+injected.js:27 🎨 [NFT IMAGE] Generating with public endpoint (NO AUTH) {nftId: '0008138812C36A8E1C6C8B3DCE5BA3902299EF5B6EB51C8F98C485FB05BA1C60'}
+injected.js:27 🔍 SessionManager.getSession() returning: {isLoggedIn: true, handle: 'dippydoge', hasWalletData: true, hasSessionToken: true, walletDataKeys: Array(7)}
+2injected.js:27 🔍 getQueryFn - SessionManager sessionToken: FOUND
+injected.js:27 🔍 SessionManager.getSession() returning: {isLoggedIn: true, handle: 'dippydoge', hasWalletData: true, hasSessionToken: true, walletDataKeys: Array(7)}
+injected.js:27 🔍 SessionManager.getSession() returning: {isLoggedIn: true, handle: 'dippydoge', hasWalletData: true, hasSessionToken: true, walletDataKeys: Array(7)}
+injected.js:27 ✅ [NFT IMAGE] Image generated: {success: true, data: {…}}
+injected.js:204  POST https://301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/api/gaming/player/nfts/0008138812C36A8E1C6C8B3DCE5BA3902299EF5B6EB51C8F98C485FB05BA1C60/save-image 403 (Forbidden)
+apply @ injected.js:204
+mutationFn @ inquisition-gaming-v2.tsx:550
+await in mutationFn
+fn @ @tanstack_react-query.js?v=2a52c0ac:1216
+run @ @tanstack_react-query.js?v=2a52c0ac:506
+start @ @tanstack_react-query.js?v=2a52c0ac:547
+execute @ @tanstack_react-query.js?v=2a52c0ac:1251
+await in execute
+mutate @ @tanstack_react-query.js?v=2a52c0ac:2650
+(anonymous) @ @tanstack_react-query.js?v=2a52c0ac:3362
+onClick @ inquisition-gaming-v2.tsx:1620
+callCallback2 @ chunk-SM3OW2QE.js?v=2a52c0ac:3674
+invokeGuardedCallbackDev @ chunk-SM3OW2QE.js?v=2a52c0ac:3699
+invokeGuardedCallback @ chunk-SM3OW2QE.js?v=2a52c0ac:3733
+invokeGuardedCallbackAndCatchFirstError @ chunk-SM3OW2QE.js?v=2a52c0ac:3736
+executeDispatch @ chunk-SM3OW2QE.js?v=2a52c0ac:7014
+processDispatchQueueItemsInOrder @ chunk-SM3OW2QE.js?v=2a52c0ac:7034
+processDispatchQueue @ chunk-SM3OW2QE.js?v=2a52c0ac:7043
+dispatchEventsForPlugins @ chunk-SM3OW2QE.js?v=2a52c0ac:7051
+(anonymous) @ chunk-SM3OW2QE.js?v=2a52c0ac:7174
+batchedUpdates$1 @ chunk-SM3OW2QE.js?v=2a52c0ac:18913
+batchedUpdates @ chunk-SM3OW2QE.js?v=2a52c0ac:3579
+dispatchEventForPluginEventSystem @ chunk-SM3OW2QE.js?v=2a52c0ac:7173
+dispatchEventWithEnableCapturePhaseSelectiveHydrationWithoutDiscreteEventReplay @ chunk-SM3OW2QE.js?v=2a52c0ac:5478
+dispatchEvent @ chunk-SM3OW2QE.js?v=2a52c0ac:5472
+dispatchDiscreteEvent @ chunk-SM3OW2QE.js?v=2a52c0ac:5449
+injected.js:27 🔍 SessionManager.getSession() returning: {isLoggedIn: true, handle: 'dippydoge', hasWalletData: true, hasSessionToken: true, walletDataKeys: Array(7)}
+injected.js:27 🎨 [NFT IMAGE] Generating with public endpoint (NO AUTH) {nftId: '0008138812C36A8E1C6C8B3DCE5BA3902299EF5B6EB51C8F98C485FB05BA1C60'}
+injected.js:27 ✅ [NFT IMAGE] Image generated: {success: true, data: {…}}
+injected.js:204  POST https://301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/api/gaming/player/nfts/0008138812C36A8E1C6C8B3DCE5BA3902299EF5B6EB51C8F98C485FB05BA1C60/save-image 403 (Forbidden)
+apply @ injected.js:204
+mutationFn @ inquisition-gaming-v2.tsx:550
+await in mutationFn
+fn @ @tanstack_react-query.js?v=2a52c0ac:1216
+run @ @tanstack_react-query.js?v=2a52c0ac:506
+(anonymous) @ @tanstack_react-query.js?v=2a52c0ac:530
+Promise.then
+(anonymous) @ @tanstack_react-query.js?v=2a52c0ac:526
+Promise.catch
+run @ @tanstack_react-query.js?v=2a52c0ac:510
+start @ @tanstack_react-query.js?v=2a52c0ac:547
+execute @ @tanstack_react-query.js?v=2a52c0ac:1251
+await in execute
+mutate @ @tanstack_react-query.js?v=2a52c0ac:2650
+(anonymous) @ @tanstack_react-query.js?v=2a52c0ac:3362
+onClick @ inquisition-gaming-v2.tsx:1620
+callCallback2 @ chunk-SM3OW2QE.js?v=2a52c0ac:3674
+invokeGuardedCallbackDev @ chunk-SM3OW2QE.js?v=2a52c0ac:3699
+invokeGuardedCallback @ chunk-SM3OW2QE.js?v=2a52c0ac:3733
+invokeGuardedCallbackAndCatchFirstError @ chunk-SM3OW2QE.js?v=2a52c0ac:3736
+executeDispatch @ chunk-SM3OW2QE.js?v=2a52c0ac:7014
+processDispatchQueueItemsInOrder @ chunk-SM3OW2QE.js?v=2a52c0ac:7034
+processDispatchQueue @ chunk-SM3OW2QE.js?v=2a52c0ac:7043
+dispatchEventsForPlugins @ chunk-SM3OW2QE.js?v=2a52c0ac:7051
+(anonymous) @ chunk-SM3OW2QE.js?v=2a52c0ac:7174
+batchedUpdates$1 @ chunk-SM3OW2QE.js?v=2a52c0ac:18913
+batchedUpdates @ chunk-SM3OW2QE.js?v=2a52c0ac:3579
+dispatchEventForPluginEventSystem @ chunk-SM3OW2QE.js?v=2a52c0ac:7173
+dispatchEventWithEnableCapturePhaseSelectiveHydrationWithoutDiscreteEventReplay @ chunk-SM3OW2QE.js?v=2a52c0ac:5478
+dispatchEvent @ chunk-SM3OW2QE.js?v=2a52c0ac:5472
+dispatchDiscreteEvent @ chunk-SM3OW2QE.js?v=2a52c0ac:5449
+injected.js:27 ❌ [NFT IMAGE] Generation error: Error: Failed to save image to NFT
+    at Object.mutationFn (inquisition-gaming-v2.tsx:560:15)
+(anonymous) @ injected.js:27
+onError @ inquisition-gaming-v2.tsx:575
+execute @ @tanstack_react-query.js?v=2a52c0ac:1277
+await in execute
+mutate @ @tanstack_react-query.js?v=2a52c0ac:2650
+(anonymous) @ @tanstack_react-query.js?v=2a52c0ac:3362
+onClick @ inquisition-gaming-v2.tsx:1620
+callCallback2 @ chunk-SM3OW2QE.js?v=2a52c0ac:3674
+invokeGuardedCallbackDev @ chunk-SM3OW2QE.js?v=2a52c0ac:3699
+invokeGuardedCallback @ chunk-SM3OW2QE.js?v=2a52c0ac:3733
+invokeGuardedCallbackAndCatchFirstError @ chunk-SM3OW2QE.js?v=2a52c0ac:3736
+executeDispatch @ chunk-SM3OW2QE.js?v=2a52c0ac:7014
+processDispatchQueueItemsInOrder @ chunk-SM3OW2QE.js?v=2a52c0ac:7034
+processDispatchQueue @ chunk-SM3OW2QE.js?v=2a52c0ac:7043
+dispatchEventsForPlugins @ chunk-SM3OW2QE.js?v=2a52c0ac:7051
+(anonymous) @ chunk-SM3OW2QE.js?v=2a52c0ac:7174
+batchedUpdates$1 @ chunk-SM3OW2QE.js?v=2a52c0ac:18913
+batchedUpdates @ chunk-SM3OW2QE.js?v=2a52c0ac:3579
+dispatchEventForPluginEventSystem @ chunk-SM3OW2QE.js?v=2a52c0ac:7173
+dispatchEventWithEnableCapturePhaseSelectiveHydrationWithoutDiscreteEventReplay @ chunk-SM3OW2QE.js?v=2a52c0ac:5478
+dispatchEvent @ chunk-SM3OW2QE.js?v=2a52c0ac:5472
+dispatchDiscreteEvent @ chunk-SM3OW2QE.js?v=2a52c0ac:5449
+injected.js:27 🔍 SessionManager.getSession() returning: {isLoggedIn: true, handle: 'dippydoge', hasWalletData: true, hasSessionToken: true, walletDataKeys: Array(7)}
+injected.js:27 🔍 SessionManager.getSession() returning: {isLoggedIn: true, handle: 'dippydoge', hasWalletData: true, hasSessionToken: true, walletDataKeys: Array(7)}
+injected.js:27 🔍 SessionManager.getSession() returning: {isLoggedIn: true, handle: 'dippydoge', hasWalletData: true, hasSessionToken: true, walletDataKeys: Array(7)}
+injected.js:27 🔍 Found local wallet connections: []
+injected.js:27 🔍 SessionManager.getSession() returning: {isLoggedIn: true, handle: 'dippydoge', hasWalletData: true, hasSessionToken: true, walletDataKeys: Array(7)}
+injected.js:27 🔍 SessionManager: checkSession() called - current sessionData: true
+injected.js:27 🌐 SessionManager: Making Riddle wallet session request to /api/riddle-wallet/session
+injected.js:27 ✅ SessionManager: Valid session for dippydoge
+injected.js:27 ✅ SessionManager: Updated session data: {handle: 'dippydoge', hasWalletData: true, authenticated: true, listeners: 5}
+injected.js:27 🔍 SessionManager.getSession() returning: {isLoggedIn: true, handle: 'dippydoge', hasWalletData: true, hasSessionToken: true, walletDataKeys: Array(7)}
+injected.js:27 🔍 SessionManager.getSession() returning: {isLoggedIn: true, handle: 'dippydoge', hasWalletData: true, hasSessionToken: true, walletDataKeys: Array(7)}
+injected.js:27 🔍 SessionManager.getSession() returning: {isLoggedIn: true, handle: 'dippydoge', hasWalletData: true, hasSessionToken: true, walletDataKeys: Array(7)}
+injected.js:27 🔍 SessionManager.getSession() returning: {isLoggedIn: true, handle: 'dippydoge', hasWalletData: true, hasSessionToken: true, walletDataKeys: Array(7)}
+injected.js:27 🔍 SessionManager.getSession() returning: {isLoggedIn: true, handle: 'dippydoge', hasWalletData: true, hasSessionToken: true, walletDataKeys: Array(7)}
+injected.js:27 🔔 SessionManager: Notified 5 listeners
+injected.js:27 🔍 SessionManager.getSession() returning: {isLoggedIn: true, handle: 'dippydoge', hasWalletData: true, hasSessionToken: true, walletDataKeys: Array(7)}
+injected.js:27 🔍 SessionManager.getSession() returning: {isLoggedIn: true, handle: 'dippydoge', hasWalletData: true, hasSessionToken: true, walletDataKeys: Array(7)}
+injected.js:27 🔍 SessionManager.getSession() returning: {isLoggedIn: true, handle: 'dippydoge', hasWalletData: true, hasSessionToken: true, walletDataKeys: Array(7)}
+injected.js:27 🔍 Found local wallet connections: []
+injected.js:27 🔍 SessionManager.getSession() returning: {isLoggedIn: true, handle: 'dippydoge', hasWalletData: true, hasSessionToken: true, walletDataKeys: Array(7)}
+2injected.js:27 🔍 getQueryFn - SessionManager sessionToken: FOUND
+injected.js:27 🔍 SessionManager.getSession() returning: {isLoggedIn: true, handle: 'dippydoge', hasWalletData: true, hasSessionToken: true, walletDataKeys: Array(7)}
+injected.js:27 🔍 SessionManager.getSession() returning: {isLoggedIn: true, handle: 'dippydoge', hasWalletData: true, hasSessionToken: true, walletDataKeys: Array(7)}

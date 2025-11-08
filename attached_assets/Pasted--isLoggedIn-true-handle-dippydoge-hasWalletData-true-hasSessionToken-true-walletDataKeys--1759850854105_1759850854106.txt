@@ -1,0 +1,26 @@
+ {isLoggedIn: true, handle: 'dippydoge', hasWalletData: true, hasSessionToken: true, walletDataKeys: Array(7)}
+Console.js:61 🔍 [XRP WALLET] Auth data: {walletAddress: 'rEVrTKUKSLx5nxdfV8SAFTxS9FGFrfHRLo', hasSessionWalletData: true, hasSessionAddresses: true, hasUser: true, hasWalletData: true, …}
+injected.js:278  POST https://20a5a677-e8db-426b-93ca-0ab4131b22a7-00-pwrlj8iul6vd.janeway.replit.dev/api/nft/offers/F1B31A59F1E072BDB173085A684D1BCC4E90B9974C7B037D641220C179B49E59/accept 500 (Internal Server Error)
+window.fetch @ Network.js:219
+apply @ injected.js:278
+handleAcceptOffer @ xrp-wallet-redesigned.tsx:359
+onClick @ xrp-wallet-redesigned.tsx:1563
+callCallback2 @ chunk-SM3OW2QE.js?v=b65356fd:3674
+invokeGuardedCallbackDev @ chunk-SM3OW2QE.js?v=b65356fd:3699
+invokeGuardedCallback @ chunk-SM3OW2QE.js?v=b65356fd:3733
+invokeGuardedCallbackAndCatchFirstError @ chunk-SM3OW2QE.js?v=b65356fd:3736
+executeDispatch @ chunk-SM3OW2QE.js?v=b65356fd:7014
+processDispatchQueueItemsInOrder @ chunk-SM3OW2QE.js?v=b65356fd:7034
+processDispatchQueue @ chunk-SM3OW2QE.js?v=b65356fd:7043
+dispatchEventsForPlugins @ chunk-SM3OW2QE.js?v=b65356fd:7051
+(anonymous) @ chunk-SM3OW2QE.js?v=b65356fd:7174
+batchedUpdates$1 @ chunk-SM3OW2QE.js?v=b65356fd:18913
+batchedUpdates @ chunk-SM3OW2QE.js?v=b65356fd:3579
+dispatchEventForPluginEventSystem @ chunk-SM3OW2QE.js?v=b65356fd:7173
+dispatchEventWithEnableCapturePhaseSelectiveHydrationWithoutDiscreteEventReplay @ chunk-SM3OW2QE.js?v=b65356fd:5478
+dispatchEvent @ chunk-SM3OW2QE.js?v=b65356fd:5472
+dispatchDiscreteEvent @ chunk-SM3OW2QE.js?v=b65356fd:5449
+Console.js:61 🔍 SessionManager.getSession() returning: {isLoggedIn: true, handle: 'dippydoge', hasWalletData: true, hasSessionToken: true, walletDataKeys: Array(7)}
+Console.js:61 🔍 SessionManager.getSession() returning: {isLoggedIn: true, handle: 'dippydoge', hasWalletData: true, hasSessionToken: true, walletDataKeys: Array(7)}
+Console.js:61 🔍 SessionManager.getSession() returning: {isLoggedIn: true, handle: 'dippydoge', hasWalletData: true, hasSessionToken: true, walletDataKeys: Array(7)}
+Console.js:61 🔍 [XRP WALLET] Auth data: {walletAddress: 'rEVrTKUKSLx5nxdfV8SAFTxS9FGFrfHRLo', hasSessionWalletData: true, hasSessionAddresses: true, hasUser: true, has

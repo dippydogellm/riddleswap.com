@@ -1,0 +1,659 @@
+/* BNB Smart Chain Wallet Dedicated Styles */
+/* Yellow/Gold BNB Theme with Mobile Responsiveness */
+
+/* BNB Wallet Container with scoped CSS variables */
+.bnb-wallet-container {
+  --bnb-primary: #F3BA2F;
+  --bnb-secondary: #FCD535;
+  --bnb-accent: #FFE066;
+  --bnb-dark: #E4A32D;
+  --bnb-light: #FFFAEF;
+  --bnb-gradient-from: #F3BA2F;
+  --bnb-gradient-to: #FFE066;
+  --bnb-success: #10B981;
+  --bnb-error: #EF4444;
+  --bnb-warning: #F59E0B;
+  
+  background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
+  min-height: 100vh;
+}
+
+/* BNB Header Styling */
+.bnb-header-card {
+  background: linear-gradient(135deg, var(--bnb-gradient-from) 0%, var(--bnb-gradient-to) 100%);
+  border: 1px solid rgba(243, 186, 47, 0.3);
+  box-shadow: 0 4px 20px rgba(243, 186, 47, 0.2);
+}
+
+.bnb-header-icon {
+  background: linear-gradient(135deg, var(--bnb-primary) 0%, var(--bnb-secondary) 100%);
+  border-radius: 16px;
+  padding: 16px;
+}
+
+/* BNB Balance Cards */
+.bnb-balance-card {
+  background: linear-gradient(135deg, rgba(243, 186, 47, 0.1) 0%, rgba(255, 224, 102, 0.1) 100%);
+  border: 1px solid rgba(243, 186, 47, 0.2);
+  border-radius: 12px;
+}
+
+.bnb-balance-text {
+  color: var(--bnb-accent);
+  font-weight: 600;
+}
+
+.bnb-price-text {
+  color: rgba(255, 224, 102, 0.8);
+}
+
+/* BNB Action Buttons */
+.bnb-action-buttons {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+}
+
+@media (min-width: 640px) {
+  .bnb-action-buttons {
+    display: flex;
+    flex-direction: row;
+    gap: 12px;
+  }
+}
+
+.bnb-send-button {
+  background: linear-gradient(135deg, var(--bnb-primary) 0%, var(--bnb-dark) 100%);
+  border: none;
+  color: white;
+  transition: all 0.3s ease;
+}
+
+.bnb-send-button:hover {
+  background: linear-gradient(135deg, var(--bnb-dark) 0%, var(--bnb-primary) 100%);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(243, 186, 47, 0.3);
+}
+
+.bnb-receive-button {
+  background: linear-gradient(135deg, var(--bnb-success) 0%, #059669 100%);
+  border: none;
+  color: white;
+  transition: all 0.3s ease;
+}
+
+.bnb-receive-button:hover {
+  background: linear-gradient(135deg, #059669 0%, #047857 100%);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+}
+
+.bnb-swap-button {
+  background: linear-gradient(135deg, var(--bnb-secondary) 0%, var(--bnb-accent) 100%);
+  border: none;
+  color: white;
+  transition: all 0.3s ease;
+}
+
+.bnb-swap-button:hover {
+  background: linear-gradient(135deg, var(--bnb-accent) 0%, var(--bnb-secondary) 100%);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(252, 213, 53, 0.3);
+}
+
+/* Mobile Button Fixes */
+@media (max-width: 639px) {
+  .bnb-action-buttons button {
+    font-size: 12px;
+    padding: 8px 12px;
+    min-height: 36px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  
+  .bnb-action-buttons button svg {
+    width: 12px;
+    height: 12px;
+    margin-right: 4px;
+  }
+}
+
+/* BNB Tabs Styling */
+.bnb-tabs-list {
+  background: rgba(243, 186, 47, 0.1);
+  border: 1px solid rgba(243, 186, 47, 0.2);
+}
+
+.bnb-tab-trigger {
+  color: rgba(255, 255, 255, 0.7);
+  transition: all 0.3s ease;
+}
+
+.bnb-tab-trigger[data-state="active"] {
+  background: linear-gradient(135deg, var(--bnb-primary) 0%, var(--bnb-secondary) 100%);
+  color: white;
+  border-radius: 6px;
+}
+
+.bnb-tab-trigger:hover {
+  background: rgba(243, 186, 47, 0.1);
+  color: var(--bnb-accent);
+}
+
+/* BNB Token Cards */
+.bnb-token-card {
+  background: rgba(243, 186, 47, 0.05);
+  border: 1px solid rgba(243, 186, 47, 0.1);
+  border-radius: 12px;
+  transition: all 0.3s ease;
+}
+
+.bnb-token-card:hover {
+  background: rgba(243, 186, 47, 0.1);
+  border-color: rgba(243, 186, 47, 0.3);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(243, 186, 47, 0.2);
+}
+
+.bnb-token-actions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 639px) {
+  .bnb-token-actions {
+    flex-direction: column;
+    gap: 4px;
+  }
+  
+  .bnb-token-actions button {
+    font-size: 11px;
+    padding: 4px 8px;
+    min-height: 28px;
+  }
+  
+  .bnb-token-actions button svg {
+    width: 10px;
+    height: 10px;
+    margin-right: 2px;
+  }
+}
+
+/* BNB NFT Cards */
+.bnb-nft-card {
+  background: rgba(243, 186, 47, 0.05);
+  border: 1px solid rgba(243, 186, 47, 0.1);
+  transition: all 0.3s ease;
+}
+
+.bnb-nft-card:hover {
+  background: rgba(243, 186, 47, 0.1);
+  border-color: var(--bnb-primary);
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 8px 24px rgba(243, 186, 47, 0.3);
+}
+
+/* BNB Address Display */
+.bnb-address-container {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  justify-content: space-between;
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(243, 186, 47, 0.2);
+  border-radius: 8px;
+  padding: 12px;
+}
+
+.bnb-address-text {
+  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+  color: var(--bnb-accent);
+  font-size: 14px;
+}
+
+@media (max-width: 639px) {
+  .bnb-address-text {
+    font-size: 12px;
+  }
+}
+
+/* BNB Modal Styling */
+.bnb-modal-content {
+  background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
+  border: 1px solid rgba(243, 186, 47, 0.3);
+}
+
+.bnb-modal-header {
+  border-bottom: 1px solid rgba(243, 186, 47, 0.2);
+  padding-bottom: 12px;
+  margin-bottom: 16px;
+}
+
+.bnb-modal-title {
+  color: var(--bnb-accent);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* BNB Form Elements */
+.bnb-form-input {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(243, 186, 47, 0.3);
+  color: white;
+  transition: all 0.3s ease;
+}
+
+.bnb-form-input:focus {
+  border-color: var(--bnb-primary);
+  box-shadow: 0 0 0 2px rgba(243, 186, 47, 0.2);
+}
+
+.bnb-form-input::placeholder {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.bnb-form-select {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(243, 186, 47, 0.3);
+  color: white;
+}
+
+.bnb-form-label {
+  color: var(--bnb-accent);
+  font-weight: 500;
+}
+
+/* BNB Loading States */
+.bnb-loading-spinner {
+  color: var(--bnb-primary);
+}
+
+.bnb-loading-text {
+  color: rgba(255, 224, 102, 0.8);
+}
+
+/* BNB Success/Error States */
+.bnb-success {
+  background: rgba(16, 185, 129, 0.1);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+  color: var(--bnb-success);
+}
+
+.bnb-error {
+  background: rgba(239, 68, 68, 0.1);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  color: var(--bnb-error);
+}
+
+.bnb-warning {
+  background: rgba(245, 158, 11, 0.1);
+  border: 1px solid rgba(245, 158, 11, 0.3);
+  color: var(--bnb-warning);
+}
+
+/* BNB QR Code Container */
+.bnb-qr-container {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* BNB Quick Stats Card */
+.bnb-stats-card {
+  background: rgba(243, 186, 47, 0.05);
+  border: 1px solid rgba(243, 186, 47, 0.1);
+  border-radius: 12px;
+}
+
+.bnb-stats-item {
+  border-bottom: 1px solid rgba(243, 186, 47, 0.1);
+  padding: 8px 0;
+}
+
+.bnb-stats-item:last-child {
+  border-bottom: none;
+}
+
+/* BNB Quick Actions */
+.bnb-quick-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.bnb-quick-action-button {
+  background: linear-gradient(135deg, rgba(243, 186, 47, 0.2) 0%, rgba(255, 224, 102, 0.2) 100%);
+  border: 1px solid rgba(243, 186, 47, 0.3);
+  color: var(--bnb-accent);
+  transition: all 0.3s ease;
+  justify-content: flex-start;
+}
+
+.bnb-quick-action-button:hover {
+  background: linear-gradient(135deg, var(--bnb-primary) 0%, var(--bnb-secondary) 100%);
+  color: white;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(243, 186, 47, 0.3);
+}
+
+/* BNB Refresh Button */
+.bnb-refresh-button {
+  border: 1px solid rgba(243, 186, 47, 0.5);
+  color: var(--bnb-accent);
+  background: rgba(243, 186, 47, 0.1);
+  transition: all 0.3s ease;
+}
+
+.bnb-refresh-button:hover {
+  background: rgba(243, 186, 47, 0.2);
+  border-color: var(--bnb-primary);
+  color: white;
+}
+
+/* Mobile Responsive Improvements */
+@media (max-width: 375px) {
+  .bnb-wallet-container {
+    padding: 8px;
+  }
+  
+  .bnb-header-card {
+    margin-bottom: 16px;
+  }
+  
+  .bnb-balance-card {
+    padding: 12px;
+  }
+  
+  .bnb-wallet-container .container {
+    padding-left: 8px;
+    padding-right: 8px;
+  }
+}
+
+@media (max-width: 390px) {
+  .bnb-action-buttons {
+    grid-template-columns: 1fr;
+    gap: 6px;
+  }
+}
+
+@media (max-width: 414px) {
+  .bnb-token-actions {
+    flex-direction: column;
+    gap: 4px;
+  }
+  
+  .bnb-nft-card {
+    margin-bottom: 12px;
+  }
+}
+
+/* Container overflow fixes for mobile */
+@media (max-width: 639px) {
+  .bnb-wallet-container .wallet-page {
+    overflow-x: hidden;
+  }
+  
+  .bnb-wallet-container .container {
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+  
+  /* Prevent button overflow */
+  .bnb-action-buttons,
+  .bnb-token-actions {
+    min-width: 0;
+    overflow: hidden;
+  }
+  
+  .bnb-action-buttons button,
+  .bnb-token-actions button {
+    min-width: 0;
+    flex: 1;
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
+}
+
+/* BNB Portfolio Value Highlights */
+.bnb-portfolio-value {
+  background: linear-gradient(135deg, var(--bnb-gradient-from) 0%, var(--bnb-gradient-to) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: bold;
+}
+
+/* BNB Asset Breakdown */
+.bnb-asset-breakdown {
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(243, 186, 47, 0.2);
+  border-radius: 12px;
+}
+
+.bnb-asset-item {
+  border-bottom: 1px solid rgba(243, 186, 47, 0.1);
+  padding: 8px 0;
+}
+
+.bnb-asset-item:last-child {
+  border-bottom: none;
+  border-top: 1px solid rgba(243, 186, 47, 0.2);
+  padding-top: 12px;
+  margin-top: 8px;
+}
+
+/* Animation for BNB elements */
+@keyframes bnb-glow {
+  0%, 100% {
+    box-shadow: 0 0 5px rgba(243, 186, 47, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(243, 186, 47, 0.8), 0 0 30px rgba(255, 224, 102, 0.4);
+  }
+}
+
+.bnb-glow-animation {
+  animation: bnb-glow 2s ease-in-out infinite;
+}
+
+/* Dark mode specific BNB styling */
+@media (prefers-color-scheme: dark) {
+  .bnb-wallet-container {
+    background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+  }
+}
+
+/* BNB Network Status Badge */
+.bnb-network-badge {
+  background: rgba(243, 186, 47, 0.1);
+  border: 1px solid rgba(243, 186, 47, 0.3);
+  color: var(--bnb-accent);
+  font-size: 12px;
+  font-weight: 500;
+  padding: 4px 8px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.bnb-network-status-dot {
+  width: 8px;
+  height: 8px;
+  background: #10B981;
+  border-radius: 50%;
+  animation: bnb-pulse 2s infinite;
+}
+
+@keyframes bnb-pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+/* Transaction History Styling */
+.bnb-transaction-list {
+  background: rgba(243, 186, 47, 0.05);
+  border: 1px solid rgba(243, 186, 47, 0.1);
+  border-radius: 8px;
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.bnb-transaction-item {
+  display: flex;
+  align-items: center;
+  padding: 12px 16px;
+  border-bottom: 1px solid rgba(243, 186, 47, 0.1);
+  transition: all 0.2s ease;
+}
+
+.bnb-transaction-item:last-child {
+  border-bottom: none;
+}
+
+.bnb-transaction-item:hover {
+  background: rgba(243, 186, 47, 0.1);
+}
+
+.bnb-transaction-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 12px;
+  flex-shrink: 0;
+}
+
+.bnb-transaction-icon.send {
+  background: rgba(239, 68, 68, 0.2);
+  color: #EF4444;
+}
+
+.bnb-transaction-icon.receive {
+  background: rgba(16, 185, 129, 0.2);
+  color: #10B981;
+}
+
+.bnb-transaction-details {
+  flex: 1;
+  min-width: 0;
+}
+
+.bnb-transaction-type {
+  font-weight: 500;
+  color: white;
+  font-size: 14px;
+  margin-bottom: 2px;
+}
+
+.bnb-transaction-address {
+  font-family: ui-monospace, SFMono-Regular, "SF Mono", Consolas, "Liberation Mono", Menlo, monospace;
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.6);
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.bnb-transaction-amount {
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.bnb-transaction-value {
+  font-weight: 600;
+  color: white;
+  font-size: 14px;
+  margin-bottom: 2px;
+}
+
+.bnb-transaction-usd {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.bnb-transaction-time {
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.5);
+  margin-top: 2px;
+}
+
+/* BNB specific gradients and effects */
+.bnb-gradient-bg {
+  background: linear-gradient(135deg, var(--bnb-gradient-from) 0%, var(--bnb-gradient-to) 100%);
+}
+
+.bnb-border-glow {
+  border: 1px solid rgba(243, 186, 47, 0.3);
+  box-shadow: 0 0 10px rgba(243, 186, 47, 0.1);
+}
+
+.bnb-text-gradient {
+  background: linear-gradient(135deg, var(--bnb-primary) 0%, var(--bnb-accent) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* BNB Staking Card */
+.bnb-staking-card {
+  background: linear-gradient(135deg, rgba(243, 186, 47, 0.1) 0%, rgba(255, 224, 102, 0.05) 100%);
+  border: 1px solid rgba(243, 186, 47, 0.2);
+  border-radius: 12px;
+  position: relative;
+  overflow: hidden;
+}
+
+.bnb-staking-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(135deg, var(--bnb-primary) 0%, var(--bnb-accent) 100%);
+}
+
+/* BNB DeFi Integration Cards */
+.bnb-defi-card {
+  background: rgba(243, 186, 47, 0.05);
+  border: 1px solid rgba(243, 186, 47, 0.15);
+  border-radius: 10px;
+  transition: all 0.3s ease;
+}
+
+.bnb-defi-card:hover {
+  background: rgba(243, 186, 47, 0.08);
+  border-color: rgba(243, 186, 47, 0.25);
+  transform: translateY(-2px);
+}
+
+/* BNB Fee Estimation */
+.bnb-fee-estimate {
+  background: rgba(243, 186, 47, 0.1);
+  border: 1px solid rgba(243, 186, 47, 0.2);
+  border-radius: 8px;
+  padding: 8px 12px;
+  font-size: 12px;
+  color: var(--bnb-accent);
+}
+
+/* BNB Price Chart Integration */
+.bnb-price-chart {
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(243, 186, 47, 0.1);
+  border-radius: 8px;
+  padding: 16px;
+}

@@ -1,0 +1,151 @@
+/* Gaming Globe Component Styles - Isolated to prevent conflicts */
+
+/* Globe Container Sizing */
+.gaming-globe-container {
+  position: relative !important;
+  width: 100% !important;
+  height: 100% !important;
+  overflow: hidden !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.gaming-globe-small {
+  width: 100% !important;
+  height: 100% !important;
+  max-width: 300px !important;
+  max-height: 300px !important;
+  min-height: 200px !important;
+}
+
+.gaming-globe-large {
+  width: 100% !important;
+  height: 100% !important;
+  max-width: 500px !important;
+  max-height: 500px !important;
+  min-height: 350px !important;
+}
+
+/* Globe Content */
+.gaming-globe-content {
+  width: 100% !important;
+  height: 100% !important;
+  position: relative !important;
+  border-radius: 50% !important;
+  overflow: hidden !important;
+  background: radial-gradient(circle at center, 
+    rgba(0, 0, 0, 0.1) 0%, 
+    rgba(0, 0, 0, 0.4) 100%) !important;
+}
+
+.gaming-globe-content canvas {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: contain !important;
+  border-radius: 50% !important;
+}
+
+/* Selection Highlight */
+.plot-selected {
+  animation: plot-pulse 2s infinite !important;
+}
+
+@keyframes plot-pulse {
+  0% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.7; transform: scale(1.2); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+/* Search Pop-up Styles */
+.search-popup {
+  position: absolute !important;
+  top: 10px !important;
+  right: 10px !important;
+  background: rgba(15, 23, 42, 0.95) !important;
+  border: 1px solid rgba(59, 130, 246, 0.5) !important;
+  border-radius: 8px !important;
+  padding: 12px !important;
+  color: white !important;
+  font-size: 12px !important;
+  min-width: 200px !important;
+  max-width: 300px !important;
+  z-index: 1000 !important;
+  backdrop-filter: blur(10px) !important;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3) !important;
+  animation: popup-slide-in 0.3s ease-out !important;
+}
+
+@keyframes popup-slide-in {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.search-popup-title {
+  font-weight: bold !important;
+  color: #60a5fa !important;
+  margin-bottom: 8px !important;
+  border-bottom: 1px solid rgba(59, 130, 246, 0.3) !important;
+  padding-bottom: 4px !important;
+}
+
+.search-popup-details {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 4px !important;
+}
+
+.search-popup-row {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+}
+
+.search-popup-label {
+  color: #94a3b8 !important;
+  font-size: 11px !important;
+}
+
+.search-popup-value {
+  color: #ffffff !important;
+  font-weight: 500 !important;
+  font-size: 11px !important;
+}
+
+/* Close button */
+.search-popup-close {
+  position: absolute !important;
+  top: 4px !important;
+  right: 4px !important;
+  background: none !important;
+  border: none !important;
+  color: #94a3b8 !important;
+  cursor: pointer !important;
+  font-size: 16px !important;
+  line-height: 1 !important;
+  padding: 2px !important;
+}
+
+.search-popup-close:hover {
+  color: #ffffff !important;
+}
+
+/* Terrain type colors */
+.terrain-forest { color: #22c55e !important; }
+.terrain-mountain { color: #64748b !important; }
+.terrain-desert { color: #eab308 !important; }
+.terrain-water { color: #3b82f6 !important; }
+.terrain-plains { color: #84cc16 !important; }
+.terrain-swamp { color: #06b6d4 !important; }
+.terrain-tundra { color: #e0e7ff !important; }
+
+/* Ownership status colors */
+.status-available { color: #22c55e !important; }
+.status-owned { color: #ef4444 !important; }
+.status-premium { color: #f59e0b !important; }

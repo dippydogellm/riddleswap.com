@@ -1,0 +1,373 @@
+https://301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/api/metadata/unified/raitaXppXqftnQt8Jd2dp6uxh6dKDENDpg/1 404 (Not Found)
+queryFn @ useUnifiedMetadata.ts:80
+fetchFn @ @tanstack_react-query.js?v=f202566d:868
+run @ @tanstack_react-query.js?v=f202566d:506
+(anonymous) @ @tanstack_react-query.js?v=f202566d:530
+Promise.then
+(anonymous) @ @tanstack_react-query.js?v=f202566d:526
+Promise.catch
+run @ @tanstack_react-query.js?v=f202566d:510
+start @ @tanstack_react-query.js?v=f202566d:547
+fetch @ @tanstack_react-query.js?v=f202566d:951
+executeFetch_fn @ @tanstack_react-query.js?v=f202566d:2244
+setOptions @ @tanstack_react-query.js?v=f202566d:2005
+(anonymous) @ @tanstack_react-query.js?v=f202566d:3105
+commitHookEffectListMount @ chunk-SM3OW2QE.js?v=f202566d:16915
+commitPassiveMountOnFiber @ chunk-SM3OW2QE.js?v=f202566d:18156
+commitPassiveMountEffects_complete @ chunk-SM3OW2QE.js?v=f202566d:18129
+commitPassiveMountEffects_begin @ chunk-SM3OW2QE.js?v=f202566d:18119
+commitPassiveMountEffects @ chunk-SM3OW2QE.js?v=f202566d:18109
+flushPassiveEffectsImpl @ chunk-SM3OW2QE.js?v=f202566d:19490
+flushPassiveEffects @ chunk-SM3OW2QE.js?v=f202566d:19447
+performSyncWorkOnRoot @ chunk-SM3OW2QE.js?v=f202566d:18868
+flushSyncCallbacks @ chunk-SM3OW2QE.js?v=f202566d:9119
+commitRootImpl @ chunk-SM3OW2QE.js?v=f202566d:19432
+commitRoot @ chunk-SM3OW2QE.js?v=f202566d:19277
+finishConcurrentRender @ chunk-SM3OW2QE.js?v=f202566d:18805
+performConcurrentWorkOnRoot @ chunk-SM3OW2QE.js?v=f202566d:18718
+workLoop @ chunk-SM3OW2QE.js?v=f202566d:197
+flushWork @ chunk-SM3OW2QE.js?v=f202566d:176
+performWorkUntilDeadline @ chunk-SM3OW2QE.js?v=f202566d:384
+_ @ inpage.js:166
+w @ inpage.js:166
+Y @ inpage.js:166
+postMessage
+h @ inpage.js:166
+b @ inpage.js:166
+schedulePerformWorkUntilDeadline @ chunk-SM3OW2QE.js?v=f202566d:400
+requestHostCallback @ chunk-SM3OW2QE.js?v=f202566d:418
+unstable_scheduleCallback @ chunk-SM3OW2QE.js?v=f202566d:330
+scheduleCallback$1 @ chunk-SM3OW2QE.js?v=f202566d:19826
+ensureRootIsScheduled @ chunk-SM3OW2QE.js?v=f202566d:18652
+scheduleUpdateOnFiber @ chunk-SM3OW2QE.js?v=f202566d:18562
+dispatchSetState @ chunk-SM3OW2QE.js?v=f202566d:12403
+fetchNFTDetail @ nft-detail.tsx:317
+await in fetchNFTDetail
+(anonymous) @ nft-detail.tsx:230
+commitHookEffectListMount @ chunk-SM3OW2QE.js?v=f202566d:16915
+commitPassiveMountOnFiber @ chunk-SM3OW2QE.js?v=f202566d:18156
+commitPassiveMountEffects_complete @ chunk-SM3OW2QE.js?v=f202566d:18129
+commitPassiveMountEffects_begin @ chunk-SM3OW2QE.js?v=f202566d:18119
+commitPassiveMountEffects @ chunk-SM3OW2QE.js?v=f202566d:18109
+flushPassiveEffectsImpl @ chunk-SM3OW2QE.js?v=f202566d:19490
+flushPassiveEffects @ chunk-SM3OW2QE.js?v=f202566d:19447
+(anonymous) @ chunk-SM3OW2QE.js?v=f202566d:19328
+workLoop @ chunk-SM3OW2QE.js?v=f202566d:197
+flushWork @ chunk-SM3OW2QE.js?v=f202566d:176
+performWorkUntilDeadline @ chunk-SM3OW2QE.js?v=f202566d:384
+_ @ inpage.js:166
+w @ inpage.js:166
+Y @ inpage.js:166
+postMessage
+h @ inpage.js:166
+b @ inpage.js:166
+schedulePerformWorkUntilDeadline @ chunk-SM3OW2QE.js?v=f202566d:400
+performWorkUntilDeadline @ chunk-SM3OW2QE.js?v=f202566d:387
+_ @ inpage.js:166
+w @ inpage.js:166
+Y @ inpage.js:166
+postMessage
+h @ inpage.js:166
+b @ inpage.js:166
+schedulePerformWorkUntilDeadline @ chunk-SM3OW2QE.js?v=f202566d:400
+requestHostCallback @ chunk-SM3OW2QE.js?v=f202566d:418
+unstable_scheduleCallback @ chunk-SM3OW2QE.js?v=f202566d:330
+scheduleCallback$1 @ chunk-SM3OW2QE.js?v=f202566d:19826
+ensureRootIsScheduled @ chunk-SM3OW2QE.js?v=f202566d:18652
+retryTimedOutBoundary @ chunk-SM3OW2QE.js?v=f202566d:19619
+resolveRetryWakeable @ chunk-SM3OW2QE.js?v=f202566d:19650
+Promise.then
+(anonymous) @ chunk-SM3OW2QE.js?v=f202566d:17654
+attachSuspenseRetryListeners @ chunk-SM3OW2QE.js?v=f202566d:17641
+commitMutationEffectsOnFiber @ chunk-SM3OW2QE.js?v=f202566d:17839
+recursivelyTraverseMutationEffects @ chunk-SM3OW2QE.js?v=f202566d:17685
+commitMutationEffectsOnFiber @ chunk-SM3OW2QE.js?v=f202566d:17737
+recursivelyTraverseMutationEffects @ chunk-SM3OW2QE.js?v=f202566d:17685
+commitMutationEffectsOnFiber @ chunk-SM3OW2QE.js?v=f202566d:17737
+recursivelyTraverseMutationEffects @ chunk-SM3OW2QE.js?v=f202566d:17685
+commitMutationEffectsOnFiber @ chunk-SM3OW2QE.js?v=f202566d:17699
+recursivelyTraverseMutationEffects @ chunk-SM3OW2QE.js?v=f202566d:17685
+commitMutationEffectsOnFiber @ chunk-SM3OW2QE.js?v=f202566d:17896
+recursivelyTraverseMutationEffects @ chunk-SM3OW2QE.js?v=f202566d:17685
+commitMutationEffectsOnFiber @ chunk-SM3OW2QE.js?v=f202566d:17699
+recursivelyTraverseMutationEffects @ chunk-SM3OW2QE.js?v=f202566d:17685
+commitMutationEffectsOnFiber @ chunk-SM3OW2QE.js?v=f202566d:17699
+recursivelyTraverseMutationEffects @ chunk-SM3OW2QE.js?v=f202566d:17685
+commitMutationEffectsOnFiber @ chunk-SM3OW2QE.js?v=f202566d:17896
+recursivelyTraverseMutationEffects @ chunk-SM3OW2QE.js?v=f202566d:17685
+commitMutationEffectsOnFiber @ chunk-SM3OW2QE.js?v=f202566d:17699
+recursivelyTraverseMutationEffects @ chunk-SM3OW2QE.js?v=f202566d:17685
+commitMutationEffectsOnFiber @ chunk-SM3OW2QE.js?v=f202566d:17896
+recursivelyTraverseMutationEffects @ chunk-SM3OW2QE.js?v=f202566d:17685
+commitMutationEffectsOnFiber @ chunk-SM3OW2QE.js?v=f202566d:17699
+recursivelyTraverseMutationEffects @ chunk-SM3OW2QE.js?v=f202566d:17685
+commitMutationEffectsOnFiber @ chunk-SM3OW2QE.js?v=f202566d:17727
+recursivelyTraverseMutationEffects @ chunk-SM3OW2QE.js?v=f202566d:17685
+commitMutationEffectsOnFiber @ chunk-SM3OW2QE.js?v=f202566d:17699
+recursivelyTraverseMutationEffects @ chunk-SM3OW2QE.js?v=f202566d:17685
+commitMutationEffectsOnFiber @ chunk-SM3OW2QE.js?v=f202566d:17794
+commitMutationEffects @ chunk-SM3OW2QE.js?v=f202566d:17663
+commitRootImpl @ chunk-SM3OW2QE.js?v=f202566d:19347
+commitRoot @ chunk-SM3OW2QE.js?v=f202566d:19277
+finishConcurrentRender @ chunk-SM3OW2QE.js?v=f202566d:18783
+performConcurrentWorkOnRoot @ chunk-SM3OW2QE.js?v=f202566d:18718
+workLoop @ chunk-SM3OW2QE.js?v=f202566d:197
+flushWork @ chunk-SM3OW2QE.js?v=f202566d:176
+performWorkUntilDeadline @ chunk-SM3OW2QE.js?v=f202566d:384
+_ @ inpage.js:166
+w @ inpage.js:166
+Y @ inpage.js:166
+postMessage
+h @ inpage.js:166
+b @ inpage.js:166
+schedulePerformWorkUntilDeadline @ chunk-SM3OW2QE.js?v=f202566d:400
+requestHostCallback @ chunk-SM3OW2QE.js?v=f202566d:418
+unstable_scheduleCallback @ chunk-SM3OW2QE.js?v=f202566d:330
+scheduleCallback$1 @ chunk-SM3OW2QE.js?v=f202566d:19826
+ensureRootIsScheduled @ chunk-SM3OW2QE.js?v=f202566d:18652
+pingSuspendedRoot @ chunk-SM3OW2QE.js?v=f202566d:19609
+Promise.then
+attachPingListener @ chunk-SM3OW2QE.js?v=f202566d:14120
+throwException @ chunk-SM3OW2QE.js?v=f202566d:14209
+handleError @ chunk-SM3OW2QE.js?v=f202566d:19034
+renderRootSync @ chunk-SM3OW2QE.js?v=f202566d:19119
+performConcurrentWorkOnRoot @ chunk-SM3OW2QE.js?v=f202566d:18678
+workLoop @ chunk-SM3OW2QE.js?v=f202566d:197
+flushWork @ chunk-SM3OW2QE.js?v=f202566d:176
+performWorkUntilDeadline @ chunk-SM3OW2QE.js?v=f202566d:384
+_ @ inpage.js:166
+w @ inpage.js:166
+Y @ inpage.js:166
+postMessage
+h @ inpage.js:166
+b @ inpage.js:166
+schedulePerformWorkUntilDeadline @ chunk-SM3OW2QE.js?v=f202566d:400
+requestHostCallback @ chunk-SM3OW2QE.js?v=f202566d:418
+unstable_scheduleCallback @ chunk-SM3OW2QE.js?v=f202566d:330
+scheduleCallback$1 @ chunk-SM3OW2QE.js?v=f202566d:19826
+ensureRootIsScheduled @ chunk-SM3OW2QE.js?v=f202566d:18652
+scheduleUpdateOnFiber @ chunk-SM3OW2QE.js?v=f202566d:18562
+updateContainer @ chunk-SM3OW2QE.js?v=f202566d:20776
+ReactDOMHydrationRoot.render.ReactDOMRoot.render @ chunk-SM3OW2QE.js?v=f202566d:21116
+(anonymous) @ main.tsx:90
+nft-detail.tsx:954 🔐 [OWNERSHIP CHECK] User: rEVrTKUKSLx5nxdfV8SAFTxS9FGFrfHRLo, NFT Owner: rfLzAt7mVN6Yg7Rn1dQM2yg8nE4P51qGSC, Is Owner: false
+chunk-UUFUSNZG.js?v=f202566d:336 Warning: Missing `Description` or `aria-describedby={undefined}` for {DialogContent}.
+(anonymous) @ chunk-UUFUSNZG.js?v=f202566d:336
+commitHookEffectListMount @ chunk-SM3OW2QE.js?v=f202566d:16915
+commitPassiveMountOnFiber @ chunk-SM3OW2QE.js?v=f202566d:18156
+commitPassiveMountEffects_complete @ chunk-SM3OW2QE.js?v=f202566d:18129
+commitPassiveMountEffects_begin @ chunk-SM3OW2QE.js?v=f202566d:18119
+commitPassiveMountEffects @ chunk-SM3OW2QE.js?v=f202566d:18109
+flushPassiveEffectsImpl @ chunk-SM3OW2QE.js?v=f202566d:19490
+flushPassiveEffects @ chunk-SM3OW2QE.js?v=f202566d:19447
+commitRootImpl @ chunk-SM3OW2QE.js?v=f202566d:19416
+commitRoot @ chunk-SM3OW2QE.js?v=f202566d:19277
+performSyncWorkOnRoot @ chunk-SM3OW2QE.js?v=f202566d:18895
+flushSyncCallbacks @ chunk-SM3OW2QE.js?v=f202566d:9119
+(anonymous) @ chunk-SM3OW2QE.js?v=f202566d:18627
+useUnifiedMetadata.ts:80  GET https://301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/api/metadata/unified/raitaXppXqftnQt8Jd2dp6uxh6dKDENDpg/1 404 (Not Found)
+queryFn @ useUnifiedMetadata.ts:80
+fetchFn @ @tanstack_react-query.js?v=f202566d:868
+run @ @tanstack_react-query.js?v=f202566d:506
+(anonymous) @ @tanstack_react-query.js?v=f202566d:530
+Promise.then
+(anonymous) @ @tanstack_react-query.js?v=f202566d:526
+Promise.catch
+run @ @tanstack_react-query.js?v=f202566d:510
+(anonymous) @ @tanstack_react-query.js?v=f202566d:530
+Promise.then
+(anonymous) @ @tanstack_react-query.js?v=f202566d:526
+Promise.catch
+run @ @tanstack_react-query.js?v=f202566d:510
+start @ @tanstack_react-query.js?v=f202566d:547
+fetch @ @tanstack_react-query.js?v=f202566d:951
+executeFetch_fn @ @tanstack_react-query.js?v=f202566d:2244
+setOptions @ @tanstack_react-query.js?v=f202566d:2005
+(anonymous) @ @tanstack_react-query.js?v=f202566d:3105
+commitHookEffectListMount @ chunk-SM3OW2QE.js?v=f202566d:16915
+commitPassiveMountOnFiber @ chunk-SM3OW2QE.js?v=f202566d:18156
+commitPassiveMountEffects_complete @ chunk-SM3OW2QE.js?v=f202566d:18129
+commitPassiveMountEffects_begin @ chunk-SM3OW2QE.js?v=f202566d:18119
+commitPassiveMountEffects @ chunk-SM3OW2QE.js?v=f202566d:18109
+flushPassiveEffectsImpl @ chunk-SM3OW2QE.js?v=f202566d:19490
+flushPassiveEffects @ chunk-SM3OW2QE.js?v=f202566d:19447
+performSyncWorkOnRoot @ chunk-SM3OW2QE.js?v=f202566d:18868
+flushSyncCallbacks @ chunk-SM3OW2QE.js?v=f202566d:9119
+commitRootImpl @ chunk-SM3OW2QE.js?v=f202566d:19432
+commitRoot @ chunk-SM3OW2QE.js?v=f202566d:19277
+finishConcurrentRender @ chunk-SM3OW2QE.js?v=f202566d:18805
+performConcurrentWorkOnRoot @ chunk-SM3OW2QE.js?v=f202566d:18718
+workLoop @ chunk-SM3OW2QE.js?v=f202566d:197
+flushWork @ chunk-SM3OW2QE.js?v=f202566d:176
+performWorkUntilDeadline @ chunk-SM3OW2QE.js?v=f202566d:384
+_ @ inpage.js:166
+w @ inpage.js:166
+Y @ inpage.js:166
+postMessage
+h @ inpage.js:166
+b @ inpage.js:166
+schedulePerformWorkUntilDeadline @ chunk-SM3OW2QE.js?v=f202566d:400
+requestHostCallback @ chunk-SM3OW2QE.js?v=f202566d:418
+unstable_scheduleCallback @ chunk-SM3OW2QE.js?v=f202566d:330
+scheduleCallback$1 @ chunk-SM3OW2QE.js?v=f202566d:19826
+ensureRootIsScheduled @ chunk-SM3OW2QE.js?v=f202566d:18652
+scheduleUpdateOnFiber @ chunk-SM3OW2QE.js?v=f202566d:18562
+dispatchSetState @ chunk-SM3OW2QE.js?v=f202566d:12403
+fetchNFTDetail @ nft-detail.tsx:317
+await in fetchNFTDetail
+(anonymous) @ nft-detail.tsx:230
+commitHookEffectListMount @ chunk-SM3OW2QE.js?v=f202566d:16915
+commitPassiveMountOnFiber @ chunk-SM3OW2QE.js?v=f202566d:18156
+commitPassiveMountEffects_complete @ chunk-SM3OW2QE.js?v=f202566d:18129
+commitPassiveMountEffects_begin @ chunk-SM3OW2QE.js?v=f202566d:18119
+commitPassiveMountEffects @ chunk-SM3OW2QE.js?v=f202566d:18109
+flushPassiveEffectsImpl @ chunk-SM3OW2QE.js?v=f202566d:19490
+flushPassiveEffects @ chunk-SM3OW2QE.js?v=f202566d:19447
+(anonymous) @ chunk-SM3OW2QE.js?v=f202566d:19328
+workLoop @ chunk-SM3OW2QE.js?v=f202566d:197
+flushWork @ chunk-SM3OW2QE.js?v=f202566d:176
+performWorkUntilDeadline @ chunk-SM3OW2QE.js?v=f202566d:384
+_ @ inpage.js:166
+w @ inpage.js:166
+Y @ inpage.js:166
+postMessage
+h @ inpage.js:166
+b @ inpage.js:166
+schedulePerformWorkUntilDeadline @ chunk-SM3OW2QE.js?v=f202566d:400
+performWorkUntilDeadline @ chunk-SM3OW2QE.js?v=f202566d:387
+_ @ inpage.js:166
+w @ inpage.js:166
+Y @ inpage.js:166
+postMessage
+h @ inpage.js:166
+b @ inpage.js:166
+schedulePerformWorkUntilDeadline @ chunk-SM3OW2QE.js?v=f202566d:400
+requestHostCallback @ chunk-SM3OW2QE.js?v=f202566d:418
+unstable_scheduleCallback @ chunk-SM3OW2QE.js?v=f202566d:330
+scheduleCallback$1 @ chunk-SM3OW2QE.js?v=f202566d:19826
+ensureRootIsScheduled @ chunk-SM3OW2QE.js?v=f202566d:18652
+retryTimedOutBoundary @ chunk-SM3OW2QE.js?v=f202566d:19619
+resolveRetryWakeable @ chunk-SM3OW2QE.js?v=f202566d:19650
+Promise.then
+(anonymous) @ chunk-SM3OW2QE.js?v=f202566d:17654
+attachSuspenseRetryListeners @ chunk-SM3OW2QE.js?v=f202566d:17641
+commitMutationEffectsOnFiber @ chunk-SM3OW2QE.js?v=f202566d:17839
+recursivelyTraverseMutationEffects @ chunk-SM3OW2QE.js?v=f202566d:17685
+commitMutationEffectsOnFiber @ chunk-SM3OW2QE.js?v=f202566d:17737
+recursivelyTraverseMutationEffects @ chunk-SM3OW2QE.js?v=f202566d:17685
+commitMutationEffectsOnFiber @ chunk-SM3OW2QE.js?v=f202566d:17737
+recursivelyTraverseMutationEffects @ chunk-SM3OW2QE.js?v=f202566d:17685
+commitMutationEffectsOnFiber @ chunk-SM3OW2QE.js?v=f202566d:17699
+recursivelyTraverseMutationEffects @ chunk-SM3OW2QE.js?v=f202566d:17685
+commitMutationEffectsOnFiber @ chunk-SM3OW2QE.js?v=f202566d:17896
+recursivelyTraverseMutationEffects @ chunk-SM3OW2QE.js?v=f202566d:17685
+commitMutationEffectsOnFiber @ chunk-SM3OW2QE.js?v=f202566d:17699
+recursivelyTraverseMutationEffects @ chunk-SM3OW2QE.js?v=f202566d:17685
+commitMutationEffectsOnFiber @ chunk-SM3OW2QE.js?v=f202566d:17699
+recursivelyTraverseMutationEffects @ chunk-SM3OW2QE.js?v=f202566d:17685
+commitMutationEffectsOnFiber @ chunk-SM3OW2QE.js?v=f202566d:17896
+recursivelyTraverseMutationEffects @ chunk-SM3OW2QE.js?v=f202566d:17685
+commitMutationEffectsOnFiber @ chunk-SM3OW2QE.js?v=f202566d:17699
+recursivelyTraverseMutationEffects @ chunk-SM3OW2QE.js?v=f202566d:17685
+commitMutationEffectsOnFiber @ chunk-SM3OW2QE.js?v=f202566d:17896
+recursivelyTraverseMutationEffects @ chunk-SM3OW2QE.js?v=f202566d:17685
+commitMutationEffectsOnFiber @ chunk-SM3OW2QE.js?v=f202566d:17699
+recursivelyTraverseMutationEffects @ chunk-SM3OW2QE.js?v=f202566d:17685
+commitMutationEffectsOnFiber @ chunk-SM3OW2QE.js?v=f202566d:17727
+recursivelyTraverseMutationEffects @ chunk-SM3OW2QE.js?v=f202566d:17685
+commitMutationEffectsOnFiber @ chunk-SM3OW2QE.js?v=f202566d:17699
+recursivelyTraverseMutationEffects @ chunk-SM3OW2QE.js?v=f202566d:17685
+commitMutationEffectsOnFiber @ chunk-SM3OW2QE.js?v=f202566d:17794
+commitMutationEffects @ chunk-SM3OW2QE.js?v=f202566d:17663
+commitRootImpl @ chunk-SM3OW2QE.js?v=f202566d:19347
+commitRoot @ chunk-SM3OW2QE.js?v=f202566d:19277
+finishConcurrentRender @ chunk-SM3OW2QE.js?v=f202566d:18783
+performConcurrentWorkOnRoot @ chunk-SM3OW2QE.js?v=f202566d:18718
+workLoop @ chunk-SM3OW2QE.js?v=f202566d:197
+flushWork @ chunk-SM3OW2QE.js?v=f202566d:176
+performWorkUntilDeadline @ chunk-SM3OW2QE.js?v=f202566d:384
+_ @ inpage.js:166
+w @ inpage.js:166
+Y @ inpage.js:166
+postMessage
+h @ inpage.js:166
+b @ inpage.js:166
+schedulePerformWorkUntilDeadline @ chunk-SM3OW2QE.js?v=f202566d:400
+requestHostCallback @ chunk-SM3OW2QE.js?v=f202566d:418
+unstable_scheduleCallback @ chunk-SM3OW2QE.js?v=f202566d:330
+scheduleCallback$1 @ chunk-SM3OW2QE.js?v=f202566d:19826
+ensureRootIsScheduled @ chunk-SM3OW2QE.js?v=f202566d:18652
+pingSuspendedRoot @ chunk-SM3OW2QE.js?v=f202566d:19609
+Promise.then
+attachPingListener @ chunk-SM3OW2QE.js?v=f202566d:14120
+throwException @ chunk-SM3OW2QE.js?v=f202566d:14209
+handleError @ chunk-SM3OW2QE.js?v=f202566d:19034
+renderRootSync @ chunk-SM3OW2QE.js?v=f202566d:19119
+performConcurrentWorkOnRoot @ chunk-SM3OW2QE.js?v=f202566d:18678
+workLoop @ chunk-SM3OW2QE.js?v=f202566d:197
+flushWork @ chunk-SM3OW2QE.js?v=f202566d:176
+performWorkUntilDeadline @ chunk-SM3OW2QE.js?v=f202566d:384
+_ @ inpage.js:166
+w @ inpage.js:166
+Y @ inpage.js:166
+postMessage
+h @ inpage.js:166
+b @ inpage.js:166
+schedulePerformWorkUntilDeadline @ chunk-SM3OW2QE.js?v=f202566d:400
+requestHostCallback @ chunk-SM3OW2QE.js?v=f202566d:418
+unstable_scheduleCallback @ chunk-SM3OW2QE.js?v=f202566d:330
+scheduleCallback$1 @ chunk-SM3OW2QE.js?v=f202566d:19826
+ensureRootIsScheduled @ chunk-SM3OW2QE.js?v=f202566d:18652
+scheduleUpdateOnFiber @ chunk-SM3OW2QE.js?v=f202566d:18562
+updateContainer @ chunk-SM3OW2QE.js?v=f202566d:20776
+ReactDOMHydrationRoot.render.ReactDOMRoot.render @ chunk-SM3OW2QE.js?v=f202566d:21116
+(anonymous) @ main.tsx:90
+nft-detail.tsx:954 🔐 [OWNERSHIP CHECK] User: rEVrTKUKSLx5nxdfV8SAFTxS9FGFrfHRLo, NFT Owner: rfLzAt7mVN6Yg7Rn1dQM2yg8nE4P51qGSC, Is Owner: false
+nft-detail.tsx:658 ✅ [MAKE OFFER] Auth successful from sessionStorage
+sessionManager.ts:517 🔍 SessionManager.getSession() returning: {isLoggedIn: true, handle: 'dippydoge', hasWalletData: true, hasSessionToken: true, walletDataKeys: Array(7)}
+wallet-connection-dashboard.tsx:152 🔍 Found local wallet connections: []
+nft-detail.tsx:954 🔐 [OWNERSHIP CHECK] User: rEVrTKUKSLx5nxdfV8SAFTxS9FGFrfHRLo, NFT Owner: rfLzAt7mVN6Yg7Rn1dQM2yg8nE4P51qGSC, Is Owner: false
+nft-detail.tsx:685  POST https://301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/api/broker/create-buy-offer 400 (Bad Request)
+submitOffer @ nft-detail.tsx:685
+handleSubmit @ MakeOfferDialog.tsx:41
+callCallback2 @ chunk-SM3OW2QE.js?v=f202566d:3674
+invokeGuardedCallbackDev @ chunk-SM3OW2QE.js?v=f202566d:3699
+invokeGuardedCallback @ chunk-SM3OW2QE.js?v=f202566d:3733
+invokeGuardedCallbackAndCatchFirstError @ chunk-SM3OW2QE.js?v=f202566d:3736
+executeDispatch @ chunk-SM3OW2QE.js?v=f202566d:7014
+processDispatchQueueItemsInOrder @ chunk-SM3OW2QE.js?v=f202566d:7034
+processDispatchQueue @ chunk-SM3OW2QE.js?v=f202566d:7043
+dispatchEventsForPlugins @ chunk-SM3OW2QE.js?v=f202566d:7051
+(anonymous) @ chunk-SM3OW2QE.js?v=f202566d:7174
+batchedUpdates$1 @ chunk-SM3OW2QE.js?v=f202566d:18913
+batchedUpdates @ chunk-SM3OW2QE.js?v=f202566d:3579
+dispatchEventForPluginEventSystem @ chunk-SM3OW2QE.js?v=f202566d:7173
+dispatchEventWithEnableCapturePhaseSelectiveHydrationWithoutDiscreteEventReplay @ chunk-SM3OW2QE.js?v=f202566d:5478
+dispatchEvent @ chunk-SM3OW2QE.js?v=f202566d:5472
+dispatchDiscreteEvent @ chunk-SM3OW2QE.js?v=f202566d:5449
+MakeOfferDialog.tsx:45 Offer submission error: Error: Password required to sign transaction
+    at submitOffer (nft-detail.tsx:728:13)
+    at async handleSubmit (MakeOfferDialog.tsx:41:7)
+handleSubmit @ MakeOfferDialog.tsx:45
+await in handleSubmit
+callCallback2 @ chunk-SM3OW2QE.js?v=f202566d:3674
+invokeGuardedCallbackDev @ chunk-SM3OW2QE.js?v=f202566d:3699
+invokeGuardedCallback @ chunk-SM3OW2QE.js?v=f202566d:3733
+invokeGuardedCallbackAndCatchFirstError @ chunk-SM3OW2QE.js?v=f202566d:3736
+executeDispatch @ chunk-SM3OW2QE.js?v=f202566d:7014
+processDispatchQueueItemsInOrder @ chunk-SM3OW2QE.js?v=f202566d:7034
+processDispatchQueue @ chunk-SM3OW2QE.js?v=f202566d:7043
+dispatchEventsForPlugins @ chunk-SM3OW2QE.js?v=f202566d:7051
+(anonymous) @ chunk-SM3OW2QE.js?v=f202566d:7174
+batchedUpdates$1 @ chunk-SM3OW2QE.js?v=f202566d:18913
+batchedUpdates @ chunk-SM3OW2QE.js?v=f202566d:3579
+dispatchEventForPluginEventSystem @ chunk-SM3OW2QE.js?v=f202566d:7173
+dispatchEventWithEnableCapturePhaseSelectiveHydrationWithoutDiscreteEventReplay @ chunk-SM3OW2QE.js?v=f202566d:5478
+dispatchEvent @ chunk-SM3OW2QE.js?v=f202566d:5472
+dispatchDiscreteEvent @ chunk-SM3OW2QE.js?v=f202566d:5449
+sessionManager.ts:517 🔍 SessionManager.getSession() returning: {isLoggedIn: true, handle: 'dippydoge', hasWalletData: true, hasSessionToken: true, walletDataKeys: Array(7)}
+wallet-connection-dashboard.tsx:152 🔍 Found local wallet connections: []
+nft-detail.tsx:954 🔐 [OWNERSHIP CHECK] User: rEVrTKUKSLx5nxdfV8SAFTxS9FGFrfHRLo, NFT Owner: rfLzAt7mVN6Yg7Rn1dQM2yg8nE4P51qGSC, Is Owner: false
+sessionManager.ts:517 🔍 SessionManager.getSession() returning: {isLoggedIn: true, handle: 'dippydoge', hasWalletData: true, hasSessionToken: true, walletDataKeys: Array(7)}
+wallet-connection-dashboard.tsx:152 🔍 Found local wallet connections: []
+nft-detail.tsx:954 🔐 [OWNERSHIP CHECK] User: rEVrTKUKSLx5nxdfV8SAFTxS9FGFrfHRLo, NFT Owner: rfLzAt7mVN6Yg7Rn1dQM2yg8nE4P51qGSC, Is Owner: false

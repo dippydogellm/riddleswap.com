@@ -1,0 +1,40 @@
+SessionManager.getSession() returning: Object
+injected.js:27 🔍 SessionManager.getSession() returning: Object
+injected.js:27 🔍 getQueryFn - SessionManager sessionToken: FOUND
+injected.js:27 🔍 SessionManager.getSession() returning: Object
+injected.js:27 🔍 getQueryFn - SessionManager sessionToken: FOUND
+injected.js:27 Warning: Missing `Description` or `aria-describedby={undefined}` for {DialogContent}.
+(anonymous) @ injected.js:27
+injected.js:27 📱 [JOEY] Initializing WalletConnect v2 SignClient...
+injected.js:27 `DialogContent` requires a `DialogTitle` for the component to be accessible for screen reader users.
+
+If you want to hide the `DialogTitle`, you can wrap it with our VisuallyHidden component.
+
+For more information, see https://radix-ui.com/primitives/docs/components/dialog
+(anonymous) @ injected.js:27
+injected.js:27 Warning: Missing `Description` or `aria-describedby={undefined}` for {DialogContent}.
+(anonymous) @ injected.js:27
+injected.js:27 ✅ [JOEY] SignClient initialized
+injected.js:27 requiredNamespaces are deprecated and are automatically assigned to optionalNamespaces
+(anonymous) @ injected.js:27
+injected.js:27 Object
+injected.js:27 Object
+stallwart.build.js:1 stallwart: failed ping 1
+injected.js:27 🚨 AUTO-LOGGED ERROR: ErrorEvent {isTrusted: true, message: 'Uncaught Error: WebSocket connection closed abnorm…ith code: 3000 (Unauthorized: origin not allowed)', filename: 'https://301a997e-224f-466a-90b9-f0f77a76de50-00-uo…ite/deps/@walletconnect_sign-client.js?v=dd132bec', lineno: 2781, colno: 54, …}
+(anonymous) @ injected.js:27
+(anonymous) @ main.tsx:53
+@walletconnect_sign-client.js?v=dd132bec:2781 Uncaught Error: WebSocket connection closed abnormally with code: 3000 (Unauthorized: origin not allowed)
+    at o3.onClose (@walletconnect_sign-client.js?v=dd132bec:2781:54)
+    at EventEmitter.<anonymous> (@walletconnect_sign-client.js?v=dd132bec:2790:139)
+    at EventEmitter.emit (@walletconnect_sign-client.js?v=dd132bec:227:9)
+    at f3.onClose (@walletconnect_sign-client.js?v=dd132bec:2875:65)
+    at e2.onclose (@walletconnect_sign-client.js?v=dd132bec:2872:71)
+onClose @ @walletconnect_sign-client.js?v=dd132bec:2781
+(anonymous) @ @walletconnect_sign-client.js?v=dd132bec:2790
+emit @ @walletconnect_sign-client.js?v=dd132bec:227
+onClose @ @walletconnect_sign-client.js?v=dd132bec:2875
+e2.onclose @ @walletconnect_sign-client.js?v=dd132bec:2872
+injected.js:27 {time: 1760388253858, level: 60, context: 'core/relayer', msg: 'Fatal socket error: WebSocket connection closed ab…ith code: 3000 (Unauthorized: origin not allowed)'}
+injected.js:27 {time: 1760388253858, level: 60, context: 'core/relayer', msg: 'Fatal socket error received, closing transport'}
+injected.js:27 {time: 1760388256031, level: 60, context: 'core/relayer', msg: 'Fatal socket error: WebSocket connection closed ab…ith code: 3000 (Unauthorized: origin not allowed)'}
+injected.js:27 {time: 1760388256031, level: 60, context: 'core/relayer', msg: 'Fatal socket error received, closing transport'}

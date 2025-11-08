@@ -1,0 +1,76 @@
+{
+  "id": 792,
+  "name": "Trolls Inquisition Land Plot #792",
+  "description": "A village domain at coordinates (31, 19) in the Trolls Inquisition realm. This 2x sizeable plot contains Crafts, Knowledge, Trade and offers 14.07% yearly yield. Part of the legendary 1000-plot medieval kingdom where epic battles and alliances are forged.",
+  "image": "https://riddleswap.replit.app/api/nft-images/land-plots/792.png",
+  "external_url": "https://riddleswap.replit.app/nft-gaming-dashboard?plot=792",
+  "attributes": [
+    {
+      "trait_type": "Terrain Type",
+      "value": "village"
+    },
+    {
+      "trait_type": "X Coordinate",
+      "value": 31
+    },
+    {
+      "trait_type": "Y Coordinate",
+      "value": 19
+    },
+    {
+      "trait_type": "Size Multiplier",
+      "value": "2x"
+    },
+    {
+      "trait_type": "Resources Count",
+      "value": 3
+    },
+    {
+      "trait_type": "Primary Resource",
+      "value": "Crafts"
+    },
+    {
+      "trait_type": "Rarity Score",
+      "value": 55
+    },
+    {
+      "trait_type": "XRP Price",
+      "value": 173
+    },
+    {
+      "trait_type": "Early Bird Eligible",
+      "value": "No"
+    },
+    {
+      "trait_type": "Yearly Yield (XRP)",
+      "value": 24
+    },
+    {
+      "trait_type": "Yield Percentage",
+      "value": "14.07%"
+    },
+    {
+      "trait_type": "Position Type",
+      "value": "Inner"
+    }
+  ],
+  "properties": {
+    "coordinates": {
+      "x": 31,
+      "y": 19
+    },
+    "terrain_type": "village",
+    "resources": [
+      "Crafts",
+      "Knowledge",
+      "Trade"
+    ],
+    "size_multiplier": 2,
+    "xrp_price": 173,
+    "rdl_price": 173000,
+    "early_bird_discount": 0,
+    "yearly_yield": 24,
+    "yield_percentage": 14.07,
+    "rarity_score": 55
+  }
+}

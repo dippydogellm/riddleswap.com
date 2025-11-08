@@ -1,0 +1,149 @@
+2025-10-30T03:17:02Z info: Deployment: 16cfa9da-739c-45d0-b145-79464f8f2fc4
+2025-10-30T03:17:02Z info: Build: 21507659-c60d-40e0-ba81-4dba77afeac8
+2025-10-30T03:17:02Z info: Connecting to builder
+2025-10-30T03:17:02Z info: Builder connected
+2025-10-30T03:17:03Z info: Installing packages
+2025-10-30T03:17:04Z info: Starting Build
+
+> rest-express@1.0.0 build
+> vite build && esbuild server/index.ts --platform=node --packages=external --bundle --format=esm --outdir=dist
+
+
+vite v5.4.19 building for production...
+
+transforming...
+
+
+A PostCSS plugin did not pass the `from` option to `postcss.parse`. This may cause imported assets to be incorrectly transformed. If you've recently added a PostCSS plugin that raised this warning, please contact the package author to fix the issue.
+
+
+/images/nft-pattern.png referenced in /images/nft-pattern.png didn't resolve at build time, it will remain unchanged to be resolved at runtime
+
+node_modules/ox/_esm/core/Address.js (6:21): A comment
+
+"/*#__PURE__*/"
+
+in "node_modules/ox/_esm/core/Address.js" contains an annotation that Rollup cannot interpret due to the position of the comment. The comment will be removed to avoid issues.
+
+node_modules/ox/_esm/core/internal/cursor.js (2:21): A comment
+
+"/*#__PURE__*/"
+
+in "node_modules/ox/_esm/core/internal/cursor.js" contains an annotation that Rollup cannot interpret due to the position of the comment. The comment will be removed to avoid issues.
+
+✓ 4902 modules transformed.
+
+rendering chunks...
+
+[plugin:vite:reporter] [plugin vite:reporter] 
+(!) /home/runner/workspace/client/src/lib/queryClient.ts is dynamically imported by /home/runner/workspace/client/src/App.tsx, /home/runner/workspace/client/src/pages/wallet-login.tsx but also statically imported by /home/runner/workspace/client/src/App.tsx, /home/runner/workspace/client/src/components/BondingCurveChart.tsx, /home/runner/workspace/client/src/components/NotificationBell.tsx, /home/runner/workspace/client/src/components/gaming/LandMarketplace.tsx, /home/runner/workspace/client/src/components/land-plot-payment-dialog.tsx, /home/runner/workspace/client/src/components/launchpad/launchpad-card.tsx, /home/runner/workspace/client/src/components/launchpad/my-launches.tsx, /home/runner/workspace/client/src/components/launchpad/token-creation-form.tsx, /home/runner/workspace/client/src/components/nft/NFTAcceptModule.tsx, /home/runner/workspace/client/src/components/nft/NFTURIEditor.tsx, /home/runner/workspace/client/src/components/oracle-terminal.tsx, /home/runner/workspace/client/src/components/rewards-dashboard.tsx, /home/runner/workspace/client/src/components/session-renewal-modal.tsx, /home/runner/workspace/client/src/components/story-builder.tsx, /home/runner/workspace/client/src/components/trustline-removal-modal.tsx, /home/runner/workspace/client/src/components/wallet-connection-dashboard.tsx, /home/runner/workspace/client/src/pages/Loans.tsx, /home/runner/workspace/client/src/pages/NftSwaps.tsx, /home/runner/workspace/client/src/pages/SocialEngagement.tsx, /home/runner/workspace/client/src/pages/Staking.tsx, /home/runner/workspace/client/src/pages/admin/land-image-generator.tsx, /home/runner/workspace/client/src/pages/broker-marketplace.tsx, /home/runner/workspace/client/src/pages/comprehensive-airdrop-tool.tsx, /home/runner/workspace/client/src/pages/developer-dashboard.tsx, /home/runner/workspace/client/src/pages/devtools-dashboard.tsx, /home/runner/workspace/client/src/pages/devtools-nft-project.tsx, /home/runner/workspace/client/src/pages/devtools-project-detail.tsx, /home/runner/workspace/client/src/pages/devtools-token-project.tsx, /home/runner/workspace/client/src/pages/external-wallets.tsx, /home/runner/workspace/client/src/pages/inquisition-alliances.tsx, /home/runner/workspace/client/src/pages/land-marketplace.tsx, /home/runner/workspace/client/src/pages/land-plot-detail.tsx, /home/runner/workspace/client/src/pages/launchpad/launchpad-dashboard.tsx, /home/runner/workspace/client/src/pages/launchpad/token-launch-detail.tsx, /home/runner/workspace/client/src/pages/linked-wallets.tsx, /home/runner/workspace/client/src/pages/mapping-system.tsx, /home/runner/workspace/client/src/pages/messaging-system.tsx, /home/runner/workspace/client/src/pages/newsfeed.tsx, /home/runner/workspace/client/src/pages/nft-management.tsx, /home/runner/workspace/client/src/pages/project-wizard.tsx, /home/runner/workspace/client/src/pages/rewards-dashboard.tsx, /home/runner/workspace/client/src/pages/riddleauthor.tsx, /home/runner/workspace/client/src/pages/riddlepad-launchpad.tsx, /home/runner/workspace/client/src/pages/send.tsx, /home/runner/workspace/client/src/pages/social-profile.tsx, /home/runner/workspace/client/src/pages/subscription-plans.tsx, /home/runner/workspace/client/src/pages/token-analytics.tsx, /home/runner/workspace/client/src/pages/traders/copy-trading.tsx, /home/runner/workspace/client/src/pages/traders/staking.tsx, /home/runner/workspace/client/src/pages/unified-admin.tsx, /home/runner/workspace/client/src/pages/wallet-dashboard.tsx, /home/runner/workspace/client/src/pages/wallet-profile.tsx, /home/runner/workspace/client/src/pages/xrp-wallet-redesigned.tsx, /home/runner/workspace/client/src/services/push-notification-service.ts, dynamic import will not move module into another chunk.
+
+
+computing gzip size...
+
+../dist/public/index.html                                           6.98 kB │ gzip:   1.87 kB
+../dist/public/assets/image_1756172880202-BX210YlY.png              7.30 kB
+../dist/public/assets/image_1756173052570-BZl5XGJe.png              8.72 kB
+../dist/public/assets/image_1756172918048-D_x5vXtX.png             18.42 kB
+
+../dist/public/assets/bridge-countdown-U3R5shXl.css                 1.82 kB │ gzip:   0.73 kB
+
+../dist/public/assets/nft-detail-DpFgepYC.css                       3.43 kB │ gzip:   1.01 kB
+
+../dist/public/assets/wallet-dashboard-RtoUT0vW.css                 9.56 kB │ gzip:   2.24 kB
+../dist/public/assets/bnb-wallet-BNxP7gv6.css                       9.89 kB │ gzip:   2.26 kB
+../dist/public/assets/base-wallet-VvCxwWq2.css                      9.98 kB │ gzip:   2.25 kB
+../dist/public/assets/avax-wallet-DlzIMHwG.css                     10.02 kB │ gzip:   2.27 kB
+../dist/public/assets/linea-wallet-DYTyuPdu.css                    10.17 kB │ gzip:   2.27 kB
+../dist/public/assets/metis-wallet-CiVhcTm9.css                    10.17 kB │ gzip:   2.27 kB
+../dist/public/assets/eth-wallet-Dt1cDzvh.css                      10.22 kB │ gzip:   2.31 kB
+../dist/public/assets/taiko-wallet--nzksTzF.css                    10.22 kB │ gzip:   2.27 kB
+../dist/public/assets/mantle-wallet-aanVPOf5.css                   10.33 kB │ gzip:   2.27 kB
+../dist/public/assets/fantom-wallet-CRe2PEcN.css                   10.35 kB │ gzip:   2.27 kB
+../dist/public/assets/zksync-wallet-B1tca8oI.css                   10.35 kB │ gzip:   2.28 kB
+../dist/public/assets/scroll-wallet-4y5ELOyT.css                   10.35 kB │ gzip:   2.27 kB
+../dist/public/assets/polygon-wallet-BPUEFRi8.css                  10.50 kB │ gzip:   2.28 kB
+../dist/public/assets/soneium-wallet-R4wa0yDW.css                  10.50 kB │ gzip:   2.29 kB
+../dist/public/assets/optimism-wallet-BpEizrSw.css                 10.61 kB │ gzip:   2.27 kB
+../dist/public/assets/unichain-wallet-Dv3FdWWN.css                 10.63 kB │ gzip:   2.27 kB
+../dist/public/assets/arbitrum-wallet-gPowtkv6.css                 10.66 kB │ gzip:   2.29 kB
+../dist/public/assets/sol-wallet-hS0ysfx8.css                      12.24 kB │ gzip:   2.54 kB
+../dist/public/assets/btc-wallet-GQ_7Dzs2.css                      13.04 kB │ gzip:   2.81 kB
+../dist/public/assets/create-wallet-jvIP3rAT.css                   15.12 kB │ gzip:   3.18 kB
+../dist/public/assets/index-C36ujnaA.css                          301.69 kB │ gzip:  42.54 kB
+
+../dist/public/assets/multi-chain-dashboard-ausDmViN.js             0.15 kB │ gzip:   0.16 kB
+
+../dist/public/assets/auth-BTt-0mWe.js                              0.27 kB │ gzip:   0.19 kB
+
+../dist/public/assets/collection-dantes-aurum-CCTbORuC.js           1.12 kB │ gzip:   0.71 kB
+
+../dist/public/assets/contact-RKCFIXBt.js                          12.55 kB │ gzip:   3.13 kB
+
+../dist/public/assets/eth-wallet-BSD6LTr0.js                       12.69 kB │ gzip:   3.18 kB
+
+../dist/public/assets/PaymentQRCode-CLVeyXe0.js                    13.34 kB │ gzip:   3.89 kB
+
+../dist/public/assets/search-results-QEUryloj.js                   13.71 kB │ gzip:   4.36 kB
+../dist/public/assets/rewards-dashboard-CEM1Jid1.js                13.83 kB │ gzip:   3.56 kB
+../dist/public/assets/group-sniper-Bmijzkup.js                     13.86 kB │ gzip:   3.70 kB
+../dist/public/assets/nft-launchpad-dashboard-Bvjsafr5.js          13.97 kB │ gzip:   3.39 kB
+../dist/public/assets/nft-collection-Cq4o8C68.js                   14.08 kB │ gzip:   4.46 kB
+../dist/public/assets/avax-wallet-BbVnXs3E.js                      14.21 kB │ gzip:   3.78 kB
+../dist/public/assets/base-wallet-CZHq_aEO.js                      14.30 kB │ gzip:   3.80 kB
+../dist/public/assets/bnb-wallet-DlkmtDIZ.js                       14.36 kB │ gzip:   3.79 kB
+../dist/public/assets/spectate-battles-DfxMYtfh.js                 14.50 kB │ gzip:   2.95 kB
+../dist/public/assets/market-maker-CnkMsABb.js                     14.89 kB │ gzip:   3.64 kB
+../dist/public/assets/weapons-marketplace-CiG5Krr_.js              14.93 kB │ gzip:   4.12 kB
+../dist/public/assets/our-story-D0lOFKtz.js                        15.09 kB │ gzip:   3.47 kB
+../dist/public/assets/devtools-token-project-BleuxbmY.js           15.42 kB │ gzip:   3.88 kB
+../dist/public/assets/wallet-management-je2_euq7.js                15.49 kB │ gzip:   4.57 kB
+../dist/public/assets/nft-management-B3JRdaoU.js                   15.90 kB │ gzip:   3.72 kB
+../dist/public/assets/our-history-DgIkPiH6.js                      16.40 kB │ gzip:   4.16 kB
+../dist/public/assets/external-wallets-BX-BE89B.js                 16.54 kB │ gzip:   4.52 kB
+../dist/public/assets/index-PSQmSMjR.js                            16.68 kB │ gzip:   6.24 kB
+../dist/public/assets/devtools-airdrop-tool-DBcDL26v.js            17.05 kB │ gzip:   4.88 kB
+../dist/public/assets/nft-wallet-management-BIWT1Zqr.js            17.15 kB │ gzip:   4.72 kB
+../dist/public/assets/devtools-nft-creator-BfY-PmIs.js             17.19 kB │ gzip:   4.50 kB
+../dist/public/assets/Staking-WOHhgkzi.js                          17.56 kB │ gzip:   4.31 kB
+../dist/public/assets/comprehensive-airdrop-tool-BPJJ0eT2.js       17.91 kB │ gzip:   5.11 kB
+../dist/public/assets/staking-C8iqlRrW.js                          18.46 kB │ gzip:   5.09 kB
+../dist/public/assets/devtools-nft-project-DN92sM9k.js             18.49 kB │ gzip:   4.47 kB
+../dist/public/assets/hmac-C469Kepf.js                             18.98 kB │ gzip:   7.54 kB
+../dist/public/assets/riddlecity-public-city-Bv5td1MW.js           19.08 kB │ gzip:   3.58 kB
+../dist/public/assets/devtools-dashboard-CrESsofT.js               19.30 kB │ gzip:   4.27 kB
+../dist/public/assets/land-marketplace-mkI16NAx.js                 19.47 kB │ gzip:   5.02 kB
+../dist/public/assets/trading-dashboard-DDKv26jK.js                19.48 kB │ gzip:   4.89 kB
+../dist/public/assets/inquisition-profile-BOIHXtmA.js              19.72 kB │ gzip:   5.06 kB
+../dist/public/assets/advanced-search-C6SeG6dY.js                  19.95 kB │ gzip:   4.72 kB
+../dist/public/assets/wallet-details-C55YW8cQ.js                   19.99 kB │ gzip:   4.72 kB
+../dist/public/assets/project-wizard-bbwjC-t6.js                   20.04 kB │ gzip:   5.39 kB
+../dist/public/assets/nft-launchpad-create-DNxqhXwD.js             20.45 kB │ gzip:   5.78 kB
+../dist/public/assets/public-gamer-profile-ClUI--9t.js             20.62 kB │ gzip:   5.11 kB
+../dist/public/assets/sol-wallet-CDXmdJ2k.js                       21.10 kB │ gzip:   6.02 kB
+../dist/public/assets/devtools-project-detail-CgKy2qZa.js          21.10 kB │ gzip:   4.90 kB
+../dist/public/assets/select-Dq2cCnIk.js                           21.27 kB │ gzip:   7.37 kB
+../dist/public/assets/vault-CbuhM0wi.js                            23.60 kB │ gzip:   5.27 kB
+../dist/public/assets/copy-trading-DoXuzC_z.js                     26.27 kB │ gzip:   6.89 kB
+../dist/public/assets/newsfeed-Dqa1zciB.js                         26.46 kB │ gzip:   6.63 kB
+../dist/public/assets/secp256k1-CXN7HTl0.js                        26.53 kB │ gzip:  10.28 kB
+../dist/public/assets/Loans-Ca2y8XJ5.js               
+▲ [WARNING] Duplicate member "getProjectByVanitySlug" in class body [duplicate-class-member]
+
+    server/storage.ts:2604:8:
+      2604 │   async getProjectByVanitySlug(vanitySlug: string): Promise<Devt...
+           ╵         ~~~~~~~~~~~~~~~~~~~~~~
+
+  The original member "getProjectByVanitySlug" is here:
+
+    server/storage.ts:1229:8:
+      1229 │   async getProjectByVanitySlug(vanitySlug: string): Promise<Devt...
+           ╵         ~~~~~~~~~~~~~~~~~~~~~~
+
+
+1 warning
+
+
+  dist/index.js  5.1mb ⚠️
+
+⚡ Done in 613ms

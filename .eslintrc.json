@@ -1,0 +1,50 @@
+{
+  "env": {
+    "browser": true,
+    "es2021": true,
+    "node": true
+  },
+  "extends": [
+    "eslint:recommended",
+    "@typescript-eslint/recommended"
+  ],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "ecmaVersion": 12,
+    "sourceType": "module"
+  },
+  "plugins": [
+    "@typescript-eslint",
+    "react"
+  ],
+  "rules": {
+    "no-restricted-imports": [
+      "error",
+      {
+        "paths": [
+          {
+            "name": "stripe", 
+            "message": "🚫 STRIPE BLOCKED: This application only supports blockchain-native payments (XRPL, EVM, Solana, Bitcoin). Stripe imports are permanently forbidden."
+          },
+          {
+            "name": "@stripe/stripe-js",
+            "message": "🚫 STRIPE BLOCKED: This application only supports blockchain-native payments (XRPL, EVM, Solana, Bitcoin). Stripe imports are permanently forbidden."
+          },
+          {
+            "name": "@stripe/react-stripe-js",
+            "message": "🚫 STRIPE BLOCKED: This application only supports blockchain-native payments (XRPL, EVM, Solana, Bitcoin). Stripe imports are permanently forbidden."
+          }
+        ],
+        "patterns": [
+          {
+            "group": ["*stripe*"],
+            "message": "🚫 STRIPE BLOCKED: This application only supports blockchain-native payments (XRPL, EVM, Solana, Bitcoin). Any Stripe-related imports are permanently forbidden."
+          }
+        ]
+      }
+    ]
+  }
+}

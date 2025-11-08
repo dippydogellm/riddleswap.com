@@ -1,0 +1,40 @@
+🚫 SessionMonitor: DISABLED - Using unified SessionManager instead
+🗺️ Router: Router component is rendering
+📍 Router: Current location: /gaming
+💳 Router: Initializing wallet data state
+📭 Router: No saved wallet data found
+🔍 SessionManager.getSession() returning: 
+Object {isLoggedIn: true, handle: "dippydoge", hasWalletData: true, hasSessionToken: true, walletDataKeys: Array(7)}
+Cannot access 'isAuthenticated' before initialization
+🚨 AUTO-LOGGED ERROR: 
+ErrorEvent {isTrusted: true}
+
+The above error occurred in the <GamingDashboard> component:
+
+    at GamingDashboard (https://20a5a677-e8db-426b-93ca-0ab4131b22a7-00-pwrlj8iul6vd.janeway.replit.dev/src/pages/gaming-dashboard.tsx:56:37)
+    at Route (https://20a5a677-e8db-426b-93ca-0ab4131b22a7-00-pwrlj8iul6vd.janeway.replit.dev/@fs/home/runner/workspace/node_modules/.vite/deps/wouter.js?v=b65356fd:206:16)
+    at Switch (https://20a5a677-e8db-426b-93ca-0ab4131b22a7-00-pwrlj8iul6vd.janeway.replit.dev/@fs/home/runner/workspace/node_modules/.vite/deps/wouter.js?v=b65356fd:262:17)
+    at Suspense
+    at div
+    at div
+    at Router (https://20a5a677-e8db-426b-93ca-0ab4131b22a7-00-pwrlj8iul6vd.janeway.replit.dev/src/App.tsx?v=G6FBPpqIAI3mzgDNnuktc:751:22)
+    at Provider (https://20a5a677-e8db-426b-93ca-0ab4131b22a7-00-pwrlj8iul6vd.janeway.replit.dev/@fs/home/runner/workspace/node_modules/.vite/deps/chunk-RV2IQSFV.js?v=b65356fd:38:15)
+    at TooltipProvider (https://20a5a677-e8db-426b-93ca-0ab4131b22a7-00-pwrlj8iul6vd.janeway.replit.dev/@fs/home/runner/workspace/node_modules/.vite/deps/@radix-ui_react-tooltip.js?v=b65356fd:65:5)
+    at ThemeProvider (https://20a5a677-e8db-426b-93ca-0ab4131b22a7-00-pwrlj8iul6vd.janeway.replit.dev/src/contexts/theme-context.tsx:20:33)
+    at QueryClientProvider (https://20a5a677-e8db-426b-93ca-0ab4131b22a7-00-pwrlj8iul6vd.janeway.replit.dev/@fs/home/runner/workspace/node_modules/.vite/deps/@tanstack_react-query.js?v=b65356fd:2934:3)
+    at ErrorBoundary (https://20a5a677-e8db-426b-93ca-0ab4131b22a7-00-pwrlj8iul6vd.janeway.replit.dev/src/components/ErrorBoundary.tsx:24:5)
+    at App (https://20a5a677-e8db-426b-93ca-0ab4131b22a7-00-pwrlj8iul6vd.janeway.replit.dev/src/App.tsx?v=G6FBPpqIAI3mzgDNnuktc:1722:3)
+
+React will try to recreate this component tree from scratch using the error boundary you provided, ErrorBoundary.
+ErrorBoundary caught an error: 
+ReferenceError {}
+ 
+Object {componentStack: "↵    at GamingDashboard…"}
+
+Error logged successfully
+🔍 SessionManager: checkSession() called - current sessionData: true
+🌐 SessionManager: Making Riddle wallet session request to /api/riddle-wallet/session
+✅ SessionManager: Valid session for dippydoge
+✅ SessionManager: Updated session data: 
+Object {handle: "dippydoge", hasWalletData: true, authenticated: true, listeners: 0}
+🔔 SessionManager: Notified 0 listeners

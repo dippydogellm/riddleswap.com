@@ -1,0 +1,24 @@
+P WALLET] Auth data: Object
+Console.js:61 🔍 SessionManager.getSession() returning: Object
+Console.js:61 🔍 [XRP WALLET] Auth data: Object
+Console.js:61 Warning: Missing `Description` or `aria-describedby={undefined}` for {DialogContent}.
+Mt.forEach.n.<computed> @ Console.js:61
+Console.js:61 🔍 SessionManager.getSession() returning: Object
+Console.js:61 🔍 [XRP WALLET] Auth data: Object
+20a5a677-e8db-426b-93ca-0ab4131b22a7-00-pwrlj8iul6vd.janeway.replit.dev/api/nft/00080BB84047A9C1CA01632DCBE55AE16223C3C86C3D44D2D5B3FCA905D2560D/burn:1  Failed to load resource: the server responded with a status of 401 (Unauthorized)
+Console.js:61 Burn error: Error: Authentication required
+    at confirmBurnNFT (xrp-wallet-redesigned.tsx:691:15)
+Mt.forEach.n.<computed> @ Console.js:61
+Console.js:61 🔍 SessionManager.getSession() returning: Object
+Console.js:61 🔍 SessionManager.getSession() returning: Object
+Console.js:61 🔍 SessionManager.getSession() returning: Object
+Console.js:61 🔍 [XRP WALLET] Auth data: Object
+Console.js:61 🔍 SessionManager.getSession() returning: {isLoggedIn: true, handle: 'dippydoge', hasWalletData: true, hasSessionToken: true, walletDataKeys: Array(7)}
+Console.js:61 🔍 SessionManager.getSession() returning: {isLoggedIn: true, handle: 'dippydoge', hasWalletData: true, hasSessionToken: true, walletDataKeys: Array(7)}
+Console.js:61 🔍 SessionManager.getSession() returning: {isLoggedIn: true, handle: 'dippydoge', hasWalletData: true, hasSessionToken: true, walletDataKeys: Array(7)}
+Console.js:61 🔍 [XRP WALLET] Auth data: {walletAddress: 'rEVrTKUKSLx5nxdfV8SAFTxS9FGFrfHRLo', hasSessionWalletData: true, hasSessionAddresses: true, hasUser: true, hasWalletData: true, …}
+Console.js:61 🔍 SessionManager.getSession() returning: {isLoggedIn: true, handle: 'dippydoge', hasWalletData: true, hasSessionToken: true, walletDataKeys: Array(7)}
+Console.js:61 🔍 [XRP WALLET] Auth data: {walletAddress: 'rEVrTKUKSLx5nxdfV8SAFTxS9FGFrfHRLo', hasSessionWalletData: true, hasSessionAddresses: true, hasUser: true, hasWalletData: true, …}
+Console.js:61 ✅ Portfolio fetched for xrp/rEVrTKUKSLx5nxdfV8SAFTxS9FGFrfHRLo: {success: true, chain: 'xrp', address: 'rEVrTKUKSLx5nxdfV8SAFTxS9FGFrfHRLo', totalUsd: '116.15', balance: {…}, …}
+Console.js:61 🔍 SessionManager.getSession() returning: {isLoggedIn: true, handle: 'dippydoge', hasWalletData: true, hasSessionToken: true, walletDataKeys: Array(7)}
+Console.js:61 🔍 [XRP WALLET] Auth data: {walletAddress: 'rEVrTKUKSLx5nxdfV8SAFTxS9FGFrfHRLo', hasSessionWalletData: true, hasSessionAddresses: true, hasUser: true, hasWalletData: tru

@@ -1,0 +1,893 @@
+/* Bitcoin Wallet Dedicated Styles */
+/* Orange/Gold Bitcoin Theme with Mobile Responsiveness */
+
+/* BTC Wallet Container with scoped CSS variables */
+.btc-wallet-container {
+  --btc-primary: #F7931A;
+  --btc-secondary: #FF9500;
+  --btc-accent: #FFB347;
+  --btc-dark: #E87722;
+  --btc-light: #FFF4E6;
+  --btc-gradient-from: #F7931A;
+  --btc-gradient-to: #FFB347;
+  --btc-success: #10B981;
+  --btc-error: #EF4444;
+  --btc-warning: #F59E0B;
+  
+  background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
+  min-height: 100vh;
+}
+
+/* BTC Header Styling */
+.btc-header-card {
+  background: linear-gradient(135deg, var(--btc-gradient-from) 0%, var(--btc-gradient-to) 100%);
+  border: 1px solid rgba(247, 147, 26, 0.3);
+  box-shadow: 0 4px 20px rgba(247, 147, 26, 0.2);
+}
+
+.btc-header-icon {
+  background: linear-gradient(135deg, var(--btc-primary) 0%, var(--btc-secondary) 100%);
+  border-radius: 16px;
+  padding: 16px;
+}
+
+/* BTC Balance Cards */
+.btc-balance-card {
+  background: linear-gradient(135deg, rgba(247, 147, 26, 0.1) 0%, rgba(255, 179, 71, 0.1) 100%);
+  border: 1px solid rgba(247, 147, 26, 0.2);
+  border-radius: 12px;
+}
+
+.btc-balance-text {
+  color: var(--btc-accent);
+  font-weight: 600;
+}
+
+.btc-price-text {
+  color: rgba(255, 179, 71, 0.8);
+}
+
+/* BTC Action Buttons */
+.btc-action-buttons {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+}
+
+@media (min-width: 640px) {
+  .btc-action-buttons {
+    display: flex;
+    flex-direction: row;
+    gap: 12px;
+  }
+}
+
+.btc-send-button {
+  background: linear-gradient(135deg, var(--btc-primary) 0%, var(--btc-dark) 100%);
+  border: none;
+  color: white;
+  transition: all 0.3s ease;
+}
+
+.btc-send-button:hover {
+  background: linear-gradient(135deg, var(--btc-dark) 0%, var(--btc-primary) 100%);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(247, 147, 26, 0.3);
+}
+
+.btc-receive-button {
+  background: linear-gradient(135deg, var(--btc-success) 0%, #059669 100%);
+  border: none;
+  color: white;
+  transition: all 0.3s ease;
+}
+
+.btc-receive-button:hover {
+  background: linear-gradient(135deg, #059669 0%, #047857 100%);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+}
+
+.btc-swap-button {
+  background: linear-gradient(135deg, var(--btc-secondary) 0%, var(--btc-accent) 100%);
+  border: none;
+  color: white;
+  transition: all 0.3s ease;
+}
+
+.btc-swap-button:hover {
+  background: linear-gradient(135deg, var(--btc-accent) 0%, var(--btc-secondary) 100%);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(255, 149, 0, 0.3);
+}
+
+/* Mobile Button Fixes */
+@media (max-width: 639px) {
+  .btc-action-buttons button {
+    font-size: 12px;
+    padding: 8px 12px;
+    min-height: 36px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  
+  .btc-action-buttons button svg {
+    width: 12px;
+    height: 12px;
+    margin-right: 4px;
+  }
+}
+
+/* BTC Tabs Styling */
+.btc-tabs-list {
+  background: rgba(247, 147, 26, 0.1);
+  border: 1px solid rgba(247, 147, 26, 0.2);
+}
+
+.btc-tab-trigger {
+  color: rgba(255, 255, 255, 0.7);
+  transition: all 0.3s ease;
+}
+
+.btc-tab-trigger[data-state="active"] {
+  background: linear-gradient(135deg, var(--btc-primary) 0%, var(--btc-secondary) 100%);
+  color: white;
+  border-radius: 6px;
+}
+
+.btc-tab-trigger:hover {
+  background: rgba(247, 147, 26, 0.1);
+  color: var(--btc-accent);
+}
+
+/* BTC Token Cards */
+.btc-token-card {
+  background: rgba(247, 147, 26, 0.05);
+  border: 1px solid rgba(247, 147, 26, 0.1);
+  border-radius: 12px;
+  transition: all 0.3s ease;
+}
+
+.btc-token-card:hover {
+  background: rgba(247, 147, 26, 0.1);
+  border-color: rgba(247, 147, 26, 0.3);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(247, 147, 26, 0.2);
+}
+
+.btc-token-actions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 639px) {
+  .btc-token-actions {
+    flex-direction: column;
+    gap: 4px;
+  }
+  
+  .btc-token-actions button {
+    font-size: 11px;
+    padding: 4px 8px;
+    min-height: 28px;
+  }
+  
+  .btc-token-actions button svg {
+    width: 10px;
+    height: 10px;
+    margin-right: 2px;
+  }
+}
+
+/* BTC NFT Cards */
+.btc-nft-card {
+  background: rgba(247, 147, 26, 0.05);
+  border: 1px solid rgba(247, 147, 26, 0.1);
+  transition: all 0.3s ease;
+}
+
+.btc-nft-card:hover {
+  background: rgba(247, 147, 26, 0.1);
+  border-color: var(--btc-primary);
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 8px 24px rgba(247, 147, 26, 0.3);
+}
+
+/* BTC Address Display */
+.btc-address-container {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  justify-content: space-between;
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(247, 147, 26, 0.2);
+  border-radius: 8px;
+  padding: 12px;
+}
+
+.btc-address-text {
+  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+  color: var(--btc-accent);
+  font-size: 14px;
+}
+
+@media (max-width: 639px) {
+  .btc-address-text {
+    font-size: 12px;
+  }
+}
+
+/* BTC Modal Styling */
+.btc-modal-content {
+  background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
+  border: 1px solid rgba(247, 147, 26, 0.3);
+}
+
+.btc-modal-header {
+  border-bottom: 1px solid rgba(247, 147, 26, 0.2);
+  padding-bottom: 12px;
+  margin-bottom: 16px;
+}
+
+.btc-modal-title {
+  color: var(--btc-accent);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* BTC Form Elements */
+.btc-form-input {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(247, 147, 26, 0.3);
+  color: white;
+  transition: all 0.3s ease;
+}
+
+.btc-form-input:focus {
+  border-color: var(--btc-primary);
+  box-shadow: 0 0 0 2px rgba(247, 147, 26, 0.2);
+}
+
+.btc-form-input::placeholder {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.btc-form-select {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(247, 147, 26, 0.3);
+  color: white;
+}
+
+.btc-form-label {
+  color: var(--btc-accent);
+  font-weight: 500;
+}
+
+/* BTC Loading States */
+.btc-loading-spinner {
+  color: var(--btc-primary);
+}
+
+.btc-loading-text {
+  color: rgba(255, 179, 71, 0.8);
+}
+
+/* BTC Success/Error States */
+.btc-success {
+  background: rgba(16, 185, 129, 0.1);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+  color: var(--btc-success);
+}
+
+.btc-error {
+  background: rgba(239, 68, 68, 0.1);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  color: var(--btc-error);
+}
+
+.btc-warning {
+  background: rgba(245, 158, 11, 0.1);
+  border: 1px solid rgba(245, 158, 11, 0.3);
+  color: var(--btc-warning);
+}
+
+/* BTC QR Code Container */
+.btc-qr-container {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* BTC Quick Stats Card */
+.btc-stats-card {
+  background: rgba(247, 147, 26, 0.05);
+  border: 1px solid rgba(247, 147, 26, 0.1);
+  border-radius: 12px;
+}
+
+.btc-stats-item {
+  border-bottom: 1px solid rgba(247, 147, 26, 0.1);
+  padding: 8px 0;
+}
+
+.btc-stats-item:last-child {
+  border-bottom: none;
+}
+
+/* BTC Quick Actions */
+.btc-quick-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.btc-quick-action-button {
+  background: linear-gradient(135deg, rgba(247, 147, 26, 0.2) 0%, rgba(255, 179, 71, 0.2) 100%);
+  border: 1px solid rgba(247, 147, 26, 0.3);
+  color: var(--btc-accent);
+  transition: all 0.3s ease;
+  justify-content: flex-start;
+}
+
+.btc-quick-action-button:hover {
+  background: linear-gradient(135deg, var(--btc-primary) 0%, var(--btc-secondary) 100%);
+  color: white;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(247, 147, 26, 0.3);
+}
+
+/* BTC Refresh Button */
+.btc-refresh-button {
+  border: 1px solid rgba(247, 147, 26, 0.5);
+  color: var(--btc-accent);
+  background: rgba(247, 147, 26, 0.1);
+  transition: all 0.3s ease;
+}
+
+.btc-refresh-button:hover {
+  background: rgba(247, 147, 26, 0.2);
+  border-color: var(--btc-primary);
+  color: white;
+}
+
+/* Mobile Responsive Improvements */
+@media (max-width: 375px) {
+  .btc-wallet-container {
+    padding: 8px;
+  }
+  
+  .btc-header-card {
+    margin-bottom: 16px;
+  }
+  
+  .btc-balance-card {
+    padding: 12px;
+  }
+  
+  .btc-wallet-container .container {
+    padding-left: 8px;
+    padding-right: 8px;
+  }
+}
+
+@media (max-width: 390px) {
+  .btc-action-buttons {
+    grid-template-columns: 1fr;
+    gap: 6px;
+  }
+}
+
+@media (max-width: 414px) {
+  .btc-token-actions {
+    flex-direction: column;
+    gap: 4px;
+  }
+  
+  .btc-nft-card {
+    margin-bottom: 12px;
+  }
+}
+
+/* Container overflow fixes for mobile */
+@media (max-width: 639px) {
+  .btc-wallet-container .wallet-page {
+    overflow-x: hidden;
+  }
+  
+  .btc-wallet-container .container {
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+  
+  /* Prevent button overflow */
+  .btc-action-buttons,
+  .btc-token-actions {
+    min-width: 0;
+    overflow: hidden;
+  }
+  
+  .btc-action-buttons button,
+  .btc-token-actions button {
+    min-width: 0;
+    flex: 1;
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
+}
+
+/* BTC Portfolio Value Highlights */
+.btc-portfolio-value {
+  background: linear-gradient(135deg, var(--btc-gradient-from) 0%, var(--btc-gradient-to) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: bold;
+}
+
+/* BTC Asset Breakdown */
+.btc-asset-breakdown {
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(247, 147, 26, 0.2);
+  border-radius: 12px;
+}
+
+.btc-asset-item {
+  border-bottom: 1px solid rgba(247, 147, 26, 0.1);
+  padding: 8px 0;
+}
+
+.btc-asset-item:last-child {
+  border-bottom: none;
+  border-top: 1px solid rgba(247, 147, 26, 0.2);
+  padding-top: 12px;
+  margin-top: 8px;
+}
+
+/* Animation for BTC elements */
+@keyframes btc-glow {
+  0%, 100% {
+    box-shadow: 0 0 5px rgba(247, 147, 26, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(247, 147, 26, 0.8), 0 0 30px rgba(255, 179, 71, 0.4);
+  }
+}
+
+.btc-glow-animation {
+  animation: btc-glow 2s ease-in-out infinite;
+}
+
+/* Dark mode specific BTC styling */
+@media (prefers-color-scheme: dark) {
+  .btc-wallet-container {
+    background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+  }
+}
+
+/* BTC Network Status Badge */
+.btc-network-badge {
+  background: rgba(247, 147, 26, 0.1);
+  border: 1px solid rgba(247, 147, 26, 0.3);
+  color: var(--btc-accent);
+  font-size: 12px;
+  font-weight: 500;
+  padding: 4px 8px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.btc-network-status-dot {
+  width: 8px;
+  height: 8px;
+  background: #10B981;
+  border-radius: 50%;
+  animation: btc-pulse 2s infinite;
+}
+
+@keyframes btc-pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+/* Transaction History Styling */
+.btc-transaction-list {
+  background: rgba(247, 147, 26, 0.05);
+  border: 1px solid rgba(247, 147, 26, 0.1);
+  border-radius: 8px;
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.btc-transaction-item {
+  display: flex;
+  align-items: center;
+  padding: 12px 16px;
+  border-bottom: 1px solid rgba(247, 147, 26, 0.1);
+  transition: all 0.2s ease;
+}
+
+.btc-transaction-item:last-child {
+  border-bottom: none;
+}
+
+.btc-transaction-item:hover {
+  background: rgba(247, 147, 26, 0.1);
+}
+
+.btc-transaction-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 12px;
+  flex-shrink: 0;
+}
+
+.btc-transaction-icon.send {
+  background: rgba(239, 68, 68, 0.2);
+  color: #EF4444;
+}
+
+.btc-transaction-icon.receive {
+  background: rgba(16, 185, 129, 0.2);
+  color: #10B981;
+}
+
+.btc-transaction-details {
+  flex: 1;
+  min-width: 0;
+}
+
+.btc-transaction-type {
+  font-weight: 500;
+  color: white;
+  font-size: 14px;
+  margin-bottom: 2px;
+}
+
+.btc-transaction-address {
+  font-family: ui-monospace, SFMono-Regular, "SF Mono", Consolas, "Liberation Mono", Menlo, monospace;
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.btc-transaction-amount {
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.btc-transaction-amount-value {
+  font-weight: 600;
+  font-size: 14px;
+  margin-bottom: 2px;
+}
+
+.btc-transaction-amount-value.positive {
+  color: #10B981;
+}
+
+.btc-transaction-amount-value.negative {
+  color: #EF4444;
+}
+
+.btc-transaction-amount-usd {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+/* NFT Grid Styling */
+.btc-nft-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 16px;
+  margin-top: 16px;
+}
+
+@media (max-width: 640px) {
+  .btc-nft-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .btc-nft-grid {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+}
+
+.btc-nft-item {
+  background: rgba(247, 147, 26, 0.05);
+  border: 1px solid rgba(247, 147, 26, 0.1);
+  border-radius: 12px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.btc-nft-item:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(247, 147, 26, 0.3);
+  border-color: var(--btc-primary);
+}
+
+.btc-nft-image {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  background: rgba(247, 147, 26, 0.1);
+}
+
+.btc-nft-details {
+  padding: 12px;
+}
+
+.btc-nft-name {
+  font-weight: 600;
+  color: white;
+  font-size: 14px;
+  margin-bottom: 4px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.btc-nft-collection {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.6);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Status indicators */
+.btc-status-success {
+  color: #10B981;
+  background: rgba(16, 185, 129, 0.1);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.btc-status-pending {
+  color: #F59E0B;
+  background: rgba(245, 158, 11, 0.1);
+  border: 1px solid rgba(245, 158, 11, 0.3);
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.btc-status-failed {
+  color: #EF4444;
+  background: rgba(239, 68, 68, 0.1);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+/* BTC Tooltip Styling */
+.btc-tooltip {
+  background: rgba(247, 147, 26, 0.9);
+  border: 1px solid rgba(247, 147, 26, 0.3);
+  color: white;
+  font-size: 12px;
+  padding: 8px 12px;
+  border-radius: 6px;
+  backdrop-filter: blur(8px);
+}
+
+/* BTC Input Group */
+.btc-input-group {
+  display: flex;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(247, 147, 26, 0.3);
+  border-radius: 8px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.btc-input-group:focus-within {
+  border-color: var(--btc-primary);
+  box-shadow: 0 0 0 2px rgba(247, 147, 26, 0.2);
+}
+
+.btc-input-group input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  padding: 12px;
+  color: white;
+  outline: none;
+}
+
+.btc-input-group input::placeholder {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.btc-input-group-append {
+  padding: 8px 12px;
+  background: rgba(247, 147, 26, 0.1);
+  color: var(--btc-accent);
+  font-size: 12px;
+  font-weight: 500;
+}
+
+/* BTC Progress Bar */
+.btc-progress {
+  width: 100%;
+  height: 8px;
+  background: rgba(247, 147, 26, 0.1);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.btc-progress-bar {
+  height: 100%;
+  background: linear-gradient(135deg, var(--btc-primary) 0%, var(--btc-secondary) 100%);
+  border-radius: 4px;
+  transition: width 0.3s ease;
+}
+
+/* BTC Badge */
+.btc-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 8px;
+  background: rgba(247, 147, 26, 0.1);
+  border: 1px solid rgba(247, 147, 26, 0.3);
+  border-radius: 12px;
+  color: var(--btc-accent);
+  font-size: 11px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.btc-badge.primary {
+  background: var(--btc-primary);
+  border-color: var(--btc-primary);
+  color: white;
+}
+
+.btc-badge.secondary {
+  background: var(--btc-secondary);
+  border-color: var(--btc-secondary);
+  color: white;
+}
+
+/* BTC Divider */
+.btc-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(247, 147, 26, 0.3), transparent);
+  margin: 16px 0;
+}
+
+/* BTC Skeleton Loading */
+.btc-skeleton {
+  background: linear-gradient(90deg, rgba(247, 147, 26, 0.1) 25%, rgba(247, 147, 26, 0.2) 50%, rgba(247, 147, 26, 0.1) 75%);
+  background-size: 200% 100%;
+  animation: btc-skeleton-loading 1.5s infinite;
+  border-radius: 4px;
+}
+
+@keyframes btc-skeleton-loading {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/* BTC Alert */
+.btc-alert {
+  padding: 12px 16px;
+  border-radius: 8px;
+  border: 1px solid;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.btc-alert.success {
+  background: rgba(16, 185, 129, 0.1);
+  border-color: rgba(16, 185, 129, 0.3);
+  color: var(--btc-success);
+}
+
+.btc-alert.warning {
+  background: rgba(245, 158, 11, 0.1);
+  border-color: rgba(245, 158, 11, 0.3);
+  color: var(--btc-warning);
+}
+
+.btc-alert.error {
+  background: rgba(239, 68, 68, 0.1);
+  border-color: rgba(239, 68, 68, 0.3);
+  color: var(--btc-error);
+}
+
+.btc-alert.info {
+  background: rgba(247, 147, 26, 0.1);
+  border-color: rgba(247, 147, 26, 0.3);
+  color: var(--btc-accent);
+}
+
+/* BTC Card Variants */
+.btc-card-primary {
+  background: linear-gradient(135deg, rgba(247, 147, 26, 0.1) 0%, rgba(255, 179, 71, 0.1) 100%);
+  border: 1px solid rgba(247, 147, 26, 0.2);
+}
+
+.btc-card-secondary {
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(247, 147, 26, 0.1);
+}
+
+.btc-card-accent {
+  background: linear-gradient(135deg, rgba(255, 179, 71, 0.2) 0%, rgba(247, 147, 26, 0.2) 100%);
+  border: 1px solid rgba(255, 179, 71, 0.3);
+}
+
+/* Additional responsive improvements for smaller devices */
+@media (max-width: 320px) {
+  .btc-wallet-container {
+    padding: 4px;
+  }
+  
+  .btc-action-buttons {
+    grid-template-columns: 1fr;
+    gap: 4px;
+  }
+  
+  .btc-action-buttons button {
+    font-size: 11px;
+    padding: 6px 10px;
+    min-height: 32px;
+  }
+  
+  .btc-balance-card {
+    padding: 8px;
+  }
+  
+  .btc-address-text {
+    font-size: 10px;
+  }
+}
+
+/* Extra large screens */
+@media (min-width: 1200px) {
+  .btc-wallet-container {
+    padding: 16px;
+  }
+  
+  .btc-action-buttons {
+    gap: 16px;
+  }
+  
+  .btc-balance-card {
+    padding: 20px;
+  }
+}

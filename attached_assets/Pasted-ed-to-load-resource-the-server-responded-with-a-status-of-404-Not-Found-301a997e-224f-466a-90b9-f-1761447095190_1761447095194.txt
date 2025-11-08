@@ -1,0 +1,786 @@
+ed to load resource: the server responded with a status of 404 (Not Found)
+301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/api/gaming/player/profile:1  Failed to load resource: the server responded with a status of 404 (Not Found)
+301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/api/gaming/player/profile:1  Failed to load resource: the server responded with a status of 404 (Not Found)
+301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/api/gaming/player/profile:1  Failed to load resource: the server responded with a status of 404 (Not Found)
+301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/api/gaming/player/profile:1  Failed to load resource: the server responded with a status of 404 (Not Found)
+301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/api/gaming/player/profile:1  Failed to load resource: the server responded with a status of 404 (Not Found)
+301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/api/gaming/player/profile:1  Failed to load resource: the server responded with a status of 404 (Not Found)
+301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/api/gaming/player/profile:1  Failed to load resource: the server responded with a status of 404 (Not Found)
+301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/api/gaming/player/profile:1  Failed to load resource: the server responded with a status of 404 (Not Found)
+301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/api/gaming/player/profile:1  Failed to load resource: the server responded with a status of 404 (Not Found)
+301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/api/gaming/player/profile:1  Failed to load resource: the server responded with a status of 404 (Not Found)
+301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/api/gaming/player/profile:1  Failed to load resource: the server responded with a status of 404 (Not Found)
+301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/api/gaming/player/profile:1  Failed to load resource: the server responded with a status of 404 (Not Found)
+301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/api/gaming/player/profile:1  Failed to load resource: the server responded with a status of 404 (Not Found)
+ipfs://bafybeiccm34ry3vshh7iopkgjbjza7elirx4ceqoeuhugofvvuho6whyi4/48.png:1  Failed to load resource: net::ERR_UNKNOWN_URL_SCHEME
+301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/:1  Failed to load resource: the server responded with a status of 404 (Not Found)
+ WebSocket connection to 'wss://301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/?token=A4WgX1ruFpya' failed: 
+window.WebSocket @ init.js:53
+setupWebSocket @ client:536
+(anonymous) @ client:531
+ WebSocket connection to 'wss://301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/?token=A4WgX1ruFpya' failed: 
+window.WebSocket @ init.js:53
+setupWebSocket @ client:536
+fallback @ client:509
+(anonymous) @ client:555
+301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/api/notifications/register-device:1  Failed to load resource: the server responded with a status of 500 (Internal Server Error)
+301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/api/notifications/unread-count:1  Failed to load resource: the server responded with a status of 502 (Bad Gateway)
+301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/api/wallet/total-balance:1  Failed to load resource: the server responded with a status of 502 (Bad Gateway)
+301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/:1  Failed to load resource: the server responded with a status of 404 (Not Found)
+301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/:1  Failed to load resource: the server responded with a status of 404 (Not Found)
+ WebSocket connection to 'wss://301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/?token=hN20f3tpCbP5' failed: 
+window.WebSocket @ init.js:53
+setupWebSocket @ client:536
+(anonymous) @ client:531
+ WebSocket connection to 'wss://301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/?token=hN20f3tpCbP5' failed: 
+window.WebSocket @ init.js:53
+setupWebSocket @ client:536
+fallback @ client:509
+(anonymous) @ client:555
+301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/api/notifications/register-device:1  Failed to load resource: the server responded with a status of 500 (Internal Server Error)
+301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/api/battles/leaderboard?limit=5:1  Failed to load resource: the server responded with a status of 404 (Not Found)
+ipfs://bafybeiccm34ry3vshh7iopkgjbjza7elirx4ceqoeuhugofvvuho6whyi4/48.png:1  Failed to load resource: net::ERR_UNKNOWN_URL_SCHEME
+ipfs://bafybeiccm34ry3vshh7iopkgjbjza7elirx4ceqoeuhugofvvuho6whyi4/48.png:1  Failed to load resource: net::ERR_UNKNOWN_URL_SCHEME
+301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/:1  Failed to load resource: the server responded with a status of 404 (Not Found)
+ WebSocket connection to 'wss://301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/?token=KAWVHKHKwED8' failed: 
+window.WebSocket @ init.js:53
+setupWebSocket @ client:536
+(anonymous) @ client:531
+ WebSocket connection to 'wss://301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/?token=KAWVHKHKwED8' failed: 
+window.WebSocket @ init.js:53
+setupWebSocket @ client:536
+fallback @ client:509
+(anonymous) @ client:555
+301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/api/notifications/register-device:1  Failed to load resource: the server responded with a status of 500 (Internal Server Error)
+301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/api/battles/leaderboard?limit=5:1  Failed to load resource: the server responded with a status of 404 (Not Found)
+ipfs://bafybeigp2mspowp7lvifxf7nujgnltgvbhjioqykwojbqjk53wivqdl33m/2472.png:1  Failed to load resource: net::ERR_UNKNOWN_URL_SCHEME
+301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/api/public/generate-image:1  Failed to load resource: the server responded with a status of 500 (Internal Server Error)
+301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/api/public/generate-image:1  Failed to load resource: the server responded with a status of 500 (Internal Server Error)
+ WebSocket connection to 'wss://301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/?token=KAWVHKHKwED8' failed: 
+window.WebSocket @ init.js:53
+setupWebSocket @ client:536
+(anonymous) @ client:531
+ WebSocket connection to 'wss://301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/?token=KAWVHKHKwED8' failed: 
+window.WebSocket @ init.js:53
+setupWebSocket @ client:536
+fallback @ client:509
+(anonymous) @ client:555
+301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/api/notifications/register-device:1  Failed to load resource: the server responded with a status of 500 (Internal Server Error)
+301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/:1  Failed to load resource: the server responded with a status of 404 (Not Found)
+ WebSocket connection to 'wss://301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/?token=qhsriK1jq7Gf' failed: 
+window.WebSocket @ init.js:53
+setupWebSocket @ client:536
+(anonymous) @ client:531
+ WebSocket connection to 'wss://301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/?token=qhsriK1jq7Gf' failed: 
+window.WebSocket @ init.js:53
+setupWebSocket @ client:536
+fallback @ client:509
+(anonymous) @ client:555
+301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/api/notifications/register-device:1  Failed to load resource: the server responded with a status of 500 (Internal Server Error)
+ WebSocket connection to 'wss://301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/?token=qhsriK1jq7Gf' failed: 
+window.WebSocket @ init.js:53
+setupWebSocket @ client:536
+(anonymous) @ client:531
+ WebSocket connection to 'wss://301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/?token=qhsriK1jq7Gf' failed: 
+window.WebSocket @ init.js:53
+setupWebSocket @ client:536
+fallback @ client:509
+(anonymous) @ client:555
+301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/api/notifications/register-device:1  Failed to load resource: the server responded with a status of 500 (Internal Server Error)
+ WebSocket connection to 'wss://301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/?token=Wh9PNXKzNd-z' failed: 
+window.WebSocket @ init.js:53
+ WebSocket connection to 'wss://301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/?token=Wh9PNXKzNd-z' failed: 
+window.WebSocket @ init.js:53
+301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/api/notifications/register-device:1  Failed to load resource: the server responded with a status of 500 (Internal Server Error)
+301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/:1  Failed to load resource: the server responded with a status of 404 (Not Found)
+ WebSocket connection to 'wss://301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/?token=RXo0cK6Gi_kO' failed: 
+window.WebSocket @ init.js:53
+ WebSocket connection to 'wss://301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/?token=RXo0cK6Gi_kO' failed: 
+window.WebSocket @ init.js:53
+301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/api/notifications/register-device:1  Failed to load resource: the server responded with a status of 500 (Internal Server Error)
+301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/api/battles/leaderboard?limit=5:1  Failed to load resource: the server responded with a status of 404 (Not Found)
+301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/:1  Failed to load resource: the server responded with a status of 404 (Not Found)
+301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/:1  Failed to load resource: the server responded with a status of 404 (Not Found)
+301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/:1  Failed to load resource: the server responded with a status of 404 (Not Found)
+ WebSocket connection to 'wss://301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/?token=qMVDJd6jvjNN' failed: 
+window.WebSocket @ init.js:53
+ WebSocket connection to 'wss://301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/?token=qMVDJd6jvjNN' failed: 
+window.WebSocket @ init.js:53
+301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/api/notifications/register-device:1  Failed to load resource: the server responded with a status of 500 (Internal Server Error)
+301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/api/battles/leaderboard?limit=5:1  Failed to load resource: the server responded with a status of 404 (Not Found)
+ WebSocket connection to 'wss://301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/?token=3rtirgga2PQl' failed: 
+window.WebSocket @ init.js:53
+ WebSocket connection to 'wss://301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/?token=3rtirgga2PQl' failed: 
+window.WebSocket @ init.js:53
+301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/api/notifications/register-device:1  Failed to load resource: the server responded with a status of 500 (Internal Server Error)
+ WebSocket connection to 'wss://301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/?token=3rtirgga2PQl' failed: 
+window.WebSocket @ init.js:53
+ WebSocket connection to 'wss://301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/?token=3rtirgga2PQl' failed: 
+window.WebSocket @ init.js:53
+301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/api/notifications/register-device:1  Failed to load resource: the server responded with a status of 500 (Internal Server Error)
+301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/:1  Failed to load resource: the server responded with a status of 404 (Not Found)
+301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/:1  Failed to load resource: the server responded with a status of 404 (Not Found)
+301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/:1  Failed to load resource: the server responded with a status of 404 (Not Found)
+ WebSocket connection to 'wss://301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/?token=yirA8FWIaJeW' failed: 
+window.WebSocket @ init.js:53
+ WebSocket connection to 'wss://301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/?token=yirA8FWIaJeW' failed: 
+window.WebSocket @ init.js:53
+301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/api/riddle-wallet/session:1  Failed to load resource: the server responded with a status of 401 (Unauthorized)
+301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/api/notifications/register-device:1  Failed to load resource: the server responded with a status of 401 (Unauthorized)
+301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/api/notifications/unread-count:1  Failed to load resource: the server responded with a status of 401 (Unauthorized)
+301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/api/battles/leaderboard?limit=5:1  Failed to load resource: the server responded with a status of 404 (Not Found)
+ WebSocket connection to 'wss://301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/?token=yirA8FWIaJeW' failed: 
+window.WebSocket @ init.js:53
+ WebSocket connection to 'wss://301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/?token=yirA8FWIaJeW' failed: 
+window.WebSocket @ init.js:53
+301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/api/notifications/register-device:1  Failed to load resource: the server responded with a status of 401 (Unauthorized)
+301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/api/wallet/total-balance:1  Failed to load resource: the server responded with a status of 502 (Bad Gateway)
+301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/:1  Failed to load resource: the server responded with a status of 404 (Not Found)
+ WebSocket connection to 'wss://301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/?token=Umn2BcQtYfxf' failed: 
+window.WebSocket @ init.js:53
+ WebSocket connection to 'wss://301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/?token=Umn2BcQtYfxf' failed: 
+window.WebSocket @ init.js:53
+301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/api/notifications/register-device:1  Failed to load resource: the server responded with a status of 401 (Unauthorized)
+ WebSocket connection to 'wss://301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/?token=Umn2BcQtYfxf' failed: 
+window.WebSocket @ init.js:53
+ WebSocket connection to 'wss://301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/?token=Umn2BcQtYfxf' failed: 
+window.WebSocket @ init.js:53
+301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/api/notifications/register-device:1  Failed to load resource: the server responded with a status of 401 (Unauthorized)
+301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/api/battles/leaderboard?limit=5:1  Failed to load resource: the server responded with a status of 404 (Not Found)
+301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/:1  Failed to load resource: the server responded with a status of 404 (Not Found)
+301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/:1  Failed to load resource: the server responded with a status of 404 (Not Found)
+301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/:1  Failed to load resource: the server responded with a status of 404 (Not Found)
+301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/:1  Failed to load resource: the server responded with a status of 404 (Not Found)
+301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/:1  Failed to load resource: the server responded with a status of 404 (Not Found)
+301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/:1  Failed to load resource: the server responded with a status of 404 (Not Found)
+301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/:1  Failed to load resource: the server responded with a status of 404 (Not Found)
+301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/:1  Failed to load resource: the server responded with a status of 404 (Not Found)
+301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/:1  Failed to load resource: the server responded with a status of 404 (Not Found)
+301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/:1  Failed to load resource: the server responded with a status of 404 (Not Found)
+301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/:1  Failed to load resource: the server responded with a status of 404 (Not Found)
+301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/:1  Failed to load resource: the server responded with a status of 404 (Not Found)
+301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/:1  Failed to load resource: the server responded with a status of 404 (Not Found)
+301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/:1  Failed to load resource: the server responded with a status of 404 (Not Found)
+301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/:1  Failed to load resource: the server responded with a status of 404 (Not Found)
+301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/:1  Failed to load resource: the server responded with a status of 404 (Not Found)
+ WebSocket connection to 'wss://301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/?token=ak05ly01KPEQ' failed: 
+window.WebSocket @ init.js:53
+ WebSocket connection to 'wss://301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/?token=ak05ly01KPEQ' failed: 
+window.WebSocket @ init.js:53
+301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/api/notifications/register-device:1  Failed to load resource: the server responded with a status of 401 (Unauthorized)
+301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/api/session-check:1  Failed to load resource: the server responded with a status of 404 (Not Found)
+ WebSocket connection to 'wss://301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/?token=ak05ly01KPEQ' failed: 
+window.WebSocket @ init.js:53
+ WebSocket connection to 'wss://301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/?token=ak05ly01KPEQ' failed: 
+window.WebSocket @ init.js:53
+301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/api/notifications/register-device:1  Failed to load resource: the server responded with a status of 401 (Unauthorized)
+301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/api/battles/leaderboard?limit=5:1  Failed to load resource: the server responded with a status of 404 (Not Found)
+301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/api/battles/leaderboard?limit=5:1  Failed to load resource: the server responded with a status of 404 (Not Found)
+ WebSocket connection to 'wss://301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/?token=ak05ly01KPEQ' failed: 
+window.WebSocket @ init.js:53
+ WebSocket connection to 'wss://301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/?token=ak05ly01KPEQ' failed: 
+window.WebSocket @ init.js:53
+301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/api/notifications/register-device:1  Failed to load resource: the server responded with a status of 401 (Unauthorized)
+301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/api/battles/leaderboard?limit=5:1  Failed to load resource: the server responded with a status of 404 (Not Found)
+ WebSocket connection to 'wss://301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/?token=ak05ly01KPEQ' failed: 
+window.WebSocket @ init.js:53
+ WebSocket connection to 'wss://301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/?token=ak05ly01KPEQ' failed: 
+window.WebSocket @ init.js:53
+301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/api/notifications/register-device:1  Failed to load resource: the server responded with a status of 401 (Unauthorized)
+ipfs://bafybeihftv24ah3bfyt7pq6za55ret35b3ccwsixs2oqbeq32fkedezjb4/27.png:1  Failed to load resource: net::ERR_UNKNOWN_URL_SCHEME
+301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/:1  Failed to load resource: the server responded with a status of 404 (Not Found)
+ WebSocket connection to 'wss://301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/?token=10E0okzzWChQ' failed: 
+window.WebSocket @ init.js:53
+ WebSocket connection to 'wss://301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/?token=10E0okzzWChQ' failed: 
+window.WebSocket @ init.js:53
+301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/api/notifications/register-device:1  Failed to load resource: the server responded with a status of 401 (Unauthorized)
+301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/api/battles/leaderboard?limit=5:1  Failed to load resource: the server responded with a status of 404 (Not Found)
+ WebSocket connection to 'wss://301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/?token=10E0okzzWChQ' failed: 
+window.WebSocket @ init.js:53
+ WebSocket connection to 'wss://301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/?token=10E0okzzWChQ' failed: 
+window.WebSocket @ init.js:53
+301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/api/notifications/register-device:1  Failed to load resource: the server responded with a status of 401 (Unauthorized)
+ipfs://bafybeihftv24ah3bfyt7pq6za55ret35b3ccwsixs2oqbeq32fkedezjb4/27.png:1  Failed to load resource: net::ERR_UNKNOWN_URL_SCHEME
+ipfs://bafybeihftv24ah3bfyt7pq6za55ret35b3ccwsixs2oqbeq32fkedezjb4/27.png:1  Failed to load resource: net::ERR_UNKNOWN_URL_SCHEME
+ipfs://bafybeihftv24ah3bfyt7pq6za55ret35b3ccwsixs2oqbeq32fkedezjb4/27.png:1  Failed to load resource: net::ERR_UNKNOWN_URL_SCHEME
+ WebSocket connection to 'wss://301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/?token=10E0okzzWChQ' failed: 
+window.WebSocket @ init.js:53
+ WebSocket connection to 'wss://301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/?token=10E0okzzWChQ' failed: 
+window.WebSocket @ init.js:53
+301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/api/notifications/register-device:1  Failed to load resource: the server responded with a status of 401 (Unauthorized)
+301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/api/battles/leaderboard?limit=5:1  Failed to load resource: the server responded with a status of 404 (Not Found)
+301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/:1  Failed to load resource: the server responded with a status of 404 (Not Found)
+301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/:1  Failed to load resource: the server responded with a status of 404 (Not Found)
+ WebSocket connection to 'wss://301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/?token=D225ZLO2vioy' failed: 
+window.WebSocket @ init.js:53
+ WebSocket connection to 'wss://301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/?token=D225ZLO2vioy' failed: 
+window.WebSocket @ init.js:53
+301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/api/notifications/register-device:1  Failed to load resource: the server responded with a status of 401 (Unauthorized)
+301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/api/battles/leaderboard?limit=5:1  Failed to load resource: the server responded with a status of 404 (Not Found)
+ WebSocket connection to 'wss://301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/?token=D225ZLO2vioy' failed: 
+window.WebSocket @ init.js:53
+ WebSocket connection to 'wss://301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/?token=D225ZLO2vioy' failed: 
+window.WebSocket @ init.js:53
+301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/api/notifications/register-device:1  Failed to load resource: the server responded with a status of 401 (Unauthorized)
+301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/api/battles/player/jack/history?limit=20:1  Failed to load resource: the server responded with a status of 404 (Not Found)
+301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/api/battles/player/jack/history?limit=20:1  Failed to load resource: the server responded with a status of 404 (Not Found)
+301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/api/battles/player/jack/history?limit=20:1  Failed to load resource: the server responded with a status of 404 (Not Found)
+301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/:1  Failed to load resource: the server responded with a status of 404 (Not Found)
+301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/:1  Failed to load resource: the server responded with a status of 404 (Not Found)
+301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/:1  Failed to load resource: the server responded with a status of 404 (Not Found)
+301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/:1  Failed to load resource: the server responded with a status of 404 (Not Found)
+ WebSocket connection to 'wss://301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/?token=5P1o79r0bHvZ' failed: 
+window.WebSocket @ init.js:53
+ WebSocket connection to 'wss://301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/?token=5P1o79r0bHvZ' failed: 
+window.WebSocket @ init.js:53
+301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/api/notifications/register-device:1  Failed to load resource: the server responded with a status of 401 (Unauthorized)
+301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/:1  Failed to load resource: the server responded with a status of 404 (Not Found)
+ WebSocket connection to 'wss://301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/?token=d6-kNzXCwHgR' failed: 
+window.WebSocket @ init.js:53
+ WebSocket connection to 'wss://301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/?token=d6-kNzXCwHgR' failed: 
+window.WebSocket @ init.js:53
+301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/api/notifications/register-device:1  Failed to load resource: the server responded with a status of 401 (Unauthorized)
+301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/api/battles/leaderboard?limit=5:1  Failed to load resource: the server responded with a status of 404 (Not Found)
+ WebSocket connection to 'wss://301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/?token=d6-kNzXCwHgR' failed: 
+window.WebSocket @ init.js:53
+ WebSocket connection to 'wss://301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/?token=d6-kNzXCwHgR' failed: 
+window.WebSocket @ init.js:53
+301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/api/notifications/register-device:1  Failed to load resource: the server responded with a status of 401 (Unauthorized)
+301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/api/battles/leaderboard?limit=5:1  Failed to load resource: the server responded with a status of 404 (Not Found)
+ WebSocket connection to 'wss://301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/?token=d6-kNzXCwHgR' failed: 
+window.WebSocket @ init.js:53
+ WebSocket connection to 'wss://301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/?token=d6-kNzXCwHgR' failed: 
+window.WebSocket @ init.js:53
+301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/api/notifications/register-device:1  Failed to load resource: the server responded with a status of 401 (Unauthorized)
+301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/api/storage/uploads/generated-images/jake-obsidian-guardian.png:1  Failed to load resource: the server responded with a status of 404 (Not Found)
+301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/:1  Failed to load resource: the server responded with a status of 404 (Not Found)
+301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/:1  Failed to load resource: the server responded with a status of 404 (Not Found)
+301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/:1  Failed to load resource: the server responded with a status of 404 (Not Found)
+ WebSocket connection to 'wss://301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/?token=1hrF115YHt7j' failed: 
+window.WebSocket @ init.js:53
+ WebSocket connection to 'wss://301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/?token=1hrF115YHt7j' failed: 
+window.WebSocket @ init.js:53
+301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/api/notifications/register-device:1  Failed to load resource: the server responded with a status of 401 (Unauthorized)
+301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/:1  Failed to load resource: the server responded with a status of 404 (Not Found)
+ WebSocket connection to 'wss://301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/?token=NxOmNzG-VmU7' failed: 
+window.WebSocket @ init.js:53
+ WebSocket connection to 'wss://301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/?token=NxOmNzG-VmU7' failed: 
+window.WebSocket @ init.js:53
+ WebSocket connection to 'wss://301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/?token=NxOmNzG-VmU7' failed: 
+window.WebSocket @ init.js:53
+ WebSocket connection to 'wss://301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/?token=NxOmNzG-VmU7' failed: 
+window.WebSocket @ init.js:53
+301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/:1  Failed to load resource: the server responded with a status of 404 (Not Found)
+ WebSocket connection to 'wss://301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/?token=axEdnO10GuXi' failed: 
+window.WebSocket @ init.js:53
+ WebSocket connection to 'wss://301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/?token=axEdnO10GuXi' failed: 
+window.WebSocket @ init.js:53
+ WebSocket connection to 'wss://301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/?token=axEdnO10GuXi' failed: 
+window.WebSocket @ init.js:53
+ WebSocket connection to 'wss://301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/?token=axEdnO10GuXi' failed: 
+window.WebSocket @ init.js:53
+ WebSocket connection to 'wss://301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/?token=axEdnO10GuXi' failed: 
+window.WebSocket @ init.js:53
+ WebSocket connection to 'wss://301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/?token=axEdnO10GuXi' failed: 
+window.WebSocket @ init.js:53
+301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/:1  Failed to load resource: the server responded with a status of 404 (Not Found)
+ WebSocket connection to 'wss://301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/?token=tSPazlcx1UDH' failed: 
+window.WebSocket @ init.js:53
+ WebSocket connection to 'wss://301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/?token=tSPazlcx1UDH' failed: 
+window.WebSocket @ init.js:53
+301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/api/notifications/register-device:1  Failed to load resource: the server responded with a status of 401 (Unauthorized)
+301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/api/battles/leaderboard?limit=5:1  Failed to load resource: the server responded with a status of 404 (Not Found)
+301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/:1  Failed to load resource: the server responded with a status of 404 (Not Found)
+ WebSocket connection to 'wss://301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/?token=ILr4GFt_L-_x' failed: 
+window.WebSocket @ init.js:53
+ WebSocket connection to 'wss://301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/?token=ILr4GFt_L-_x' failed: 
+window.WebSocket @ init.js:53
+301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/api/notifications/register-device:1  Failed to load resource: the server responded with a status of 401 (Unauthorized)
+301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/api/battles/leaderboard?limit=5:1  Failed to load resource: the server responded with a status of 404 (Not Found)
+301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/api/battles/leaderboard?limit=10:1  Failed to load resource: the server responded with a status of 404 (Not Found)
+301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/api/battles/leaderboard?limit=10:1  Failed to load resource: the server responded with a status of 404 (Not Found)
+301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/api/battles/leaderboard?limit=10:1  Failed to load resource: the server responded with a status of 404 (Not Found)
+301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/api/battles/leaderboard?limit=10:1  Failed to load resource: the server responded with a status of 404 (Not Found)
+301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/:1  Failed to load resource: the server responded with a status of 404 (Not Found)
+ WebSocket connection to 'wss://301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/?token=X6RPYdPYJpz4' failed: 
+window.WebSocket @ init.js:53
+ WebSocket connection to 'wss://301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/?token=X6RPYdPYJpz4' failed: 
+window.WebSocket @ init.js:53
+301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/api/notifications/register-device:1  Failed to load resource: the server responded with a status of 401 (Unauthorized)
+301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/api/battles/leaderboard?limit=5:1  Failed to load resource: the server responded with a status of 404 (Not Found)
+301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/:1  Failed to load resource: the server responded with a status of 404 (Not Found)
+ WebSocket connection to 'wss://301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/?token=bMXWZrx6O5OL' failed: 
+window.WebSocket @ init.js:53
+ WebSocket connection to 'wss://301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/?token=bMXWZrx6O5OL' failed: 
+window.WebSocket @ init.js:53
+301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/api/notifications/register-device:1  Failed to load resource: the server responded with a status of 401 (Unauthorized)
+301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/api/battles/leaderboard?limit=5:1  Failed to load resource: the server responded with a status of 404 (Not Found)
+301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/:1  Failed to load resource: the server responded with a status of 404 (Not Found)
+ WebSocket connection to 'wss://301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/?token=zPaNZjWHKgbX' failed: 
+window.WebSocket @ init.js:53
+ WebSocket connection to 'wss://301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/?token=zPaNZjWHKgbX' failed: 
+window.WebSocket @ init.js:53
+301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/api/notifications/register-device:1  Failed to load resource: the server responded with a status of 401 (Unauthorized)
+ WebSocket connection to 'wss://301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/?token=zPaNZjWHKgbX' failed: 
+window.WebSocket @ init.js:53
+ WebSocket connection to 'wss://301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/?token=zPaNZjWHKgbX' failed: 
+window.WebSocket @ init.js:53
+301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/api/notifications/register-device:1  Failed to load resource: the server responded with a status of 401 (Unauthorized)
+301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/api/battles/leaderboard?limit=5:1  Failed to load resource: the server responded with a status of 404 (Not Found)
+301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/:1  Failed to load resource: the server responded with a status of 404 (Not Found)
+ WebSocket connection to 'wss://301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/?token=IugnkLk2moC-' failed: 
+window.WebSocket @ init.js:53
+ WebSocket connection to 'wss://301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/?token=IugnkLk2moC-' failed: 
+window.WebSocket @ init.js:53
+301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/api/notifications/register-device:1  Failed to load resource: the server responded with a status of 401 (Unauthorized)
+301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/api/battles/leaderboard?limit=5:1  Failed to load resource: the server responded with a status of 404 (Not Found)
+301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/api/squadrons/create:1  Failed to load resource: the server responded with a status of 500 (Internal Server Error)
+301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/api/squadrons/create:1  Failed to load resource: the server responded with a status of 500 (Internal Server Error)
+sp.replit.com/sdk.js/v1/dMePKGC4BqfBivpe0Hvl8IoPpzSHgjdX/sdk.min.js:1  Failed to load resource: net::ERR_CERT_DATE_INVALID
+_app-22fe4ef96464942e.js:13 
+      /////////////////////
+   ///////////////////////////
+  ////////@@@@@@@//////////////
+  ////////@@@@@@@//////////////
+  ////////@@@@@@@//////////////        Curious and driven?
+  ///////////////@@@@@@@///////        Work with us!
+  ///////////////@@@@@@@///////
+  ///////////////@@@@@@@///////        https://join.replit.com/hack.with.us
+  ////////@@@@@@@//////////////
+  ////////@@@@@@@//////////////
+  ////////@@@@@@#//////////////
+   ///////////////////////////
+      /////////////////////
+      
+13The source list for the Content Security Policy directive 'default-src' contains an invalid source: ''unsafe-dynamic''. It will be ignored.
+13The Content-Security-Policy directive 'default-src' contains 'report-uri' as a source expression. Did you want to add it as a directive and forget a semicolon?
+13The source list for Content Security Policy directive 'default-src' contains a source with an invalid path: '/api/4509669501698048/security/?sentry_key=7eb3d90eb4660416caf507087367e67e'. The query component, including the '?', will be ignored.
+dippydoge1-10-11:1 The source list for the Content Security Policy directive 'default-src' contains an invalid source: ''unsafe-dynamic''. It will be ignored.
+dippydoge1-10-11:1 The Content-Security-Policy directive 'default-src' contains 'report-uri' as a source expression. Did you want to add it as a directive and forget a semicolon?
+dippydoge1-10-11:1 The source list for Content Security Policy directive 'default-src' contains a source with an invalid path: '/api/4509669501698048/security/?sentry_key=7eb3d90eb4660416caf507087367e67e'. The query component, including the '?', will be ignored.
+_app-22fe4ef96464942e.js:13 [LaunchDarkly] LaunchDarkly client initialized
+_app-22fe4ef96464942e.js:13 Adding extension: CSV Editor Object
+framework-e1bd502307d129ca.js:1 Unrecognized feature: 'ambient-light-sensor'.
+_ @ framework-e1bd502307d129ca.js:1
+(anonymous) @ framework-e1bd502307d129ca.js:1
+uD @ framework-e1bd502307d129ca.js:1
+uI @ framework-e1bd502307d129ca.js:1
+uM @ framework-e1bd502307d129ca.js:1
+uS @ framework-e1bd502307d129ca.js:1
+C @ framework-e1bd502307d129ca.js:1
+z @ framework-e1bd502307d129ca.js:1
+_ @ inpage.js:166
+w @ inpage.js:166
+Y @ inpage.js:166
+framework-e1bd502307d129ca.js:1 Unrecognized feature: 'battery'.
+_ @ framework-e1bd502307d129ca.js:1
+(anonymous) @ framework-e1bd502307d129ca.js:1
+uD @ framework-e1bd502307d129ca.js:1
+uI @ framework-e1bd502307d129ca.js:1
+uM @ framework-e1bd502307d129ca.js:1
+uS @ framework-e1bd502307d129ca.js:1
+C @ framework-e1bd502307d129ca.js:1
+z @ framework-e1bd502307d129ca.js:1
+_ @ inpage.js:166
+w @ inpage.js:166
+Y @ inpage.js:166
+framework-e1bd502307d129ca.js:1 Unrecognized feature: 'execution-while-not-rendered'.
+_ @ framework-e1bd502307d129ca.js:1
+(anonymous) @ framework-e1bd502307d129ca.js:1
+uD @ framework-e1bd502307d129ca.js:1
+uI @ framework-e1bd502307d129ca.js:1
+uM @ framework-e1bd502307d129ca.js:1
+uS @ framework-e1bd502307d129ca.js:1
+C @ framework-e1bd502307d129ca.js:1
+z @ framework-e1bd502307d129ca.js:1
+_ @ inpage.js:166
+w @ inpage.js:166
+Y @ inpage.js:166
+framework-e1bd502307d129ca.js:1 Unrecognized feature: 'execution-while-out-of-viewport'.
+_ @ framework-e1bd502307d129ca.js:1
+(anonymous) @ framework-e1bd502307d129ca.js:1
+uD @ framework-e1bd502307d129ca.js:1
+uI @ framework-e1bd502307d129ca.js:1
+uM @ framework-e1bd502307d129ca.js:1
+uS @ framework-e1bd502307d129ca.js:1
+C @ framework-e1bd502307d129ca.js:1
+z @ framework-e1bd502307d129ca.js:1
+_ @ inpage.js:166
+w @ inpage.js:166
+Y @ inpage.js:166
+framework-e1bd502307d129ca.js:1 Unrecognized feature: 'layout-animations'.
+_ @ framework-e1bd502307d129ca.js:1
+(anonymous) @ framework-e1bd502307d129ca.js:1
+uD @ framework-e1bd502307d129ca.js:1
+uI @ framework-e1bd502307d129ca.js:1
+uM @ framework-e1bd502307d129ca.js:1
+uS @ framework-e1bd502307d129ca.js:1
+C @ framework-e1bd502307d129ca.js:1
+z @ framework-e1bd502307d129ca.js:1
+_ @ inpage.js:166
+w @ inpage.js:166
+Y @ inpage.js:166
+framework-e1bd502307d129ca.js:1 Unrecognized feature: 'legacy-image-formats'.
+_ @ framework-e1bd502307d129ca.js:1
+(anonymous) @ framework-e1bd502307d129ca.js:1
+uD @ framework-e1bd502307d129ca.js:1
+uI @ framework-e1bd502307d129ca.js:1
+uM @ framework-e1bd502307d129ca.js:1
+uS @ framework-e1bd502307d129ca.js:1
+C @ framework-e1bd502307d129ca.js:1
+z @ framework-e1bd502307d129ca.js:1
+_ @ inpage.js:166
+w @ inpage.js:166
+Y @ inpage.js:166
+framework-e1bd502307d129ca.js:1 Unrecognized feature: 'navigation-override'.
+_ @ framework-e1bd502307d129ca.js:1
+(anonymous) @ framework-e1bd502307d129ca.js:1
+uD @ framework-e1bd502307d129ca.js:1
+uI @ framework-e1bd502307d129ca.js:1
+uM @ framework-e1bd502307d129ca.js:1
+uS @ framework-e1bd502307d129ca.js:1
+C @ framework-e1bd502307d129ca.js:1
+z @ framework-e1bd502307d129ca.js:1
+_ @ inpage.js:166
+w @ inpage.js:166
+Y @ inpage.js:166
+framework-e1bd502307d129ca.js:1 Unrecognized feature: 'oversized-images'.
+_ @ framework-e1bd502307d129ca.js:1
+(anonymous) @ framework-e1bd502307d129ca.js:1
+uD @ framework-e1bd502307d129ca.js:1
+uI @ framework-e1bd502307d129ca.js:1
+uM @ framework-e1bd502307d129ca.js:1
+uS @ framework-e1bd502307d129ca.js:1
+C @ framework-e1bd502307d129ca.js:1
+z @ framework-e1bd502307d129ca.js:1
+_ @ inpage.js:166
+w @ inpage.js:166
+Y @ inpage.js:166
+framework-e1bd502307d129ca.js:1 Unrecognized feature: 'publickey-credentials'.
+_ @ framework-e1bd502307d129ca.js:1
+(anonymous) @ framework-e1bd502307d129ca.js:1
+uD @ framework-e1bd502307d129ca.js:1
+uI @ framework-e1bd502307d129ca.js:1
+uM @ framework-e1bd502307d129ca.js:1
+uS @ framework-e1bd502307d129ca.js:1
+C @ framework-e1bd502307d129ca.js:1
+z @ framework-e1bd502307d129ca.js:1
+_ @ inpage.js:166
+w @ inpage.js:166
+Y @ inpage.js:166
+framework-e1bd502307d129ca.js:1 Unrecognized feature: 'speaker-selection'.
+_ @ framework-e1bd502307d129ca.js:1
+(anonymous) @ framework-e1bd502307d129ca.js:1
+uD @ framework-e1bd502307d129ca.js:1
+uI @ framework-e1bd502307d129ca.js:1
+uM @ framework-e1bd502307d129ca.js:1
+uS @ framework-e1bd502307d129ca.js:1
+C @ framework-e1bd502307d129ca.js:1
+z @ framework-e1bd502307d129ca.js:1
+_ @ inpage.js:166
+w @ inpage.js:166
+Y @ inpage.js:166
+framework-e1bd502307d129ca.js:1 Unrecognized feature: 'unoptimized-images'.
+_ @ framework-e1bd502307d129ca.js:1
+(anonymous) @ framework-e1bd502307d129ca.js:1
+uD @ framework-e1bd502307d129ca.js:1
+uI @ framework-e1bd502307d129ca.js:1
+uM @ framework-e1bd502307d129ca.js:1
+uS @ framework-e1bd502307d129ca.js:1
+C @ framework-e1bd502307d129ca.js:1
+z @ framework-e1bd502307d129ca.js:1
+_ @ inpage.js:166
+w @ inpage.js:166
+Y @ inpage.js:166
+framework-e1bd502307d129ca.js:1 Unrecognized feature: 'unsized-media'.
+_ @ framework-e1bd502307d129ca.js:1
+(anonymous) @ framework-e1bd502307d129ca.js:1
+uD @ framework-e1bd502307d129ca.js:1
+uI @ framework-e1bd502307d129ca.js:1
+uM @ framework-e1bd502307d129ca.js:1
+uS @ framework-e1bd502307d129ca.js:1
+C @ framework-e1bd502307d129ca.js:1
+z @ framework-e1bd502307d129ca.js:1
+_ @ inpage.js:166
+w @ inpage.js:166
+Y @ inpage.js:166
+framework-e1bd502307d129ca.js:1 Unrecognized feature: 'pointer-lock'.
+_ @ framework-e1bd502307d129ca.js:1
+(anonymous) @ framework-e1bd502307d129ca.js:1
+uD @ framework-e1bd502307d129ca.js:1
+uI @ framework-e1bd502307d129ca.js:1
+uM @ framework-e1bd502307d129ca.js:1
+uS @ framework-e1bd502307d129ca.js:1
+C @ framework-e1bd502307d129ca.js:1
+z @ framework-e1bd502307d129ca.js:1
+_ @ inpage.js:166
+w @ inpage.js:166
+Y @ inpage.js:166
+framework-e1bd502307d129ca.js:1 Allow attribute will take precedence over 'allowfullscreen'.
+_ @ framework-e1bd502307d129ca.js:1
+(anonymous) @ framework-e1bd502307d129ca.js:1
+uD @ framework-e1bd502307d129ca.js:1
+uI @ framework-e1bd502307d129ca.js:1
+uM @ framework-e1bd502307d129ca.js:1
+uS @ framework-e1bd502307d129ca.js:1
+C @ framework-e1bd502307d129ca.js:1
+z @ framework-e1bd502307d129ca.js:1
+_ @ inpage.js:166
+w @ inpage.js:166
+Y @ inpage.js:166
+framework-e1bd502307d129ca.js:1 Allow attribute will take precedence over 'allowpaymentrequest'.
+_ @ framework-e1bd502307d129ca.js:1
+(anonymous) @ framework-e1bd502307d129ca.js:1
+uD @ framework-e1bd502307d129ca.js:1
+uI @ framework-e1bd502307d129ca.js:1
+uM @ framework-e1bd502307d129ca.js:1
+uS @ framework-e1bd502307d129ca.js:1
+C @ framework-e1bd502307d129ca.js:1
+z @ framework-e1bd502307d129ca.js:1
+_ @ inpage.js:166
+w @ inpage.js:166
+Y @ inpage.js:166
+_app-22fe4ef96464942e.js:13 Adding extension: GPT-Replit - ChatGPT in your Repl. Object
+_app-22fe4ef96464942e.js:13 Adding extension: ReplDB Export and Import Object
+_app-22fe4ef96464942e.js:13 Adding extension: AI Playground Object
+_app-22fe4ef96464942e.js:13 Adding extension: UI Sketcher Object
+_app-22fe4ef96464942e.js:13 Adding extension: API Request Tester Object
+_app-22fe4ef96464942e.js:13 Adding extension: Icon Generator Object
+ WebSocket connection to 'wss://301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/?token=IugnkLk2moC-' failed: 
+window.WebSocket @ init.js:53
+setupWebSocket @ client:536
+(anonymous) @ client:531
+ WebSocket connection to 'wss://301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/?token=IugnkLk2moC-' failed: 
+window.WebSocket @ init.js:53
+setupWebSocket @ client:536
+fallback @ client:509
+(anonymous) @ client:555
+301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/api/notifications/register-device:1  Failed to load resource: the server responded with a status of 401 (Unauthorized)
+dippydoge1-10-11:1 Banner not shown: beforeinstallpromptevent.preventDefault() called. The page must call beforeinstallpromptevent.prompt() to show the banner.
+301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/:1  Failed to load resource: the server responded with a status of 404 (Not Found)
+301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/:1  Failed to load resource: the server responded with a status of 404 (Not Found)
+301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/:1  Failed to load resource: the server responded with a status of 404 (Not Found)
+init.js:53 WebSocket connection to 'wss://301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/?token=sOzYZks1takW' failed: 
+window.WebSocket @ init.js:53
+injected.js:27 🔧 Fixed WebSocket URL for Replit: wss://localhost:undefined/?token=sOzYZks1takW → wss://301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/?token=sOzYZks1takW
+init.js:53 WebSocket connection to 'wss://301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/?token=sOzYZks1takW' failed: 
+window.WebSocket @ init.js:53
+injected.js:27 [vite] failed to connect to websocket.
+your current setup:
+  (browser) 301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/ <--[HTTP]--> localhost:undefined/ (server)
+  (browser) 301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev:/ <--[WebSocket (failing)]--> localhost:undefined/ (server)
+Check out your Vite / network configuration and https://vite.dev/config/server-options.html#server-hmr .
+(anonymous) @ injected.js:27
+injected.js:27 🎨 App.tsx: App component is rendering
+injected.js:27 🏗️ App.tsx: Returning JSX with all providers
+injected.js:27 🚫 SessionMonitor: DISABLED - Using unified SessionManager instead
+injected.js:27 🗺️ Router: Router component is rendering
+injected.js:27 📍 Router: Current location: /
+injected.js:27 💳 Router: Initializing wallet data state
+injected.js:27 📭 Router: No saved wallet data found
+injected.js:27 🔍 SessionManager.getSession() returning: Object
+injected.js:27 🔍 SessionManager.getSession() returning: Object
+injected.js:27 🔍 SessionManager.getSession() returning: Object
+injected.js:27 🔍 Found local wallet connections: Array(0)
+injected.js:27 🎨 App.tsx: App component is rendering
+injected.js:27 🏗️ App.tsx: Returning JSX with all providers
+injected.js:27 🚫 SessionMonitor: DISABLED - Using unified SessionManager instead
+injected.js:27 🗺️ Router: Router component is rendering
+injected.js:27 📍 Router: Current location: /
+injected.js:27 💳 Router: Initializing wallet data state
+injected.js:27 📭 Router: No saved wallet data found
+injected.js:27 🔍 SessionManager.getSession() returning: Object
+injected.js:27 🔍 SessionManager.getSession() returning: Object
+injected.js:27 🔍 SessionManager.getSession() returning: Object
+injected.js:27 🔍 Found local wallet connections: Array(0)
+injected.js:27 🔐 [GLOBAL RENEWAL] Handler initialized
+injected.js:27 🔍 SessionManager.getSession() returning: Object
+injected.js:27 🔍 SessionManager: checkSession() called - current sessionData: true
+injected.js:27 🌐 SessionManager: Making Riddle wallet session request to /api/riddle-wallet/session
+injected.js:27 🔍 getQueryFn - SessionManager sessionToken: FOUND
+injected.js:27 📱 Platform: web, Native: false
+injected.js:27 📱 Initializing push notifications for platform: web
+injected.js:27 🌐 Initializing web notifications
+injected.js:27 📝 Registering device token with backend (web)
+injected.js:27 🔍 SessionManager sessionToken: FOUND
+injected.js:27 🔍 getQueryFn - SessionManager sessionToken: FOUND
+injected.js:27 🎨 [THEME] Applied theme: light, dark class: false
+injected.js:27 🔄 App.tsx: useEffect running - recovering wallet state
+injected.js:27 ⚠️ SessionManager: Session needs renewal - private keys missing
+injected.js:27 🔍 SessionManager.getSession() returning: Object
+injected.js:27 ⚠️ [GLOBAL RENEWAL] Session needs renewal - showing modal
+injected.js:27 🔍 SessionManager.getSession() returning: Object
+injected.js:27 🔍 SessionManager.getSession() returning: Object
+injected.js:27 🔍 SessionManager.getSession() returning: Object
+injected.js:27 🔔 SessionManager: Notified listeners about session renewal needed
+injected.js:27 🔍 SessionManager.getSession() returning: Object
+injected.js:27 🔍 SessionManager.getSession() returning: Object
+injected.js:27 🔍 SessionManager.getSession() returning: Object
+injected.js:27 🔍 Found local wallet connections: Array(0)
+injected.js:27 🔐 [GLOBAL RENEWAL] Handler initialized
+injected.js:27 🔍 SessionManager.getSession() returning: Object
+injected.js:27 ⚠️ [GLOBAL RENEWAL] Initial check - session needs renewal
+301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/api/notifications/register-device:1  Failed to load resource: the server responded with a status of 401 (Unauthorized)
+injected.js:27 🔓 apiRequest got 401 - NOT clearing session data automatically
+injected.js:27 🔓 Got 401 error - NOT clearing session data automatically
+injected.js:27 ❌ Failed to register device token: Error: 401: {"error":"Authentication required"}
+    at throwIfResNotOk (queryClient.ts:81:11)
+    at async apiRequest (queryClient.ts:119:3)
+    at async PushNotificationService.registerDevice (push-notification-service.ts:159:7)
+    at async PushNotificationService.initializeWebNotifications (push-notification-service.ts:58:7)
+    at async PushNotificationService.initialize (push-notification-service.ts:30:7)
+    at async initNotifications (NotificationBell.tsx:61:7)
+(anonymous) @ injected.js:27
+injected.js:27 🔍 SessionManager.getSession() returning: Object
+injected.js:27 🔍 SessionManager sessionToken: FOUND
+injected.js:27 ✅ [GLOBAL RENEWAL] Session renewed successfully - continuing operations
+injected.js:27 🔍 SessionManager: checkSession() called - current sessionData: true
+injected.js:27 🌐 SessionManager: Making Riddle wallet session request to /api/riddle-wallet/session
+injected.js:27 🔐 [GLOBAL RENEWAL] User closed renewal modal
+injected.js:27 🔍 SessionManager.getSession() returning: Object
+injected.js:27 🔍 SessionManager.getSession() returning: Object
+injected.js:27 🔍 SessionManager.getSession() returning: Object
+injected.js:27 🔍 Found local wallet connections: Array(0)
+injected.js:27 🔐 [GLOBAL RENEWAL] Handler initialized
+injected.js:27 🔍 SessionManager.getSession() returning: Object
+injected.js:27 ⚠️ [GLOBAL RENEWAL] Initial check - session needs renewal
+injected.js:27 🔐 [GLOBAL RENEWAL] Handler initialized
+injected.js:27 🔍 SessionManager.getSession() returning: Object
+injected.js:27 ⚠️ [GLOBAL RENEWAL] Initial check - session needs renewal
+injected.js:27 ✅ SessionManager: Valid session for riddlbroker
+injected.js:27 ✅ SessionManager: Updated session data: Object
+injected.js:27 🔍 SessionManager.getSession() returning: Object
+injected.js:27 🔍 SessionManager.getSession() returning: Object
+injected.js:27 🔍 SessionManager.getSession() returning: Object
+injected.js:27 🔍 SessionManager.getSession() returning: Object
+injected.js:27 ✅ [GLOBAL RENEWAL] Session renewed - closing modal
+injected.js:27 🔔 SessionManager: Notified 4 listeners
+injected.js:27 🔍 SessionManager.getSession() returning: Object
+injected.js:27 🔍 SessionManager.getSession() returning: Object
+injected.js:27 🔍 SessionManager.getSession() returning: Object
+injected.js:27 🔍 Found local wallet connections: Array(0)
+injected.js:27 🔐 [GLOBAL RENEWAL] Handler initialized
+injected.js:27 🔍 SessionManager.getSession() returning: Object
+injected.js:27 🔍 SessionManager.getSession() returning: Object
+injected.js:27 🔍 SessionManager.getSession() returning: Object
+injected.js:27 🔍 SessionManager.getSession() returning: Object
+injected.js:27 🔍 SessionManager.getSession() returning: Object
+injected.js:27 🔍 Found local wallet connections: Array(0)
+injected.js:27 🔍 SessionManager: checkSession() called - current sessionData: true
+injected.js:27 🌐 SessionManager: Making Riddle wallet session request to /api/riddle-wallet/session
+injected.js:27 ✅ SessionManager: Valid session for riddlbroker
+injected.js:27 ✅ SessionManager: Updated session data: Object
+injected.js:27 🔍 SessionManager.getSession() returning: Object
+injected.js:27 🔍 SessionManager.getSession() returning: Object
+injected.js:27 🔍 SessionManager.getSession() returning: Object
+injected.js:27 🔍 SessionManager.getSession() returning: Object
+injected.js:27 🔍 SessionManager.getSession() returning: Object
+injected.js:27 🔔 SessionManager: Notified 5 listeners
+injected.js:27 🔍 SessionManager.getSession() returning: Object
+injected.js:27 🔍 SessionManager.getSession() returning: Object
+injected.js:27 🔍 SessionManager.getSession() returning: Object
+injected.js:27 🔍 SessionManager.getSession() returning: Object
+injected.js:27 🔍 Found local wallet connections: Array(0)
+injected.js:27 🔍 SessionManager.getSession() returning: Object
+injected.js:27 🔍 SessionManager.getSession() returning: Object
+injected.js:27 🔍 SessionManager.getSession() returning: Object
+injected.js:27 🔍 Found local wallet connections: Array(0)
+injected.js:27 🔍 SessionManager.getSession() returning: Object
+injected.js:27 🔍 SessionManager.getSession() returning: Object
+injected.js:27 🔍 SessionManager.getSession() returning: Object
+injected.js:27 🔍 SessionManager.getSession() returning: Object
+injected.js:27 🔍 Found local wallet connections: Array(0)
+injected.js:27 🔍 SessionManager: checkSession() called - current sessionData: true
+injected.js:27 🌐 SessionManager: Making Riddle wallet session request to /api/riddle-wallet/session
+injected.js:27 🔍 SessionManager.getSession() returning: Object
+injected.js:27 🔍 SessionManager.getSession() returning: Object
+injected.js:27 🔍 SessionManager.getSession() returning: Object
+injected.js:27 🔍 SessionManager.getSession() returning: Object
+injected.js:27 🔍 Found local wallet connections: Array(0)
+injected.js:27 ✅ SessionManager: Valid session for riddlbroker
+injected.js:27 ✅ SessionManager: Updated session data: Object
+injected.js:27 🔍 SessionManager.getSession() returning: Object
+injected.js:27 🔍 SessionManager.getSession() returning: Object
+injected.js:27 🔍 SessionManager.getSession() returning: Object
+injected.js:27 🔍 SessionManager.getSession() returning: Object
+injected.js:27 🔍 SessionManager.getSession() returning: Object
+injected.js:27 🔔 SessionManager: Notified 5 listeners
+injected.js:27 🔍 SessionManager.getSession() returning: Object
+injected.js:27 🔍 SessionManager.getSession() returning: Object
+injected.js:27 🔍 SessionManager.getSession() returning: Object
+injected.js:27 🔍 SessionManager.getSession() returning: Object
+injected.js:27 🔍 Found local wallet connections: Array(0)
+injected.js:27 🗺️ Router: Router component is rendering
+injected.js:27 📍 Router: Current location: /gaming
+injected.js:27 🔍 SessionManager.getSession() returning: Object
+injected.js:27 🔍 SessionManager.getSession() returning: Object
+injected.js:27 🔍 SessionManager.getSession() returning: Object
+injected.js:27 🔍 Found local wallet connections: Array(0)
+2injected.js:27 🔍 getQueryFn - SessionManager sessionToken: FOUND
+301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/api/battles/leaderboard?limit=5:1  Failed to load resource: the server responded with a status of 404 (Not Found)
+injected.js:27 🔍 SessionManager.getSession() returning: Object
+injected.js:27 🔍 SessionManager.getSession() returning: Object
+injected.js:27 🔍 SessionManager.getSession() returning: Object
+injected.js:27 🔍 Found local wallet connections: Array(0)
+injected.js:27 🗺️ Router: Router component is rendering
+injected.js:27 📍 Router: Current location: /inquisition-gaming-v2
+injected.js:27 🔍 SessionManager.getSession() returning: Object
+injected.js:27 🔍 SessionManager.getSession() returning: Object
+injected.js:27 🔍 SessionManager.getSession() returning: Object
+injected.js:27 🔍 Found local wallet connections: Array(0)
+injected.js:27 🔍 SessionManager.getSession() returning: Object
+injected.js:27 🔍 SessionManager: checkSession() called - current sessionData: true
+injected.js:27 🌐 SessionManager: Making Riddle wallet session request to /api/riddle-wallet/session
+injected.js:27 🔍 getQueryFn - SessionManager sessionToken: FOUND
+injected.js:27 🔍 [PROFILE QUERY] State: Object
+injected.js:27 ❌ [PROFILE DATA] No data loaded - profileDataResponse is undefined/null
+5injected.js:27 🔍 getQueryFn - SessionManager sessionToken: FOUND
+injected.js:27 ✅ SessionManager: Valid session for riddlbroker
+injected.js:27 ✅ SessionManager: Updated session data: Object
+injected.js:27 🔍 SessionManager.getSession() returning: Object
+injected.js:27 🔍 SessionManager.getSession() returning: Object
+injected.js:27 🔍 SessionManager.getSession() returning: Object
+injected.js:27 🔍 SessionManager.getSession() returning: Object
+injected.js:27 🔍 SessionManager.getSession() returning: Object
+injected.js:27 🔔 SessionManager: Notified 5 listeners
+injected.js:27 🔍 SessionManager.getSession() returning: Object
+injected.js:27 🔍 SessionManager.getSession() returning: Object
+injected.js:27 🔍 SessionManager.getSession() returning: Object
+injected.js:27 🔍 Found local wallet connections: Array(0)
+injected.js:27 🔍 SessionManager.getSession() returning: Object
+injected.js:27 🔍 SessionManager.getSession() returning: Object
+injected.js:27 🔍 SessionManager.getSession() returning: Object
+injected.js:27 🔍 SessionManager.getSession() returning: Object
+injected.js:27 🔍 SessionManager.getSession() returning: Object
+injected.js:27 🔍 SessionManager.getSession() returning: Object
+injected.js:27 🔍 [PROFILE QUERY] State: Object
+injected.js:27 📊 [PROFILE DATA] Loaded: Object
+injected.js:27 🔍 SessionManager.getSession() returning: Object
+injected.js:27 🔍 SessionManager.getSession() returning: Object
+injected.js:27 🔍 SessionManager.getSession() returning: Object
+injected.js:27 🔍 SessionManager.getSession() returning: Object
+injected.js:27 🔍 SessionManager.getSession() returning: Object
+injected.js:27 🔍 SessionManager.getSession() returning: Object
+injected.js:27 🔍 SessionManager.getSession() returning: Object
+injected.js:27 🔍 SessionManager.getSession() returning: Object
+injected.js:27 🔍 SessionManager.getSession() returning: Object
+injected.js:27 🔍 SessionManager.getSession() returning: Object
+injected.js:27 🔍 SessionManager.getSession() returning: Object
+injected.js:27 🔍 SessionManager.getSession() returning: Object
+injected.js:27 🔍 getQueryFn - SessionManager sessionToken: FOUND
+injected.js:27 🔍 SessionManager.getSession() returning: Object
+injected.js:27 🔍 getQueryFn - SessionManager sessionToken: FOUND
+injected.js:27 🔍 SessionManager.getSession() returning: Object
+injected.js:27 🔍 SessionManager.getSession() returning: Object
+injected.js:27 🔍 SessionManager.getSession() returning: Object
+301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/api/squadrons/create:1  Failed to load resource: the server responded with a status of 500 (Internal Server Error)
+injected.js:27 🔍 SessionManager.getSession() returning: Object
+301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/api/squadrons/create:1  Failed to load resource: the server responded with a status of 500 (Internal Server Error)
+injected.js:27 Squadron creation error: Error: Failed to create squadron
+    at Object.mutationFn (inquisition-gaming-v2.tsx:778:31)
+(anonymous) @ injected.js:27
+injected.js:27 🔍 SessionManager.getSession() returning: Object
+injected.js:27 🔍 SessionManager.getSession() returning: Object
+injected.js:27 🔍 SessionManager.getSession() returning: Object
+injected.js:27 🔍 Found local wallet connections: Array(0)
+injected.js:27 🔍 SessionManager.getSession() returning: Object

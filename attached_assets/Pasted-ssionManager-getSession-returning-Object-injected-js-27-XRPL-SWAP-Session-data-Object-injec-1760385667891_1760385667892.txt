@@ -1,0 +1,58 @@
+ssionManager.getSession() returning: Object
+injected.js:27 🔍 [XRPL SWAP] Session data: Object
+injected.js:27 🔍 [XRPL SWAP] XRP Address: rEVrTKUKSLx5nxdfV8SAFTxS9FGFrfHRLo
+injected.js:27 ✅ Saved Xaman wallet to database: rBx47MccxxDNVPs2bRw7y5m2CMEMyxWLTW
+injected.js:27 💾 Saving to database: xaman on xrp with address rBx47MccxxDNVPs2bRw7y5m2CMEMyxWLTW
+injected.js:27 🔍 SessionManager sessionToken: FOUND
+injected.js:27 🔍 SessionManager.getSession() returning: Object
+injected.js:27 ✅ Connected xaman to xrp: rBx47MccxxDNVPs2bRw7y5m2CMEMyxWLTW
+injected.js:27 💾 Saving to database: xaman on xrp with address rBx47MccxxDNVPs2bRw7y5m2CMEMyxWLTW
+injected.js:27 ✅ Connected xaman to xrp: rBx47MccxxDNVPs2bRw7y5m2CMEMyxWLTW
+injected.js:27 🔍 getQueryFn - SessionManager sessionToken: FOUND
+injected.js:27 🔍 SessionManager.getSession() returning: Object
+injected.js:27 ✅ Successfully saved xaman wallet to database (unverified)
+injected.js:27 ✅ [XRPL SWAP] Loaded tokens: 17
+injected.js:27 ✅ Saved Xaman wallet to database: rBx47MccxxDNVPs2bRw7y5m2CMEMyxWLTW
+injected.js:27 💾 Saving to database: xaman on xrp with address rBx47MccxxDNVPs2bRw7y5m2CMEMyxWLTW
+injected.js:27 🔍 SessionManager sessionToken: FOUND
+injected.js:27 🔍 SessionManager.getSession() returning: Object
+injected.js:27 ✅ Connected xaman to xrp: rBx47MccxxDNVPs2bRw7y5m2CMEMyxWLTW
+injected.js:27 💾 Saving to database: xaman on xrp with address rBx47MccxxDNVPs2bRw7y5m2CMEMyxWLTW
+injected.js:27 ✅ Connected xaman to xrp: rBx47MccxxDNVPs2bRw7y5m2CMEMyxWLTW
+injected.js:27 🔍 getQueryFn - SessionManager sessionToken: FOUND
+injected.js:27 🔍 SessionManager.getSession() returning: Object
+injected.js:27 ✅ Successfully saved xaman wallet to database (unverified)
+injected.js:27 ✅ Saved Xaman wallet to database: rBx47MccxxDNVPs2bRw7y5m2CMEMyxWLTW
+injected.js:27 💾 Saving to database: xaman on xrp with address rBx47MccxxDNVPs2bRw7y5m2CMEMyxWLTW
+injected.js:27 🔍 SessionManager sessionToken: FOUND
+injected.js:27 🔍 SessionManager.getSession() returning: {isLoggedIn: true, handle: 'dippydoge', hasWalletData: true, hasSessionToken: true, walletDataKeys: Array(7)}
+injected.js:27 ✅ Connected xaman to xrp: rBx47MccxxDNVPs2bRw7y5m2CMEMyxWLTW
+injected.js:27 💾 Saving to database: xaman on xrp with address rBx47MccxxDNVPs2bRw7y5m2CMEMyxWLTW
+injected.js:27 ✅ Connected xaman to xrp: rBx47MccxxDNVPs2bRw7y5m2CMEMyxWLTW
+injected.js:27 🔍 getQueryFn - SessionManager sessionToken: FOUND
+injected.js:27 🔍 SessionManager.getSession() returning: {isLoggedIn: true, handle: 'dippydoge', hasWalletData: true, hasSessionToken: true, walletDataKeys: Array(7)}
+injected.js:27 ✅ Successfully saved xaman wallet to database (unverified)
+injected.js:27 ✅ Saved Xaman wallet to database: rBx47MccxxDNVPs2bRw7y5m2CMEMyxWLTW
+injected.js:27 💾 Saving to database: xaman on xrp with address rBx47MccxxDNVPs2bRw7y5m2CMEMyxWLTW
+injected.js:27 🔍 SessionManager sessionToken: FOUND
+injected.js:27 🔍 SessionManager.getSession() returning: {isLoggedIn: true, handle: 'dippydoge', hasWalletData: true, hasSessionToken: true, walletDataKeys: Array(7)}
+injected.js:27 ✅ Connected xaman to xrp: rBx47MccxxDNVPs2bRw7y5m2CMEMyxWLTW
+injected.js:27 💾 Saving to database: xaman on xrp with address rBx47MccxxDNVPs2bRw7y5m2CMEMyxWLTW
+injected.js:27 ✅ Connected xaman to xrp: rBx47MccxxDNVPs2bRw7y5m2CMEMyxWLTW
+injected.js:27 🔍 getQueryFn - SessionManager sessionToken: FOUND
+injected.js:27 🔍 SessionManager.getSession() returning: {isLoggedIn: true, handle: 'dippydoge', hasWalletData: true, hasSessionToken: true, walletDataKeys: Array(7)}
+injected.js:27 ✅ Successfully saved xaman wallet to database (unverified)
+injected.js:27 ✅ Saved Xaman wallet to database: rBx47MccxxDNVPs2bRw7y5m2CMEMyxWLTW
+injected.js:27 💾 Saving to database: xaman on xrp with address rBx47MccxxDNVPs2bRw7y5m2CMEMyxWLTW
+injected.js:27 🔍 SessionManager sessionToken: FOUND
+injected.js:27 🔍 SessionManager.getSession() returning: {isLoggedIn: true, handle: 'dippydoge', hasWalletData: true, hasSessionToken: true, walletDataKeys: Array(7)}
+injected.js:27 ✅ Connected xaman to xrp: rBx47MccxxDNVPs2bRw7y5m2CMEMyxWLTW
+injected.js:27 💾 Saving to database: xaman on xrp with address rBx47MccxxDNVPs2bRw7y5m2CMEMyxWLTW
+injected.js:27 ✅ Connected xaman to xrp: rBx47MccxxDNVPs2bRw7y5m2CMEMyxWLTW
+injected.js:27 🔍 getQueryFn - SessionManager sessionToken: FOUND
+injected.js:27 🔍 SessionManager.getSession() returning: {isLoggedIn: true, handle: 'dippydoge', hasWalletData: true, hasSessionToken: true, walletDataKeys: Array(7)}
+injected.js:27 ✅ Successfully saved xaman wallet to database (unverified)
+injected.js:27 ✅ Saved Xaman wallet to database: rBx47MccxxDNVPs2bRw7y5m2CMEMyxWLTW
+injected.js:27 💾 Saving to database: xaman on xrp with address rBx47MccxxDNVPs2bRw7y5m2CMEMyxWLTW
+injected.js:27 🔍 SessionManager sessionToken: FOUND
+injected.js:27 🔍 SessionManager.getSession() returning: {isLoggedIn: true, handle: 'dippydoge', hasWalletData: true, hasSessionToken: true, walletDataKeys: Array(7)}

@@ -1,0 +1,100 @@
+ SessionManager.getSession() returning: Object
+Console.js:61 🎯 Set active wallet for evm: riddle-primary
+Console.js:61 🎯 Set active wallet for xrpl: riddle-primary
+Console.js:61 🎯 Set active wallet for solana: riddle-primary
+Console.js:61 🎯 Set active wallet for bitcoin: riddle-primary
+Console.js:61 🔗 Synced Riddle wallet from session
+Console.js:61 🔍 SessionManager.getSession() returning: Object
+Console.js:61 🔍 SessionManager.getSession() returning: Object
+Console.js:61 🔔 SessionManager: Notified 3 listeners
+Console.js:61 🔍 SessionManager.getSession() returning: Object
+Console.js:61 🔍 SessionManager.getSession() returning: Object
+3_app-aa28b5dabeeee651.js:28 If you do not provide children, you must specify an aria-label for accessibility
+(anonymous) @ _app-aa28b5dabeeee651.js:28
+u @ _app-aa28b5dabeeee651.js:1
+(anonymous) @ _app-aa28b5dabeeee651.js:4
+(anonymous) @ _app-aa28b5dabeeee651.js:4
+ld @ framework-e5aca608244dc06c.js:1
+ou @ framework-e5aca608244dc06c.js:1
+i @ framework-e5aca608244dc06c.js:1
+uI @ framework-e5aca608244dc06c.js:1
+uM @ framework-e5aca608244dc06c.js:1
+uS @ framework-e5aca608244dc06c.js:1
+C @ framework-e5aca608244dc06c.js:1
+z @ framework-e5aca608244dc06c.js:1
+E @ inpage.js:166
+_ @ inpage.js:166
+J @ inpage.js:166
+postMessage
+d @ inpage.js:166
+v @ inpage.js:166
+r @ framework-e5aca608244dc06c.js:1
+I @ framework-e5aca608244dc06c.js:1
+t.unstable_scheduleCallback @ framework-e5aca608244dc06c.js:1
+uw @ framework-e5aca608244dc06c.js:1
+uk @ framework-e5aca608244dc06c.js:1
+lH @ framework-e5aca608244dc06c.js:1
+n.forceUpdate @ _app-aa28b5dabeeee651.js:4
+e.setResult @ _app-aa28b5dabeeee651.js:4
+e @ _app-aa28b5dabeeee651.js:4
+v @ _app-aa28b5dabeeee651.js:4
+y @ _app-aa28b5dabeeee651.js:4
+t.next @ _app-aa28b5dabeeee651.js:4
+(anonymous) @ _app-aa28b5dabeeee651.js:1
+n @ _app-aa28b5dabeeee651.js:1
+t.reportResult @ _app-aa28b5dabeeee651.js:1
+next @ _app-aa28b5dabeeee651.js:1
+(anonymous) @ _app-aa28b5dabeeee651.js:1
+n @ _app-aa28b5dabeeee651.js:1
+next @ _app-aa28b5dabeeee651.js:4
+v @ _app-aa28b5dabeeee651.js:4
+y @ _app-aa28b5dabeeee651.js:4
+t.next @ _app-aa28b5dabeeee651.js:4
+(anonymous) @ _app-aa28b5dabeeee651.js:4
+(anonymous) @ _app-aa28b5dabeeee651.js:4
+Promise.then
+g @ _app-aa28b5dabeeee651.js:4
+(anonymous) @ _app-aa28b5dabeeee651.js:4
+e @ _app-aa28b5dabeeee651.js:4
+t.subscribe @ _app-aa28b5dabeeee651.js:4
+complete @ _app-aa28b5dabeeee651.js:4
+t.start @ _app-aa28b5dabeeee651.js:4
+t @ _app-aa28b5dabeeee651.js:4
+e.fetchConcastWithInfo @ _app-aa28b5dabeeee651.js:4
+t.fetch @ _app-aa28b5dabeeee651.js:1
+t.reobserveAsConcast @ _app-aa28b5dabeeee651.js:1
+t.reobserve @ _app-aa28b5dabeeee651.js:1
+m @ _app-aa28b5dabeeee651.js:1
+e.observableQuery.e.listeners.add.oqListener @ _app-aa28b5dabeeee651.js:4
+(anonymous) @ _app-aa28b5dabeeee651.js:4
+e.notify @ _app-aa28b5dabeeee651.js:4
+(anonymous) @ _app-aa28b5dabeeee651.js:4
+e.broadcastQueries @ _app-aa28b5dabeeee651.js:4
+t.updateQuery @ _app-aa28b5dabeeee651.js:1
+next @ _app-aa28b5dabeeee651.js:1
+v @ _app-aa28b5dabeeee651.js:4
+y @ _app-aa28b5dabeeee651.js:4
+t.next @ _app-aa28b5dabeeee651.js:4
+next @ _app-aa28b5dabeeee651.js:4
+v @ _app-aa28b5dabeeee651.js:4
+y @ _app-aa28b5dabeeee651.js:4
+t.next @ _app-aa28b5dabeeee651.js:4
+(anonymous) @ _app-aa28b5dabeeee651.js:1
+n @ _app-aa28b5dabeeee651.js:1
+next @ _app-aa28b5dabeeee651.js:4
+v @ _app-aa28b5dabeeee651.js:4
+y @ _app-aa28b5dabeeee651.js:4
+t.next @ _app-aa28b5dabeeee651.js:4
+onNext @ _app-aa28b5dabeeee651.js:4
+v @ _app-aa28b5dabeeee651.js:4
+y @ _app-aa28b5dabeeee651.js:4
+t.next @ _app-aa28b5dabeeee651.js:4
+next @ _app-aa28b5dabeeee651.js:4
+v @ _app-aa28b5dabeeee651.js:4
+y @ _app-aa28b5dabeeee651.js:4
+t.next @ _app-aa28b5dabeeee651.js:4
+(anonymous) @ _app-aa28b5dabeeee651.js:4
+emit @ _app-aa28b5dabeeee651.js:4
+emit @ _app-aa28b5dabeeee651.js:4
+c.onmessage @ _app-aa28b5dabeeee651.js:4
+3_app-aa28b5dabeeee651.js:28 If you do not provide children, you mus

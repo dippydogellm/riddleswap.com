@@ -1,0 +1,76 @@
+{
+  "id": 548,
+  "name": "Trolls Inquisition Land Plot #548",
+  "description": "A water domain at coordinates (27, 13) in the Trolls Inquisition realm. This 3x sizeable plot contains Fish, Pearls, Trade Routes and offers 11.42% yearly yield. Part of the legendary 1000-plot medieval kingdom where epic battles and alliances are forged.",
+  "image": "https://riddleswap.replit.app/api/nft-images/land-plots/548.png",
+  "external_url": "https://riddleswap.replit.app/nft-gaming-dashboard?plot=548",
+  "attributes": [
+    {
+      "trait_type": "Terrain Type",
+      "value": "water"
+    },
+    {
+      "trait_type": "X Coordinate",
+      "value": 27
+    },
+    {
+      "trait_type": "Y Coordinate",
+      "value": 13
+    },
+    {
+      "trait_type": "Size Multiplier",
+      "value": "3x"
+    },
+    {
+      "trait_type": "Resources Count",
+      "value": 3
+    },
+    {
+      "trait_type": "Primary Resource",
+      "value": "Fish"
+    },
+    {
+      "trait_type": "Rarity Score",
+      "value": 55
+    },
+    {
+      "trait_type": "XRP Price",
+      "value": 107
+    },
+    {
+      "trait_type": "Early Bird Eligible",
+      "value": "No"
+    },
+    {
+      "trait_type": "Yearly Yield (XRP)",
+      "value": 12
+    },
+    {
+      "trait_type": "Yield Percentage",
+      "value": "11.42%"
+    },
+    {
+      "trait_type": "Position Type",
+      "value": "Inner"
+    }
+  ],
+  "properties": {
+    "coordinates": {
+      "x": 27,
+      "y": 13
+    },
+    "terrain_type": "water",
+    "resources": [
+      "Fish",
+      "Pearls",
+      "Trade Routes"
+    ],
+    "size_multiplier": 3,
+    "xrp_price": 107,
+    "rdl_price": 107000,
+    "early_bird_discount": 0,
+    "yearly_yield": 12,
+    "yield_percentage": 11.42,
+    "rarity_score": 55
+  }
+}

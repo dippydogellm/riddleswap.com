@@ -1,0 +1,321 @@
+OverviewBased on your requirements, I'll outline and provide code for a complete NFT launch system on XRPL for riddleswap.com. This includes a structured flow for creating and launching NFT projects (collections), with separation of project details saving, image/metadata uploads, validation/compliance scanning, preview generation, IPFS uploading via Pinata, and finally minting/submitting to the XRPL blockchain. All steps include logging to a database (using MongoDB for persistence).Key Assumptions:Tech Stack: Node.js/Express backend, MongoDB (with Mongoose) for database/logging, Multer for file uploads, Pinata for IPFS pinning.
+User Flow: Admin/creator logs in (assume JWT auth; not implemented here for brevity), creates a project, uploads assets, validates, previews, pins to IPFS, then launches (mints) on XRPL.
+NFT Structure: Each NFT has an image and a JSON metadata file (e.g., {name, description, image: "ipfs://CID/image.png", attributes: [{trait_type: "Strength", value: 10}]}).
+Royalties: Set via TransferFee during minting (e.g., 5%).
+Broker Wallet: Uses the XRPL broker wallet from previous responses for minting.
+Security: Handle auth, validate inputs, store secrets in .env.
+Frontend: Assumed to exist (e.g., React); backend provides APIs for each step.
+Costs: Pinata free tier (1GB storage); XRPL mint ~0.00001 XRP + 2 XRP reserve per NFT.
+
+Install Dependencies:
+
+npm install express mongoose multer xrpl @pinata/sdk dotenv
+
+.env Example:
+
+MONGO_URI=mongodb://localhost:27017/riddleswap
+PINATA_API_KEY=your_pinata_api_key
+PINATA_API_SECRET=your_pinata_api_secret
+BROKER_SEED=your_xrpl_broker_seed
+
+Database Setup (MongoDB)Connect to MongoDB and define schemas for projects and logs.javascript
+
+const mongoose = require('mongoose');
+const dotenv = require('dotenv');
+dotenv.config();
+
+mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
+  .then(() => console.log('MongoDB connected'))
+  .catch(err => console.error(err));
+
+// Project Schema
+const ProjectSchema = new mongoose.Schema({
+  name: { type: String, required: true },
+  description: { type: String, required: true },
+  logo: { type: String }, // URL to logo (uploaded to IPFS or server)
+  taxon: { type: Number, required: true }, // XRPL NFTokenTaxon for collection ID
+  status: { type: String, default: 'draft' }, // draft, validated, pinned, launched
+  creatorId: { type: String, required: true }, // User ID
+  ipfsBaseUri: { type: String }, // After pinning
+  createdAt: { type: Date, default: Date.now }
+});
+const Project = mongoose.model('Project', ProjectSchema);
+
+// Log Schema
+const LogSchema = new mongoose.Schema({
+  projectId: { type: mongoose.Schema.Types.ObjectId, ref: 'Project' },
+  action: { type: String, required: true }, // e.g., 'save_details', 'upload_assets', 'validate', 'preview', 'pin_ipfs', 'mint'
+  status: { type: String, required: true }, // success/fail
+  details: { type: String },
+  timestamp: { type: Date, default: Date.now }
+});
+const Log = mongoose.model('Log', LogSchema);
+
+async function logAction(projectId, action, status, details) {
+  const log = new Log({ projectId, action, status, details });
+  await log.save();
+}
+
+Backend Server SetupExtend your Express app with routes for each step. Include XRPL and Pinata clients.javascript
+
+const express = require('express');
+const multer = require('multer');
+const xrpl = require('xrpl');
+const pinataSDK = require('@pinata/sdk');
+const fs = require('fs');
+const path = require('path');
+const { Project, Log, logAction } = require('./models'); // Your models file
+
+const app = express();
+app.use(express.json());
+
+// Multer for file uploads (store temporarily on server)
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => cb(null, 'uploads/'),
+  filename: (req, file, cb) => cb(null, file.originalname)
+});
+const upload = multer({ storage });
+
+// Pinata Client
+const pinata = new pinataSDK(process.env.PINATA_API_KEY, process.env.PINATA_API_SECRET);
+
+// XRPL Client (mainnet; use testnet for dev)
+const client = new xrpl.Client('wss://s1.ripple.com');
+const BROKER_SEED = process.env.BROKER_SEED;
+const brokerWallet = xrpl.Wallet.fromSeed(BROKER_SEED);
+
+async function start() {
+  await client.connect();
+  console.log('XRPL connected');
+}
+start();
+
+// Create 'uploads' folder if not exists
+if (!fs.existsSync('uploads')) fs.mkdirSync('uploads');
+
+app.listen(3000, () => console.log('Server running'));
+
+Step 1: Save Project Details (Logo, Description, Taxon)API to save initial project info. Upload logo to server (or directly to IPFS). Project becomes available on dashboard (query DB).javascript
+
+app.post('/api/projects', upload.single('logo'), async (req, res) => {
+  try {
+    const { name, description, taxon, creatorId } = req.body;
+    let logoUrl = '';
+    if (req.file) {
+      // Upload logo to Pinata for permanence
+      const readableStream = fs.createReadStream(req.file.path);
+      const options = { pinataMetadata: { name: `${name}-logo` } };
+      const pinResult = await pinata.pinFileToIPFS(readableStream, options);
+      logoUrl = `ipfs://${pinResult.IpfsHash}`;
+      fs.unlinkSync(req.file.path); // Clean up temp file
+    }
+    
+    const project = new Project({ name, description, logo: logoUrl, taxon: parseInt(taxon), creatorId });
+    await project.save();
+    
+    await logAction(project._id, 'save_details', 'success', 'Project details saved');
+    
+    res.json({ projectId: project._id, message: 'Project saved and available on dashboard' });
+  } catch (error) {
+    await logAction(null, 'save_details', 'fail', error.message);
+    res.status(500).json({ error: error.message });
+  }
+});
+
+Frontend: Form with fields for name, desc, taxon, logo file. On success, show in dashboard (GET /api/projects?creatorId=...).
+
+Step 2: Upload Images and JSON FilesAPI to upload multiple images and metadata JSONs (e.g., via zip or multi-file). Store temporarily on server.Use upload.array('files') for multiple files.javascript
+
+app.post('/api/projects/:id/upload-assets', upload.array('files', 100), async (req, res) => { // Max 100 files
+  try {
+    const project = await Project.findById(req.params.id);
+    if (!project) return res.status(404).json({ error: 'Project not found' });
+    
+    // Files are saved to 'uploads/' – e.g., image1.png, metadata1.json
+    // Assume paired: imageN.png and metadataN.json (enforce in frontend)
+    
+    await logAction(project._id, 'upload_assets', 'success', `${req.files.length} files uploaded`);
+    
+    res.json({ message: 'Assets uploaded successfully' });
+  } catch (error) {
+    await logAction(req.params.id, 'upload_assets', 'fail', error.message);
+    res.status(500).json({ error: error.message });
+  }
+});
+
+Frontend: Upload form for images and JSONs (or zip extract on backend). Download both together if needed (e.g., via API GET zip).
+
+Step 3: Scan for Compliance (Validate)API to validate: Check JSON format, image links match (e.g., metadata.image points to uploaded image), traits exist, no invalid content.javascript
+
+app.post('/api/projects/:id/validate', async (req, res) => {
+  try {
+    const project = await Project.findById(req.params.id);
+    if (!project) return res.status(404).json({ error: 'Project not found' });
+    
+    const uploadDir = 'uploads/';
+    const files = fs.readdirSync(uploadDir);
+    const jsonFiles = files.filter(f => f.endsWith('.json'));
+    const imageFiles = files.filter(f => f.endsWith('.png') || f.endsWith('.jpg')); // Add formats as needed
+    
+    if (jsonFiles.length !== imageFiles.length) throw new Error('Mismatched images and metadata');
+    
+    jsonFiles.forEach(jsonFile => {
+      const metadata = JSON.parse(fs.readFileSync(path.join(uploadDir, jsonFile)));
+      if (!metadata.name || !metadata.description || !metadata.image || !metadata.attributes) {
+        throw new Error(`Invalid metadata in ${jsonFile}`);
+      }
+      // Check image link: Assume metadata.image = 'imageN.png' (relative)
+      const expectedImage = metadata.image;
+      if (!imageFiles.includes(expectedImage)) throw new Error(`Image not found for ${jsonFile}`);
+      // Compliance: e.g., traits length >0, no forbidden words
+      if (metadata.attributes.length === 0) throw new Error(`No traits in ${jsonFile}`);
+    });
+    
+    project.status = 'validated';
+    await project.save();
+    
+    await logAction(project._id, 'validate', 'success', 'Assets validated');
+    
+    res.json({ message: 'Validation passed' });
+  } catch (error) {
+    await logAction(req.params.id, 'validate', 'fail', error.message);
+    res.status(500).json({ error: error.message });
+  }
+});
+
+Certify Before Pinata: Call this before Step 5.
+
+Step 4: PreviewAPI to generate previews: Return data for frontend to render NFT cards (image + traits).javascript
+
+app.get('/api/projects/:id/preview', async (req, res) => {
+  try {
+    const project = await Project.findById(req.params.id);
+    if (!project) return res.status(404).json({ error: 'Project not found' });
+    
+    const uploadDir = 'uploads/';
+    const jsonFiles = fs.readdirSync(uploadDir).filter(f => f.endsWith('.json'));
+    const previews = jsonFiles.map(jsonFile => {
+      const metadata = JSON.parse(fs.readFileSync(path.join(uploadDir, jsonFile)));
+      const imagePath = path.join(uploadDir, metadata.image); // Relative image
+      const imageBase64 = fs.readFileSync(imagePath, 'base64'); // For preview
+      return {
+        name: metadata.name,
+        image: `data:image/png;base64,${imageBase64}`, // Inline for preview
+        traits: metadata.attributes
+      };
+    });
+    
+    await logAction(project._id, 'preview', 'success', 'Previews generated');
+    
+    res.json({ previews });
+  } catch (error) {
+    await logAction(req.params.id, 'preview', 'fail', error.message);
+    res.status(500).json({ error: error.message });
+  }
+});
+
+Frontend: Display cards with image, name, traits list. Approve to proceed.
+
+Step 5: Upload to IPFS (Get URIs)API to pin all assets to Pinata. First pin images, update metadata with IPFS CIDs, then pin metadata.javascript
+
+app.post('/api/projects/:id/pin-ipfs', async (req, res) => {
+  try {
+    const project = await Project.findById(req.params.id);
+    if (!project) return res.status(404).json({ error: 'Project not found' });
+    if (project.status !== 'validated') throw new Error('Validate first');
+    
+    const uploadDir = 'uploads/';
+    const files = fs.readdirSync(uploadDir);
+    const imageFiles = files.filter(f => f.endsWith('.png') || f.endsWith('.jpg'));
+    const jsonFiles = files.filter(f => f.endsWith('.json'));
+    
+    // Pin images first, get CIDs
+    const imageCids = {};
+    for (const img of imageFiles) {
+      const stream = fs.createReadStream(path.join(uploadDir, img));
+      const pinResult = await pinata.pinFileToIPFS(stream, { pinataMetadata: { name: img } });
+      imageCids[img] = pinResult.IpfsHash;
+    }
+    
+    // Update and pin metadata with IPFS image links
+    const metadataUris = [];
+    for (const json of jsonFiles) {
+      let metadata = JSON.parse(fs.readFileSync(path.join(uploadDir, json)));
+      const imgCid = imageCids[metadata.image];
+      metadata.image = `ipfs://${imgCid}`; // Update to IPFS
+      const pinResult = await pinata.pinJSONToIPFS(metadata, { pinataMetadata: { name: json } });
+      metadataUris.push(`ipfs://${pinResult.IpfsHash}`);
+    }
+    
+    // Optional: Pin entire directory for base URI
+    // const dirPin = await pinata.pinFromFS(uploadDir, { pinataMetadata: { name: project.name } });
+    // project.ipfsBaseUri = `ipfs://${dirPin.IpfsHash}/`;
+    
+    project.ipfsBaseUri = metadataUris[0]; // Or store array if multiple
+    project.status = 'pinned';
+    await project.save();
+    
+    // Clean up temp files
+    files.forEach(f => fs.unlinkSync(path.join(uploadDir, f)));
+    
+    await logAction(project._id, 'pin_ipfs', 'success', `Pinned to IPFS: ${metadataUris.length} NFTs`);
+    
+    res.json({ uris: metadataUris, message: 'Pinned to IPFS' });
+  } catch (error) {
+    await logAction(req.params.id, 'pin_ipfs', 'fail', error.message);
+    res.status(500).json({ error: error.message });
+  }
+});
+
+Step 6: Launch (Mint on XRPL Blockchain)API to mint NFTs using IPFS URIs. Submit to blockchain, update status.javascript
+
+app.post('/api/projects/:id/launch', async (req, res) => {
+  try {
+    const { transferFee } = req.body; // e.g., 500 for 5%
+    const project = await Project.findById(req.params.id);
+    if (!project) return res.status(404).json({ error: 'Project not found' });
+    if (project.status !== 'pinned') throw new Error('Pin to IPFS first');
+    
+    // Assume metadataUris fetched from DB or previous (for simplicity, mock array)
+    const metadataUris = ['ipfs://cid1', 'ipfs://cid2']; // Retrieve from project or DB
+    
+    const nftIds = [];
+    for (const uri of metadataUris) {
+      const tx = await client.autofill({
+        TransactionType: 'NFTokenMint',
+        Account: brokerWallet.classicAddress,
+        URI: xrpl.convertStringToHex(uri),
+        Flags: 8, // Transferable
+        NFTokenTaxon: project.taxon,
+        TransferFee: transferFee || 500
+      });
+      const signed = brokerWallet.sign(tx);
+      const result = await client.submitAndWait(signed.tx_blob);
+      nftIds.push(result.result.meta.nftoken_id);
+    }
+    
+    project.status = 'launched';
+    await project.save();
+    
+    await logAction(project._id, 'mint', 'success', `Minted ${nftIds.length} NFTs`);
+    
+    res.json({ nftIds, message: 'NFTs launched on XRPL' });
+  } catch (error) {
+    await logAction(req.params.id, 'mint', 'fail', error.message);
+    res.status(500).json({ error: error.message });
+  }
+});
+
+Full Flow on riddleswap.comCreator saves project details/logo → Visible on dashboard.
+Uploads images/JSONs (together or separate).
+Validates compliance (links, format).
+Previews full NFT cards with traits.
+Pins to IPFS (certifies before sending).
+Launches: Mints on XRPL, logs everything.
+
+Dashboard: GET /api/projects to list, show status/logs.
+Testing: Use Testnet, mock uploads.
+Extensions: Add user auth (Passport.js), zip handling (adm-zip), more validation (e.g., image size <5MB).
+
+If you need frontend code, specific tweaks, or integration help, provide more details!
+

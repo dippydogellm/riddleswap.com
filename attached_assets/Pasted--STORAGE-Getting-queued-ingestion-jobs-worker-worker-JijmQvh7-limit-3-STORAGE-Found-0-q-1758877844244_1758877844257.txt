@@ -1,0 +1,215 @@
+🔍 [STORAGE] Getting queued ingestion jobs (worker: worker-JijmQvh7, limit: 3)
+✅ [STORAGE] Found 0 queued ingestion jobs
+🔓 [WALLET LOGIN] Login endpoint called - this should be public
+🔐 [WALLET LOGIN] Login attempt for handle: dippydoge
+🔍 [WALLET LOGIN] Request IP: 10.83.5.20
+🔍 [WALLET LOGIN] User Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36
+🔍 Looking up wallet in database...
+✅ Wallet found, verifying password...
+🔐 Standard authentication for all users
+🔓 Decrypting and caching ACTUAL private keys for secure server session...
+🔧 [BTC KEY] Converted byte array to hex format for Bitcoin compatibility
+✅ [LOGIN CACHE] Private keys cached securely server-side
+🔐 [LOGIN CACHE] Keys remain in server memory for session duration
+📦 Session backed up to database for deployment persistence
+✅ [LOGIN CACHE] Session created with private keys cached securely
+💾 [LOGIN CACHE] Keys cached in server memory for immediate transaction signing
+🔐 [WALLET SESSION] Session check endpoint accessed
+🔐 [WALLET SESSION] Session check endpoint accessed
+🔍 [SESSION ID] Using bearer token session: 2uh8o9min2cmg0mfx28
+✅ WALLET CSP exception applied for: /api/external-wallets/list (Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWeb...)
+🔐 [MIDDLEWARE] sessionAuth called for: GET /auto-detect-projects
+🔍 [MIDDLEWARE] Auth header present: true
+🔑 [MIDDLEWARE] Session token extracted: 2uh8o9min2...
+✅ [MIDDLEWARE] Direct Riddle Wallet session validated: dippydoge
+✅ [MIDDLEWARE] Session populated with cached private keys for swaps
+🔍 Auto-detecting projects for wallets: rEVrTKUKSLx5nxdfV8SAFTxS9FGFrfHRLo
+🔐 [MIDDLEWARE] sessionAuth called for: GET /xrp/balance/rEVrTKUKSLx5nxdfV8SAFTxS9FGFrfHRLo
+🔍 [MIDDLEWARE] Auth header present: true
+🔑 [MIDDLEWARE] Session token extracted: 2uh8o9min2...
+✅ [MIDDLEWARE] Direct Riddle Wallet session validated: dippydoge
+✅ [MIDDLEWARE] Session populated with cached private keys for swaps
+🔍 [XRP] Getting balance for: rEVrTKUKSLx5nxdfV8SAFTxS9FGFrfHRLo
+📋 [LINKED WALLETS] Found 0 linked wallets for 2uh8o9min2cmg0mfx28
+🔐 [MIDDLEWARE] sessionAuth called for: GET /eth/balance/0xC710c941362C40f1C1bDDB4485c8134AB505541F
+🔍 [MIDDLEWARE] Auth header present: true
+🔑 [MIDDLEWARE] Session token extracted: 2uh8o9min2...
+✅ [MIDDLEWARE] Direct Riddle Wallet session validated: dippydoge
+✅ [MIDDLEWARE] Session populated with cached private keys for swaps
+🔐 [MIDDLEWARE] sessionAuth called for: GET /eth/balance/0xC710c941362C40f1C1bDDB4485c8134AB505541F
+✅ [MIDDLEWARE] User already authenticated: dippydoge
+🔍 [ETH] Getting balance for: 0xC710c941362C40f1C1bDDB4485c8134AB505541F
+🔐 [MIDDLEWARE] sessionAuth called for: GET /arbitrum/balance/0xC710c941362C40f1C1bDDB4485c8134AB505541F
+🔍 [MIDDLEWARE] Auth header present: true
+🔑 [MIDDLEWARE] Session token extracted: 2uh8o9min2...
+✅ [MIDDLEWARE] Direct Riddle Wallet session validated: dippydoge
+✅ [MIDDLEWARE] Session populated with cached private keys for swaps
+🔐 [MIDDLEWARE] sessionAuth called for: GET /arbitrum/balance/0xC710c941362C40f1C1bDDB4485c8134AB505541F
+✅ [MIDDLEWARE] User already authenticated: dippydoge
+🔐 [MIDDLEWARE] sessionAuth called for: GET /arbitrum/balance/0xC710c941362C40f1C1bDDB4485c8134AB505541F
+✅ [MIDDLEWARE] User already authenticated: dippydoge
+🔍 [ARBITRUM] Getting balance for: 0xC710c941362C40f1C1bDDB4485c8134AB505541F
+💰 [ARBITRUM] Balance: 0.000000 ETH
+📊 [XRPL] Live server reserves: Base=1 XRP, Owner=0.2 XRP
+💰 [XRP] REAL Balance: Total=6.039418, Reserved=5.000000, Available=1.039418
+✅ [ETH] Balance from https://eth.llamarpc.com: 0.001436 ETH
+💰 [ETH] Final balance: 0.001436 ETH
+📝 [EXTERNAL WALLETS] Found 0 wallets for user 2uh8o9min2cmg0mfx28 (session: 2uh8o9min2cmg0mfx28)
+✅ Found 0 linked projects
+🔐 [MIDDLEWARE] sessionAuth called for: GET /optimism/balance/0xC710c941362C40f1C1bDDB4485c8134AB505541F
+🔍 [MIDDLEWARE] Auth header present: true
+🔑 [MIDDLEWARE] Session token extracted: 2uh8o9min2...
+✅ [MIDDLEWARE] Direct Riddle Wallet session validated: dippydoge
+✅ [MIDDLEWARE] Session populated with cached private keys for swaps
+🔐 [MIDDLEWARE] sessionAuth called for: GET /optimism/balance/0xC710c941362C40f1C1bDDB4485c8134AB505541F
+✅ [MIDDLEWARE] User already authenticated: dippydoge
+🔐 [MIDDLEWARE] sessionAuth called for: GET /optimism/balance/0xC710c941362C40f1C1bDDB4485c8134AB505541F
+✅ [MIDDLEWARE] User already authenticated: dippydoge
+🔐 [MIDDLEWARE] sessionAuth called for: GET /optimism/balance/0xC710c941362C40f1C1bDDB4485c8134AB505541F
+✅ [MIDDLEWARE] User already authenticated: dippydoge
+🔐 [MIDDLEWARE] sessionAuth called for: GET /optimism/balance/0xC710c941362C40f1C1bDDB4485c8134AB505541F
+✅ [MIDDLEWARE] User already authenticated: dippydoge
+🔐 [MIDDLEWARE] sessionAuth called for: GET /optimism/balance/0xC710c941362C40f1C1bDDB4485c8134AB505541F
+✅ [MIDDLEWARE] User already authenticated: dippydoge
+🔍 [OPTIMISM] Getting balance for: 0xC710c941362C40f1C1bDDB4485c8134AB505541F
+💲 [ETH] USD value: $5.66 (ETH price: $3938.42)
+💲 [XRP] Using live price: $2.76 per XRP
+🔐 [MIDDLEWARE] sessionAuth called for: GET /base/balance/0xC710c941362C40f1C1bDDB4485c8134AB505541F
+🔍 [MIDDLEWARE] Auth header present: true
+🔑 [MIDDLEWARE] Session token extracted: 2uh8o9min2...
+🔐 [MIDDLEWARE] sessionAuth called for: GET /polygon/balance/0xC710c941362C40f1C1bDDB4485c8134AB505541F
+🔍 [MIDDLEWARE] Auth header present: true
+🔑 [MIDDLEWARE] Session token extracted: 2uh8o9min2...
+✅ [MIDDLEWARE] Direct Riddle Wallet session validated: dippydoge
+✅ [MIDDLEWARE] Session populated with cached private keys for swaps
+🔐 [MIDDLEWARE] sessionAuth called for: GET /base/balance/0xC710c941362C40f1C1bDDB4485c8134AB505541F
+✅ [MIDDLEWARE] User already authenticated: dippydoge
+🔐 [MIDDLEWARE] sessionAuth called for: GET /base/balance/0xC710c941362C40f1C1bDDB4485c8134AB505541F
+✅ [MIDDLEWARE] User already authenticated: dippydoge
+🔐 [MIDDLEWARE] sessionAuth called for: GET /base/balance/0xC710c941362C40f1C1bDDB4485c8134AB505541F
+✅ [MIDDLEWARE] User already authenticated: dippydoge
+🔍 [BASE] Getting balance for: 0xC710c941362C40f1C1bDDB4485c8134AB505541F
+✅ [MIDDLEWARE] Direct Riddle Wallet session validated: dippydoge
+✅ [MIDDLEWARE] Session populated with cached private keys for swaps
+🔐 [MIDDLEWARE] sessionAuth called for: GET /polygon/balance/0xC710c941362C40f1C1bDDB4485c8134AB505541F
+✅ [MIDDLEWARE] User already authenticated: dippydoge
+🔐 [MIDDLEWARE] sessionAuth called for: GET /polygon/balance/0xC710c941362C40f1C1bDDB4485c8134AB505541F
+✅ [MIDDLEWARE] User already authenticated: dippydoge
+🔐 [MIDDLEWARE] sessionAuth called for: GET /polygon/balance/0xC710c941362C40f1C1bDDB4485c8134AB505541F
+✅ [MIDDLEWARE] User already authenticated: dippydoge
+🔐 [MIDDLEWARE] sessionAuth called for: GET /polygon/balance/0xC710c941362C40f1C1bDDB4485c8134AB505541F
+✅ [MIDDLEWARE] User already authenticated: dippydoge
+🔍 [POLYGON] Getting balance for: 0xC710c941362C40f1C1bDDB4485c8134AB505541F
+💰 [OPTIMISM] Balance: 0.000000 ETH
+🔐 [MIDDLEWARE] sessionAuth called for: GET /bnb/balance/0xC710c941362C40f1C1bDDB4485c8134AB505541F
+🔍 [MIDDLEWARE] Auth header present: true
+🔑 [MIDDLEWARE] Session token extracted: 2uh8o9min2...
+✅ [MIDDLEWARE] Direct Riddle Wallet session validated: dippydoge
+✅ [MIDDLEWARE] Session populated with cached private keys for swaps
+🔐 [MIDDLEWARE] sessionAuth called for: GET /bnb/balance/0xC710c941362C40f1C1bDDB4485c8134AB505541F
+✅ [MIDDLEWARE] User already authenticated: dippydoge
+🔐 [MIDDLEWARE] sessionAuth called for: GET /bnb/balance/0xC710c941362C40f1C1bDDB4485c8134AB505541F
+✅ [MIDDLEWARE] User already authenticated: dippydoge
+🔐 [MIDDLEWARE] sessionAuth called for: GET /bnb/balance/0xC710c941362C40f1C1bDDB4485c8134AB505541F
+✅ [MIDDLEWARE] User already authenticated: dippydoge
+🔐 [MIDDLEWARE] sessionAuth called for: GET /bnb/balance/0xC710c941362C40f1C1bDDB4485c8134AB505541F
+✅ [MIDDLEWARE] User already authenticated: dippydoge
+🔐 [MIDDLEWARE] sessionAuth called for: GET /bnb/balance/0xC710c941362C40f1C1bDDB4485c8134AB505541F
+✅ [MIDDLEWARE] User already authenticated: dippydoge
+🔐 [MIDDLEWARE] sessionAuth called for: GET /bnb/balance/0xC710c941362C40f1C1bDDB4485c8134AB505541F
+✅ [MIDDLEWARE] User already authenticated: dippydoge
+🔐 [MIDDLEWARE] sessionAuth called for: GET /bnb/balance/0xC710c941362C40f1C1bDDB4485c8134AB505541F
+✅ [MIDDLEWARE] User already authenticated: dippydoge
+🔐 [MIDDLEWARE] sessionAuth called for: GET /bnb/balance/0xC710c941362C40f1C1bDDB4485c8134AB505541F
+✅ [MIDDLEWARE] User already authenticated: dippydoge
+🔐 [MIDDLEWARE] sessionAuth called for: GET /bnb/balance/0xC710c941362C40f1C1bDDB4485c8134AB505541F
+✅ [MIDDLEWARE] User already authenticated: dippydoge
+🔐 [MIDDLEWARE] sessionAuth called for: GET /bnb/balance/0xC710c941362C40f1C1bDDB4485c8134AB505541F
+✅ [MIDDLEWARE] User already authenticated: dippydoge
+🔐 [MIDDLEWARE] sessionAuth called for: GET /bnb/balance/0xC710c941362C40f1C1bDDB4485c8134AB505541F
+✅ [MIDDLEWARE] User already authenticated: dippydoge
+🔐 [MIDDLEWARE] sessionAuth called for: GET /bnb/balance/0xC710c941362C40f1C1bDDB4485c8134AB505541F
+✅ [MIDDLEWARE] User already authenticated: dippydoge
+🔐 [MIDDLEWARE] sessionAuth called for: GET /bnb/balance/0xC710c941362C40f1C1bDDB4485c8134AB505541F
+✅ [MIDDLEWARE] User already authenticated: dippydoge
+🔐 [MIDDLEWARE] sessionAuth called for: GET /bnb/balance/0xC710c941362C40f1C1bDDB4485c8134AB505541F
+✅ [MIDDLEWARE] User already authenticated: dippydoge
+🔐 [MIDDLEWARE] sessionAuth called for: GET /bnb/balance/0xC710c941362C40f1C1bDDB4485c8134AB505541F
+✅ [MIDDLEWARE] User already authenticated: dippydoge
+🔐 [MIDDLEWARE] sessionAuth called for: GET /bnb/balance/0xC710c941362C40f1C1bDDB4485c8134AB505541F
+✅ [MIDDLEWARE] User already authenticated: dippydoge
+🔐 [MIDDLEWARE] sessionAuth called for: GET /bnb/balance/0xC710c941362C40f1C1bDDB4485c8134AB505541F
+✅ [MIDDLEWARE] User already authenticated: dippydoge
+🔐 [MIDDLEWARE] sessionAuth called for: GET /bnb/balance/0xC710c941362C40f1C1bDDB4485c8134AB505541F
+✅ [MIDDLEWARE] User already authenticated: dippydoge
+⚠️ [API 404] Unregistered API route accessed: /api/wallets/bnb/balance/0xC710c941362C40f1C1bDDB4485c8134AB505541F
+🔐 [MIDDLEWARE] sessionAuth called for: GET /sol/balance/AAD2Q1Jw9pcwWDs9WTVeGWFAZmKXu5h5PNikZ9p8QukL
+🔍 [MIDDLEWARE] Auth header present: true
+🔑 [MIDDLEWARE] Session token extracted: 2uh8o9min2...
+✅ [MIDDLEWARE] Direct Riddle Wallet session validated: dippydoge
+✅ [MIDDLEWARE] Session populated with cached private keys for swaps
+🔐 [MIDDLEWARE] sessionAuth called for: GET /sol/balance/AAD2Q1Jw9pcwWDs9WTVeGWFAZmKXu5h5PNikZ9p8QukL
+✅ [MIDDLEWARE] User already authenticated: dippydoge
+🔐 [MIDDLEWARE] sessionAuth called for: GET /sol/balance/AAD2Q1Jw9pcwWDs9WTVeGWFAZmKXu5h5PNikZ9p8QukL
+✅ [MIDDLEWARE] User already authenticated: dippydoge
+🔐 [MIDDLEWARE] sessionAuth called for: GET /sol/balance/AAD2Q1Jw9pcwWDs9WTVeGWFAZmKXu5h5PNikZ9p8QukL
+✅ [MIDDLEWARE] User already authenticated: dippydoge
+🔐 [MIDDLEWARE] sessionAuth called for: GET /sol/balance/AAD2Q1Jw9pcwWDs9WTVeGWFAZmKXu5h5PNikZ9p8QukL
+✅ [MIDDLEWARE] User already authenticated: dippydoge
+🔐 [MIDDLEWARE] sessionAuth called for: GET /sol/balance/AAD2Q1Jw9pcwWDs9WTVeGWFAZmKXu5h5PNikZ9p8QukL
+✅ [MIDDLEWARE] User already authenticated: dippydoge
+🔐 [MIDDLEWARE] sessionAuth called for: GET /sol/balance/AAD2Q1Jw9pcwWDs9WTVeGWFAZmKXu5h5PNikZ9p8QukL
+✅ [MIDDLEWARE] User already authenticated: dippydoge
+🔍 [SOL] Getting balance for: AAD2Q1Jw9pcwWDs9WTVeGWFAZmKXu5h5PNikZ9p8QukL
+🔐 [MIDDLEWARE] sessionAuth called for: GET /btc/balance/1Cy5Cdji1TSDwLpoepgbJtYtdzZBRUD7sq
+🔍 [MIDDLEWARE] Auth header present: true
+🔑 [MIDDLEWARE] Session token extracted: 2uh8o9min2...
+✅ [MIDDLEWARE] Direct Riddle Wallet session validated: dippydoge
+✅ [MIDDLEWARE] Session populated with cached private keys for swaps
+🔐 [MIDDLEWARE] sessionAuth called for: GET /btc/balance/1Cy5Cdji1TSDwLpoepgbJtYtdzZBRUD7sq
+✅ [MIDDLEWARE] User already authenticated: dippydoge
+🔐 [MIDDLEWARE] sessionAuth called for: GET /btc/balance/1Cy5Cdji1TSDwLpoepgbJtYtdzZBRUD7sq
+✅ [MIDDLEWARE] User already authenticated: dippydoge
+🔐 [MIDDLEWARE] sessionAuth called for: GET /btc/balance/1Cy5Cdji1TSDwLpoepgbJtYtdzZBRUD7sq
+✅ [MIDDLEWARE] User already authenticated: dippydoge
+🔐 [MIDDLEWARE] sessionAuth called for: GET /btc/balance/1Cy5Cdji1TSDwLpoepgbJtYtdzZBRUD7sq
+✅ [MIDDLEWARE] User already authenticated: dippydoge
+🔐 [MIDDLEWARE] sessionAuth called for: GET /btc/balance/1Cy5Cdji1TSDwLpoepgbJtYtdzZBRUD7sq
+✅ [MIDDLEWARE] User already authenticated: dippydoge
+🔐 [MIDDLEWARE] sessionAuth called for: GET /btc/balance/1Cy5Cdji1TSDwLpoepgbJtYtdzZBRUD7sq
+✅ [MIDDLEWARE] User already authenticated: dippydoge
+🔐 [MIDDLEWARE] sessionAuth called for: GET /btc/balance/1Cy5Cdji1TSDwLpoepgbJtYtdzZBRUD7sq
+✅ [MIDDLEWARE] User already authenticated: dippydoge
+🔍 [BTC] Getting balance for: 1Cy5Cdji1TSDwLpoepgbJtYtdzZBRUD7sq
+💰 [SOL] Balance: 0.007038 SOL
+💰 [BASE] Balance: 0.000000 ETH
+💰 [BTC] Balance: 0.00027633 BTC
+💰 [POLYGON] Balance: 0.000000 MATIC
+🔐 [WALLET SESSION] Session check endpoint accessed
+🔐 [MIDDLEWARE] sessionAuth called for: GET /rdl-balances
+🔍 [MIDDLEWARE] Auth header present: true
+🔑 [MIDDLEWARE] Session token extracted: 2uh8o9min2...
+✅ [MIDDLEWARE] Direct Riddle Wallet session validated: dippydoge
+✅ [MIDDLEWARE] Session populated with cached private keys for swaps
+🏦 [RDL BANK] Fetching RDL balances for user dippydoge
+💰 [RDL BANK] Current RDL price: $0.0511
+🔍 [RDL] Fetching XRPL RDL balance for rN7n7otQDd6FczFgLdSqtcsAUxDkw6fzRH
+✅ [RDL] XRPL balance: 7798 RDL
+🔍 [RDL] Fetching Solana SRDL balance for A1B2C3D4E5F6G7H8I9J0K1L2M3N4O5P6Q7R8S9T0
+✅ [RDL] Solana balance: 3298 SRDL
+🔍 [RDL] Fetching BNB RDL balance for 0x742d35Cc6634C0532925a3b8D33DD96e11811fb2
+✅ [RDL] BNB balance: 2623 RDL tokens
+🔍 [RDL] Fetching ETH RDL balance for 0x742d35Cc6634C0532925a3b8D33DD96e11811fb2
+✅ [RDL] ETH balance: 6760 RDL tokens
+✅ [RDL BANK] Successfully fetched balances - Total: 0.01 RDL tokens worth $0.00
+🔍 [STORAGE] Getting queued ingestion jobs (worker: worker-JijmQvh7, limit: 3)
+✅ [STORAGE] Found 0 queued ingestion jobs
+9:10:27 AM [vite] Pre-transform error: /home/runner/workspace/client/src/components/first-time-wizard.tsx: Adjacent JSX elements must be wrapped in an enclosing tag. Did you want a JSX fragment <>...</>? (537:16)
+
+  535 |                     </p>
+  536 |                   </div>
+> 537 |                 </div>
+      |                 ^
+  538 |               )}
+  539 |             </div>
+  540 |           </div>

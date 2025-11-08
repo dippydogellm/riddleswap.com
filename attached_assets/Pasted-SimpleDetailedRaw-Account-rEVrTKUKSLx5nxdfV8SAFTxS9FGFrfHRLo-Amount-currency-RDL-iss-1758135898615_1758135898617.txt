@@ -1,0 +1,88 @@
+SimpleDetailedRaw
+{
+Account: "rEVrTKUKSLx5nxdfV8SAFTxS9FGFrfHRLo"
+Amount: {
+currency: "RDL"
+issuer: "r9xvnzUWZJpDu3NA6MKHmKhKJQTRqCRgu9"
+value: "80950.62387"
+}
+Destination: "rEVrTKUKSLx5nxdfV8SAFTxS9FGFrfHRLo"
+Fee: "12"
+Flags: 0
+LastLedgerSequence: 98919200
+Memos: [
+0: {
+Memo: {
+MemoData: "5852502D52444C"
+MemoType: "726964646C652D73776170"
+}
+}
+]
+SendMax: "5000000"
+Sequence: 97911232
+SigningPubKey: "ED356668D54A6073F3BF39C0DECF1326FEAB91E217B83350F8AC85FD3E47BA021..."
+TransactionType: "Payment"
+TxnSignature: "60E98168138F8E4923A7A6CA7B4995BB34F3C088A81079F76140599667E577278..."
+hash: "C7D8B34C4364E1DE26395C169054E6E9070EA92DD6DC20AF46233EFAAEB7F99E"
+DeliverMax: {
+currency: "RDL"
+issuer: "r9xvnzUWZJpDu3NA6MKHmKhKJQTRqCRgu9"
+value: "80950.62387"
+}
+ctid: "C5E5630E003B0000"
+meta: {
+AffectedNodes: [
+0: {
+ModifiedNode: {
+FinalFields: {...}
+LedgerEntryType: "RippleState"
+LedgerIndex: "0BD43D75B384144B779BD4CEAC8FC341537CBE195CA9487662706B6BE254751A"
+PreviousFields: {...}
+PreviousTxnID: "D8AE71C7BF920DECC1B981729F942D8BCEC81F539FA5DB505FA3D459806BC9B7"
+PreviousTxnLgrSeq: 98917802
+}
+}
+1: {
+ModifiedNode: {
+FinalFields: {...}
+LedgerEntryType: "RippleState"
+LedgerIndex: "3FC3547BEF003F231B789D63E09F7AB1685CD9CAD74D625D66E2601069AC777E"
+PreviousFields: {...}
+PreviousTxnID: "2FC5673540F6B11E1B711E29F4CFE838F23F9FDAB69CFD79B87E91D4DC858D33"
+PreviousTxnLgrSeq: 98898741
+}
+}
+2: {
+ModifiedNode: {
+FinalFields: {...}
+LedgerEntryType: "AccountRoot"
+LedgerIndex: "7C5C44B56EF1653FCC12D06F1CC8E29E6EFE613C2AF54B02402C1C41CBA6348A"
+PreviousFields: {...}
+PreviousTxnID: "D8AE71C7BF920DECC1B981729F942D8BCEC81F539FA5DB505FA3D459806BC9B7"
+PreviousTxnLgrSeq: 98917802
+}
+}
+3: {
+ModifiedNode: {
+FinalFields: {...}
+LedgerEntryType: "AccountRoot"
+LedgerIndex: "B5A604F44F951BA79239D5AFB394BB051E216B24A412210306917558BA8B64E5"
+PreviousFields: {...}
+PreviousTxnID: "94A1BAA72C1572C4F7B12E730CA6ED9D1164A3725350EE8EC69A8DA50D1EB110"
+PreviousTxnLgrSeq: 98898742
+}
+}
+]
+TransactionIndex: 59
+TransactionResult: "tesSUCCESS"
+delivered_amount: {
+currency: "RDL"
+issuer: "r9xvnzUWZJpDu3NA6MKHmKhKJQTRqCRgu9"
+value: "80950.62387"
+}
+}
+validated: true
+date: 811450810
+ledger_index: 98919182
+inLedger: 98919182
+}

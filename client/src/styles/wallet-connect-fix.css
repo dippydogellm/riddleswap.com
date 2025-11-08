@@ -1,0 +1,403 @@
+/* Wallet Connect / Reown AppKit Modal Z-Index Fixes */
+/* Ensures wallet connect QR modals appear above mobile menus */
+
+/* AppKit modal overlay and content - highest priority */
+w3m-modal,
+w3m-modal *,
+[data-testid="w3m-modal"],
+.w3m-modal,
+.w3m-overlay,
+.w3m-container {
+  z-index: 999999 !important;
+}
+
+/* WalletConnect modal components */
+.walletconnect-modal__base,
+.walletconnect-modal__mobile__toggle,
+.walletconnect-qrcode__base,
+.walletconnect-connect__buttons__wrapper {
+  z-index: 999999 !important;
+}
+
+/* Reown AppKit specific selectors */
+appkit-modal,
+appkit-modal *,
+[data-testid="appkit-modal"],
+.appkit-modal,
+.appkit-overlay {
+  z-index: 999999 !important;
+}
+
+/* Generic wallet modal selectors */
+.wallet-modal,
+.wallet-connect-modal,
+.qr-code-modal,
+[role="dialog"][aria-label*="wallet"],
+[role="dialog"][aria-label*="connect"],
+[role="dialog"][aria-label*="QR"] {
+  z-index: 999999 !important;
+}
+
+/* Mobile menu adjustments - ensure it doesn't interfere */
+.mobile-menu,
+.mobile-nav,
+[data-mobile-menu],
+.nav-mobile,
+.mobile-menu-overlay,
+.mobile-nav-overlay {
+  z-index: 1000 !important;
+}
+
+/* Hide mobile menu when wallet modal is open */
+body:has(w3m-modal[open]),
+body:has(appkit-modal[open]),
+body:has(.wallet-modal),
+body:has([role="dialog"][aria-label*="wallet"]) {
+  overflow: hidden;
+}
+
+body:has(w3m-modal[open]) .mobile-menu,
+body:has(appkit-modal[open]) .mobile-menu,
+body:has(.wallet-modal) .mobile-menu {
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+/* Header/Navigation z-index control */
+header,
+nav,
+.header,
+.navigation,
+.main-header {
+  z-index: 100 !important;
+}
+
+/* Specific portal containers for modals */
+#portal,
+#modal-root,
+[data-portal],
+[data-radix-portal]:has([data-testid*="wallet"]),
+[data-radix-portal]:has([data-testid*="connect"]) {
+  z-index: 999999 !important;
+}
+
+/* Compact wallet connect buttons */
+.compact-connect-btn {
+  padding: 8px 16px !important;
+  font-size: 14px !important;
+  min-width: 90px !important;
+  height: 36px !important;
+  background: #007BFF !important;
+  color: white !important;
+  border: none !important;
+  border-radius: 6px !important;
+  cursor: pointer !important;
+  font-weight: 500 !important;
+}
+
+.compact-connect-btn:hover {
+  background: #0056B3 !important;
+}
+
+/* AppKit button styling */
+appkit-connect-button {
+  width: 100% !important;
+}
+
+/* Make wallet cards more prominent */
+.wallet-connection-card {
+  border: 2px solid rgba(0, 123, 255, 0.3) !important;
+  transition: border-color 0.3s ease !important;
+}
+
+.wallet-connection-card:hover {
+  border-color: rgba(0, 123, 255, 0.6) !important;
+}
+
+/* Make wallet connection UI more compact */
+.wallet-connections-section {
+  max-height: 400px !important;
+  overflow-y: auto !important;
+}
+
+.wallet-connections-grid {
+  gap: 8px !important;
+  display: grid !important;
+  grid-template-columns: 1fr !important;
+}
+
+/* Compact wallet section header */
+.wallet-section-title {
+  font-size: 16px !important;
+  margin-bottom: 4px !important;
+}
+
+.wallet-section-subtitle {
+  font-size: 13px !important;
+  opacity: 0.7 !important;
+}
+
+.wallet-connection-card {
+  margin-bottom: 16px !important;
+  padding: 16px !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  border-radius: 8px !important;
+  background: rgba(255, 255, 255, 0.05) !important;
+}
+
+.wallet-card-header {
+  margin-bottom: 8px !important;
+}
+
+.wallet-card-info .wallet-name {
+  font-size: 14px !important;
+  font-weight: 500 !important;
+}
+
+.supported-chains {
+  margin-top: 4px !important;
+}
+
+.chain-badge {
+  padding: 2px 6px !important;
+  font-size: 11px !important;
+  border-radius: 3px !important;
+}
+
+/* Bottom popup animation for Reown AppKit */
+w3m-modal {
+  --w3m-z-index: 999999 !important;
+}
+
+appkit-modal {
+  --w3m-z-index: 999999 !important;
+}
+
+/* AppKit modal positioning - center screen */
+w3m-modal,
+appkit-modal {
+  position: fixed !important;
+  top: 50% !important;
+  left: 50% !important;
+  right: auto !important;
+  bottom: auto !important;
+  z-index: 999999 !important;
+  transform: translate(-50%, -50%) scale(0.9) !important;
+  transition: transform 0.3s ease-in-out !important;
+  max-width: 400px !important;
+  width: 90vw !important;
+  border-radius: 12px !important;
+}
+
+w3m-modal[open],
+appkit-modal[open] {
+  transform: translate(-50%, -50%) scale(1) !important;
+}
+
+/* Mobile responsive fixes for wallet modals */
+@media (max-width: 768px) {
+  w3m-modal,
+  appkit-modal,
+  .wallet-modal,
+  .walletconnect-modal__base {
+    z-index: 999999 !important;
+    position: fixed !important;
+    top: 50% !important;
+    left: 50% !important;
+    right: auto !important;
+    bottom: auto !important;
+    transform: translate(-50%, -50%) !important;
+    max-height: 80vh !important;
+    max-width: 95vw !important;
+    width: 95vw !important;
+    border-radius: 12px !important;
+  }
+  
+  /* Modal content positioning - centered on mobile */
+  .wallet-modal .modal-content,
+  .walletconnect-modal__base .modal-content {
+    position: relative !important;
+    max-width: 100% !important;
+    max-height: 90vh !important;
+    border-radius: 12px !important;
+    background: white !important;
+    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.15) !important;
+    margin: 0 auto !important;
+  }
+  
+  /* Compact mobile layout */
+  .wallet-connection-card {
+    margin-bottom: 12px !important;
+    padding: 12px !important;
+  }
+  
+  .wallet-connections-grid {
+    gap: 12px !important;
+  }
+  
+  .compact-connect-btn {
+    padding: 8px 16px !important;
+    font-size: 14px !important;
+    min-width: 90px !important;
+    height: 36px !important;
+  }
+}
+
+/* Enhanced AppKit modal styles for center positioning */
+w3m-modal::part(modal),
+appkit-modal::part(modal) {
+  position: fixed !important;
+  top: 50% !important;
+  left: 50% !important;
+  right: auto !important;
+  bottom: auto !important;
+  transform: translate(-50%, -50%) !important;
+  border-radius: 12px !important;
+  max-height: 80vh !important;
+  max-width: 400px !important;
+  width: 90vw !important;
+  z-index: 999999 !important;
+  animation: centerFadeIn 0.3s ease-out !important;
+}
+
+@keyframes centerFadeIn {
+  from {
+    transform: translate(-50%, -50%) scale(0.9);
+    opacity: 0;
+  }
+  to {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+  }
+}
+
+/* AppKit overlay backdrop */
+w3m-modal::part(overlay),
+appkit-modal::part(overlay) {
+  background: rgba(0, 0, 0, 0.5) !important;
+  backdrop-filter: blur(4px) !important;
+  z-index: 999998 !important;
+}
+
+/* Force AppKit to use bottom positioning */
+w3m-modal,
+appkit-modal {
+  --w3m-accent-color: #007BFF !important;
+  --w3m-background-color: #ffffff !important;
+  --w3m-border-radius: 16px !important;
+}
+
+/* Enhanced Reown Wallet Button Centering and Theme Support */
+.reown-wallet-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 1rem;
+  background: hsl(var(--background));
+  border-radius: 8px;
+  border: 1px solid hsl(var(--border));
+  margin: 0.5rem 0;
+}
+
+/* Enhanced Reown button styling with theme support */
+w3m-button,
+appkit-button {
+  --w3m-accent: hsl(var(--primary)) !important;
+  --w3m-background-color: hsl(var(--background)) !important;
+  --w3m-foreground-color: hsl(var(--foreground)) !important;
+  --w3m-border-color: hsl(var(--border)) !important;
+  --w3m-overlay-background-color: hsl(var(--background) / 0.8) !important;
+  --w3m-z-index: 999999 !important;
+  
+  margin: 0 auto;
+  display: block;
+  min-width: 200px;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+}
+
+/* Dark mode theme variables for Reown */
+[data-theme="dark"] .reown-wallet-container,
+.dark .reown-wallet-container {
+  background: hsl(var(--background));
+  border-color: hsl(var(--border));
+}
+
+[data-theme="dark"] w3m-button,
+.dark w3m-button,
+[data-theme="dark"] appkit-button,
+.dark appkit-button {
+  --w3m-accent: hsl(var(--primary)) !important;
+  --w3m-background-color: hsl(var(--background)) !important;
+  --w3m-foreground-color: hsl(var(--foreground)) !important;
+  --w3m-border-color: hsl(var(--border)) !important;
+  --w3m-overlay-background-color: hsl(var(--background) / 0.9) !important;
+}
+
+/* Override mobile positioning to center */
+@media (max-width: 768px) {
+  .reown-wallet-container {
+    padding: 1.5rem 1rem;
+    margin: 1rem 0;
+  }
+}
+
+/* Ensure AppKit backdrop covers full screen */
+w3m-modal::part(overlay),
+appkit-modal::part(overlay),
+w3m-modal-backdrop,
+appkit-modal-backdrop {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  background: rgba(0, 0, 0, 0.5) !important;
+  backdrop-filter: blur(4px) !important;
+  z-index: 999998 !important;
+}
+
+/* Additional AppKit center positioning overrides */
+w3m-modal[style*="transform"],
+appkit-modal[style*="transform"] {
+  position: fixed !important;
+  top: 50% !important;
+  left: 50% !important;
+  transform: translate(-50%, -50%) !important;
+  bottom: auto !important;
+  right: auto !important;
+  margin: 0 !important;
+}
+
+/* Force center positioning on all AppKit modal variations */
+w3m-modal > *,
+appkit-modal > * {
+  position: relative !important;
+  max-height: 80vh !important;
+  overflow-y: auto !important;
+  border-radius: 12px !important;
+}
+
+/* Override any inline styles that might position at bottom */
+w3m-modal[style*="bottom"],
+appkit-modal[style*="bottom"] {
+  bottom: auto !important;
+  top: 50% !important;
+  left: 50% !important;
+  transform: translate(-50%, -50%) !important;
+}
+
+/* Ensure modal content is properly centered */
+w3m-modal-content,
+appkit-modal-content,
+w3m-modal .modal-content,
+appkit-modal .modal-content {
+  position: relative !important;
+  width: 100% !important;
+  max-width: 400px !important;
+  margin: 0 auto !important;
+  background: white !important;
+  border-radius: 12px !important;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15) !important;
+}

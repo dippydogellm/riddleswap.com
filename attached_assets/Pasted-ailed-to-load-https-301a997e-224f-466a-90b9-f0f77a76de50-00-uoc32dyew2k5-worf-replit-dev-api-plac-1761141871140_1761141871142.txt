@@ -1,0 +1,647 @@
+ailed to load: https://301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/api/placeholder/256/256?text=Fuzzybear%20
+36injected.js:27 Image failed to load: https://bithomp.com/api/v2/nft/rw1R8cfHGMySmbj7gJ1HkiCqTY1xhLGYAs/1/image
+256:1  GET https://301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/api/placeholder/256/256?text=Fuzzybear%20 404 (Not Found)
+Image
+onError @ wallet-profile.tsx:961
+callCallback2 @ chunk-SM3OW2QE.js?v=2a52c0ac:3674
+invokeGuardedCallbackDev @ chunk-SM3OW2QE.js?v=2a52c0ac:3699
+invokeGuardedCallback @ chunk-SM3OW2QE.js?v=2a52c0ac:3733
+invokeGuardedCallbackAndCatchFirstError @ chunk-SM3OW2QE.js?v=2a52c0ac:3736
+executeDispatch @ chunk-SM3OW2QE.js?v=2a52c0ac:7014
+processDispatchQueueItemsInOrder @ chunk-SM3OW2QE.js?v=2a52c0ac:7034
+processDispatchQueue @ chunk-SM3OW2QE.js?v=2a52c0ac:7043
+dispatchEventsForPlugins @ chunk-SM3OW2QE.js?v=2a52c0ac:7051
+(anonymous) @ chunk-SM3OW2QE.js?v=2a52c0ac:7174
+batchedUpdates$1 @ chunk-SM3OW2QE.js?v=2a52c0ac:18913
+batchedUpdates @ chunk-SM3OW2QE.js?v=2a52c0ac:3579
+dispatchEventForPluginEventSystem @ chunk-SM3OW2QE.js?v=2a52c0ac:7173
+dispatchEventWithEnableCapturePhaseSelectiveHydrationWithoutDiscreteEventReplay @ chunk-SM3OW2QE.js?v=2a52c0ac:5478
+dispatchEvent @ chunk-SM3OW2QE.js?v=2a52c0ac:5472
+36injected.js:27 Image failed to load: https://301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/api/placeholder/256/256?text=Fuzzybear%20
+36injected.js:27 Image failed to load: https://bithomp.com/api/v2/nft/rw1R8cfHGMySmbj7gJ1HkiCqTY1xhLGYAs/1/image
+256:1  GET https://301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/api/placeholder/256/256?text=Fuzzybear%20 404 (Not Found)
+Image
+onError @ wallet-profile.tsx:961
+callCallback2 @ chunk-SM3OW2QE.js?v=2a52c0ac:3674
+invokeGuardedCallbackDev @ chunk-SM3OW2QE.js?v=2a52c0ac:3699
+invokeGuardedCallback @ chunk-SM3OW2QE.js?v=2a52c0ac:3733
+invokeGuardedCallbackAndCatchFirstError @ chunk-SM3OW2QE.js?v=2a52c0ac:3736
+executeDispatch @ chunk-SM3OW2QE.js?v=2a52c0ac:7014
+processDispatchQueueItemsInOrder @ chunk-SM3OW2QE.js?v=2a52c0ac:7034
+processDispatchQueue @ chunk-SM3OW2QE.js?v=2a52c0ac:7043
+dispatchEventsForPlugins @ chunk-SM3OW2QE.js?v=2a52c0ac:7051
+(anonymous) @ chunk-SM3OW2QE.js?v=2a52c0ac:7174
+batchedUpdates$1 @ chunk-SM3OW2QE.js?v=2a52c0ac:18913
+batchedUpdates @ chunk-SM3OW2QE.js?v=2a52c0ac:3579
+dispatchEventForPluginEventSystem @ chunk-SM3OW2QE.js?v=2a52c0ac:7173
+dispatchEventWithEnableCapturePhaseSelectiveHydrationWithoutDiscreteEventReplay @ chunk-SM3OW2QE.js?v=2a52c0ac:5478
+dispatchEvent @ chunk-SM3OW2QE.js?v=2a52c0ac:5472
+36injected.js:27 Image failed to load: https://301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/api/placeholder/256/256?text=Fuzzybear%20
+36injected.js:27 Image failed to load: https://bithomp.com/api/v2/nft/rw1R8cfHGMySmbj7gJ1HkiCqTY1xhLGYAs/1/image
+256:1  GET https://301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/api/placeholder/256/256?text=Fuzzybear%20 404 (Not Found)
+Image
+onError @ wallet-profile.tsx:961
+callCallback2 @ chunk-SM3OW2QE.js?v=2a52c0ac:3674
+invokeGuardedCallbackDev @ chunk-SM3OW2QE.js?v=2a52c0ac:3699
+invokeGuardedCallback @ chunk-SM3OW2QE.js?v=2a52c0ac:3733
+invokeGuardedCallbackAndCatchFirstError @ chunk-SM3OW2QE.js?v=2a52c0ac:3736
+executeDispatch @ chunk-SM3OW2QE.js?v=2a52c0ac:7014
+processDispatchQueueItemsInOrder @ chunk-SM3OW2QE.js?v=2a52c0ac:7034
+processDispatchQueue @ chunk-SM3OW2QE.js?v=2a52c0ac:7043
+dispatchEventsForPlugins @ chunk-SM3OW2QE.js?v=2a52c0ac:7051
+(anonymous) @ chunk-SM3OW2QE.js?v=2a52c0ac:7174
+batchedUpdates$1 @ chunk-SM3OW2QE.js?v=2a52c0ac:18913
+batchedUpdates @ chunk-SM3OW2QE.js?v=2a52c0ac:3579
+dispatchEventForPluginEventSystem @ chunk-SM3OW2QE.js?v=2a52c0ac:7173
+dispatchEventWithEnableCapturePhaseSelectiveHydrationWithoutDiscreteEventReplay @ chunk-SM3OW2QE.js?v=2a52c0ac:5478
+dispatchEvent @ chunk-SM3OW2QE.js?v=2a52c0ac:5472
+36injected.js:27 Image failed to load: https://301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/api/placeholder/256/256?text=Fuzzybear%20
+36injected.js:27 Image failed to load: https://bithomp.com/api/v2/nft/rw1R8cfHGMySmbj7gJ1HkiCqTY1xhLGYAs/1/image
+256:1  GET https://301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/api/placeholder/256/256?text=Fuzzybear%20 404 (Not Found)
+Image
+onError @ wallet-profile.tsx:961
+callCallback2 @ chunk-SM3OW2QE.js?v=2a52c0ac:3674
+invokeGuardedCallbackDev @ chunk-SM3OW2QE.js?v=2a52c0ac:3699
+invokeGuardedCallback @ chunk-SM3OW2QE.js?v=2a52c0ac:3733
+invokeGuardedCallbackAndCatchFirstError @ chunk-SM3OW2QE.js?v=2a52c0ac:3736
+executeDispatch @ chunk-SM3OW2QE.js?v=2a52c0ac:7014
+processDispatchQueueItemsInOrder @ chunk-SM3OW2QE.js?v=2a52c0ac:7034
+processDispatchQueue @ chunk-SM3OW2QE.js?v=2a52c0ac:7043
+dispatchEventsForPlugins @ chunk-SM3OW2QE.js?v=2a52c0ac:7051
+(anonymous) @ chunk-SM3OW2QE.js?v=2a52c0ac:7174
+batchedUpdates$1 @ chunk-SM3OW2QE.js?v=2a52c0ac:18913
+batchedUpdates @ chunk-SM3OW2QE.js?v=2a52c0ac:3579
+dispatchEventForPluginEventSystem @ chunk-SM3OW2QE.js?v=2a52c0ac:7173
+dispatchEventWithEnableCapturePhaseSelectiveHydrationWithoutDiscreteEventReplay @ chunk-SM3OW2QE.js?v=2a52c0ac:5478
+dispatchEvent @ chunk-SM3OW2QE.js?v=2a52c0ac:5472
+36injected.js:27 Image failed to load: https://301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/api/placeholder/256/256?text=Fuzzybear%20
+36injected.js:27 Image failed to load: https://bithomp.com/api/v2/nft/rw1R8cfHGMySmbj7gJ1HkiCqTY1xhLGYAs/1/image
+256:1  GET https://301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/api/placeholder/256/256?text=Fuzzybear%20 404 (Not Found)
+Image
+onError @ wallet-profile.tsx:961
+callCallback2 @ chunk-SM3OW2QE.js?v=2a52c0ac:3674
+invokeGuardedCallbackDev @ chunk-SM3OW2QE.js?v=2a52c0ac:3699
+invokeGuardedCallback @ chunk-SM3OW2QE.js?v=2a52c0ac:3733
+invokeGuardedCallbackAndCatchFirstError @ chunk-SM3OW2QE.js?v=2a52c0ac:3736
+executeDispatch @ chunk-SM3OW2QE.js?v=2a52c0ac:7014
+processDispatchQueueItemsInOrder @ chunk-SM3OW2QE.js?v=2a52c0ac:7034
+processDispatchQueue @ chunk-SM3OW2QE.js?v=2a52c0ac:7043
+dispatchEventsForPlugins @ chunk-SM3OW2QE.js?v=2a52c0ac:7051
+(anonymous) @ chunk-SM3OW2QE.js?v=2a52c0ac:7174
+batchedUpdates$1 @ chunk-SM3OW2QE.js?v=2a52c0ac:18913
+batchedUpdates @ chunk-SM3OW2QE.js?v=2a52c0ac:3579
+dispatchEventForPluginEventSystem @ chunk-SM3OW2QE.js?v=2a52c0ac:7173
+dispatchEventWithEnableCapturePhaseSelectiveHydrationWithoutDiscreteEventReplay @ chunk-SM3OW2QE.js?v=2a52c0ac:5478
+dispatchEvent @ chunk-SM3OW2QE.js?v=2a52c0ac:5472
+36injected.js:27 Image failed to load: https://301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/api/placeholder/256/256?text=Fuzzybear%20
+36injected.js:27 Image failed to load: https://bithomp.com/api/v2/nft/rw1R8cfHGMySmbj7gJ1HkiCqTY1xhLGYAs/1/image
+256:1  GET https://301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/api/placeholder/256/256?text=Fuzzybear%20 404 (Not Found)
+Image
+onError @ wallet-profile.tsx:961
+callCallback2 @ chunk-SM3OW2QE.js?v=2a52c0ac:3674
+invokeGuardedCallbackDev @ chunk-SM3OW2QE.js?v=2a52c0ac:3699
+invokeGuardedCallback @ chunk-SM3OW2QE.js?v=2a52c0ac:3733
+invokeGuardedCallbackAndCatchFirstError @ chunk-SM3OW2QE.js?v=2a52c0ac:3736
+executeDispatch @ chunk-SM3OW2QE.js?v=2a52c0ac:7014
+processDispatchQueueItemsInOrder @ chunk-SM3OW2QE.js?v=2a52c0ac:7034
+processDispatchQueue @ chunk-SM3OW2QE.js?v=2a52c0ac:7043
+dispatchEventsForPlugins @ chunk-SM3OW2QE.js?v=2a52c0ac:7051
+(anonymous) @ chunk-SM3OW2QE.js?v=2a52c0ac:7174
+batchedUpdates$1 @ chunk-SM3OW2QE.js?v=2a52c0ac:18913
+batchedUpdates @ chunk-SM3OW2QE.js?v=2a52c0ac:3579
+dispatchEventForPluginEventSystem @ chunk-SM3OW2QE.js?v=2a52c0ac:7173
+dispatchEventWithEnableCapturePhaseSelectiveHydrationWithoutDiscreteEventReplay @ chunk-SM3OW2QE.js?v=2a52c0ac:5478
+dispatchEvent @ chunk-SM3OW2QE.js?v=2a52c0ac:5472
+36injected.js:27 Image failed to load: https://301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/api/placeholder/256/256?text=Fuzzybear%20
+36injected.js:27 Image failed to load: https://bithomp.com/api/v2/nft/rw1R8cfHGMySmbj7gJ1HkiCqTY1xhLGYAs/1/image
+256:1  GET https://301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/api/placeholder/256/256?text=Fuzzybear%20 404 (Not Found)
+Image
+onError @ wallet-profile.tsx:961
+callCallback2 @ chunk-SM3OW2QE.js?v=2a52c0ac:3674
+invokeGuardedCallbackDev @ chunk-SM3OW2QE.js?v=2a52c0ac:3699
+invokeGuardedCallback @ chunk-SM3OW2QE.js?v=2a52c0ac:3733
+invokeGuardedCallbackAndCatchFirstError @ chunk-SM3OW2QE.js?v=2a52c0ac:3736
+executeDispatch @ chunk-SM3OW2QE.js?v=2a52c0ac:7014
+processDispatchQueueItemsInOrder @ chunk-SM3OW2QE.js?v=2a52c0ac:7034
+processDispatchQueue @ chunk-SM3OW2QE.js?v=2a52c0ac:7043
+dispatchEventsForPlugins @ chunk-SM3OW2QE.js?v=2a52c0ac:7051
+(anonymous) @ chunk-SM3OW2QE.js?v=2a52c0ac:7174
+batchedUpdates$1 @ chunk-SM3OW2QE.js?v=2a52c0ac:18913
+batchedUpdates @ chunk-SM3OW2QE.js?v=2a52c0ac:3579
+dispatchEventForPluginEventSystem @ chunk-SM3OW2QE.js?v=2a52c0ac:7173
+dispatchEventWithEnableCapturePhaseSelectiveHydrationWithoutDiscreteEventReplay @ chunk-SM3OW2QE.js?v=2a52c0ac:5478
+dispatchEvent @ chunk-SM3OW2QE.js?v=2a52c0ac:5472
+36injected.js:27 Image failed to load: https://301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/api/placeholder/256/256?text=Fuzzybear%20
+36injected.js:27 Image failed to load: https://bithomp.com/api/v2/nft/rw1R8cfHGMySmbj7gJ1HkiCqTY1xhLGYAs/1/image
+256:1  GET https://301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/api/placeholder/256/256?text=Fuzzybear%20 404 (Not Found)
+Image
+onError @ wallet-profile.tsx:961
+callCallback2 @ chunk-SM3OW2QE.js?v=2a52c0ac:3674
+invokeGuardedCallbackDev @ chunk-SM3OW2QE.js?v=2a52c0ac:3699
+invokeGuardedCallback @ chunk-SM3OW2QE.js?v=2a52c0ac:3733
+invokeGuardedCallbackAndCatchFirstError @ chunk-SM3OW2QE.js?v=2a52c0ac:3736
+executeDispatch @ chunk-SM3OW2QE.js?v=2a52c0ac:7014
+processDispatchQueueItemsInOrder @ chunk-SM3OW2QE.js?v=2a52c0ac:7034
+processDispatchQueue @ chunk-SM3OW2QE.js?v=2a52c0ac:7043
+dispatchEventsForPlugins @ chunk-SM3OW2QE.js?v=2a52c0ac:7051
+(anonymous) @ chunk-SM3OW2QE.js?v=2a52c0ac:7174
+batchedUpdates$1 @ chunk-SM3OW2QE.js?v=2a52c0ac:18913
+batchedUpdates @ chunk-SM3OW2QE.js?v=2a52c0ac:3579
+dispatchEventForPluginEventSystem @ chunk-SM3OW2QE.js?v=2a52c0ac:7173
+dispatchEventWithEnableCapturePhaseSelectiveHydrationWithoutDiscreteEventReplay @ chunk-SM3OW2QE.js?v=2a52c0ac:5478
+dispatchEvent @ chunk-SM3OW2QE.js?v=2a52c0ac:5472
+36injected.js:27 Image failed to load: https://301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/api/placeholder/256/256?text=Fuzzybear%20
+36injected.js:27 Image failed to load: https://bithomp.com/api/v2/nft/rw1R8cfHGMySmbj7gJ1HkiCqTY1xhLGYAs/1/image
+256:1  GET https://301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/api/placeholder/256/256?text=Fuzzybear%20 404 (Not Found)
+Image
+onError @ wallet-profile.tsx:961
+callCallback2 @ chunk-SM3OW2QE.js?v=2a52c0ac:3674
+invokeGuardedCallbackDev @ chunk-SM3OW2QE.js?v=2a52c0ac:3699
+invokeGuardedCallback @ chunk-SM3OW2QE.js?v=2a52c0ac:3733
+invokeGuardedCallbackAndCatchFirstError @ chunk-SM3OW2QE.js?v=2a52c0ac:3736
+executeDispatch @ chunk-SM3OW2QE.js?v=2a52c0ac:7014
+processDispatchQueueItemsInOrder @ chunk-SM3OW2QE.js?v=2a52c0ac:7034
+processDispatchQueue @ chunk-SM3OW2QE.js?v=2a52c0ac:7043
+dispatchEventsForPlugins @ chunk-SM3OW2QE.js?v=2a52c0ac:7051
+(anonymous) @ chunk-SM3OW2QE.js?v=2a52c0ac:7174
+batchedUpdates$1 @ chunk-SM3OW2QE.js?v=2a52c0ac:18913
+batchedUpdates @ chunk-SM3OW2QE.js?v=2a52c0ac:3579
+dispatchEventForPluginEventSystem @ chunk-SM3OW2QE.js?v=2a52c0ac:7173
+dispatchEventWithEnableCapturePhaseSelectiveHydrationWithoutDiscreteEventReplay @ chunk-SM3OW2QE.js?v=2a52c0ac:5478
+dispatchEvent @ chunk-SM3OW2QE.js?v=2a52c0ac:5472
+36injected.js:27 Image failed to load: https://301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/api/placeholder/256/256?text=Fuzzybear%20
+36injected.js:27 Image failed to load: https://bithomp.com/api/v2/nft/rw1R8cfHGMySmbj7gJ1HkiCqTY1xhLGYAs/1/image
+256:1  GET https://301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/api/placeholder/256/256?text=Fuzzybear%20 404 (Not Found)
+Image
+onError @ wallet-profile.tsx:961
+callCallback2 @ chunk-SM3OW2QE.js?v=2a52c0ac:3674
+invokeGuardedCallbackDev @ chunk-SM3OW2QE.js?v=2a52c0ac:3699
+invokeGuardedCallback @ chunk-SM3OW2QE.js?v=2a52c0ac:3733
+invokeGuardedCallbackAndCatchFirstError @ chunk-SM3OW2QE.js?v=2a52c0ac:3736
+executeDispatch @ chunk-SM3OW2QE.js?v=2a52c0ac:7014
+processDispatchQueueItemsInOrder @ chunk-SM3OW2QE.js?v=2a52c0ac:7034
+processDispatchQueue @ chunk-SM3OW2QE.js?v=2a52c0ac:7043
+dispatchEventsForPlugins @ chunk-SM3OW2QE.js?v=2a52c0ac:7051
+(anonymous) @ chunk-SM3OW2QE.js?v=2a52c0ac:7174
+batchedUpdates$1 @ chunk-SM3OW2QE.js?v=2a52c0ac:18913
+batchedUpdates @ chunk-SM3OW2QE.js?v=2a52c0ac:3579
+dispatchEventForPluginEventSystem @ chunk-SM3OW2QE.js?v=2a52c0ac:7173
+dispatchEventWithEnableCapturePhaseSelectiveHydrationWithoutDiscreteEventReplay @ chunk-SM3OW2QE.js?v=2a52c0ac:5478
+dispatchEvent @ chunk-SM3OW2QE.js?v=2a52c0ac:5472
+36injected.js:27 Image failed to load: https://301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/api/placeholder/256/256?text=Fuzzybear%20
+36injected.js:27 Image failed to load: https://bithomp.com/api/v2/nft/rw1R8cfHGMySmbj7gJ1HkiCqTY1xhLGYAs/1/image
+256:1  GET https://301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/api/placeholder/256/256?text=Fuzzybear%20 404 (Not Found)
+Image
+onError @ wallet-profile.tsx:961
+callCallback2 @ chunk-SM3OW2QE.js?v=2a52c0ac:3674
+invokeGuardedCallbackDev @ chunk-SM3OW2QE.js?v=2a52c0ac:3699
+invokeGuardedCallback @ chunk-SM3OW2QE.js?v=2a52c0ac:3733
+invokeGuardedCallbackAndCatchFirstError @ chunk-SM3OW2QE.js?v=2a52c0ac:3736
+executeDispatch @ chunk-SM3OW2QE.js?v=2a52c0ac:7014
+processDispatchQueueItemsInOrder @ chunk-SM3OW2QE.js?v=2a52c0ac:7034
+processDispatchQueue @ chunk-SM3OW2QE.js?v=2a52c0ac:7043
+dispatchEventsForPlugins @ chunk-SM3OW2QE.js?v=2a52c0ac:7051
+(anonymous) @ chunk-SM3OW2QE.js?v=2a52c0ac:7174
+batchedUpdates$1 @ chunk-SM3OW2QE.js?v=2a52c0ac:18913
+batchedUpdates @ chunk-SM3OW2QE.js?v=2a52c0ac:3579
+dispatchEventForPluginEventSystem @ chunk-SM3OW2QE.js?v=2a52c0ac:7173
+dispatchEventWithEnableCapturePhaseSelectiveHydrationWithoutDiscreteEventReplay @ chunk-SM3OW2QE.js?v=2a52c0ac:5478
+dispatchEvent @ chunk-SM3OW2QE.js?v=2a52c0ac:5472
+36injected.js:27 Image failed to load: https://301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/api/placeholder/256/256?text=Fuzzybear%20
+36injected.js:27 Image failed to load: https://bithomp.com/api/v2/nft/rw1R8cfHGMySmbj7gJ1HkiCqTY1xhLGYAs/1/image
+256:1  GET https://301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/api/placeholder/256/256?text=Fuzzybear%20 404 (Not Found)
+Image
+onError @ wallet-profile.tsx:961
+callCallback2 @ chunk-SM3OW2QE.js?v=2a52c0ac:3674
+invokeGuardedCallbackDev @ chunk-SM3OW2QE.js?v=2a52c0ac:3699
+invokeGuardedCallback @ chunk-SM3OW2QE.js?v=2a52c0ac:3733
+invokeGuardedCallbackAndCatchFirstError @ chunk-SM3OW2QE.js?v=2a52c0ac:3736
+executeDispatch @ chunk-SM3OW2QE.js?v=2a52c0ac:7014
+processDispatchQueueItemsInOrder @ chunk-SM3OW2QE.js?v=2a52c0ac:7034
+processDispatchQueue @ chunk-SM3OW2QE.js?v=2a52c0ac:7043
+dispatchEventsForPlugins @ chunk-SM3OW2QE.js?v=2a52c0ac:7051
+(anonymous) @ chunk-SM3OW2QE.js?v=2a52c0ac:7174
+batchedUpdates$1 @ chunk-SM3OW2QE.js?v=2a52c0ac:18913
+batchedUpdates @ chunk-SM3OW2QE.js?v=2a52c0ac:3579
+dispatchEventForPluginEventSystem @ chunk-SM3OW2QE.js?v=2a52c0ac:7173
+dispatchEventWithEnableCapturePhaseSelectiveHydrationWithoutDiscreteEventReplay @ chunk-SM3OW2QE.js?v=2a52c0ac:5478
+dispatchEvent @ chunk-SM3OW2QE.js?v=2a52c0ac:5472
+36injected.js:27 Image failed to load: https://301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/api/placeholder/256/256?text=Fuzzybear%20
+36injected.js:27 Image failed to load: https://bithomp.com/api/v2/nft/rw1R8cfHGMySmbj7gJ1HkiCqTY1xhLGYAs/1/image
+256:1  GET https://301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/api/placeholder/256/256?text=Fuzzybear%20 404 (Not Found)
+Image
+onError @ wallet-profile.tsx:961
+callCallback2 @ chunk-SM3OW2QE.js?v=2a52c0ac:3674
+invokeGuardedCallbackDev @ chunk-SM3OW2QE.js?v=2a52c0ac:3699
+invokeGuardedCallback @ chunk-SM3OW2QE.js?v=2a52c0ac:3733
+invokeGuardedCallbackAndCatchFirstError @ chunk-SM3OW2QE.js?v=2a52c0ac:3736
+executeDispatch @ chunk-SM3OW2QE.js?v=2a52c0ac:7014
+processDispatchQueueItemsInOrder @ chunk-SM3OW2QE.js?v=2a52c0ac:7034
+processDispatchQueue @ chunk-SM3OW2QE.js?v=2a52c0ac:7043
+dispatchEventsForPlugins @ chunk-SM3OW2QE.js?v=2a52c0ac:7051
+(anonymous) @ chunk-SM3OW2QE.js?v=2a52c0ac:7174
+batchedUpdates$1 @ chunk-SM3OW2QE.js?v=2a52c0ac:18913
+batchedUpdates @ chunk-SM3OW2QE.js?v=2a52c0ac:3579
+dispatchEventForPluginEventSystem @ chunk-SM3OW2QE.js?v=2a52c0ac:7173
+dispatchEventWithEnableCapturePhaseSelectiveHydrationWithoutDiscreteEventReplay @ chunk-SM3OW2QE.js?v=2a52c0ac:5478
+dispatchEvent @ chunk-SM3OW2QE.js?v=2a52c0ac:5472
+36injected.js:27 Image failed to load: https://301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/api/placeholder/256/256?text=Fuzzybear%20
+36injected.js:27 Image failed to load: https://bithomp.com/api/v2/nft/rw1R8cfHGMySmbj7gJ1HkiCqTY1xhLGYAs/1/image
+256:1  GET https://301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/api/placeholder/256/256?text=Fuzzybear%20 404 (Not Found)
+Image
+onError @ wallet-profile.tsx:961
+callCallback2 @ chunk-SM3OW2QE.js?v=2a52c0ac:3674
+invokeGuardedCallbackDev @ chunk-SM3OW2QE.js?v=2a52c0ac:3699
+invokeGuardedCallback @ chunk-SM3OW2QE.js?v=2a52c0ac:3733
+invokeGuardedCallbackAndCatchFirstError @ chunk-SM3OW2QE.js?v=2a52c0ac:3736
+executeDispatch @ chunk-SM3OW2QE.js?v=2a52c0ac:7014
+processDispatchQueueItemsInOrder @ chunk-SM3OW2QE.js?v=2a52c0ac:7034
+processDispatchQueue @ chunk-SM3OW2QE.js?v=2a52c0ac:7043
+dispatchEventsForPlugins @ chunk-SM3OW2QE.js?v=2a52c0ac:7051
+(anonymous) @ chunk-SM3OW2QE.js?v=2a52c0ac:7174
+batchedUpdates$1 @ chunk-SM3OW2QE.js?v=2a52c0ac:18913
+batchedUpdates @ chunk-SM3OW2QE.js?v=2a52c0ac:3579
+dispatchEventForPluginEventSystem @ chunk-SM3OW2QE.js?v=2a52c0ac:7173
+dispatchEventWithEnableCapturePhaseSelectiveHydrationWithoutDiscreteEventReplay @ chunk-SM3OW2QE.js?v=2a52c0ac:5478
+dispatchEvent @ chunk-SM3OW2QE.js?v=2a52c0ac:5472
+36injected.js:27 Image failed to load: https://301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/api/placeholder/256/256?text=Fuzzybear%20
+36injected.js:27 Image failed to load: https://bithomp.com/api/v2/nft/rw1R8cfHGMySmbj7gJ1HkiCqTY1xhLGYAs/1/image
+256:1  GET https://301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/api/placeholder/256/256?text=Fuzzybear%20 404 (Not Found)
+Image
+onError @ wallet-profile.tsx:961
+callCallback2 @ chunk-SM3OW2QE.js?v=2a52c0ac:3674
+invokeGuardedCallbackDev @ chunk-SM3OW2QE.js?v=2a52c0ac:3699
+invokeGuardedCallback @ chunk-SM3OW2QE.js?v=2a52c0ac:3733
+invokeGuardedCallbackAndCatchFirstError @ chunk-SM3OW2QE.js?v=2a52c0ac:3736
+executeDispatch @ chunk-SM3OW2QE.js?v=2a52c0ac:7014
+processDispatchQueueItemsInOrder @ chunk-SM3OW2QE.js?v=2a52c0ac:7034
+processDispatchQueue @ chunk-SM3OW2QE.js?v=2a52c0ac:7043
+dispatchEventsForPlugins @ chunk-SM3OW2QE.js?v=2a52c0ac:7051
+(anonymous) @ chunk-SM3OW2QE.js?v=2a52c0ac:7174
+batchedUpdates$1 @ chunk-SM3OW2QE.js?v=2a52c0ac:18913
+batchedUpdates @ chunk-SM3OW2QE.js?v=2a52c0ac:3579
+dispatchEventForPluginEventSystem @ chunk-SM3OW2QE.js?v=2a52c0ac:7173
+dispatchEventWithEnableCapturePhaseSelectiveHydrationWithoutDiscreteEventReplay @ chunk-SM3OW2QE.js?v=2a52c0ac:5478
+dispatchEvent @ chunk-SM3OW2QE.js?v=2a52c0ac:5472
+36injected.js:27 Image failed to load: https://301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/api/placeholder/256/256?text=Fuzzybear%20
+36injected.js:27 Image failed to load: https://bithomp.com/api/v2/nft/rw1R8cfHGMySmbj7gJ1HkiCqTY1xhLGYAs/1/image
+256:1  GET https://301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/api/placeholder/256/256?text=Fuzzybear%20 404 (Not Found)
+Image
+onError @ wallet-profile.tsx:961
+callCallback2 @ chunk-SM3OW2QE.js?v=2a52c0ac:3674
+invokeGuardedCallbackDev @ chunk-SM3OW2QE.js?v=2a52c0ac:3699
+invokeGuardedCallback @ chunk-SM3OW2QE.js?v=2a52c0ac:3733
+invokeGuardedCallbackAndCatchFirstError @ chunk-SM3OW2QE.js?v=2a52c0ac:3736
+executeDispatch @ chunk-SM3OW2QE.js?v=2a52c0ac:7014
+processDispatchQueueItemsInOrder @ chunk-SM3OW2QE.js?v=2a52c0ac:7034
+processDispatchQueue @ chunk-SM3OW2QE.js?v=2a52c0ac:7043
+dispatchEventsForPlugins @ chunk-SM3OW2QE.js?v=2a52c0ac:7051
+(anonymous) @ chunk-SM3OW2QE.js?v=2a52c0ac:7174
+batchedUpdates$1 @ chunk-SM3OW2QE.js?v=2a52c0ac:18913
+batchedUpdates @ chunk-SM3OW2QE.js?v=2a52c0ac:3579
+dispatchEventForPluginEventSystem @ chunk-SM3OW2QE.js?v=2a52c0ac:7173
+dispatchEventWithEnableCapturePhaseSelectiveHydrationWithoutDiscreteEventReplay @ chunk-SM3OW2QE.js?v=2a52c0ac:5478
+dispatchEvent @ chunk-SM3OW2QE.js?v=2a52c0ac:5472
+36injected.js:27 Image failed to load: https://301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/api/placeholder/256/256?text=Fuzzybear%20
+36injected.js:27 Image failed to load: https://bithomp.com/api/v2/nft/rw1R8cfHGMySmbj7gJ1HkiCqTY1xhLGYAs/1/image
+256:1  GET https://301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/api/placeholder/256/256?text=Fuzzybear%20 404 (Not Found)
+Image
+onError @ wallet-profile.tsx:961
+callCallback2 @ chunk-SM3OW2QE.js?v=2a52c0ac:3674
+invokeGuardedCallbackDev @ chunk-SM3OW2QE.js?v=2a52c0ac:3699
+invokeGuardedCallback @ chunk-SM3OW2QE.js?v=2a52c0ac:3733
+invokeGuardedCallbackAndCatchFirstError @ chunk-SM3OW2QE.js?v=2a52c0ac:3736
+executeDispatch @ chunk-SM3OW2QE.js?v=2a52c0ac:7014
+processDispatchQueueItemsInOrder @ chunk-SM3OW2QE.js?v=2a52c0ac:7034
+processDispatchQueue @ chunk-SM3OW2QE.js?v=2a52c0ac:7043
+dispatchEventsForPlugins @ chunk-SM3OW2QE.js?v=2a52c0ac:7051
+(anonymous) @ chunk-SM3OW2QE.js?v=2a52c0ac:7174
+batchedUpdates$1 @ chunk-SM3OW2QE.js?v=2a52c0ac:18913
+batchedUpdates @ chunk-SM3OW2QE.js?v=2a52c0ac:3579
+dispatchEventForPluginEventSystem @ chunk-SM3OW2QE.js?v=2a52c0ac:7173
+dispatchEventWithEnableCapturePhaseSelectiveHydrationWithoutDiscreteEventReplay @ chunk-SM3OW2QE.js?v=2a52c0ac:5478
+dispatchEvent @ chunk-SM3OW2QE.js?v=2a52c0ac:5472
+36injected.js:27 Image failed to load: https://301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/api/placeholder/256/256?text=Fuzzybear%20
+36injected.js:27 Image failed to load: https://bithomp.com/api/v2/nft/rw1R8cfHGMySmbj7gJ1HkiCqTY1xhLGYAs/1/image
+256:1  GET https://301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/api/placeholder/256/256?text=Fuzzybear%20 404 (Not Found)
+Image
+onError @ wallet-profile.tsx:961
+callCallback2 @ chunk-SM3OW2QE.js?v=2a52c0ac:3674
+invokeGuardedCallbackDev @ chunk-SM3OW2QE.js?v=2a52c0ac:3699
+invokeGuardedCallback @ chunk-SM3OW2QE.js?v=2a52c0ac:3733
+invokeGuardedCallbackAndCatchFirstError @ chunk-SM3OW2QE.js?v=2a52c0ac:3736
+executeDispatch @ chunk-SM3OW2QE.js?v=2a52c0ac:7014
+processDispatchQueueItemsInOrder @ chunk-SM3OW2QE.js?v=2a52c0ac:7034
+processDispatchQueue @ chunk-SM3OW2QE.js?v=2a52c0ac:7043
+dispatchEventsForPlugins @ chunk-SM3OW2QE.js?v=2a52c0ac:7051
+(anonymous) @ chunk-SM3OW2QE.js?v=2a52c0ac:7174
+batchedUpdates$1 @ chunk-SM3OW2QE.js?v=2a52c0ac:18913
+batchedUpdates @ chunk-SM3OW2QE.js?v=2a52c0ac:3579
+dispatchEventForPluginEventSystem @ chunk-SM3OW2QE.js?v=2a52c0ac:7173
+dispatchEventWithEnableCapturePhaseSelectiveHydrationWithoutDiscreteEventReplay @ chunk-SM3OW2QE.js?v=2a52c0ac:5478
+dispatchEvent @ chunk-SM3OW2QE.js?v=2a52c0ac:5472
+36injected.js:27 Image failed to load: https://301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/api/placeholder/256/256?text=Fuzzybear%20
+36injected.js:27 Image failed to load: https://bithomp.com/api/v2/nft/rw1R8cfHGMySmbj7gJ1HkiCqTY1xhLGYAs/1/image
+256:1  GET https://301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/api/placeholder/256/256?text=Fuzzybear%20 404 (Not Found)
+Image
+onError @ wallet-profile.tsx:961
+callCallback2 @ chunk-SM3OW2QE.js?v=2a52c0ac:3674
+invokeGuardedCallbackDev @ chunk-SM3OW2QE.js?v=2a52c0ac:3699
+invokeGuardedCallback @ chunk-SM3OW2QE.js?v=2a52c0ac:3733
+invokeGuardedCallbackAndCatchFirstError @ chunk-SM3OW2QE.js?v=2a52c0ac:3736
+executeDispatch @ chunk-SM3OW2QE.js?v=2a52c0ac:7014
+processDispatchQueueItemsInOrder @ chunk-SM3OW2QE.js?v=2a52c0ac:7034
+processDispatchQueue @ chunk-SM3OW2QE.js?v=2a52c0ac:7043
+dispatchEventsForPlugins @ chunk-SM3OW2QE.js?v=2a52c0ac:7051
+(anonymous) @ chunk-SM3OW2QE.js?v=2a52c0ac:7174
+batchedUpdates$1 @ chunk-SM3OW2QE.js?v=2a52c0ac:18913
+batchedUpdates @ chunk-SM3OW2QE.js?v=2a52c0ac:3579
+dispatchEventForPluginEventSystem @ chunk-SM3OW2QE.js?v=2a52c0ac:7173
+dispatchEventWithEnableCapturePhaseSelectiveHydrationWithoutDiscreteEventReplay @ chunk-SM3OW2QE.js?v=2a52c0ac:5478
+dispatchEvent @ chunk-SM3OW2QE.js?v=2a52c0ac:5472
+36injected.js:27 Image failed to load: https://301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/api/placeholder/256/256?text=Fuzzybear%20
+36injected.js:27 Image failed to load: https://bithomp.com/api/v2/nft/rw1R8cfHGMySmbj7gJ1HkiCqTY1xhLGYAs/1/image
+256:1  GET https://301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/api/placeholder/256/256?text=Fuzzybear%20 404 (Not Found)
+Image
+onError @ wallet-profile.tsx:961
+callCallback2 @ chunk-SM3OW2QE.js?v=2a52c0ac:3674
+invokeGuardedCallbackDev @ chunk-SM3OW2QE.js?v=2a52c0ac:3699
+invokeGuardedCallback @ chunk-SM3OW2QE.js?v=2a52c0ac:3733
+invokeGuardedCallbackAndCatchFirstError @ chunk-SM3OW2QE.js?v=2a52c0ac:3736
+executeDispatch @ chunk-SM3OW2QE.js?v=2a52c0ac:7014
+processDispatchQueueItemsInOrder @ chunk-SM3OW2QE.js?v=2a52c0ac:7034
+processDispatchQueue @ chunk-SM3OW2QE.js?v=2a52c0ac:7043
+dispatchEventsForPlugins @ chunk-SM3OW2QE.js?v=2a52c0ac:7051
+(anonymous) @ chunk-SM3OW2QE.js?v=2a52c0ac:7174
+batchedUpdates$1 @ chunk-SM3OW2QE.js?v=2a52c0ac:18913
+batchedUpdates @ chunk-SM3OW2QE.js?v=2a52c0ac:3579
+dispatchEventForPluginEventSystem @ chunk-SM3OW2QE.js?v=2a52c0ac:7173
+dispatchEventWithEnableCapturePhaseSelectiveHydrationWithoutDiscreteEventReplay @ chunk-SM3OW2QE.js?v=2a52c0ac:5478
+dispatchEvent @ chunk-SM3OW2QE.js?v=2a52c0ac:5472
+36injected.js:27 Image failed to load: https://301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/api/placeholder/256/256?text=Fuzzybear%20
+36injected.js:27 Image failed to load: https://bithomp.com/api/v2/nft/rw1R8cfHGMySmbj7gJ1HkiCqTY1xhLGYAs/1/image
+256:1  GET https://301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/api/placeholder/256/256?text=Fuzzybear%20 404 (Not Found)
+Image
+onError @ wallet-profile.tsx:961
+callCallback2 @ chunk-SM3OW2QE.js?v=2a52c0ac:3674
+invokeGuardedCallbackDev @ chunk-SM3OW2QE.js?v=2a52c0ac:3699
+invokeGuardedCallback @ chunk-SM3OW2QE.js?v=2a52c0ac:3733
+invokeGuardedCallbackAndCatchFirstError @ chunk-SM3OW2QE.js?v=2a52c0ac:3736
+executeDispatch @ chunk-SM3OW2QE.js?v=2a52c0ac:7014
+processDispatchQueueItemsInOrder @ chunk-SM3OW2QE.js?v=2a52c0ac:7034
+processDispatchQueue @ chunk-SM3OW2QE.js?v=2a52c0ac:7043
+dispatchEventsForPlugins @ chunk-SM3OW2QE.js?v=2a52c0ac:7051
+(anonymous) @ chunk-SM3OW2QE.js?v=2a52c0ac:7174
+batchedUpdates$1 @ chunk-SM3OW2QE.js?v=2a52c0ac:18913
+batchedUpdates @ chunk-SM3OW2QE.js?v=2a52c0ac:3579
+dispatchEventForPluginEventSystem @ chunk-SM3OW2QE.js?v=2a52c0ac:7173
+dispatchEventWithEnableCapturePhaseSelectiveHydrationWithoutDiscreteEventReplay @ chunk-SM3OW2QE.js?v=2a52c0ac:5478
+dispatchEvent @ chunk-SM3OW2QE.js?v=2a52c0ac:5472
+36injected.js:27 Image failed to load: https://301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/api/placeholder/256/256?text=Fuzzybear%20
+36injected.js:27 Image failed to load: https://bithomp.com/api/v2/nft/rw1R8cfHGMySmbj7gJ1HkiCqTY1xhLGYAs/1/image
+256:1  GET https://301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/api/placeholder/256/256?text=Fuzzybear%20 404 (Not Found)
+Image
+onError @ wallet-profile.tsx:961
+callCallback2 @ chunk-SM3OW2QE.js?v=2a52c0ac:3674
+invokeGuardedCallbackDev @ chunk-SM3OW2QE.js?v=2a52c0ac:3699
+invokeGuardedCallback @ chunk-SM3OW2QE.js?v=2a52c0ac:3733
+invokeGuardedCallbackAndCatchFirstError @ chunk-SM3OW2QE.js?v=2a52c0ac:3736
+executeDispatch @ chunk-SM3OW2QE.js?v=2a52c0ac:7014
+processDispatchQueueItemsInOrder @ chunk-SM3OW2QE.js?v=2a52c0ac:7034
+processDispatchQueue @ chunk-SM3OW2QE.js?v=2a52c0ac:7043
+dispatchEventsForPlugins @ chunk-SM3OW2QE.js?v=2a52c0ac:7051
+(anonymous) @ chunk-SM3OW2QE.js?v=2a52c0ac:7174
+batchedUpdates$1 @ chunk-SM3OW2QE.js?v=2a52c0ac:18913
+batchedUpdates @ chunk-SM3OW2QE.js?v=2a52c0ac:3579
+dispatchEventForPluginEventSystem @ chunk-SM3OW2QE.js?v=2a52c0ac:7173
+dispatchEventWithEnableCapturePhaseSelectiveHydrationWithoutDiscreteEventReplay @ chunk-SM3OW2QE.js?v=2a52c0ac:5478
+dispatchEvent @ chunk-SM3OW2QE.js?v=2a52c0ac:5472
+36injected.js:27 Image failed to load: https://301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/api/placeholder/256/256?text=Fuzzybear%20
+36injected.js:27 Image failed to load: https://bithomp.com/api/v2/nft/rw1R8cfHGMySmbj7gJ1HkiCqTY1xhLGYAs/1/image
+256:1  GET https://301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/api/placeholder/256/256?text=Fuzzybear%20 404 (Not Found)
+Image
+onError @ wallet-profile.tsx:961
+callCallback2 @ chunk-SM3OW2QE.js?v=2a52c0ac:3674
+invokeGuardedCallbackDev @ chunk-SM3OW2QE.js?v=2a52c0ac:3699
+invokeGuardedCallback @ chunk-SM3OW2QE.js?v=2a52c0ac:3733
+invokeGuardedCallbackAndCatchFirstError @ chunk-SM3OW2QE.js?v=2a52c0ac:3736
+executeDispatch @ chunk-SM3OW2QE.js?v=2a52c0ac:7014
+processDispatchQueueItemsInOrder @ chunk-SM3OW2QE.js?v=2a52c0ac:7034
+processDispatchQueue @ chunk-SM3OW2QE.js?v=2a52c0ac:7043
+dispatchEventsForPlugins @ chunk-SM3OW2QE.js?v=2a52c0ac:7051
+(anonymous) @ chunk-SM3OW2QE.js?v=2a52c0ac:7174
+batchedUpdates$1 @ chunk-SM3OW2QE.js?v=2a52c0ac:18913
+batchedUpdates @ chunk-SM3OW2QE.js?v=2a52c0ac:3579
+dispatchEventForPluginEventSystem @ chunk-SM3OW2QE.js?v=2a52c0ac:7173
+dispatchEventWithEnableCapturePhaseSelectiveHydrationWithoutDiscreteEventReplay @ chunk-SM3OW2QE.js?v=2a52c0ac:5478
+dispatchEvent @ chunk-SM3OW2QE.js?v=2a52c0ac:5472
+36injected.js:27 Image failed to load: https://301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/api/placeholder/256/256?text=Fuzzybear%20
+36injected.js:27 Image failed to load: https://bithomp.com/api/v2/nft/rw1R8cfHGMySmbj7gJ1HkiCqTY1xhLGYAs/1/image
+256:1  GET https://301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/api/placeholder/256/256?text=Fuzzybear%20 404 (Not Found)
+Image
+onError @ wallet-profile.tsx:961
+callCallback2 @ chunk-SM3OW2QE.js?v=2a52c0ac:3674
+invokeGuardedCallbackDev @ chunk-SM3OW2QE.js?v=2a52c0ac:3699
+invokeGuardedCallback @ chunk-SM3OW2QE.js?v=2a52c0ac:3733
+invokeGuardedCallbackAndCatchFirstError @ chunk-SM3OW2QE.js?v=2a52c0ac:3736
+executeDispatch @ chunk-SM3OW2QE.js?v=2a52c0ac:7014
+processDispatchQueueItemsInOrder @ chunk-SM3OW2QE.js?v=2a52c0ac:7034
+processDispatchQueue @ chunk-SM3OW2QE.js?v=2a52c0ac:7043
+dispatchEventsForPlugins @ chunk-SM3OW2QE.js?v=2a52c0ac:7051
+(anonymous) @ chunk-SM3OW2QE.js?v=2a52c0ac:7174
+batchedUpdates$1 @ chunk-SM3OW2QE.js?v=2a52c0ac:18913
+batchedUpdates @ chunk-SM3OW2QE.js?v=2a52c0ac:3579
+dispatchEventForPluginEventSystem @ chunk-SM3OW2QE.js?v=2a52c0ac:7173
+dispatchEventWithEnableCapturePhaseSelectiveHydrationWithoutDiscreteEventReplay @ chunk-SM3OW2QE.js?v=2a52c0ac:5478
+dispatchEvent @ chunk-SM3OW2QE.js?v=2a52c0ac:5472
+36injected.js:27 Image failed to load: https://301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/api/placeholder/256/256?text=Fuzzybear%20
+36injected.js:27 Image failed to load: https://bithomp.com/api/v2/nft/rw1R8cfHGMySmbj7gJ1HkiCqTY1xhLGYAs/1/image
+256:1  GET https://301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/api/placeholder/256/256?text=Fuzzybear%20 404 (Not Found)
+Image
+onError @ wallet-profile.tsx:961
+callCallback2 @ chunk-SM3OW2QE.js?v=2a52c0ac:3674
+invokeGuardedCallbackDev @ chunk-SM3OW2QE.js?v=2a52c0ac:3699
+invokeGuardedCallback @ chunk-SM3OW2QE.js?v=2a52c0ac:3733
+invokeGuardedCallbackAndCatchFirstError @ chunk-SM3OW2QE.js?v=2a52c0ac:3736
+executeDispatch @ chunk-SM3OW2QE.js?v=2a52c0ac:7014
+processDispatchQueueItemsInOrder @ chunk-SM3OW2QE.js?v=2a52c0ac:7034
+processDispatchQueue @ chunk-SM3OW2QE.js?v=2a52c0ac:7043
+dispatchEventsForPlugins @ chunk-SM3OW2QE.js?v=2a52c0ac:7051
+(anonymous) @ chunk-SM3OW2QE.js?v=2a52c0ac:7174
+batchedUpdates$1 @ chunk-SM3OW2QE.js?v=2a52c0ac:18913
+batchedUpdates @ chunk-SM3OW2QE.js?v=2a52c0ac:3579
+dispatchEventForPluginEventSystem @ chunk-SM3OW2QE.js?v=2a52c0ac:7173
+dispatchEventWithEnableCapturePhaseSelectiveHydrationWithoutDiscreteEventReplay @ chunk-SM3OW2QE.js?v=2a52c0ac:5478
+dispatchEvent @ chunk-SM3OW2QE.js?v=2a52c0ac:5472
+36injected.js:27 Image failed to load: https://301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/api/placeholder/256/256?text=Fuzzybear%20
+36injected.js:27 Image failed to load: https://bithomp.com/api/v2/nft/rw1R8cfHGMySmbj7gJ1HkiCqTY1xhLGYAs/1/image
+256:1  GET https://301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/api/placeholder/256/256?text=Fuzzybear%20 404 (Not Found)
+Image
+onError @ wallet-profile.tsx:961
+callCallback2 @ chunk-SM3OW2QE.js?v=2a52c0ac:3674
+invokeGuardedCallbackDev @ chunk-SM3OW2QE.js?v=2a52c0ac:3699
+invokeGuardedCallback @ chunk-SM3OW2QE.js?v=2a52c0ac:3733
+invokeGuardedCallbackAndCatchFirstError @ chunk-SM3OW2QE.js?v=2a52c0ac:3736
+executeDispatch @ chunk-SM3OW2QE.js?v=2a52c0ac:7014
+processDispatchQueueItemsInOrder @ chunk-SM3OW2QE.js?v=2a52c0ac:7034
+processDispatchQueue @ chunk-SM3OW2QE.js?v=2a52c0ac:7043
+dispatchEventsForPlugins @ chunk-SM3OW2QE.js?v=2a52c0ac:7051
+(anonymous) @ chunk-SM3OW2QE.js?v=2a52c0ac:7174
+batchedUpdates$1 @ chunk-SM3OW2QE.js?v=2a52c0ac:18913
+batchedUpdates @ chunk-SM3OW2QE.js?v=2a52c0ac:3579
+dispatchEventForPluginEventSystem @ chunk-SM3OW2QE.js?v=2a52c0ac:7173
+dispatchEventWithEnableCapturePhaseSelectiveHydrationWithoutDiscreteEventReplay @ chunk-SM3OW2QE.js?v=2a52c0ac:5478
+dispatchEvent @ chunk-SM3OW2QE.js?v=2a52c0ac:5472
+36injected.js:27 Image failed to load: https://301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/api/placeholder/256/256?text=Fuzzybear%20
+36injected.js:27 Image failed to load: https://bithomp.com/api/v2/nft/rw1R8cfHGMySmbj7gJ1HkiCqTY1xhLGYAs/1/image
+256:1  GET https://301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/api/placeholder/256/256?text=Fuzzybear%20 404 (Not Found)
+Image
+onError @ wallet-profile.tsx:961
+callCallback2 @ chunk-SM3OW2QE.js?v=2a52c0ac:3674
+invokeGuardedCallbackDev @ chunk-SM3OW2QE.js?v=2a52c0ac:3699
+invokeGuardedCallback @ chunk-SM3OW2QE.js?v=2a52c0ac:3733
+invokeGuardedCallbackAndCatchFirstError @ chunk-SM3OW2QE.js?v=2a52c0ac:3736
+executeDispatch @ chunk-SM3OW2QE.js?v=2a52c0ac:7014
+processDispatchQueueItemsInOrder @ chunk-SM3OW2QE.js?v=2a52c0ac:7034
+processDispatchQueue @ chunk-SM3OW2QE.js?v=2a52c0ac:7043
+dispatchEventsForPlugins @ chunk-SM3OW2QE.js?v=2a52c0ac:7051
+(anonymous) @ chunk-SM3OW2QE.js?v=2a52c0ac:7174
+batchedUpdates$1 @ chunk-SM3OW2QE.js?v=2a52c0ac:18913
+batchedUpdates @ chunk-SM3OW2QE.js?v=2a52c0ac:3579
+dispatchEventForPluginEventSystem @ chunk-SM3OW2QE.js?v=2a52c0ac:7173
+dispatchEventWithEnableCapturePhaseSelectiveHydrationWithoutDiscreteEventReplay @ chunk-SM3OW2QE.js?v=2a52c0ac:5478
+dispatchEvent @ chunk-SM3OW2QE.js?v=2a52c0ac:5472
+36injected.js:27 Image failed to load: https://301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/api/placeholder/256/256?text=Fuzzybear%20
+36injected.js:27 Image failed to load: https://bithomp.com/api/v2/nft/rw1R8cfHGMySmbj7gJ1HkiCqTY1xhLGYAs/1/image
+256:1  GET https://301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/api/placeholder/256/256?text=Fuzzybear%20 404 (Not Found)
+Image
+onError @ wallet-profile.tsx:961
+callCallback2 @ chunk-SM3OW2QE.js?v=2a52c0ac:3674
+invokeGuardedCallbackDev @ chunk-SM3OW2QE.js?v=2a52c0ac:3699
+invokeGuardedCallback @ chunk-SM3OW2QE.js?v=2a52c0ac:3733
+invokeGuardedCallbackAndCatchFirstError @ chunk-SM3OW2QE.js?v=2a52c0ac:3736
+executeDispatch @ chunk-SM3OW2QE.js?v=2a52c0ac:7014
+processDispatchQueueItemsInOrder @ chunk-SM3OW2QE.js?v=2a52c0ac:7034
+processDispatchQueue @ chunk-SM3OW2QE.js?v=2a52c0ac:7043
+dispatchEventsForPlugins @ chunk-SM3OW2QE.js?v=2a52c0ac:7051
+(anonymous) @ chunk-SM3OW2QE.js?v=2a52c0ac:7174
+batchedUpdates$1 @ chunk-SM3OW2QE.js?v=2a52c0ac:18913
+batchedUpdates @ chunk-SM3OW2QE.js?v=2a52c0ac:3579
+dispatchEventForPluginEventSystem @ chunk-SM3OW2QE.js?v=2a52c0ac:7173
+dispatchEventWithEnableCapturePhaseSelectiveHydrationWithoutDiscreteEventReplay @ chunk-SM3OW2QE.js?v=2a52c0ac:5478
+dispatchEvent @ chunk-SM3OW2QE.js?v=2a52c0ac:5472
+36injected.js:27 Image failed to load: https://301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/api/placeholder/256/256?text=Fuzzybear%20
+36injected.js:27 Image failed to load: https://bithomp.com/api/v2/nft/rw1R8cfHGMySmbj7gJ1HkiCqTY1xhLGYAs/1/image
+256:1  GET https://301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/api/placeholder/256/256?text=Fuzzybear%20 404 (Not Found)
+Image
+onError @ wallet-profile.tsx:961
+callCallback2 @ chunk-SM3OW2QE.js?v=2a52c0ac:3674
+invokeGuardedCallbackDev @ chunk-SM3OW2QE.js?v=2a52c0ac:3699
+invokeGuardedCallback @ chunk-SM3OW2QE.js?v=2a52c0ac:3733
+invokeGuardedCallbackAndCatchFirstError @ chunk-SM3OW2QE.js?v=2a52c0ac:3736
+executeDispatch @ chunk-SM3OW2QE.js?v=2a52c0ac:7014
+processDispatchQueueItemsInOrder @ chunk-SM3OW2QE.js?v=2a52c0ac:7034
+processDispatchQueue @ chunk-SM3OW2QE.js?v=2a52c0ac:7043
+dispatchEventsForPlugins @ chunk-SM3OW2QE.js?v=2a52c0ac:7051
+(anonymous) @ chunk-SM3OW2QE.js?v=2a52c0ac:7174
+batchedUpdates$1 @ chunk-SM3OW2QE.js?v=2a52c0ac:18913
+batchedUpdates @ chunk-SM3OW2QE.js?v=2a52c0ac:3579
+dispatchEventForPluginEventSystem @ chunk-SM3OW2QE.js?v=2a52c0ac:7173
+dispatchEventWithEnableCapturePhaseSelectiveHydrationWithoutDiscreteEventReplay @ chunk-SM3OW2QE.js?v=2a52c0ac:5478
+dispatchEvent @ chunk-SM3OW2QE.js?v=2a52c0ac:5472
+36injected.js:27 Image failed to load: https://301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/api/placeholder/256/256?text=Fuzzybear%20
+36injected.js:27 Image failed to load: https://bithomp.com/api/v2/nft/rw1R8cfHGMySmbj7gJ1HkiCqTY1xhLGYAs/1/image
+256:1  GET https://301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/api/placeholder/256/256?text=Fuzzybear%20 404 (Not Found)
+Image
+onError @ wallet-profile.tsx:961
+callCallback2 @ chunk-SM3OW2QE.js?v=2a52c0ac:3674
+invokeGuardedCallbackDev @ chunk-SM3OW2QE.js?v=2a52c0ac:3699
+invokeGuardedCallback @ chunk-SM3OW2QE.js?v=2a52c0ac:3733
+invokeGuardedCallbackAndCatchFirstError @ chunk-SM3OW2QE.js?v=2a52c0ac:3736
+executeDispatch @ chunk-SM3OW2QE.js?v=2a52c0ac:7014
+processDispatchQueueItemsInOrder @ chunk-SM3OW2QE.js?v=2a52c0ac:7034
+processDispatchQueue @ chunk-SM3OW2QE.js?v=2a52c0ac:7043
+dispatchEventsForPlugins @ chunk-SM3OW2QE.js?v=2a52c0ac:7051
+(anonymous) @ chunk-SM3OW2QE.js?v=2a52c0ac:7174
+batchedUpdates$1 @ chunk-SM3OW2QE.js?v=2a52c0ac:18913
+batchedUpdates @ chunk-SM3OW2QE.js?v=2a52c0ac:3579
+dispatchEventForPluginEventSystem @ chunk-SM3OW2QE.js?v=2a52c0ac:7173
+dispatchEventWithEnableCapturePhaseSelectiveHydrationWithoutDiscreteEventReplay @ chunk-SM3OW2QE.js?v=2a52c0ac:5478
+dispatchEvent @ chunk-SM3OW2QE.js?v=2a52c0ac:5472
+36injected.js:27 Image failed to load: https://301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/api/placeholder/256/256?text=Fuzzybear%20
+36injected.js:27 Image failed to load: https://bithomp.com/api/v2/nft/rw1R8cfHGMySmbj7gJ1HkiCqTY1xhLGYAs/1/image
+256:1  GET https://301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/api/placeholder/256/256?text=Fuzzybear%20 404 (Not Found)
+Image
+onError @ wallet-profile.tsx:961
+callCallback2 @ chunk-SM3OW2QE.js?v=2a52c0ac:3674
+invokeGuardedCallbackDev @ chunk-SM3OW2QE.js?v=2a52c0ac:3699
+invokeGuardedCallback @ chunk-SM3OW2QE.js?v=2a52c0ac:3733
+invokeGuardedCallbackAndCatchFirstError @ chunk-SM3OW2QE.js?v=2a52c0ac:3736
+executeDispatch @ chunk-SM3OW2QE.js?v=2a52c0ac:7014
+processDispatchQueueItemsInOrder @ chunk-SM3OW2QE.js?v=2a52c0ac:7034
+processDispatchQueue @ chunk-SM3OW2QE.js?v=2a52c0ac:7043
+dispatchEventsForPlugins @ chunk-SM3OW2QE.js?v=2a52c0ac:7051
+(anonymous) @ chunk-SM3OW2QE.js?v=2a52c0ac:7174
+batchedUpdates$1 @ chunk-SM3OW2QE.js?v=2a52c0ac:18913
+batchedUpdates @ chunk-SM3OW2QE.js?v=2a52c0ac:3579
+dispatchEventForPluginEventSystem @ chunk-SM3OW2QE.js?v=2a52c0ac:7173
+dispatchEventWithEnableCapturePhaseSelectiveHydrationWithoutDiscreteEventReplay @ chunk-SM3OW2QE.js?v=2a52c0ac:5478
+dispatchEvent @ chunk-SM3OW2QE.js?v=2a52c0ac:5472
+36injected.js:27 Image failed to load: https://301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/api/placeholder/256/256?text=Fuzzybear%20
+36injected.js:27 Image failed to load: https://bithomp.com/api/v2/nft/rw1R8cfHGMySmbj7gJ1HkiCqTY1xhLGYAs/1/image
+256:1  GET https://301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/api/placeholder/256/256?text=Fuzzybear%20 404 (Not Found)
+Image
+onError @ wallet-profile.tsx:961
+callCallback2 @ chunk-SM3OW2QE.js?v=2a52c0ac:3674
+invokeGuardedCallbackDev @ chunk-SM3OW2QE.js?v=2a52c0ac:3699
+invokeGuardedCallback @ chunk-SM3OW2QE.js?v=2a52c0ac:3733
+invokeGuardedCallbackAndCatchFirstError @ chunk-SM3OW2QE.js?v=2a52c0ac:3736
+executeDispatch @ chunk-SM3OW2QE.js?v=2a52c0ac:7014
+processDispatchQueueItemsInOrder @ chunk-SM3OW2QE.js?v=2a52c0ac:7034
+processDispatchQueue @ chunk-SM3OW2QE.js?v=2a52c0ac:7043
+dispatchEventsForPlugins @ chunk-SM3OW2QE.js?v=2a52c0ac:7051
+(anonymous) @ chunk-SM3OW2QE.js?v=2a52c0ac:7174
+batchedUpdates$1 @ chunk-SM3OW2QE.js?v=2a52c0ac:18913
+batchedUpdates @ chunk-SM3OW2QE.js?v=2a52c0ac:3579
+dispatchEventForPluginEventSystem @ chunk-SM3OW2QE.js?v=2a52c0ac:7173
+dispatchEventWithEnableCapturePhaseSelectiveHydrationWithoutDiscreteEventReplay @ chunk-SM3OW2QE.js?v=2a52c0ac:5478
+dispatchEvent @ chunk-SM3OW2QE.js?v=2a52c0ac:5472
+36injected.js:27 Image failed to load: https://301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/api/placeholder/256/256?text=Fuzzybear%20
+36injected.js:27 Image failed to load: https://bithomp.com/api/v2/nft/rw1R8cfHGMySmbj7gJ1HkiCqTY1xhLGYAs/1/image
+256:1  GET https://301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/api/placeholder/256/256?text=Fuzzybear%20 404 (Not Found)
+Image
+onError @ wallet-profile.tsx:961
+callCallback2 @ chunk-SM3OW2QE.js?v=2a52c0ac:3674
+invokeGuardedCallbackDev @ chunk-SM3OW2QE.js?v=2a52c0ac:3699
+invokeGuardedCallback @ chunk-SM3OW2QE.js?v=2a52c0ac:3733
+invokeGuardedCallbackAndCatchFirstError @ chunk-SM3OW2QE.js?v=2a52c0ac:3736
+executeDispatch @ chunk-SM3OW2QE.js?v=2a52c0ac:7014
+processDispatchQueueItemsInOrder @ chunk-SM3OW2QE.js?v=2a52c0ac:7034
+processDispatchQueue @ chunk-SM3OW2QE.js?v=2a52c0ac:7043
+dispatchEventsForPlugins @ chunk-SM3OW2QE.js?v=2a52c0ac:7051
+(anonymous) @ chunk-SM3OW2QE.js?v=2a52c0ac:7174
+batchedUpdates$1 @ chunk-SM3OW2QE.js?v=2a52c0ac:18913
+batchedUpdates @ chunk-SM3OW2QE.js?v=2a52c0ac:3579
+dispatchEventForPluginEventSystem @ chunk-SM3OW2QE.js?v=2a52c0ac:7173
+dispatchEventWithEnableCapturePhaseSelectiveHydrationWithoutDiscreteEventReplay @ chunk-SM3OW2QE.js?v=2a52c0ac:5478
+dispatchEvent @ chunk-SM3OW2QE.js?v=2a52c0ac:5472
+36injected.js:27 Image failed to load: https://301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/api/placeholder/256/256?text=Fuzzybear%20
+36injected.js:27 Image failed to load: https://bithomp.com/api/v2/nft/rw1R8cfHGMySmbj7gJ1HkiCqTY1xhLGYAs/1/image
+256:1  GET https://301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/api/placeholder/256/256?text=Fuzzybear%20 404 (Not Found)
+Image
+onError @ wallet-profile.tsx:961
+callCallback2 @ chunk-SM3OW2QE.js?v=2a52c0ac:3674
+invokeGuardedCallbackDev @ chunk-SM3OW2QE.js?v=2a52c0ac:3699
+invokeGuardedCallback @ chunk-SM3OW2QE.js?v=2a52c0ac:3733
+invokeGuardedCallbackAndCatchFirstError @ chunk-SM3OW2QE.js?v=2a52c0ac:3736
+executeDispatch @ chunk-SM3OW2QE.js?v=2a52c0ac:7014
+processDispatchQueueItemsInOrder @ chunk-SM3OW2QE.js?v=2a52c0ac:7034
+processDispatchQueue @ chunk-SM3OW2QE.js?v=2a52c0ac:7043
+dispatchEventsForPlugins @ chunk-SM3OW2QE.js?v=2a52c0ac:7051
+(anonymous) @ chunk-SM3OW2QE.js?v=2a52c0ac:7174
+batchedUpdates$1 @ chunk-SM3OW2QE.js?v=2a52c0ac:18913
+batchedUpdates @ chunk-SM3OW2QE.js?v=2a52c0ac:3579
+dispatchEventForPluginEventSystem @ chunk-SM3OW2QE.js?v=2a52c0ac:7173
+dispatchEventWithEnableCapturePhaseSelectiveHydrationWithoutDiscreteEventReplay @ chunk-SM3OW2QE.js?v=2a52c0ac:5478
+dispatchEvent @ chunk-SM3OW2QE.js?v=2a52c0ac:5472
+36injected.js:27 Image failed to load: https://301a997e-224f-466a-90b9-f0f77a76de50-00-uoc32dyew2k5.worf.replit.dev/api/placeholder/256/256?text=Fuzzybear%20

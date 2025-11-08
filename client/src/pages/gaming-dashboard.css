@@ -1,0 +1,740 @@
+/* Gaming Dashboard - Clean Modular Styles */
+
+/* Mobile-first responsive breakpoints */
+@media (max-width: 768px) {
+  .gaming-dashboard-container {
+    padding: 0.5rem;
+  }
+  
+  .gaming-header {
+    padding: 1rem;
+    margin-bottom: 1rem;
+  }
+  
+  .gaming-title {
+    font-size: 1.5rem;
+  }
+  
+  .gaming-title-icon {
+    width: 2rem;
+    height: 2rem;
+  }
+  
+  /* Mobile-responsive tabs - 2 columns layout */
+  .gaming-tabs-list {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 0.375rem !important;
+    width: 100% !important;
+    height: auto !important;
+    padding: 0.5rem !important;
+  }
+  
+  .gaming-tab {
+    flex: none !important;
+    width: 100% !important;
+    min-width: auto !important;
+    padding: 0.75rem 0.5rem !important;
+    font-size: 0.875rem !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 0.5rem !important;
+    border-radius: 0.5rem !important;
+  }
+  
+  /* Last tab spans full width if odd number */
+  .gaming-tab:nth-child(7) {
+    grid-column: 1 / -1 !important;
+  }
+  
+  .tab-icon {
+    width: 1rem !important;
+    height: 1rem !important;
+  }
+  
+  .tab-label {
+    font-size: 0.75rem !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+  }
+}
+
+.gaming-dashboard-container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+  padding: 1rem;
+  font-family: 'Inter', sans-serif;
+}
+
+/* Header Section */
+.gaming-header {
+  background: linear-gradient(135deg, rgba(30, 41, 59, 0.9) 0%, rgba(51, 65, 85, 0.9) 100%);
+  border: 1px solid rgba(248, 113, 113, 0.3);
+  border-radius: 1rem;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.gaming-header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.gaming-header-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.gaming-title {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 2rem;
+  font-weight: 700;
+  color: #f87171;
+  font-family: 'Cinzel', serif;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.gaming-title-icon {
+  width: 2.5rem;
+  height: 2.5rem;
+  color: #fbbf24;
+}
+
+.gaming-subtitle {
+  color: #cbd5e1;
+  font-size: 1.125rem;
+  font-weight: 500;
+  margin-left: 3.25rem;
+}
+
+.gaming-quick-stats {
+  display: flex;
+  gap: 2rem;
+}
+
+.stat-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.stat-label {
+  color: #94a3b8;
+  font-size: 0.875rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.stat-value {
+  color: #f87171;
+  font-size: 1.5rem;
+  font-weight: 700;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+/* Gaming Tabs */
+.gaming-tabs {
+  width: 100%;
+}
+
+.gaming-tabs-list {
+  background: rgba(30, 41, 59, 0.8);
+  border: 1px solid rgba(248, 113, 113, 0.2);
+  border-radius: 0.75rem;
+  padding: 0.5rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 0.25rem;
+  margin-bottom: 1.5rem;
+  backdrop-filter: blur(8px);
+}
+
+.gaming-tab {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1rem;
+  border-radius: 0.5rem;
+  font-weight: 500;
+  color: #cbd5e1;
+  transition: all 0.2s ease;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  min-height: 2.5rem;
+}
+
+.gaming-tab:hover {
+  background: rgba(248, 113, 113, 0.1);
+  color: #f87171;
+}
+
+.gaming-tab[data-state="active"] {
+  background: linear-gradient(135deg, #dc2626, #b91c1c);
+  color: white;
+  box-shadow: 0 4px 12px rgba(248, 113, 113, 0.3);
+}
+
+.tab-icon {
+  width: 1rem;
+  height: 1rem;
+  flex-shrink: 0;
+}
+
+.tab-label {
+  font-size: 0.875rem;
+  white-space: nowrap;
+}
+
+/* Tab Content */
+.gaming-content {
+  min-height: 60vh;
+}
+
+.gaming-tab-content {
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Error Card */
+.gaming-error-card {
+  background: linear-gradient(135deg, rgba(30, 41, 59, 0.9), rgba(51, 65, 85, 0.9));
+  border: 1px solid rgba(248, 113, 113, 0.3);
+  border-radius: 1rem;
+  margin: 2rem auto;
+  max-width: 32rem;
+  backdrop-filter: blur(10px);
+}
+
+/* Component Cards */
+.gaming-component-card {
+  background: linear-gradient(135deg, rgba(30, 41, 59, 0.9), rgba(51, 65, 85, 0.9));
+  border: 1px solid rgba(248, 113, 113, 0.2);
+  border-radius: 1rem;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+}
+
+.gaming-component-card:hover {
+  border-color: rgba(248, 113, 113, 0.4);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+}
+
+/* Responsive Design - Comprehensive All-Screen Support */
+
+/* Extra Large Screens (1920px+) */
+@media (min-width: 1920px) {
+  .gaming-dashboard-container {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 2rem;
+  }
+  
+  .gaming-header {
+    padding: 2rem;
+  }
+  
+  .gaming-title {
+    font-size: 2.5rem;
+  }
+  
+  .gaming-title-icon {
+    width: 3rem;
+    height: 3rem;
+  }
+  
+  .gaming-tabs-list {
+    grid-template-columns: repeat(7, 1fr);
+    gap: 0.5rem;
+  }
+}
+
+/* Large Desktop (1200px - 1919px) */
+@media (min-width: 1200px) and (max-width: 1919px) {
+  .gaming-dashboard-container {
+    padding: 1.5rem;
+  }
+  
+  .gaming-tabs-list {
+    grid-template-columns: repeat(7, 1fr);
+  }
+}
+
+/* Standard Desktop (992px - 1199px) */
+@media (min-width: 992px) and (max-width: 1199px) {
+  .gaming-dashboard-container {
+    padding: 1.25rem;
+  }
+  
+  .gaming-tabs-list {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  
+  .gaming-header-content {
+    flex-wrap: wrap;
+  }
+  
+  .gaming-quick-stats {
+    gap: 1.5rem;
+  }
+}
+
+/* Tablet Landscape (768px - 991px) */
+@media (min-width: 768px) and (max-width: 991px) {
+  .gaming-dashboard-container {
+    padding: 1rem;
+  }
+  
+  .gaming-header {
+    padding: 1.25rem;
+  }
+  
+  .gaming-header-content {
+    flex-direction: column;
+    text-align: center;
+    gap: 1.5rem;
+  }
+  
+  .gaming-title {
+    font-size: 1.75rem;
+  }
+  
+  .gaming-title-icon {
+    width: 2.25rem;
+    height: 2.25rem;
+  }
+  
+  .gaming-tabs-list {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.375rem;
+  }
+  
+  .gaming-tab {
+    padding: 0.75rem 0.5rem;
+    font-size: 0.875rem;
+  }
+  
+  .gaming-quick-stats {
+    gap: 1.25rem;
+    justify-content: center;
+  }
+  
+  .stat-value {
+    font-size: 1.25rem;
+  }
+}
+
+/* Tablet Portrait (576px - 767px) */
+@media (min-width: 576px) and (max-width: 767px) {
+  .gaming-dashboard-container {
+    padding: 0.75rem;
+  }
+  
+  .gaming-header {
+    padding: 1rem;
+  }
+  
+  .gaming-header-content {
+    flex-direction: column;
+    text-align: center;
+    gap: 1rem;
+  }
+  
+  .gaming-title {
+    font-size: 1.5rem;
+  }
+  
+  .gaming-title-icon {
+    width: 2rem;
+    height: 2rem;
+  }
+  
+  .gaming-subtitle {
+    margin-left: 0;
+    text-align: center;
+  }
+  
+  .gaming-tabs-list {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.25rem;
+  }
+  
+  .gaming-tab {
+    padding: 0.75rem 0.5rem;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+  
+  .tab-label {
+    font-size: 0.75rem;
+    text-align: center;
+  }
+  
+  .tab-icon {
+    width: 1.125rem;
+    height: 1.125rem;
+  }
+  
+  .gaming-quick-stats {
+    gap: 1rem;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .stat-item {
+    min-width: 80px;
+  }
+}
+
+/* Mobile Large (375px - 575px) */
+@media (min-width: 375px) and (max-width: 575px) {
+  .gaming-dashboard-container {
+    padding: 0.5rem;
+  }
+  
+  .gaming-header {
+    padding: 0.75rem;
+  }
+  
+  .gaming-header-content {
+    flex-direction: column;
+    text-align: center;
+    gap: 1rem;
+  }
+  
+  .gaming-title {
+    font-size: 1.375rem;
+  }
+  
+  .gaming-title-icon {
+    width: 1.75rem;
+    height: 1.75rem;
+  }
+  
+  .gaming-subtitle {
+    margin-left: 0;
+    font-size: 1rem;
+  }
+  
+  .gaming-tabs-list {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.25rem;
+  }
+  
+  .gaming-tab {
+    padding: 0.625rem 0.375rem;
+    min-height: 2.25rem;
+  }
+  
+  .tab-label {
+    font-size: 0.75rem;
+  }
+  
+  .tab-icon {
+    width: 1rem;
+    height: 1rem;
+  }
+  
+  .gaming-quick-stats {
+    gap: 0.75rem;
+    flex-wrap: wrap;
+    justify-content: space-around;
+  }
+  
+  .stat-value {
+    font-size: 1.125rem;
+  }
+  
+  .stat-label {
+    font-size: 0.75rem;
+  }
+}
+
+/* Mobile Small (320px - 374px) */
+@media (max-width: 374px) {
+  .gaming-dashboard-container {
+    padding: 0.375rem;
+  }
+  
+  .gaming-header {
+    padding: 0.625rem;
+  }
+  
+  .gaming-header-content {
+    flex-direction: column;
+    text-align: center;
+    gap: 0.75rem;
+  }
+  
+  .gaming-title {
+    font-size: 1.25rem;
+  }
+  
+  .gaming-title-icon {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+  
+  .gaming-subtitle {
+    margin-left: 0;
+    font-size: 0.875rem;
+  }
+  
+  .gaming-tabs-list {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.125rem;
+  }
+  
+  .gaming-tab {
+    padding: 0.5rem 0.25rem;
+    min-height: 2rem;
+    flex-direction: column;
+    gap: 0.125rem;
+  }
+  
+  .tab-label {
+    display: none;
+  }
+  
+  .tab-icon {
+    width: 0.875rem;
+    height: 0.875rem;
+  }
+  
+  .gaming-quick-stats {
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    justify-content: space-around;
+  }
+  
+  .stat-item {
+    min-width: 60px;
+  }
+  
+  .stat-value {
+    font-size: 1rem;
+  }
+  
+  .stat-label {
+    font-size: 0.625rem;
+  }
+}
+
+/* Coordinate Grid Styles - Responsive */
+.coordinate-grid {
+  display: grid;
+  grid-template-columns: repeat(40, 1fr);
+  gap: 1px;
+  background: rgba(30, 41, 59, 0.9);
+  border: 1px solid rgba(248, 113, 113, 0.3);
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  max-width: 100%;
+  overflow: hidden;
+  max-height: 70vh;
+  overflow-y: auto;
+}
+
+.coordinate-cell {
+  aspect-ratio: 1;
+  border: 1px solid rgba(148, 163, 184, 0.2);
+  border-radius: 2px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  min-width: 12px;
+  min-height: 12px;
+}
+
+.coordinate-cell:hover {
+  border-color: rgba(248, 113, 113, 0.6);
+  transform: scale(1.1);
+  z-index: 10;
+  position: relative;
+}
+
+.coordinate-cell.owned {
+  background: rgba(248, 113, 113, 0.6);
+  border-color: #f87171;
+}
+
+.coordinate-cell.available {
+  background: rgba(34, 197, 94, 0.4);
+  border-color: #22c55e;
+}
+
+.coordinate-cell.selected {
+  background: rgba(251, 191, 36, 0.8);
+  border-color: #fbbf24;
+  box-shadow: 0 0 8px rgba(251, 191, 36, 0.6);
+}
+
+/* Terrain type colors */
+.coordinate-cell.forest { background: rgba(34, 197, 94, 0.6); }
+.coordinate-cell.mountain { background: rgba(107, 114, 128, 0.6); }
+.coordinate-cell.plains { background: rgba(251, 191, 36, 0.6); }
+.coordinate-cell.water { background: rgba(59, 130, 246, 0.6); }
+.coordinate-cell.castle { background: rgba(168, 85, 247, 0.6); }
+.coordinate-cell.village { background: rgba(249, 115, 22, 0.6); }
+
+/* Coordinate Grid Responsive Breakpoints */
+@media (min-width: 1920px) {
+  .coordinate-grid {
+    grid-template-columns: repeat(50, 1fr);
+    padding: 0.75rem;
+    gap: 1.5px;
+  }
+  
+  .coordinate-cell {
+    min-width: 16px;
+    min-height: 16px;
+  }
+}
+
+@media (min-width: 992px) and (max-width: 1199px) {
+  .coordinate-grid {
+    grid-template-columns: repeat(35, 1fr);
+    gap: 1px;
+  }
+  
+  .coordinate-cell {
+    min-width: 10px;
+    min-height: 10px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  .coordinate-grid {
+    grid-template-columns: repeat(30, 1fr);
+    gap: 0.5px;
+    padding: 0.375rem;
+  }
+  
+  .coordinate-cell {
+    min-width: 8px;
+    min-height: 8px;
+  }
+}
+
+@media (min-width: 576px) and (max-width: 767px) {
+  .coordinate-grid {
+    grid-template-columns: repeat(25, 1fr);
+    gap: 0.5px;
+    padding: 0.25rem;
+  }
+  
+  .coordinate-cell {
+    min-width: 6px;
+    min-height: 6px;
+  }
+  
+  .coordinate-cell:hover {
+    transform: scale(1.2);
+  }
+}
+
+@media (max-width: 575px) {
+  .coordinate-grid {
+    grid-template-columns: repeat(20, 1fr);
+    gap: 0.25px;
+    padding: 0.25rem;
+    max-height: 50vh;
+  }
+  
+  .coordinate-cell {
+    min-width: 4px;
+    min-height: 4px;
+    border-radius: 1px;
+  }
+  
+  .coordinate-cell:hover {
+    transform: scale(1.3);
+    border-width: 2px;
+  }
+}
+
+/* Gaming Component Responsive Styles */
+.gaming-component-card {
+  margin-bottom: 1rem;
+}
+
+/* Large screens - side by side layouts */
+@media (min-width: 1200px) {
+  .gaming-content .grid {
+    grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+    gap: 1.5rem;
+  }
+}
+
+/* Medium screens - stacked with full width */
+@media (min-width: 768px) and (max-width: 1199px) {
+  .gaming-content .grid {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+  
+  .gaming-component-card {
+    margin-bottom: 1.25rem;
+  }
+}
+
+/* Small screens - compact stacking */
+@media (max-width: 767px) {
+  .gaming-content .grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  
+  .gaming-component-card {
+    margin-bottom: 1rem;
+    padding: 0.75rem;
+  }
+  
+  .gaming-component-card .card-header {
+    padding: 1rem 0.75rem 0.5rem;
+  }
+  
+  .gaming-component-card .card-content {
+    padding: 0.5rem 0.75rem 1rem;
+  }
+}
+
+/* Extra small screens - minimal spacing */
+@media (max-width: 374px) {
+  .gaming-component-card {
+    margin-bottom: 0.75rem;
+    padding: 0.5rem;
+    border-radius: 0.75rem;
+  }
+  
+  .gaming-component-card .card-header {
+    padding: 0.75rem 0.5rem 0.25rem;
+  }
+  
+  .gaming-component-card .card-content {
+    padding: 0.25rem 0.5rem 0.75rem;
+  }
+}

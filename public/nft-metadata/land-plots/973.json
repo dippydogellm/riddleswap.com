@@ -1,0 +1,76 @@
+{
+  "id": 973,
+  "name": "Trolls Inquisition Land Plot #973",
+  "description": "A forest domain at coordinates (12, 24) in the Trolls Inquisition realm. This 2x sizeable plot contains Timber, Herbs, Game and offers 9.64% yearly yield. Part of the legendary 1000-plot medieval kingdom where epic battles and alliances are forged.",
+  "image": "https://riddleswap.replit.app/api/nft-images/land-plots/973.png",
+  "external_url": "https://riddleswap.replit.app/nft-gaming-dashboard?plot=973",
+  "attributes": [
+    {
+      "trait_type": "Terrain Type",
+      "value": "forest"
+    },
+    {
+      "trait_type": "X Coordinate",
+      "value": 12
+    },
+    {
+      "trait_type": "Y Coordinate",
+      "value": 24
+    },
+    {
+      "trait_type": "Size Multiplier",
+      "value": "2x"
+    },
+    {
+      "trait_type": "Resources Count",
+      "value": 3
+    },
+    {
+      "trait_type": "Primary Resource",
+      "value": "Timber"
+    },
+    {
+      "trait_type": "Rarity Score",
+      "value": 40
+    },
+    {
+      "trait_type": "XRP Price",
+      "value": 109
+    },
+    {
+      "trait_type": "Early Bird Eligible",
+      "value": "No"
+    },
+    {
+      "trait_type": "Yearly Yield (XRP)",
+      "value": 10
+    },
+    {
+      "trait_type": "Yield Percentage",
+      "value": "9.64%"
+    },
+    {
+      "trait_type": "Position Type",
+      "value": "Border"
+    }
+  ],
+  "properties": {
+    "coordinates": {
+      "x": 12,
+      "y": 24
+    },
+    "terrain_type": "forest",
+    "resources": [
+      "Timber",
+      "Herbs",
+      "Game"
+    ],
+    "size_multiplier": 2,
+    "xrp_price": 109,
+    "rdl_price": 109000,
+    "early_bird_discount": 0,
+    "yearly_yield": 10,
+    "yield_percentage": 9.64,
+    "rarity_score": 40
+  }
+}

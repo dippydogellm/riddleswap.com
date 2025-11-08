@@ -1,0 +1,25 @@
+{
+  "name": "Trolls Inquisition Land Plots",
+  "description": "1000 unique medieval land plots in the Trolls Inquisition Multi-Chain Mayhem Edition",
+  "total_plots": 1000,
+  "grid_size": "40x25",
+  "terrain_distribution": {
+    "forest": 200,
+    "mountain": 200,
+    "plains": 200,
+    "water": 200,
+    "village": 200
+  },
+  "rarity_distribution": {
+    "common": 129,
+    "uncommon": 871,
+    "epic": 571,
+    "rare": 205
+  },
+  "price_range": {
+    "min": 15,
+    "max": 374,
+    "avg": 96
+  },
+  "generated_at": "2025-10-30T06:56:36.572Z"
+}

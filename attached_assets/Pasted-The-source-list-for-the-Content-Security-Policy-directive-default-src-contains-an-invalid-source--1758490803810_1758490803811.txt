@@ -1,0 +1,327 @@
+The source list for the Content Security Policy directive 'default-src' contains an invalid source: ''unsafe-dynamic''. It will be ignored.
+The source list for the Content Security Policy directive 'default-src' contains an invalid source: ''unsafe-dynamic''. It will be ignored.
+The source list for the Content Security Policy directive 'default-src' contains an invalid source: ''unsafe-dynamic''. It will be ignored.
+The source list for the Content Security Policy directive 'default-src' contains an invalid source: ''unsafe-dynamic''. It will be ignored.
+The source list for the Content Security Policy directive 'default-src' contains an invalid source: ''unsafe-dynamic''. It will be ignored.
+The source list for the Content Security Policy directive 'default-src' contains an invalid source: ''unsafe-dynamic''. It will be ignored.
+The source list for the Content Security Policy directive 'default-src' contains an invalid source: ''unsafe-dynamic''. It will be ignored.
+The source list for the Content Security Policy directive 'default-src' contains an invalid source: ''unsafe-dynamic''. It will be ignored.
+The source list for the Content Security Policy directive 'default-src' contains an invalid source: ''unsafe-dynamic''. It will be ignored.
+The source list for the Content Security Policy directive 'default-src' contains an invalid source: ''unsafe-dynamic''. It will be ignored.
+The source list for the Content Security Policy directive 'default-src' contains an invalid source: ''unsafe-dynamic''. It will be ignored.
+The source list for the Content Security Policy directive 'default-src' contains an invalid source: ''unsafe-dynamic''. It will be ignored.
+The source list for the Content Security Policy directive 'default-src' contains an invalid source: ''unsafe-dynamic''. It will be ignored.
+The source list for the Content Security Policy directive 'default-src' contains an invalid source: ''unsafe-dynamic''. It will be ignored.
+The source list for the Content Security Policy directive 'default-src' contains an invalid source: ''unsafe-dynamic''. It will be ignored.
+The Content-Security-Policy directive 'default-src' contains 'report-uri' as a source expression. Did you want to add it as a directive and forget a semicolon?
+The Content-Security-Policy directive 'default-src' contains 'report-uri' as a source expression. Did you want to add it as a directive and forget a semicolon?
+The Content-Security-Policy directive 'default-src' contains 'report-uri' as a source expression. Did you want to add it as a directive and forget a semicolon?
+The Content-Security-Policy directive 'default-src' contains 'report-uri' as a source expression. Did you want to add it as a directive and forget a semicolon?
+The Content-Security-Policy directive 'default-src' contains 'report-uri' as a source expression. Did you want to add it as a directive and forget a semicolon?
+The Content-Security-Policy directive 'default-src' contains 'report-uri' as a source expression. Did you want to add it as a directive and forget a semicolon?
+The Content-Security-Policy directive 'default-src' contains 'report-uri' as a source expression. Did you want to add it as a directive and forget a semicolon?
+The Content-Security-Policy directive 'default-src' contains 'report-uri' as a source expression. Did you want to add it as a directive and forget a semicolon?
+The Content-Security-Policy directive 'default-src' contains 'report-uri' as a source expression. Did you want to add it as a directive and forget a semicolon?
+The Content-Security-Policy directive 'default-src' contains 'report-uri' as a source expression. Did you want to add it as a directive and forget a semicolon?
+The Content-Security-Policy directive 'default-src' contains 'report-uri' as a source expression. Did you want to add it as a directive and forget a semicolon?
+The Content-Security-Policy directive 'default-src' contains 'report-uri' as a source expression. Did you want to add it as a directive and forget a semicolon?
+The Content-Security-Policy directive 'default-src' contains 'report-uri' as a source expression. Did you want to add it as a directive and forget a semicolon?
+The Content-Security-Policy directive 'default-src' contains 'report-uri' as a source expression. Did you want to add it as a directive and forget a semicolon?
+The Content-Security-Policy directive 'default-src' contains 'report-uri' as a source expression. Did you want to add it as a directive and forget a semicolon?
+The source list for Content Security Policy directive 'default-src' contains a source with an invalid path: '/api/4509669501698048/security/?sentry_key=7eb3d90eb4660416caf507087367e67e'. The query component, including the '?', will be ignored.
+The source list for Content Security Policy directive 'default-src' contains a source with an invalid path: '/api/4509669501698048/security/?sentry_key=7eb3d90eb4660416caf507087367e67e'. The query component, including the '?', will be ignored.
+The source list for Content Security Policy directive 'default-src' contains a source with an invalid path: '/api/4509669501698048/security/?sentry_key=7eb3d90eb4660416caf507087367e67e'. The query component, including the '?', will be ignored.
+The source list for Content Security Policy directive 'default-src' contains a source with an invalid path: '/api/4509669501698048/security/?sentry_key=7eb3d90eb4660416caf507087367e67e'. The query component, including the '?', will be ignored.
+The source list for Content Security Policy directive 'default-src' contains a source with an invalid path: '/api/4509669501698048/security/?sentry_key=7eb3d90eb4660416caf507087367e67e'. The query component, including the '?', will be ignored.
+The source list for Content Security Policy directive 'default-src' contains a source with an invalid path: '/api/4509669501698048/security/?sentry_key=7eb3d90eb4660416caf507087367e67e'. The query component, including the '?', will be ignored.
+The source list for Content Security Policy directive 'default-src' contains a source with an invalid path: '/api/4509669501698048/security/?sentry_key=7eb3d90eb4660416caf507087367e67e'. The query component, including the '?', will be ignored.
+The source list for Content Security Policy directive 'default-src' contains a source with an invalid path: '/api/4509669501698048/security/?sentry_key=7eb3d90eb4660416caf507087367e67e'. The query component, including the '?', will be ignored.
+The source list for Content Security Policy directive 'default-src' contains a source with an invalid path: '/api/4509669501698048/security/?sentry_key=7eb3d90eb4660416caf507087367e67e'. The query component, including the '?', will be ignored.
+The source list for Content Security Policy directive 'default-src' contains a source with an invalid path: '/api/4509669501698048/security/?sentry_key=7eb3d90eb4660416caf507087367e67e'. The query component, including the '?', will be ignored.
+The source list for Content Security Policy directive 'default-src' contains a source with an invalid path: '/api/4509669501698048/security/?sentry_key=7eb3d90eb4660416caf507087367e67e'. The query component, including the '?', will be ignored.
+The source list for Content Security Policy directive 'default-src' contains a source with an invalid path: '/api/4509669501698048/security/?sentry_key=7eb3d90eb4660416caf507087367e67e'. The query component, including the '?', will be ignored.
+The source list for Content Security Policy directive 'default-src' contains a source with an invalid path: '/api/4509669501698048/security/?sentry_key=7eb3d90eb4660416caf507087367e67e'. The query component, including the '?', will be ignored.
+The source list for Content Security Policy directive 'default-src' contains a source with an invalid path: '/api/4509669501698048/security/?sentry_key=7eb3d90eb4660416caf507087367e67e'. The query component, including the '?', will be ignored.
+The source list for Content Security Policy directive 'default-src' contains a source with an invalid path: '/api/4509669501698048/security/?sentry_key=7eb3d90eb4660416caf507087367e67e'. The query component, including the '?', will be ignored.
+riddle:1 The source list for the Content Security Policy directive 'default-src' contains an invalid source: ''unsafe-dynamic''. It will be ignored.
+riddle:1 The Content-Security-Policy directive 'default-src' contains 'report-uri' as a source expression. Did you want to add it as a directive and forget a semicolon?
+riddle:1 The source list for Content Security Policy directive 'default-src' contains a source with an invalid path: '/api/4509669501698048/security/?sentry_key=7eb3d90eb4660416caf507087367e67e'. The query component, including the '?', will be ignored.
+_app-de65cc4c0ab6c8eb.js:28 
+      /////////////////////
+   ///////////////////////////
+  ////////@@@@@@@//////////////
+  ////////@@@@@@@//////////////
+  ////////@@@@@@@//////////////        Curious and driven?
+  ///////////////@@@@@@@///////        Work with us!
+  ///////////////@@@@@@@///////
+  ///////////////@@@@@@@///////        https://join.replit.com/hack.with.us
+  ////////@@@@@@@//////////////
+  ////////@@@@@@@//////////////
+  ////////@@@@@@#//////////////
+   ///////////////////////////
+      /////////////////////
+      
+_app-de65cc4c0ab6c8eb.js:28 [LaunchDarkly] LaunchDarkly client initialized
+analytics.tiktok.com/i18n/pixel/events.js?sdkid=D004GE3C77U8PIVDSDJG&lib=ttq:1  Failed to load resource: net::ERR_NAME_NOT_RESOLVED
+Error while parsing the 'sandbox' attribute: 'allow-downloads-without-user-activation' is an invalid sandbox flag.
+Error while parsing the 'sandbox' attribute: 'allow-downloads-without-user-activation' is an invalid sandbox flag.
+Error while parsing the 'sandbox' attribute: 'allow-downloads-without-user-activation' is an invalid sandbox flag.
+Error while parsing the 'sandbox' attribute: 'allow-downloads-without-user-activation' is an invalid sandbox flag.
+Error while parsing the 'sandbox' attribute: 'allow-downloads-without-user-activation' is an invalid sandbox flag.
+Error while parsing the 'sandbox' attribute: 'allow-downloads-without-user-activation' is an invalid sandbox flag.
+Error while parsing the 'sandbox' attribute: 'allow-downloads-without-user-activation' is an invalid sandbox flag.
+Error while parsing the 'sandbox' attribute: 'allow-downloads-without-user-activation' is an invalid sandbox flag.
+ Unrecognized feature: 'ambient-light-sensor'.
+_ @ framework-c9b6b0087678c213.js:1
+ Unrecognized feature: 'battery'.
+_ @ framework-c9b6b0087678c213.js:1
+ Unrecognized feature: 'execution-while-not-rendered'.
+_ @ framework-c9b6b0087678c213.js:1
+ Unrecognized feature: 'execution-while-out-of-viewport'.
+_ @ framework-c9b6b0087678c213.js:1
+ Unrecognized feature: 'layout-animations'.
+_ @ framework-c9b6b0087678c213.js:1
+ Unrecognized feature: 'legacy-image-formats'.
+_ @ framework-c9b6b0087678c213.js:1
+ Unrecognized feature: 'navigation-override'.
+_ @ framework-c9b6b0087678c213.js:1
+ Unrecognized feature: 'oversized-images'.
+_ @ framework-c9b6b0087678c213.js:1
+ Unrecognized feature: 'publickey-credentials'.
+_ @ framework-c9b6b0087678c213.js:1
+ Unrecognized feature: 'speaker-selection'.
+_ @ framework-c9b6b0087678c213.js:1
+ Unrecognized feature: 'unoptimized-images'.
+_ @ framework-c9b6b0087678c213.js:1
+ Unrecognized feature: 'unsized-media'.
+_ @ framework-c9b6b0087678c213.js:1
+ Unrecognized feature: 'pointer-lock'.
+_ @ framework-c9b6b0087678c213.js:1
+ Allow attribute will take precedence over 'allowfullscreen'.
+_ @ framework-c9b6b0087678c213.js:1
+ Allow attribute will take precedence over 'allowpaymentrequest'.
+_ @ framework-c9b6b0087678c213.js:1
+riddle:1 Banner not shown: beforeinstallpromptevent.preventDefault() called. The page must call beforeinstallpromptevent.prompt() to show the banner.
+riddle:1 Access to fetch at 'https://sp.replit.com/v1/t' from origin 'https://replit.com' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.
+sp.replit.com/v1/t:1  Failed to load resource: net::ERR_FAILED
+_app-de65cc4c0ab6c8eb.js:28 task queue exceeded allotted deadline by 59ms
+(anonymous) @ _app-de65cc4c0ab6c8eb.js:28
+workspace_iframe.html?initialPath=%2Fdevtools&id=%3Arob%3A:32 Unrecognized feature: 'ambient-light-sensor'.
+workspace_iframe.html?initialPath=%2Fdevtools&id=%3Arob%3A:32 Unrecognized feature: 'battery'.
+workspace_iframe.html?initialPath=%2Fdevtools&id=%3Arob%3A:32 Unrecognized feature: 'execution-while-not-rendered'.
+workspace_iframe.html?initialPath=%2Fdevtools&id=%3Arob%3A:32 Unrecognized feature: 'execution-while-out-of-viewport'.
+workspace_iframe.html?initialPath=%2Fdevtools&id=%3Arob%3A:32 Unrecognized feature: 'layout-animations'.
+workspace_iframe.html?initialPath=%2Fdevtools&id=%3Arob%3A:32 Unrecognized feature: 'legacy-image-formats'.
+workspace_iframe.html?initialPath=%2Fdevtools&id=%3Arob%3A:32 Unrecognized feature: 'navigation-override'.
+workspace_iframe.html?initialPath=%2Fdevtools&id=%3Arob%3A:32 Unrecognized feature: 'oversized-images'.
+workspace_iframe.html?initialPath=%2Fdevtools&id=%3Arob%3A:32 Unrecognized feature: 'publickey-credentials'.
+workspace_iframe.html?initialPath=%2Fdevtools&id=%3Arob%3A:32 Unrecognized feature: 'speaker-selection'.
+workspace_iframe.html?initialPath=%2Fdevtools&id=%3Arob%3A:32 Unrecognized feature: 'unoptimized-images'.
+workspace_iframe.html?initialPath=%2Fdevtools&id=%3Arob%3A:32 Unrecognized feature: 'unsized-media'.
+workspace_iframe.html?initialPath=%2Fdevtools&id=%3Arob%3A:32 Allow attribute will take precedence over 'allowfullscreen'.
+workspace_iframe.html?initialPath=%2Fdevtools&id=%3Arob%3A:32 Allow attribute will take precedence over 'allowpaymentrequest'.
+devtools:1  Failed to load resource: the server responded with a status of 404 (Not Found)
+devtools:1 Refused to load the script 'https://20a5a677-e8db-426b-93ca-0ab4131b22a7-00-pwrlj8iul6vd.janeway.replit.dev/__replco/static/devtools/eruda/3.2.3/eruda.js' because it violates the following Content Security Policy directive: "default-src 'none'". Note that 'script-src-elem' was not explicitly set, so 'default-src' is used as a fallback.
+
+devtools:1 Refused to load the script 'https://20a5a677-e8db-426b-93ca-0ab4131b22a7-00-pwrlj8iul6vd.janeway.replit.dev/__replco/static/devtools/injected.js' because it violates the following Content Security Policy directive: "default-src 'none'". Note that 'script-src-elem' was not explicitly set, so 'default-src' is used as a fallback.
+
+devtools:1 Refused to execute inline event handler because it violates the following Content Security Policy directive: "default-src 'none'". Either the 'unsafe-inline' keyword, a hash ('sha256-...'), or a nonce ('nonce-...') is required to enable inline execution. Note that hashes do not apply to event handlers, style attributes and javascript: navigations unless the 'unsafe-hashes' keyword is present. Note also that 'script-src' was not explicitly set, so 'default-src' is used as a fallback.
+
+ Refused to load the script 'https://replit.com/public/js/beacon.js' because it violates the following Content Security Policy directive: "default-src 'none'". Note that 'script-src-elem' was not explicitly set, so 'default-src' is used as a fallback.
+
+onIframeLoad @ workspace_iframe.htm…ls&id=%3Arob%3A:142
+ WebSocket connection to 'wss://20a5a677-e8db-426b-93ca-0ab4131b22a7-00-pwrlj8iul6vd.janeway.replit.dev/?token=JzIhmUUq2q-M' failed: 
+t @ eruda.js:2
+ 🔧 Fixed WebSocket URL for Replit: wss://localhost:undefined/?token=JzIhmUUq2q-M → wss://20a5a677-e8db-426b-93ca-0ab4131b22a7-00-pwrlj8iul6vd.janeway.replit.dev/?token=JzIhmUUq2q-M
+ WebSocket connection to 'wss://20a5a677-e8db-426b-93ca-0ab4131b22a7-00-pwrlj8iul6vd.janeway.replit.dev/?token=JzIhmUUq2q-M' failed: 
+t @ eruda.js:2
+ [vite] failed to connect to websocket.
+your current setup:
+  (browser) 20a5a677-e8db-426b-93ca-0ab4131b22a7-00-pwrlj8iul6vd.janeway.replit.dev/ <--[HTTP]--> localhost:undefined/ (server)
+  (browser) 20a5a677-e8db-426b-93ca-0ab4131b22a7-00-pwrlj8iul6vd.janeway.replit.dev:/ <--[WebSocket (failing)]--> localhost:undefined/ (server)
+Check out your Vite / network configuration and https://vite.dev/config/server-options.html#server-hmr .
+Mt.forEach.n.<computed> @ eruda.js:2
+ 🔍 SessionManager.getSession() returning: Object
+ 🎯 Set active wallet for evm: riddle-primary
+ 🎯 Set active wallet for xrpl: riddle-primary
+ 🎯 Set active wallet for solana: riddle-primary
+ 🎯 Set active wallet for bitcoin: riddle-primary
+ 🔗 Synced Riddle wallet from session
+ 🎯 WalletOrchestrator initialized with 1 connections
+ 🚀 Universal Wallet Manager (Orchestrator) initialized
+ 🚨 IMMEDIATE: main.tsx file is being executed!
+ 🚨 IMMEDIATE: typeof window: object
+ 🚨 IMMEDIATE: window.location: https://20a5a677-e8db-426b-93ca-0ab4131b22a7-00-pwrlj8iul6vd.janeway.replit.dev/devtools
+ 🎯 IMMEDIATE: Root element exists: true
+ 🎯 IMMEDIATE: Root element innerHTML: 317
+ 🚨 EMERGENCY: Added red text to root element for visual confirmation
+ 🔧 main.tsx: STARTING - About to import polyfills
+ ✅ main.tsx: Polyfills imported successfully
+ 📦 main.tsx: About to import React createRoot
+ ✅ main.tsx: createRoot imported successfully
+ 🎨 main.tsx: About to import App component
+ ✅ main.tsx: App component imported successfully
+ 🎨 main.tsx: About to import CSS files
+ ✅ main.tsx: CSS files imported successfully
+ 🚀 main.tsx: Starting React app initialization
+ 🛡️ main.tsx: Setting up automatic error logging...
+ ✅ main.tsx: Automatic error logging set up
+ 🎯 main.tsx: Root element found: true
+ 📦 main.tsx: Creating React root and rendering App component
+ ✅ main.tsx: App component rendered successfully
+Console.js:61 🎨 App.tsx: App component is rendering
+Console.js:61 🏗️ App.tsx: Returning JSX with all providers
+Console.js:61 🚫 SessionMonitor: DISABLED - Using unified SessionManager instead
+Console.js:61 🗺️ Router: Router component is rendering
+Console.js:61 📍 Router: Current location: /devtools
+Console.js:61 💳 Router: Initializing wallet data state
+Console.js:61 📭 Router: No saved wallet data found
+Console.js:61 🔍 SessionManager.getSession() returning: Object
+Console.js:61 🔍 SessionManager: checkSession() called - current sessionData: true
+Console.js:61 🌐 SessionManager: Making Riddle wallet session request to /api/riddle-wallet/session
+Console.js:61 🔍 [AUTH CHECK] Session token found: YES
+Console.js:61 🎨 [THEME] Applied theme: dark, dark class: true
+Console.js:61 🔄 App.tsx: useEffect running - recovering wallet state
+Console.js:61 ✅ SessionManager: Valid session for dippydoge
+Console.js:61 ✅ SessionManager: Updated session data: Object
+Console.js:61 🔍 SessionManager.getSession() returning: Object
+Console.js:61 🎯 Set active wallet for evm: riddle-primary
+Console.js:61 🎯 Set active wallet for xrpl: riddle-primary
+Console.js:61 🎯 Set active wallet for solana: riddle-primary
+Console.js:61 🎯 Set active wallet for bitcoin: riddle-primary
+Console.js:61 🔗 Synced Riddle wallet from session
+Console.js:61 🔍 SessionManager.getSession() returning: Object
+Console.js:61 🔔 SessionManager: Notified 2 listeners
+Console.js:61 🔍 SessionManager.getSession() returning: Object
+Console.js:61 🔍 [AUTH CHECK] Session data found: YES
+Console.js:61 ✅ [AUTH CHECK] Valid session for user: dippydoge
+Console.js:61 🔍 getQueryFn - SessionManager sessionToken: FOUND
+Console.js:61 🔍 getQueryFn - SessionManager sessionToken: FOUND
+Console.js:61 Warning: React has detected a change in the order of Hooks called by DevTools. This will lead to bugs and errors if not fixed. For more information, read the Rules of Hooks: https://reactjs.org/link/rules-of-hooks
+
+   Previous render            Next render
+   ------------------------------------------------------
+1. useContext                 useContext
+2. useSyncExternalStore       useSyncExternalStore
+3. useRef                     useRef
+4. useInsertionEffect         useInsertionEffect
+5. useEffect                  useEffect
+6. useState                   useState
+7. useEffect                  useEffect
+8. useContext                 useContext
+9. useSyncExternalStore       useSyncExternalStore
+10. useRef                    useRef
+11. useInsertionEffect        useInsertionEffect
+12. useContext                useContext
+13. useSyncExternalStore      useSyncExternalStore
+14. useRef                    useRef
+15. useInsertionEffect        useInsertionEffect
+16. useState                  useState
+17. useEffect                 useEffect
+18. useState                  useState
+19. useState                  useState
+20. useState                  useState
+21. useEffect                 useEffect
+22. useState                  useState
+23. useState                  useState
+24. useState                  useState
+25. useContext                useContext
+26. useEffect                 useEffect
+27. useContext                useContext
+28. useContext                useContext
+29. useContext                useContext
+30. useEffect                 useEffect
+31. useState                  useState
+32. useCallback               useCallback
+33. useSyncExternalStore      useSyncExternalStore
+34. useEffect                 useEffect
+35. useContext                useContext
+36. useContext                useContext
+37. useContext                useContext
+38. useEffect                 useEffect
+39. useState                  useState
+40. useCallback               useCallback
+41. useSyncExternalStore      useSyncExternalStore
+42. useEffect                 useEffect
+43. useContext                useContext
+44. useContext                useContext
+45. useContext                useContext
+46. useEffect                 useEffect
+47. useState                  useState
+48. useCallback               useCallback
+49. useSyncExternalStore      useSyncExternalStore
+50. useEffect                 useEffect
+51. undefined                 useContext
+   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+    at DevTools (https://20a5a677-e8db-426b-93ca-0ab4131b22a7-00-pwrlj8iul6vd.janeway.replit.dev/src/pages/devtools.tsx:56:3)
+    at Route (https://20a5a677-e8db-426b-93ca-0ab4131b22a7-00-pwrlj8iul6vd.janeway.replit.dev/@fs/home/runner/workspace/node_modules/.vite/deps/wouter.js?v=2173b961:206:16)
+    at Switch (https://20a5a677-e8db-426b-93ca-0ab4131b22a7-00-pwrlj8iul6vd.janeway.replit.dev/@fs/home/runner/workspace/node_modules/.vite/deps/wouter.js?v=2173b961:262:17)
+    at Suspense
+    at div
+    at div
+    at Router (https://20a5a677-e8db-426b-93ca-0ab4131b22a7-00-pwrlj8iul6vd.janeway.replit.dev/src/App.tsx?v=MhqXDnrIZZRQ1JP-Nb5_H:425:22)
+    at Provider (https://20a5a677-e8db-426b-93ca-0ab4131b22a7-00-pwrlj8iul6vd.janeway.replit.dev/@fs/home/runner/workspace/node_modules/.vite/deps/chunk-RV2IQSFV.js?v=2173b961:38:15)
+    at TooltipProvider (https://20a5a677-e8db-426b-93ca-0ab4131b22a7-00-pwrlj8iul6vd.janeway.replit.dev/@fs/home/runner/workspace/node_modules/.vite/deps/@radix-ui_react-tooltip.js?v=2173b961:65:5)
+    at ThemeProvider (https://20a5a677-e8db-426b-93ca-0ab4131b22a7-00-pwrlj8iul6vd.janeway.replit.dev/src/contexts/theme-context.tsx:20:33)
+    at QueryClientProvider (https://20a5a677-e8db-426b-93ca-0ab4131b22a7-00-pwrlj8iul6vd.janeway.replit.dev/@fs/home/runner/workspace/node_modules/.vite/deps/@tanstack_react-query.js?v=2173b961:2934:3)
+    at ErrorBoundary (https://20a5a677-e8db-426b-93ca-0ab4131b22a7-00-pwrlj8iul6vd.janeway.replit.dev/src/components/ErrorBoundary.tsx:24:5)
+    at App (https://20a5a677-e8db-426b-93ca-0ab4131b22a7-00-pwrlj8iul6vd.janeway.replit.dev/src/App.tsx?v=MhqXDnrIZZRQ1JP-Nb5_H:1396:3)
+Mt.forEach.n.<computed> @ Console.js:61
+Console.js:61 🚨 AUTO-LOGGED ERROR: ErrorEvent
+Mt.forEach.n.<computed> @ Console.js:61
+chunk-SM3OW2QE.js?v=2173b961:11678 Uncaught Error: Rendered more hooks than during the previous render.
+    at updateWorkInProgressHook (chunk-SM3OW2QE.js?v=2173b961:11678:21)
+    at updateReducer (chunk-SM3OW2QE.js?v=2173b961:11727:22)
+    at updateState (chunk-SM3OW2QE.js?v=2173b961:12021:18)
+    at Object.useState (chunk-SM3OW2QE.js?v=2173b961:12753:24)
+    at Object.useState (chunk-7SNDHR3H.js?v=2173b961:1066:29)
+    at useMutation (@tanstack_react-query.js?v=2173b961:3396:30)
+    at DevTools (devtools.tsx:174:36)
+    at renderWithHooks (chunk-SM3OW2QE.js?v=2173b961:11548:26)
+    at updateFunctionComponent (chunk-SM3OW2QE.js?v=2173b961:14582:28)
+    at beginWork (chunk-SM3OW2QE.js?v=2173b961:15924:22)
+Console.js:61 🚨 AUTO-LOGGED ERROR: ErrorEvent
+Mt.forEach.n.<computed> @ Console.js:61
+chunk-SM3OW2QE.js?v=2173b961:11678 Uncaught Error: Rendered more hooks than during the previous render.
+    at updateWorkInProgressHook (chunk-SM3OW2QE.js?v=2173b961:11678:21)
+    at updateReducer (chunk-SM3OW2QE.js?v=2173b961:11727:22)
+    at updateState (chunk-SM3OW2QE.js?v=2173b961:12021:18)
+    at Object.useState (chunk-SM3OW2QE.js?v=2173b961:12753:24)
+    at Object.useState (chunk-7SNDHR3H.js?v=2173b961:1066:29)
+    at useMutation (@tanstack_react-query.js?v=2173b961:3396:30)
+    at DevTools (devtools.tsx:174:36)
+    at renderWithHooks (chunk-SM3OW2QE.js?v=2173b961:11548:26)
+    at updateFunctionComponent (chunk-SM3OW2QE.js?v=2173b961:14582:28)
+    at beginWork (chunk-SM3OW2QE.js?v=2173b961:15924:22)
+Console.js:61 The above error occurred in the <DevTools> component:
+
+    at DevTools (https://20a5a677-e8db-426b-93ca-0ab4131b22a7-00-pwrlj8iul6vd.janeway.replit.dev/src/pages/devtools.tsx:56:3)
+    at Route (https://20a5a677-e8db-426b-93ca-0ab4131b22a7-00-pwrlj8iul6vd.janeway.replit.dev/@fs/home/runner/workspace/node_modules/.vite/deps/wouter.js?v=2173b961:206:16)
+    at Switch (https://20a5a677-e8db-426b-93ca-0ab4131b22a7-00-pwrlj8iul6vd.janeway.replit.dev/@fs/home/runner/workspace/node_modules/.vite/deps/wouter.js?v=2173b961:262:17)
+    at Suspense
+    at div
+    at div
+    at Router (https://20a5a677-e8db-426b-93ca-0ab4131b22a7-00-pwrlj8iul6vd.janeway.replit.dev/src/App.tsx?v=MhqXDnrIZZRQ1JP-Nb5_H:425:22)
+    at Provider (https://20a5a677-e8db-426b-93ca-0ab4131b22a7-00-pwrlj8iul6vd.janeway.replit.dev/@fs/home/runner/workspace/node_modules/.vite/deps/chunk-RV2IQSFV.js?v=2173b961:38:15)
+    at TooltipProvider (https://20a5a677-e8db-426b-93ca-0ab4131b22a7-00-pwrlj8iul6vd.janeway.replit.dev/@fs/home/runner/workspace/node_modules/.vite/deps/@radix-ui_react-tooltip.js?v=2173b961:65:5)
+    at ThemeProvider (https://20a5a677-e8db-426b-93ca-0ab4131b22a7-00-pwrlj8iul6vd.janeway.replit.dev/src/contexts/theme-context.tsx:20:33)
+    at QueryClientProvider (https://20a5a677-e8db-426b-93ca-0ab4131b22a7-00-pwrlj8iul6vd.janeway.replit.dev/@fs/home/runner/workspace/node_modules/.vite/deps/@tanstack_react-query.js?v=2173b961:2934:3)
+    at ErrorBoundary (https://20a5a677-e8db-426b-93ca-0ab4131b22a7-00-pwrlj8iul6vd.janeway.replit.dev/src/components/ErrorBoundary.tsx:24:5)
+    at App (https://20a5a677-e8db-426b-93ca-0ab4131b22a7-00-pwrlj8iul6vd.janeway.replit.dev/src/App.tsx?v=MhqXDnrIZZRQ1JP-Nb5_H:1396:3)
+
+React will try to recreate this component tree from scratch using the error boundary you provided, ErrorBoundary.
+Mt.forEach.n.<computed> @ Console.js:61
+Console.js:61 ErrorBoundary caught an error: Error: Rendered more hooks than during the previous render.
+    at updateWorkInProgressHook (chunk-SM3OW2QE.js?v=2173b961:11678:21)
+    at updateReducer (chunk-SM3OW2QE.js?v=2173b961:11727:22)
+    at updateState (chunk-SM3OW2QE.js?v=2173b961:12021:18)
+    at Object.useState (chunk-SM3OW2QE.js?v=2173b961:12753:24)
+    at Object.useState (chunk-7SNDHR3H.js?v=2173b961:1066:29)
+    at useMutation (@tanstack_react-query.js?v=2173b961:3396:30)
+    at DevTools (devtools.tsx:174:36)
+    at renderWithHooks (chunk-SM3OW2QE.js?v=2173b961:11548:26)
+    at updateFunctionComponent (chunk-SM3OW2QE.js?v=2173b961:14582:28)
+    at beginWork (chunk-SM3OW2QE.js?v=2173b961:15924:22) Object
+Mt.forEach.n.<computed> @ Console.js:61
+Console.js:61 Error logged successfully

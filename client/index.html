@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
+    
+    <!-- CRITICAL: Completely disable CSP to test JavaScript execution -->
+    <!-- TEMPORARILY REMOVING ALL CSP RESTRICTIONS FOR DEBUGGING -->
+    <!-- All CSP meta tags are commented out to prevent script blocking -->
+    <!-- meta http-equiv="Content-Security-Policy" content="default-src * 'unsafe-inline' 'unsafe-eval' data: blob:; script-src * 'unsafe-inline' 'unsafe-eval'; style-src * 'unsafe-inline'; img-src * data: blob:; font-src * data:; connect-src *; media-src *; object-src *; child-src *; frame-src *; worker-src * blob:; form-action *; upgrade-insecure-requests; block-all-mixed-content;" -->
+    <!-- meta http-equiv="X-Content-Security-Policy" content="default-src * 'unsafe-inline' 'unsafe-eval' data: blob:; script-src * 'unsafe-inline' 'unsafe-eval'; style-src * 'unsafe-inline';" -->
+    <!-- meta http-equiv="X-WebKit-CSP" content="default-src * 'unsafe-inline' 'unsafe-eval' data: blob:; script-src * 'unsafe-inline' 'unsafe-eval'; style-src * 'unsafe-inline';" -->
+    
+    <!-- Favicon - ICO format for maximum compatibility -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+    
+    <!-- PNG formats for modern browsers -->
+    <link rel="icon" type="image/png" sizes="16x16" href="/icon-192.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/icon-192.png" />
+    <link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png" />
+    <link rel="icon" type="image/png" sizes="512x512" href="/icon-512.png" />
+    
+    <!-- Apple Touch Icons -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/icon-192.png" />
+    <link rel="apple-touch-icon" sizes="152x152" href="/icon-192.png" />
+    <link rel="apple-touch-icon" sizes="144x144" href="/icon-192.png" />
+    <link rel="apple-touch-icon" sizes="120x120" href="/icon-192.png" />
+    <link rel="apple-touch-icon" sizes="114x114" href="/icon-192.png" />
+    <link rel="apple-touch-icon" sizes="76x76" href="/icon-192.png" />
+    <link rel="apple-touch-icon" sizes="72x72" href="/icon-192.png" />
+    <link rel="apple-touch-icon" sizes="60x60" href="/icon-192.png" />
+    <link rel="apple-touch-icon" sizes="57x57" href="/icon-192.png" />
+    
+    <!-- Microsoft tiles -->
+    <meta name="msapplication-TileColor" content="#00D4FF" />
+    <meta name="msapplication-TileImage" content="/icon-192.png" />
+    
+    <!-- SEO Meta Tags - Gaming Platform Focus -->
+    <title>The Trolls Inquisition | Multi-Chain Medieval Mayhem - XRPL NFT Gaming</title>
+    
+    <!-- Target header spacing only - moved to external CSS for CSP compliance -->
+    <link rel="stylesheet" href="/loading.css">
+    <meta name="description" content="Enter The Trolls Inquisition Multi-Chain Medieval Mayhem! Epic XRPL NFT gaming platform featuring army battles, civilization building, land conquest, and cross-chain warfare across multiple blockchains." />
+    <meta name="keywords" content="XRPL Gaming, NFT Gaming, Medieval Strategy, Multi-chain Gaming, Blockchain Gaming, The Inquisition, Trolls, XRPL NFTs, Gaming Platform, Strategy Game" />
+    <meta name="author" content="Riddle.Finance" />
+    <meta name="robots" content="index, follow" />
+    
+    <!-- Open Graph Meta Tags - Gaming Focus -->
+    <meta property="og:title" content="The Trolls Inquisition | Multi-Chain Medieval Mayhem - XRPL NFT Gaming" />
+    <meta property="og:description" content="Enter The Trolls Inquisition Multi-Chain Medieval Mayhem! Epic XRPL NFT gaming platform featuring army battles, civilization building, land conquest, and cross-chain warfare across multiple blockchains." />
+    <meta property="og:type" content="game" />
+    <meta property="og:site_name" content="The Trolls Inquisition" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:image" content="https://riddle.finance/images/trolls-inquisition-card.png" />
+    <meta property="og:image:secure_url" content="https://riddle.finance/images/trolls-inquisition-card.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="The Trolls Inquisition - Multi-Chain Medieval Mayhem Gaming Platform" />
+    <meta property="og:image:type" content="image/png" />
+    
+    <!-- Twitter Card Meta Tags - Gaming Focus -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:domain" content="riddle.finance" />
+    <meta name="twitter:title" content="The Trolls Inquisition | Multi-Chain Medieval Mayhem - XRPL NFT Gaming" />
+    <meta name="twitter:description" content="Enter The Trolls Inquisition Multi-Chain Medieval Mayhem! Epic XRPL NFT gaming platform featuring army battles, civilization building, land conquest, and cross-chain warfare across multiple blockchains." />
+    <meta name="twitter:image" content="https://riddle.finance/images/trolls-inquisition-card.png" />
+    <meta name="twitter:image:src" content="https://riddle.finance/images/trolls-inquisition-card.png" />
+    <meta name="twitter:image:alt" content="The Trolls Inquisition - Multi-Chain Medieval Mayhem Gaming Platform" />
+    <meta name="twitter:creator" content="@riddlefinance" />
+    <meta name="twitter:site" content="@riddlefinance" />
+    
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="/manifest.json" />
+    
+    <!-- Theme and Mobile Optimization -->
+    <meta name="theme-color" content="#00bcd4" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="Riddle Finance" />
+    
+    <!-- Structured Data moved to external file for CSP compliance -->
+    <script src="/structured-data.js"></script>
+  </head>
+  <body>
+    <div id="root">
+      <!-- Loading message while React initializes - moved to external CSS for CSP compliance -->
+      <div class="loading-container">
+        <div class="loading-content">
+          <div class="loading-text">Loading RiddleSwap...</div>
+          <div class="loading-spinner"></div>
+        </div>
+      </div>
+    </div>
+    <!-- Buffer polyfill and WebSocket fixes moved to external file for CSP compliance -->
+    <script src="/init.js"></script>
+    <!-- Debug scripts removed for production -->
+    
+    
+    <script type="module" src="/src/main.tsx"></script>
+    <!-- Main application loaded -->
+    <!-- Replit dev banner DISABLED - may interfere with wallet CSP -->
+    <!-- <script type="text/javascript" src="https://replit.com/public/js/replit-dev-banner.js"></script> -->
+  </body>
+</html>

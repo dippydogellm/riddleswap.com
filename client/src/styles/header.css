@@ -1,0 +1,1241 @@
+/* Header Styles - Mobile First Professional Navigation */
+
+.header {
+  background: var(--bg-secondary);
+  border-bottom: 1px solid var(--border-light);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  backdrop-filter: blur(8px);
+  transform: translateY(0);
+  transition: transform 0.3s ease-in-out, background 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Header hidden state - moves up when scrolling down */
+.header-hidden {
+  transform: translateY(-100%);
+}
+
+/* Header scrolled state - adds shadow when scrolled */
+.header-scrolled {
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  background: var(--bg-secondary);
+}
+
+.header-container {
+  padding: 0 0.75rem;
+}
+
+.header-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 56px; /* Mobile height */
+}
+
+/* Tablet and up */
+@media (min-width: 768px) {
+  .header-container {
+    padding: 0 1rem;
+  }
+  
+  .header-content {
+    height: 60px;
+  }
+}
+
+/* Desktop */
+@media (min-width: 1024px) {
+  .header-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+  }
+}
+
+/* Logo - Mobile First */
+.logo-container {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-decoration: none;
+  min-width: 0; /* Allow flex shrinking */
+}
+
+.logo {
+  height: 28px;
+  width: 28px;
+  border-radius: 4px;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.logo-text {
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  white-space: nowrap;
+}
+
+/* Tablet and up */
+@media (min-width: 768px) {
+  .logo-container {
+    gap: 0.75rem;
+  }
+  
+  .logo {
+    height: 32px;
+    width: 32px;
+    border-radius: 6px;
+  }
+  
+  .logo-text {
+    font-size: 1.25rem;
+  }
+}
+
+/* Hide desktop navigation - use mobile menu only */
+.nav-desktop {
+  display: none;
+}
+
+/* Desktop */
+@media (min-width: 1024px) {
+  .nav-desktop {
+    gap: 2rem;
+  }
+}
+
+/* Wallet Connection Section Styling */
+.wallet-connection-section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding: 0;
+  max-height: 85vh;
+  overflow: hidden;
+}
+
+.wallet-section-header {
+  text-align: left;
+  padding: 0.25rem 0;
+}
+
+.wallet-section-title {
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0;
+  margin-bottom: 0.125rem;
+}
+
+.wallet-section-subtitle {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  margin: 0;
+  line-height: 1.3;
+}
+
+.wallet-connection-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  max-height: 70vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 0.25rem;
+  scrollbar-width: thin;
+  scrollbar-color: var(--border-medium) transparent;
+}
+
+.wallet-connection-grid::-webkit-scrollbar {
+  width: 6px;
+}
+
+.wallet-connection-grid::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.wallet-connection-grid::-webkit-scrollbar-thumb {
+  background: var(--border-medium);
+  border-radius: 3px;
+}
+
+.wallet-connection-grid::-webkit-scrollbar-thumb:hover {
+  background: var(--border-dark);
+}
+
+.wallet-connection-card {
+  background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+  border: 1px solid var(--border-medium);
+  border-radius: 12px;
+  padding: 0.875rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  transition: all var(--transition-fast);
+  min-height: auto;
+}
+
+.wallet-connection-card:hover {
+  border-color: var(--accent-primary);
+  box-shadow: 0 4px 16px rgba(59, 130, 246, 0.12);
+  transform: translateY(-1px);
+}
+
+.wallet-card-header {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  margin-bottom: 0.5rem;
+}
+
+.wallet-card-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.95rem;
+  flex-shrink: 0;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
+}
+
+.multi-chain-icon {
+  background: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-secondary) 100%);
+  color: white;
+}
+
+.xrpl-icon {
+  background: #000000;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* XRP logo style moved to global chain-logos.css */
+
+.wallet-card-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.wallet-name {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  display: block;
+  margin-bottom: 0.25rem;
+  line-height: 1.2;
+}
+
+.supported-chains {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.2rem;
+}
+
+.chain-badge {
+  font-size: 0.6rem;
+  font-weight: 500;
+  padding: 0.1rem 0.3rem;
+  border-radius: 4px;
+  white-space: nowrap;
+  line-height: 1.2;
+}
+
+.chain-badge.ethereum {
+  background: #627eea20;
+  color: #627eea;
+  border: 1px solid #627eea40;
+}
+
+.chain-badge.solana {
+  background: #9945ff20;
+  color: #9945ff;
+  border: 1px solid #9945ff40;
+}
+
+.chain-badge.polygon {
+  background: #8247e520;
+  color: #8247e5;
+  border: 1px solid #8247e540;
+}
+
+.chain-badge.xrpl {
+  background: #00000020;
+  color: #000000;
+  border: 1px solid #00000040;
+}
+
+.dark .chain-badge.xrpl {
+  background: #ffffff20;
+  color: #ffffff;
+  border: 1px solid #ffffff40;
+}
+
+.wallet-card-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.wallet-connected-state {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.wallet-connected-state appkit-account-button,
+.wallet-connected-state appkit-network-button {
+  width: 100%;
+}
+
+.wallet-info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.wallet-details {
+  display: flex;
+  flex-direction: column;
+  gap: 0.125rem;
+  flex: 1;
+  min-width: 0;
+}
+
+.wallet-address {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  font-family: monospace;
+}
+
+.wallet-balance {
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  transition: color var(--transition-fast);
+}
+
+.wallet-balance:hover {
+  color: var(--accent-primary);
+}
+
+.disconnect-button {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border-medium);
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.875rem;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.disconnect-button:hover {
+  background: #ef444440;
+  border-color: #ef4444;
+  color: #ef4444;
+}
+
+.wallet-connect-button {
+  width: 100%;
+  padding: 1rem 1.5rem;
+  background: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-hover) 100%);
+  border: 1px solid var(--accent-hover);
+  border-radius: 25px;
+  color: white;
+  font-size: 0.875rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  box-shadow: 0 4px 16px rgba(37, 99, 235, 0.25);
+}
+
+.wallet-connect-button:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 8px 28px rgba(59, 130, 246, 0.5);
+}
+
+.wallet-connect-button:active {
+  transform: translateY(-1px) scale(1.01);
+}
+
+/* Legacy wallet button styles for compatibility - Compact */
+.wallet-button {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.25rem 0.375rem;
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border-medium);
+  border-radius: 4px;
+  font-size: 0.625rem;
+  font-weight: 500;
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  min-height: 24px;
+  max-width: 120px;
+  white-space: nowrap;
+}
+
+.wallet-button:hover {
+  background: var(--bg-accent);
+  border-color: var(--accent-primary);
+}
+
+/* Desktop Controls - Mobile First (hidden on mobile) */
+.desktop-controls {
+  display: none;
+  align-items: center;
+  gap: 0.75rem;
+  flex-shrink: 0;
+}
+
+/* Tablet and up - show desktop controls with normal size */
+@media (min-width: 768px) {
+  .desktop-controls {
+    display: flex;
+    gap: 1rem;
+  }
+  
+  /* Ensure desktop wallet buttons are normal size */
+  .desktop-controls appkit-connect-button,
+  .desktop-controls appkit-account-button,
+  .desktop-controls appkit-network-button {
+    transform: none !important;
+    margin: 0 !important;
+  }
+  
+  .desktop-controls .wallet-button,
+  .desktop-controls .xaman-button {
+    height: auto !important;
+    padding: 0.5rem 1rem !important;
+    font-size: 0.875rem !important;
+    min-height: auto !important;
+  }
+}
+
+.wallet-dropdown {
+  position: relative;
+}
+
+.wallet-dropdown-menu {
+  position: absolute;
+  top: calc(100% + 0.5rem);
+  right: 0;
+  min-width: 200px;
+  background: var(--bg-primary);
+  border: 1px solid var(--border-medium);
+  border-radius: 8px;
+  box-shadow: var(--shadow-lg);
+  overflow: hidden;
+  z-index: 1051;
+}
+
+.wallet-option {
+  display: block;
+  width: 100%;
+  padding: 0.5rem 0.75rem;
+  background: transparent;
+  border: none;
+  text-align: left;
+  cursor: pointer;
+  transition: background-color var(--transition-fast);
+  color: var(--text-primary);
+}
+
+.wallet-option:hover {
+  background: var(--bg-tertiary);
+}
+
+.wallet-option-content {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.wallet-option-icon {
+  width: 20px;
+  height: 20px;
+  border-radius: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 0.625rem;
+}
+
+.xaman-icon {
+  background: #000000;
+  color: white;
+}
+
+.walletconnect-icon {
+  background: var(--accent-primary);
+  color: white;
+}
+
+.wallet-option-info {
+  flex: 1;
+}
+
+.wallet-option-name {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.wallet-option-desc {
+  font-size: 0.625rem;
+  color: var(--text-muted);
+}
+
+/* Mobile Menu - Mobile First */
+.mobile-menu-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 4px;
+  color: var(--text-primary);
+  transition: background-color var(--transition-fast);
+  min-width: 44px; /* Touch target */
+  min-height: 44px;
+}
+
+.mobile-menu-button:hover {
+  background: var(--bg-tertiary);
+}
+
+.nav-mobile {
+  display: none;
+  padding: 0.25rem 0.5rem;
+  border-top: 1px solid var(--border-light);
+  flex-direction: column;
+  gap: 0;
+  position: relative;
+  z-index: 1050; /* Mobile menu should be above header but below modals */
+  background: var(--bg-primary);
+}
+
+.nav-mobile.open {
+  display: flex;
+}
+
+/* Mobile Navigation Icons Row - Two Rows Layout */
+.nav-mobile-icons-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: 0.5rem;
+  padding: 0.75rem;
+  background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-tertiary) 100%);
+  border-radius: 20px;
+  margin: 0.5rem;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+  overflow: hidden;
+  width: calc(100% - 1rem);
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.nav-mobile-icon {
+  color: var(--text-primary);
+  text-decoration: none;
+  padding: 0.5rem;
+  transition: all var(--transition-fast);
+  min-height: 38px;
+  min-width: 38px;
+  width: 38px;
+  height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+  border: 1px solid var(--border-light);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  position: relative;
+  overflow: hidden;
+  flex-shrink: 1;
+  flex-grow: 0;
+}
+
+.nav-mobile-icon:hover {
+  background: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-secondary) 100%);
+  border-color: var(--accent-primary);
+  color: white;
+  transform: translateY(-3px) scale(1.08);
+  box-shadow: 0 8px 24px rgba(59, 130, 246, 0.4);
+}
+
+.nav-mobile-icon:hover svg {
+  color: white;
+}
+
+.nav-mobile-icon::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-secondary) 100%);
+  opacity: 0;
+  transition: opacity var(--transition-fast);
+  border-radius: 50%;
+}
+
+.nav-mobile-icon:hover::before {
+  opacity: 1;
+}
+
+.nav-mobile-icon > * {
+  position: relative;
+  z-index: 1;
+}
+
+.nav-mobile-icon svg {
+  flex-shrink: 0;
+  color: var(--text-secondary);
+  transition: color var(--transition-fast);
+}
+
+.nav-mobile-icon:hover svg {
+  color: white;
+}
+
+/* Disabled Navigation Links */
+.nav-link-disabled {
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  color: var(--text-muted);
+  font-weight: 500;
+  font-size: 0.875rem;
+  position: relative;
+  cursor: not-allowed;
+  opacity: 0.6;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.nav-link-status {
+  font-size: 0.625rem;
+  font-weight: 400;
+  color: var(--accent-primary);
+  background: var(--bg-accent);
+  padding: 0.125rem 0.375rem;
+  border-radius: 4px;
+  white-space: nowrap;
+}
+
+/* Mobile Disabled Icons */
+.nav-mobile-icon-disabled {
+  color: var(--text-muted);
+  padding: 0.5rem;
+  min-height: 38px;
+  min-width: 38px;
+  width: 38px;
+  height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  cursor: not-allowed;
+  opacity: 0.4;
+  background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+  border: 1px solid var(--border-light);
+  position: relative;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  flex-shrink: 1;
+  flex-grow: 0;
+}
+
+.nav-mobile-icon-disabled svg {
+  color: var(--text-muted);
+}
+
+/* Responsive adjustments for very small screens */
+@media (max-width: 400px) {
+  .nav-mobile-icons-row {
+    gap: 0.125rem;
+    padding: 0.375rem 0.5rem;
+    margin: 0.25rem;
+  }
+  
+  .nav-mobile-icon,
+  .nav-mobile-icon-disabled {
+    min-height: 34px;
+    min-width: 34px;
+    width: 34px;
+    height: 34px;
+    padding: 0.375rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .nav-mobile-icons-row {
+    gap: 0.0625rem;
+    padding: 0.25rem 0.375rem;
+    margin: 0.25rem;
+  }
+  
+  .nav-mobile-icon,
+  .nav-mobile-icon-disabled {
+    min-height: 32px;
+    min-width: 32px;
+    width: 32px;
+    height: 32px;
+    padding: 0.25rem;
+  }
+}
+
+@media (max-width: 320px) {
+  .nav-mobile-icons-row {
+    gap: 0.0625rem;
+    padding: 0.1875rem 0.25rem;
+    margin: 0.125rem;
+  }
+  
+  .nav-mobile-icon,
+  .nav-mobile-icon-disabled {
+    min-height: 28px;
+    min-width: 28px;
+    width: 28px;
+    height: 28px;
+    padding: 0.1875rem;
+  }
+}
+
+/* Mobile Wallet Section - Ultra Compact Layout */
+.nav-mobile-wallet {
+  padding: 0.25rem 0.5rem;
+  border-top: 1px solid var(--border-light);
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  position: relative;
+  z-index: 1055;
+  background: var(--bg-primary);
+  max-height: 120px;
+  overflow: hidden;
+}
+
+.mobile-wallet-header {
+  font-size: 0.625rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  margin-bottom: 0.25rem;
+  padding-left: 0.25rem;
+}
+
+.nav-mobile-wallet .wallet-selector-container {
+  margin-bottom: 0;
+  padding: 0;
+}
+
+/* Mobile Theme Section - Compact Layout */
+.nav-mobile-theme {
+  padding: 0.5rem;
+  border-top: 1px solid var(--border-light);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  position: relative;
+  z-index: 1;
+  background: var(--bg-primary);
+}
+
+.mobile-theme-header {
+  color: var(--text-primary);
+  font-weight: 600;
+  font-size: 0.75rem;
+  text-align: left;
+  flex-shrink: 0;
+}
+
+/* Theme Toggle Button - Compact Mobile Style */
+.nav-mobile-theme .theme-toggle {
+  position: static;
+  width: 100px;
+  height: 32px;
+  background: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  z-index: 1;
+  display: block;
+  flex-shrink: 0;
+}
+
+.nav-mobile-theme .theme-toggle:hover {
+  transform: translateY(-1px);
+}
+
+.nav-mobile-theme .theme-toggle-track {
+  height: 100%;
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border-medium);
+}
+
+/* Theme Toggle Button Base */
+.theme-toggle {
+  display: inline-block;
+  position: relative;
+  width: 140px;
+  height: 36px;
+  background: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+/* Stylish Slider Track */
+.theme-toggle-track {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: #f3f4f6;
+  border: 1px solid #d1d5db;
+  border-radius: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.dark .theme-toggle-track {
+  background: #374151;
+  border-color: #4b5563;
+}
+
+.theme-toggle-track:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Sliding Thumb */
+.theme-toggle-thumb {
+  position: absolute;
+  width: 50%;
+  height: calc(100% - 4px);
+  background: #3b82f6;
+  border-radius: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  z-index: 2;
+}
+
+.theme-toggle-thumb.light {
+  left: 2px;
+  background: #f59e0b;
+}
+
+.theme-toggle-thumb.dark {
+  left: calc(50% - 2px);
+  background: #1e40af;
+}
+
+/* Theme Labels */
+.theme-toggle-labels {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  z-index: 1;
+  padding: 0 12px;
+}
+
+.theme-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #6b7280;
+  transition: color 0.3s ease;
+  user-select: none;
+}
+
+.dark .theme-label {
+  color: #9ca3af;
+}
+
+.theme-toggle-thumb.light ~ .theme-toggle-labels .theme-label.light,
+.theme-toggle-thumb.dark ~ .theme-toggle-labels .theme-label.dark {
+  color: #111827;
+}
+
+.dark .theme-toggle-thumb.light ~ .theme-toggle-labels .theme-label.light,
+.dark .theme-toggle-thumb.dark ~ .theme-toggle-labels .theme-label.dark {
+  color: #f9fafb;
+}
+
+/* Theme toggle should be visible in mobile theme section */
+
+/* Keep mobile menu on all screen sizes for clean header */
+.mobile-menu-button {
+  display: flex;
+}
+
+.nav-mobile {
+  display: none;
+}
+
+.nav-mobile.open {
+  display: flex;
+}
+
+/* Header Right Controls */
+.header-right-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-shrink: 0;
+}
+
+/* Desktop layout - center icons properly */
+@media (min-width: 768px) {
+  .header-right-controls {
+    gap: 1rem;
+  }
+  
+  .header-right-controls appkit-account-button {
+    min-width: 120px;
+  }
+}
+
+/* AppKit Account Button Styling */
+.header-right-controls appkit-account-button {
+  --w3m-border-radius-master: 6px !important;
+  --w3m-color-mix: var(--bg-tertiary) !important;
+  --w3m-color-mix-strength: 100% !important;
+  height: 44px !important;
+}
+
+/* Desktop Controls - Hide since we have AppKit account button */
+@media (min-width: 768px) {
+  .desktop-controls {
+    display: none !important;
+  }
+}
+
+/* Wallet Buttons Stack - Mobile First */
+.wallet-buttons-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
+  align-items: center;
+  justify-content: center;
+  padding: 0.25rem 0;
+  min-width: 120px;
+  position: relative;
+  z-index: 1001;
+}
+
+.wallet-button-wrapper {
+  width: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  z-index: 1002;
+}
+
+.wallet-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1rem;
+  background: var(--bg-tertiary);
+  border: 2px solid var(--border-dark);
+  border-radius: 8px;
+  color: var(--text-primary);
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  min-height: 44px;
+  width: 200px;
+  position: relative;
+  z-index: 1003;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+}
+
+.wallet-button:hover {
+  background: var(--bg-accent);
+  border-color: var(--accent-primary);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.wallet-button-icon {
+  width: 20px;
+  height: 20px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 0.75rem;
+  flex-shrink: 0;
+}
+
+.xaman-icon {
+  background: linear-gradient(135deg, #2563eb, #7c3aed);
+  color: white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.network-selector {
+  margin-top: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+/* Tablet and up */
+@media (min-width: 768px) {
+  .wallet-button {
+    gap: 0.5rem;
+    padding: 0.5rem 0.75rem;
+    font-size: 0.875rem;
+    min-height: 36px;
+  }
+  
+  .wallet-button-icon {
+    width: 18px;
+    height: 18px;
+    font-size: 0.75rem;
+  }
+}
+
+/* AppKit Overrides - Compact sizing */
+.wallet-button-wrapper appkit-connect-button,
+.wallet-button-wrapper appkit-account-button,
+.wallet-button-wrapper appkit-network-button {
+  --wui-color-bg-100: var(--bg-tertiary) !important;
+  --wui-color-fg-100: var(--text-primary) !important;
+  width: 120px !important;
+  height: 28px !important;
+  font-size: 0.75rem !important;
+  border-radius: 6px !important;
+  min-width: auto !important;
+  border: 1px solid var(--border-medium) !important;
+  background: var(--bg-tertiary) !important;
+  padding: 0.375rem 0.5rem !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  transition: all 0.2s ease !important;
+}
+
+.wallet-button-wrapper appkit-connect-button:hover,
+.wallet-button-wrapper appkit-account-button:hover,
+.wallet-button-wrapper appkit-network-button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Enhanced Xaman Connected Button - Compact */
+.xaman-button.connected {
+  background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
+  border: 2px solid #1d4ed8;
+  color: white;
+  padding: 0;
+  position: relative;
+  z-index: 103;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+  width: 120px !important;
+  height: 28px !important;
+  box-shadow: 0 2px 6px rgba(37, 99, 235, 0.3);
+}
+
+.wallet-button-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0.375rem 0.5rem;
+}
+
+.wallet-info {
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+  flex: 1;
+}
+
+.wallet-details {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.0625rem;
+}
+
+.wallet-address {
+  font-size: 0.625rem;
+  font-weight: 600;
+  color: white;
+  line-height: 1.2;
+}
+
+.wallet-balance {
+  font-size: 0.5rem;
+  color: rgba(255, 255, 255, 0.8);
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+.disconnect-button {
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  color: white;
+  border-radius: 50%;
+  width: 18px;
+  height: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 12px;
+  font-weight: bold;
+  line-height: 1;
+  flex-shrink: 0;
+  position: relative;
+  z-index: 104;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
+.disconnect-button:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: scale(1.1);
+}
+
+/* Mobile touch target improvement */
+@media (max-width: 767px) {
+  .disconnect-button {
+    width: 20px;
+    height: 20px;
+    font-size: 14px;
+    margin-left: 4px;
+  }
+}
+
+/* Mobile-specific wallet button fixes */
+@media (max-width: 767px) {
+  .wallet-button,
+  .xaman-button {
+    position: relative !important;
+    z-index: 9999 !important;
+    pointer-events: auto !important;
+    -webkit-tap-highlight-color: transparent !important;
+    touch-action: manipulation !important;
+    user-select: none !important;
+    -webkit-user-select: none !important;
+    height: 32px !important;
+    padding: 0.375rem 0.5rem !important;
+    font-size: 0.625rem !important;
+    min-height: 32px !important;
+  }
+  
+  .nav-mobile-wallet {
+    overflow: visible !important;
+  }
+  
+  .wallet-buttons-stack {
+    overflow: visible !important;
+    pointer-events: auto !important;
+    gap: 0.25rem !important;
+  }
+  
+  /* Make AppKit buttons compact in mobile only */
+  .nav-mobile-wallet appkit-connect-button,
+  .nav-mobile-wallet appkit-account-button,
+  .nav-mobile-wallet appkit-network-button {
+    transform: scale(0.85) !important;
+    transform-origin: left center !important;
+    margin: -0.125rem 0 !important;
+  }
+  
+  /* Mobile wallet card compact style */
+  .nav-mobile-wallet .wallet-card {
+    padding: 0.25rem 0.5rem !important;
+    min-height: 36px !important;
+    border-radius: 6px !important;
+  }
+  
+  .nav-mobile-wallet .wallet-address {
+    font-size: 0.5rem !important;
+  }
+  
+  .nav-mobile-wallet .wallet-balance {
+    font-size: 0.4375rem !important;
+  }
+}
+
+/* Desktop wallet buttons - normal size */
+@media (min-width: 768px) {
+  .desktop-controls .wallet-buttons-stack {
+    min-width: 240px;
+    gap: 1rem;
+  }
+  
+  .desktop-controls .wallet-button-wrapper {
+    width: 240px;
+  }
+  
+  .desktop-controls .wallet-button {
+    width: 240px !important;
+    height: 48px !important;
+    padding: 0.875rem 1.25rem !important;
+    font-size: 1rem !important;
+    min-height: 48px !important;
+  }
+  
+  .desktop-controls .wallet-button-icon {
+    width: 22px;
+    height: 22px;
+  }
+  
+  .desktop-controls .wallet-button-wrapper appkit-connect-button,
+  .desktop-controls .wallet-button-wrapper appkit-account-button,
+  .desktop-controls .wallet-button-wrapper appkit-network-button {
+    width: 240px !important;
+    height: 48px !important;
+    font-size: 1rem !important;
+    padding: 0.875rem 1.25rem !important;
+    transform: none !important;
+    margin: 0 !important;
+  }
+}

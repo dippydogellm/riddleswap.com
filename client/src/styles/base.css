@@ -1,0 +1,222 @@
+/* Base Styles - DEPRECATED: Using global-theme.css for all theme variables */
+/* This file is retained for legacy component compatibility only */
+
+/* Transitions - Kept for backward compatibility */
+:root {
+  --transition-fast: 0.15s ease-out;
+  --transition-normal: 0.25s ease-out;
+  --transition-slow: 0.35s ease-out;
+}
+
+/* Global Reset & Base Styles - Mobile First */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Body styles moved to global-theme.css */
+/* Only keeping essential mobile padding */
+body {
+  padding: 56px 0.75rem 0; /* Add top padding for fixed header on mobile */
+}
+
+/* Add padding-top for different screen sizes */
+@media (min-width: 768px) {
+  body {
+    padding-top: 60px; /* Tablet/Desktop header height */
+  }
+}
+
+@media (min-width: 768px) {
+  body {
+    padding: 0 1rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  body {
+    padding: 0;
+  }
+}
+
+/* Professional Box Styling - Mobile First */
+.box {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-light);
+  border-radius: 6px;
+  padding: 1rem;
+  box-shadow: var(--shadow-sm);
+  transition: all var(--transition-normal);
+  margin-bottom: 1rem;
+  width: 100%;
+  min-width: 100%;
+}
+
+.box:hover {
+  box-shadow: var(--shadow-md);
+  border-color: var(--border-medium);
+}
+
+.box-large {
+  padding: 1.25rem;
+  border-radius: 8px;
+}
+
+.box-accent {
+  border-color: var(--accent-primary);
+  background: var(--accent-light);
+}
+
+/* Tablet and up */
+@media (min-width: 768px) {
+  .box {
+    padding: 1.5rem;
+    border-radius: 8px;
+    max-width: none;
+  }
+  
+  .box-large {
+    padding: 2rem;
+    border-radius: 12px;
+    max-width: none;
+  }
+}
+
+/* Typography - Mobile First */
+h1, h2, h3, h4, h5, h6 {
+  color: var(--text-primary);
+  font-weight: 600;
+  line-height: 1.3;
+  margin-bottom: 0.75rem;
+}
+
+/* Mobile sizes */
+h1 { font-size: 1.5rem; }
+h2 { font-size: 1.25rem; }
+h3 { font-size: 1.125rem; }
+h4 { font-size: 1rem; }
+
+/* Tablet and up */
+@media (min-width: 768px) {
+  h1 { font-size: 2rem; }
+  h2 { font-size: 1.75rem; }
+  h3 { font-size: 1.5rem; }
+  h4 { font-size: 1.25rem; }
+}
+
+/* Desktop */
+@media (min-width: 1024px) {
+  h1 { font-size: 2.25rem; }
+  h2 { font-size: 1.875rem; }
+  h3 { font-size: 1.5rem; }
+  h4 { font-size: 1.25rem; }
+}
+
+p {
+  color: var(--text-secondary);
+  margin-bottom: 1rem;
+}
+
+/* Buttons - Mobile First */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.875rem 1.25rem;
+  font-size: 16px; /* Prevent iOS zoom */
+  font-weight: 500;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  text-decoration: none;
+  width: 100%;
+  min-height: 44px; /* Touch target */
+}
+
+/* Tablet and up */
+@media (min-width: 768px) {
+  .btn {
+    width: auto;
+    padding: 0.75rem 1.5rem;
+    font-size: 0.875rem;
+    min-height: auto;
+  }
+}
+
+.btn-primary {
+  background: var(--accent-primary);
+  color: var(--text-inverse);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border: 1px solid var(--accent-hover);
+}
+
+.btn-primary:hover {
+  background: var(--accent-hover);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  transform: translateY(-1px);
+}
+
+.btn-secondary {
+  background: var(--bg-tertiary);
+  color: var(--text-primary);
+  border: 1px solid var(--border-medium);
+}
+
+.btn-secondary:hover {
+  background: var(--bg-accent);
+  border-color: var(--border-dark);
+}
+
+/* Input Fields - Mobile First */
+.input {
+  width: 100%;
+  padding: 0.875rem 1rem;
+  font-size: 16px; /* Prevent iOS zoom */
+  background: var(--bg-primary);
+  border: 1px solid var(--border-medium);
+  border-radius: 6px;
+  color: var(--text-primary);
+  transition: all var(--transition-fast);
+  min-height: 44px; /* Touch target */
+}
+
+/* Tablet and up */
+@media (min-width: 768px) {
+  .input {
+    padding: 0.75rem 1rem;
+    font-size: 0.875rem;
+    min-height: auto;
+  }
+}
+
+.input:focus {
+  outline: none;
+  border-color: var(--accent-primary);
+  box-shadow: 0 0 0 3px var(--accent-light);
+}
+
+/* Dark Mode Toggle */
+.theme-toggle {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  z-index: 1000;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-medium);
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all var(--transition-normal);
+}
+
+.theme-toggle:hover {
+  background: var(--bg-accent);
+  box-shadow: var(--shadow-md);
+}

@@ -1,0 +1,659 @@
+/* Arbitrum Wallet Dedicated Styles */
+/* Blue Arbitrum Theme with Mobile Responsiveness */
+
+/* Arbitrum Wallet Container with scoped CSS variables */
+.arbitrum-wallet-container {
+  --arbitrum-primary: #28A0F0;
+  --arbitrum-secondary: #4FBDFF;
+  --arbitrum-accent: #7DD3FF;
+  --arbitrum-dark: #1E7BCC;
+  --arbitrum-light: #E6F4FF;
+  --arbitrum-gradient-from: #28A0F0;
+  --arbitrum-gradient-to: #7DD3FF;
+  --arbitrum-success: #10B981;
+  --arbitrum-error: #EF4444;
+  --arbitrum-warning: #F59E0B;
+  
+  background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
+  min-height: 100vh;
+}
+
+/* Arbitrum Header Styling */
+.arbitrum-header-card {
+  background: linear-gradient(135deg, var(--arbitrum-gradient-from) 0%, var(--arbitrum-gradient-to) 100%);
+  border: 1px solid rgba(40, 160, 240, 0.3);
+  box-shadow: 0 4px 20px rgba(40, 160, 240, 0.2);
+}
+
+.arbitrum-header-icon {
+  background: linear-gradient(135deg, var(--arbitrum-primary) 0%, var(--arbitrum-secondary) 100%);
+  border-radius: 16px;
+  padding: 16px;
+}
+
+/* Arbitrum Balance Cards */
+.arbitrum-balance-card {
+  background: linear-gradient(135deg, rgba(40, 160, 240, 0.1) 0%, rgba(125, 211, 255, 0.1) 100%);
+  border: 1px solid rgba(40, 160, 240, 0.2);
+  border-radius: 12px;
+}
+
+.arbitrum-balance-text {
+  color: var(--arbitrum-accent);
+  font-weight: 600;
+}
+
+.arbitrum-price-text {
+  color: rgba(125, 211, 255, 0.8);
+}
+
+/* Arbitrum Action Buttons */
+.arbitrum-action-buttons {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+}
+
+@media (min-width: 640px) {
+  .arbitrum-action-buttons {
+    display: flex;
+    flex-direction: row;
+    gap: 12px;
+  }
+}
+
+.arbitrum-send-button {
+  background: linear-gradient(135deg, var(--arbitrum-primary) 0%, var(--arbitrum-dark) 100%);
+  border: none;
+  color: white;
+  transition: all 0.3s ease;
+}
+
+.arbitrum-send-button:hover {
+  background: linear-gradient(135deg, var(--arbitrum-dark) 0%, var(--arbitrum-primary) 100%);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(40, 160, 240, 0.3);
+}
+
+.arbitrum-receive-button {
+  background: linear-gradient(135deg, var(--arbitrum-success) 0%, #059669 100%);
+  border: none;
+  color: white;
+  transition: all 0.3s ease;
+}
+
+.arbitrum-receive-button:hover {
+  background: linear-gradient(135deg, #059669 0%, #047857 100%);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+}
+
+.arbitrum-swap-button {
+  background: linear-gradient(135deg, var(--arbitrum-secondary) 0%, var(--arbitrum-accent) 100%);
+  border: none;
+  color: white;
+  transition: all 0.3s ease;
+}
+
+.arbitrum-swap-button:hover {
+  background: linear-gradient(135deg, var(--arbitrum-accent) 0%, var(--arbitrum-secondary) 100%);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(79, 189, 255, 0.3);
+}
+
+/* Mobile Button Fixes */
+@media (max-width: 639px) {
+  .arbitrum-action-buttons button {
+    font-size: 12px;
+    padding: 8px 12px;
+    min-height: 36px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  
+  .arbitrum-action-buttons button svg {
+    width: 12px;
+    height: 12px;
+    margin-right: 4px;
+  }
+}
+
+/* Arbitrum Tabs Styling */
+.arbitrum-tabs-list {
+  background: rgba(40, 160, 240, 0.1);
+  border: 1px solid rgba(40, 160, 240, 0.2);
+}
+
+.arbitrum-tab-trigger {
+  color: rgba(255, 255, 255, 0.7);
+  transition: all 0.3s ease;
+}
+
+.arbitrum-tab-trigger[data-state="active"] {
+  background: linear-gradient(135deg, var(--arbitrum-primary) 0%, var(--arbitrum-secondary) 100%);
+  color: white;
+  border-radius: 6px;
+}
+
+.arbitrum-tab-trigger:hover {
+  background: rgba(40, 160, 240, 0.1);
+  color: var(--arbitrum-accent);
+}
+
+/* Arbitrum Token Cards */
+.arbitrum-token-card {
+  background: rgba(40, 160, 240, 0.05);
+  border: 1px solid rgba(40, 160, 240, 0.1);
+  border-radius: 12px;
+  transition: all 0.3s ease;
+}
+
+.arbitrum-token-card:hover {
+  background: rgba(40, 160, 240, 0.1);
+  border-color: rgba(40, 160, 240, 0.3);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(40, 160, 240, 0.2);
+}
+
+.arbitrum-token-actions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 639px) {
+  .arbitrum-token-actions {
+    flex-direction: column;
+    gap: 4px;
+  }
+  
+  .arbitrum-token-actions button {
+    font-size: 11px;
+    padding: 4px 8px;
+    min-height: 28px;
+  }
+  
+  .arbitrum-token-actions button svg {
+    width: 10px;
+    height: 10px;
+    margin-right: 2px;
+  }
+}
+
+/* Arbitrum NFT Cards */
+.arbitrum-nft-card {
+  background: rgba(40, 160, 240, 0.05);
+  border: 1px solid rgba(40, 160, 240, 0.1);
+  transition: all 0.3s ease;
+}
+
+.arbitrum-nft-card:hover {
+  background: rgba(40, 160, 240, 0.1);
+  border-color: var(--arbitrum-primary);
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 8px 24px rgba(40, 160, 240, 0.3);
+}
+
+/* Arbitrum Address Display */
+.arbitrum-address-container {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  justify-content: space-between;
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(40, 160, 240, 0.2);
+  border-radius: 8px;
+  padding: 12px;
+}
+
+.arbitrum-address-text {
+  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+  color: var(--arbitrum-accent);
+  font-size: 14px;
+}
+
+@media (max-width: 639px) {
+  .arbitrum-address-text {
+    font-size: 12px;
+  }
+}
+
+/* Arbitrum Modal Styling */
+.arbitrum-modal-content {
+  background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
+  border: 1px solid rgba(40, 160, 240, 0.3);
+}
+
+.arbitrum-modal-header {
+  border-bottom: 1px solid rgba(40, 160, 240, 0.2);
+  padding-bottom: 12px;
+  margin-bottom: 16px;
+}
+
+.arbitrum-modal-title {
+  color: var(--arbitrum-accent);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Arbitrum Form Elements */
+.arbitrum-form-input {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(40, 160, 240, 0.3);
+  color: white;
+  transition: all 0.3s ease;
+}
+
+.arbitrum-form-input:focus {
+  border-color: var(--arbitrum-primary);
+  box-shadow: 0 0 0 2px rgba(40, 160, 240, 0.2);
+}
+
+.arbitrum-form-input::placeholder {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.arbitrum-form-select {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(40, 160, 240, 0.3);
+  color: white;
+}
+
+.arbitrum-form-label {
+  color: var(--arbitrum-accent);
+  font-weight: 500;
+}
+
+/* Arbitrum Loading States */
+.arbitrum-loading-spinner {
+  color: var(--arbitrum-primary);
+}
+
+.arbitrum-loading-text {
+  color: rgba(125, 211, 255, 0.8);
+}
+
+/* Arbitrum Success/Error States */
+.arbitrum-success {
+  background: rgba(16, 185, 129, 0.1);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+  color: var(--arbitrum-success);
+}
+
+.arbitrum-error {
+  background: rgba(239, 68, 68, 0.1);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  color: var(--arbitrum-error);
+}
+
+.arbitrum-warning {
+  background: rgba(245, 158, 11, 0.1);
+  border: 1px solid rgba(245, 158, 11, 0.3);
+  color: var(--arbitrum-warning);
+}
+
+/* Arbitrum QR Code Container */
+.arbitrum-qr-container {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Arbitrum Quick Stats Card */
+.arbitrum-stats-card {
+  background: rgba(40, 160, 240, 0.05);
+  border: 1px solid rgba(40, 160, 240, 0.1);
+  border-radius: 12px;
+}
+
+.arbitrum-stats-item {
+  border-bottom: 1px solid rgba(40, 160, 240, 0.1);
+  padding: 8px 0;
+}
+
+.arbitrum-stats-item:last-child {
+  border-bottom: none;
+}
+
+/* Arbitrum Quick Actions */
+.arbitrum-quick-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.arbitrum-quick-action-button {
+  background: linear-gradient(135deg, rgba(40, 160, 240, 0.2) 0%, rgba(125, 211, 255, 0.2) 100%);
+  border: 1px solid rgba(40, 160, 240, 0.3);
+  color: var(--arbitrum-accent);
+  transition: all 0.3s ease;
+  justify-content: flex-start;
+}
+
+.arbitrum-quick-action-button:hover {
+  background: linear-gradient(135deg, var(--arbitrum-primary) 0%, var(--arbitrum-secondary) 100%);
+  color: white;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(40, 160, 240, 0.3);
+}
+
+/* Arbitrum Refresh Button */
+.arbitrum-refresh-button {
+  border: 1px solid rgba(40, 160, 240, 0.5);
+  color: var(--arbitrum-accent);
+  background: rgba(40, 160, 240, 0.1);
+  transition: all 0.3s ease;
+}
+
+.arbitrum-refresh-button:hover {
+  background: rgba(40, 160, 240, 0.2);
+  border-color: var(--arbitrum-primary);
+  color: white;
+}
+
+/* Mobile Responsive Improvements */
+@media (max-width: 375px) {
+  .arbitrum-wallet-container {
+    padding: 8px;
+  }
+  
+  .arbitrum-header-card {
+    margin-bottom: 16px;
+  }
+  
+  .arbitrum-balance-card {
+    padding: 12px;
+  }
+  
+  .arbitrum-wallet-container .container {
+    padding-left: 8px;
+    padding-right: 8px;
+  }
+}
+
+@media (max-width: 390px) {
+  .arbitrum-action-buttons {
+    grid-template-columns: 1fr;
+    gap: 6px;
+  }
+}
+
+@media (max-width: 414px) {
+  .arbitrum-token-actions {
+    flex-direction: column;
+    gap: 4px;
+  }
+  
+  .arbitrum-nft-card {
+    margin-bottom: 12px;
+  }
+}
+
+/* Container overflow fixes for mobile */
+@media (max-width: 639px) {
+  .arbitrum-wallet-container .wallet-page {
+    overflow-x: hidden;
+  }
+  
+  .arbitrum-wallet-container .container {
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+  
+  /* Prevent button overflow */
+  .arbitrum-action-buttons,
+  .arbitrum-token-actions {
+    min-width: 0;
+    overflow: hidden;
+  }
+  
+  .arbitrum-action-buttons button,
+  .arbitrum-token-actions button {
+    min-width: 0;
+    flex: 1;
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
+}
+
+/* Arbitrum Portfolio Value Highlights */
+.arbitrum-portfolio-value {
+  background: linear-gradient(135deg, var(--arbitrum-gradient-from) 0%, var(--arbitrum-gradient-to) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: bold;
+}
+
+/* Arbitrum Asset Breakdown */
+.arbitrum-asset-breakdown {
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(40, 160, 240, 0.2);
+  border-radius: 12px;
+}
+
+.arbitrum-asset-item {
+  border-bottom: 1px solid rgba(40, 160, 240, 0.1);
+  padding: 8px 0;
+}
+
+.arbitrum-asset-item:last-child {
+  border-bottom: none;
+  border-top: 1px solid rgba(40, 160, 240, 0.2);
+  padding-top: 12px;
+  margin-top: 8px;
+}
+
+/* Animation for Arbitrum elements */
+@keyframes arbitrum-glow {
+  0%, 100% {
+    box-shadow: 0 0 5px rgba(40, 160, 240, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(40, 160, 240, 0.8), 0 0 30px rgba(125, 211, 255, 0.4);
+  }
+}
+
+.arbitrum-glow-animation {
+  animation: arbitrum-glow 2s ease-in-out infinite;
+}
+
+/* Dark mode specific Arbitrum styling */
+@media (prefers-color-scheme: dark) {
+  .arbitrum-wallet-container {
+    background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+  }
+}
+
+/* Arbitrum Network Status Badge */
+.arbitrum-network-badge {
+  background: rgba(40, 160, 240, 0.1);
+  border: 1px solid rgba(40, 160, 240, 0.3);
+  color: var(--arbitrum-accent);
+  font-size: 12px;
+  font-weight: 500;
+  padding: 4px 8px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.arbitrum-network-status-dot {
+  width: 8px;
+  height: 8px;
+  background: #10B981;
+  border-radius: 50%;
+  animation: arbitrum-pulse 2s infinite;
+}
+
+@keyframes arbitrum-pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+/* Transaction History Styling */
+.arbitrum-transaction-list {
+  background: rgba(40, 160, 240, 0.05);
+  border: 1px solid rgba(40, 160, 240, 0.1);
+  border-radius: 8px;
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.arbitrum-transaction-item {
+  display: flex;
+  align-items: center;
+  padding: 12px 16px;
+  border-bottom: 1px solid rgba(40, 160, 240, 0.1);
+  transition: all 0.2s ease;
+}
+
+.arbitrum-transaction-item:last-child {
+  border-bottom: none;
+}
+
+.arbitrum-transaction-item:hover {
+  background: rgba(40, 160, 240, 0.1);
+}
+
+.arbitrum-transaction-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 12px;
+  flex-shrink: 0;
+}
+
+.arbitrum-transaction-icon.send {
+  background: rgba(239, 68, 68, 0.2);
+  color: #EF4444;
+}
+
+.arbitrum-transaction-icon.receive {
+  background: rgba(16, 185, 129, 0.2);
+  color: #10B981;
+}
+
+.arbitrum-transaction-details {
+  flex: 1;
+  min-width: 0;
+}
+
+.arbitrum-transaction-type {
+  font-weight: 500;
+  color: white;
+  font-size: 14px;
+  margin-bottom: 2px;
+}
+
+.arbitrum-transaction-address {
+  font-family: ui-monospace, SFMono-Regular, "SF Mono", Consolas, "Liberation Mono", Menlo, monospace;
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.6);
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.arbitrum-transaction-amount {
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.arbitrum-transaction-value {
+  font-weight: 600;
+  color: white;
+  font-size: 14px;
+  margin-bottom: 2px;
+}
+
+.arbitrum-transaction-usd {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.arbitrum-transaction-time {
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.5);
+  margin-top: 2px;
+}
+
+/* Arbitrum specific gradients and effects */
+.arbitrum-gradient-bg {
+  background: linear-gradient(135deg, var(--arbitrum-gradient-from) 0%, var(--arbitrum-gradient-to) 100%);
+}
+
+.arbitrum-border-glow {
+  border: 1px solid rgba(40, 160, 240, 0.3);
+  box-shadow: 0 0 10px rgba(40, 160, 240, 0.1);
+}
+
+.arbitrum-text-gradient {
+  background: linear-gradient(135deg, var(--arbitrum-primary) 0%, var(--arbitrum-accent) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Arbitrum Staking Card */
+.arbitrum-staking-card {
+  background: linear-gradient(135deg, rgba(40, 160, 240, 0.1) 0%, rgba(125, 211, 255, 0.05) 100%);
+  border: 1px solid rgba(40, 160, 240, 0.2);
+  border-radius: 12px;
+  position: relative;
+  overflow: hidden;
+}
+
+.arbitrum-staking-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(135deg, var(--arbitrum-primary) 0%, var(--arbitrum-accent) 100%);
+}
+
+/* Arbitrum DeFi Integration Cards */
+.arbitrum-defi-card {
+  background: rgba(40, 160, 240, 0.05);
+  border: 1px solid rgba(40, 160, 240, 0.15);
+  border-radius: 10px;
+  transition: all 0.3s ease;
+}
+
+.arbitrum-defi-card:hover {
+  background: rgba(40, 160, 240, 0.08);
+  border-color: rgba(40, 160, 240, 0.25);
+  transform: translateY(-2px);
+}
+
+/* Arbitrum Fee Estimation */
+.arbitrum-fee-estimate {
+  background: rgba(40, 160, 240, 0.1);
+  border: 1px solid rgba(40, 160, 240, 0.2);
+  border-radius: 8px;
+  padding: 8px 12px;
+  font-size: 12px;
+  color: var(--arbitrum-accent);
+}
+
+/* Arbitrum Price Chart Integration */
+.arbitrum-price-chart {
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(40, 160, 240, 0.1);
+  border-radius: 8px;
+  padding: 16px;
+}

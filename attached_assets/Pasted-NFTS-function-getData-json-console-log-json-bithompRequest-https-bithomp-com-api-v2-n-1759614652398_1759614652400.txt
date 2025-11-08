@@ -1,0 +1,93 @@
+NFTS
+function getData(json) {
+  console.log(json)
+}
+bithompRequest("https://bithomp.com/api/v2/nfts?owner=rBeistBLWtUskF2YzzSwMSM2tgsK7ZD7ME&assets=true", getData);
+The above command returns JSON structured like this:
+
+{
+  "owner": "rBeistBLWtUskF2YzzSwMSM2tgsK7ZD7ME",
+  "ownerDetails": {
+    "username": "Zerpmon",
+    "service": "Zerpmon"
+  },
+  "nfts": [
+    {
+      "flags": {
+        "burnable": false,
+        "onlyXRP": false,
+        "trustLine": false,
+        "transferable": true
+      },
+      "issuer": "rBeistBLWtUskF2YzzSwMSM2tgsK7ZD7ME",
+      "nftokenID": "0008138874D997D20619837CF3C7E1050A785E9F9AC53D7E8542EAAC00000011",
+      "nftokenTaxon": 0,
+      "transferFee": 5000,
+      "uri": "697066733A2F2F516D627169774D736D6B4C6971794473465A664D534D566465464A674D4139514A626D735131636F4D32564343452F382E6A736F6E",
+      "url": "https://cloudflare-ipfs.com/ipfs/QmbqiwMsmkLiqyDsFZfMSMVdeFJgMA9QJbmsQ1coM2VCCE/8.json",
+      "sequence": 17,
+      "issuerDetails": {
+        "username": "Zerpmon",
+        "service": "Zerpmon"
+      },
+      "assets": {
+        "image": "https://cdn.bithomp.com/image/image_hash.png", 
+        "preview": "https://cdn.bithomp.com/preview/preview_hash.png", 
+        "thumbnail": "https://cdn.bithomp.com/thumbnail/thumbail_hash.png",
+        "video": "https://cdn.bithomp.com/video/video_hash"
+      },
+      "metadata": {
+        "name": "Purrf",
+        "description": "Zerpmon is an original collection of digital collectible creatures that live on the XRPL, with each one being a unique 1 of 1 art piece. The Zerpmon project is fueled by a passion for high-quality art and in-depth story telling. For more information on the vision of Zerpmon, visit www.zerpmon.world",
+        "image": "ipfs://Qmf52STemfXu79ovVAdjRneb7kKdtYJNvzYjoxWubbu4Vx/8.png",
+        "attributes": [
+          {
+            "trait_type": "Zerpdex Number",
+            "value": "Zerpmon Collab #8"
+          },
+          {
+            "trait_type": "Type",
+            "value": "Fairy"
+          },
+          {
+            "trait_type": "Evolution Stage",
+            "value": "Collab"
+          }
+        ]
+      }
+    }
+  ]
+}
+This endpoint retrieves a List of NFTs for specified parameters
+
+HTTP Request
+GET https://bithomp.com/api/v2/nfts
+
+Query Parameters
+Parameter	Default	Description
+owner	null	The address of the Owner
+collection	null	The collection ID (optional), can be used for Sologenic collections (specify an issuer), and for standard collections instead of using issuer and taxon, in the format: issuer:taxon, if specified you will get also collectionDetails in the root with the collection details.
+issuer	null	The address of the Issuer
+taxon	null	Taxon for that Issuer (optional, will be ignored without an Issuer)
+assets	false	(Only available on the Standard API plan or greater) If set to true, returns assets with direct urls for image 700px x 700px, video 15s, preview 360px x 360px (image, otherwise video frame) and thumbnail 64px x 64px. (See plans for NFT contents for more details or contact us)
+hasMetadata	false	set to true, to list NFTs only with available metadata
+hasImage	false	set to true, to list NFTs only with available images
+hasMedia	false	set to true, to list NFTs only with available media data: audio, video, image
+includeDeleted	false	set to true, if you want result to include deleeted NFTs
+mintedByMarketplace	null	Here you can specify a minter from https://bithomp.com/nft-minters?period=all to filter your search by minter project.
+marker	null	The marker from the previous request, if you need a next page of NFTs
+list	nfts	(Only available on paid API plans) can be set to onSale to get the list of NFTs with active sell offers
+destination	all	(Only available on paid API plans) used to filter NFTs for sale list=onSale, can be set as an address (to specify a particular MarketPlace), public, knownBrokers, publicAndKnownBrokers, all
+order	null	(Only available on paid API plans) used to order NFTs: 1. for list=nfts, can be mintedNew and mintedOld, 2. for list=onSale, can be offerCreatedNew, offerCreatedOld, priceLow, priceHigh
+currency	null	(Only available on paid API plans) used to filter NFTs for sale list=onSale, can be XRP or any other currency code.
+currencyIssuer	null	(Only available on paid API plans) A currency issuer for the currency if it is not an XRP.
+issuedAt	null	(Only available on paid API plans) It can be used to show NFTs which were minted during some period of time. A time period, all time all, last 24h day, last 7 days week, last 30 days month, last 365 days year, or 1671490800000..1671663600000 - period or 2022-12-20T00:00:00.000Z..2022-12-22T00:00:00.000Z, to show from specific date till now: 1671490800000.. or 2022-12-20T00:00:00.000Z..
+deletedAt	null	(Only available on paid API plans) It can be used to show NFTs which were burned during some period of time. A time period, all time all, last 24h day, last 7 days week, last 30 days month, last 365 days year. or 1671490800000..1671663600000 - period or 2022-12-20T00:00:00.000Z..2022-12-22T00:00:00.000Z, to show from specific date till now: 1671490800000.. or 2022-12-20T00:00:00.000Z..
+sellOffers	false	(Available for the Premium plan and higher) If set true, the NFTs will include sellOffers.
+buyOffers	false	(Available for the Premium plan and higher) If set to true, the NFTs will include buyOffers.
+history	false	(Available for the Premium plan and higher) If set to true, the NFTs will include history.
+offersValidate	false	(Available for the Premium plan and higher) If set to true, each NFT offer will include valid as true or false, if false then it also include validationErrors array.
+offersHistory	false	(Available for the Premium plan and higher) If set to true, each NFT will include historical offers which are already accepted or canceled.
+limit	100	The number of NFTs to return. (More than 100 is available for the Standard plan and higher).
+ids	null	(Available for the Standard plan and higher) A list of NFT IDs separated by commas (max 100), to get information about specific NFTs. Formats: ids=abc,def, ids[]=abc&ids[]=def or ids=abc&ids=def.
+collectionDetails	false	(Available for the Paid plans) If set to true, each nft will include collectionDetails with the collection details. if parameter assets is set as true, you will also get assets in the collectionDetails.

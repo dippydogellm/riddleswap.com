@@ -1,0 +1,155 @@
+
+
+Analytics
+
+Resources
+
+Domains
+
+Manage
+Search
+
+
+Errors only
+
+Date
+Time
+Deployment
+Source
+Log
+2025-10-30 07:53:24.61
+1e32aac3
+User
+💰 Registering subscription service routes...
+2025-10-30 07:53:35.38
+1e32aac3
+System
+forwarding local port 5000 to external port 80 (mapped as 1104)
+2025-10-30 07:53:36.82
+1e32aac3
+User
+> rest-express@1.0.0 start
+2025-10-30 07:53:36.82
+1e32aac3
+User
+> NODE_ENV=production PORT=5000 node dist/index.js
+2025-10-30 07:53:42.99
+1e32aac3
+User
+bigint: Failed to load bindings, pure JS will be used (try npm run rebuild?)
+2025-10-30 07:53:43.93
+1e32aac3
+User
+[SESSION INIT] Session system initialized with database backup
+2025-10-30 07:53:43.96
+1e32aac3
+User
+🔄 Server starting - restoring active user sessions...
+2025-10-30 07:53:43.98
+1e32aac3
+User
+🔒 CSP: ENABLED for production security
+2025-10-30 07:53:43.99
+1e32aac3
+User
+🛡️ ANTI-STRIPE SECURITY ENABLED - Blockchain-only payment enforcement
+2025-10-30 07:53:43.99
+1e32aac3
+User
+🚫 STRIPE BLOCKED: CSP denies all stripe.com domains
+2025-10-30 07:53:43.99
+1e32aac3
+User
+✅ Frame protection: Enabled with wallet compatibility
+2025-10-30 07:53:43.99
+1e32aac3
+User
+✅ Script policy: Restricted - wallet friendly, Stripe blocked
+2025-10-30 07:53:43.99
+1e32aac3
+User
+🔄 Registering API routes BEFORE Vite middleware...
+2025-10-30 07:53:43.99
+1e32aac3
+User
+✅ Automatic server-side error logging set up
+2025-10-30 07:53:44.10
+1e32aac3
+User
+🚀 Server is now accepting connections and responding to health checks
+2025-10-30 07:53:44.11
+1e32aac3
+User
+🔍 [STARTUP] Validating production environment...
+2025-10-30 07:53:44.11
+1e32aac3
+User
+🔍 [ENV VALIDATION] Validating environment for: production
+2025-10-30 07:53:44.11
+1e32aac3
+User
+🔍 [ENV VALIDATION] On-chain settlement: DISABLED
+2025-10-30 07:53:44.11
+1e32aac3
+User
+✅ [ENV VALIDATION] DATABASE_URL: CONFIGURED
+2025-10-30 07:53:44.11
+1e32aac3
+User
+📝 [ENV VALIDATION] Using default for ONCHAIN_SETTLEMENT_ENABLED: false
+2025-10-30 07:53:44.11
+1e32aac3
+User
+📝 [ENV VALIDATION] Using default for FEE_ACCOUNTING_ENABLED: true
+2025-10-30 07:53:44.11
+1e32aac3
+User
+✅ [ENV VALIDATION] BITHOMP_API_KEY: CONFIGURED
+2025-10-30 07:53:44.11
+1e32aac3
+User
+📝 [ENV VALIDATION] Using default for SOLANA_RPC_URL: https://api.mainnet-beta.solana.com
+2025-10-30 07:53:44.11
+1e32aac3
+User
+📝 [ENV VALIDATION] Using default for XRPL_RPC_URL: wss://s1.ripple.com
+2025-10-30 07:53:44.11
+1e32aac3
+User
+✅ [ENV VALIDATION] SESSION_SECRET: CONFIGURED
+2025-10-30 07:53:44.11
+1e32aac3
+User
+✅ [ENV VALIDATION] NODE_ENV: CONFIGURED
+2025-10-30 07:53:44.11
+1e32aac3
+User
+⚠️ [ENV VALIDATION] Environment validation warnings:
+2025-10-30 07:53:44.11
+1e32aac3
+User
+- Missing recommended production variable: RIDDLEPAD_BANK_WALLET - XRPL wallet address for RiddlePad fee collection
+2025-10-30 07:53:44.11
+1e32aac3
+User
+- Missing recommended production variable: RIDDLEPAD_COLLECTION_PRIVATE_KEY - Private key for RiddlePad on-chain operations (when enabled)
+2025-10-30 07:53:44.11
+1e32aac3
+User
+- Missing recommended production variable: ETHEREUM_RPC_URL - Ethereum RPC endpoint for EVM operations
+2025-10-30 07:53:44.11
+1e32aac3
+User
+- ETHEREUM_RPC_URL not set - EVM functionality will be limited
+2025-10-30 07:53:44.11
+1e32aac3
+User
+✅ [ENV VALIDATION] Environment validation passed
+2025-10-30 07:53:44.11
+1e32aac3
+User
+🚀 [RIDDLEPAD] Operating in fee accounting mode only - on-chain settlement disabled
+2025-10-30 07:53:44.11
+1e32aac3
+User
+🚀 [RIDDLEPAD] Can Accept Contributions: YES

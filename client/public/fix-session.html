@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Fix RiddleSwap Session</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 600px;
+      margin: 50px auto;
+      padding: 20px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+    }
+    .container {
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    }
+    h1 {
+      color: #333;
+      margin-bottom: 20px;
+    }
+    button {
+      background: #667eea;
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      font-size: 16px;
+      border-radius: 5px;
+      cursor: pointer;
+      margin: 10px 5px;
+    }
+    button:hover {
+      background: #764ba2;
+    }
+    .status {
+      margin: 20px 0;
+      padding: 15px;
+      background: #f0f0f0;
+      border-radius: 5px;
+      font-family: monospace;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🔧 Fix RiddleSwap Session</h1>
+    <p>Your session is stuck in a renewal loop. Choose an option:</p>
+    
+    <button onclick="clearAndReload()">Clear Session & Login Fresh</button>
+    <button onclick="goToLogin()">Go to Login Page</button>
+    
+    <div id="status" class="status">Ready to fix your session...</div>
+  </div>
+
+  <script>
+    function clearAndReload() {
+      const status = document.getElementById('status');
+      status.innerHTML = 'Clearing session data...';
+      
+      // Clear all storage
+      localStorage.clear();
+      sessionStorage.clear();
+      
+      // Clear cookies
+      document.cookie.split(";").forEach(function(c) { 
+        document.cookie = c.replace(/^ +/, "").replace(/=.*/, "=;expires=" + new Date().toUTCString() + ";path=/"); 
+      });
+      
+      status.innerHTML = '✅ Session cleared! Redirecting to homepage...';
+      
+      setTimeout(() => {
+        window.location.href = '/';
+      }, 1500);
+    }
+    
+    function goToLogin() {
+      window.location.href = '/';
+    }
+  </script>
+</body>
+</html>
