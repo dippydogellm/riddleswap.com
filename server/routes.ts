@@ -73,19 +73,6 @@ export async function registerRoutes(app: Express, server: Server): Promise<void
   console.log('✅ EVM Swap routes registered successfully');
 
   // =============================================================================
-  // XRPL SWAP V2 ROUTES (PUBLIC + AUTH EXECUTE)
-  // =============================================================================
-  try {
-    console.log('🔧 Registering XRPL Swap v2 routes...');
-    const xrplSwapV2Module = await import('./xrpl/xrpl-swap-routes-v2');
-    const xrplSwapV2Routes = xrplSwapV2Module.default;
-    app.use('/api', xrplSwapV2Routes);
-    console.log('✅ XRPL Swap v2 routes registered successfully');
-  } catch (e) {
-    console.warn('⚠️ Failed to register XRPL Swap v2 routes:', e);
-  }
-
-  // =============================================================================
   // XRPL TOKEN SEARCH ROUTES (PUBLIC ACCESS)
   // =============================================================================
   try {

@@ -91,19 +91,19 @@ router.post('/execute', sessionAuth, async (req: any, res: Response) => {
     const result = await executeSwapV2(cachedKeys.xrpl.privateKey, input);
 
     console.log('✅ [XRPL SWAP V2] Swap executed successfully:', {
-      txHash: result.swapTxHash,
-      delivered: result.delivered,
+      txHash: result.txHash,
+      delivered: result.deliveredAmount,
       fee: result.feeTxHash
     });
 
     res.json({
       success: true,
-      swapTxHash: result.swapTxHash,
+      swapTxHash: result.txHash,
       feeTxHash: result.feeTxHash,
-      delivered: result.delivered,
+      delivered: result.deliveredAmount,
       minimumOutput: result.minOutput,
       expectedOutput: result.expectedOutput,
-      platformFee: result.feeXrp,
+      platformFee: result.platformFeeXrp,
       fromToken: input.fromToken,
       toToken: input.toToken,
       fromAmount: input.amount

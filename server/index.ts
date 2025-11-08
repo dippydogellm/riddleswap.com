@@ -292,11 +292,11 @@ async function getAvailablePort(startPort: number, host: string, maxTries = 10):
 }
 
 // Start listening as early as possible on an available port
-// Use localhost on Windows instead of 0.0.0.0
+// Use 0.0.0.0 for all platforms
 const isWindows = process.platform === 'win32';
 (async () => {
   const preferredPort = Number(process.env.PORT) || 5000;
-  const host = isWindows ? 'localhost' : '0.0.0.0';
+  const host = '0.0.0.0'; // Changed from conditional to always use 0.0.0.0
   let finalPort = preferredPort;
   try {
     finalPort = await getAvailablePort(preferredPort, host, 20);
