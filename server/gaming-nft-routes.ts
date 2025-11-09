@@ -1,6 +1,7 @@
 import { Router } from 'express';
 import { db } from './db';
 import { gamingNfts, nftPowerAttributes } from '../shared/schema';
+import { battles, battleParticipants, nftScorecards } from '@shared/battle-system-schema';
 import { eq, and, like, sql, asc, desc } from 'drizzle-orm';
 import { uploadToGCS, getGCSPublicUrl } from './gcs-upload.js';
 import OpenAI from 'openai';
@@ -222,6 +223,73 @@ Cinematic composition, game card art style, vibrant colors, 4K quality.`;
       error: 'Failed to generate battle image', 
       details: error.message 
     });
+  }
+});
+
+/**
+ * GET /api/gaming/nfts/:id/battle-history
+ * Get battle history for a specific NFT
+ */
+router.get('/gaming/nfts/:id/battle-history', async (req, res) => {
+  try {
+    const { id } = req.params;
+
+    console.log(`⚔️ [BATTLE HISTORY] Fetching for NFT ${id}`);
+
+    // Query battle history using nftScorecards for battle stats
+    const scorecard = await db
+      .select({
+        total_battles: nftScorecards.total_battles,
+        total_kills: nftScorecards.total_kills,
+        total_damage_dealt: nftScorecards.total_damage_dealt,
+        total_damage_taken: nftScorecards.total_damage_taken,
+        last_battle_id: nftScorecards.last_battle_id,
+        last_updated: nftScorecards.last_updated,
+      })
+      .from(nftScorecards)
+      .where(eq(nftScorecards.nft_id, id))
+      .limit(1);
+
+    console.log(`✅ [BATTLE HISTORY] Found stats for NFT ${id}`);
+
+    // Return empty array if no battles yet - frontend expects array format
+    res.json(scorecard.length > 0 ? [scorecard[0]] : []);
+  } catch (error: any) {
+    console.error('❌ [BATTLE HISTORY] Error:', error);
+    res.json([]); // Return empty array on error
+  }
+});
+
+/**
+ * GET /api/gaming/nfts/:id/power-history
+ * Get power stat changes over time for a specific NFT
+ */
+router.get('/gaming/nfts/:id/power-history', async (req, res) => {
+  try {
+    const { id } = req.params;
+
+    console.log(`📊 [POWER HISTORY] Fetching for NFT ${id}`);
+
+    // Query power stats from nft_power_attributes
+    const powerStats = await db
+      .select({
+        date: nftPowerAttributes.last_updated,
+        army_power: nftPowerAttributes.army_power,
+        religion_power: nftPowerAttributes.religion_power,
+        civilization_power: nftPowerAttributes.civilization_power,
+        economic_power: nftPowerAttributes.economic_power,
+        total_power: nftPowerAttributes.total_power,
+      })
+      .from(nftPowerAttributes)
+      .where(eq(nftPowerAttributes.nft_id, id))
+      .limit(1);
+
+    console.log(`✅ [POWER HISTORY] Found ${powerStats.length} records for NFT ${id}`);
+
+    res.json(powerStats);
+  } catch (error: any) {
+    console.error('❌ [POWER HISTORY] Error:', error);
+    res.json([]); // Return empty array on error
   }
 });
 

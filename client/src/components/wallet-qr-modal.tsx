@@ -1,8 +1,18 @@
-import React from 'react';
-import { X, Copy, Download } from 'lucide-react';
-// QR generation disabled - using external wallet connections instead
-// import { QRCodeSVG } from 'qrcode.react';
-// Logo removed - using text branding instead
+import React, { useState } from 'react';
+import Dialog from '@mui/material/Dialog';
+import DialogTitle from '@mui/material/DialogTitle';
+import DialogContent from '@mui/material/DialogContent';
+import DialogActions from '@mui/material/DialogActions';
+import Button from '@mui/material/Button';
+import IconButton from '@mui/material/IconButton';
+import Typography from '@mui/material/Typography';
+import Box from '@mui/material/Box';
+import Paper from '@mui/material/Paper';
+import Chip from '@mui/material/Chip';
+import Snackbar from '@mui/material/Snackbar';
+import Alert from '@mui/material/Alert';
+import { X, Copy, Download, CheckCircle } from 'lucide-react';
+import { QRCodeSVG } from 'qrcode.react';
 
 interface WalletQRModalProps {
   isOpen: boolean;
@@ -17,117 +27,198 @@ export const WalletQRModal: React.FC<WalletQRModalProps> = ({
   isOpen,
   onClose,
   address,
-  title = "Wallet Address",
-  description = "Scan this QR code to receive payments",
+  title = "Receive Payment",
+  description = "Scan this QR code to send payments to your wallet",
   network = "Blockchain"
 }) => {
+  const [copied, setCopied] = useState(false);
+  const [showSuccess, setShowSuccess] = useState(false);
 
   const copyAddress = async () => {
     try {
       await navigator.clipboard.writeText(address);
-      // You can add toast notification here if needed
+      setCopied(true);
+      setShowSuccess(true);
+      setTimeout(() => setCopied(false), 2000);
     } catch (error) {
-
+      console.error('Failed to copy address:', error);
     }
   };
 
   const downloadQR = () => {
-    const canvas = document.querySelector('.wallet-qr-code canvas') as HTMLCanvasElement;
-    if (canvas) {
+    // Get the QR code SVG element
+    const svg = document.querySelector('#wallet-qr-code') as SVGElement;
+    if (!svg) return;
+
+    // Convert SVG to canvas
+    const canvas = document.createElement('canvas');
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+
+    const svgData = new XMLSerializer().serializeToString(svg);
+    const img = new Image();
+    
+    img.onload = () => {
+      canvas.width = img.width;
+      canvas.height = img.height;
+      ctx.drawImage(img, 0, 0);
+      
+      // Download canvas as PNG
       const url = canvas.toDataURL('image/png');
       const link = document.createElement('a');
       link.download = `${network}-wallet-qr.png`;
       link.href = url;
-      document.body.appendChild(link);
       link.click();
-      document.body.removeChild(link);
-    }
+    };
+    
+    img.src = 'data:image/svg+xml;base64,' + btoa(svgData);
   };
 
-  if (!isOpen) return null;
-
   return (
-    <div className="xaman-modal-overlay" style={{
-      position: 'fixed',
-      inset: '0',
-      backgroundColor: 'rgba(0, 0, 0, 0.8)',
-      zIndex: 9999,
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-      padding: '1rem'
-    }}>
-      <div className="xaman-qr-modal" role="dialog" aria-labelledby="wallet-qr-title">
-        <div className="xaman-modal-header">
-          <div className="xaman-modal-logo">
-            <img 
-              src="/images/logos/rdl-logo-official.png" 
-              alt="RDL Official Logo" 
-              className="w-6 h-6 object-contain"
-              onError={(e) => {
-                e.currentTarget.style.display = 'none';
+    <>
+      <Dialog 
+        open={isOpen} 
+        onClose={onClose}
+        maxWidth="sm"
+        fullWidth
+        PaperProps={{
+          sx: {
+            borderRadius: 3,
+            background: 'linear-gradient(145deg, rgba(255,255,255,1) 0%, rgba(249,250,251,1) 100%)',
+          }
+        }}
+      >
+        <DialogTitle>
+          <Box display="flex" alignItems="center" justifyContent="space-between">
+            <Box display="flex" alignItems="center" gap={2}>
+              <Box
+                sx={{
+                  width: 40,
+                  height: 40,
+                  bgcolor: 'primary.main',
+                  borderRadius: 2,
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)'
+                }}
+              >
+                <Typography variant="h6" color="white" fontWeight="bold">
+                  RDL
+                </Typography>
+              </Box>
+              <Typography variant="h6" fontWeight="bold">
+                {title}
+              </Typography>
+            </Box>
+            <IconButton onClick={onClose} size="small">
+              <X size={20} />
+            </IconButton>
+          </Box>
+        </DialogTitle>
+        
+        <DialogContent>
+          <Box textAlign="center">
+            <Typography variant="body2" color="text.secondary" mb={3}>
+              {description}
+            </Typography>
+            
+            {/* QR Code Display */}
+            <Paper 
+              elevation={3}
+              sx={{ 
+                p: 3, 
+                display: 'inline-block',
+                borderRadius: 2,
+                background: 'white'
               }}
-            />
-            <div 
-              className="w-6 h-6 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold text-xs" 
-              style={{ display: 'none' }}
             >
-              RDL
-            </div>
-          </div>
-          <h2 id="wallet-qr-title" className="xaman-modal-title">
-            {title}
-          </h2>
-          <button onClick={onClose} className="xaman-modal-close" aria-label="Close modal">
-            <X size={20} />
-          </button>
-        </div>
-        
-        <p className="xaman-modal-description">
-          {description}
-        </p>
-        
-        <div className="xaman-modal-content">
-          {/* QR Code Display */}
-          <div className="xaman-qr-container">
-            <div className="wallet-qr-code">
-              <div className="p-8 text-center text-gray-600">
-                QR generation disabled - use external wallet connections
-              </div>
-            </div>
-          </div>
-          
-          {/* Address Display */}
-          <div className="wallet-address-container">
-            <div className="wallet-address-display">
-              <code className="wallet-address-text">
+              <QRCodeSVG
+                id="wallet-qr-code"
+                value={address}
+                size={256}
+                level="H"
+                includeMargin={true}
+                style={{ display: 'block' }}
+              />
+            </Paper>
+            
+            {/* Address Display */}
+            <Paper 
+              elevation={1}
+              sx={{ 
+                mt: 3,
+                p: 2,
+                borderRadius: 2,
+                background: 'rgba(59, 130, 246, 0.05)'
+              }}
+            >
+              <Typography 
+                variant="body2" 
+                sx={{ 
+                  fontFamily: 'monospace',
+                  wordBreak: 'break-all',
+                  mb: 2,
+                  color: 'text.primary'
+                }}
+              >
                 {address}
-              </code>
-              <div className="wallet-address-actions">
-                <button
+              </Typography>
+              
+              <Box display="flex" gap={1} justifyContent="center">
+                <Button
+                  variant="outlined"
+                  size="small"
+                  startIcon={copied ? <CheckCircle size={16} /> : <Copy size={16} />}
                   onClick={copyAddress}
-                  className="wallet-action-button"
-                  title="Copy address"
+                  color={copied ? "success" : "primary"}
                 >
-                  <Copy size={16} />
-                </button>
-                <button
+                  {copied ? 'Copied!' : 'Copy Address'}
+                </Button>
+                <Button
+                  variant="outlined"
+                  size="small"
+                  startIcon={<Download size={16} />}
                   onClick={downloadQR}
-                  className="wallet-action-button"
-                  title="Download QR code"
                 >
-                  <Download size={16} />
-                </button>
-              </div>
-            </div>
-          </div>
-          
-          {/* Network Badge */}
-          <div className="wallet-network-badge">
-            <span className="network-label">{network} Network</span>
-          </div>
-        </div>
-      </div>
-    </div>
+                  Download QR
+                </Button>
+              </Box>
+            </Paper>
+            
+            {/* Network Badge */}
+            <Box mt={2}>
+              <Chip 
+                label={`${network} Network`}
+                color="primary"
+                variant="outlined"
+              />
+            </Box>
+          </Box>
+        </DialogContent>
+        
+        <DialogActions>
+          <Button onClick={onClose} variant="contained" fullWidth>
+            Close
+          </Button>
+        </DialogActions>
+      </Dialog>
+
+      {/* Success Snackbar */}
+      <Snackbar
+        open={showSuccess}
+        autoHideDuration={3000}
+        onClose={() => setShowSuccess(false)}
+        anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
+      >
+        <Alert 
+          onClose={() => setShowSuccess(false)} 
+          severity="success"
+          sx={{ width: '100%' }}
+        >
+          Address copied to clipboard!
+        </Alert>
+      </Snackbar>
+    </>
   );
 };

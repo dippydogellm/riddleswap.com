@@ -1,20 +1,66 @@
-import { useMemo, useState } from 'react';
+// ============================================================================
+// GAMING NFTS PAGE - MATERIAL UI VERSION
+// ============================================================================
+// Browse all gaming NFTs with power attributes and battle-ready stats
+// Features: Search, Filters, Collection selector, Trait search, Pagination
+// Uses Bithomp CDN images for better performance
+// ============================================================================
+
+import { useState, useMemo } from 'react';
 import { useToast } from '@/hooks/use-toast';
 import { useQuery } from '@tanstack/react-query';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Input } from '@/components/ui/input';
-import { Button } from '@/components/ui/button';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
-import { Badge } from '@/components/ui/badge';
-import { Loader2, Search, Filter, Sword, Shield, Sparkles, Coins } from 'lucide-react';
+import { useLocation } from 'wouter';
 
+// ============================================================================
+// MATERIAL UI COMPONENTS
+// ============================================================================
+import {
+  Box,
+  Container,
+  Card,
+  CardContent,
+  CardMedia,
+  Typography,
+  Button,
+  TextField,
+  Select,
+  MenuItem,
+  FormControl,
+  InputLabel,
+  Dialog,
+  DialogContent,
+  Chip,
+  Grid,
+  Paper,
+  InputAdornment,
+  Skeleton,
+  IconButton,
+  Pagination
+} from '@mui/material';
+
+// ============================================================================
+// ICONS
+// ============================================================================
+import { 
+  Search, Filter, Sword, Shield, Sparkles, Coins,
+  ChevronDown, X
+} from 'lucide-react';
+
+// ============================================================================
+// CUSTOM COMPONENT
+// ============================================================================
+import GamingNFTDetail from '@/components/GamingNFTDetail';
+
+// ============================================================================
+// INTERFACES
+// ============================================================================
 interface GamingNFT {
   id: string;
   nft_token_id: string;
   nft_name: string;
   collection_name: string;
   original_image_url: string;
+  cdn_image_url?: string;
   battle_image_url?: string;
   current_owner?: string;
   army_power: number;
@@ -36,420 +82,459 @@ interface GamingNFTResponse {
   direction: string;
 }
 
+// ============================================================================
+// MAIN COMPONENT
+// ============================================================================
 export default function GamingNFTs() {
+  const [, setLocation] = useLocation();
+  const { toast } = useToast();
+  
+  // ============================================================================
+  // STATE MANAGEMENT
+  // ============================================================================
   const [searchTerm, setSearchTerm] = useState('');
   const [ownerFilter, setOwnerFilter] = useState('');
+  const [collectionFilter, setCollectionFilter] = useState('all');
   const [civilizationFilter, setCivilizationFilter] = useState('all');
   const [selectedNFT, setSelectedNFT] = useState<GamingNFT | null>(null);
-  const { toast } = useToast();
-  // Server-driven sorting & pagination state
   const [sortBy, setSortBy] = useState<'total_power' | 'rarity_score' | 'army_power' | 'nft_name'>('total_power');
   const [sortDir, setSortDir] = useState<'desc' | 'asc'>('desc');
   const [pageNum, setPageNum] = useState(1);
   const [pageSize, setPageSize] = useState(50);
 
-  // Fetch gaming NFTs (server-side sorting & pagination)
-  const { data: response, isLoading, refetch, isFetching } = useQuery<GamingNFTResponse, Error, GamingNFTResponse>({
-    queryKey: ['gaming-nfts', ownerFilter, civilizationFilter, sortBy, sortDir, pageNum, pageSize],
+  // ============================================================================
+  // FETCH GAMING NFTS
+  // ============================================================================
+  const { data: response, isLoading, refetch, isFetching } = useQuery<GamingNFTResponse>({
+    queryKey: ['gaming-nfts', ownerFilter, collectionFilter, civilizationFilter, sortBy, sortDir, pageNum, pageSize],
     queryFn: async () => {
       const params = new URLSearchParams();
       if (ownerFilter) params.append('owner', ownerFilter);
+      if (collectionFilter !== 'all') params.append('collection', collectionFilter);
       if (civilizationFilter !== 'all') params.append('civilization', civilizationFilter);
       params.append('sort', sortBy);
       params.append('dir', sortDir);
       params.append('page', String(pageNum));
       params.append('pageSize', String(pageSize));
+      
       const res = await fetch(`/api/gaming/nfts?${params}`);
       if (!res.ok) throw new Error('Failed to fetch gaming NFTs');
-      const json = await res.json();
-      return json as GamingNFTResponse;
+      return res.json();
     },
+    staleTime: 30000
   });
 
-  // Filter NFTs by search term
+  // ============================================================================
+  // FETCH AVAILABLE COLLECTIONS
+  // ============================================================================
+  const { data: collections = [] } = useQuery<string[]>({
+    queryKey: ['gaming-collections'],
+    queryFn: async () => {
+      const res = await fetch('/api/gaming/collections');
+      if (!res.ok) return [];
+      const data = await res.json();
+      return data.collections || [];
+    },
+    staleTime: 60000
+  });
+
+  // ============================================================================
+  // CLIENT-SIDE SEARCH FILTER
+  // ============================================================================
   const filteredNFTs = useMemo(() => {
     const list = response?.data ?? [];
     const term = searchTerm.trim().toLowerCase();
     if (!term) return list;
+    
     return list.filter(nft =>
       nft.nft_name?.toLowerCase().includes(term) ||
       nft.collection_name?.toLowerCase().includes(term) ||
-      nft.nft_token_id?.toLowerCase().includes(term)
+      nft.nft_token_id?.toLowerCase().includes(term) ||
+      nft.character_class?.toLowerCase().includes(term)
     );
   }, [response, searchTerm]);
 
-  return (
-    <div className="container mx-auto p-6 space-y-6">
-      {/* Header */}
-      <div className="flex items-center justify-between">
-        <div>
-          <h1 className="text-4xl font-bold bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">
-            Gaming NFT Collection
-          </h1>
-          <p className="text-muted-foreground mt-2">
-            Browse all gaming NFTs with power attributes and battle-ready stats
-          </p>
-        </div>
-        <Badge variant="outline" className="text-lg px-4 py-2">
-          {response?.total ?? 0} NFTs
-        </Badge>
-      </div>
+  // ============================================================================
+  // HANDLE PAGE CHANGE
+  // ============================================================================
+  const handlePageChange = (event: React.ChangeEvent<unknown>, value: number) => {
+    setPageNum(value);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
 
-      {/* Filters */}
-      <Card>
-        <CardContent className="pt-6">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+  // ============================================================================
+  // RENDER
+  // ============================================================================
+  return (
+    <Box sx={{ minHeight: '100vh', bgcolor: 'background.default', py: 4 }}>
+      <Container maxWidth="xl">
+        
+        {/* ================================================================ */}
+        {/* HEADER */}
+        {/* ================================================================ */}
+        <Box sx={{ mb: 4 }}>
+          <Typography 
+            variant="h3" 
+            component="h1" 
+            fontWeight="bold" 
+            gutterBottom
+            sx={{
+              background: 'linear-gradient(to right, #a855f7, #3b82f6)',
+              backgroundClip: 'text',
+              WebkitBackgroundClip: 'text',
+              color: 'transparent'
+            }}
+          >
+            Gaming NFT Collection
+          </Typography>
+          <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+            <Typography variant="body1" color="text.secondary">
+              Browse all gaming NFTs with power attributes and battle-ready stats
+            </Typography>
+            <Chip 
+              label={`${response?.total ?? 0} NFTs`} 
+              color="primary" 
+              sx={{ fontWeight: 'bold', fontSize: '1rem', px: 2, py: 2.5 }}
+            />
+          </Box>
+        </Box>
+
+        {/* ================================================================ */}
+        {/* FILTERS */}
+        {/* ================================================================ */}
+        <Paper elevation={3} sx={{ p: 3, mb: 4 }}>
+          <Grid container spacing={2}>
+            
             {/* Search */}
-            <div className="relative">
-              <Search className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
-              <Input
+            <Grid item xs={12} md={3}>
+              <TextField
+                fullWidth
                 placeholder="Search by name or token ID..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="pl-9"
+                InputProps={{
+                  startAdornment: (
+                    <InputAdornment position="start">
+                      <Search size={20} />
+                    </InputAdornment>
+                  ),
+                  endAdornment: searchTerm && (
+                    <InputAdornment position="end">
+                      <IconButton size="small" onClick={() => setSearchTerm('')}>
+                        <X size={16} />
+                      </IconButton>
+                    </InputAdornment>
+                  )
+                }}
               />
-            </div>
+            </Grid>
 
             {/* Owner Filter */}
-            <Input
-              placeholder="Filter by owner address..."
-              value={ownerFilter}
-              onChange={(e) => setOwnerFilter(e.target.value)}
-            />
+            <Grid item xs={12} md={3}>
+              <TextField
+                fullWidth
+                placeholder="Filter by owner address..."
+                value={ownerFilter}
+                onChange={(e) => setOwnerFilter(e.target.value)}
+                InputProps={{
+                  endAdornment: ownerFilter && (
+                    <InputAdornment position="end">
+                      <IconButton size="small" onClick={() => setOwnerFilter('')}>
+                        <X size={16} />
+                      </IconButton>
+                    </InputAdornment>
+                  )
+                }}
+              />
+            </Grid>
+
+            {/* Collection Filter */}
+            <Grid item xs={12} md={2}>
+              <FormControl fullWidth>
+                <InputLabel>Collection</InputLabel>
+                <Select
+                  value={collectionFilter}
+                  label="Collection"
+                  onChange={(e) => setCollectionFilter(e.target.value)}
+                >
+                  <MenuItem value="all">All Collections</MenuItem>
+                  {collections.map((collection) => (
+                    <MenuItem key={collection} value={collection}>
+                      {collection}
+                    </MenuItem>
+                  ))}
+                </Select>
+              </FormControl>
+            </Grid>
 
             {/* Character Class Filter */}
-            <Select value={civilizationFilter} onValueChange={(value) => {
-              setCivilizationFilter(value);
-              toast({
-                title: "Filter Applied",
-                description: `Filtering class: ${value === 'all' ? 'All Classes' : value}`,
-              });
-            }}>
-              <SelectTrigger>
-                <SelectValue placeholder="Filter by character class" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="all">All Classes</SelectItem>
-                <SelectItem value="warrior">Warrior</SelectItem>
-                <SelectItem value="priest">Priest</SelectItem>
-                <SelectItem value="knight">Knight</SelectItem>
-                <SelectItem value="merchant">Merchant</SelectItem>
-                <SelectItem value="sage">Sage</SelectItem>
-                <SelectItem value="lord">Lord</SelectItem>
-                <SelectItem value="champion">Champion</SelectItem>
-              </SelectContent>
-            </Select>
+            <Grid item xs={12} md={2}>
+              <FormControl fullWidth>
+                <InputLabel>Character Class</InputLabel>
+                <Select
+                  value={civilizationFilter}
+                  label="Character Class"
+                  onChange={(e) => setCivilizationFilter(e.target.value)}
+                >
+                  <MenuItem value="all">All Classes</MenuItem>
+                  <MenuItem value="warrior">Warrior</MenuItem>
+                  <MenuItem value="priest">Priest</MenuItem>
+                  <MenuItem value="knight">Knight</MenuItem>
+                  <MenuItem value="merchant">Merchant</MenuItem>
+                  <MenuItem value="sage">Sage</MenuItem>
+                  <MenuItem value="lord">Lord</MenuItem>
+                  <MenuItem value="champion">Champion</MenuItem>
+                </Select>
+              </FormControl>
+            </Grid>
 
             {/* Sort By */}
-            <div className="grid grid-cols-2 gap-2">
-              <Select value={sortBy} onValueChange={(v) => setSortBy(v as any)}>
-                <SelectTrigger>
-                  <SelectValue placeholder="Sort by" />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="total_power">Sort: Total Power</SelectItem>
-                  <SelectItem value="rarity_score">Sort: Rarity Score</SelectItem>
-                  <SelectItem value="army_power">Sort: Army Power</SelectItem>
-                  <SelectItem value="nft_name">Sort: Name</SelectItem>
-                </SelectContent>
-              </Select>
-              <Select value={sortDir} onValueChange={(v) => setSortDir(v as any)}>
-                <SelectTrigger>
-                  <SelectValue placeholder="Direction" />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="desc">Desc</SelectItem>
-                  <SelectItem value="asc">Asc</SelectItem>
-                </SelectContent>
-              </Select>
-            </div>
+            <Grid item xs={6} md={1}>
+              <FormControl fullWidth>
+                <InputLabel>Sort</InputLabel>
+                <Select
+                  value={sortBy}
+                  label="Sort"
+                  onChange={(e) => setSortBy(e.target.value as any)}
+                >
+                  <MenuItem value="total_power">Power</MenuItem>
+                  <MenuItem value="rarity_score">Rarity</MenuItem>
+                  <MenuItem value="army_power">Army</MenuItem>
+                  <MenuItem value="nft_name">Name</MenuItem>
+                </Select>
+              </FormControl>
+            </Grid>
+
+            {/* Sort Direction */}
+            <Grid item xs={6} md={1}>
+              <FormControl fullWidth>
+                <InputLabel>Order</InputLabel>
+                <Select
+                  value={sortDir}
+                  label="Order"
+                  onChange={(e) => setSortDir(e.target.value as any)}
+                >
+                  <MenuItem value="desc">Desc</MenuItem>
+                  <MenuItem value="asc">Asc</MenuItem>
+                </Select>
+              </FormControl>
+            </Grid>
+
             {/* Page Size */}
-            <div className="flex items-center gap-2 col-span-1 md:col-span-4">
-              <Select value={String(pageSize)} onValueChange={(v) => { setPageSize(parseInt(v, 10)); setPageNum(1); }}>
-                <SelectTrigger>
-                  <SelectValue placeholder="Page Size" />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="25">25</SelectItem>
-                  <SelectItem value="50">50</SelectItem>
-                  <SelectItem value="100">100</SelectItem>
-                  <SelectItem value="150">150</SelectItem>
-                </SelectContent>
-              </Select>
-              {isFetching && <Loader2 className="h-5 w-5 animate-spin text-primary" />}
-            </div>
-          </div>
-        </CardContent>
-      </Card>
+            <Grid item xs={12} md={12}>
+              <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
+                <FormControl size="small" sx={{ minWidth: 120 }}>
+                  <InputLabel>Per Page</InputLabel>
+                  <Select
+                    value={String(pageSize)}
+                    label="Per Page"
+                    onChange={(e) => {
+                      setPageSize(parseInt(e.target.value));
+                      setPageNum(1);
+                    }}
+                  >
+                    <MenuItem value="25">25</MenuItem>
+                    <MenuItem value="50">50</MenuItem>
+                    <MenuItem value="100">100</MenuItem>
+                    <MenuItem value="150">150</MenuItem>
+                  </Select>
+                </FormControl>
+                {isFetching && (
+                  <Typography variant="body2" color="text.secondary">
+                    Loading...
+                  </Typography>
+                )}
+              </Box>
+            </Grid>
+          </Grid>
+        </Paper>
 
-      {/* NFT Grid */}
-      {isLoading ? (
-        <div className="flex items-center justify-center py-12">
-          <Loader2 className="h-8 w-8 animate-spin text-primary" />
-        </div>
-      ) : (
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-6">
-          {filteredNFTs.map((nft) => (
-            <Dialog key={nft.id}>
-              <DialogTrigger asChild>
-                <Card className="cursor-pointer hover:shadow-lg transition-shadow duration-200 group">
-                  <CardHeader className="p-0">
-                    <div className="relative aspect-square overflow-hidden rounded-t-lg bg-gradient-to-br from-slate-900 to-slate-800">
-                      <img
-                        src={nft.original_image_url}
-                        alt={nft.nft_name}
-                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
-                        onError={(e) => {
-                          const target = e.target as HTMLImageElement;
-                          target.src = '/inquisition-card.png';
-                        }}
-                      />
-                      <div className="absolute top-2 right-2">
-                        <Badge variant="secondary" className="backdrop-blur-md bg-black/70 border-white/20">
-                          {nft.collection_name}
-                        </Badge>
-                      </div>
-                    </div>
-                  </CardHeader>
-                  <CardContent className="p-4 space-y-3">
-                    <div>
-                      <h3 className="font-bold text-lg truncate">{nft.nft_name}</h3>
-                      {nft.character_class && (
-                        <p className="text-sm text-muted-foreground">{nft.character_class}</p>
-                      )}
-                    </div>
-
-                    {/* Power Stats */}
-                    <div className="grid grid-cols-2 gap-2 text-sm">
-                      <div className="flex items-center gap-1">
-                        <Sword className="h-4 w-4 text-red-500" />
-                        <span className="font-semibold">{Number(nft.army_power).toFixed(0)}</span>
-                      </div>
-                      <div className="flex items-center gap-1">
-                        <Shield className="h-4 w-4 text-blue-500" />
-                        <span className="font-semibold">{Number(nft.religion_power).toFixed(0)}</span>
-                      </div>
-                      <div className="flex items-center gap-1">
-                        <Sparkles className="h-4 w-4 text-purple-500" />
-                        <span className="font-semibold">{Number(nft.civilization_power).toFixed(0)}</span>
-                      </div>
-                      <div className="flex items-center gap-1">
-                        <Coins className="h-4 w-4 text-yellow-500" />
-                        <span className="font-semibold">{Number(nft.economic_power).toFixed(0)}</span>
-                      </div>
-                    </div>
-
-                    {/* Total Power */}
-                    <div className="pt-2 border-t">
-                      <div className="flex items-center justify-between">
-                        <span className="text-sm text-muted-foreground">Total Power</span>
-                        <span className="text-lg font-bold bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">
-                          {Number(nft.total_power).toFixed(0)}
-                        </span>
-                      </div>
-                    </div>
+        {/* ================================================================ */}
+        {/* NFT GRID */}
+        {/* ================================================================ */}
+        {isLoading ? (
+          <Grid container spacing={3}>
+            {[...Array(12)].map((_, i) => (
+              <Grid item xs={12} sm={6} md={4} lg={3} xl={2.4} key={i}>
+                <Card>
+                  <Skeleton variant="rectangular" height={300} />
+                  <CardContent>
+                    <Skeleton height={30} />
+                    <Skeleton height={20} />
+                    <Skeleton height={20} />
                   </CardContent>
                 </Card>
-              </DialogTrigger>
-
-              {/* Detailed NFT Dialog */}
-              <DialogContent className="max-w-6xl max-h-[95vh] overflow-y-auto">
-                <DialogHeader>
-                  <DialogTitle className="text-2xl">{nft.nft_name}</DialogTitle>
-                </DialogHeader>
-                
-                <div className="space-y-6">
-                  {/* Images */}
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    {/* Original Image */}
-                    <div>
-                      <h3 className="text-sm font-semibold mb-2 text-muted-foreground uppercase tracking-wide">Original NFT</h3>
-                      <div className="aspect-square rounded-lg overflow-hidden border-2 border-purple-500/20 shadow-lg">
-                        <img
-                          src={nft.original_image_url}
-                          alt={`${nft.nft_name} - Original`}
-                          className="w-full h-full object-cover"
-                          onError={(e) => {
-                            const target = e.target as HTMLImageElement;
-                            target.src = '/inquisition-card.png';
-                          }}
-                        />
-                      </div>
-                    </div>
-
-                    {/* AI Battle Image */}
-                    <div>
-                      <div className="flex items-center justify-between mb-2">
-                        <h3 className="text-sm font-semibold text-muted-foreground uppercase tracking-wide">AI Battle Image</h3>
-                        {!nft.battle_image_url && (
-                          <Button 
-                            size="sm" 
-                            onClick={async () => {
-                              toast({
-                                title: "Generating Battle Image",
-                                description: "Creating AI-powered battle image...",
-                              });
-                              await generateBattleImage(nft.id, toast);
-                              refetch();
-                            }}
-                            disabled={isLoading}
-                          >
-                            Generate
-                          </Button>
-                        )}
-                      </div>
-                      <div className="aspect-square rounded-lg overflow-hidden border-2 border-blue-500/20 bg-gradient-to-br from-purple-500/10 to-blue-500/10 shadow-lg">
-                        {nft.battle_image_url ? (
-                          <img
-                            src={nft.battle_image_url}
-                            alt={`${nft.nft_name} - Battle`}
-                            className="w-full h-full object-cover"
-                          />
-                        ) : (
-                          <div className="w-full h-full flex items-center justify-center text-muted-foreground">
-                            No battle image generated
-                          </div>
-                        )}
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Detailed Stats */}
-                  <div className="space-y-6">
-                    <div>
-                      <h3 className="font-semibold mb-4 text-lg uppercase tracking-wide">Power Attributes</h3>
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <StatBar label="Army Power" value={nft.army_power} max={500} color="red" icon={<Sword className="h-4 w-4" />} />
-                        <StatBar label="Religion Power" value={nft.religion_power} max={500} color="blue" icon={<Shield className="h-4 w-4" />} />
-                        <StatBar label="Civilization Power" value={nft.civilization_power} max={500} color="purple" icon={<Sparkles className="h-4 w-4" />} />
-                        <StatBar label="Economic Power" value={nft.economic_power} max={500} color="yellow" icon={<Coins className="h-4 w-4" />} />
-                      </div>
-                    </div>
-
-                    {/* Metadata */}
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-4 border-t">
-                      <div>
-                        <p className="text-sm text-muted-foreground">Collection</p>
-                        <p className="font-medium">{nft.collection_name}</p>
-                      </div>
-                      <div>
-                        <p className="text-sm text-muted-foreground">Character Class</p>
-                        <p className="font-medium">{nft.character_class || 'Unknown'}</p>
-                      </div>
-                      <div>
-                        <p className="text-sm text-muted-foreground">Rarity Score</p>
-                        <p className="font-medium">{nft.rarity_score ? Number(nft.rarity_score).toFixed(2) : 'N/A'}</p>
-                      </div>
-                      {nft.current_owner && (
-                        <div className="col-span-2">
-                          <p className="text-sm text-muted-foreground">Owner</p>
-                          <p className="font-mono text-xs break-all">{nft.current_owner}</p>
-                        </div>
+              </Grid>
+            ))}
+          </Grid>
+        ) : filteredNFTs.length > 0 ? (
+          <>
+            <Grid container spacing={3}>
+              {filteredNFTs.map((nft) => (
+                <Grid item xs={12} sm={6} md={4} lg={3} xl={2.4} key={nft.id}>
+                  <Card 
+                    elevation={3}
+                    sx={{
+                      cursor: 'pointer',
+                      transition: 'all 0.3s ease',
+                      '&:hover': {
+                        transform: 'translateY(-8px)',
+                        boxShadow: 6
+                      }
+                    }}
+                    onClick={() => setSelectedNFT(nft)}
+                  >
+                    <Box sx={{ position: 'relative' }}>
+                      <CardMedia
+                        component="img"
+                        height="280"
+                        image={nft.cdn_image_url || nft.original_image_url}
+                        alt={nft.nft_name}
+                        sx={{ objectFit: 'cover' }}
+                        onError={(e: any) => {
+                          e.target.src = '/inquisition-card.png';
+                        }}
+                      />
+                      <Chip
+                        label={nft.collection_name}
+                        size="small"
+                        sx={{
+                          position: 'absolute',
+                          top: 8,
+                          right: 8,
+                          bgcolor: 'rgba(0,0,0,0.7)',
+                          color: 'white',
+                          backdropFilter: 'blur(10px)'
+                        }}
+                      />
+                    </Box>
+                    
+                    <CardContent>
+                      <Typography variant="h6" fontWeight="bold" noWrap gutterBottom>
+                        {nft.nft_name}
+                      </Typography>
+                      
+                      {nft.character_class && (
+                        <Typography variant="body2" color="text.secondary" gutterBottom>
+                          {nft.character_class}
+                        </Typography>
                       )}
-                      <div className="col-span-2">
-                        <p className="text-sm text-muted-foreground">Token ID</p>
-                        <p className="font-mono text-xs break-all">{nft.nft_token_id}</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </DialogContent>
-            </Dialog>
-          ))}
-        </div>
-      )}
 
-      {/* Pagination Controls */}
-      <div className="flex items-center justify-between mt-8">
-        <div className="text-sm text-muted-foreground">
-          Page {response?.page ?? pageNum} of {response?.totalPages ?? 1}
-        </div>
-        <div className="flex gap-2">
-          <Button variant="outline" size="sm" disabled={pageNum === 1} onClick={() => setPageNum(p => Math.max(1, p - 1))}>Prev</Button>
-          <Button variant="outline" size="sm" disabled={response && pageNum >= (response.totalPages)} onClick={() => setPageNum(p => p + 1)}>Next</Button>
-        </div>
-      </div>
+                      {/* Power Stats Grid */}
+                      <Grid container spacing={1} sx={{ mt: 1, mb: 2 }}>
+                        <Grid item xs={6}>
+                          <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.5 }}>
+                            <Sword size={14} color="#ef4444" />
+                            <Typography variant="body2" fontWeight="bold">
+                              {Number(nft.army_power).toFixed(0)}
+                            </Typography>
+                          </Box>
+                        </Grid>
+                        <Grid item xs={6}>
+                          <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.5 }}>
+                            <Shield size={14} color="#3b82f6" />
+                            <Typography variant="body2" fontWeight="bold">
+                              {Number(nft.religion_power).toFixed(0)}
+                            </Typography>
+                          </Box>
+                        </Grid>
+                        <Grid item xs={6}>
+                          <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.5 }}>
+                            <Sparkles size={14} color="#a855f7" />
+                            <Typography variant="body2" fontWeight="bold">
+                              {Number(nft.civilization_power).toFixed(0)}
+                            </Typography>
+                          </Box>
+                        </Grid>
+                        <Grid item xs={6}>
+                          <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.5 }}>
+                            <Coins size={14} color="#eab308" />
+                            <Typography variant="body2" fontWeight="bold">
+                              {Number(nft.economic_power).toFixed(0)}
+                            </Typography>
+                          </Box>
+                        </Grid>
+                      </Grid>
 
-      {filteredNFTs.length === 0 && !isLoading && (
-        <Card className="border-dashed border-2">
-          <CardContent className="py-12 text-center">
-            <Filter className="h-12 w-12 mx-auto mb-4 text-muted-foreground/50" />
-            <p className="text-xl font-semibold text-muted-foreground">No NFTs found</p>
-            <p className="text-sm text-muted-foreground mt-2">Try adjusting your search filters</p>
-          </CardContent>
-        </Card>
-      )}
-    </div>
+                      {/* Total Power */}
+                      <Box sx={{ 
+                        pt: 2, 
+                        borderTop: '1px solid', 
+                        borderColor: 'divider',
+                        display: 'flex',
+                        justifyContent: 'space-between',
+                        alignItems: 'center'
+                      }}>
+                        <Typography variant="body2" color="text.secondary">
+                          Total Power
+                        </Typography>
+                        <Typography 
+                          variant="h6" 
+                          fontWeight="bold"
+                          sx={{
+                            background: 'linear-gradient(to right, #a855f7, #3b82f6)',
+                            backgroundClip: 'text',
+                            WebkitBackgroundClip: 'text',
+                            color: 'transparent'
+                          }}
+                        >
+                          {Number(nft.total_power).toFixed(0)}
+                        </Typography>
+                      </Box>
+                    </CardContent>
+                  </Card>
+                </Grid>
+              ))}
+            </Grid>
+
+            {/* Pagination */}
+            <Box sx={{ display: 'flex', justifyContent: 'center', mt: 4 }}>
+              <Pagination 
+                count={response?.totalPages ?? 1} 
+                page={pageNum}
+                onChange={handlePageChange}
+                color="primary"
+                size="large"
+                showFirstButton
+                showLastButton
+              />
+            </Box>
+          </>
+        ) : (
+          <Paper elevation={3} sx={{ p: 8, textAlign: 'center' }}>
+            <Filter size={48} style={{ opacity: 0.3, marginBottom: 16 }} />
+            <Typography variant="h5" fontWeight="bold" gutterBottom>
+              No NFTs found
+            </Typography>
+            <Typography variant="body1" color="text.secondary">
+              Try adjusting your search filters
+            </Typography>
+          </Paper>
+        )}
+      </Container>
+
+      {/* ================================================================ */}
+      {/* NFT DETAIL DIALOG */}
+      {/* ================================================================ */}
+      <Dialog 
+        open={!!selectedNFT} 
+        onClose={() => setSelectedNFT(null)}
+        maxWidth="xl"
+        fullWidth
+        PaperProps={{
+          sx: { maxHeight: '95vh' }
+        }}
+      >
+        <DialogContent>
+          {selectedNFT && (
+            <GamingNFTDetail 
+              nft={selectedNFT} 
+              onRefresh={refetch}
+              showActions={true}
+            />
+          )}
+        </DialogContent>
+      </Dialog>
+    </Box>
   );
-}
-
-// Stat Bar Component
-function StatBar({ label, value, max, color, icon }: { 
-  label: string; 
-  value: number; 
-  max: number; 
-  color: string;
-  icon: React.ReactNode;
-}) {
-  const numValue = typeof value === 'string' ? parseFloat(value) : value;
-  const percentage = Math.min((numValue / max) * 100, 100);
-  const colorClasses = {
-    red: 'bg-red-500',
-    blue: 'bg-blue-500',
-    purple: 'bg-purple-500',
-    yellow: 'bg-yellow-500',
-  };
-
-  return (
-    <div className="space-y-1">
-      <div className="flex items-center justify-between">
-        <div className="flex items-center gap-2">
-          {icon}
-          <span className="text-sm font-medium">{label}</span>
-        </div>
-        <span className="text-sm font-bold">{value}</span>
-      </div>
-      <div className="h-2 bg-muted rounded-full overflow-hidden">
-        <div 
-          className={`h-full ${colorClasses[color as keyof typeof colorClasses]} transition-all duration-300`}
-          style={{ width: `${percentage}%` }}
-        />
-      </div>
-    </div>
-  );
-}
-
-// Generate Battle Image Function
-async function generateBattleImage(nftId: string, toast: any) {
-  try {
-    toast({
-      title: "Processing",
-      description: "Generating AI battle image with DALL-E 3...",
-    });
-    
-    const response = await fetch(`/api/gaming/nfts/${nftId}/generate-battle-image`, {
-      method: 'POST',
-    });
-    
-    if (!response.ok) {
-      const error = await response.json();
-      throw new Error(error.details || 'Failed to generate battle image');
-    }
-    
-    const data = await response.json();
-    toast({
-      title: "Success!",
-      description: "Battle image generated and uploaded to cloud storage",
-    });
-    
-    return data;
-  } catch (error) {
-    console.error('Error generating battle image:', error);
-    toast({
-      title: "Generation Failed",
-      description: error instanceof Error ? error.message : "Failed to generate battle image",
-      variant: "destructive",
-    });
-    throw error;
-  }
 }

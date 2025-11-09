@@ -352,6 +352,17 @@ async function performAsyncInitialization() {
       console.warn('ℹ️ Continuing startup without user cache - some features may be slower');
     }
     
+    // Start scanner scheduler for automated rarity calculations
+    console.log('📊 [STARTUP] Starting scanner scheduler...');
+    try {
+      const { scannerScheduler } = await import('./services/scanner-scheduler');
+      await scannerScheduler.start();
+      console.log('✅ [STARTUP] Scanner scheduler started successfully');
+    } catch (e) {
+      console.warn('⚠️ [STARTUP] Failed to start scanner scheduler:', (e as any)?.message);
+      console.warn('ℹ️ Rarity calculations will need to be triggered manually');
+    }
+    
     // Check RiddlePad readiness
     const riddlePadStatus = checkRiddlePadReadiness();
     console.log(`🚀 [RIDDLEPAD] ${riddlePadStatus.message}`);
@@ -501,6 +512,11 @@ async function performAsyncInitialization() {
   const rankingsRoutes = (await import('./routes/rankings-routes')).default;
   app.use('/api/rankings', rankingsRoutes);
   console.log('🏆 Rankings routes registered (NFT rankings, rarity tracking, leaderboards)');
+
+  // Scorecard Routes (Trait-based rarity scoring and NFT rankings)
+  const scorecardRoutes = (await import('./scorecard-routes')).default;
+  app.use('/api', scorecardRoutes);
+  console.log('📊 Scorecard routes registered (trait rarity, NFT scorecards, project stats)');
 
   // Squadron System Routes (NFT Battle Groups)
   app.use(squadronRoutes);

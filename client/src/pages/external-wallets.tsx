@@ -1,44 +1,114 @@
+// ============================================================================
+// EXTERNAL WALLETS - ACTIVE SESSION MANAGER
+// ============================================================================
+// Manages temporary wallet sessions for immediate trading
+// Supports: Xaman, Joey, MetaMask, Phantom
+// Features: Connect wallets, View balances, Link to permanent ownership
+// ============================================================================
+
 import { useState, useEffect } from "react";
 import { useLocation } from "wouter";
 import { useToast } from "@/hooks/use-toast";
-import { Shield, Wallet, Home, ArrowLeft, Trash2, Plus, Link, ExternalLink, DollarSign } from "lucide-react";
-import { Button, Card, CardContent, Typography, Grid, Box, IconButton } from "@mui/material";
-import { XamanConnectQR } from "@/components/XamanConnectQR";
-import { JoeyConnectQR } from "@/components/JoeyConnectQR";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { apiRequest } from "@/lib/queryClient";
-// import { fetchBalance } from "@/lib/balance-fetcher";
 
+// ============================================================================
+// ICONS
+// ============================================================================
+import { 
+  Shield, Wallet, Home, ArrowLeft, Trash2, Plus, 
+  Link, DollarSign 
+} from "lucide-react";
+
+// ============================================================================
+// MATERIAL UI COMPONENTS
+// ============================================================================
+import { 
+  Button, Card, CardContent, Typography, 
+  Grid, Box, IconButton 
+} from "@mui/material";
+
+// ============================================================================
+// CUSTOM COMPONENTS
+// ============================================================================
+import { XamanConnectQR } from "@/components/XamanConnectQR";
+import { JoeyConnectQR } from "@/components/JoeyConnectQR";
+
+// ============================================================================
+// WALLET BALANCE COMPONENT
+// ============================================================================
+// Fetches and displays real-time balance for a connected wallet
+const WalletBalance = ({ wallet }: { wallet: any }) => {
+  const { data: balanceData, isLoading: balanceLoading } = useQuery<{ 
+    success?: boolean; 
+    balance?: string | number 
+  }>({
+    queryKey: [`/api/wallets/${wallet.chain}/balance/${wallet.address}`],
+    staleTime: 30000, // Cache for 30 seconds
+    enabled: !!wallet.address && !!wallet.chain
+  });
+
+  // Show loading state
+  if (balanceLoading) {
+    return <div className="text-xs text-gray-400">Loading...</div>;
+  }
+
+  // Show balance if available
+  if (balanceData?.success && balanceData?.balance !== undefined) {
+    const balance = parseFloat(String(balanceData.balance));
+    const symbol = wallet.chain?.toUpperCase() || 'TOKEN';
+    return (
+      <div className="text-xs text-gray-600 dark:text-gray-300 flex items-center gap-1">
+        <DollarSign className="w-3 h-3" />
+        {balance.toFixed(4)} {symbol}
+      </div>
+    );
+  }
+
+  // Fallback if balance unavailable
+  return <div className="text-xs text-gray-400">Balance: --</div>;
+};
+
+// ============================================================================
+// MAIN EXTERNAL WALLETS PAGE
+// ============================================================================
 export default function ExternalWallets() {
   const [location, setLocation] = useLocation();
   const { toast } = useToast();
   const queryClient = useQueryClient();
   
+  // ============================================================================
+  // STATE MANAGEMENT
+  // ============================================================================
   const [xamanModalOpen, setXamanModalOpen] = useState(false);
   const [joeyModalOpen, setJoeyModalOpen] = useState(false);
   const [showWalletGrid, setShowWalletGrid] = useState(false);
   
-  // Store current page when component mounts for return URL
+  // ============================================================================
+  // RETURN URL HANDLING
+  // ============================================================================
+  // Store return URL for navigation after wallet connection
   useEffect(() => {
-    // Check if we have a returnUrl query parameter
     const params = new URLSearchParams(window.location.search);
     const returnUrl = params.get('returnUrl');
     
     if (returnUrl) {
-      // Validate returnUrl is safe (internal route only)
+      // Validate returnUrl is safe internal route
       if (isValidInternalRoute(returnUrl)) {
         sessionStorage.setItem('wallet_connect_return_url', returnUrl);
       } else {
-        
         sessionStorage.removeItem('wallet_connect_return_url');
       }
     } else {
-      // Clear any stale returnUrl when no parameter is present
+      // Clear stale returnUrl
       sessionStorage.removeItem('wallet_connect_return_url');
     }
   }, []);
   
-  // Validate returnUrl is safe internal route
+  // ============================================================================
+  // SECURITY: VALIDATE RETURN URL
+  // ============================================================================
+  // Prevents open redirect vulnerabilities
   const isValidInternalRoute = (url: string): boolean => {
     // Must start with / and not contain scheme or host
     if (!url.startsWith('/')) return false;
@@ -53,46 +123,31 @@ export default function ExternalWallets() {
     ];
     
     // Check if URL starts with any allowed route
-    return allowedRoutes.some(route => url === route || url.startsWith(route + '/') || url.startsWith(route + '?'));
+    return allowedRoutes.some(route => 
+      url === route || url.startsWith(route + '/') || url.startsWith(route + '?')
+    );
   };
 
-  // Load linked wallets
+  // ============================================================================
+  // LOAD LINKED WALLETS (ACTIVE SESSIONS)
+  // ============================================================================
   const { data: externalWalletsResponse, isLoading } = useQuery<{ wallets: any[] }>({
     queryKey: ['/api/external-wallets/list'],
-    staleTime: 30000
+    staleTime: 30000 // Cache for 30 seconds
   });
   
   const linkedWallets = externalWalletsResponse?.wallets || [];
 
-  // Balance fetching component for individual wallet
-  const WalletBalance = ({ wallet }: { wallet: any }) => {
-    const { data: balanceData, isLoading: balanceLoading } = useQuery<{ success?: boolean; balance?: string | number }>({
-      queryKey: [`/api/wallets/${wallet.chain}/balance/${wallet.address}`],
-      staleTime: 30000, // 30 seconds
-      enabled: !!wallet.address && !!wallet.chain
-    });
-
-    if (balanceLoading) {
-      return <div className="text-xs text-gray-400">Loading...</div>;
-    }
-
-    if (balanceData?.success && balanceData?.balance !== undefined) {
-      const balance = parseFloat(String(balanceData.balance));
-      const symbol = wallet.chain?.toUpperCase() || 'TOKEN';
-      return (
-        <div className="text-xs text-gray-600 dark:text-gray-300 flex items-center gap-1">
-          <DollarSign className="w-3 h-3" />
-          {balance.toFixed(4)} {symbol}
-        </div>
-      );
-    }
-
-    return <div className="text-xs text-gray-400">Balance: --</div>;
-  };
-
-  // Challenge mutation for secure wallet verification
+  // ============================================================================
+  // CHALLENGE MUTATION (STEP 1 OF WALLET VERIFICATION)
+  // ============================================================================
+  // Generates a challenge message for wallet signature verification
   const challengeMutation = useMutation({
-    mutationFn: async (walletData: { address: string; walletType: string; chain: string }) => {
+    mutationFn: async (walletData: { 
+      address: string; 
+      walletType: string; 
+      chain: string 
+    }) => {
       const response = await apiRequest('/api/external-wallets/challenge', {
         method: 'POST',
         body: JSON.stringify({
@@ -105,7 +160,10 @@ export default function ExternalWallets() {
     }
   });
 
-  // Verify mutation for secure wallet verification
+  // ============================================================================
+  // VERIFY MUTATION (STEP 2 OF WALLET VERIFICATION)
+  // ============================================================================
+  // Verifies wallet signature and saves to database
   const verifyWalletMutation = useMutation({
     mutationFn: async (data: {
       address: string;
@@ -120,6 +178,7 @@ export default function ExternalWallets() {
       });
     },
     onSuccess: () => {
+      // Refresh wallet list
       queryClient.invalidateQueries({ queryKey: ['/api/external-wallets/list'] });
       toast({
         title: "Wallet Verified!",
@@ -135,7 +194,10 @@ export default function ExternalWallets() {
     }
   });
 
-  // Remove wallet mutation
+  // ============================================================================
+  // REMOVE WALLET MUTATION
+  // ============================================================================
+  // Ends an active wallet session
   const removeWalletMutation = useMutation({
     mutationFn: async (walletId: number) => {
       return apiRequest(`/api/external-wallets/${walletId}`, {
@@ -143,6 +205,7 @@ export default function ExternalWallets() {
       });
     },
     onSuccess: () => {
+      // Refresh wallet list
       queryClient.invalidateQueries({ queryKey: ['/api/external-wallets/list'] });
       toast({
         title: "Session Ended",
@@ -151,9 +214,16 @@ export default function ExternalWallets() {
     }
   });
 
-  // Link wallet from session mutation
+  // ============================================================================
+  // LINK FROM SESSION MUTATION
+  // ============================================================================
+  // Converts temporary session to permanent ownership
   const linkFromSessionMutation = useMutation({
-    mutationFn: async (payload: { address: string; chain: string; walletType: string }) => {
+    mutationFn: async (payload: { 
+      address: string; 
+      chain: string; 
+      walletType: string 
+    }) => {
       return apiRequest('/api/linked-wallets/save-from-session', {
         method: 'POST',
         body: JSON.stringify({
@@ -187,10 +257,17 @@ export default function ExternalWallets() {
     }
   });
 
+  // ============================================================================
+  // METAMASK CONNECTION HANDLER
+  // ============================================================================
   const connectMetaMask = async () => {
     try {
       if (typeof window.ethereum !== 'undefined') {
-        const accounts = await (window.ethereum as any).request({ method: 'eth_requestAccounts' });
+        // Request account access
+        const accounts = await (window.ethereum as any).request({ 
+          method: 'eth_requestAccounts' 
+        });
+        
         if (accounts.length > 0) {
           const address = accounts[0];
           
@@ -221,6 +298,7 @@ export default function ExternalWallets() {
           localStorage.setItem('eth_wallet_type', 'metamask');
         }
       } else {
+        // MetaMask not installed
         toast({
           title: "MetaMask Not Found",
           description: "Please install MetaMask browser extension",
@@ -229,7 +307,7 @@ export default function ExternalWallets() {
         window.open('https://metamask.io/download/', '_blank');
       }
     } catch (error) {
-      
+      console.error('MetaMask connection error:', error);
       toast({
         title: "Connection Failed",
         description: "Failed to connect MetaMask wallet",
@@ -238,10 +316,15 @@ export default function ExternalWallets() {
     }
   };
 
+  // ============================================================================
+  // PHANTOM CONNECTION HANDLER
+  // ============================================================================
   const connectPhantom = async () => {
     try {
       if (typeof window.solana !== 'undefined' && window.solana.isPhantom) {
+        // Connect to Phantom
         const response = await window.solana.connect();
+        
         if (response.publicKey) {
           const address = response.publicKey.toString();
           
@@ -256,7 +339,7 @@ export default function ExternalWallets() {
           const encodedMessage = new TextEncoder().encode(challengeData.message);
           const signedMessage = await (window.solana as any).signMessage(encodedMessage, 'utf8');
           
-          // Convert to base58 format for server compatibility
+          // Convert to base58 format
           const bs58 = await import('bs58');
           const signature = bs58.default.encode(signedMessage.signature);
           
@@ -274,6 +357,7 @@ export default function ExternalWallets() {
           localStorage.setItem('sol_wallet_type', 'phantom');
         }
       } else {
+        // Phantom not installed
         toast({
           title: "Phantom Not Found",
           description: "Please install Phantom browser extension",
@@ -282,7 +366,7 @@ export default function ExternalWallets() {
         window.open('https://phantom.app/', '_blank');
       }
     } catch (error) {
-      
+      console.error('Phantom connection error:', error);
       toast({
         title: "Connection Failed",
         description: "Failed to connect Phantom wallet",
@@ -291,29 +375,30 @@ export default function ExternalWallets() {
     }
   };
 
+  // ============================================================================
+  // EXTERNAL WALLET SUCCESS HANDLER (XAMAN/JOEY)
+  // ============================================================================
+  // Handles successful connection from QR-based wallets
   const handleExternalWalletSuccess = async (address: string, walletType: string) => {
     try {
-      // For Xaman/Joey wallets, use the session-based linking since they provide 
-      // verification through their respective QR/signing flows
+      // Link wallet from session
       await linkFromSessionMutation.mutateAsync({
         address,
         walletType: walletType.toLowerCase(),
         chain: 'xrpl'
       });
       
-      // Check for return URL and redirect if exists
+      // Check for return URL and redirect
       const returnUrl = sessionStorage.getItem('wallet_connect_return_url');
       if (returnUrl) {
-        console.log('✅ [XAMAN REDIRECT] Returning to original page:', returnUrl);
+        console.log('✅ Returning to original page:', returnUrl);
         sessionStorage.removeItem('wallet_connect_return_url');
         setTimeout(() => {
           setLocation(returnUrl);
-        }, 1500); // Short delay to show success message
+        }, 1500); // Delay to show success message
       }
-      
-      // Note: Toast is handled by linkFromSessionMutation onSuccess
     } catch (error) {
-      
+      console.error('Wallet save error:', error);
       toast({
         title: "Save Failed",
         description: "Wallet connected but failed to save",
@@ -322,7 +407,9 @@ export default function ExternalWallets() {
     }
   };
 
-  // Helper function to get wallet logo
+  // ============================================================================
+  // HELPER: GET WALLET LOGO
+  // ============================================================================
   const getWalletLogo = (walletType: string) => {
     const logos: Record<string, string> = {
       xaman: '/images/wallets/xaman-logo.png',
@@ -333,22 +420,46 @@ export default function ExternalWallets() {
     return logos[walletType.toLowerCase()] || '/images/wallets/xaman-logo.png';
   };
 
-  // Helper function to get wallet colors
+  // ============================================================================
+  // HELPER: GET WALLET COLORS
+  // ============================================================================
   const getWalletColors = (walletType: string) => {
     const colors: Record<string, { bg: string; border: string; text: string }> = {
-      xaman: { bg: 'bg-blue-50 dark:bg-blue-900/20', border: 'border-blue-200 dark:border-blue-700', text: 'text-blue-600 dark:text-blue-400' },
-      joey: { bg: 'bg-orange-50 dark:bg-orange-900/20', border: 'border-orange-200 dark:border-orange-700', text: 'text-orange-600 dark:text-orange-400' },
-      metamask: { bg: 'bg-purple-50 dark:bg-purple-900/20', border: 'border-purple-200 dark:border-purple-700', text: 'text-purple-600 dark:text-purple-400' },
-      phantom: { bg: 'bg-indigo-50 dark:bg-indigo-900/20', border: 'border-indigo-200 dark:border-indigo-700', text: 'text-indigo-600 dark:text-indigo-400' }
+      xaman: { 
+        bg: 'bg-blue-50 dark:bg-blue-900/20', 
+        border: 'border-blue-200 dark:border-blue-700', 
+        text: 'text-blue-600 dark:text-blue-400' 
+      },
+      joey: { 
+        bg: 'bg-orange-50 dark:bg-orange-900/20', 
+        border: 'border-orange-200 dark:border-orange-700', 
+        text: 'text-orange-600 dark:text-orange-400' 
+      },
+      metamask: { 
+        bg: 'bg-purple-50 dark:bg-purple-900/20', 
+        border: 'border-purple-200 dark:border-purple-700', 
+        text: 'text-purple-600 dark:text-purple-400' 
+      },
+      phantom: { 
+        bg: 'bg-indigo-50 dark:bg-indigo-900/20', 
+        border: 'border-indigo-200 dark:border-indigo-700', 
+        text: 'text-indigo-600 dark:text-indigo-400' 
+      }
     };
     return colors[walletType.toLowerCase()] || colors.xaman;
   };
 
+  // ============================================================================
+  // RENDER
+  // ============================================================================
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 dark:from-gray-900 dark:via-blue-900 dark:to-indigo-900 flex items-center justify-center p-4 sm:p-6">
       <div className="w-full max-w-md mx-auto">
         <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-xl border border-gray-200 dark:border-gray-700 p-6 sm:p-8">
-          {/* Header */}
+          
+          {/* ================================================================ */}
+          {/* HEADER NAVIGATION */}
+          {/* ================================================================ */}
           <div className="flex items-center justify-between mb-4 sm:mb-6">
             <Button
               variant="outlined"
@@ -370,6 +481,9 @@ export default function ExternalWallets() {
             </Button>
           </div>
 
+          {/* ================================================================ */}
+          {/* PAGE TITLE */}
+          {/* ================================================================ */}
           <div className="text-center mb-4 sm:mb-8">
             <h1 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white mb-2">
               Active Wallet Sessions
@@ -385,7 +499,9 @@ export default function ExternalWallets() {
             </p>
           </div>
 
-          {/* Active Sessions Section - Cards Format */}
+          {/* ================================================================ */}
+          {/* ACTIVE SESSIONS LIST */}
+          {/* ================================================================ */}
           {!isLoading && linkedWallets.length > 0 && (
             <div className="mb-4 sm:mb-6">
               <div className="flex items-center justify-between mb-3 sm:mb-4">
@@ -416,13 +532,16 @@ export default function ExternalWallets() {
                 </div>
               </div>
               
-              {/* Cards Grid for Active Sessions */}
+              {/* Wallet Cards Grid */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-3 max-h-48 sm:max-h-64 overflow-y-auto">
                 {linkedWallets.map((wallet: any) => {
                   const colors = getWalletColors(wallet.wallet_type || 'xaman');
                   return (
-                    <div key={wallet.id} className={`relative p-3 ${colors.bg} border-2 ${colors.border} rounded-lg transition-all hover:shadow-md group`}>
-                      {/* Remove session button */}
+                    <div 
+                      key={wallet.id} 
+                      className={`relative p-3 ${colors.bg} border-2 ${colors.border} rounded-lg transition-all hover:shadow-md group`}
+                    >
+                      {/* Remove Session Button */}
                       <Button
                         variant="text"
                         size="small"
@@ -433,7 +552,7 @@ export default function ExternalWallets() {
                         <Trash2 className="w-3 h-3" />
                       </Button>
                       
-                      {/* Wallet Content */}
+                      {/* Wallet Info */}
                       <div className="flex items-center space-x-3">
                         <img 
                           src={getWalletLogo(wallet.wallet_type || 'xaman')} 
@@ -490,7 +609,9 @@ export default function ExternalWallets() {
             </div>
           )}
 
-          {/* Show "No active sessions" message or Connect button */}
+          {/* ================================================================ */}
+          {/* EMPTY STATE */}
+          {/* ================================================================ */}
           {!isLoading && linkedWallets.length === 0 && (
             <div className="text-center mb-4 sm:mb-6 p-4 sm:p-6 bg-gray-50 dark:bg-gray-800 rounded-lg">
               <div className="text-gray-500 dark:text-gray-400 mb-4">
@@ -519,7 +640,9 @@ export default function ExternalWallets() {
             </div>
           )}
 
-          {/* Benefits Notice */}
+          {/* ================================================================ */}
+          {/* BENEFITS NOTICE */}
+          {/* ================================================================ */}
           <div className="bg-blue-50 dark:bg-blue-950/20 border border-blue-200 dark:border-blue-800 rounded-lg p-3 sm:p-4 mb-4 sm:mb-6">
             <div className="flex items-center justify-center space-x-2 text-blue-600 dark:text-blue-400 text-xs sm:text-sm">
               <Shield className="w-3 h-3 sm:w-4 sm:h-4 flex-shrink-0" />
@@ -527,66 +650,87 @@ export default function ExternalWallets() {
             </div>
           </div>
 
-          {/* Wallet Grid - Show conditionally */}
+          {/* ================================================================ */}
+          {/* WALLET CONNECTION GRID */}
+          {/* ================================================================ */}
           {(showWalletGrid || linkedWallets.length === 0) && (
             <div className="grid grid-cols-2 gap-2 sm:gap-4 mb-4 sm:mb-6">
-            {/* Xaman XRPL */}
-            <button 
-              onClick={() => setXamanModalOpen(true)}
-              className="h-16 sm:h-20 flex flex-col items-center justify-center space-y-1 sm:space-y-2 border-2 border-blue-200 dark:border-blue-700 rounded-xl bg-blue-50 dark:bg-blue-900/20 hover:bg-blue-100 dark:hover:bg-blue-900/40 transition-all hover:border-blue-300 dark:hover:border-blue-600 cursor-pointer group"
-              data-testid="button-connect-xaman"
-            >
-              <img src="/images/wallets/xaman-logo.png" alt="Xaman" className="w-6 h-6 sm:w-8 sm:h-8 group-hover:scale-110 transition-transform object-contain" />
-              <span className="text-xs sm:text-sm font-medium text-blue-600 dark:text-blue-400">Xaman</span>
-              <span className="text-xs text-blue-500 dark:text-blue-500">XRPL</span>
-            </button>
+              
+              {/* Xaman XRPL */}
+              <button 
+                onClick={() => setXamanModalOpen(true)}
+                className="h-16 sm:h-20 flex flex-col items-center justify-center space-y-1 sm:space-y-2 border-2 border-blue-200 dark:border-blue-700 rounded-xl bg-blue-50 dark:bg-blue-900/20 hover:bg-blue-100 dark:hover:bg-blue-900/40 transition-all hover:border-blue-300 dark:hover:border-blue-600 cursor-pointer group"
+                data-testid="button-connect-xaman"
+              >
+                <img 
+                  src="/images/wallets/xaman-logo.png" 
+                  alt="Xaman" 
+                  className="w-6 h-6 sm:w-8 sm:h-8 group-hover:scale-110 transition-transform object-contain" 
+                />
+                <span className="text-xs sm:text-sm font-medium text-blue-600 dark:text-blue-400">Xaman</span>
+                <span className="text-xs text-blue-500 dark:text-blue-500">XRPL</span>
+              </button>
 
-            {/* Joey XRPL */}
-            <button 
-              onClick={() => setJoeyModalOpen(true)}
-              className="h-16 sm:h-20 flex flex-col items-center justify-center space-y-1 sm:space-y-2 border-2 border-orange-200 dark:border-orange-700 rounded-xl bg-orange-50 dark:bg-orange-900/20 hover:bg-orange-100 dark:hover:bg-orange-900/40 transition-all hover:border-orange-300 dark:hover:border-orange-600 cursor-pointer group"
-              data-testid="button-connect-joey"
-            >
-              <img src="/images/wallets/joey-logo.png" alt="Joey" className="w-6 h-6 sm:w-8 sm:h-8 group-hover:scale-110 transition-transform object-contain" />
-              <span className="text-xs sm:text-sm font-medium text-orange-600 dark:text-orange-400">Joey</span>
-              <span className="text-xs text-orange-500 dark:text-orange-500">XRPL</span>
-            </button>
+              {/* Joey XRPL */}
+              <button 
+                onClick={() => setJoeyModalOpen(true)}
+                className="h-16 sm:h-20 flex flex-col items-center justify-center space-y-1 sm:space-y-2 border-2 border-orange-200 dark:border-orange-700 rounded-xl bg-orange-50 dark:bg-orange-900/20 hover:bg-orange-100 dark:hover:bg-orange-900/40 transition-all hover:border-orange-300 dark:hover:border-orange-600 cursor-pointer group"
+                data-testid="button-connect-joey"
+              >
+                <img 
+                  src="/images/wallets/joey-logo.png" 
+                  alt="Joey" 
+                  className="w-6 h-6 sm:w-8 sm:h-8 group-hover:scale-110 transition-transform object-contain" 
+                />
+                <span className="text-xs sm:text-sm font-medium text-orange-600 dark:text-orange-400">Joey</span>
+                <span className="text-xs text-orange-500 dark:text-orange-500">XRPL</span>
+              </button>
 
-            {/* MetaMask */}
-            <button 
-              onClick={(e) => {
-                e.preventDefault();
-                e.stopPropagation();
-                connectMetaMask();
-              }}
-              className="h-16 sm:h-20 flex flex-col items-center justify-center space-y-1 sm:space-y-2 border-2 border-purple-200 dark:border-purple-700 rounded-xl bg-purple-50 dark:bg-purple-900/20 hover:bg-purple-100 dark:hover:bg-purple-900/40 transition-all hover:border-purple-300 dark:hover:border-purple-600 cursor-pointer group"
-              data-testid="button-connect-metamask"
-              type="button"
-            >
-              <img src="/images/wallets/metamask-logo.png" alt="MetaMask" className="w-6 h-6 sm:w-8 sm:h-8 group-hover:scale-110 transition-transform object-contain" />
-              <span className="text-xs sm:text-sm font-medium text-purple-600 dark:text-purple-400">MetaMask</span>
-              <span className="text-xs text-purple-500 dark:text-purple-500">EVM</span>
-            </button>
+              {/* MetaMask */}
+              <button 
+                onClick={(e) => {
+                  e.preventDefault();
+                  e.stopPropagation();
+                  connectMetaMask();
+                }}
+                className="h-16 sm:h-20 flex flex-col items-center justify-center space-y-1 sm:space-y-2 border-2 border-purple-200 dark:border-purple-700 rounded-xl bg-purple-50 dark:bg-purple-900/20 hover:bg-purple-100 dark:hover:bg-purple-900/40 transition-all hover:border-purple-300 dark:hover:border-purple-600 cursor-pointer group"
+                data-testid="button-connect-metamask"
+                type="button"
+              >
+                <img 
+                  src="/images/wallets/metamask-logo.png" 
+                  alt="MetaMask" 
+                  className="w-6 h-6 sm:w-8 sm:h-8 group-hover:scale-110 transition-transform object-contain" 
+                />
+                <span className="text-xs sm:text-sm font-medium text-purple-600 dark:text-purple-400">MetaMask</span>
+                <span className="text-xs text-purple-500 dark:text-purple-500">EVM</span>
+              </button>
 
-            {/* Phantom */}
-            <button 
-              onClick={(e) => {
-                e.preventDefault();
-                e.stopPropagation();
-                connectPhantom();
-              }}
-              className="h-16 sm:h-20 flex flex-col items-center justify-center space-y-1 sm:space-y-2 border-2 border-indigo-200 dark:border-indigo-700 rounded-xl bg-indigo-50 dark:bg-indigo-900/20 hover:bg-indigo-100 dark:hover:bg-indigo-900/40 transition-all hover:border-indigo-300 dark:hover:border-indigo-600 cursor-pointer group"
-              data-testid="button-connect-phantom"
-              type="button"
-            >
-              <img src="/images/wallets/phantom-logo.png" alt="Phantom" className="w-6 h-6 sm:w-8 sm:h-8 group-hover:scale-110 transition-transform object-contain" />
-              <span className="text-xs sm:text-sm font-medium text-indigo-600 dark:text-indigo-400">Phantom</span>
-              <span className="text-xs text-indigo-500 dark:text-indigo-500">Solana</span>
-            </button>
-          </div>
+              {/* Phantom */}
+              <button 
+                onClick={(e) => {
+                  e.preventDefault();
+                  e.stopPropagation();
+                  connectPhantom();
+                }}
+                className="h-16 sm:h-20 flex flex-col items-center justify-center space-y-1 sm:space-y-2 border-2 border-indigo-200 dark:border-indigo-700 rounded-xl bg-indigo-50 dark:bg-indigo-900/20 hover:bg-indigo-100 dark:hover:bg-indigo-900/40 transition-all hover:border-indigo-300 dark:hover:border-indigo-600 cursor-pointer group"
+                data-testid="button-connect-phantom"
+                type="button"
+              >
+                <img 
+                  src="/images/wallets/phantom-logo.png" 
+                  alt="Phantom" 
+                  className="w-6 h-6 sm:w-8 sm:h-8 group-hover:scale-110 transition-transform object-contain" 
+                />
+                <span className="text-xs sm:text-sm font-medium text-indigo-600 dark:text-indigo-400">Phantom</span>
+                <span className="text-xs text-indigo-500 dark:text-indigo-500">Solana</span>
+              </button>
+            </div>
           )}
 
-          {/* Help Text */}
+          {/* ================================================================ */}
+          {/* HELP TEXT */}
+          {/* ================================================================ */}
           <div className="text-center">
             <p className="text-xs text-gray-500 dark:text-gray-400 mb-2 px-2">
               Connect any external wallet for immediate trading access
@@ -595,13 +739,20 @@ export default function ExternalWallets() {
               💡 Tip: Use "Link" button to save wallets for permanent ownership verification
             </p>
             <div className="text-xs text-gray-400 dark:text-gray-500 px-2">
-              Need a Riddle Wallet? <button onClick={() => setLocation('/wallet-login')} className="text-blue-500 hover:text-blue-600 underline">Sign in here</button>
+              Need a Riddle Wallet? <button 
+                onClick={() => setLocation('/wallet-login')} 
+                className="text-blue-500 hover:text-blue-600 underline"
+              >
+                Sign in here
+              </button>
             </div>
           </div>
         </div>
       </div>
       
-      {/* External Wallet Modals */}
+      {/* ================================================================ */}
+      {/* WALLET CONNECTION MODALS */}
+      {/* ================================================================ */}
       <XamanConnectQR 
         isOpen={xamanModalOpen}
         onClose={() => setXamanModalOpen(false)}

@@ -20,10 +20,31 @@ declare global {
   }
 }
 import { apiRequest, queryClient } from '@/lib/queryClient';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
-import { Badge } from '@/components/ui/badge';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import Box from '@mui/material/Box';
+import Container from '@mui/material/Container';
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import CardHeader from '@mui/material/CardHeader';
+import Typography from '@mui/material/Typography';
+import Button from '@mui/material/Button';
+import IconButton from '@mui/material/IconButton';
+import Chip from '@mui/material/Chip';
+import Tabs from '@mui/material/Tabs';
+import Tab from '@mui/material/Tab';
+import TextField from '@mui/material/TextField';
+import Dialog from '@mui/material/Dialog';
+import DialogTitle from '@mui/material/DialogTitle';
+import DialogContent from '@mui/material/DialogContent';
+import DialogActions from '@mui/material/DialogActions';
+import Grid from '@mui/material/Grid';
+import Paper from '@mui/material/Paper';
+import Avatar from '@mui/material/Avatar';
+import Divider from '@mui/material/Divider';
+import Stack from '@mui/material/Stack';
+import Tooltip from '@mui/material/Tooltip';
+import LinearProgress from '@mui/material/LinearProgress';
+import CircularProgress from '@mui/material/CircularProgress';
+import InputAdornment from '@mui/material/InputAdornment';
 import { 
   Wallet, 
   TrendingUp, 
@@ -54,8 +75,7 @@ import { PaymentQRCode } from '@/components/wallet/PaymentQRCode';
 import { ChainLogo } from '@/components/ChainLogo';
 import { PrivateKeyModal } from '@/components/wallet/PrivateKeyModal';
 import { ImportWalletModal } from '@/components/wallet/ImportWalletModal';
-import { Input } from '@/components/ui/input';
-import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from '@/components/ui/dialog';
+import { WalletQRModal } from '@/components/wallet-qr-modal';
 import { RDLBank } from '@/components/RDLBank';
 import { SimplifiedWalletDashboard } from '@/components/wallet/SimplifiedWalletDashboard';
 
@@ -287,81 +307,103 @@ const ExternalWalletConnectionsCard = () => {
   }
 
   return (
-    <Card className="mb-8">
-      <CardHeader>
-        <CardTitle className="flex items-center justify-between">
-          <div className="flex items-center gap-2">
+    <Card sx={{ mb: 4, background: 'linear-gradient(145deg, rgba(59, 130, 246, 0.05) 0%, rgba(147, 51, 234, 0.05) 100%)' }}>
+      <CardHeader
+        title={
+          <Stack direction="row" alignItems="center" spacing={2}>
             <Link className="h-5 w-5 text-blue-600" />
-            <span>External Wallet Connections</span>
-            <Badge variant="secondary" className="bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200">
-              {externalWallets.length} Active
-            </Badge>
-          </div>
-        </CardTitle>
-        <CardDescription>
-          External wallets connected for cross-chain trading and DeFi operations
-        </CardDescription>
-      </CardHeader>
+            <Typography variant="h6">External Wallet Connections</Typography>
+            <Chip 
+              label={`${externalWallets.length} Active`}
+              color="success"
+              size="small"
+            />
+          </Stack>
+        }
+        subheader="External wallets connected for cross-chain trading and DeFi operations"
+      />
       <CardContent>
-        <div className="space-y-3">
+        <Stack spacing={2}>
           {visibleWallets.map((wallet: any) => (
-            <div 
+            <Paper 
               key={wallet.id} 
-              className="flex items-center justify-between p-4 bg-muted/30 rounded-lg border"
+              elevation={2}
+              sx={{ 
+                p: 2, 
+                borderRadius: 2,
+                background: 'linear-gradient(145deg, rgba(255,255,255,0.9) 0%, rgba(243,244,246,0.9) 100%)',
+                '&:hover': {
+                  elevation: 4,
+                  transform: 'translateY(-2px)',
+                  transition: 'all 0.3s ease'
+                }
+              }}
               data-testid={`external-wallet-${wallet.id}`}
             >
-              <div className="flex items-center gap-4">
-                <div className="relative">
-                  <img 
-                    src={getWalletIcon(wallet.wallet_type)} 
-                    alt={wallet.wallet_type}
-                    className="w-10 h-10 rounded-lg"
-                    onError={(e) => {
-                      const target = e.target as HTMLImageElement;
-                      target.src = `data:image/svg+xml;base64,${btoa('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="8"/></svg>')}`;
-                    }}
-                  />
-                  <div className="absolute -bottom-1 -right-1 w-4 h-4 bg-green-500 rounded-full border-2 border-white dark:border-gray-800" />
-                </div>
-                <div>
-                  <div className="flex items-center gap-2 mb-1">
-                    <span className="font-semibold capitalize">{wallet.wallet_type}</span>
-                    <Badge variant="outline" className={getChainColor(wallet.chain)}>
-                      {wallet.chain.toUpperCase()}
-                    </Badge>
-                    {wallet.verified && (
-                      <Badge variant="outline" className="text-xs bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200">
-                        Verified
-                      </Badge>
-                    )}
-                  </div>
-                  <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                    <span className="font-mono">{formatAddress(wallet.address)}</span>
-                    <span>•</span>
-                    <span>Connected {new Date(wallet.connected_at).toLocaleDateString()}</span>
-                  </div>
-                </div>
-              </div>
-              <div className="flex items-center gap-2">
-                <Badge variant="secondary" className="bg-green-50 text-green-700 dark:bg-green-900/20 dark:text-green-300">
-                  <Activity className="w-3 h-3 mr-1" />
-                  Active
-                </Badge>
-              </div>
-            </div>
+              <Stack direction="row" alignItems="center" justifyContent="space-between">
+                <Stack direction="row" alignItems="center" spacing={2}>
+                  <Box position="relative">
+                    <Avatar 
+                      src={getWalletIcon(wallet.wallet_type)}
+                      alt={wallet.wallet_type}
+                      sx={{ width: 48, height: 48 }}
+                    />
+                    <Box
+                      sx={{
+                        position: 'absolute',
+                        bottom: -2,
+                        right: -2,
+                        width: 16,
+                        height: 16,
+                        bgcolor: 'success.main',
+                        borderRadius: '50%',
+                        border: 2,
+                        borderColor: 'background.paper'
+                      }}
+                    />
+                  </Box>
+                  <Box>
+                    <Stack direction="row" alignItems="center" spacing={1} mb={0.5}>
+                      <Typography variant="subtitle1" fontWeight="bold" sx={{ textTransform: 'capitalize' }}>
+                        {wallet.wallet_type}
+                      </Typography>
+                      <Chip label={wallet.chain.toUpperCase()} size="small" color="primary" />
+                      {wallet.verified && (
+                        <Chip label="Verified" size="small" color="success" />
+                      )}
+                    </Stack>
+                    <Stack direction="row" alignItems="center" spacing={1}>
+                      <Typography variant="body2" sx={{ fontFamily: 'monospace', color: 'text.secondary' }}>
+                        {formatAddress(wallet.address)}
+                      </Typography>
+                      <Typography variant="body2" color="text.secondary">•</Typography>
+                      <Typography variant="body2" color="text.secondary">
+                        Connected {new Date(wallet.connected_at).toLocaleDateString()}
+                      </Typography>
+                    </Stack>
+                  </Box>
+                </Stack>
+                <Chip 
+                  icon={<Activity size={14} />}
+                  label="Active"
+                  color="success"
+                  variant="outlined"
+                />
+              </Stack>
+            </Paper>
           ))}
           
           {externalWallets.length > 3 && (
             <Button
-              variant="outline"
+              variant="outlined"
+              fullWidth
               onClick={() => setShowAllWallets(!showAllWallets)}
-              className="w-full"
               data-testid="button-toggle-external-wallets"
             >
               {showAllWallets ? 'Show Less' : `Show All ${externalWallets.length} Connections`}
             </Button>
           )}
-        </div>
+        </Stack>
       </CardContent>
     </Card>
   );
@@ -619,15 +661,24 @@ export default function WalletDashboard() {
   // Show login prompt if not authenticated - MUST be after all hooks
   if (!authLoading && !isAuthenticated) {
     return (
-      <div className="container mx-auto px-4 py-8">
-        <div className="max-w-md mx-auto text-center">
-          <h1 className="text-3xl font-bold mb-4">Wallet Dashboard</h1>
-          <p className="text-gray-600 mb-6">Please log in to access your wallet dashboard</p>
-          <Button onClick={() => setLocation('/wallet-login')} className="w-full">
+      <Container maxWidth="sm" sx={{ py: 8 }}>
+        <Box textAlign="center">
+          <Typography variant="h3" fontWeight="bold" mb={2}>
+            Wallet Dashboard
+          </Typography>
+          <Typography variant="body1" color="text.secondary" mb={4}>
+            Please log in to access your wallet dashboard
+          </Typography>
+          <Button 
+            onClick={() => setLocation('/wallet-login')} 
+            variant="contained"
+            size="large"
+            fullWidth
+          >
             Log In to Continue
           </Button>
-        </div>
-      </div>
+        </Box>
+      </Container>
     );
   }
 
@@ -1068,12 +1119,19 @@ export default function WalletDashboard() {
 
   if (isLoading) {
     return (
-      <div className="min-h-screen flex items-center justify-center">
-        <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-500 mx-auto mb-4"></div>
-          <p>Loading wallet data...</p>
-        </div>
-      </div>
+      <Box 
+        display="flex" 
+        alignItems="center" 
+        justifyContent="center" 
+        minHeight="100vh"
+      >
+        <Box textAlign="center">
+          <CircularProgress size={48} sx={{ mb: 2 }} />
+          <Typography variant="body1" color="text.secondary">
+            Loading wallet data...
+          </Typography>
+        </Box>
+      </Box>
     );
   }
 
@@ -1081,37 +1139,205 @@ export default function WalletDashboard() {
   const prices = pricesData || portfolioData?.prices || {};
 
   return (
-    <div className="wallet-dashboard-container">
-      {/* Simplified Wallet Dashboard */}
-      <SimplifiedWalletDashboard
-        wallets={{
-          xrp: xrpAddress,
-          eth: ethAddress,
-          sol: solAddress,
-          btc: btcAddress
-        }}
-        onSend={() => {
-          toast({
-            title: "Send",
-            description: "Send feature coming soon!"
-          });
-        }}
-        onReceive={() => {
-          toast({
-            title: "Receive",
-            description: "Receive feature coming soon!"
-          });
-        }}
-        onBuy={() => {
-          toast({
-            title: "Buy",
-            description: "Buy feature coming soon!"
-          });
-        }}
-        onImport={() => setShowImportWalletModal(true)}
-        onRefresh={handleRefresh}
-        onSecurity={() => setShowPrivateKeyModal(true)}
-      />
+    <Box sx={{ 
+      minHeight: '100vh',
+      background: 'linear-gradient(135deg, rgba(59, 130, 246, 0.05) 0%, rgba(147, 51, 234, 0.05) 100%)',
+      py: 4
+    }}>
+      <Container maxWidth="xl">
+        {/* Portfolio Overview Card */}
+        <Card 
+          sx={{ 
+            mb: 4,
+            background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+            color: 'white',
+            borderRadius: 3
+          }}
+        >
+          <CardContent sx={{ p: 4 }}>
+            <Grid container spacing={3} alignItems="center">
+              <Grid item xs={12} md={6}>
+                <Typography variant="h6" sx={{ opacity: 0.9, mb: 1 }}>
+                  Total Portfolio Value
+                </Typography>
+                <Typography variant="h2" fontWeight="bold">
+                  ${portfolioData?.totalValue?.toFixed(2) || '0.00'}
+                </Typography>
+                <Typography variant="body2" sx={{ opacity: 0.8, mt: 1 }}>
+                  Across {Object.keys(portfolioData?.chains || {}).length} chains
+                </Typography>
+              </Grid>
+              <Grid item xs={12} md={6}>
+                <Stack direction="row" spacing={1} flexWrap="wrap" justifyContent={{ xs: 'flex-start', md: 'flex-end' }}>
+                  <Tooltip title="Refresh Balances">
+                    <IconButton 
+                      onClick={handleRefresh}
+                      sx={{ 
+                        bgcolor: 'rgba(255,255,255,0.2)',
+                        color: 'white',
+                        '&:hover': { bgcolor: 'rgba(255,255,255,0.3)' }
+                      }}
+                    >
+                      <RefreshCw size={20} />
+                    </IconButton>
+                  </Tooltip>
+                  <Tooltip title="Send Payment">
+                    <IconButton 
+                      onClick={() => toast({ title: "Send", description: "Send feature coming soon!" })}
+                      sx={{ 
+                        bgcolor: 'rgba(255,255,255,0.2)',
+                        color: 'white',
+                        '&:hover': { bgcolor: 'rgba(255,255,255,0.3)' }
+                      }}
+                    >
+                      <Send size={20} />
+                    </IconButton>
+                  </Tooltip>
+                  <Tooltip title="Receive Payment">
+                    <IconButton 
+                      onClick={() => setShowQRModal(true)}
+                      sx={{ 
+                        bgcolor: 'rgba(255,255,255,0.2)',
+                        color: 'white',
+                        '&:hover': { bgcolor: 'rgba(255,255,255,0.3)' }
+                      }}
+                    >
+                      <QrCode size={20} />
+                    </IconButton>
+                  </Tooltip>
+                  <Tooltip title="Security Settings">
+                    <IconButton 
+                      onClick={() => setShowPrivateKeyModal(true)}
+                      sx={{ 
+                        bgcolor: 'rgba(255,255,255,0.2)',
+                        color: 'white',
+                        '&:hover': { bgcolor: 'rgba(255,255,255,0.3)' }
+                      }}
+                    >
+                      <Shield size={20} />
+                    </IconButton>
+                  </Tooltip>
+                </Stack>
+              </Grid>
+            </Grid>
+          </CardContent>
+        </Card>
+
+        {/* Chain Balances Grid */}
+        <Grid container spacing={3} mb={4}>
+          {Object.entries(portfolioData?.chains || {}).map(([chain, data]: [string, any]) => {
+            const chainInfo = CHAIN_INFO[chain as keyof typeof CHAIN_INFO];
+            if (!chainInfo) return null;
+            
+            return (
+              <Grid item xs={12} sm={6} md={4} lg={3} key={chain}>
+                <Card 
+                  sx={{ 
+                    height: '100%',
+                    cursor: 'pointer',
+                    transition: 'all 0.3s ease',
+                    '&:hover': {
+                      transform: 'translateY(-4px)',
+                      boxShadow: 6
+                    }
+                  }}
+                  onClick={() => setSelectedChain(chain)}
+                >
+                  <CardContent>
+                    <Stack direction="row" alignItems="center" spacing={2} mb={2}>
+                      <Avatar 
+                        src={chainInfo.icon}
+                        alt={chainInfo.name}
+                        sx={{ width: 40, height: 40 }}
+                      />
+                      <Box flex={1}>
+                        <Typography variant="subtitle2" color="text.secondary">
+                          {chainInfo.name}
+                        </Typography>
+                        <Typography variant="h6" fontWeight="bold">
+                          {parseFloat(data.balance || '0').toFixed(4)} {chainInfo.symbol}
+                        </Typography>
+                      </Box>
+                    </Stack>
+                    <Divider sx={{ my: 1 }} />
+                    <Stack direction="row" justifyContent="space-between" alignItems="center">
+                      <Typography variant="body2" color="text.secondary">
+                        USD Value
+                      </Typography>
+                      <Typography variant="body1" fontWeight="bold" color="primary">
+                        ${data.usdValue?.toFixed(2) || '0.00'}
+                      </Typography>
+                    </Stack>
+                    {data.error && (
+                      <Chip 
+                        label="Connection Error"
+                        size="small"
+                        color="error"
+                        sx={{ mt: 1 }}
+                      />
+                    )}
+                  </CardContent>
+                </Card>
+              </Grid>
+            );
+          })}
+        </Grid>
+
+        {/* External Wallet Connections */}
+        <ExternalWalletConnectionsCard />
+
+        {/* Quick Actions */}
+        <Card sx={{ mb: 4 }}>
+          <CardHeader
+            title="Quick Actions"
+            subheader="Manage your wallet and perform common operations"
+          />
+          <CardContent>
+            <Grid container spacing={2}>
+              <Grid item xs={12} sm={6} md={3}>
+                <Button
+                  variant="outlined"
+                  fullWidth
+                  startIcon={<Plus />}
+                  onClick={() => setShowImportWalletModal(true)}
+                >
+                  Import Wallet
+                </Button>
+              </Grid>
+              <Grid item xs={12} sm={6} md={3}>
+                <Button
+                  variant="outlined"
+                  fullWidth
+                  startIcon={<Link />}
+                  onClick={() => setShowConnectModal(true)}
+                >
+                  Connect External
+                </Button>
+              </Grid>
+              <Grid item xs={12} sm={6} md={3}>
+                <Button
+                  variant="outlined"
+                  fullWidth
+                  startIcon={<ArrowUpDown />}
+                  onClick={() => setLocation('/trade-v3')}
+                >
+                  Swap Tokens
+                </Button>
+              </Grid>
+              <Grid item xs={12} sm={6} md={3}>
+                <Button
+                  variant="outlined"
+                  fullWidth
+                  startIcon={<Activity />}
+                  onClick={() => setLocation('/nft-marketplace')}
+                >
+                  NFT Marketplace
+                </Button>
+              </Grid>
+            </Grid>
+          </CardContent>
+        </Card>
+      </Container>
 
       {/* Modals */}
       <PrivateKeyModal
@@ -1131,6 +1357,71 @@ export default function WalletDashboard() {
         }}
       />
 
-    </div>
+      {/* QR Code Modal */}
+      {xrpAddress && (
+        <WalletQRModal
+          isOpen={showQRModal}
+          onClose={() => setShowQRModal(false)}
+          address={xrpAddress}
+          title="Receive XRP"
+          description="Scan this QR code to send XRP to your wallet"
+          network="XRP Ledger"
+        />
+      )}
+
+      {/* External Wallet Connect Modal */}
+      <Dialog 
+        open={showConnectModal} 
+        onClose={() => setShowConnectModal(false)}
+        maxWidth="sm"
+        fullWidth
+      >
+        <DialogTitle>Connect External Wallet</DialogTitle>
+        <DialogContent>
+          <Stack spacing={2} sx={{ mt: 1 }}>
+            <Button
+              variant="outlined"
+              fullWidth
+              startIcon={<img src="/images/wallets/metamask-logo.png" alt="" style={{ width: 20, height: 20 }} />}
+              onClick={() => handleConnectExternalWallet('metamask')}
+              disabled={connectingWallet === 'metamask'}
+            >
+              {connectingWallet === 'metamask' ? 'Connecting...' : 'Connect MetaMask'}
+            </Button>
+            <Button
+              variant="outlined"
+              fullWidth
+              startIcon={<img src="/images/wallets/phantom-logo.png" alt="" style={{ width: 20, height: 20 }} />}
+              onClick={() => handleConnectExternalWallet('phantom')}
+              disabled={connectingWallet === 'phantom'}
+            >
+              {connectingWallet === 'phantom' ? 'Connecting...' : 'Connect Phantom'}
+            </Button>
+            <Button
+              variant="outlined"
+              fullWidth
+              startIcon={<img src="/images/wallets/xaman-logo.png" alt="" style={{ width: 20, height: 20 }} />}
+              onClick={() => handleConnectExternalWallet('xaman')}
+              disabled={connectingWallet === 'xaman'}
+            >
+              {connectingWallet === 'xaman' ? 'Connecting...' : 'Connect Xaman'}
+            </Button>
+            <Button
+              variant="outlined"
+              fullWidth
+              startIcon={<img src="/images/wallets/joey-logo.png" alt="" style={{ width: 20, height: 20 }} />}
+              onClick={() => handleConnectExternalWallet('joey')}
+              disabled={connectingWallet === 'joey'}
+            >
+              {connectingWallet === 'joey' ? 'Connecting...' : 'Connect Joey Wallet'}
+            </Button>
+          </Stack>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={() => setShowConnectModal(false)}>Cancel</Button>
+        </DialogActions>
+      </Dialog>
+
+    </Box>
   );
 }

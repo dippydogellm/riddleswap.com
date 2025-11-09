@@ -41,6 +41,7 @@ const NFTDetailPage = lazy(() => import("@/pages/nft-detail").then(module => ({ 
 const AcceptOfferPage = lazy(() => import("@/pages/accept-offer"));
 const NFTGatewayPage = lazy(() => import("@/pages/nft-gateway"));
 const GamingNFTs = lazy(() => import("@/pages/GamingNFTs"));
+const PartnerProjectDetail = lazy(() => import("@/pages/partner-project-detail"));
 const WalletProfile = lazy(() => import("@/pages/wallet-profile"));
 const TokenAnalytics = lazy(() => import("@/pages/token-analytics"));
 const RiddleScanner = lazy(() => import("@/pages/riddle-scanner"));
@@ -704,6 +705,7 @@ function Router() {
                     { path: '/gaming-nfts', component: GamingNFTsPage },
                     { path: '/gaming/nft-detail/:id', component: NFTDetailPage },
                     { path: '/gaming/my-nfts', component: GamingNFTsPage },
+                    { path: '/gaming/projects/:projectId', component: PartnerProjectDetail },
                     { path: '/gaming/squadrons/:id', component: lazy(() => import('@/pages/squadron-detail')) },
                     { path: '/edit-gaming-profile', component: EditGamingProfilePage },
                     { path: '/squadrons', component: GamingDashboardV3 },

@@ -13,6 +13,9 @@ export const inquisitionCollections = pgTable("inquisition_collections", {
   issuer_address: text("issuer_address").notNull(),
   taxon: bigint("taxon", { mode: "number" }).notNull(),
   
+  // Project linking
+  project_id: integer("project_id"), // Links to partner project for master trait card
+  
   // Collection metadata
   expected_supply: integer("expected_supply").default(0),
   actual_supply: integer("actual_supply").default(0),
