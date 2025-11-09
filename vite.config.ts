@@ -53,6 +53,7 @@ export default defineConfig({
     include: [
       "@emotion/react",
       "@emotion/styled",
+      "lucide-react",
     ],
     esbuildOptions: {
       target: 'es2020',

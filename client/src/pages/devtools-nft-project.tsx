@@ -193,7 +193,6 @@ export default function DevToolsNFTProject() {
       {/* NFT Collection Hero Banner */}
       <div className="relative h-64 bg-gradient-to-br from-purple-600 via-pink-600 to-indigo-600 overflow-hidden">
         <div className="absolute inset-0 bg-black/20" />
-        <div className="absolute inset-0 bg-[url('/images/nft-pattern.png')] opacity-10" />
         <div className="container mx-auto px-4 h-full flex items-center">
           <div className="relative z-10">
             <Button 

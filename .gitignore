@@ -40,3 +40,5 @@ database_backup*.sql
 # Large image files (if not needed for production)
 *.png.bak
 *.jpg.bak.npmrc
+
+.vercel
