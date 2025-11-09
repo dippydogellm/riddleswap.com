@@ -326,6 +326,28 @@ async function performAsyncInitialization() {
   try {
     // CRITICAL: Validate production environment after server starts
     console.log('🔍 [STARTUP] Validating production environment...');
+    
+    // Validate critical environment variables in production
+    if (process.env.NODE_ENV === 'production') {
+      const criticalEnvVars = [
+        'DATABASE_URL',
+        'WALLET_ENCRYPTION_KEY',
+        'BITHOMP_API_KEY'
+      ];
+      
+      const missing = criticalEnvVars.filter(varName => !process.env[varName]);
+      
+      if (missing.length > 0) {
+        console.error('🚨 [STARTUP FAILURE] Critical environment variables missing in production:');
+        missing.forEach(varName => console.error(`   ❌ ${varName}`));
+        console.error('⚠️ Server will not start without these variables in production mode.');
+        console.error('💡 Set these in your .env file or deployment environment.');
+        process.exit(1); // Exit with error code
+      }
+      
+      console.log('✅ [STARTUP] All critical environment variables validated');
+    }
+    
     const validationResult = validateEnvironment();
     handleValidationResults(validationResult, process.env.NODE_ENV === 'production');
 

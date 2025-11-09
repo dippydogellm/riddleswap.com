@@ -37,7 +37,7 @@ const MultiChainNFTMarketplace = lazy(() => import("@/pages/multichain-nft-marke
 const NFTCollectionDetail = lazy(() => import("@/pages/nft-collection-detail"));
 const EthMarketplacePage = lazy(() => import("@/pages/eth-marketplace"));
 const SolMarketplacePage = lazy(() => import("@/pages/sol-marketplace"));
-const NFTDetailPage = lazy(() => import("@/pages/nft-detail").then(module => ({ default: module.NFTDetailPage })));
+const NFTDetailPage = lazy(() => import("@/pages/nft-detail-material").then(module => ({ default: module.NFTDetailMaterialPage })));
 const AcceptOfferPage = lazy(() => import("@/pages/accept-offer"));
 const NFTGatewayPage = lazy(() => import("@/pages/nft-gateway"));
 const GamingNFTs = lazy(() => import("@/pages/GamingNFTs"));
@@ -705,6 +705,7 @@ function Router() {
                     { path: '/gaming/battles', component: GamingBattlesPage },
                     { path: '/gaming/battle/:battleId', component: BattleRoomPage },
                     { path: '/gaming/nft/:nftId', component: GamingNFTDetail },
+                    { path: '/gaming/nfts/browse', component: GamingNFTBrowse },
                     { path: '/gamerprofile/:handle', component: PublicGamerProfilePage },
                     { path: '/land', component: LandMarketplace },
                     { path: '/land-marketplace', component: LandMarketplace },

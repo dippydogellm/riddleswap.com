@@ -2,12 +2,41 @@
 // Handles login, session management, and wallet access
 
 import { Router } from 'express';
+import rateLimit from 'express-rate-limit';
 import { db } from './db';
 import { riddleWallets } from '../shared/schema';
 import { eq, and } from 'drizzle-orm';
 import { decryptWalletFromStorage } from './wallet-encryption';
 
 const router = Router();
+
+// Check if we're in development mode for conditional logging
+const isDev = process.env.NODE_ENV !== 'production';
+
+// Rate limiting for auth endpoints to prevent brute force attacks
+const loginLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000, // 15 minutes
+  max: 5, // 5 attempts per window
+  message: { error: 'Too many login attempts, please try again in 15 minutes' },
+  standardHeaders: true,
+  legacyHeaders: false,
+});
+
+const createWalletLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000, // 15 minutes
+  max: 3, // 3 wallet creations per window
+  message: { error: 'Too many wallet creation attempts, please try again in 15 minutes' },
+  standardHeaders: true,
+  legacyHeaders: false,
+});
+
+const renewalLimiter = rateLimit({
+  windowMs: 5 * 60 * 1000, // 5 minutes
+  max: 10, // 10 renewals per window
+  message: { error: 'Too many session renewal attempts, please try again in 5 minutes' },
+  standardHeaders: true,
+  legacyHeaders: false,
+});
 
 // SECURE Session storage - SERVER SIDE ONLY, NEVER EXPOSED
 // Initialize from database backup if available
@@ -28,8 +57,10 @@ export function getActiveSession(sessionToken: string) {
 
 // Initialize sessions - MEMORY ONLY for security (no database persistence)
 async function initializeSessionsFromDatabase() {
-  console.log('� [SESSION INIT] Starting session manager - memory-only storage (no database backup)');
-  console.log('⚠️  [SESSION INIT] Users will be logged out on server restart');
+  if (isDev) {
+    console.log('� [SESSION INIT] Starting session manager - memory-only storage (no database backup)');
+    console.log('⚠️  [SESSION INIT] Users will be logged out on server restart');
+  }
 }
 
 // Initialize on module load
@@ -41,7 +72,7 @@ setInterval(() => {
   const entries = Array.from(activeSessions.entries());
   for (const [token, session] of entries) {
     if (now > session.expiresAt) {
-      console.log('🧹 Auto-cleaning expired session for security');
+      if (isDev) console.log('🧹 Auto-cleaning expired session for security');
       activeSessions.delete(token);
     }
   }
@@ -97,14 +128,14 @@ function generateSessionToken(): string {
 
 // Riddle wallet session renewal - PROTECTED ENDPOINT  
 // Uses cached private keys from memory for secure session renewal
-router.post('/renew-session', async (req, res) => {
-  console.log('🔄 [SESSION RENEWAL] Session renewal endpoint called');
+router.post('/renew-session', renewalLimiter, async (req, res) => {
+  if (isDev) console.log('🔄 [SESSION RENEWAL] Session renewal endpoint called');
   try {
     const authHeader = req.headers.authorization;
     const sessionToken = authHeader?.replace('Bearer ', '');
     
     if (!sessionToken) {
-      console.log('❌ [SESSION RENEWAL] No session token provided');
+      if (isDev) console.log('❌ [SESSION RENEWAL] No session token provided');
       return res.status(401).json({
         success: false,
         error: 'No session token provided'
@@ -114,7 +145,7 @@ router.post('/renew-session', async (req, res) => {
     const session = activeSessions.get(sessionToken);
     
     if (!session) {
-      console.log('❌ [SESSION RENEWAL] Session not found');
+      if (isDev) console.log('❌ [SESSION RENEWAL] Session not found');
       return res.status(401).json({
         success: false,
         error: 'Invalid session'
@@ -238,15 +269,17 @@ router.get('/session', async (req, res) => {
   }
 });
 
-// Riddle wallet login - PUBLIC ENDPOINT
-router.post('/login', async (req, res) => {
-  console.log('🔓 [WALLET LOGIN] Login endpoint called - this should be public');
+// Riddle wallet login - PUBLIC ENDPOINT (with rate limiting)
+router.post('/login', loginLimiter, async (req, res) => {
+  if (isDev) console.log('🔓 [WALLET LOGIN] Login endpoint called - this should be public');
   try {
     const { handle, masterPassword } = req.body;
     
-    console.log('🔐 [WALLET LOGIN] Login attempt for handle:', handle);
-    console.log('🔍 [WALLET LOGIN] Request IP:', req.ip);
-    console.log('🔍 [WALLET LOGIN] User Agent:', req.headers['user-agent']);
+    if (isDev) {
+      console.log('🔐 [WALLET LOGIN] Login attempt for handle:', handle);
+      console.log('🔍 [WALLET LOGIN] Request IP:', req.ip);
+      console.log('🔍 [WALLET LOGIN] User Agent:', req.headers['user-agent']);
+    }
     
     if (!handle || !masterPassword) {
       return res.status(400).json({ 
@@ -794,8 +827,8 @@ async function checkWalletCreationEligibility(req: any, handle: string) {
   };
 }
 
-// Create new riddle wallet - PUBLIC ENDPOINT
-router.post('/create', async (req, res) => {
+// Create new riddle wallet - PUBLIC ENDPOINT (with rate limiting)
+router.post('/create', createWalletLimiter, async (req, res) => {
   // Explicit CORS headers for wallet creation
   res.header('Access-Control-Allow-Origin', req.headers.origin || '*');
   res.header('Access-Control-Allow-Methods', 'POST, OPTIONS');

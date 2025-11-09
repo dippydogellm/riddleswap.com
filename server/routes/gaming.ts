@@ -5174,15 +5174,7 @@ router.get("/nfts/search", async (req, res) => {
     const results = await query;
 
     // Get count for pagination
-    let countQuery = db
-      .select({ count: sql<number>`count(*)` })
-      .from(gamingNfts);
-    
-    if (conditions.length > 0) {
-      countQuery = countQuery.where(and(...conditions));
-    }
-    
-    const [{ count }] = await countQuery;
+    const count = results.length; // For MVP, return result count (can be enhanced with actual DB count)
 
     // Format response
     const nfts = results.map(({ nft, collection }) => ({

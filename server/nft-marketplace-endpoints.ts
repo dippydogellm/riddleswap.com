@@ -133,18 +133,31 @@ function parseCollectionFromAPI(data: any) {
     }
   }
   
-  // Final check - ensure we have a name before returning
-  if (!name) {
-    console.log(`⚠️ [NAME EXTRACT] Final fallback failed for collection: ${collection.collection}`);
-    return null;
+  // Final check - ensure we have a name (NEVER return null)
+  if (!name || name.trim() === '') {
+    console.log(`⚠️ [NAME EXTRACT] Using ultimate fallback for collection: ${collection.collection || 'unknown'}`);
+    const collectionId = collection.collection || 'unknown';
+    const parts = collectionId.split(':');
+    if (parts.length === 2) {
+      name = `Collection ${parts[1]}`; // Use taxon as identifier
+    } else {
+      name = `NFT Collection ${collectionId.slice(-8)}`; // Last 8 chars of ID
+    }
   }
   
+  // Validate description is a string
+  if (description && typeof description !== 'string') {
+    console.log(`⚠️ [DESCRIPTION] Invalid description type (${typeof description}), clearing it`);
+    description = '';
+  }
+  
+  // GUARANTEED VALID RETURN - never null
   return {
     issuer: collection.issuer || '',
     taxon: collection.taxon || 0,
     collection_id: collection.collection || '',
-    name: name,
-    description: description,
+    name: name.trim(), // Guaranteed to have a value
+    description: description || '', // Guaranteed string
     image: collection.assets?.image || collection.assets?.preview || null,
     floorPrice: collection.floorPrices?.[0]?.open?.amount 
       ? parseFloat(collection.floorPrices[0].open.amount) / 1000000 
@@ -260,7 +273,7 @@ export function setupNFTMarketplaceEndpoints(app: Express) {
   app.get('/api/nft-marketplace/volumes/:period', async (req, res) => {
     try {
       const { period } = req.params;
-      const limit = 50; // Fetch more to ensure we get 20 good ones
+      const limit = 100; // Increased limit to show more collections
       
       let apiPeriod = 'week';
       if (period === '24h') apiPeriod = 'day';
@@ -291,7 +304,7 @@ export function setupNFTMarketplaceEndpoints(app: Express) {
               const volumeAmount = col.volumes?.[0]?.amount ? parseFloat(col.volumes[0].amount) / 1000000 : 0;
               return volumeAmount > 0.5 && col.collectionDetails?.issuer && col.collectionDetails?.taxon !== undefined;
             })
-            .slice(0, 20); // LIMIT TO 20 COLLECTIONS
+            .slice(0, 50); // Show top 50 collections by volume
           
           // Step 3: Batch fetch individual collection data (limit concurrent calls)
           const detailedCollections = [];
@@ -347,7 +360,7 @@ export function setupNFTMarketplaceEndpoints(app: Express) {
   app.get('/api/nft-marketplace/sales/:period', async (req, res) => {
     try {
       const { period } = req.params;
-      const limit = 40; // Fetch more for sales filtering
+      const limit = 100; // Increased limit for more sales data
       
       let apiPeriod = 'week';
       if (period === '24h') apiPeriod = 'day';
@@ -378,14 +391,14 @@ export function setupNFTMarketplaceEndpoints(app: Express) {
               const volumeAmount = col.volumes?.[0]?.amount ? parseFloat(col.volumes[0].amount) / 1000000 : 0;
               return col.collectionDetails?.issuer && col.collectionDetails?.taxon !== undefined && volumeAmount >= 0;
             })
-            .slice(3, 33); // Different subset: Skip first 3, take next 30
+            .slice(3, 53); // Different subset: Skip first 3, take next 50
           
           console.log(`💰 [SALES TAB] Processing ${topVolumeCollections.length} collections for sales data`);
           
           // Step 3: Create sales collections using volume data + limited API calls
           const salesCollections = [];
           
-          for (let i = 0; i < Math.min(topVolumeCollections.length, 20); i++) {
+          for (let i = 0; i < Math.min(topVolumeCollections.length, 50); i++) {
             const col = topVolumeCollections[i];
             const details = col.collectionDetails;
             const volumeData = col.volumes?.[0] || {};
@@ -489,9 +502,9 @@ export function setupNFTMarketplaceEndpoints(app: Express) {
   // TAB 3: LIVE MINTS - Completely rewritten to detect ACTUAL minting activity
   app.get('/api/nft-marketplace/live-mints', async (req, res) => {
     try {
-      const { period = '24h', page = '1', limit = '20' } = req.query;
+      const { period = '24h', page = '1', limit = '50' } = req.query;
       const pageNum = parseInt(page as string) || 1;
-      const pageLimit = parseInt(limit as string) || 20;
+      const pageLimit = parseInt(limit as string) || 50;
       const offset = (pageNum - 1) * pageLimit;
       
       console.log(`🚀 [LIVE MINTS] Detecting actual live mints - Period: ${period}, Page: ${pageNum}, Limit: ${pageLimit}`);

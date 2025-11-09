@@ -346,12 +346,31 @@ const CollectionCard = ({
             noWrap 
             sx={{ 
               fontWeight: 'bold', 
-              mb: 2,
+              mb: 1,
               color: isDark ? '#ffffff' : '#111827'
             }}
           >
             {collection.name || `Collection ${collection.taxon}`}
           </Typography>
+          
+          {/* Collection Description */}
+          {collection.description && (
+            <Typography 
+              variant="body2" 
+              sx={{ 
+                mb: 2,
+                color: isDark ? '#9ca3af' : '#6b7280',
+                overflow: 'hidden',
+                textOverflow: 'ellipsis',
+                display: '-webkit-box',
+                WebkitLineClamp: 2,
+                WebkitBoxOrient: 'vertical',
+                lineHeight: 1.4
+              }}
+            >
+              {collection.description}
+            </Typography>
+          )}
           
           {/* Mint Progress Bar */}
           {activeTab === 'mints' && collection.progress !== undefined && (
@@ -588,7 +607,7 @@ export default function NFTMarketplacePage() {
             endpoint = `/api/nft-marketplace/sales/${period}`;
             break;
           case 'mints':
-            endpoint = `/api/nft-marketplace/live-mints?period=${selectedPeriod}&page=${page}&limit=20`;
+            endpoint = `/api/nft-marketplace/live-mints?period=${selectedPeriod}&page=${page}&limit=50`;
             break;
           case 'favorites':
             endpoint = '/api/user-favorites?chain=xrpl';
@@ -644,6 +663,7 @@ export default function NFTMarketplacePage() {
             issuer: fav.issuer,
             taxon: fav.taxon,
             name: fav.name || `Collection ${fav.taxon}`,
+            description: fav.description || '',
             image: fav.image || `/api/nft/image/${fav.issuer}:${fav.taxon}`,
             isFavorite: true
           }));

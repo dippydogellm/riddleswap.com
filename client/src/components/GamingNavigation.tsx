@@ -52,6 +52,12 @@ const GamingNavigation: React.FC<GamingNavigationProps> = ({ theme = 'dark', cla
       description: 'Browse gaming NFTs'
     },
     {
+      name: 'NFT Browser',
+      href: '/gaming/nfts/browse',
+      icon: <Package className="h-4 w-4" />,
+      description: 'Advanced NFT search'
+    },
+    {
       name: 'My NFTs',
       href: '/gaming/my-nfts',
       icon: <Package className="h-4 w-4" />,

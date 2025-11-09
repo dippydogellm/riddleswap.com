@@ -11,6 +11,14 @@ export default function GamingDashboardHub() {
   const session = useSession();
   const [, navigate] = useLocation();
 
+  // Debug session state
+  console.log('🎮 [Gaming Hub] Session state:', {
+    isLoggedIn: session?.isLoggedIn,
+    handle: session?.handle,
+    hasWalletData: !!session?.walletData,
+    sessionToken: session?.sessionToken ? 'present' : 'missing'
+  });
+
   // Fetch user's owned NFTs
   const { data: userNFTs, isLoading: nftsLoading } = useQuery<any>({
     queryKey: ['/api/inquisition-audit/user-nfts'],
@@ -47,6 +55,13 @@ export default function GamingDashboardHub() {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-background to-muted/20">
+      {/* Session Debug Banner - Remove after testing */}
+      {!session?.isLoggedIn && (
+        <div className="bg-yellow-500 text-black p-3 text-center font-semibold">
+          ⚠️ SESSION DEBUG: Not logged in. Please use wallet login to access gaming features.
+        </div>
+      )}
+      
       {/* Header */}
       <div className="border-b bg-card/50 backdrop-blur-sm">
         <div className="container mx-auto px-4 py-6">
@@ -60,10 +75,16 @@ export default function GamingDashboardHub() {
                 Manage your NFTs, squadrons, and battles
               </p>
             </div>
-            {session?.handle && (
+            {session?.handle ? (
               <div className="text-right">
                 <p className="text-sm text-muted-foreground">Welcome back,</p>
                 <p className="text-lg font-semibold">{session.handle}</p>
+              </div>
+            ) : (
+              <div className="text-right">
+                <Button onClick={() => navigate('/wallet-login')} variant="default">
+                  Login to Play
+                </Button>
               </div>
             )}
           </div>
@@ -136,10 +157,15 @@ export default function GamingDashboardHub() {
                     </>
                   ) : (
                     <div className="text-center py-8">
-                      <p className="text-muted-foreground mb-4">You don't own any gaming NFTs yet</p>
-                      <Button onClick={() => navigate('/gaming-nfts')}>
-                        Browse NFT Marketplace
-                      </Button>
+                      <p className="text-muted-foreground mb-4">No NFTs found</p>
+                      <div className="flex gap-2 justify-center">
+                        <Button onClick={() => navigate('/gaming-nfts')}>
+                          Browse Marketplace
+                        </Button>
+                        <Button variant="outline" onClick={() => navigate('/gaming/nfts/browse')}>
+                          Advanced Search
+                        </Button>
+                      </div>
                     </div>
                   )}
                 </CardContent>

@@ -37,7 +37,6 @@ import {
   Person as OwnerIcon,
   Collections as CollectionIcon
 } from "@mui/icons-material";
-import { useSession } from "@/utils/sessionManager";
 import { normalizeImagePath, getFallbackImage } from "@/utils/imageNormalizer";
 
 interface NFTSearchFilters {
@@ -86,7 +85,6 @@ const rarityTiers = [
 
 export default function GamingNFTBrowse() {
   const [, navigate] = useLocation();
-  const { session } = useSession();
   
   const [showFilters, setShowFilters] = useState(true);
   const [filters, setFilters] = useState<NFTSearchFilters>({
@@ -405,6 +403,24 @@ export default function GamingNFTBrowse() {
                   <Typography variant="body2" color="text.secondary" gutterBottom noWrap>
                     {nft.collection_name}
                   </Typography>
+
+                  {nft.description && (
+                    <Typography 
+                      variant="caption" 
+                      color="text.secondary" 
+                      sx={{ 
+                        display: '-webkit-box',
+                        WebkitLineClamp: 2,
+                        WebkitBoxOrient: 'vertical',
+                        overflow: 'hidden',
+                        textOverflow: 'ellipsis',
+                        mb: 2,
+                        lineHeight: 1.3
+                      }}
+                    >
+                      {nft.description}
+                    </Typography>
+                  )}
 
                   <Stack direction="row" spacing={1} sx={{ mt: 2, flexWrap: 'wrap', gap: 1 }}>
                     {nft.rarity_tier && (
