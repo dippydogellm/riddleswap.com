@@ -42,7 +42,8 @@ import {
   Storefront as StoreIcon,
   Policy as PolicyIcon,
   Groups as GroupsIcon,
-  Home as HomeIcon
+  Home as HomeIcon,
+  Token as TokenIcon
 } from "@mui/icons-material";
 
 interface City {
@@ -105,6 +106,16 @@ const RiddleCityMaterial = () => {
     queryKey: [`/api/riddlecity/city/public/${handle}`],
     enabled: !!handle,
     retry: 1,
+  });
+
+  // Fetch RDL balance for the city owner's wallet
+  const { data: rdlBalance } = useQuery<{ balance: number }>({
+    queryKey: [`/api/rdl/balance/handle/${cityData?.data?.userHandle}`],
+    enabled: !!cityData?.data?.userHandle,
+    retry: 1,
+    select: (data: any) => ({
+      balance: data?.balance ? parseFloat(data.balance) : 0
+    })
   });
 
   if (isLoading) {
@@ -301,7 +312,7 @@ const RiddleCityMaterial = () => {
       <Container maxWidth="xl" sx={{ pb: 6 }}>
         {/* Resource Stats */}
         <Grid container spacing={3} sx={{ mb: 4 }}>
-          <Grid item xs={12} sm={6} md={3}>
+          <Grid item xs={12} sm={6} md={2.4}>
             <Card
               elevation={3}
               sx={{
@@ -321,7 +332,7 @@ const RiddleCityMaterial = () => {
             </Card>
           </Grid>
 
-          <Grid item xs={12} sm={6} md={3}>
+          <Grid item xs={12} sm={6} md={2.4}>
             <Card
               elevation={3}
               sx={{
@@ -341,7 +352,7 @@ const RiddleCityMaterial = () => {
             </Card>
           </Grid>
 
-          <Grid item xs={12} sm={6} md={3}>
+          <Grid item xs={12} sm={6} md={2.4}>
             <Card
               elevation={3}
               sx={{
@@ -361,7 +372,7 @@ const RiddleCityMaterial = () => {
             </Card>
           </Grid>
 
-          <Grid item xs={12} sm={6} md={3}>
+          <Grid item xs={12} sm={6} md={2.4}>
             <Card
               elevation={3}
               sx={{
@@ -380,9 +391,29 @@ const RiddleCityMaterial = () => {
               </CardContent>
             </Card>
           </Grid>
+
+          <Grid item xs={12} sm={6} md={2.4}>
+            <Card
+              elevation={3}
+              sx={{
+                background: "linear-gradient(135deg, #f3e5f5 0%, #e1bee7 100%)",
+                border: "2px solid #7b1fa2",
+              }}
+            >
+              <CardContent sx={{ textAlign: "center", p: 3 }}>
+                <TokenIcon sx={{ fontSize: 48, color: "#7b1fa2", mb: 1 }} />
+                <Typography variant="h3" sx={{ fontWeight: "bold", color: "#4a148c" }}>
+                  {rdlBalance?.balance ? rdlBalance.balance.toLocaleString(undefined, { maximumFractionDigits: 2 }) : '0'}
+                </Typography>
+                <Typography variant="subtitle1" sx={{ color: "#6a1b9a", mt: 1 }}>
+                  RDL Tokens
+                </Typography>
+              </CardContent>
+            </Card>
+          </Grid>
         </Grid>
 
-        {/* City Stats */}
+        {/* Stats Overview */}
         <Grid container spacing={2} sx={{ mb: 4 }}>
           {[
             { icon: PeopleIcon, label: "Population", value: `${city.population}/${city.populationCapacity}`, color: "#7b1fa2" },

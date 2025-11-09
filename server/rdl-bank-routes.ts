@@ -9,7 +9,7 @@ const RDL_TOKEN_CONFIGS = {
     symbol: 'RDL',
     name: 'RiddleSwap Token (XRPL)',
     decimals: 6,
-    issuer: 'rNFugeoj3ZN8Wv6xhuAVfMkCN78V7q98S', // Example XRPL issuer address
+    issuer: 'r9xvnzUWZJpDu3NA6MKHmKhKJQTRqCRgu9', // Real RDL issuer address
     currency: 'RDL',
     description: 'Native RDL token on XRP Ledger'
   },
@@ -47,14 +47,42 @@ const getMockRDLPrice = () => {
 // Fetch XRPL RDL balance
 async function fetchXRPLBalance(address: string): Promise<number> {
   try {
-    // In production, use XRPL library to query trustlines
     console.log(`🔍 [RDL] Fetching XRPL RDL balance for ${address}`);
     
-    // Mock XRPL API call
-    const mockBalance = Math.floor(Math.random() * 10000); // 0-10,000 RDL
-    console.log(`✅ [RDL] XRPL balance: ${mockBalance} RDL`);
+    // Import XRPL client
+    const { Client } = await import('xrpl');
+    const client = new Client('wss://s1.ripple.com');
     
-    return mockBalance;
+    try {
+      await client.connect();
+      
+      // Get account lines (trustlines)
+      const accountLines = await client.request({
+        command: 'account_lines',
+        account: address,
+        ledger_index: 'validated'
+      });
+      
+      // Find RDL trustline with correct issuer
+      const RDL_ISSUER = 'r9xvnzUWZJpDu3NA6MKHmKhKJQTRqCRgu9';
+      const rdlLine = accountLines.result.lines.find((line: any) => 
+        line.currency === 'RDL' && line.account === RDL_ISSUER
+      );
+      
+      await client.disconnect();
+      
+      if (rdlLine) {
+        const balance = parseFloat(rdlLine.balance);
+        console.log(`✅ [RDL] XRPL balance: ${balance} RDL (issuer: ${RDL_ISSUER})`);
+        return balance;
+      } else {
+        console.log(`ℹ️ [RDL] No RDL trustline found for ${address}`);
+        return 0;
+      }
+    } catch (error) {
+      await client.disconnect();
+      throw error;
+    }
   } catch (error) {
     console.error('❌ [RDL] Error fetching XRPL balance:', error);
     return 0;

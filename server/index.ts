@@ -553,6 +553,11 @@ async function performAsyncInitialization() {
   app.use('/api/land', landPurchaseRoutes);
   console.log('🏞️ Land Purchase routes registered (medieval land plots, XRP/RDL payments)');
 
+  // RDL Balance Routes (RDL token balance queries)
+  const rdlBalanceRoutes = (await import('./rdl-balance-routes')).default;
+  app.use('/api/rdl', rdlBalanceRoutes);
+  console.log('🪙 RDL Balance routes registered (RDL token balance queries)');
+
   // Land Inventory Routes (NFTs, Buildings, Weapons on Land)
   app.use('/api/land-inventory', landInventoryRoutes);
   console.log('🏰 Land Inventory routes registered (place NFTs, buildings, weapons on land)');

@@ -222,7 +222,7 @@ const InquisitionCollectionsPage = lazy(() => import("@/pages/inquisition-collec
 const TrollsInquisitionLanding = lazy(() => import("@/pages/trolls-inquisition-landing"));
 const RiddleCityLanding = lazy(() => import("@/pages/riddle-city-landing"));
 const RiddleCityPage = lazy(() => import("@/pages/riddlecity"));
-const RiddleCityPublicCityPage = lazy(() => import("@/pages/riddlecity-public-city"));
+const RiddleCityPublicCityPage = lazy(() => import("@/pages/riddlecity-material"));
 
 // Lazy load Wallet Management
 const WalletManagementPage = lazy(() => import("@/pages/wallet-management"));
