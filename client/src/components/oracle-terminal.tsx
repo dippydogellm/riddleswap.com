@@ -90,10 +90,10 @@ export const OracleTerminal = () => {
     try {
       const response: any = await apiRequest('/api/twitter/test-tweet', {
         method: 'POST',
-        data: {
+        body: JSON.stringify({
           content: '🔮 Oracle Terminal Test - ' + new Date().toLocaleString() + '\n\n✅ Monitoring systems operational\n📊 Real-time tweet tracking active\n🚀 #RiddleSwap #Oracle',
           tweet_type: 'test'
-        }
+        })
       });
       
       if (response?.success) {

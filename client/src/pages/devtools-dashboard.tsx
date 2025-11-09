@@ -147,7 +147,7 @@ const DevToolsDashboard = () => {
 
   // IMPORTANT: All hooks must be called BEFORE any conditional returns
   // Fetch user's claimed projects
-  const { data: userProjects } = useQuery({
+  const { data: userProjects } = useQuery<{ projects: Array<any> }>({
     queryKey: ['/api/devtools/projects'],
     enabled: isAuthenticated,
   });

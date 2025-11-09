@@ -17,7 +17,7 @@ const DOC_TITLES: Record<string, string> = {
 };
 
 export default function DocViewer() {
-  const [, params] = useRoute("/docs/:docId");
+  const [, params] = useRoute<{ docId: string }>("/docs/:docId");
   const [, navigate] = useLocation();
   const [content, setContent] = useState<string>("");
   const [loading, setLoading] = useState(true);

@@ -26,7 +26,8 @@ const tokenSnapshotSchema = z.object({
 type TokenSnapshotFormData = z.infer<typeof tokenSnapshotSchema>;
 
 const TokenSnapshot = () => {
-  const { projectId } = useParams();
+  const params = useParams<{ projectId: string }>();
+  const projectId = params.projectId;
   const { toast } = useToast();
   const { isAuthenticated, isLoading } = useAuth();
 

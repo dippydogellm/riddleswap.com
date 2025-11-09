@@ -198,7 +198,7 @@ export default function TradersToolsAdmin() {
 
   const handleBotAction = async (botId: string, action: 'start' | 'stop' | 'pause') => {
     try {
-      await apiRequest('POST', `/api/traders/admin/sniper-bot/${action}`, { botId });
+      await apiRequest(`/api/traders/admin/sniper-bot/${action}`, { method: 'POST', body: JSON.stringify({ botId }) });
       
       setSniperBots(prev => prev.map(bot => 
         bot.id === botId 
@@ -221,7 +221,7 @@ export default function TradersToolsAdmin() {
 
   const handleCopyTradeAction = async (tradeId: string, action: 'pause' | 'stop' | 'resume') => {
     try {
-      await apiRequest('POST', `/api/traders/admin/copy-trade/${action}`, { tradeId });
+      await apiRequest(`/api/traders/admin/copy-trade/${action}`, { method: 'POST', body: JSON.stringify({ tradeId }) });
       
       setCopyTrades(prev => prev.map(trade => 
         trade.id === tradeId 
@@ -245,16 +245,17 @@ export default function TradersToolsAdmin() {
   const handleDistributeProfits = async (tradeId: string) => {
     try {
       setIsLoading(true);
-      const response = await apiRequest('POST', `/api/traders/admin/distribute-profits`, { botId: tradeId }) as any;
-      
-      setDistributions(prev => [...prev, response.distribution]);
-      setRecentTrades(prev => prev.map(trade => 
+      const response = await apiRequest(`/api/traders/admin/distribute-profits`, { method: 'POST', body: JSON.stringify({ botId: tradeId }) });
+      const data = await response.json();
+
+      setDistributions(prev => [...prev, data.distribution]);
+      setRecentTrades(prev => prev.map(trade =>
         trade.id === tradeId ? { ...trade, status: 'distributed' } : trade
       ));
 
       toast({
         title: "Distribution Complete",
-        description: `Profits distributed to ${response.distribution.participantCount} wallets`
+        description: `Profits distributed to ${data.distribution.participantCount} wallets`
       });
     } catch (error) {
       toast({

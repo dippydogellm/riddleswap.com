@@ -1,8 +1,8 @@
-import { CollectionShowcase } from '@/components/collection-showcase';
+import { CollectionShowcaseV3 } from '@/components/collection-showcase-v3';
 
 export default function UnderTheBridgeCollection() {
   return (
-    <CollectionShowcase
+    <CollectionShowcaseV3
       collectionName="Under The Bridge: Troll"
       collectionSlug="under-the-bridge"
       description="Venture beneath the ancient bridge where trolls guard forgotten treasures and secrets of old. This collection features 710 unique troll NFTs, each with distinct traits and mysterious lore from the depths. Guardians of the bridge, keepers of riddles, and masters of the shadows - join the troll army and discover what lies beneath."

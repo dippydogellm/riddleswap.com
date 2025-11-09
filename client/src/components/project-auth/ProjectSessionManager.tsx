@@ -64,12 +64,14 @@ export default function ProjectSessionManager({
       
       const response = await apiRequest('/api/projects/auth/verify', {
         method: 'POST',
-        body: {
+        body: JSON.stringify({
           sessionToken,
           projectId
-        }
+        }),
+        headers: { 'Content-Type': 'application/json' }
       });
-      return response;
+      const result = await response.json();
+      return result as ProjectSession;
     },
     enabled: !!sessionToken && !!projectId,
     refetchInterval: 60000, // Check every minute
@@ -83,10 +85,11 @@ export default function ProjectSessionManager({
       
       await apiRequest('/api/projects/auth/logout', {
         method: 'POST',
-        body: {
+        body: JSON.stringify({
           sessionToken,
           projectId
-        }
+        }),
+        headers: { 'Content-Type': 'application/json' }
       });
     },
     onSuccess: () => {

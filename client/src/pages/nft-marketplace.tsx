@@ -8,6 +8,7 @@
 import { useState, useEffect } from 'react';
 import { useLocation } from 'wouter';
 import { useDynamicMetadata, GAMING_METADATA } from '@/hooks/use-dynamic-metadata';
+import { useInfiniteQuery } from '@tanstack/react-query';
 
 // ============================================================================
 // ICONS
@@ -135,7 +136,9 @@ const CollectionCard = ({
     setIsTogglingFavorite(true);
     
     try {
-      const sessionToken = localStorage.getItem('sessionToken') || sessionStorage.getItem('sessionToken');
+      // Use transactionAuth utility for consistent session handling
+      const { getSessionToken } = await import('@/utils/transactionAuth');
+      const sessionToken = getSessionToken();
       
       if (!sessionToken) {
         alert('Please login to add favorites');
@@ -503,10 +506,7 @@ export default function NFTMarketplacePage() {
   // ============================================================================
   // STATE MANAGEMENT
   // ============================================================================
-  const [collections, setCollections] = useState<any[]>([]);
   const [filteredCollections, setFilteredCollections] = useState<any[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [loadingMore, setLoadingMore] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   const [activeTab, setActiveTab] = useState('volumes');
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
@@ -514,9 +514,6 @@ export default function NFTMarketplacePage() {
   const [volumeFilter, setVolumeFilter] = useState(0);
   const [selectedChain, setSelectedChain] = useState('XRPL');
   const [isDark, setIsDark] = useState(false);
-  const [currentPage, setCurrentPage] = useState(1);
-  const [hasMore, setHasMore] = useState(true);
-  const [totalCollections, setTotalCollections] = useState(0);
   
   // ============================================================================
   // SUPPORTED CHAINS
@@ -558,208 +555,180 @@ export default function NFTMarketplacePage() {
   };
   
   const handleFavoriteToggle = (collection: any, isFavorited: boolean) => {
-    // Remove from list if in favorites tab and item was unfavorited
+    // Refetch data when favorites change
     if (activeTab === 'favorites' && !isFavorited) {
-      setCollections(prev => prev.filter(item => 
-        !(item.issuer === collection.issuer && item.taxon === collection.taxon)
-      ));
-      setFilteredCollections(prev => prev.filter(item => 
-        !(item.issuer === collection.issuer && item.taxon === collection.taxon)
-      ));
+      refetch();
     }
     
-    // Update favorite status in collections
-    setCollections(prev => prev.map(item => 
-      (item.issuer === collection.issuer && item.taxon === collection.taxon)
-        ? { ...item, isFavorite: isFavorited }
-        : item
-    ));
-    setFilteredCollections(prev => prev.map(item => 
-      (item.issuer === collection.issuer && item.taxon === collection.taxon)
-        ? { ...item, isFavorite: isFavorited }
-        : item
-    ));
+    // Update filtered collections optimistically
+    setFilteredCollections(prev => {
+      if (activeTab === 'favorites' && !isFavorited) {
+        return prev.filter(item => 
+          !(item.issuer === collection.issuer && item.taxon === collection.taxon)
+        );
+      }
+      return prev.map(item => 
+        (item.issuer === collection.issuer && item.taxon === collection.taxon)
+          ? { ...item, isFavorite: isFavorited }
+          : item
+      );
+    });
   };
   
   // ============================================================================
-  // DATA FETCHING
+  // REACT QUERY - INFINITE SCROLL DATA FETCHING
   // ============================================================================
-  const fetchMarketplaceData = async (page = 1, append = false) => {
-    if (page === 1) {
-      setLoading(true);
+  const ITEMS_PER_PAGE = 12;
+  
+  const fetchMarketplacePageData = async ({ pageParam = 1 }) => {
+    const chainId = getChainId(selectedChain);
+    let endpoint = '';
+    
+    // Determine endpoint based on chain and tab with pagination
+    if (chainId === 'xrpl') {
+      const period = selectedPeriod === '7d' ? 'week' : selectedPeriod === '30d' ? 'month' : '24h';
+      
+      switch (activeTab) {
+        case 'volumes':
+          endpoint = `/api/nft-marketplace/volumes/${period}?page=${pageParam}&limit=${ITEMS_PER_PAGE}`;
+          break;
+        case 'sales':
+          endpoint = `/api/nft-marketplace/sales/${period}?page=${pageParam}&limit=${ITEMS_PER_PAGE}`;
+          break;
+        case 'mints':
+          endpoint = `/api/nft-marketplace/live-mints?period=${selectedPeriod}&page=${pageParam}&limit=${ITEMS_PER_PAGE}`;
+          break;
+        case 'favorites':
+          endpoint = `/api/user-favorites?chain=xrpl&page=${pageParam}&limit=${ITEMS_PER_PAGE}`;
+          break;
+        default:
+          endpoint = `/api/nft-marketplace/volumes/${period}?page=${pageParam}&limit=${ITEMS_PER_PAGE}`;
+      }
     } else {
-      setLoadingMore(true);
+      // Multi-chain endpoints with pagination
+      switch (activeTab) {
+        case 'volumes':
+          endpoint = `/api/nftscan/${chainId}/trending?limit=${ITEMS_PER_PAGE}&page=${pageParam}`;
+          break;
+        case 'sales':
+          endpoint = `/api/nftscan/${chainId}/top-sales?limit=${ITEMS_PER_PAGE}&page=${pageParam}`;
+          break;
+        case 'mints':
+          endpoint = `/api/nftscan/${chainId}/trending?limit=${ITEMS_PER_PAGE}&page=${pageParam}`;
+          break;
+        case 'favorites':
+          return { collections: [], nextPage: undefined, hasMore: false, total: 0 };
+        default:
+          endpoint = `/api/nftscan/${chainId}/trending?limit=${ITEMS_PER_PAGE}&page=${pageParam}`;
+      }
     }
     
-    try {
-      const chainId = getChainId(selectedChain);
-      let endpoint = '';
-      
-      // Determine endpoint based on chain and tab
-      if (chainId === 'xrpl') {
-        const period = selectedPeriod === '7d' ? 'week' : selectedPeriod === '30d' ? 'month' : '24h';
-        
-        switch (activeTab) {
-          case 'volumes':
-            endpoint = `/api/nft-marketplace/volumes/${period}`;
-            break;
-          case 'sales':
-            endpoint = `/api/nft-marketplace/sales/${period}`;
-            break;
-          case 'mints':
-            endpoint = `/api/nft-marketplace/live-mints?period=${selectedPeriod}&page=${page}&limit=50`;
-            break;
-          case 'favorites':
-            endpoint = '/api/user-favorites?chain=xrpl';
-            break;
-          default:
-            endpoint = `/api/nft-marketplace/volumes/${period}`;
-        }
-      } else {
-        // Multi-chain endpoints
-        switch (activeTab) {
-          case 'volumes':
-            endpoint = `/api/nftscan/${chainId}/trending?limit=20`;
-            break;
-          case 'sales':
-            endpoint = `/api/nftscan/${chainId}/top-sales?limit=20`;
-            break;
-          case 'mints':
-            endpoint = `/api/nftscan/${chainId}/trending?limit=20`;
-            break;
-          case 'favorites':
-            setLoading(false);
-            setLoadingMore(false);
-            setCollections([]);
-            setFilteredCollections([]);
-            return;
-          default:
-            endpoint = `/api/nftscan/${chainId}/trending?limit=20`;
-        }
+    console.log(`🚀 [${activeTab.toUpperCase()}] [${selectedChain}] Page ${pageParam}: ${endpoint}`);
+    
+    const headers: Record<string, string> = { 'Cache-Control': 'no-cache' };
+    
+    if (activeTab === 'favorites') {
+      const sessionToken = localStorage.getItem('riddle_session_token') || sessionStorage.getItem('riddle_session_data');
+      if (sessionToken) {
+        headers['x-session-token'] = sessionToken;
       }
-      
-      console.log(`🚀 [${activeTab.toUpperCase()}] [${selectedChain}] Fetching: ${endpoint}`);
-      
-      const headers: Record<string, string> = { 'Cache-Control': 'no-cache' };
-      
-      if (activeTab === 'favorites') {
-        const sessionToken = localStorage.getItem('riddle_session_token') || sessionStorage.getItem('riddle_session_data');
-        if (sessionToken) {
-          headers['x-session-token'] = sessionToken;
-        }
-      }
-      
-      const response = await fetch(endpoint, { headers });
-      
-      let data = null;
-      let paginationInfo = null;
-      
-      if (response.ok) {
-        const result = await response.json() as any;
-        
-        if (activeTab === 'favorites') {
-          const rawData = result.favorites || [];
-          data = rawData.map((fav: any) => ({
-            issuer: fav.issuer,
-            taxon: fav.taxon,
-            name: fav.name || `Collection ${fav.taxon}`,
-            description: fav.description || '',
-            image: fav.image || `/api/nft/image/${fav.issuer}:${fav.taxon}`,
-            isFavorite: true
-          }));
-        } else {
-          const rawData = result.collections || [];
-          
-          if (activeTab === 'mints' && result.hasMore !== undefined) {
-            paginationInfo = {
-              hasMore: result.hasMore,
-              total: result.total,
-              page: result.page
-            };
-          }
-          
-          data = rawData.filter((collection: any) => 
-            collection.issuer && 
-            collection.issuer !== null && 
-            collection.issuer !== 'undefined' &&
-            collection.taxon !== undefined &&
-            collection.taxon !== null
-          );
-        }
-      }
-      
-      if (data && data.length > 0) {
-        if (append && page > 1) {
-          setCollections(prev => [...prev, ...data]);
-          setFilteredCollections(prev => [...prev, ...data]);
-        } else {
-          setCollections(data);
-          setFilteredCollections(data);
-        }
-        
-        if (paginationInfo) {
-          setHasMore(paginationInfo.hasMore);
-          setTotalCollections(paginationInfo.total);
-          setCurrentPage(paginationInfo.page);
-        } else {
-          setHasMore(false);
-          setTotalCollections(data.length);
-        }
-      } else {
-        if (!append) {
-          setCollections([]);
-          setFilteredCollections([]);
-        }
-        setHasMore(false);
-      }
-      
-    } catch (error) {
-      console.error(`${activeTab} data fetch failed:`, error);
-      if (!append) {
-        setCollections([]);
-        setFilteredCollections([]);
-      }
-      setHasMore(false);
-    } finally {
-      setLoading(false);
-      setLoadingMore(false);
     }
+    
+    const response = await fetch(endpoint, { headers });
+    
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    
+    const result = await response.json() as any;
+    let collections = [];
+    let hasMore = false;
+    let total = 0;
+    
+    if (activeTab === 'favorites') {
+      const rawData = result.favorites || [];
+      collections = rawData.map((fav: any) => ({
+        issuer: fav.issuer,
+        taxon: fav.taxon,
+        name: fav.name || `Collection ${fav.taxon}`,
+        description: fav.description || '',
+        image: fav.image || `/api/nft/image/${fav.issuer}:${fav.taxon}`,
+        isFavorite: true
+      }));
+      hasMore = result.pagination?.hasMore || collections.length === ITEMS_PER_PAGE;
+      total = result.pagination?.total || collections.length;
+    } else {
+      const rawData = result.collections || [];
+      collections = rawData.filter((collection: any) => 
+        collection.issuer && 
+        collection.issuer !== null && 
+        collection.issuer !== 'undefined' &&
+        collection.taxon !== undefined &&
+        collection.taxon !== null
+      );
+      
+      if (result.hasMore !== undefined) {
+        hasMore = result.hasMore;
+        total = result.total || 0;
+      } else {
+        hasMore = collections.length === ITEMS_PER_PAGE;
+        total = collections.length;
+      }
+    }
+    
+    return {
+      collections,
+      nextPage: hasMore ? pageParam + 1 : undefined,
+      hasMore,
+      total,
+      page: pageParam
+    };
   };
   
-  const loadMoreCollections = () => {
-    if (!loadingMore && hasMore && activeTab === 'mints') {
-      fetchMarketplaceData(currentPage + 1, true);
-    }
-  };
+  // React Query infinite query
+  const {
+    data,
+    fetchNextPage,
+    hasNextPage,
+    isFetchingNextPage,
+    isLoading,
+    isError,
+    refetch
+  } = useInfiniteQuery({
+    queryKey: ['marketplace', activeTab, selectedChain, selectedPeriod],
+    queryFn: fetchMarketplacePageData,
+    getNextPageParam: (lastPage) => lastPage.nextPage,
+    staleTime: 30000, // 30 seconds
+    gcTime: 300000, // 5 minutes
+    initialPageParam: 1
+  });
+  
+  // Flatten all pages into single collections array
+  const allCollections = data?.pages.flatMap(page => page.collections) || [];
+  const totalCollections = data?.pages[0]?.total || 0;
   
   // ============================================================================
-  // EFFECTS
+  // EFFECTS - Infinite Scroll
   // ============================================================================
-  useEffect(() => {
-    setCurrentPage(1);
-    setHasMore(true);
-    fetchMarketplaceData(1, false);
-  }, [activeTab, selectedPeriod, selectedChain]);
-  
   useEffect(() => {
     const handleScroll = () => {
-      if (activeTab !== 'mints' || !hasMore || loadingMore) return;
+      if (!hasNextPage || isFetchingNextPage) return;
       
       const scrollTop = document.documentElement.scrollTop;
       const scrollHeight = document.documentElement.scrollHeight;
       const clientHeight = document.documentElement.clientHeight;
       
       if (scrollTop + clientHeight >= scrollHeight - 1000) {
-        loadMoreCollections();
+        fetchNextPage();
       }
     };
 
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
-  }, [activeTab, hasMore, loadingMore, currentPage]);
+  }, [hasNextPage, isFetchingNextPage, fetchNextPage]);
   
   useEffect(() => {
-    let filtered = [...collections];
+    let filtered = [...allCollections];
     
     filtered = filtered.filter(item => 
       item && item.issuer && item.taxon !== undefined
@@ -799,7 +768,7 @@ export default function NFTMarketplacePage() {
     }
     
     setFilteredCollections(filtered);
-  }, [activeTab, collections, searchQuery, volumeFilter]);
+  }, [activeTab, allCollections, searchQuery, volumeFilter]);
   
   // ============================================================================
   // RENDER
@@ -941,7 +910,7 @@ export default function NFTMarketplacePage() {
         {/* ================================================================ */}
         {/* COLLECTIONS GRID */}
         {/* ================================================================ */}
-        {loading ? (
+        {isLoading ? (
           <Box sx={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', gap: 3 }}>
             {[...Array(12)].map((_, i) => (
               <Card key={i}>
@@ -984,7 +953,7 @@ export default function NFTMarketplacePage() {
             </Typography>
             <Button 
               variant="contained" 
-              onClick={() => fetchMarketplaceData(1, false)}
+              onClick={() => refetch()}
             >
               Refresh Collections
             </Button>
@@ -992,23 +961,23 @@ export default function NFTMarketplacePage() {
         )}
         
         {/* ================================================================ */}
-        {/* INFINITE SCROLL */}
+        {/* INFINITE SCROLL - Works for ALL tabs now */}
         {/* ================================================================ */}
-        {loadingMore && activeTab === 'mints' && (
+        {isFetchingNextPage && (
           <Box sx={{ display: 'flex', justifyContent: 'center', py: 4 }}>
             <Typography variant="body1">Loading more collections...</Typography>
           </Box>
         )}
         
-        {!loadingMore && hasMore && activeTab === 'mints' && filteredCollections.length > 0 && (
+        {!isFetchingNextPage && hasNextPage && filteredCollections.length > 0 && (
           <Box sx={{ display: 'flex', justifyContent: 'center', py: 4 }}>
-            <Button variant="outlined" onClick={loadMoreCollections}>
+            <Button variant="outlined" onClick={() => fetchNextPage()}>
               Load More Collections
             </Button>
           </Box>
         )}
         
-        {!hasMore && activeTab === 'mints' && filteredCollections.length > 0 && (
+        {!hasNextPage && filteredCollections.length > 0 && (
           <Box sx={{ display: 'flex', justifyContent: 'center', py: 4 }}>
             <Typography variant="body2" color="text.secondary">
               You've reached the end {totalCollections > 0 && `(${totalCollections} total)`}

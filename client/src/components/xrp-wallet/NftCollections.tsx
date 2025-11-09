@@ -15,6 +15,9 @@ export interface NftItem {
   nftokenTaxon?: number;
   NFTokenTaxon?: number;
   attributes?: Array<{ trait_type: string; value: string }>;
+  rarity?: string | number;
+  floor_price?: string | number;
+  last_sale_price?: string | number;
 }
 
 export interface NftCollectionsProps {
@@ -49,8 +52,13 @@ export const NftCollections: React.FC<NftCollectionsProps> = ({ collections, onS
                 <Typography variant="subtitle1" fontWeight={600} noWrap sx={{ mb: 1 }}>
                   {collectionName}
                 </Typography>
-                <Chip label={`${nfts.length} NFT${nfts.length !== 1 ? 's' : ''}`} size="small" color="primary" sx={{ mb: 2 }} />
-                <Button fullWidth variant="outlined" size="small" onClick={() => onSelectCollection(collectionName, nfts)} startIcon={<Eye size={16} />}>View All</Button>
+                <Chip label={`${nfts.length} NFT${nfts.length !== 1 ? 's' : ''}`} size="small" color="primary" sx={{ mb: 1 }} />
+                {previewNFT.floor_price && (
+                  <Typography variant="caption" color="text.secondary" display="block" sx={{ mb: 1 }}>
+                    Floor: {typeof previewNFT.floor_price === 'number' ? previewNFT.floor_price.toFixed(2) : previewNFT.floor_price} XRP
+                  </Typography>
+                )}
+                <Button fullWidth variant="outlined" size="small" onClick={() => onSelectCollection(collectionName, nfts)} startIcon={<Eye size={16} />}>View Collection</Button>
               </CardContent>
             </Card>
           </Grid>

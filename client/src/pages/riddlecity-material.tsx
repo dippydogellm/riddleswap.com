@@ -640,7 +640,7 @@ const RiddleCityMaterial = () => {
                 <Grid item xs={12} md={6}>
                   <Card elevation={2}>
                     <CardContent>
-                      <Typography variant="h6" sx={{ mb: 2, fontWeight="bold", display: "flex", alignItems: "center", gap: 1 }}>
+                      <Typography variant="h6" sx={{ mb: 2, fontWeight: "bold", display: "flex", alignItems: "center", gap: 1 }}>
                         <StoreIcon /> Shops
                       </Typography>
                       <Divider sx={{ mb: 2 }} />

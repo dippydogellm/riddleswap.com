@@ -13,7 +13,59 @@ router.get('/:nftId/details', async (req, res) => {
     const { nftId } = req.params;
     console.log(`🎨 [NFT DETAILS] Fetching comprehensive data for: ${nftId}`);
 
-    // Fetch NFT data from Bithomp with metadata
+    // First, get the on-chain NFT data from XRPL
+    const { Client } = await import('xrpl');
+    const client = new Client('wss://s1.ripple.com');
+    
+    let onChainMetadata: any = {};
+    let nftData: any = {};
+    
+    try {
+      await client.connect();
+      
+      // Get the NFT object from XRPL
+      const nftInfo = await client.request({
+        command: 'nft_info',
+        nft_id: nftId
+      } as any);
+      
+      if (nftInfo?.result) {
+        onChainMetadata = nftInfo.result;
+        
+        // If there's a URI, fetch the metadata
+        if (onChainMetadata.uri) {
+          try {
+            // Decode the hex URI
+            const uriHex = onChainMetadata.uri;
+            const uriString = Buffer.from(uriHex, 'hex').toString('utf8');
+            
+            console.log(`📄 [NFT DETAILS] Fetching metadata from URI: ${uriString}`);
+            
+            // Convert IPFS URI if needed
+            let metadataUrl = uriString;
+            if (uriString.startsWith('ipfs://')) {
+              metadataUrl = uriString.replace('ipfs://', 'https://ipfs.io/ipfs/');
+            }
+            
+            // Fetch the metadata JSON
+            const metadataResponse = await fetch(metadataUrl);
+            if (metadataResponse.ok) {
+              const metadata = await metadataResponse.json();
+              onChainMetadata.metadata = metadata;
+              console.log(`✅ [NFT DETAILS] Fetched on-chain metadata:`, metadata);
+            }
+          } catch (metaError) {
+            console.warn(`⚠️ [NFT DETAILS] Could not fetch metadata from URI:`, metaError);
+          }
+        }
+      }
+      
+      await client.disconnect();
+    } catch (xrplError) {
+      console.warn(`⚠️ [NFT DETAILS] XRPL fetch failed, falling back to Bithomp:`, xrplError);
+    }
+
+    // Fetch NFT data from Bithomp for additional info (offers, floor price, etc)
     const nftResponse = await fetch(`https://bithomp.com/api/v2/nft/${nftId}?metadata=true`, {
       headers: {
         'x-bithomp-token': BITHOMP_API_KEY,
@@ -21,82 +73,49 @@ router.get('/:nftId/details', async (req, res) => {
       }
     });
 
-    if (!nftResponse.ok) {
-      throw new Error(`Bithomp NFT API error: ${nftResponse.status}`);
+    if (nftResponse.ok) {
+      nftData = await nftResponse.json();
     }
-
-    const nftData = await nftResponse.json();
+    
+    // Merge on-chain metadata with Bithomp data (prioritize on-chain for data, Bithomp CDN for images)
+    const metadata = onChainMetadata.metadata || nftData.metadata || {};
+    const issuer = onChainMetadata.issuer || nftData.issuer;
+    const taxon = onChainMetadata.nft_taxon || nftData.nftokenTaxon || 0;
     
     // Get collection ID (issuer + taxon) - taxon is the collection identifier
-    const collectionId = `${nftData.issuer}:${nftData.nftokenTaxon || 0}`;
+    const collectionId = `${issuer}:${taxon}`;
     
-    // Extract image URL from metadata
-    let imageUrl = '';
+    // ALWAYS use Bithomp CDN for images (optimized, smaller, cached)
+    // Never fetch from metadata URIs or IPFS directly
+    // Use size=500 for thumbnails, remove size param for full resolution
+    const imageUrl = `https://cdn.bithomp.com/nft/${nftId}.webp?size=500`;
     
-    // Check if metadata contains an image field
-    if (nftData.metadata?.image) {
-      imageUrl = nftData.metadata.image;
-      // Handle IPFS URLs
-      if (imageUrl.startsWith('ipfs://')) {
-        imageUrl = imageUrl.replace('ipfs://', 'https://ipfs.io/ipfs/');
-      }
-    }
-    // Check for image_url field
-    else if (nftData.metadata?.image_url) {
-      imageUrl = nftData.metadata.image_url;
-      if (imageUrl.startsWith('ipfs://')) {
-        imageUrl = imageUrl.replace('ipfs://', 'https://ipfs.io/ipfs/');
-      }
-    }
-    // Try Bithomp CDN
-    else if (nftId) {
-      // Check if Bithomp CDN has the image
-      imageUrl = `https://cdn.bithomp.com/nft/${nftId}.webp`;
-    }
-    
-    // URL-encode special characters in the filename only (preserve query strings, handle mixed encoding)
-    if (imageUrl && imageUrl.includes('/')) {
-      const urlParts = imageUrl.split('/');
-      let lastSegment = urlParts[urlParts.length - 1];
-      
-      // Check if there's a query string (preserve it)
-      const queryIndex = lastSegment.indexOf('?');
-      
-      let filename = queryIndex !== -1 ? lastSegment.substring(0, queryIndex) : lastSegment;
-      const queryString = queryIndex !== -1 ? lastSegment.substring(queryIndex) : '';
-      
-      // Decode-then-encode approach to handle both raw and partially encoded filenames
-      try {
-        // Try to decode first (handles partially encoded filenames)
-        const decoded = decodeURIComponent(filename);
-        // Re-encode to ensure all special characters are properly encoded
-        filename = encodeURIComponent(decoded);
-      } catch (e) {
-        // If decoding fails, the filename has invalid encoding - encode as-is
-        // This handles cases where # or other special chars exist in raw form
-        try {
-          filename = encodeURIComponent(filename);
-        } catch (e2) {
-          // If encoding also fails, leave as-is
-          console.warn('⚠️ [IMAGE URL] Could not encode filename:', filename);
-        }
-      }
-      
-      lastSegment = filename + queryString;
-      urlParts[urlParts.length - 1] = lastSegment;
-      imageUrl = urlParts.join('/');
-    }
-    
-    // Add the image URL to the NFT data
+    // Add the image URL and value data to the NFT data
     const enrichedNftData = {
       ...nftData,
-      imageUrl: imageUrl || null
+      ...onChainMetadata, // Include on-chain data
+      metadata: metadata, // Use merged metadata
+      imageUrl: imageUrl || null,
+      name: metadata?.name || nftData.metadata?.name || `NFT #${taxon}`,
+      description: metadata?.description || nftData.metadata?.description,
+      attributes: metadata?.attributes || metadata?.traits || nftData.metadata?.attributes || [],
+      issuer: issuer,
+      nftokenTaxon: taxon,
+      floor_price: nftData.floorPrice || nftData.floor_price,
+      last_sale_price: nftData.lastSalePrice || nftData.last_sale_price,
+      rarity: nftData.rarity,
+      // Include sell offers from Bithomp if available
+      sellOffers: nftData.sellOffers || [],
+      buyOffers: nftData.buyOffers || []
     };
+    
+    console.log(`✅ [NFT DETAILS] Enriched data - Name: ${enrichedNftData.name}, Floor: ${enrichedNftData.floor_price}, Last Sale: ${enrichedNftData.last_sale_price}`);
     
     res.json({
       success: true,
       nft: enrichedNftData,
-      collectionId
+      collectionId,
+      dataSource: onChainMetadata.metadata ? 'on-chain' : 'bithomp'
     });
 
   } catch (error: any) {

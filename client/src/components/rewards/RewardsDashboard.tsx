@@ -22,7 +22,7 @@ export default function RewardsDashboard() {
   });
 
   // Fetch bank wallet balance
-  const { data: bankBalance } = useQuery({
+  const { data: bankBalance } = useQuery<{ xrpBalance: number; monthlyIncome: number }>({
     queryKey: ["/api/rewards/bank-balance"],
     enabled: true,
   });

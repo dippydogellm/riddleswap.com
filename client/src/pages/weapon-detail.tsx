@@ -12,7 +12,7 @@ import { Link } from "wouter";
 import { useToast } from "@/hooks/use-toast";
 
 export default function WeaponDetail() {
-  const [, params] = useRoute("/weapon-detail/:nftTokenId");
+  const [, params] = useRoute<{ nftTokenId: string }>("/weapon-detail/:nftTokenId");
   const [, setLocation] = useLocation();
   const session = useSession();
   const { toast } = useToast();

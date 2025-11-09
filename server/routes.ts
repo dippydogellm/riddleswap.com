@@ -596,7 +596,9 @@ export async function registerRoutes(app: Express, server: Server): Promise<void
       
       const nfts = nftsList.map((nft: any) => {
         const nftokenID = nft.nftokenID || nft.nfTokenID || '';
-        let metadata = nft.metadata || nft.jsonMeta || {};
+        
+        // Use on-chain metadata if available, otherwise Bithomp metadata
+        let metadata = nft.jsonMetadata || nft.metadata || nft.jsonMeta || {};
         
         // Parse metadata if it's a string
         if (typeof metadata === 'string') {
@@ -607,10 +609,15 @@ export async function registerRoutes(app: Express, server: Server): Promise<void
           }
         }
         
-        // Extract collection name from description or create readable name
+        // Extract collection name from metadata.collection or description
         let collectionName = 'Unknown Collection';
         
-        if (metadata?.description && typeof metadata.description === 'string') {
+        // Try collection field first
+        if (metadata?.collection) {
+          collectionName = metadata.collection;
+        }
+        // Try name extraction from description
+        else if (metadata?.description && typeof metadata.description === 'string') {
           const match = metadata.description.match(/Collection of \d+ ([^.]+)/i);
           if (match && match[1]) {
             collectionName = match[1].trim();
@@ -623,15 +630,9 @@ export async function registerRoutes(app: Express, server: Server): Promise<void
           collectionName = `${issuerShort} #${nft.nftokenTaxon || 0}`;
         }
         
-        // Handle image URL - convert IPFS to working gateway if needed
-        let imageUrl = metadata?.image || nft.image;
-        if (imageUrl && imageUrl.startsWith('ipfs://')) {
-          imageUrl = imageUrl.replace('ipfs://', 'https://ipfs.io/ipfs/');
-        }
-        if (!imageUrl && nft.issuer && nft.nftokenTaxon !== undefined) {
-          // Use Bithomp CDN as fallback
-          imageUrl = `https://bithomp.com/api/v2/nft/${nft.issuer}/${nft.nftokenTaxon}/image`;
-        }
+        // ALWAYS use Bithomp CDN for images (optimized, smaller, cached)
+        // Never fetch from metadata URIs or IPFS directly for performance
+        const imageUrl = `https://cdn.bithomp.com/nft/${nftokenID}.webp?size=300`;
         
         return {
           nft_id: nftokenID,
@@ -641,7 +642,8 @@ export async function registerRoutes(app: Express, server: Server): Promise<void
           collection: collectionName,
           issuer: nft.issuer,
           taxon: nft.nftokenTaxon,
-          rarity: metadata?.rarity,
+          attributes: metadata?.attributes || metadata?.traits || [],
+          rarity: metadata?.rarity || nft.rarity,
           floor_price: nft.floorPrice,
           last_sale_price: nft.lastSalePrice
         };

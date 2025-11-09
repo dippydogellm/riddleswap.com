@@ -249,7 +249,7 @@ export default function LinkedWallets() {
       } else if (currentVerification.walletType === 'phantom' && window.solana) {
         // Phantom signing
         const encodedMessage = new TextEncoder().encode(currentVerification.message);
-        const signedMessage = await window.solana.signMessage(encodedMessage, "utf8");
+        const signedMessage = await (window.solana as any).signMessage(encodedMessage, "utf8");
         signature = Buffer.from(signedMessage.signature).toString('hex');
       } else {
         // For Xaman/Joey, show instructions

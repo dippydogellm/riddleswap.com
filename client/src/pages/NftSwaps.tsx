@@ -202,10 +202,10 @@ export default function NftSwaps() {
     mutationFn: async (data: { offerId: string; takerItems: NFTItem[]; takerEscrowTransactionHash: string }) => {
       return apiRequest(`/api/nft-swaps/${data.offerId}/accept`, {
         method: 'POST',
-        body: {
+        body: JSON.stringify({
           takerItems: data.takerItems,
           takerEscrowTransactionHash: data.takerEscrowTransactionHash
-        },
+        }),
       });
     },
     onSuccess: (response) => {

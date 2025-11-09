@@ -55,7 +55,7 @@ export default function SubscriptionPlans() {
   const selectedPlanFromUrl = urlParams.get('plan');
   
   // Fetch project details if projectId is provided
-  const { data: project } = useQuery({
+  const { data: project } = useQuery<{ name: string; description?: string }>({
     queryKey: ['/api/devtools/projects', projectId],
     enabled: !!projectId,
   });

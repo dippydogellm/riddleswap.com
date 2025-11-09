@@ -24,8 +24,8 @@ interface ProjectData {
 }
 
 export default function ProjectVanityPage() {
-  const [, params] = useRoute("/project/:vanityUrl");
-  const vanityUrl = params?.vanityUrl;
+  const [, params] = useRoute<{ vanityUrl: string }>("/project/:vanityUrl");
+  const vanityUrl = params?.vanityUrl || '';
 
   const { data: project, isLoading, error } = useQuery<ProjectData>({
     queryKey: [`/api/devtools/projects/vanity/${vanityUrl}`],

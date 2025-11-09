@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -26,12 +26,16 @@ export default function RewardsConfig() {
   });
 
   // Fetch current config
-  const { data: configData } = useQuery({
+  const { data: configData } = useQuery<typeof config>({
     queryKey: ["/api/rewards/config"],
-    onSuccess: (data) => {
-      if (data) setConfig(data);
-    },
   });
+
+  // Update config when data changes
+  useEffect(() => {
+    if (configData) {
+      setConfig(configData);
+    }
+  }, [configData]);
 
   // Update config mutation
   const updateConfig = useMutation({

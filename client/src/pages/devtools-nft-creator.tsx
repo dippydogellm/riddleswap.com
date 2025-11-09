@@ -35,7 +35,8 @@ const nftSchema = z.object({
 type NFTFormData = z.infer<typeof nftSchema>;
 
 const NFTCreator = () => {
-  const { projectId } = useParams();
+  const params = useParams<{ projectId: string }>();
+  const projectId = params.projectId;
   const { toast } = useToast();
   const { isAuthenticated, isLoading } = useAuth();
   const [mintType, setMintType] = useState<'single' | 'collection' | null>(null);

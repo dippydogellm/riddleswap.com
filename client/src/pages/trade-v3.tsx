@@ -95,8 +95,9 @@ export default function TradeV3Page() {
   const [apiConnectionStatus, setApiConnectionStatus] = useState<{bithomp: boolean, oneInch: boolean} | null>(null);
   const [settingsOpen, setSettingsOpen] = useState(false);
   const [autoTrustline, setAutoTrustline] = useState(true);
+  const [tokenBalances, setTokenBalances] = useState<Record<string, string>>({});
 
-  // Check for Riddle Wallet session with private keys
+  // Check for Riddle Wallet session with private keys using transactionAuth utility
   const { data: sessionData } = useQuery({
     queryKey: ['/api/riddle-wallet/session'],
     refetchInterval: 30000
@@ -105,6 +106,16 @@ export default function TradeV3Page() {
   const isRiddleWalletConnected = (sessionData as any)?.authenticated || false;
   const riddleWalletHandle = (sessionData as any)?.handle || null;
   const hasPrivateKeys = (sessionData as any)?.hasPrivateKeys || false;
+  
+  // Detect Xaman/Joey external wallets
+  const [externalWalletType, setExternalWalletType] = useState<'xaman' | 'joey' | null>(null);
+  useEffect(() => {
+    const xamanConnected = localStorage.getItem('xrpl_wallet_connected') === 'true';
+    const joeyConnected = localStorage.getItem('joey_wallet_connected') === 'true';
+    if (xamanConnected) setExternalWalletType('xaman');
+    else if (joeyConnected) setExternalWalletType('joey');
+    else setExternalWalletType(null);
+  }, []);
 
   // Check external wallet connections
   const { data: externalWalletsData } = useQuery({
@@ -265,6 +276,51 @@ export default function TradeV3Page() {
     return () => clearTimeout(timer);
   }, [searchQuery, tokenSearchOpen, chain]);
 
+  // Fetch token balances when wallet is connected
+  useEffect(() => {
+    const fetchBalances = async () => {
+      if (!chainWallet?.address) {
+        setTokenBalances({});
+        return;
+      }
+
+      try {
+        const chainParam = chain === 'XRPL' ? 'xrp' : 
+                          chain === 'Ethereum' ? 'eth' :
+                          chain === 'BSC' ? 'eth' :
+                          chain === 'Polygon' ? 'eth' : 'eth';
+        
+        const response = await fetch(`/api/tradecenter/swap/balances/${chainWallet.address}?chain=${chainParam}`);
+        const data = await response.json();
+        
+        if (data.success && data.balances) {
+          const balanceMap: Record<string, string> = {};
+          
+          if (chain === 'XRPL') {
+            // Add XRP balance
+            balanceMap['XRP'] = data.balances.xrp || '0';
+            
+            // Add token balances
+            if (data.balances.tokens) {
+              data.balances.tokens.forEach((token: any) => {
+                const key = token.issuer ? `${token.currency}.${token.issuer}` : token.currency;
+                balanceMap[key] = token.balance || '0';
+              });
+            }
+          }
+          
+          setTokenBalances(balanceMap);
+        }
+      } catch (error) {
+        console.error('Failed to fetch balances:', error);
+      }
+    };
+
+    fetchBalances();
+    const interval = setInterval(fetchBalances, 10000); // Refresh every 10s
+    return () => clearInterval(interval);
+  }, [chainWallet?.address, chain]);
+
   useEffect(() => {
     const getQuote = async () => {
       if (!fromToken || !toToken || !fromAmount || parseFloat(fromAmount) <= 0) {
@@ -275,53 +331,54 @@ export default function TradeV3Page() {
 
       setIsLoadingQuote(true);
       try {
-        const amount = (parseFloat(fromAmount) * Math.pow(10, fromToken.decimals)).toString();
+        // Map chain to API format
+        const chainParam = chain === 'XRPL' ? 'xrp' : 
+                          chain === 'Ethereum' ? 'eth' :
+                          chain === 'BSC' ? 'eth' :
+                          chain === 'Polygon' ? 'eth' :
+                          chain === 'Arbitrum' ? 'eth' : 'eth';
         
-        if (chain === 'XRPL') {
-          // Use XRPL Swap V2 quote endpoint
-          const response = await fetch('/api/xrpl/swap/v2/quote', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-              fromToken: fromToken.address,
-              toToken: toToken.address,
-              amount: parseFloat(fromAmount),
-              slippagePercent: slippage,
-              fromIssuer: fromToken.issuer || null,
-              toIssuer: toToken.issuer || null
-            })
-          });
+        // Format token for API
+        const fromTokenParam = chain === 'XRPL' 
+          ? (fromToken.issuer ? `${fromToken.address}.${fromToken.issuer}` : fromToken.address)
+          : fromToken.address;
           
-          const quote = await response.json();
-          
-          if (quote.success && quote.estimatedOutput) {
-            setToAmount(quote.estimatedOutput.toFixed(6));
-            setQuoteData(quote);
-          } else {
-            throw new Error(quote.error || 'Failed to get XRPL quote');
-          }
-        } else {
-          // EVM chains via 1inch
-          const chainId = CHAIN_IDS[chain];
-          const response = await fetch(`https://api.1inch.dev/swap/v6.0/${chainId}/quote?src=${fromToken.address}&dst=${toToken.address}&amount=${amount}`, {
-            headers: {
-              'Authorization': `Bearer ${import.meta.env.VITE_ONEINCH_API_KEY || ''}`,
-              'Accept': 'application/json'
-            }
-          });
-          
-          if (response.ok) {
-            const quote = await response.json();
-            const formatted = (parseInt(quote.dstAmount) / Math.pow(10, toToken.decimals)).toFixed(6);
-            setToAmount(formatted);
-            setQuoteData(quote);
-          } else {
-            const errorText = await response.text();
-            throw new Error(`1inch API error: ${errorText}`);
-          }
+        const toTokenParam = chain === 'XRPL'
+          ? (toToken.issuer ? `${toToken.address}.${toToken.issuer}` : toToken.address)
+          : toToken.address;
+        
+        // Use new unified Trade Center API with slippage
+        const params = new URLSearchParams({
+          fromToken: fromTokenParam,
+          toToken: toTokenParam,
+          amount: fromAmount,
+          chain: chainParam,
+          slippage: slippage.toString()
+        });
+        
+        console.log(`🔍 Getting quote from Trade Center: ${fromAmount} ${fromToken.symbol} → ${toToken.symbol} on ${chain} (${slippage}% slippage)`);
+        
+        const response = await fetch(`/api/tradecenter/swap/quote?${params}`);
+        const data = await response.json();
+        
+        if (!response.ok || !data.success) {
+          throw new Error(data.error || 'Failed to get swap quote');
         }
+        
+        const quote = data.quote;
+        setToAmount(quote.toAmount);
+        setQuoteData({
+          ...quote,
+          priceImpact: quote.priceImpact,
+          route: quote.route,
+          fee: quote.fee,
+          dex: quote.dex || quote.route?.[0] || 'AMM'
+        });
+        
+        console.log(`✅ Quote received: ${quote.toAmount} ${toToken.symbol} (${quote.priceImpact}% impact)`);
+        
       } catch (error: any) {
-        console.error('Quote error:', error);
+        console.error('❌ Quote error:', error);
         setToAmount('');
         setQuoteData(null);
         
@@ -381,101 +438,61 @@ export default function TradeV3Page() {
         description: "Processing transaction..."
       });
 
-      if (chain === 'XRPL') {
-        // Auto-trustline if enabled and token requires it
-        if (autoTrustline && toToken.issuer && toToken.address !== 'XRP') {
-          try {
-            toast({
-              title: "Creating Trustline",
-              description: `Setting up trustline for ${toToken.symbol}...`
-            });
-            
-            const trustlineResponse = await fetch('/api/xrpl/trustlines/set', {
-              method: 'POST',
-              headers: { 
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${localStorage.getItem('sessionToken')}`
-              },
-              body: JSON.stringify({
-                currency: toToken.address,
-                issuer: toToken.issuer,
-                limit: '999999999'
-              })
-            });
-
-            const trustlineResult = await trustlineResponse.json();
-            if (!trustlineResult.success && !trustlineResult.error?.includes('already exists')) {
-              throw new Error('Trustline creation failed');
-            }
-          } catch (trustlineError: any) {
-            console.warn('Trustline setup:', trustlineError.message);
-          }
-        }
-
-        // XRPL swap through v2 API
-        const response = await fetch('/api/xrpl/swap/v2/execute', {
-          method: 'POST',
-          headers: { 
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${localStorage.getItem('sessionToken')}`
-          },
-          body: JSON.stringify({
-            fromToken: fromToken.address,
-            toToken: toToken.address,
-            amount: parseFloat(fromAmount),
-            slippagePercent: slippage,
-            fromIssuer: fromToken.issuer || null,
-            toIssuer: toToken.issuer || null
-          })
-        });
-
-        const result = await response.json();
-        
-        if (!result.success) {
-          throw new Error(result.error || 'Swap failed');
-        }
-
-        toast({
-          title: "Swap Successful!",
-          description: `Swapped ${fromAmount} ${fromToken.symbol} for ${toAmount} ${toToken.symbol}`,
-        });
-      } else {
-        // EVM swap via 1inch
-        const chainId = CHAIN_IDS[chain];
-        const walletAddress = chainWallet?.address || '';
-        
-        const response = await fetch(`https://api.1inch.dev/swap/v6.0/${chainId}/swap?src=${fromToken.address}&dst=${toToken.address}&amount=${amount}&from=${walletAddress}&slippage=${slippage}`, {
-          headers: {
-            'Authorization': `Bearer ${import.meta.env.VITE_ONEINCH_API_KEY || ''}`,
-            'Accept': 'application/json'
-          }
-        });
-
-        if (!response.ok) {
-          throw new Error('Failed to get swap transaction');
-        }
-
-        const swapData = await response.json();
-
-        // Execute transaction through connected wallet
-        if (chainWallet && window.ethereum) {
-          const txHash = await window.ethereum.request({
-            method: 'eth_sendTransaction',
-            params: [{
-              from: walletAddress,
-              to: swapData.tx.to,
-              data: swapData.tx.data,
-              value: swapData.tx.value,
-              gas: swapData.tx.gas
-            }]
-          });
-
-          toast({
-            title: "Swap Successful!",
-            description: `Transaction: ${txHash.slice(0, 10)}...`
-          });
-        }
+      // Map chain to API format
+      const chainParam = chain === 'XRPL' ? 'xrp' : 
+                        chain === 'Ethereum' ? 'eth' :
+                        chain === 'BSC' ? 'eth' :
+                        chain === 'Polygon' ? 'eth' : 'eth';
+      
+      // Get wallet address
+      const walletAddress = chainWallet?.address || '';
+      
+      if (!walletAddress) {
+        throw new Error('Wallet address not found');
       }
+      
+      // Format tokens
+      const fromTokenParam = chain === 'XRPL' 
+        ? (fromToken.issuer ? `${fromToken.address}.${fromToken.issuer}` : fromToken.address)
+        : fromToken.address;
+        
+      const toTokenParam = chain === 'XRPL'
+        ? (toToken.issuer ? `${toToken.address}.${toToken.issuer}` : toToken.address)
+        : toToken.address;
+      
+      console.log(`🚀 Executing swap via Trade Center: ${fromAmount} ${fromToken.symbol} → ${toToken.symbol}`);
+      
+      // Use new unified Trade Center API
+      const response = await fetch('/api/tradecenter/swap/execute', {
+        method: 'POST',
+        headers: { 
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${localStorage.getItem('sessionToken')}`
+        },
+        body: JSON.stringify({
+          fromToken: fromTokenParam,
+          toToken: toTokenParam,
+          amount: fromAmount,
+          chain: chainParam,
+          slippage: slippage,
+          walletAddress: walletAddress
+        })
+      });
+
+      const result = await response.json();
+      
+      if (!result.success) {
+        throw new Error(result.error || 'Swap execution failed');
+      }
+
+      const tx = result.transaction;
+      
+      toast({
+        title: "Swap Successful! ✅",
+        description: `Swapped ${fromAmount} ${fromToken.symbol} for ~${toAmount} ${toToken.symbol}`,
+      });
+      
+      console.log(`✅ Swap complete:`, tx);
 
       setFromAmount('');
       setToAmount('');
@@ -636,7 +653,11 @@ export default function TradeV3Page() {
                     From
                   </Typography>
                   <Typography variant="caption" color="text.secondary">
-                    Balance: 0.00
+                    Balance: {(() => {
+                      const key = fromToken.issuer ? `${fromToken.address}.${fromToken.issuer}` : fromToken.address;
+                      const balance = tokenBalances[key] || tokenBalances[fromToken.address] || '0';
+                      return parseFloat(balance).toFixed(4);
+                    })()}
                   </Typography>
                 </Box>
                 
@@ -691,13 +712,21 @@ export default function TradeV3Page() {
                   <Typography variant="caption" color="text.secondary" fontWeight="bold">
                     To (estimated)
                   </Typography>
-                  {isLoadingQuote && (
+                  {isLoadingQuote ? (
                     <Box display="flex" alignItems="center" gap={0.5}>
                       <CircularProgress size={12} />
                       <Typography variant="caption" color="text.secondary">
                         Getting quote...
                       </Typography>
                     </Box>
+                  ) : toToken && (
+                    <Typography variant="caption" color="text.secondary">
+                      Balance: {(() => {
+                        const key = toToken.issuer ? `${toToken.address}.${toToken.issuer}` : toToken.address;
+                        const balance = tokenBalances[key] || tokenBalances[toToken.address] || '0';
+                        return parseFloat(balance).toFixed(4);
+                      })()}
+                    </Typography>
                   )}
                 </Box>
                 
@@ -746,10 +775,50 @@ export default function TradeV3Page() {
                       1 {fromToken.symbol} ≈ {(parseFloat(toAmount) / parseFloat(fromAmount || '1')).toFixed(6)} {toToken.symbol}
                     </Typography>
                   </Box>
-                  <Box display="flex" justifyContent="space-between">
+                  
+                  {quoteData.minimumReceived && (
+                    <Box display="flex" justifyContent="space-between" mb={1}>
+                      <Typography variant="caption">Minimum Received</Typography>
+                      <Typography variant="caption" fontWeight="bold" color="success.main">
+                        {quoteData.minimumReceived} {toToken.symbol}
+                      </Typography>
+                    </Box>
+                  )}
+                  
+                  {quoteData.priceImpact !== undefined && (
+                    <Box display="flex" justifyContent="space-between" mb={1}>
+                      <Typography variant="caption">Price Impact</Typography>
+                      <Typography 
+                        variant="caption" 
+                        fontWeight="bold"
+                        color={
+                          quoteData.priceImpact < 1 ? 'success.main' :
+                          quoteData.priceImpact < 3 ? 'warning.main' : 'error.main'
+                        }
+                      >
+                        {quoteData.priceImpact.toFixed(2)}%
+                      </Typography>
+                    </Box>
+                  )}
+                  
+                  <Box display="flex" justifyContent="space-between" mb={1}>
                     <Typography variant="caption">Slippage Tolerance</Typography>
                     <Typography variant="caption" fontWeight="bold">{slippage}%</Typography>
                   </Box>
+                  
+                  {quoteData.fee && (
+                    <Box display="flex" justifyContent="space-between" mb={1}>
+                      <Typography variant="caption">Trading Fee</Typography>
+                      <Typography variant="caption" fontWeight="bold">{quoteData.fee}</Typography>
+                    </Box>
+                  )}
+                  
+                  {quoteData.dex && (
+                    <Box display="flex" justifyContent="space-between">
+                      <Typography variant="caption">Route</Typography>
+                      <Typography variant="caption" fontWeight="bold">{quoteData.dex}</Typography>
+                    </Box>
+                  )}
                 </Paper>
               )}
 

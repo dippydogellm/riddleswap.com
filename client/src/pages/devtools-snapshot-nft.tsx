@@ -25,7 +25,8 @@ const snapshotSchema = z.object({
 type SnapshotFormData = z.infer<typeof snapshotSchema>;
 
 const NFTSnapshot = () => {
-  const { projectId } = useParams();
+  const params = useParams<{ projectId: string }>();
+  const projectId = params.projectId;
   const { toast } = useToast();
   const { isAuthenticated, isLoading } = useAuth();
 

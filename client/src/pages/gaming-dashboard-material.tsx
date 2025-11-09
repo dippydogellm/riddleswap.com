@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { 
   Container, 
   Grid, 
@@ -23,6 +23,8 @@ import {
 } from '@mui/icons-material';
 import { useQuery } from '@tanstack/react-query';
 import { useUser } from '../hooks/use-user';
+import { useSession } from '@/utils/sessionManager';
+import { getSessionToken } from '@/utils/transactionAuth';
 import NFTCard from '@/components/NFTCard';
 import StatsCard from '@/components/StatsCard';
 
@@ -43,12 +45,23 @@ function TabPanel(props: TabPanelProps) {
 
 export default function GamingDashboard() {
   const { user } = useUser();
+  const { isLoggedIn, sessionToken } = useSession();
   const [activeTab, setActiveTab] = useState(0);
+  
+  // Verify session token is available
+  useEffect(() => {
+    const token = getSessionToken();
+    if (!token && !isLoggedIn) {
+      console.warn('🎮 [Gaming] No session token found - user may need to login');
+    } else {
+      console.log('✅ [Gaming] Session detected:', token ? 'YES' : 'NO', 'isLoggedIn:', isLoggedIn);
+    }
+  }, [isLoggedIn, sessionToken]);
 
-  // Fetch user's gaming NFTs
+  // Fetch user's gaming NFTs with session token
   const { data: userNFTs, isLoading: loadingNFTs } = useQuery({
     queryKey: ['/api/gaming/my-nfts'],
-    enabled: !!user,
+    enabled: !!user || isLoggedIn,
   });
 
   // Fetch collections overview
@@ -56,22 +69,37 @@ export default function GamingDashboard() {
     queryKey: ['/api/inquisition/collections'],
   });
 
-  // Fetch user's battles
+  // Fetch user's battles with session token
   const { data: battles, isLoading: loadingBattles } = useQuery({
     queryKey: ['/api/battles/my-battles'],
-    enabled: !!user,
+    enabled: !!user || isLoggedIn,
   });
 
   const handleTabChange = (_event: React.SyntheticEvent, newValue: number) => {
     setActiveTab(newValue);
   };
 
-  if (!user) {
+  if (!user && !isLoggedIn) {
     return (
       <Container maxWidth="lg" sx={{ py: 4 }}>
         <Alert severity="info">
           Please connect your wallet to view your gaming dashboard.
         </Alert>
+        <Box sx={{ mt: 2 }}>
+          <Button 
+            variant="contained" 
+            onClick={() => window.location.href = '/wallet-login'}
+            sx={{ mr: 2 }}
+          >
+            Login to Riddle Wallet
+          </Button>
+          <Button 
+            variant="outlined" 
+            onClick={() => window.location.href = '/external-wallets'}
+          >
+            Connect External Wallet
+          </Button>
+        </Box>
       </Container>
     );
   }

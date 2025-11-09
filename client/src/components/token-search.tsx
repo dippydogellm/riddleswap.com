@@ -140,7 +140,7 @@ export default function TokenSearch({
                       <span className="font-medium">{token.symbol}</span>
                       {token.price && (
                         <span className="text-xs text-gray-500">
-                          ${parseFloat(token.price).toFixed(6)}
+                          ${Number(token.price).toFixed(6)}
                         </span>
                       )}
                     </div>

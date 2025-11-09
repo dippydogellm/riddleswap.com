@@ -34,7 +34,7 @@ interface NFTDetail {
 }
 
 export default function NFTDetailPage() {
-  const [, params] = useRoute("/nft/:tokenId");
+  const [, params] = useRoute<{ tokenId: string }>("/nft/:tokenId");
   const [nft, setNft] = useState<NFTDetail | null>(null);
   const [isOwner, setIsOwner] = useState(false);
   const [loading, setLoading] = useState(true);

@@ -24,33 +24,33 @@ export default function RiddleCity() {
   const [activeTab, setActiveTab] = useState("overview");
   const [showCreateCity, setShowCreateCity] = useState(false);
 
-  const { data: landOwnershipData, isLoading: landCheckLoading } = useQuery({
+  const { data: landOwnershipData, isLoading: landCheckLoading } = useQuery<{ data: any }>({
     queryKey: ['/api/riddlecity/city/check-land-ownership'],
     enabled: !!session.handle,
   });
 
-  const { data: cityData, isLoading: cityLoading, refetch: refetchCity } = useQuery({
+  const { data: cityData, isLoading: cityLoading, refetch: refetchCity } = useQuery<{ data: any }>({
     queryKey: ['/api/riddlecity/city/my-city'],
     enabled: !!session.handle && landOwnershipData?.data?.hasLand,
     retry: 1,
   });
 
-  const { data: buildingCatalog } = useQuery({
+  const { data: buildingCatalog } = useQuery<{ data: any }>({
     queryKey: ['/api/riddlecity/buildings/catalog'],
     enabled: !!session.handle,
   });
 
-  const { data: furnishingCatalog } = useQuery({
+  const { data: furnishingCatalog } = useQuery<{ data: any }>({
     queryKey: ['/api/riddlecity/furnishings/catalog'],
     enabled: !!session.handle,
   });
 
-  const { data: policyCatalog } = useQuery({
+  const { data: policyCatalog } = useQuery<{ data: any }>({
     queryKey: ['/api/riddlecity/policies/catalog'],
     enabled: !!session.handle,
   });
 
-  const { data: defenseCatalog } = useQuery({
+  const { data: defenseCatalog } = useQuery<{ data: any }>({
     queryKey: ['/api/riddlecity/defense/catalog'],
     enabled: !!session.handle,
   });

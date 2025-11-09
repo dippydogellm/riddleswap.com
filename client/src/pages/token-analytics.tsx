@@ -82,7 +82,7 @@ interface TokenAnalyticsData {
 }
 
 export default function TokenAnalytics() {
-  const params = useParams();
+  const params = useParams<{ address?: string; symbol?: string; issuer?: string }>();
   const [, setLocation] = useLocation();
   const { toast } = useToast();
   const { goBackWithToast } = useBackNavigation();

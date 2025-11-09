@@ -1,8 +1,8 @@
-import { CollectionShowcase } from '@/components/collection-showcase';
+import { CollectionShowcaseV3 } from '@/components/collection-showcase-v3';
 
 export default function DantesAurumCollection() {
   return (
-    <CollectionShowcase
+    <CollectionShowcaseV3
       collectionName="Dantes Aurum"
       collectionSlug="dantes-aurum"
       description="Dante's Aurum - A collection of 42 golden NFTs inspired by epic journeys and legendary tales. Each piece captures the essence of adventure, wisdom, and the eternal quest for knowledge. The rarest and most powerful collection in the RiddleSwap universe, these golden treasures represent the pinnacle of achievement and the ultimate reward for the brave."

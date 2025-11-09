@@ -119,7 +119,7 @@ export default function ExternalWallets() {
     const allowedRoutes = [
       '/', '/home', '/swap', '/bridge', '/xrpl-swap', '/solana-swap',
       '/wallet-dashboard', '/multi-chain-dashboard', '/nft-marketplace',
-      '/broker-marketplace', '/portfolio', '/send', '/receive'
+      '/portfolio', '/send', '/receive'
     ];
     
     // Check if URL starts with any allowed route

@@ -29,6 +29,7 @@ import { useToast } from '@/hooks/use-toast';
 import { apiRequest } from '@/lib/queryClient';
 import { useAuth } from '@/hooks/useAuth';
 import { SubscriptionStatus } from './SubscriptionStatus';
+import { SubscriptionInfo } from '@/hooks/useSubscription';
 import { VerificationBadge } from './VerificationBadge';
 import { MetadataPreview } from './MetadataPreview';
 
@@ -57,15 +58,6 @@ interface ProjectProfileEditorProps {
   projectId: string;
   onSave?: (data: any) => void;
   className?: string;
-}
-
-interface SubscriptionInfo {
-  tier: 'free' | 'bronze' | 'gold';
-  verified: boolean;
-  overrideCount: number;
-  maxOverrides: number;
-  apiCallsUsed: number;
-  maxApiCalls: number;
 }
 
 export function ProjectProfileEditor({ projectId, onSave, className }: ProjectProfileEditorProps) {
@@ -109,11 +101,14 @@ export function ProjectProfileEditor({ projectId, onSave, className }: ProjectPr
 
   // Load existing data into form
   useEffect(() => {
-    if (existingOverrides && existingOverrides.success) {
-      const overrides = existingOverrides.overrides;
+    const overridesData = existingOverrides as any;
+    const projectData = project as any;
+    
+    if (overridesData && overridesData.success) {
+      const overrides = overridesData.overrides;
       form.reset({
-        title: overrides.title || project?.name || '',
-        description: overrides.description || project?.description || '',
+        title: overrides.title || projectData?.name || '',
+        description: overrides.description || projectData?.description || '',
         website: overrides.website || '',
         logo_url: overrides.logo_url || '',
         banner_url: overrides.banner_url || '',
@@ -121,17 +116,17 @@ export function ProjectProfileEditor({ projectId, onSave, className }: ProjectPr
         discord: overrides.social_links?.discord || '',
         telegram: overrides.social_links?.telegram || '',
       });
-    } else if (project) {
+    } else if (projectData) {
       // Fall back to project data if no overrides exist
       form.reset({
-        title: project.name || '',
-        description: project.description || '',
-        website: project.website || '',
-        logo_url: project.logo_url || '',
+        title: projectData.name || '',
+        description: projectData.description || '',
+        website: projectData.website || '',
+        logo_url: projectData.logo_url || '',
         banner_url: '',
-        twitter: project.social_links?.twitter || '',
-        discord: project.social_links?.discord || '',
-        telegram: project.social_links?.telegram || '',
+        twitter: projectData.social_links?.twitter || '',
+        discord: projectData.social_links?.discord || '',
+        telegram: projectData.social_links?.telegram || '',
       });
     }
   }, [existingOverrides, project, form]);
@@ -584,18 +579,18 @@ export function ProjectProfileEditor({ projectId, onSave, className }: ProjectPr
             <CardContent className="space-y-2 text-sm">
               <div className="flex justify-between">
                 <span className="text-slate-600">Chain:</span>
-                <span className="font-medium">{project.chain?.toUpperCase()}</span>
+                <span className="font-medium">{(project as any)?.chain?.toUpperCase()}</span>
               </div>
-              {project.issuer_wallet && (
+              {(project as any)?.issuer_wallet && (
                 <div className="flex justify-between">
                   <span className="text-slate-600">Issuer:</span>
-                  <span className="font-mono text-xs">{project.issuer_wallet.slice(0, 8)}...</span>
+                  <span className="font-mono text-xs">{(project as any).issuer_wallet.slice(0, 8)}...</span>
                 </div>
               )}
-              {project.nft_token_taxon && (
+              {(project as any)?.nft_token_taxon && (
                 <div className="flex justify-between">
                   <span className="text-slate-600">Token Taxon:</span>
-                  <span className="font-medium">{project.nft_token_taxon}</span>
+                  <span className="font-medium">{(project as any).nft_token_taxon}</span>
                 </div>
               )}
             </CardContent>
@@ -606,7 +601,7 @@ export function ProjectProfileEditor({ projectId, onSave, className }: ProjectPr
       {/* Preview Modal */}
       {isPreviewOpen && (
         <MetadataPreview
-          projectData={form.getValues()}
+          projectData={{ ...form.getValues(), title: form.getValues().title || '' }}
           originalData={project}
           onClose={() => setIsPreviewOpen(false)}
           open={isPreviewOpen}

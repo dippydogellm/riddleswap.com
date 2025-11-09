@@ -1,12 +1,46 @@
 import { useState, useEffect } from "react";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog";
-import { Search, MapPin, ShoppingCart, Wallet, Coins, Sparkles, Info, CheckCircle } from "lucide-react";
+import {
+  Box,
+  Container,
+  Grid,
+  Card,
+  CardContent,
+  CardHeader,
+  CardMedia,
+  Typography,
+  Button,
+  TextField,
+  MenuItem,
+  Select,
+  FormControl,
+  InputLabel,
+  Chip,
+  Dialog,
+  DialogTitle,
+  DialogContent,
+  DialogActions,
+  CircularProgress,
+  Checkbox,
+  FormControlLabel,
+  Stack,
+  Divider,
+  Alert,
+  Paper,
+  IconButton,
+  Tooltip
+} from "@mui/material";
+import {
+  Search as SearchIcon,
+  Place as PlaceIcon,
+  ShoppingCart as ShoppingCartIcon,
+  AccountBalanceWallet as WalletIcon,
+  Paid as CoinsIcon,
+  AutoAwesome as SparklesIcon,
+  Info as InfoIcon,
+  CheckCircle as CheckCircleIcon,
+  Landscape as LandscapeIcon,
+  Close as CloseIcon
+} from "@mui/icons-material";
 import { sessionManager } from "@/utils/sessionManager";
 import { useToast } from "@/hooks/use-toast";
 import { useLocation } from "wouter";
@@ -51,7 +85,20 @@ const getPlaceholderImage = (terrainType: string): string => {
   return placeholders[terrainType] || placeholders.plains;
 };
 
-export default function LandMarketplace() {
+const getTerrainIcon = (terrain: string) => {
+  const icons: Record<string, string> = {
+    plains: '🌾',
+    forest: '🌲',
+    mountain: '⛰️',
+    water: '🌊',
+    swamp: '🌿',
+    desert: '🏜️',
+    tundra: '❄️'
+  };
+  return icons[terrain] || '🗺️';
+};
+
+export default function LandMarketplaceMaterial() {
   const [plots, setPlots] = useState<LandPlot[]>([]);
   const [loading, setLoading] = useState(true);
   const [selectedPlot, setSelectedPlot] = useState<LandPlot | null>(null);
@@ -75,10 +122,9 @@ export default function LandMarketplace() {
   // Reset fallback state when switching between plots
   useEffect(() => {
     setModalImageFallback(false);
-    console.log(`🖼️ [LAND MODAL] Reset image fallback state for plot #${selectedPlot?.plotNumber || 'none'}`);
   }, [selectedPlot]);
 
-  // Fetch land plots - Show ALL 1000 plots
+  // Fetch land plots
   useEffect(() => {
     fetchPlots();
   }, [filters]);
@@ -94,41 +140,25 @@ export default function LandMarketplace() {
       if (filters.plotSize !== 'all') params.append('plotSize', filters.plotSize);
       if (filters.minPrice) params.append('minPrice', filters.minPrice);
       if (filters.maxPrice) params.append('maxPrice', filters.maxPrice);
-      
-      // Increase limit to show all available plots (no authentication required)
       params.append('limit', '1000');
-      
-      console.log('🔍 [LAND] API Request: /api/land/plots?' + params.toString());
       
       const response = await fetch(`/api/land/plots?${params.toString()}`);
       const data = await response.json() as any;
       
-      console.log('📊 [LAND] API Response:', {
-        success: data.success,
-        plotsCount: data.plots?.length || 0,
-        total: data.total
-      });
-      
       if (data.success) {
-        console.log(`✅ [LAND] Loaded ${data.plots.length} plots out of ${data.total} total`);
-        
-        // Apply client-side filters for advanced filtering
         let filteredPlots = data.plots;
         
-        // Filter by plot number
         if (filters.plotNumber) {
           const searchNum = parseInt(filters.plotNumber);
           filteredPlots = filteredPlots.filter((p: LandPlot) => p.plotNumber === searchNum);
         }
         
-        // Filter by special features
         if (filters.hasSpecialFeatures) {
           filteredPlots = filteredPlots.filter((p: LandPlot) => 
             p.specialFeatures && p.specialFeatures.length > 0
           );
         }
         
-        // Filter by resource type
         if (filters.resourceType !== 'all') {
           filteredPlots = filteredPlots.filter((p: LandPlot) => {
             if (!p.resourceNodes || typeof p.resourceNodes !== 'object') return false;
@@ -137,10 +167,8 @@ export default function LandMarketplace() {
           });
         }
         
-        console.log(`🔍 [LAND] Applied client filters: ${filteredPlots.length} plots match`);
         setPlots(filteredPlots);
       } else {
-        console.error('❌ [LAND] Failed to load plots:', data.error);
         toast({
           title: "Error",
           description: "Failed to load land plots",
@@ -148,7 +176,7 @@ export default function LandMarketplace() {
         });
       }
     } catch (error) {
-      console.error('❌ [LAND] Network error fetching plots:', error);
+      console.error('❌ [LAND] Network error:', error);
       toast({
         title: "Error",
         description: "Failed to load land plots",
@@ -160,10 +188,7 @@ export default function LandMarketplace() {
   };
 
   const handlePurchase = async (plot: LandPlot, paymentMethod: 'XRP' | 'RDL') => {
-    console.log(`🛒 [LAND PURCHASE] Starting purchase for plot #${plot.plotNumber} with ${paymentMethod}`);
-    
     if (!session.isLoggedIn) {
-      console.warn('⚠️ [LAND PURCHASE] User not logged in');
       toast({
         title: "Login Required",
         description: "Please login to purchase land",
@@ -175,20 +200,11 @@ export default function LandMarketplace() {
 
     try {
       setPurchasing(true);
-      console.log('🔐 [LAND PURCHASE] Retrieving session data...');
-      
       const walletData = sessionManager.getWalletData();
       const buyerAddress = walletData?.xrpAddress;
       const buyerHandle = session.handle;
 
-      console.log('👤 [LAND PURCHASE] Buyer info:', {
-        handle: buyerHandle,
-        address: buyerAddress,
-        hasWallet: !!buyerAddress
-      });
-
       if (!buyerAddress || !buyerHandle) {
-        console.error('❌ [LAND PURCHASE] Missing wallet data');
         toast({
           title: "Wallet Required",
           description: "Please connect your XRPL wallet first",
@@ -198,14 +214,6 @@ export default function LandMarketplace() {
         return;
       }
 
-      console.log('💰 [LAND PURCHASE] Processing payment with cached keys...');
-      console.log('📍 [LAND PURCHASE] Plot details:', {
-        plotNumber: plot.plotNumber,
-        price: paymentMethod === 'XRP' ? plot.currentPrice : plot.rdlPrice,
-        currency: paymentMethod
-      });
-
-      // Execute purchase with cached wallet keys
       const purchaseResponse = await apiRequest('/api/land/purchase-with-cached-keys', {
         method: 'POST',
         body: JSON.stringify({
@@ -218,10 +226,7 @@ export default function LandMarketplace() {
 
       const purchaseData = await purchaseResponse.json();
 
-      console.log('📦 [LAND PURCHASE] Purchase response:', purchaseData);
-
       if (!purchaseData.success) {
-        console.error('❌ [LAND PURCHASE] Purchase failed:', purchaseData.error);
         toast({
           title: "Purchase Failed",
           description: purchaseData.error || "Failed to complete purchase",
@@ -231,26 +236,15 @@ export default function LandMarketplace() {
         return;
       }
 
-      console.log('✅ [LAND PURCHASE] Purchase successful!');
-      console.log('🧾 [LAND PURCHASE] Transaction hash:', purchaseData.transactionHash);
-
       toast({
         title: "Land Purchased!",
-        description: `You now own Plot #${plot.plotNumber}! Transaction: ${purchaseData.transactionHash?.slice(0, 10)}...`,
+        description: `You now own Plot #${plot.plotNumber}!`,
       });
 
-      // Refresh plots to show updated ownership
-      console.log('🔄 [LAND PURCHASE] Refreshing plot list...');
       await fetchPlots();
       setSelectedPlot(null);
 
     } catch (error: any) {
-      console.error('❌ [LAND PURCHASE] Critical error:', error);
-      console.error('📋 [LAND PURCHASE] Error details:', {
-        message: error.message,
-        stack: error.stack
-      });
-      
       toast({
         title: "Purchase Error",
         description: error.message || "Failed to process purchase",
@@ -258,186 +252,254 @@ export default function LandMarketplace() {
       });
     } finally {
       setPurchasing(false);
-      console.log('🏁 [LAND PURCHASE] Purchase flow complete');
     }
   };
 
-  const getTerrainIcon = (terrain: string) => {
-    const icons: Record<string, string> = {
-      plains: '🌾',
-      forest: '🌲',
-      mountain: '⛰️',
-      water: '🌊',
-      swamp: '🌿',
-      desert: '🏜️',
-      tundra: '❄️'
-    };
-    return icons[terrain] || '🗺️';
-  };
-
   return (
-    <div className="min-h-screen bg-blue-950">
-      {/* Header - Bold Blue */}
-      <div className="bg-blue-900 border-b-4 border-blue-500 py-8">
-        <div className="container mx-auto px-6">
-          <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-            <div>
-              <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white flex items-center gap-2 md:gap-3">
+    <Box sx={{ minHeight: "100vh", bgcolor: "#0d47a1" }}>
+      {/* Header */}
+      <Paper 
+        elevation={4}
+        sx={{ 
+          bgcolor: "#1565c0",
+          borderBottom: "4px solid #42a5f5",
+          py: 4
+        }}
+      >
+        <Container maxWidth="xl">
+          <Stack direction={{ xs: "column", md: "row" }} spacing={2} alignItems="center" justifyContent="space-between">
+            <Box>
+              <Typography variant="h3" sx={{ fontWeight: "bold", color: "white", display: "flex", alignItems: "center", gap: 1 }}>
                 🏰 Medieval Land Marketplace
-              </h1>
-              <p className="text-blue-200 mt-2 md:mt-3 text-sm md:text-base lg:text-lg font-semibold">
+              </Typography>
+              <Typography variant="h6" sx={{ color: "#bbdefb", mt: 1, fontWeight: 600 }}>
                 Purchase land plots for The Trolls Inquisition game
-              </p>
-            </div>
-            <div className="text-center md:text-right bg-yellow-600 p-4 md:p-6 rounded-lg border-4 border-yellow-400">
-              <p className="text-xs md:text-sm text-yellow-100 font-bold">Available Plots</p>
-              <p className="text-2xl md:text-4xl font-bold text-white">{plots.length}</p>
-            </div>
-          </div>
-        </div>
-      </div>
+              </Typography>
+            </Box>
+            <Paper 
+              elevation={6}
+              sx={{ 
+                bgcolor: "#fbc02d",
+                p: 3,
+                borderRadius: 2,
+                border: "4px solid #f9a825",
+                textAlign: "center"
+              }}
+            >
+              <Typography variant="caption" sx={{ color: "#fff9c4", fontWeight: "bold" }}>
+                Available Plots
+              </Typography>
+              <Typography variant="h3" sx={{ fontWeight: "bold", color: "white" }}>
+                {plots.length}
+              </Typography>
+            </Paper>
+          </Stack>
+        </Container>
+      </Paper>
 
-      <div className="container mx-auto px-6 py-8 space-y-6">
-        {/* Filters - Bold Purple */}
-        <Card className="bg-purple-900 border-purple-500 border-4">
-          <CardHeader className="bg-purple-800 border-b-4 border-purple-500">
-            <CardTitle className="flex items-center gap-2 text-white text-2xl font-bold">
-              <Search className="w-6 h-6 text-yellow-400" />
-              Search & Filter
-            </CardTitle>
-          </CardHeader>
-          <CardContent className="p-6">
-            <div className="grid grid-cols-1 md:grid-cols-6 gap-4">
-              <div>
-                <Label className="text-purple-200 font-bold">Plot Number</Label>
-                <Input
+      <Container maxWidth="xl" sx={{ py: 4 }}>
+        {/* Filters */}
+        <Card sx={{ mb: 4, bgcolor: "#6a1b9a", border: "4px solid #8e24aa" }} elevation={4}>
+          <CardHeader
+            sx={{ bgcolor: "#7b1fa2", borderBottom: "4px solid #8e24aa" }}
+            title={
+              <Stack direction="row" spacing={1} alignItems="center">
+                <SearchIcon sx={{ color: "#ffd54f" }} />
+                <Typography variant="h5" sx={{ fontWeight: "bold", color: "white" }}>
+                  Search & Filter
+                </Typography>
+              </Stack>
+            }
+          />
+          <CardContent sx={{ p: 3 }}>
+            <Grid container spacing={2}>
+              <Grid item xs={12} sm={6} md={2}>
+                <TextField
+                  fullWidth
+                  size="small"
                   type="number"
-                  placeholder="Search by #"
+                  label="Plot Number"
                   value={filters.plotNumber}
                   onChange={(e) => setFilters({...filters, plotNumber: e.target.value})}
-                  className="bg-purple-800 border-purple-500 text-white font-semibold placeholder:text-purple-400"
+                  sx={{
+                    bgcolor: "#7b1fa2",
+                    "& .MuiInputLabel-root": { color: "#e1bee7", fontWeight: "bold" },
+                    "& .MuiOutlinedInput-root": {
+                      color: "white",
+                      fontWeight: 600,
+                      "& fieldset": { borderColor: "#8e24aa" }
+                    }
+                  }}
                 />
-              </div>
-              
-              <div>
-                <Label className="text-purple-200 font-bold">Terrain Type</Label>
-                <Select 
-                  value={filters.terrainType} 
-                  onValueChange={(value) => setFilters({...filters, terrainType: value})}
-                >
-                  <SelectTrigger className="bg-purple-800 border-purple-500 text-white font-semibold">
-                    <SelectValue />
-                  </SelectTrigger>
-                  <SelectContent className="bg-purple-800 border-purple-500 text-white">
-                    <SelectItem value="all">All Terrains</SelectItem>
-                    <SelectItem value="plains">🌾 Plains</SelectItem>
-                    <SelectItem value="forest">🌲 Forest</SelectItem>
-                    <SelectItem value="mountain">⛰️ Mountain</SelectItem>
-                    <SelectItem value="water">🌊 Water</SelectItem>
-                    <SelectItem value="swamp">🌿 Swamp</SelectItem>
-                    <SelectItem value="desert">🏜️ Desert</SelectItem>
-                    <SelectItem value="tundra">❄️ Tundra</SelectItem>
-                  </SelectContent>
-                </Select>
-              </div>
+              </Grid>
 
-              <div>
-                <Label className="text-purple-200 font-bold">Plot Size</Label>
-                <Select 
-                  value={filters.plotSize} 
-                  onValueChange={(value) => setFilters({...filters, plotSize: value})}
-                >
-                  <SelectTrigger className="bg-purple-800 border-purple-500 text-white font-semibold">
-                    <SelectValue />
-                  </SelectTrigger>
-                  <SelectContent className="bg-purple-800 border-purple-500 text-white">
-                    <SelectItem value="all">All Sizes</SelectItem>
-                    <SelectItem value="standard">Standard (1x)</SelectItem>
-                    <SelectItem value="large">Large (1.5x)</SelectItem>
-                    <SelectItem value="massive">Massive (2x)</SelectItem>
-                  </SelectContent>
-                </Select>
-              </div>
+              <Grid item xs={12} sm={6} md={2}>
+                <FormControl fullWidth size="small">
+                  <InputLabel sx={{ color: "#e1bee7", fontWeight: "bold" }}>Terrain Type</InputLabel>
+                  <Select
+                    value={filters.terrainType}
+                    onChange={(e) => setFilters({...filters, terrainType: e.target.value})}
+                    label="Terrain Type"
+                    sx={{
+                      bgcolor: "#7b1fa2",
+                      color: "white",
+                      fontWeight: 600,
+                      "& .MuiOutlinedInput-notchedOutline": { borderColor: "#8e24aa" }
+                    }}
+                  >
+                    <MenuItem value="all">All Terrains</MenuItem>
+                    <MenuItem value="plains">🌾 Plains</MenuItem>
+                    <MenuItem value="forest">🌲 Forest</MenuItem>
+                    <MenuItem value="mountain">⛰️ Mountain</MenuItem>
+                    <MenuItem value="water">🌊 Water</MenuItem>
+                    <MenuItem value="swamp">🌿 Swamp</MenuItem>
+                    <MenuItem value="desert">🏜️ Desert</MenuItem>
+                    <MenuItem value="tundra">❄️ Tundra</MenuItem>
+                  </Select>
+                </FormControl>
+              </Grid>
 
-              <div>
-                <Label className="text-purple-200 font-bold">Status</Label>
-                <Select 
-                  value={filters.status} 
-                  onValueChange={(value) => setFilters({...filters, status: value})}
-                >
-                  <SelectTrigger className="bg-purple-800 border-purple-500 text-white font-semibold">
-                    <SelectValue />
-                  </SelectTrigger>
-                  <SelectContent className="bg-purple-800 border-purple-500 text-white">
-                    <SelectItem value="all">All Plots</SelectItem>
-                    <SelectItem value="available">✅ Available Only</SelectItem>
-                    <SelectItem value="owned">🏠 Owned</SelectItem>
-                  </SelectContent>
-                </Select>
-              </div>
+              <Grid item xs={12} sm={6} md={2}>
+                <FormControl fullWidth size="small">
+                  <InputLabel sx={{ color: "#e1bee7", fontWeight: "bold" }}>Plot Size</InputLabel>
+                  <Select
+                    value={filters.plotSize}
+                    onChange={(e) => setFilters({...filters, plotSize: e.target.value})}
+                    label="Plot Size"
+                    sx={{
+                      bgcolor: "#7b1fa2",
+                      color: "white",
+                      fontWeight: 600,
+                      "& .MuiOutlinedInput-notchedOutline": { borderColor: "#8e24aa" }
+                    }}
+                  >
+                    <MenuItem value="all">All Sizes</MenuItem>
+                    <MenuItem value="standard">Standard (1x)</MenuItem>
+                    <MenuItem value="large">Large (1.5x)</MenuItem>
+                    <MenuItem value="massive">Massive (2x)</MenuItem>
+                  </Select>
+                </FormControl>
+              </Grid>
 
-              <div>
-                <Label className="text-purple-200 font-bold">Min Price (XRP)</Label>
-                <Input
+              <Grid item xs={12} sm={6} md={2}>
+                <FormControl fullWidth size="small">
+                  <InputLabel sx={{ color: "#e1bee7", fontWeight: "bold" }}>Status</InputLabel>
+                  <Select
+                    value={filters.status}
+                    onChange={(e) => setFilters({...filters, status: e.target.value})}
+                    label="Status"
+                    sx={{
+                      bgcolor: "#7b1fa2",
+                      color: "white",
+                      fontWeight: 600,
+                      "& .MuiOutlinedInput-notchedOutline": { borderColor: "#8e24aa" }
+                    }}
+                  >
+                    <MenuItem value="all">All Plots</MenuItem>
+                    <MenuItem value="available">✅ Available Only</MenuItem>
+                    <MenuItem value="owned">🏠 Owned</MenuItem>
+                  </Select>
+                </FormControl>
+              </Grid>
+
+              <Grid item xs={12} sm={6} md={2}>
+                <TextField
+                  fullWidth
+                  size="small"
                   type="number"
-                  placeholder="0"
+                  label="Min Price (XRP)"
                   value={filters.minPrice}
                   onChange={(e) => setFilters({...filters, minPrice: e.target.value})}
-                  className="bg-purple-800 border-purple-500 text-white font-semibold placeholder:text-purple-400"
+                  sx={{
+                    bgcolor: "#7b1fa2",
+                    "& .MuiInputLabel-root": { color: "#e1bee7", fontWeight: "bold" },
+                    "& .MuiOutlinedInput-root": {
+                      color: "white",
+                      fontWeight: 600,
+                      "& fieldset": { borderColor: "#8e24aa" }
+                    }
+                  }}
                 />
-              </div>
+              </Grid>
 
-              <div>
-                <Label className="text-purple-200 font-bold">Max Price (XRP)</Label>
-                <Input
+              <Grid item xs={12} sm={6} md={2}>
+                <TextField
+                  fullWidth
+                  size="small"
                   type="number"
-                  placeholder="1000"
+                  label="Max Price (XRP)"
                   value={filters.maxPrice}
                   onChange={(e) => setFilters({...filters, maxPrice: e.target.value})}
-                  className="bg-purple-800 border-purple-500 text-white font-semibold placeholder:text-purple-400"
+                  sx={{
+                    bgcolor: "#7b1fa2",
+                    "& .MuiInputLabel-root": { color: "#e1bee7", fontWeight: "bold" },
+                    "& .MuiOutlinedInput-root": {
+                      color: "white",
+                      fontWeight: 600,
+                      "& fieldset": { borderColor: "#8e24aa" }
+                    }
+                  }}
                 />
-              </div>
-            </div>
+              </Grid>
 
-            {/* Secondary Filter Row */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
-              <div>
-                <Label className="text-purple-200 font-bold">Resource Type</Label>
-                <Select 
-                  value={filters.resourceType} 
-                  onValueChange={(value) => setFilters({...filters, resourceType: value})}
-                >
-                  <SelectTrigger className="bg-purple-800 border-purple-500 text-white font-semibold">
-                    <SelectValue />
-                  </SelectTrigger>
-                  <SelectContent className="bg-purple-800 border-purple-500 text-white">
-                    <SelectItem value="all">All Resources</SelectItem>
-                    <SelectItem value="wood">🪵 Wood</SelectItem>
-                    <SelectItem value="stone">🪨 Stone</SelectItem>
-                    <SelectItem value="iron">⚒️ Iron</SelectItem>
-                    <SelectItem value="gold">💰 Gold</SelectItem>
-                    <SelectItem value="food">🌾 Food</SelectItem>
-                  </SelectContent>
-                </Select>
-              </div>
+              <Grid item xs={12} sm={6} md={2}>
+                <FormControl fullWidth size="small">
+                  <InputLabel sx={{ color: "#e1bee7", fontWeight: "bold" }}>Resource Type</InputLabel>
+                  <Select
+                    value={filters.resourceType}
+                    onChange={(e) => setFilters({...filters, resourceType: e.target.value})}
+                    label="Resource Type"
+                    sx={{
+                      bgcolor: "#7b1fa2",
+                      color: "white",
+                      fontWeight: 600,
+                      "& .MuiOutlinedInput-notchedOutline": { borderColor: "#8e24aa" }
+                    }}
+                  >
+                    <MenuItem value="all">All Resources</MenuItem>
+                    <MenuItem value="wood">🪵 Wood</MenuItem>
+                    <MenuItem value="stone">🪨 Stone</MenuItem>
+                    <MenuItem value="iron">⚒️ Iron</MenuItem>
+                    <MenuItem value="gold">💰 Gold</MenuItem>
+                    <MenuItem value="food">🌾 Food</MenuItem>
+                  </Select>
+                </FormControl>
+              </Grid>
 
-              <div className="flex items-end">
-                <label className="flex items-center gap-2 bg-purple-800 p-3 rounded-lg border-2 border-purple-500 cursor-pointer hover:bg-purple-700 transition-colors">
-                  <input
-                    type="checkbox"
-                    checked={filters.hasSpecialFeatures}
-                    onChange={(e) => setFilters({...filters, hasSpecialFeatures: e.target.checked})}
-                    className="w-4 h-4 accent-yellow-500"
-                  />
-                  <span className="text-white font-bold flex items-center gap-1">
-                    <Sparkles className="w-4 h-4 text-yellow-400" />
-                    Special Features Only
-                  </span>
-                </label>
-              </div>
+              <Grid item xs={12} sm={6} md={3}>
+                <FormControlLabel
+                  control={
+                    <Checkbox
+                      checked={filters.hasSpecialFeatures}
+                      onChange={(e) => setFilters({...filters, hasSpecialFeatures: e.target.checked})}
+                      sx={{ 
+                        color: "#ffd54f",
+                        "&.Mui-checked": { color: "#ffd54f" }
+                      }}
+                    />
+                  }
+                  label={
+                    <Stack direction="row" spacing={0.5} alignItems="center">
+                      <SparklesIcon sx={{ fontSize: 16, color: "#ffd54f" }} />
+                      <Typography sx={{ color: "white", fontWeight: "bold" }}>
+                        Special Features Only
+                      </Typography>
+                    </Stack>
+                  }
+                  sx={{ 
+                    bgcolor: "#7b1fa2",
+                    px: 2,
+                    py: 0.5,
+                    borderRadius: 1,
+                    border: "2px solid #8e24aa"
+                  }}
+                />
+              </Grid>
 
-              <div className="flex items-end">
+              <Grid item xs={12} sm={6} md={3}>
                 <Button
+                  fullWidth
+                  variant="contained"
                   onClick={() => setFilters({
                     terrainType: 'all',
                     plotSize: 'all',
@@ -448,328 +510,504 @@ export default function LandMarketplace() {
                     hasSpecialFeatures: false,
                     resourceType: 'all'
                   })}
-                  className="w-full bg-red-600 hover:bg-red-700 text-white font-bold border-2 border-red-400"
+                  sx={{
+                    bgcolor: "#d32f2f",
+                    fontWeight: "bold",
+                    border: "2px solid #f44336",
+                    "&:hover": { bgcolor: "#c62828" }
+                  }}
                 >
                   Clear All Filters
                 </Button>
-              </div>
-            </div>
+              </Grid>
+            </Grid>
           </CardContent>
         </Card>
 
         {/* Land Plots Grid */}
         {loading ? (
-          <div className="text-center py-12 bg-blue-900 border-4 border-blue-500 rounded-lg">
-            <div className="animate-spin rounded-full h-16 w-16 border-b-4 border-yellow-400 mx-auto"></div>
-            <p className="text-white mt-4 font-bold text-xl">Loading land plots...</p>
-          </div>
+          <Paper 
+            elevation={4}
+            sx={{ 
+              textAlign: "center",
+              py: 8,
+              bgcolor: "#1565c0",
+              border: "4px solid #42a5f5"
+            }}
+          >
+            <CircularProgress size={64} sx={{ color: "#ffd54f" }} />
+            <Typography variant="h5" sx={{ color: "white", mt: 3, fontWeight: "bold" }}>
+              Loading land plots...
+            </Typography>
+          </Paper>
+        ) : plots.length === 0 ? (
+          <Paper 
+            elevation={4}
+            sx={{ 
+              textAlign: "center",
+              py: 8,
+              bgcolor: "#1565c0",
+              border: "4px solid #42a5f5"
+            }}
+          >
+            <PlaceIcon sx={{ fontSize: 80, color: "#42a5f5", mb: 2 }} />
+            <Typography variant="h4" sx={{ color: "white", fontWeight: "bold" }}>
+              No land plots found
+            </Typography>
+            <Typography sx={{ color: "#bbdefb", mt: 1, fontWeight: 600 }}>
+              Try adjusting your filters
+            </Typography>
+          </Paper>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <Grid container spacing={3}>
             {plots.map((plot) => (
-              <Card key={plot.id} className="bg-blue-900 border-blue-500 border-4 hover:border-yellow-400 transition-all overflow-hidden">
-                {/* Land Plot Image */}
-                <div className="relative h-48 w-full overflow-hidden bg-blue-950">
-                  <img
-                    src={plot.generatedImageUrl || getPlaceholderImage(plot.terrainType)}
-                    alt={`Plot #${plot.plotNumber} - ${plot.terrainType}`}
-                    className="w-full h-full object-cover"
-                    onError={(e) => {
-                      e.currentTarget.src = getPlaceholderImage(plot.terrainType);
+              <Grid item xs={12} sm={6} lg={4} key={plot.id}>
+                <Card 
+                  elevation={6}
+                  sx={{
+                    bgcolor: "#1565c0",
+                    border: "4px solid #42a5f5",
+                    transition: "all 0.3s",
+                    "&:hover": {
+                      border: "4px solid #ffd54f",
+                      transform: "translateY(-4px)"
+                    }
+                  }}
+                >
+                  <CardMedia
+                    component="img"
+                    height="200"
+                    image={plot.generatedImageUrl || getPlaceholderImage(plot.terrainType)}
+                    alt={`Plot #${plot.plotNumber}`}
+                    onError={(e: any) => {
+                      e.target.src = getPlaceholderImage(plot.terrainType);
                     }}
                   />
-                  {!plot.generatedImageUrl && (
-                    <div className="absolute top-2 right-2 bg-black/70 text-white text-xs px-2 py-1 rounded font-bold">
-                      Placeholder
-                    </div>
-                  )}
-                  <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-3">
-                    <p className="text-white font-bold text-lg">Plot #{plot.plotNumber}</p>
-                  </div>
-                </div>
-                
-                <CardHeader className="bg-blue-800 border-b-4 border-blue-500">
-                  <CardTitle className="flex items-center justify-between text-white font-bold">
-                    <span className="flex items-center gap-2">
-                      <span className="text-3xl">{getTerrainIcon(plot.terrainType)}</span>
-                      <span>{plot.gridSection}</span>
-                    </span>
-                    <Badge className={plot.status === 'available' ? 'bg-green-600 text-white font-bold' : 'bg-gray-600 text-white font-bold'}>
-                      {plot.status}
-                    </Badge>
-                  </CardTitle>
-                  <CardDescription className="text-blue-200 font-semibold">{plot.terrainSubtype || plot.terrainType}</CardDescription>
-                </CardHeader>
-                <CardContent className="space-y-4 p-6">
-                  <div>
-                    <p className="text-sm text-blue-100 font-semibold">{plot.description}</p>
-                    {plot.lore && (
-                      <p className="text-xs text-blue-300 mt-2 italic font-semibold">
-                        📜 {plot.lore.slice(0, 100)}...
-                      </p>
+                  
+                  <CardHeader
+                    sx={{ bgcolor: "#1e88e5", borderBottom: "4px solid #42a5f5" }}
+                    title={
+                      <Stack direction="row" spacing={1} alignItems="center" justifyContent="space-between">
+                        <Stack direction="row" spacing={1} alignItems="center">
+                          <Typography variant="h4">{getTerrainIcon(plot.terrainType)}</Typography>
+                          <Typography variant="h6" sx={{ fontWeight: "bold", color: "white" }}>
+                            Plot #{plot.plotNumber}
+                          </Typography>
+                        </Stack>
+                        <Chip
+                          label={plot.status}
+                          sx={{
+                            bgcolor: plot.status === 'available' ? "#2e7d32" : "#616161",
+                            color: "white",
+                            fontWeight: "bold"
+                          }}
+                        />
+                      </Stack>
+                    }
+                    subheader={
+                      <Typography sx={{ color: "#bbdefb", fontWeight: 600 }}>
+                        {plot.terrainSubtype || plot.terrainType}
+                      </Typography>
+                    }
+                  />
+
+                  <CardContent sx={{ p: 3 }}>
+                    <Typography variant="body2" sx={{ color: "#e3f2fd", mb: 2, fontWeight: 600 }}>
+                      {plot.description}
+                    </Typography>
+
+                    <Paper sx={{ bgcolor: "#1e88e5", p: 2, mb: 2, border: "2px solid #42a5f5" }}>
+                      <Grid container spacing={1.5}>
+                        <Grid item xs={6}>
+                          <Typography variant="caption" sx={{ color: "#bbdefb", fontWeight: "bold" }}>
+                            Terrain
+                          </Typography>
+                          <Typography sx={{ color: "#ffd54f", fontWeight: "bold" }}>
+                            {plot.terrainSubtype || plot.terrainType}
+                          </Typography>
+                        </Grid>
+                        <Grid item xs={6}>
+                          <Typography variant="caption" sx={{ color: "#bbdefb", fontWeight: "bold" }}>
+                            Size
+                          </Typography>
+                          <Typography sx={{ color: "#ffd54f", fontWeight: "bold" }}>
+                            {plot.plotSize} ({plot.sizeMultiplier}x)
+                          </Typography>
+                        </Grid>
+                        <Grid item xs={12}>
+                          <Typography variant="caption" sx={{ color: "#bbdefb", fontWeight: "bold" }}>
+                            Coordinates
+                          </Typography>
+                          <Typography variant="body2" sx={{ color: "#ce93d8", fontWeight: "bold" }}>
+                            Map: ({plot.mapX}, {plot.mapY}) | Geo: {plot.latitude}°, {plot.longitude}°
+                          </Typography>
+                        </Grid>
+                      </Grid>
+                    </Paper>
+
+                    {plot.specialFeatures && plot.specialFeatures.length > 0 && (
+                      <Paper sx={{ bgcolor: "#7b1fa2", p: 2, mb: 2, border: "2px solid #8e24aa" }}>
+                        <Typography variant="caption" sx={{ color: "#e1bee7", fontWeight: "bold", mb: 1, display: "block" }}>
+                          Special Features:
+                        </Typography>
+                        <Stack direction="row" spacing={0.5} flexWrap="wrap" useFlexGap>
+                          {plot.specialFeatures.map((feature, idx) => (
+                            <Chip
+                              key={idx}
+                              icon={<SparklesIcon sx={{ fontSize: 14 }} />}
+                              label={feature.replace(/_/g, ' ')}
+                              size="small"
+                              sx={{
+                                bgcolor: "#fbc02d",
+                                color: "white",
+                                fontWeight: "bold",
+                                mb: 0.5
+                              }}
+                            />
+                          ))}
+                        </Stack>
+                      </Paper>
                     )}
-                  </div>
 
-                  <div className="grid grid-cols-2 gap-3 text-sm bg-blue-800 p-4 rounded-lg border-2 border-blue-600">
-                    <div>
-                      <p className="text-blue-200 font-bold">Terrain</p>
-                      <p className="font-bold text-yellow-400">{plot.terrainSubtype || plot.terrainType}</p>
-                    </div>
-                    <div>
-                      <p className="text-blue-200 font-bold">Size</p>
-                      <p className="font-bold text-yellow-400">{plot.plotSize} ({plot.sizeMultiplier}x)</p>
-                    </div>
-                    <div className="col-span-2">
-                      <p className="text-blue-200 font-bold">Coordinates</p>
-                      <p className="font-bold text-purple-400">Map: ({plot.mapX}, {plot.mapY}) | Geo: {plot.latitude}°, {plot.longitude}°</p>
-                    </div>
-                  </div>
+                    {plot.resourceNodes && Object.keys(plot.resourceNodes).length > 0 && (
+                      <Paper sx={{ bgcolor: "#2e7d32", p: 2, mb: 2, border: "2px solid #388e3c" }}>
+                        <Typography variant="caption" sx={{ color: "#c8e6c9", fontWeight: "bold", mb: 1, display: "block" }}>
+                          Resources:
+                        </Typography>
+                        <Stack direction="row" spacing={0.5} flexWrap="wrap" useFlexGap>
+                          {Object.keys(plot.resourceNodes).map((resource, idx) => (
+                            <Chip
+                              key={idx}
+                              label={resource.replace(/_/g, ' ')}
+                              size="small"
+                              sx={{
+                                bgcolor: "#388e3c",
+                                color: "white",
+                                fontWeight: "bold",
+                                mb: 0.5
+                              }}
+                            />
+                          ))}
+                        </Stack>
+                      </Paper>
+                    )}
 
-                  {/* Special Features */}
-                  {plot.specialFeatures && plot.specialFeatures.length > 0 && (
-                    <div className="bg-purple-800 p-3 rounded-lg border-2 border-purple-600">
-                      <p className="text-sm text-purple-200 mb-2 font-bold">Special Features:</p>
-                      <div className="flex flex-wrap gap-1">
-                        {plot.specialFeatures.map((feature, idx) => (
-                          <Badge key={idx} className="text-xs bg-yellow-600 text-white font-bold">
-                            <Sparkles className="w-3 h-3 mr-1" />
-                            {feature.replace(/_/g, ' ')}
-                          </Badge>
-                        ))}
-                      </div>
-                    </div>
-                  )}
+                    <Divider sx={{ my: 2, borderColor: "#ffd54f", borderWidth: 2 }} />
 
-                  {/* Inquisition Materials */}
-                  {plot.plotResources && Object.keys(plot.plotResources).length > 0 && (
-                    <div className="bg-orange-800 p-3 rounded-lg border-2 border-orange-600">
-                      <p className="text-sm text-orange-200 mb-2 font-bold">⚔️ Inquisition Materials:</p>
-                      <div className="grid grid-cols-2 gap-1 text-xs">
-                        {Object.entries(plot.plotResources).slice(0, 6).map(([name, data]: [string, any], idx) => (
-                          <div key={idx} className="bg-orange-900/50 p-1.5 rounded border border-orange-700">
-                            <span className="text-orange-100 font-bold">{name.replace(/_/g, ' ')}</span>
-                            <span className="text-yellow-400 ml-1">Lv{data.level}</span>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                  )}
+                    {/* Pricing */}
+                    <Paper sx={{ bgcolor: "#fbc02d", p: 2, mb: 2, border: "2px solid #f9a825" }}>
+                      <Stack direction="row" justifyContent="space-between" alignItems="center">
+                        <Typography sx={{ color: "#fff9c4", fontWeight: "bold" }}>
+                          XRP Price:
+                        </Typography>
+                        <Typography variant="h4" sx={{ fontWeight: "bold", color: "white" }}>
+                          {parseFloat(plot.currentPrice).toFixed(2)} XRP
+                        </Typography>
+                      </Stack>
+                    </Paper>
 
-                  {/* Resources */}
-                  {plot.resourceNodes && Object.keys(plot.resourceNodes).length > 0 && (
-                    <div className="bg-green-800 p-3 rounded-lg border-2 border-green-600">
-                      <p className="text-sm text-green-200 mb-2 font-bold">Resources:</p>
-                      <div className="flex flex-wrap gap-1">
-                        {Object.keys(plot.resourceNodes).map((resource, idx) => (
-                          <Badge key={idx} className="text-xs bg-green-600 text-white font-bold">
-                            {resource.replace(/_/g, ' ')}
-                          </Badge>
-                        ))}
-                      </div>
-                    </div>
-                  )}
+                    <Paper sx={{ bgcolor: "#2e7d32", p: 2, mb: 2, border: "2px solid #388e3c" }}>
+                      <Stack direction="row" justifyContent="space-between" alignItems="center" sx={{ mb: 1 }}>
+                        <Typography sx={{ color: "#c8e6c9", fontWeight: "bold" }}>
+                          Pay with RDL Token:
+                        </Typography>
+                        <Typography variant="h4" sx={{ fontWeight: "bold", color: "white" }}>
+                          {parseFloat(plot.rdlPrice).toFixed(2)} RDL
+                        </Typography>
+                      </Stack>
+                      <Chip
+                        icon={<SparklesIcon />}
+                        label={`${plot.rdlDiscountPercent}% Discount`}
+                        sx={{
+                          bgcolor: "#fbc02d",
+                          color: "#000",
+                          fontWeight: "bold"
+                        }}
+                      />
+                    </Paper>
 
-                  {/* Pricing - NO YIELD SECTION */}
-                  <div className="border-t-4 border-yellow-500 pt-4">
-                    <div className="bg-yellow-600 p-4 rounded-lg border-2 border-yellow-400 mb-3">
-                      <div className="flex items-center justify-between">
-                        <span className="text-yellow-100 font-bold">XRP Price:</span>
-                        <span className="text-3xl font-bold text-white">{parseFloat(plot.currentPrice).toFixed(2)} XRP</span>
-                      </div>
-                    </div>
-                    
-                    <div className="bg-green-600 p-4 rounded-lg border-2 border-green-400 mb-3">
-                      <div className="flex items-center justify-between mb-2">
-                        <span className="text-green-100 font-bold">Pay with RDL Token:</span>
-                        <span className="text-3xl font-bold text-white">{parseFloat(plot.rdlPrice).toFixed(2)} RDL</span>
-                      </div>
-                      <Badge className="bg-yellow-500 text-black font-bold">
-                        <Sparkles className="w-3 h-3 mr-1 inline" />
-                        {plot.rdlDiscountPercent}% Discount
-                      </Badge>
-                    </div>
-
-                    {plot.status === 'available' && (
-                      <div className="flex gap-2">
+                    {plot.status === 'available' ? (
+                      <Stack spacing={1}>
                         <Button
-                          className="flex-1 bg-blue-600 hover:bg-blue-700 text-white font-bold border-2 border-blue-400"
+                          fullWidth
+                          variant="contained"
+                          startIcon={<WalletIcon />}
                           onClick={() => handlePurchase(plot, 'XRP')}
                           disabled={purchasing}
+                          sx={{
+                            bgcolor: "#1565c0",
+                            fontWeight: "bold",
+                            border: "2px solid #42a5f5",
+                            "&:hover": { bgcolor: "#0d47a1" }
+                          }}
                         >
-                          <Wallet className="w-4 h-4 mr-2" />
                           {purchasing ? 'Processing...' : 'Buy with XRP'}
                         </Button>
                         <Button
-                          className="flex-1 bg-green-600 hover:bg-green-700 text-white font-bold border-2 border-green-400"
+                          fullWidth
+                          variant="contained"
+                          startIcon={<CoinsIcon />}
                           onClick={() => handlePurchase(plot, 'RDL')}
                           disabled={purchasing}
+                          sx={{
+                            bgcolor: "#2e7d32",
+                            fontWeight: "bold",
+                            border: "2px solid #388e3c",
+                            "&:hover": { bgcolor: "#1b5e20" }
+                          }}
                         >
-                          <Coins className="w-4 h-4 mr-2" />
                           {purchasing ? 'Processing...' : 'Buy with RDL'}
                         </Button>
-                      </div>
+                      </Stack>
+                    ) : (
+                      <Paper sx={{ bgcolor: "#616161", p: 2, textAlign: "center" }}>
+                        <Typography sx={{ color: "#e0e0e0", fontWeight: "bold" }}>
+                          Owned by @{plot.ownerHandle}
+                        </Typography>
+                      </Paper>
                     )}
 
-                    {plot.status === 'owned' && plot.ownerHandle && (
-                      <div className="text-center bg-gray-700 p-3 rounded-lg">
-                        <p className="text-gray-200 font-bold">Owned by @{plot.ownerHandle}</p>
-                      </div>
-                    )}
-                  </div>
-
-                  <Button
-                    variant="outline"
-                    className="w-full bg-purple-800 border-purple-500 text-white hover:bg-purple-700 font-bold"
-                    onClick={() => setLocation(`/land/${plot.plotNumber}`)}
-                  >
-                    <Info className="w-4 h-4 mr-2" />
-                    View Full Details
-                  </Button>
-                </CardContent>
-              </Card>
+                    <Button
+                      fullWidth
+                      variant="outlined"
+                      startIcon={<InfoIcon />}
+                      onClick={() => setSelectedPlot(plot)}
+                      sx={{
+                        mt: 2,
+                        color: "white",
+                        borderColor: "#7b1fa2",
+                        fontWeight: "bold",
+                        "&:hover": {
+                          borderColor: "#ffd54f",
+                          bgcolor: "#7b1fa2"
+                        }
+                      }}
+                    >
+                      View Full Details
+                    </Button>
+                  </CardContent>
+                </Card>
+              </Grid>
             ))}
-          </div>
+          </Grid>
         )}
-
-        {plots.length === 0 && !loading && (
-          <Card className="bg-blue-900 border-blue-500 border-4">
-            <CardContent className="text-center py-12">
-              <MapPin className="w-16 h-16 mx-auto text-blue-400 mb-4" />
-              <p className="text-2xl text-white font-bold">No land plots found</p>
-              <p className="text-sm text-blue-200 mt-2 font-semibold">Try adjusting your filters</p>
-            </CardContent>
-          </Card>
-        )}
-      </div>
+      </Container>
 
       {/* Plot Details Dialog */}
-      <Dialog open={!!selectedPlot} onOpenChange={() => {
-        setSelectedPlot(null);
-        setModalImageFallback(false);
-      }}>
-        <DialogContent className="max-w-3xl max-h-[80vh] overflow-y-auto bg-blue-900 border-blue-500 border-4">
-          <DialogHeader>
-            <DialogTitle className="text-3xl font-bold text-white">
-              {selectedPlot && (
-                <span className="flex items-center gap-2">
-                  <span className="text-4xl">{getTerrainIcon(selectedPlot.terrainType)}</span>
-                  Land Plot #{selectedPlot.plotNumber}
-                </span>
-              )}
-            </DialogTitle>
-            <DialogDescription className="text-blue-200 font-semibold text-lg">
-              {selectedPlot?.gridSection}
-            </DialogDescription>
-          </DialogHeader>
+      <Dialog
+        open={!!selectedPlot}
+        onClose={() => {
+          setSelectedPlot(null);
+          setModalImageFallback(false);
+        }}
+        maxWidth="md"
+        fullWidth
+        PaperProps={{
+          sx: {
+            bgcolor: "#1565c0",
+            border: "4px solid #42a5f5"
+          }
+        }}
+      >
+        <DialogTitle sx={{ bgcolor: "#1e88e5", borderBottom: "4px solid #42a5f5" }}>
+          <Stack direction="row" justifyContent="space-between" alignItems="center">
+            <Stack direction="row" spacing={1} alignItems="center">
+              <Typography variant="h3">{selectedPlot && getTerrainIcon(selectedPlot.terrainType)}</Typography>
+              <Box>
+                <Typography variant="h4" sx={{ fontWeight: "bold", color: "white" }}>
+                  Land Plot #{selectedPlot?.plotNumber}
+                </Typography>
+                <Typography sx={{ color: "#bbdefb", fontWeight: 600 }}>
+                  {selectedPlot?.gridSection}
+                </Typography>
+              </Box>
+            </Stack>
+            <IconButton onClick={() => setSelectedPlot(null)} sx={{ color: "white" }}>
+              <CloseIcon />
+            </IconButton>
+          </Stack>
+        </DialogTitle>
 
+        <DialogContent sx={{ p: 3, maxHeight: "70vh", overflowY: "auto" }}>
           {selectedPlot && (
-            <div className="space-y-6">
+            <Stack spacing={3}>
               {/* Plot Image */}
-              <div className="relative aspect-[4/3] w-full overflow-hidden rounded-lg border-4 border-blue-500">
-                <img
-                  src={modalImageFallback || !selectedPlot.generatedImageUrl 
-                    ? getPlaceholderImage(selectedPlot.terrainType) 
-                    : selectedPlot.generatedImageUrl
-                  }
-                  alt={`Plot #${selectedPlot.plotNumber} - ${selectedPlot.terrainType}`}
-                  className="w-full h-full object-cover"
-                  onError={() => {
-                    console.warn(`⚠️ [LAND MODAL] Image failed to load for plot #${selectedPlot.plotNumber}, using placeholder`);
-                    setModalImageFallback(true);
+              <Box
+                component="img"
+                src={modalImageFallback || !selectedPlot.generatedImageUrl 
+                  ? getPlaceholderImage(selectedPlot.terrainType) 
+                  : selectedPlot.generatedImageUrl
+                }
+                alt={`Plot #${selectedPlot.plotNumber}`}
+                onError={() => setModalImageFallback(true)}
+                sx={{
+                  width: "100%",
+                  aspectRatio: "4/3",
+                  objectFit: "cover",
+                  borderRadius: 2,
+                  border: "4px solid #42a5f5"
+                }}
+              />
+
+              <Stack direction="row" justifyContent="space-between" alignItems="center">
+                <Chip
+                  label={selectedPlot.status}
+                  sx={{
+                    bgcolor: selectedPlot.status === 'available' ? "#2e7d32" : "#616161",
+                    color: "white",
+                    fontWeight: "bold",
+                    fontSize: "1rem",
+                    px: 2,
+                    py: 3
                   }}
                 />
-                {(modalImageFallback || !selectedPlot.generatedImageUrl) && (
-                  <div className="absolute top-3 right-3 bg-black/80 text-white text-xs px-3 py-1.5 rounded-full font-bold border-2 border-yellow-400">
-                    🎨 Placeholder
-                  </div>
-                )}
-              </div>
-
-              {/* Status */}
-              <div className="flex items-center justify-between">
-                <Badge className={selectedPlot.status === 'available' ? 'text-lg px-4 py-2 bg-green-600 text-white font-bold' : 'text-lg px-4 py-2 bg-gray-600 text-white font-bold'}>
-                  {selectedPlot.status}
-                </Badge>
                 {selectedPlot.ownerHandle && (
-                  <p className="text-blue-200 font-bold">Owned by <span className="text-yellow-400">@{selectedPlot.ownerHandle}</span></p>
+                  <Typography sx={{ color: "#bbdefb", fontWeight: "bold" }}>
+                    Owned by <span style={{ color: "#ffd54f" }}>@{selectedPlot.ownerHandle}</span>
+                  </Typography>
                 )}
-              </div>
+              </Stack>
 
-              {/* Description */}
-              <Card className="bg-blue-800 border-blue-500 border-2">
-                <CardHeader className="bg-blue-700 border-b-2 border-blue-500">
-                  <CardTitle className="text-yellow-400 font-bold">Description</CardTitle>
-                </CardHeader>
-                <CardContent className="space-y-3 p-6">
-                  <p className="text-white font-semibold">{selectedPlot.description}</p>
+              <Card sx={{ bgcolor: "#1e88e5", border: "2px solid #42a5f5" }}>
+                <CardHeader
+                  sx={{ bgcolor: "#1976d2", borderBottom: "2px solid #42a5f5" }}
+                  title={<Typography sx={{ color: "#ffd54f", fontWeight: "bold" }}>Description</Typography>}
+                />
+                <CardContent>
+                  <Typography sx={{ color: "white", fontWeight: 600, mb: 2 }}>
+                    {selectedPlot.description}
+                  </Typography>
                   {selectedPlot.lore && (
-                    <div className="border-t-2 border-blue-600 pt-3">
-                      <p className="text-sm font-bold text-blue-200 mb-2">📜 Historical Lore:</p>
-                      <p className="text-sm text-blue-100 italic font-semibold">{selectedPlot.lore}</p>
-                    </div>
+                    <>
+                      <Divider sx={{ my: 2, borderColor: "#42a5f5" }} />
+                      <Typography variant="caption" sx={{ color: "#bbdefb", fontWeight: "bold", display: "block", mb: 1 }}>
+                        📜 Historical Lore:
+                      </Typography>
+                      <Typography variant="body2" sx={{ color: "#e3f2fd", fontStyle: "italic", fontWeight: 600 }}>
+                        {selectedPlot.lore}
+                      </Typography>
+                    </>
                   )}
                 </CardContent>
               </Card>
 
-              {/* Statistics */}
-              <Card className="bg-purple-900 border-purple-500 border-2">
-                <CardHeader className="bg-purple-800 border-b-2 border-purple-500">
-                  <CardTitle className="text-yellow-400 font-bold">Plot Statistics</CardTitle>
-                </CardHeader>
-                <CardContent className="p-6">
-                  <div className="grid grid-cols-2 gap-4">
-                    <div className="bg-purple-800 p-3 rounded-lg">
-                      <p className="text-purple-200 text-sm font-bold">Terrain Type</p>
-                      <p className="font-bold text-white">{selectedPlot.terrainType}</p>
-                    </div>
-                    <div className="bg-purple-800 p-3 rounded-lg">
-                      <p className="text-purple-200 text-sm font-bold">Terrain Subtype</p>
-                      <p className="font-bold text-white">{selectedPlot.terrainSubtype}</p>
-                    </div>
-                    <div className="bg-purple-800 p-3 rounded-lg">
-                      <p className="text-purple-200 text-sm font-bold">Plot Size</p>
-                      <p className="font-bold text-white">{selectedPlot.plotSize}</p>
-                    </div>
-                    <div className="bg-purple-800 p-3 rounded-lg">
-                      <p className="text-purple-200 text-sm font-bold">Size Multiplier</p>
-                      <p className="font-bold text-white">{selectedPlot.sizeMultiplier}x</p>
-                    </div>
-                    <div className="bg-purple-800 p-3 rounded-lg">
-                      <p className="text-purple-200 text-sm font-bold">Map Coordinates</p>
-                      <p className="font-bold text-white">({selectedPlot.mapX}, {selectedPlot.mapY})</p>
-                    </div>
-                    <div className="bg-purple-800 p-3 rounded-lg">
-                      <p className="text-purple-200 text-sm font-bold">Geographic Location</p>
-                      <p className="font-bold text-white">{selectedPlot.latitude}°, {selectedPlot.longitude}°</p>
-                    </div>
-                  </div>
+              <Card sx={{ bgcolor: "#7b1fa2", border: "2px solid #8e24aa" }}>
+                <CardHeader
+                  sx={{ bgcolor: "#6a1b9a", borderBottom: "2px solid #8e24aa" }}
+                  title={<Typography sx={{ color: "#ffd54f", fontWeight: "bold" }}>Plot Statistics</Typography>}
+                />
+                <CardContent>
+                  <Grid container spacing={2}>
+                    <Grid item xs={6}>
+                      <Paper sx={{ bgcolor: "#6a1b9a", p: 1.5 }}>
+                        <Typography variant="caption" sx={{ color: "#e1bee7", fontWeight: "bold" }}>
+                          Terrain Type
+                        </Typography>
+                        <Typography sx={{ color: "white", fontWeight: "bold" }}>
+                          {selectedPlot.terrainType}
+                        </Typography>
+                      </Paper>
+                    </Grid>
+                    <Grid item xs={6}>
+                      <Paper sx={{ bgcolor: "#6a1b9a", p: 1.5 }}>
+                        <Typography variant="caption" sx={{ color: "#e1bee7", fontWeight: "bold" }}>
+                          Terrain Subtype
+                        </Typography>
+                        <Typography sx={{ color: "white", fontWeight: "bold" }}>
+                          {selectedPlot.terrainSubtype}
+                        </Typography>
+                      </Paper>
+                    </Grid>
+                    <Grid item xs={6}>
+                      <Paper sx={{ bgcolor: "#6a1b9a", p: 1.5 }}>
+                        <Typography variant="caption" sx={{ color: "#e1bee7", fontWeight: "bold" }}>
+                          Plot Size
+                        </Typography>
+                        <Typography sx={{ color: "white", fontWeight: "bold" }}>
+                          {selectedPlot.plotSize}
+                        </Typography>
+                      </Paper>
+                    </Grid>
+                    <Grid item xs={6}>
+                      <Paper sx={{ bgcolor: "#6a1b9a", p: 1.5 }}>
+                        <Typography variant="caption" sx={{ color: "#e1bee7", fontWeight: "bold" }}>
+                          Size Multiplier
+                        </Typography>
+                        <Typography sx={{ color: "white", fontWeight: "bold" }}>
+                          {selectedPlot.sizeMultiplier}x
+                        </Typography>
+                      </Paper>
+                    </Grid>
+                    <Grid item xs={6}>
+                      <Paper sx={{ bgcolor: "#6a1b9a", p: 1.5 }}>
+                        <Typography variant="caption" sx={{ color: "#e1bee7", fontWeight: "bold" }}>
+                          Map Coordinates
+                        </Typography>
+                        <Typography sx={{ color: "white", fontWeight: "bold" }}>
+                          ({selectedPlot.mapX}, {selectedPlot.mapY})
+                        </Typography>
+                      </Paper>
+                    </Grid>
+                    <Grid item xs={6}>
+                      <Paper sx={{ bgcolor: "#6a1b9a", p: 1.5 }}>
+                        <Typography variant="caption" sx={{ color: "#e1bee7", fontWeight: "bold" }}>
+                          Geographic Location
+                        </Typography>
+                        <Typography sx={{ color: "white", fontWeight: "bold" }}>
+                          {selectedPlot.latitude}°, {selectedPlot.longitude}°
+                        </Typography>
+                      </Paper>
+                    </Grid>
+                  </Grid>
                 </CardContent>
               </Card>
-
-              {/* Purchase Buttons */}
-              {selectedPlot.status === 'available' && (
-                <div className="flex gap-3">
-                  <Button
-                    className="flex-1 bg-blue-600 hover:bg-blue-700 text-white font-bold border-2 border-blue-400 text-lg py-6"
-                    onClick={() => handlePurchase(selectedPlot, 'XRP')}
-                    disabled={purchasing}
-                  >
-                    <Wallet className="w-5 h-5 mr-2" />
-                    Buy for {parseFloat(selectedPlot.currentPrice).toFixed(2)} XRP
-                  </Button>
-                  <Button
-                    className="flex-1 bg-green-600 hover:bg-green-700 text-white font-bold border-2 border-green-400 text-lg py-6"
-                    onClick={() => handlePurchase(selectedPlot, 'RDL')}
-                    disabled={purchasing}
-                  >
-                    <Coins className="w-5 h-5 mr-2" />
-                    Buy for {parseFloat(selectedPlot.rdlPrice).toFixed(2)} RDL
-                  </Button>
-                </div>
-              )}
-            </div>
+            </Stack>
           )}
         </DialogContent>
+
+        <DialogActions sx={{ p: 2, borderTop: "4px solid #42a5f5" }}>
+          {selectedPlot?.status === 'available' && (
+            <Stack direction="row" spacing={2} sx={{ width: "100%" }}>
+              <Button
+                fullWidth
+                variant="contained"
+                size="large"
+                startIcon={<WalletIcon />}
+                onClick={() => selectedPlot && handlePurchase(selectedPlot, 'XRP')}
+                disabled={purchasing}
+                sx={{
+                  bgcolor: "#1565c0",
+                  fontWeight: "bold",
+                  fontSize: "1.1rem",
+                  py: 1.5,
+                  border: "2px solid #42a5f5",
+                  "&:hover": { bgcolor: "#0d47a1" }
+                }}
+              >
+                Buy for {selectedPlot && parseFloat(selectedPlot.currentPrice).toFixed(2)} XRP
+              </Button>
+              <Button
+                fullWidth
+                variant="contained"
+                size="large"
+                startIcon={<CoinsIcon />}
+                onClick={() => selectedPlot && handlePurchase(selectedPlot, 'RDL')}
+                disabled={purchasing}
+                sx={{
+                  bgcolor: "#2e7d32",
+                  fontWeight: "bold",
+                  fontSize: "1.1rem",
+                  py: 1.5,
+                  border: "2px solid #388e3c",
+                  "&:hover": { bgcolor: "#1b5e20" }
+                }}
+              >
+                Buy for {selectedPlot && parseFloat(selectedPlot.rdlPrice).toFixed(2)} RDL
+              </Button>
+            </Stack>
+          )}
+        </DialogActions>
       </Dialog>
-    </div>
+    </Box>
   );
 }

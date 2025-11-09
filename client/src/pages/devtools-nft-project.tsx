@@ -49,7 +49,7 @@ export default function DevToolsNFTProject() {
   const { toast } = useToast();
   const [, navigate] = useLocation();
   const { isAuthenticated, isLoading: authLoading } = useAuth();
-  const [match, params] = useRoute('/devtools/nft/:id');
+  const [match, params] = useRoute<{ id: string }>('/devtools/nft/:id');
   const queryClient = useQueryClient();
   const [activeTab, setActiveTab] = useState('collection');
 

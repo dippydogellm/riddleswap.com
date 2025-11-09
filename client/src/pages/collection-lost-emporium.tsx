@@ -1,8 +1,8 @@
-import { CollectionShowcase } from '@/components/collection-showcase';
+import { CollectionShowcaseV3 } from '@/components/collection-showcase-v3';
 
 export default function TheLostEmporiumCollection() {
   return (
-    <CollectionShowcase
+    <CollectionShowcaseV3
       collectionName="The Lost Emporium"
       collectionSlug="the-lost-emporium"
       description="Step into The Lost Emporium, a mystical marketplace where forgotten treasures and ancient artifacts await discovery. Each of the 123 unique NFTs represents a piece of history from the World of RDL - rare items, legendary relics, and magical curiosities that merchants once traded across realms. Uncover the secrets of commerce and magic intertwined."

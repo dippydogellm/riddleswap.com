@@ -176,6 +176,10 @@ const PlayerRegistrationForm = () => {
         onClose={handleWizardClose}
         userHandle={session.handle || 'Unknown'}
         currentRound={1} // You can make this dynamic later
+        onCompleted={(playerData: any) => {
+          console.log('Player setup completed:', playerData);
+          handleWizardClose();
+        }}
       />
     </>
   );

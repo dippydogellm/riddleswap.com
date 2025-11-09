@@ -11,6 +11,7 @@ import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } f
 
 interface TokenBalance {
   currency: string;
+  symbol?: string;
   issuer: string;
   balance: string;
   limit: string;

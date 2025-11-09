@@ -78,7 +78,7 @@ const getTerrainIcon = (terrainType: string) => {
 };
 
 export default function LandPlotDetail() {
-  const [match, params] = useRoute("/land/:plotNumber");
+  const [match, params] = useRoute<{ plotNumber: string }>("/land/:plotNumber");
   const [, setLocation] = useLocation();
   const { toast } = useToast();
   const session = sessionManager.getSession();

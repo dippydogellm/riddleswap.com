@@ -79,10 +79,11 @@ export const StoryBuilder = () => {
 
   const createBook = useMutation({
     mutationFn: async (bookData: typeof bookForm) => {
-      return await apiRequest('/api/riddleauthor/books/create', {
+      const result = await apiRequest('/api/riddleauthor/books/create', {
         method: 'POST',
         body: JSON.stringify(bookData),
-      }) as Promise<{ success: boolean; book: Book }>;
+      });
+      return result.json() as Promise<{ success: boolean; book: Book }>;
     },
     onSuccess: (data: any) => {
       queryClient.invalidateQueries({ queryKey: ['/api/riddleauthor/nft-books'] });
@@ -133,9 +134,10 @@ export const StoryBuilder = () => {
 
   const mintBook = useMutation({
     mutationFn: async (bookId: string) => {
-      return await apiRequest(`/api/riddleauthor/books/${bookId}/mint`, {
+      const result = await apiRequest(`/api/riddleauthor/books/${bookId}/mint`, {
         method: 'POST',
-      }) as Promise<{ success: boolean; message: string; stats: { chapters: number; words: number; title: string } }>;
+      });
+      return result.json() as Promise<{ success: boolean; message: string; stats: { chapters: number; words: number; title: string } }>;
     },
     onSuccess: (data: any) => {
       queryClient.invalidateQueries({ queryKey: ['/api/riddleauthor/nft-books'] });

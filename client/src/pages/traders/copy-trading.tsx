@@ -78,6 +78,8 @@ export default function CopyTradingPage() {
   const [showWalletSetup, setShowWalletSetup] = useState(false);
   const [showSetupWizard, setShowSetupWizard] = useState(false);
   const [setupStep, setSetupStep] = useState(1);
+  const [topTraders, setTopTraders] = useState<Trader[]>([]);
+  const [myPositions, setMyPositions] = useState<CopyPosition[]>([]);
   const { toast } = useToast();
   const queryClient = useQueryClient();
 
@@ -146,6 +148,19 @@ export default function CopyTradingPage() {
     refetchInterval: 10000 // Refresh every 10 seconds
   });
 
+  // Sync state with query data
+  useEffect(() => {
+    if (tradersData?.traders) {
+      setTopTraders(tradersData.traders);
+    }
+  }, [tradersData]);
+
+  useEffect(() => {
+    if (positionsData?.positions) {
+      setMyPositions(positionsData.positions);
+    }
+  }, [positionsData]);
+
   // Wallet connection mutation
   const connectWalletMutation = useMutation({
     mutationFn: async (chainId: string) => {
@@ -182,8 +197,6 @@ export default function CopyTradingPage() {
   ];
 
   // Transform API data
-  const topTraders = tradersData?.traders || [];
-  const myPositions = positionsData?.positions || [];
 
   // Helper functions
   const getWalletStatusColor = () => {

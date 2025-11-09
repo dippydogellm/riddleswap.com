@@ -67,7 +67,7 @@ export default function DevTools() {
   });
 
   // Fetch linked external wallets - ALWAYS call hook, control with enabled  
-  const { data: linkedWalletsData, refetch: refetchWallets } = useQuery({
+  const { data: linkedWalletsData, refetch: refetchWallets } = useQuery<Array<any>>({
     queryKey: ['/api/devtools/wallets'],
     queryFn: async () => {
       const response = await fetch('/api/devtools/wallets?userId=' + user?.walletAddress, {
@@ -82,7 +82,7 @@ export default function DevTools() {
   });
 
   // Fetch external wallets for enhanced display - ALWAYS call hook, control with enabled
-  const { data: externalWalletsData = [], isLoading: isLoadingExternalWallets } = useQuery({
+  const { data: externalWalletsData = [], isLoading: isLoadingExternalWallets } = useQuery<Array<any>>({
     queryKey: ['/api/external-wallets/list'],
     enabled: !isLoading && isAuthenticated,
   });
@@ -146,7 +146,7 @@ export default function DevTools() {
   });
 
   // Prepare all data variables AFTER all hooks are declared
-  const linkedWallets = linkedWalletsData?.wallets || [];
+  const linkedWallets = (linkedWalletsData as any)?.wallets || [];
   const discoveredProjects = discoveredProjectsData?.projects || [];
   const externalWallets = (externalWalletsData as { wallets?: any[] })?.wallets || externalWalletsData || [];
 

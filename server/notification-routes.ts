@@ -59,6 +59,39 @@ router.post("/notifications/mark-all-read", sessionAuth, async (req: Request, re
   }
 });
 
+router.post("/notifications", sessionAuth, async (req: Request, res: Response) => {
+  try {
+    const userId = req.user.userHandle;
+
+    const { targetUserId, type, title, content, actionUrl, relatedId } = req.body;
+
+    if (!targetUserId || !type || !title || !content) {
+      return res.status(400).json({ error: "targetUserId, type, title, and content are required" });
+    }
+
+    // Only allow certain notification types
+    const allowedTypes = ['message', 'mention', 'like', 'comment', 'follow', 'system', 'nft_offer'];
+    if (!allowedTypes.includes(type)) {
+      return res.status(400).json({ error: "Invalid notification type" });
+    }
+
+    const notification = await notificationService.createNotification({
+      userId: targetUserId,
+      type,
+      title,
+      content,
+      actionUrl,
+      relatedId,
+      senderHandle: userId, // The authenticated user is the sender
+    });
+
+    return res.json(notification);
+  } catch (error: any) {
+    console.error("❌ [NOTIFICATIONS API] Create notification error:", error);
+    return res.status(500).json({ error: error.message || "Failed to create notification" });
+  }
+});
+
 router.delete("/notifications/:id", sessionAuth, async (req: Request, res: Response) => {
   try {
     const userId = req.user.userHandle;

@@ -39,7 +39,8 @@ const tokenSchema = z.object({
 type TokenFormData = z.infer<typeof tokenSchema>;
 
 const TokenCreator = () => {
-  const { projectId } = useParams();
+  const params = useParams<{ projectId: string }>();
+  const projectId = params.projectId;
   const { toast } = useToast();
   const { isAuthenticated, isLoading } = useAuth();
 

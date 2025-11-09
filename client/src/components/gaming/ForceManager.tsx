@@ -211,7 +211,7 @@ export const ForceManager = ({ collections, isLoading }: ForceManagerProps) => {
                               return Object.entries(roles).map(([playerType, count]) => (
                                 <Badge key={playerType} variant="outline" className="text-xs flex items-center gap-1">
                                   {getRoleIcon(playerType)}
-                                  {playerType}: {count}
+                                  {playerType}: {String(count)}
                                 </Badge>
                               ));
                             })()} 

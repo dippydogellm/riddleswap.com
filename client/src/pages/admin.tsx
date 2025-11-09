@@ -69,6 +69,7 @@ interface RevenueMetrics {
 interface ActivityMetrics {
   serverUptime: string;
   memoryUsageMB: string;
+  lastActivity?: string;
   activity24h: {
     swaps: number;
     bridges: number;
@@ -495,15 +496,15 @@ export default function AdminPage({ walletAddress }: AdminPageProps) {
                       <span>Fees Collected:</span>
                       <Badge variant="secondary">{formatCurrency(metrics.activity.activity24h.feesCollectedUSD)}</Badge>
                     </div>
-                    {metrics.activity.lastActivity && (
+                    {metrics.activity.lastActivity && typeof metrics.activity.lastActivity === 'object' && (
                       <div className="mt-4 p-3 bg-muted rounded-lg">
                         <p className="text-sm text-muted-foreground">
-                          {metrics.activity.lastActivity.lastSwap 
-                            ? `Last swap: ${new Date(metrics.activity.lastActivity.lastSwap).toLocaleDateString()}` 
+                          {(metrics.activity.lastActivity as any).lastSwap 
+                            ? `Last swap: ${new Date((metrics.activity.lastActivity as any).lastSwap).toLocaleDateString()}` 
                             : 'No swaps recorded'
                           }
-                          {metrics.activity.lastActivity.lastBridge 
-                            ? ` | Last bridge: ${new Date(metrics.activity.lastActivity.lastBridge).toLocaleDateString()}` 
+                          {(metrics.activity.lastActivity as any).lastBridge 
+                            ? ` | Last bridge: ${new Date((metrics.activity.lastActivity as any).lastBridge).toLocaleDateString()}` 
                             : ' | No bridges recorded'
                           }
                         </p>

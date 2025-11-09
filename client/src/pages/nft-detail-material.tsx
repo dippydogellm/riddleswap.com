@@ -200,7 +200,10 @@ export function NFTDetailMaterialPage() {
         traits: mappedTraits,
         attributes: mappedTraits,
         metadata: nftData.metadata,
-        uri: nftData.uri
+        uri: nftData.uri,
+        floor_price: nftData.floor_price,
+        last_sale_price: nftData.last_sale_price,
+        rarity: nftData.rarity
       });
       
       if (data.collectionId) {

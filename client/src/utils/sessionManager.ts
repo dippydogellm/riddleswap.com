@@ -437,6 +437,16 @@ class SessionManager {
     return sessionStorage.getItem('post_login_redirect') || '/';
   }
 
+  // Check if reconnection is needed
+  needsReconnection(): boolean {
+    return sessionStorage.getItem('needs_reconnection') === 'true';
+  }
+
+  // Get the path to redirect to after reconnection
+  getPostReconnectPath(): string {
+    return sessionStorage.getItem('post_reconnect_redirect') || '/';
+  }
+
   // Clear all session data
   clearSession() {
     console.log('🧹 SessionManager: Clearing session');

@@ -143,7 +143,7 @@ export async function signWithSolana(message: string): Promise<{ signature: stri
 
     // Sign the message
     const encodedMessage = new TextEncoder().encode(message);
-    const signedMessage = await window.solana?.signMessage?.(encodedMessage);
+    const signedMessage = await (window.solana as any)?.signMessage?.(encodedMessage);
     if (!signedMessage?.signature) throw new Error('Failed to sign message');
     const signature = Buffer.from(signedMessage.signature).toString('hex');
 
@@ -188,18 +188,18 @@ export async function signWithXaman(message: string, handle: string): Promise<{ 
  * Sign message with Bitcoin wallet
  */
 export async function signWithBitcoin(message: string): Promise<{ signature: string; address: string }> {
-  if (!window.unisat) {
+  if (!(window as any).unisat) {
     throw new Error('Bitcoin wallet not found');
   }
 
   try {
     // Request account access
-    const accounts = await window.unisat?.requestAccounts?.();
+    const accounts = await (window as any).unisat?.requestAccounts?.();
     if (!accounts?.[0]) throw new Error('Failed to get Bitcoin wallet accounts');
     const address = accounts[0];
 
     // Sign the message
-    const signature = await window.unisat?.signMessage?.(message);
+    const signature = await (window as any).unisat?.signMessage?.(message);
     if (!signature) throw new Error('Failed to sign message');
 
     return { signature, address };
@@ -369,11 +369,4 @@ export interface ExtendedWindow extends Window {
   unisat?: any;
 }
 
-// Extend global Window interface
-declare global {
-  interface Window {
-    ethereum?: any;
-    solana?: any;
-    unisat?: any;
-  }
-}
+// Window interface extensions are handled by ExtendedWindow interface above

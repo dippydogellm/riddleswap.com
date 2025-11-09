@@ -644,7 +644,7 @@ export default function TokenLaunchDetail() {
     queryFn: async () => {
       const response = await apiRequest(`/api/launchpad/launch/${launchId}`);
       if (!response.ok) throw new Error('Failed to fetch launch details');
-      return response.json() as { launch: TokenLaunchDetail; stats: LaunchStats };
+      return await response.json() as { launch: TokenLaunchDetail; stats: LaunchStats };
     },
     enabled: !!launchId && !isNaN(launchId),
   });

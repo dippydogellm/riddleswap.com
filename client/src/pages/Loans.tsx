@@ -130,7 +130,7 @@ export default function Loans() {
     mutationFn: async (data: { loanId: string; amount: string }) => {
       return apiRequest('/api/loans/fund', {
         method: 'POST',
-        body: data,
+        body: JSON.stringify(data),
       });
     },
     onSuccess: (response) => {
@@ -156,7 +156,7 @@ export default function Loans() {
     mutationFn: async (data: { loanId: string; amount: string }) => {
       return apiRequest('/api/loans/repay', {
         method: 'POST',
-        body: data,
+        body: JSON.stringify(data),
       });
     },
     onSuccess: (response) => {

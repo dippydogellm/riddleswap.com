@@ -1,10 +1,13 @@
 import { useState, useEffect } from 'react';
 import { useParams, useLocation } from 'wouter';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import {
+  Box, Card, CardContent, Typography, Chip, Tabs, Tab,
+  Skeleton, IconButton, Paper, Grid, Avatar, Stack, Divider, Tooltip
+} from '@mui/material';
 import { Button } from '@/components/ui/button';
+import { CardHeader, CardTitle } from '@/components/ui/card';
+import { TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
 import { Badge } from '@/components/ui/badge';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { Skeleton } from '@/components/ui/skeleton';
 import { 
   ArrowLeft, Copy, ExternalLink, Wallet, ImageIcon, TrendingUp, 
   Database, User, Award, Clock, MessageCircle, UserCheck,
@@ -123,7 +126,7 @@ interface WalletTransaction {
 }
 
 export default function WalletProfile() {
-  const params = useParams();
+  const params = useParams<{ address: string }>();
   const [, setLocation] = useLocation();
   const [profile, setProfile] = useState<WalletProfile | null>(null);
   const [nfts, setNfts] = useState<WalletNFT[]>([]);
@@ -548,8 +551,8 @@ export default function WalletProfile() {
       <div className="container mx-auto px-4 py-8">
         {/* Header with Back Button */}
         <div className="flex items-center justify-between mb-8">
-          <Button 
-            variant="ghost" 
+          <Button
+            variant="ghost"
             onClick={() => setLocation('/nft-marketplace')}
             className="flex items-center gap-2 text-gray-700 dark:text-gray-300"
           >
@@ -608,36 +611,36 @@ export default function WalletProfile() {
                 )}
               </div>
               
-              <div className="flex gap-2 flex-wrap">
-                {isRiddleWallet && (
+              <Stack direction="row" spacing={1} flexWrap="wrap">
+                {riddleWalletInfo?.isRiddleWallet && riddleWalletInfo.handle && (
                   <>
                     <Button
                       variant="outline"
-                      onClick={() => setLocation(`/social/@${walletAddress}`)}
-                      className="bg-white dark:bg-gray-700 border-gray-300 dark:border-gray-600"
+                      onClick={() => setLocation(`/social/profile?user=${riddleWalletInfo.handle}`)}
+                      className="normal-case"
                     >
                       <UserCheck className="h-4 w-4 mr-2" />
-                      Profile
+                      View Profile
                     </Button>
                     <Button
                       variant="outline"
-                      onClick={() => toast({ title: 'Messaging coming soon', description: 'This feature is under development' })}
-                      className="bg-white dark:bg-gray-700 border-gray-300 dark:border-gray-600"
+                      onClick={() => setLocation(`/social/messages?user=${riddleWalletInfo.handle}`)}
+                      className="normal-case"
                     >
                       <MessageCircle className="h-4 w-4 mr-2" />
-                      Message
+                      Send Message
                     </Button>
                   </>
                 )}
                 <Button
                   variant="outline"
                   onClick={() => window.open(`https://xrpl.org/accounts/${walletAddress}`, '_blank')}
-                  className="bg-white dark:bg-gray-700 border-gray-300 dark:border-gray-600"
+                  className="normal-case"
                 >
                   <ExternalLink className="h-4 w-4 mr-2" />
-                  XRPL
+                  View on XRPL
                 </Button>
-              </div>
+              </Stack>
             </div>
           </CardContent>
         </Card>

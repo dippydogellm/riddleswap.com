@@ -31,11 +31,11 @@ interface RiddlePost {
 }
 
 export default function RiddleDetailPage() {
-  const [, params] = useRoute("/riddle/:id");
+  const [, params] = useRoute<{ id: string }>("/riddle/:id");
   const { toast } = useToast();
   const [copied, setCopied] = useState(false);
 
-  const riddleId = params?.id;
+  const riddleId = params?.id || '';
 
   // Fetch individual riddle/post
   const { data: riddle, isLoading } = useQuery<RiddlePost>({

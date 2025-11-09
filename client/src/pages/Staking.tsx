@@ -74,13 +74,14 @@ export default function Staking() {
     mutationFn: async (data: { poolId: string; amount: string; chain: string }) => {
       return apiRequest('/api/staking/stake', {
         method: 'POST',
-        body: data,
+        body: JSON.stringify(data),
       });
     },
-    onSuccess: (response) => {
+    onSuccess: async (response) => {
+      const data = await response.json();
       toast({
         title: "Stake Successful!",
-        description: `Successfully staked ${stakeAmount} tokens. Transaction: ${response.transactionHash?.substring(0, 10)}...`,
+        description: `Successfully staked ${stakeAmount} tokens. Transaction: ${data.transactionHash?.substring(0, 10)}...`,
       });
       queryClient.invalidateQueries({ queryKey: ['/api/staking'] });
       setStakeDialog({ open: false, pool: null });
@@ -100,7 +101,7 @@ export default function Staking() {
     mutationFn: async (data: { positionId: string; amount: string }) => {
       return apiRequest('/api/staking/unstake', {
         method: 'POST',
-        body: data,
+        body: JSON.stringify(data),
       });
     },
     onSuccess: (response) => {
@@ -126,13 +127,14 @@ export default function Staking() {
     mutationFn: async (positionId: string) => {
       return apiRequest('/api/staking/claim', {
         method: 'POST',
-        body: { positionId },
+        body: JSON.stringify({ positionId }),
       });
     },
-    onSuccess: (response) => {
+    onSuccess: async (response) => {
+      const data = await response.json();
       toast({
         title: "Rewards Claimed!",
-        description: `Successfully claimed ${response.amount} rewards!`,
+        description: `Successfully claimed ${data.amount} rewards!`,
       });
       queryClient.invalidateQueries({ queryKey: ['/api/staking'] });
     },

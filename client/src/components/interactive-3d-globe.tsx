@@ -771,6 +771,31 @@ export default function Interactive3DGlobe({ plots, onPlotClick, isResponsive = 
     setShowPlotDialog(true);
   };
 
+  // Filter plots based on current filters
+  const filteredPlots = useMemo(() => {
+    return plots.filter(plot => {
+      // Filter by terrain type
+      if (filters.terrainTypes.length > 0 && !filters.terrainTypes.includes(plot.terrain_type)) {
+        return false;
+      }
+      
+      // Filter by ownership
+      if (filters.ownershipStatus === 'available' && plot.owner) {
+        return false;
+      }
+      if (filters.ownershipStatus === 'owned' && !plot.owner) {
+        return false;
+      }
+      
+      // Filter by price range
+      if (plot.xrp_price < filters.priceRange[0] || plot.xrp_price > filters.priceRange[1]) {
+        return false;
+      }
+      
+      return true;
+    });
+  }, [plots, filters.terrainTypes, filters.ownershipStatus, filters.priceRange]);
+
   // Update search when filters change
   useEffect(() => {
     if (filters.searchTerm) {
@@ -814,83 +839,6 @@ export default function Interactive3DGlobe({ plots, onPlotClick, isResponsive = 
       console.warn('Fullscreen failed:', error);
     }
   };
-
-  // Filter plots based on current filters
-  const filteredPlots = useMemo(() => {
-    return plots.filter(plot => {
-      // Terrain type filter
-      if (filters.terrainTypes.length > 0 && !filters.terrainTypes.includes(plot.terrain_type)) {
-        return false;
-      }
-
-      // Ownership filter
-      if (filters.ownershipStatus === 'available' && plot.owner) {
-        return false;
-      }
-      if (filters.ownershipStatus === 'owned' && !plot.owner) {
-        return false;
-      }
-
-      // Price range filter
-      if (plot.xrp_price < filters.priceRange[0] || plot.xrp_price > filters.priceRange[1]) {
-        return false;
-      }
-
-      // Yield range filter
-      if (plot.yield_percentage !== undefined) {
-        if (plot.yield_percentage < filters.yieldRange[0] || plot.yield_percentage > filters.yieldRange[1]) {
-          return false;
-        }
-      }
-
-      // Size multiplier filter
-      if (filters.sizeMultiplier !== 'all') {
-        const sizeValue = plot.size_multiplier || 1;
-        switch (filters.sizeMultiplier) {
-          case 'small':
-            if (sizeValue >= 1.5) return false;
-            break;
-          case 'medium':
-            if (sizeValue < 1.5 || sizeValue >= 2.0) return false;
-            break;
-          case 'large':
-            if (sizeValue < 2.0 || sizeValue >= 2.5) return false;
-            break;
-          case 'premium':
-            if (sizeValue < 2.5) return false;
-            break;
-        }
-      }
-
-      // Resources filter
-      if (filters.hasResources && (!plot.resources || plot.resources.length === 0)) {
-        return false;
-      }
-
-      // Size premium filter (legacy)
-      if (filters.sizePremium && (!plot.size_multiplier || plot.size_multiplier <= 1)) {
-        return false;
-      }
-
-      // Search term filter
-      if (filters.searchTerm) {
-        const searchLower = filters.searchTerm.toLowerCase();
-        const matchesId = plot.id.toString().includes(searchLower);
-        const matchesDescription = plot.description.toLowerCase().includes(searchLower);
-        const matchesResources = plot.resources.some(resource => 
-          resource.toLowerCase().includes(searchLower)
-        );
-        const matchesTerrain = plot.terrain_type.toLowerCase().includes(searchLower);
-        const matchesOwner = plot.owner?.toLowerCase().includes(searchLower);
-        
-        if (!matchesId && !matchesDescription && !matchesResources && !matchesTerrain && !matchesOwner) {
-          return false;
-        }
-      }
-
-      return true;
-    });
-  }, [plots, filters]);
 
   const containerHeight = isFullscreen 
     ? 'h-screen' 

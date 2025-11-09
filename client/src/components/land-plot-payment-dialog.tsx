@@ -88,13 +88,14 @@ export const LandPlotPaymentDialog: React.FC<LandPlotPaymentDialogProps> = ({
 
   // Initiate purchase mutation
   const initiatePurchase = useMutation({
-    mutationFn: async (data: { plotId: string; paymentMethod: string }) => {
-      return apiRequest('/api/nft-gaming/land-plots/purchase/initiate', {
+    mutationFn: async (data: { plotId: string; paymentMethod: string; walletAddress: string }) => {
+      const response = await apiRequest('/api/nft-gaming/land-plots/purchase', {
         method: 'POST',
         body: JSON.stringify(data)
       });
+      return await response.json();
     },
-    onSuccess: (response) => {
+    onSuccess: (response: any) => {
       if (response.success) {
         setPurchaseDetails(response.purchase);
         toast({
@@ -115,12 +116,13 @@ export const LandPlotPaymentDialog: React.FC<LandPlotPaymentDialogProps> = ({
   // Verify payment mutation
   const verifyPayment = useMutation({
     mutationFn: async (data: { purchaseId: string; transactionHash: string }) => {
-      return apiRequest(`/api/nft-gaming/land-plots/purchase/${data.purchaseId}/verify`, {
+      const response = await apiRequest(`/api/nft-gaming/land-plots/purchase/${data.purchaseId}/verify`, {
         method: 'POST',
         body: JSON.stringify({ transactionHash: data.transactionHash })
       });
+      return await response.json();
     },
-    onSuccess: (response) => {
+    onSuccess: (response: any) => {
       if (response.success) {
         toast({
           title: "Plot Purchased Successfully! 🎉",
@@ -141,13 +143,17 @@ export const LandPlotPaymentDialog: React.FC<LandPlotPaymentDialogProps> = ({
   });
 
   const handlePaymentMethodSelect = (method: 'XRP' | 'RDL') => {
-    if (!plot || !pricing?.pricing) return;
+    if (!plot || !(pricing as any)?.pricing) return;
     
     setSelectedPaymentMethod(method);
     
+    // Get wallet address from localStorage
+    const walletAddress = localStorage.getItem('xrpl_wallet_address') || '';
+    
     initiatePurchase.mutate({
       plotId: plot.id,
-      paymentMethod: method
+      paymentMethod: method,
+      walletAddress
     });
   };
 
@@ -195,7 +201,7 @@ export const LandPlotPaymentDialog: React.FC<LandPlotPaymentDialogProps> = ({
 
   if (!plot) return null;
 
-  const plotPricing = pricing?.pricing as PlotPricing | undefined;
+  const plotPricing = (pricing as any)?.pricing as PlotPricing | undefined;
 
   return (
     <Dialog open={isOpen} onOpenChange={handleClose}>

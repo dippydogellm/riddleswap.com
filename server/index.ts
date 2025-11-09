@@ -558,6 +558,11 @@ async function performAsyncInitialization() {
   app.use('/api/rdl', rdlBalanceRoutes);
   console.log('🪙 RDL Balance routes registered (RDL token balance queries)');
 
+  // Trade Center Routes (Swap, Liquidity, Limit Orders, Bridge)
+  const tradeCenterRoutes = (await import('./routes/tradecenter')).default;
+  app.use('/api/tradecenter', tradeCenterRoutes);
+  console.log('💱 Trade Center routes registered (swap, liquidity, limit orders, bridge)');
+
   // Land Inventory Routes (NFTs, Buildings, Weapons on Land)
   app.use('/api/land-inventory', landInventoryRoutes);
   console.log('🏰 Land Inventory routes registered (place NFTs, buildings, weapons on land)');

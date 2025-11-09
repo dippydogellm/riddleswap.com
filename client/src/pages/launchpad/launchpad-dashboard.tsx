@@ -42,6 +42,7 @@ interface TokenLaunch {
   status: string;
   currentStage: string;
   totalRaised: string;
+  fundingGoal: string;
   participantCount: number;
   whitelistStartTime: string;
   whitelistEndTime: string;
@@ -51,6 +52,11 @@ interface TokenLaunch {
   openWlEndTime: string;
   openSaleStartTime: string;
   openSaleEndTime: string;
+  // Deployment-related fields
+  autoLaunchEnabled: boolean;
+  autoLaunchTriggered: boolean;
+  contractAddress?: string;
+  autoLaunchTransaction?: string;
   createdAt: string;
 }
 
@@ -65,7 +71,10 @@ export default function LaunchpadDashboard() {
   // Fetch all active launches
   const { data: launches = [], isLoading: loadingLaunches } = useQuery<TokenLaunch[]>({
     queryKey: ['/api/launchpad/launches'],
-    queryFn: () => apiRequest('/api/launchpad/launches'),
+    queryFn: async () => {
+      const response = await apiRequest('/api/launchpad/launches');
+      return response.json();
+    },
     refetchInterval: 30000, // Refresh every 30 seconds
   });
 

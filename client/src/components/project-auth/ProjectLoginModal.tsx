@@ -121,14 +121,15 @@ export default function ProjectLoginModal({ isOpen, onClose, project, onSuccess 
   });
 
   // Load project auth configuration
-  const { mutate: loadProjectAuth, isPending: loadingAuth } = useMutation({
+  const { mutate: fetchAuthConfig } = useMutation({
     mutationFn: async () => {
       const response = await apiRequest(`/api/projects/auth/config/${project.id}`);
-      return response;
+      const result = await response.json();
+      return result as { auth: ProjectAuth };
     },
     onSuccess: (data) => {
       setProjectAuth(data.auth);
-      setAuthMethod(data.auth.auth_type === 'hybrid' ? 'password' : data.auth.auth_type);
+      setAuthMethod(data.auth.auth_type === 'hybrid' ? 'password' : (data.auth.auth_type === 'wallet_signature' ? 'wallet' : 'password'));
     },
     onError: (error: any) => {
       toast({
@@ -144,15 +145,15 @@ export default function ProjectLoginModal({ isOpen, onClose, project, onSuccess 
     mutationFn: async (data: { walletAddress: string; chain: string }) => {
       const response = await apiRequest('/api/auth-nonce', {
         method: 'POST',
-        body: {
+        body: JSON.stringify({
           walletAddress: data.walletAddress,
           chain: data.chain,
           walletType: 'metamask' // Default, could be dynamic
-        }
+        })
       });
-      return response;
+      return await response.json();
     },
-    onSuccess: (data) => {
+    onSuccess: (data: any) => {
       setWalletAuthState({
         step: 'sign',
         nonce: data.nonce,
@@ -176,18 +177,20 @@ export default function ProjectLoginModal({ isOpen, onClose, project, onSuccess 
 
   // Login mutations
   const { mutate: loginWithPassword, isPending: passwordLogging } = useMutation({
-    mutationFn: async (data: { password: string }) => {
+    mutationFn: async (data: z.infer<typeof passwordLoginSchema>) => {
       const response = await apiRequest(`/api/projects/auth/login`, {
         method: 'POST',
-        body: {
+        body: JSON.stringify({
           projectId: project.id,
           loginMethod: 'password',
           password: data.password,
           ipAddress: '', // Will be set by backend
           userAgent: navigator.userAgent
-        }
+        }),
+        headers: { 'Content-Type': 'application/json' }
       });
-      return response;
+      const result = await response.json();
+      return result as { sessionToken: string; expiresAt: string; sessionTimeoutMinutes: number };
     },
     onSuccess: (data) => {
       toast({
@@ -210,7 +213,7 @@ export default function ProjectLoginModal({ isOpen, onClose, project, onSuccess 
     mutationFn: async (data: z.infer<typeof walletLoginSchema>) => {
       const response = await apiRequest(`/api/projects/auth/login`, {
         method: 'POST',
-        body: {
+        body: JSON.stringify({
           projectId: project.id,
           loginMethod: 'wallet_signature',
           walletAddress: data.walletAddress,
@@ -219,9 +222,11 @@ export default function ProjectLoginModal({ isOpen, onClose, project, onSuccess 
           chain: data.chain,
           ipAddress: '', // Will be set by backend
           userAgent: navigator.userAgent
-        }
+        }),
+        headers: { 'Content-Type': 'application/json' }
       });
-      return response;
+      const result = await response.json();
+      return result as { sessionToken: string; expiresAt: string; sessionTimeoutMinutes: number };
     },
     onSuccess: (data) => {
       toast({
@@ -244,7 +249,7 @@ export default function ProjectLoginModal({ isOpen, onClose, project, onSuccess 
   // Load auth configuration when modal opens
   useEffect(() => {
     if (isOpen && project.id) {
-      loadProjectAuth();
+      fetchAuthConfig();
     }
   }, [isOpen, project.id]);
 
@@ -293,7 +298,7 @@ export default function ProjectLoginModal({ isOpen, onClose, project, onSuccess 
     }, 2000);
   };
 
-  if (loadingAuth) {
+  if (!projectAuth) {
     return (
       <Dialog open={isOpen} onOpenChange={onClose}>
         <DialogContent className="w-[95vw] sm:max-w-3xl max-h-[90vh] overflow-y-auto">
@@ -308,7 +313,7 @@ export default function ProjectLoginModal({ isOpen, onClose, project, onSuccess 
     );
   }
 
-  const isLocked = projectAuth?.lockout_until && new Date(projectAuth.lockout_until) > new Date();
+  const isLocked = projectAuth.lockout_until && new Date(projectAuth.lockout_until) > new Date();
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>

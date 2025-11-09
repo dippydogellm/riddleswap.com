@@ -35,7 +35,7 @@ import {
 import { Badge } from '@/components/ui/badge';
 import { Checkbox } from '@/components/ui/checkbox';
 import { Separator } from '@/components/ui/separator';
-import { Plus, Trash2, ArrowLeft, Sparkles, Package, Settings, Crown, Rocket, Wallet, AlertCircle, Clock, Image, Coins } from 'lucide-react';
+import { Plus, Trash2, ArrowLeft, Sparkles, Package, Settings, Crown, Rocket, Wallet, AlertCircle, Clock, Image, Coins, Check } from 'lucide-react';
 import { Alert, AlertDescription } from '@/components/ui/alert';
 
 // Form schemas
@@ -131,8 +131,8 @@ export default function ProjectWizard() {
         headers: { 'Content-Type': 'application/json' },
       });
     },
-    onSuccess: (response) => {
-      const project = response.json ? response.json() : response;
+    onSuccess: async (response) => {
+      const project = await response.json();
       toast({
         title: 'Project Created',
         description: `Your ${assetType.toUpperCase()} project has been created successfully`,
@@ -797,7 +797,7 @@ export default function ProjectWizard() {
                         </ul>
                         <Button 
                           className="w-full mt-6 bg-orange-500 hover:bg-orange-600" 
-                          onClick={() => navigate(`/devtools/subscription-plans?project=${createdProjectId}&plan=bronze`)}
+                          onClick={() => setLocation(`/devtools/subscription-plans?project=${createdProjectId}&plan=bronze`)}
                         >
                           Pay with Crypto
                         </Button>
@@ -841,7 +841,7 @@ export default function ProjectWizard() {
                         </div>
                         <Button 
                           className="w-full mt-6 bg-gradient-to-r from-yellow-400 to-yellow-600 hover:from-yellow-500 hover:to-yellow-700" 
-                          onClick={() => navigate(`/devtools/subscription-plans?project=${createdProjectId}&plan=gold`)}
+                          onClick={() => setLocation(`/devtools/subscription-plans?project=${createdProjectId}&plan=gold`)}
                         >
                           <Crown className="w-4 h-4 mr-2" />
                           Pay with Crypto

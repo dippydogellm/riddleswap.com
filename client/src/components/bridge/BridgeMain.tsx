@@ -87,38 +87,9 @@ export function BridgeMain() {
   const handleStep1Submit = async () => {
     setState(prev => ({ ...prev, isProcessing: true }));
     
-    // Get session token from multiple storage locations
-    let sessionToken = localStorage.getItem('sessionToken');
-    
-    // Also check sessionStorage for walletSession (used by login)
-    if (!sessionToken) {
-      try {
-        const sessionStorageData = sessionStorage.getItem('walletSession');
-        if (sessionStorageData) {
-          const parsed = JSON.parse(sessionStorageData);
-          sessionToken = parsed.sessionToken;
-          console.log('🔑 [BRIDGE] Found session token in walletSession storage');
-        }
-      } catch (error) {
-        console.log('❌ [BRIDGE] Failed to parse session data:', error);
-      }
-    } else {
-      console.log('🔑 [BRIDGE] Found session token in localStorage');
-    }
-    
-    // Also try riddle_wallet_session as fallback
-    if (!sessionToken) {
-      try {
-        const sessionStorageData = sessionStorage.getItem('riddle_wallet_session');
-        if (sessionStorageData) {
-          const parsed = JSON.parse(sessionStorageData);
-          sessionToken = parsed.sessionToken;
-          console.log('🔑 [BRIDGE] Found session token in riddle_wallet_session storage');
-        }
-      } catch (error) {
-        // Ignore parsing errors
-      }
-    }
+    // Use transactionAuth utility for consistent session handling
+    const { getSessionToken, isAuthenticated } = await import('@/utils/transactionAuth');
+    const sessionToken = getSessionToken();
     
     if (!sessionToken) {
       console.log('❌ [BRIDGE] No session token found in any storage location');
@@ -130,19 +101,9 @@ export function BridgeMain() {
     console.log('🔐 [BRIDGE] Using session token:', sessionToken?.slice(0, 12) + '...');
     
     // Verify session is still valid before proceeding
-    try {
-      const sessionCheck = await fetch('/api/riddle-wallet/session', {
-        headers: { 'Authorization': `Bearer ${sessionToken}` }
-      });
-      
-      if (!sessionCheck.ok) {
-        alert('Session expired. Please login to your Riddle wallet again');
-        setState(prev => ({ ...prev, isProcessing: false }));
-        return;
-      }
-    } catch (error) {
-      console.error('Session validation failed:', error);
-      alert('Please login to your Riddle wallet first');
+    const authValid = await isAuthenticated();
+    if (!authValid) {
+      alert('Session expired. Please login to your Riddle wallet again');
       setState(prev => ({ ...prev, isProcessing: false }));
       return;
     }

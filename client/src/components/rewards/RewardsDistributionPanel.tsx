@@ -12,12 +12,22 @@ export default function RewardsDistributionPanel() {
   const [isProcessing, setIsProcessing] = useState(false);
 
   // Fetch current month's distribution status
-  const { data: distributionData, isLoading } = useQuery({
+  const { data: distributionData, isLoading } = useQuery<{
+    rdlToDistribute: number;
+    status: string;
+    recentDistributions: Array<{
+      id: number;
+      distributionMonth: string;
+      totalUsers: number;
+      rdlDistributed: number;
+      distributionDate: string;
+    }>;
+  }>({
     queryKey: ["/api/rewards/distribution/current"],
   });
 
   // Fetch bank wallet stats
-  const { data: bankStats } = useQuery({
+  const { data: bankStats } = useQuery<{ monthlyRevenue: number }>({
     queryKey: ["/api/rewards/bank-stats"],
   });
 

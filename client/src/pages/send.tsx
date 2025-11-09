@@ -31,7 +31,79 @@ export default function SendPage() {
   const [selectedChain, setSelectedChain] = useState("xrp");
   const [selectedToken, setSelectedToken] = useState("XRP");
   const [loading, setLoading] = useState(false);
-  
+  const [checkingTrustline, setCheckingTrustline] = useState(false);
+  const [recipientTrustlineStatus, setRecipientTrustlineStatus] = useState<{
+    hasTrustline: boolean;
+    currency: string;
+    issuer: string;
+  } | null>(null);
+  const [checkingActivation, setCheckingActivation] = useState(false);
+  const [recipientActivated, setRecipientActivated] = useState<boolean | null>(null);
+
+  // Check if recipient address has trustline for selected token
+  const checkTrustlineStatus = async (recipientAddress: string, currency: string, issuer: string) => {
+    if (!recipientAddress || !currency) return;
+
+    setCheckingTrustline(true);
+    try {
+      const resp = await fetch(`/api/xrpl/trustlines/${recipientAddress}?currency=${currency}&issuer=${issuer}`);
+      if (resp.ok) {
+        const data = await resp.json();
+        setRecipientTrustlineStatus({
+          hasTrustline: data.hasTrustline || false,
+          currency,
+          issuer
+        });
+      } else {
+        setRecipientTrustlineStatus(null);
+      }
+    } catch (error) {
+      console.error('Error checking trustline:', error);
+      setRecipientTrustlineStatus(null);
+    } finally {
+      setCheckingTrustline(false);
+    }
+  };
+
+  // Check if recipient wallet is activated on XRP Ledger
+  const checkWalletActivation = async (address: string) => {
+    if (!address) return;
+
+    setCheckingActivation(true);
+    try {
+      const resp = await fetch(`/api/xrpl/account-info/${address}`);
+      if (resp.ok) {
+        const data = await resp.json();
+        setRecipientActivated(data.activated || false);
+      } else {
+        setRecipientActivated(null);
+      }
+    } catch (error) {
+      console.error('Error checking wallet activation:', error);
+      setRecipientActivated(null);
+    } finally {
+      setCheckingActivation(false);
+    }
+  };
+
+  // Check trustline and activation when recipient or token changes
+  useEffect(() => {
+    if (recipientAddress && selectedChain === 'xrp' && selectedToken !== 'XRP') {
+      // For XRP tokens, check trustline (assuming issuer is needed, using a placeholder for now)
+      // In a real implementation, you'd need to get the issuer from the token selection
+      const issuer = selectedToken === 'XRP' ? '' : 'placeholder_issuer'; // Replace with actual issuer logic
+      checkTrustlineStatus(recipientAddress, selectedToken, issuer);
+    } else {
+      setRecipientTrustlineStatus(null);
+    }
+
+    if (recipientAddress && selectedChain === 'xrp') {
+      checkWalletActivation(recipientAddress);
+    } else {
+      setRecipientActivated(null);
+    }
+  }, [recipientAddress, selectedToken, selectedChain]);
+
   // Bank wallet for testing
   const BANK_WALLET = "rsFbZ33Zr3BCVyiVPw8pFvbtnrG1i8FwA3";
 
@@ -127,6 +199,44 @@ export default function SendPage() {
           <CardContent>
             <Stack spacing={2}>
               <TextField label="Recipient Address" value={recipientAddress} onChange={(e) => setRecipientAddress(e.target.value)} fullWidth />
+
+              {/* Wallet Activation Warning */}
+              {recipientActivated === false && selectedChain === 'xrp' && (
+                <Card sx={{ bgcolor: 'warning.light', border: 1, borderColor: 'warning.main' }}>
+                  <CardContent sx={{ py: 1 }}>
+                    <Typography variant="body2" color="warning.contrastText" display="flex" alignItems="center" gap={1}>
+                      <WalletIcon size={16} />
+                      Warning: Recipient wallet is not activated on XRP Ledger. They need at least 1 XRP to activate their wallet before receiving tokens.
+                    </Typography>
+                  </CardContent>
+                </Card>
+              )}
+
+              {/* Trustline Warning */}
+              {recipientTrustlineStatus && !recipientTrustlineStatus.hasTrustline && selectedChain === 'xrp' && selectedToken !== 'XRP' && (
+                <Card sx={{ bgcolor: 'error.light', border: 1, borderColor: 'error.main' }}>
+                  <CardContent sx={{ py: 1 }}>
+                    <Typography variant="body2" color="error.contrastText" display="flex" alignItems="center" gap={1}>
+                      <Tag size={16} />
+                      Warning: Recipient does not have a trustline for {recipientTrustlineStatus.currency}.
+                      The transaction may fail. Ask them to set up a trustline first.
+                    </Typography>
+                  </CardContent>
+                </Card>
+              )}
+
+              {/* Checking Status */}
+              {(checkingTrustline || checkingActivation) && (
+                <Card sx={{ bgcolor: 'info.light', border: 1, borderColor: 'info.main' }}>
+                  <CardContent sx={{ py: 1 }}>
+                    <Typography variant="body2" color="info.contrastText" display="flex" alignItems="center" gap={1}>
+                      <CircularProgress size={14} sx={{ mr: 1 }} />
+                      Checking recipient wallet status...
+                    </Typography>
+                  </CardContent>
+                </Card>
+              )}
+
               <TextField label="Amount" type="number" value={amount} onChange={(e) => setAmount(e.target.value)} fullWidth />
 
               <FormControl fullWidth>
@@ -160,7 +270,17 @@ export default function SendPage() {
                 Test with Bank Wallet (0.01 {selectedToken})
               </Button>
 
-              <Button onClick={handleSend} disabled={loading || !recipientAddress || !amount} variant="contained">
+              <Button
+                onClick={handleSend}
+                disabled={
+                  loading ||
+                  !recipientAddress ||
+                  !amount ||
+                  (selectedChain === 'xrp' && selectedToken !== 'XRP' && recipientTrustlineStatus && !recipientTrustlineStatus.hasTrustline) ||
+                  (selectedChain === 'xrp' && recipientActivated === false)
+                }
+                variant="contained"
+              >
                 {loading ? <><CircularProgress size={16} sx={{ mr: 1 }} /> Sending…</> : `Send ${selectedToken}`}
               </Button>
             </Stack>

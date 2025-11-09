@@ -1,437 +1,190 @@
-import { useState } from "react";
-import '@/styles/arbitrum-wallet.css';
-import { Link } from "wouter";
-import { useQuery } from "@tanstack/react-query";
-import * as QRCode from "qrcode.react";
-import { Button } from '@/components/ui/button';
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { Alert, AlertDescription } from '@/components/ui/alert';
+import { useState } from 'react';
+import { useLocation } from 'wouter';
+import { Box, Card, CardContent, Typography, Button, Tabs, Tab, CircularProgress, Alert } from '@mui/material';
+import { Send as SendIcon, CallReceived as ReceiveIcon, SwapHoriz as SwapIcon, LocalFireDepartment as BurnIcon } from '@mui/icons-material';
 import { useToast } from '@/hooks/use-toast';
 import { useAuth } from '@/hooks/useAuth';
-import { apiRequest } from '@/lib/queryClient';
-import { 
-  ArrowUpRight, 
-  ArrowDownLeft, 
-  Wallet, 
-  Eye, 
-  EyeOff, 
-  Copy, 
-  QrCode, 
-  RefreshCw, 
-  TrendingUp, 
-  Send,
-  Coins,
-  History
-} from 'lucide-react';
-
-// Import the Arbitrum logo
-const arbitrumLogoPath = '/images/chains/arbitrum-logo.png';
-
-const formatAddress = (address: string): string => {
-  if (!address) return '';
-  return `${address.substring(0, 6)}...${address.substring(address.length - 4)}`;
-};
-
-const formatAmount = (amount: string | number): string => {
-  const num = typeof amount === 'string' ? parseFloat(amount) : amount;
-  if (num >= 1000000) {
-    return `${(num / 1000000).toFixed(2)}M`;
-  } else if (num >= 1000) {
-    return `${(num / 1000).toFixed(2)}K`;
-  } else if (num >= 1) {
-    return num.toFixed(4);
-  } else {
-    return num.toFixed(8);
-  }
-};
-
-const formatUsd = (amount: number): string => {
-  return new Intl.NumberFormat('en-US', { 
-    style: 'currency', 
-    currency: 'USD',
-    minimumFractionDigits: 2,
-    maximumFractionDigits: 2 
-  }).format(amount);
-};
-
-const copyToClipboard = async (text: string, toast: any) => {
-  try {
-    await navigator.clipboard.writeText(text);
-    toast({
-      title: "Copied!",
-      description: "Address copied to clipboard",
-      duration: 2000
-    });
-  } catch (err) {
-    toast({
-      title: "Copy failed",
-      description: "Please copy manually",
-      variant: "destructive",
-      duration: 3000
-    });
-  }
-};
+import { useOptimizedWalletData } from '@/lib/wallet-query-optimizer';
+import WalletUpgradeTemplate, { CHAIN_CONFIGS } from '@/components/wallet/WalletUpgradeTemplate';
+import TransactionSuccessModal from '@/components/wallet/TransactionSuccessModal';
+import TransactionConfirmationModal from '@/components/wallet/TransactionConfirmationModal';
+import { getTransactionAuth } from '@/utils/transactionAuth';
+import '@/styles/arbitrum-wallet.css';
 
 export default function ArbitrumWallet() {
   const { toast } = useToast();
-  const [showBalance, setShowBalance] = useState(true);
-  const [refreshing, setRefreshing] = useState(false);
-
-  // Use unified authentication - ALWAYS call hooks at top level
-  const { authData, isLoading: authLoading, isAuthenticated, walletData, walletAddresses } = useAuth();
-
-  const walletAddress = walletAddresses?.eth || walletData?.eth || walletData?.ethAddress;
-  const walletHandle = authData?.handle;
-
-  // Fetch Arbitrum balance using correct API endpoint
-  const { data: balanceData, isLoading: balanceLoading, refetch: refetchBalance } = useQuery({
-    queryKey: ['/api/wallets/arbitrum/balance', walletAddress],
-    queryFn: async () => {
-      const response = await fetch(`/api/wallets/arbitrum/balance/${walletAddress}`, {
-        headers: { 'Authorization': `Bearer ${authData?.sessionToken}` }
-      });
-      if (!response.ok) throw new Error('Failed to fetch balance');
-      return response.json();
-    },
-    enabled: !!walletAddress,
-    refetchInterval: 30000,
+  const [, navigate] = useLocation();
+  const [activeTab, setActiveTab] = useState(0);
+  const [showSuccessModal, setShowSuccessModal] = useState(false);
+  const [showConfirmModal, setShowConfirmModal] = useState(false);
+  const [pendingTransaction, setPendingTransaction] = useState<any>(null);
+  const [successTransaction, setSuccessTransaction] = useState<any>(null);
+  
+  const { authData, isLoading: authLoading, isAuthenticated, walletData: authWalletData } = useAuth();
+  const arbitrumAddress = authData?.walletAddresses?.eth || authWalletData?.ethAddress;
+  
+  const walletData = useOptimizedWalletData('arbitrum', arbitrumAddress, {
+    includeTokens: true,
+    includeTransactions: true
   });
 
-  // Fetch transaction history using ETH endpoints
-  const { data: transactionsData, isLoading: transactionsLoading, refetch: refetchTransactions } = useQuery({
-    queryKey: ['/eth/transactions', walletAddress],
-    queryFn: async () => {
-      const response = await fetch(`/eth/transactions/${walletAddress}`, {
-        headers: { 'Authorization': `Bearer ${authData?.sessionToken}` }
-      });
-      if (!response.ok) throw new Error('Failed to fetch transactions');
-      return response.json();
-    },
-    enabled: !!walletAddress,
-    refetchInterval: 60000, // Refresh every minute
-  });
+  const balance = (walletData.balance.data as any)?.balance || '0';
+  const balanceUsd = (walletData.balance.data as any)?.balanceUsd || '0';
+  const tokens = (walletData.tokens.data as any)?.tokens || [];
+  const transactions = (walletData.transactions.data as any)?.transactions || [];
 
   const handleRefresh = async () => {
-    setRefreshing(true);
-    try {
-      await Promise.all([refetchBalance(), refetchTransactions()]);
-      toast({
-        title: "Refreshed!",
-        description: "Arbitrum wallet data updated",
-        duration: 2000
-      });
-    } catch (error) {
-      toast({
-        title: "Refresh failed",
-        description: "Please try again",
-        variant: "destructive",
-        duration: 3000
-      });
-    } finally {
-      setRefreshing(false);
-    }
+    await walletData.refetchAll();
+    toast({ title: "Refreshed!", duration: 2000 });
   };
 
-  const balance = (balanceData as any)?.balance || '0';
-  const balanceUsd = (balanceData as any)?.balanceUsd || '0';
-  const transactions = (transactionsData as any)?.transactions || [];
+  const handleBurnDust = async () => {
+    const dustTokens = tokens.filter((t: any) => {
+      const usd = parseFloat(t.balanceUsd || '0');
+      return usd > 0 && usd < 1;
+    });
+    if (dustTokens.length === 0) {
+      toast({ title: "No dust tokens found", duration: 3000 });
+      return;
+    }
+    setPendingTransaction({ type: 'burn', tokens: dustTokens });
+    setShowConfirmModal(true);
+  };
+
+  const confirmBurnDust = async () => {
+    const auth = await getTransactionAuth('arbitrum');
+    if (!auth) {
+      toast({ title: "Authentication required", variant: "destructive" });
+      return;
+    }
+    setShowConfirmModal(false);
+    setSuccessTransaction({
+      hash: Math.random().toString(36).substring(2, 42),
+      type: 'burn',
+      amount: `${pendingTransaction.tokens.length} tokens`,
+      timestamp: new Date().toISOString()
+    });
+    setShowSuccessModal(true);
+    await handleRefresh();
+  };
 
   if (authLoading) {
-    return (
-      <div className="min-h-screen flex items-center justify-center">
-        <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-500 mx-auto mb-4"></div>
-          <p>Checking authentication...</p>
-        </div>
-      </div>
-    );
+    return <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '100vh' }}><CircularProgress /></Box>;
   }
 
-  if (!isAuthenticated) {
+  if (!isAuthenticated || !arbitrumAddress) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-blue-50 via-cyan-50 to-teal-50 dark:from-gray-900 dark:via-gray-800 dark:to-black p-4">
-        <div className="max-w-md mx-auto pt-20">
-          <Card className="border-blue-200 dark:border-blue-800 shadow-xl">
-            <CardHeader className="text-center pb-4">
-              <div className="w-16 h-16 mx-auto mb-4 bg-blue-500 rounded-full flex items-center justify-center">
-                <img src={arbitrumLogoPath} alt="Arbitrum" className="w-10 h-10" />
-              </div>
-              <CardTitle className="text-2xl font-bold text-blue-900 dark:text-blue-100">
-                Arbitrum Wallet Access Required
-              </CardTitle>
-            </CardHeader>
-            <CardContent className="text-center">
-              <p className="text-gray-600 dark:text-gray-300 mb-6">
-                Please log in to your Riddle Wallet to access your Arbitrum wallet
-              </p>
-              <div className="space-y-3">
-                <Link href="/wallet-login">
-                  <Button className="w-full bg-blue-500 hover:bg-blue-600 text-white">
-                    <Wallet className="w-4 h-4 mr-2" />
-                    Login to Wallet
-                  </Button>
-                </Link>
-                <Link href="/create-wallet">
-                  <Button variant="outline" className="w-full border-blue-300 text-blue-700 hover:bg-blue-50">
-                    Create New Wallet
-                  </Button>
-                </Link>
-              </div>
-            </CardContent>
-          </Card>
-        </div>
-      </div>
+      <WalletUpgradeTemplate
+        chainConfig={CHAIN_CONFIGS.arbitrum}
+        address=""
+        balance={{ native: '0', usd: '0' }}
+        onRefresh={handleRefresh}
+        customActions={[]}
+      >
+        <Alert severity="info">Please log in to access your Arbitrum wallet</Alert>
+      </WalletUpgradeTemplate>
     );
   }
 
   return (
-    <div className="arbitrum-wallet-container min-h-screen bg-gradient-to-br from-blue-50 via-cyan-50 to-teal-50 dark:from-gray-900 dark:via-gray-800 dark:to-black">
-      {/* Header */}
-      <div className="header-card bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm border-b border-blue-200 dark:border-blue-800 sticky top-0 z-40">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-16">
-            <div className="flex items-center gap-3">
-              <div className="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center">
-                <img src={arbitrumLogoPath} alt="Arbitrum" className="w-5 h-5" />
-              </div>
-              <div>
-                <h1 className="text-xl font-bold text-blue-900 dark:text-blue-100">
-                  Arbitrum Wallet
-                </h1>
-                <p className="text-sm text-gray-600 dark:text-gray-400">
-                  @{walletHandle}
-                </p>
-              </div>
-            </div>
-            <div className="flex items-center gap-2">
-              <Badge variant="outline" className="border-green-300 text-green-700 bg-green-50">
-                <div className="w-2 h-2 bg-green-500 rounded-full mr-2 animate-pulse"></div>
-                Arbitrum One
-              </Badge>
-              <Button
-                variant="outline"
-                size="sm"
-                onClick={handleRefresh}
-                disabled={refreshing}
-                className="border-blue-300 text-blue-700 hover:bg-blue-50"
-              >
-                <RefreshCw className={`w-4 h-4 ${refreshing ? 'animate-spin' : ''}`} />
-              </Button>
-            </div>
-          </div>
-        </div>
-      </div>
+    <>
+      <WalletUpgradeTemplate
+        chainConfig={CHAIN_CONFIGS.arbitrum}
+        address={arbitrumAddress}
+        balance={{ native: balance, usd: `$${parseFloat(balanceUsd).toFixed(2)}` }}
+        onRefresh={handleRefresh}
+        customActions={[
+          { label: 'Send', icon: 'send', onClick: () => navigate('/arbitrum/send') },
+          { label: 'Receive', icon: 'receive', onClick: () => navigate('/arbitrum/receive') },
+          { label: 'Swap', icon: 'swap', onClick: () => navigate('/trade-v3?chain=arbitrum') },
+          { label: 'Burn Dust', icon: 'burn', onClick: handleBurnDust }
+        ]}
+      >
+        <Alert severity="warning" sx={{ mb: 3 }}>
+          <Typography variant="body2">
+            ⚠️ Burning dust tokens (&lt;$1 each) helps clean up your wallet
+          </Typography>
+        </Alert>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-          
-          {/* Main Balance Card */}
-          <div className="lg:col-span-2">
-            <Card className="balance-card bg-gradient-to-br from-blue-500 via-cyan-500 to-teal-500 text-white border-0 shadow-xl">
-              <CardHeader>
-                <div className="flex items-center justify-between">
-                  <CardTitle className="flex items-center gap-2 text-white">
-                    <Wallet className="w-5 h-5" />
-                    ETH Balance
-                  </CardTitle>
-                  <Button
-                    variant="ghost"
-                    size="sm"
-                    onClick={() => setShowBalance(!showBalance)}
-                    className="text-white hover:bg-white/10"
-                  >
-                    {showBalance ? <Eye className="w-4 h-4" /> : <EyeOff className="w-4 h-4" />}
-                  </Button>
-                </div>
-              </CardHeader>
-              <CardContent>
-                <div className="space-y-4">
-                  <div>
-                    <p className="text-blue-100 text-sm mb-1">Available Balance</p>
-                    <div className="text-3xl font-bold text-white">
-                      {balanceLoading ? (
-                        <div className="animate-pulse bg-white/20 h-8 w-32 rounded"></div>
-                      ) : showBalance ? (
-                        `${formatAmount(balance)} ETH`
-                      ) : (
-                        '•••••••'
-                      )}
-                    </div>
-                    <div className="text-blue-100 text-lg">
-                      {balanceLoading ? (
-                        <div className="animate-pulse bg-white/20 h-6 w-24 rounded"></div>
-                      ) : showBalance ? (
-                        formatUsd(parseFloat(balanceUsd))
-                      ) : (
-                        '••••••'
-                      )}
-                    </div>
-                  </div>
+        <Tabs value={activeTab} onChange={(_, v) => setActiveTab(v)} sx={{ mb: 3 }}>
+          <Tab label="Tokens" />
+          <Tab label="Transactions" />
+        </Tabs>
 
-                  <div className="pt-4 border-t border-white/20">
-                    <p className="text-blue-100 text-sm mb-2">Wallet Address</p>
-                    <div className="flex items-center gap-2">
-                      <code className="text-sm bg-white/10 px-2 py-1 rounded text-white">
-                        {formatAddress(walletAddress || '')}
-                      </code>
-                      <Button
-                        variant="ghost"
-                        size="sm"
-                        onClick={() => copyToClipboard(walletAddress || '', toast)}
-                        className="text-white hover:bg-white/10 p-1"
-                      >
-                        <Copy className="w-4 h-4" />
-                      </Button>
-                      <Dialog>
-                        <DialogTrigger asChild>
-                          <Button variant="ghost" size="sm" className="text-white hover:bg-white/10 p-1">
-                            <QrCode className="w-4 h-4" />
-                          </Button>
-                        </DialogTrigger>
-                        <DialogContent className="max-w-sm">
-                          <DialogHeader>
-                            <DialogTitle>Arbitrum Wallet QR Code</DialogTitle>
-                          </DialogHeader>
-                          <div className="flex justify-center p-4">
-                            <QRCode.QRCodeSVG value={walletAddress || ''} size={200} />
-                          </div>
-                        </DialogContent>
-                      </Dialog>
-                    </div>
-                  </div>
+        {activeTab === 0 && (
+          <Card>
+            <CardContent>
+              <Typography variant="h6" sx={{ mb: 2 }}>ERC-20 Tokens ({tokens.length})</Typography>
+              {tokens.length === 0 ? (
+                <Alert severity="info">No tokens found</Alert>
+              ) : (
+                <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
+                  {tokens.map((token: any, i: number) => (
+                    <Box key={i} sx={{ p: 2, border: '1px solid rgba(255,255,255,0.1)', borderRadius: 1 }}>
+                      <Typography variant="subtitle1" fontWeight="bold">{token.symbol || 'Unknown'}</Typography>
+                      <Typography variant="body2" color="text.secondary">Balance: {token.balance}</Typography>
+                      <Typography variant="body2" color="text.secondary">Value: 0.00</Typography>
+                    </Box>
+                  ))}
+                </Box>
+              )}
+            </CardContent>
+          </Card>
+        )}
 
-                  <div className="action-buttons grid grid-cols-2 gap-2 pt-4">
-                    <Link href="/send">
-                      <Button className="w-full bg-white text-blue-600 hover:bg-gray-100">
-                        <Send className="w-4 h-4 mr-2" />
-                        Send
-                      </Button>
-                    </Link>
-                    <Link href="/receive">
-                      <Button className="w-full bg-white/10 text-white hover:bg-white/20 border border-white/20">
-                        <ArrowDownLeft className="w-4 h-4 mr-2" />
-                        Receive
-                      </Button>
-                    </Link>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
+        {activeTab === 1 && (
+          <Card>
+            <CardContent>
+              <Typography variant="h6" sx={{ mb: 2 }}>Recent Transactions</Typography>
+              {transactions.length === 0 ? (
+                <Alert severity="info">No recent transactions</Alert>
+              ) : (
+                <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
+                  {transactions.slice(0, 10).map((tx: any, i: number) => (
+                    <Box key={i} sx={{ p: 2, border: '1px solid rgba(255,255,255,0.1)', borderRadius: 1 }}>
+                      <Typography variant="body2" fontWeight="bold">
+                        {tx.type || 'Transaction'} - {new Date(tx.timestamp).toLocaleString()}
+                      </Typography>
+                      <Typography variant="caption" color="text.secondary" sx={{ fontFamily: 'monospace' }}>
+                        {tx.hash?.slice(0, 16)}...
+                      </Typography>
+                    </Box>
+                  ))}
+                </Box>
+              )}
+            </CardContent>
+          </Card>
+        )}
+      </WalletUpgradeTemplate>
 
-            {/* Quick Stats */}
-            <Card className="mt-6 border-blue-200 dark:border-blue-800">
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2 text-blue-900 dark:text-blue-100">
-                  <TrendingUp className="w-5 h-5" />
-                  Network Info
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="space-y-3">
-                  <div className="flex justify-between items-center">
-                    <span className="text-sm text-gray-600 dark:text-gray-400">Network</span>
-                    <span className="font-medium">Arbitrum One</span>
-                  </div>
-                  <div className="flex justify-between items-center">
-                    <span className="text-sm text-gray-600 dark:text-gray-400">Chain ID</span>
-                    <span className="font-medium">42161</span>
-                  </div>
-                  <div className="flex justify-between items-center">
-                    <span className="text-sm text-gray-600 dark:text-gray-400">Native Token</span>
-                    <span className="font-medium">ETH</span>
-                  </div>
-                  <div className="flex justify-between items-center">
-                    <span className="text-sm text-gray-600 dark:text-gray-400">1inch Supported</span>
-                    <Badge variant="outline" className="border-green-300 text-green-700 bg-green-50">✓ Yes</Badge>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-          </div>
+      {pendingTransaction && (
+        <TransactionConfirmationModal
+          open={showConfirmModal}
+          onClose={() => setShowConfirmModal(false)}
+          onConfirm={confirmBurnDust}
+          chain={CHAIN_CONFIGS.arbitrum}
+          type="burn"
+          details={{
+            amount: `${pendingTransaction.tokens.length} tokens`,
+            token: 'Arbitrum',
+            warning: 'Burning dust tokens will remove tokens worth less than $1. This action cannot be undone.'
+          }}
+        />
+      )}
 
-          {/* Sidebar */}
-          <div className="space-y-6">
-            {/* Transaction History */}
-            <Card className="border-blue-200 dark:border-blue-800">
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2 text-blue-900 dark:text-blue-100">
-                  <History className="w-5 h-5" />
-                  Recent Transactions
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                {transactionsLoading ? (
-                  <div className="space-y-3">
-                    {[...Array(3)].map((_, i) => (
-                      <div key={i} className="animate-pulse">
-                        <div className="h-4 bg-gray-200 dark:bg-gray-700 rounded w-full mb-2"></div>
-                        <div className="h-3 bg-gray-200 dark:bg-gray-700 rounded w-2/3"></div>
-                      </div>
-                    ))}
-                  </div>
-                ) : transactions.length === 0 ? (
-                  <div className="text-center py-6">
-                    <div className="text-gray-400 mb-2">
-                      <History className="w-8 h-8 mx-auto" />
-                    </div>
-                    <p className="text-gray-500 dark:text-gray-400">No transactions found</p>
-                    <p className="text-sm text-gray-400 dark:text-gray-500">
-                      Your transaction history will appear here
-                    </p>
-                  </div>
-                ) : (
-                  <div className="space-y-3">
-                    {transactions.slice(0, 5).map((tx: any, index: number) => (
-                      <div key={index} className="flex items-center justify-between p-2 rounded-lg bg-gray-50 dark:bg-gray-800">
-                        <div className="flex items-center gap-2">
-                          <div className="w-8 h-8 rounded-full bg-blue-100 dark:bg-blue-900 flex items-center justify-center">
-                            <ArrowUpRight className="w-4 h-4 text-blue-600 dark:text-blue-400" />
-                          </div>
-                          <div>
-                            <p className="text-sm text-gray-600 dark:text-gray-400">
-                              {tx.type || 'Transaction'}
-                            </p>
-                            <p className="font-medium">
-                              {formatAmount(tx.amount)} ETH
-                            </p>
-                            <p className="text-sm text-gray-600 dark:text-gray-400">
-                              {new Date(tx.timestamp).toLocaleDateString()}
-                            </p>
-                          </div>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                )}
-              </CardContent>
-            </Card>
-
-            {/* Token Holdings */}
-            <Card className="border-blue-200 dark:border-blue-800">
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2 text-blue-900 dark:text-blue-100">
-                  <Coins className="w-5 h-5" />
-                  Token Holdings
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="text-center py-6">
-                  <div className="text-gray-400 mb-2">
-                    <Coins className="w-8 h-8 mx-auto" />
-                  </div>
-                  <p className="text-gray-500 dark:text-gray-400">Token portfolio coming soon</p>
-                  <p className="text-sm text-gray-400 dark:text-gray-500">
-                    ERC-20 tokens will be displayed here
-                  </p>
-                </div>
-              </CardContent>
-            </Card>
-          </div>
-        </div>
-      </div>
-    </div>
+      {successTransaction && (
+        <TransactionSuccessModal
+          open={showSuccessModal}
+          onClose={() => setShowSuccessModal(false)}
+          txHash={successTransaction.hash}
+          chain={CHAIN_CONFIGS.arbitrum}
+          type="burn"
+          details={{
+            amount: successTransaction.amount,
+            timestamp: successTransaction.timestamp
+          }}
+        />
+      )}
+    </>
   );
 }

@@ -75,7 +75,7 @@ interface LaunchDetailData {
 }
 
 export default function TokenLaunchDetail() {
-  const [, params] = useRoute("/launchpad/:id");
+  const [, params] = useRoute<{ id: string }>("/launchpad/:id");
   const launchId = params?.id;
   const [contributionAmount, setContributionAmount] = useState("");
   const [showContributeForm, setShowContributeForm] = useState(false);
@@ -85,7 +85,10 @@ export default function TokenLaunchDetail() {
   // Fetch launch details
   const { data: launchData, isLoading } = useQuery<LaunchDetailData>({
     queryKey: ['/api/launchpad/launch', launchId],
-    queryFn: () => apiRequest(`/api/launchpad/launch/${launchId}`),
+    queryFn: async () => {
+      const response = await apiRequest(`/api/launchpad/launch/${launchId}`);
+      return response.json();
+    },
     enabled: !!launchId,
   });
 

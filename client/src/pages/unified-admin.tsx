@@ -846,7 +846,7 @@ function RiddleSwapReportsSection() {
   });
 
   // Fetch volume-based rewards
-  const { data: rewardsData, isLoading: rewardsLoading, refetch: refetchRewards } = useQuery({
+  const { data: rewardsData, isLoading: rewardsLoading, refetch: refetchRewards } = useQuery<{ data: any }>({
     queryKey: ['/api/riddleswap-collections/rewards', targetWallet],
     enabled: !!targetWallet,
     refetchInterval: 60000, // Refresh every minute

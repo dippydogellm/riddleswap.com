@@ -449,11 +449,11 @@ export default function CreateWallet() {
       console.log('✅ [CREATE WALLET] Wallet keys generated and verified:', !!walletGeneration);
 
       // Handle response structure properly
-      const generatedKeys = walletGeneration.wallets || walletGeneration;
-      const seedPhrase = walletGeneration.seedPhrase || generatedKeys.eth.mnemonic;
-      
-      if (!generatedKeys || !generatedKeys.eth) {
-        console.error('❌ [CREATE WALLET] Failed to generate wallet keys:', { generatedKeys: !!generatedKeys, hasEth: !!(generatedKeys && generatedKeys.eth) });
+      const generatedKeys = (walletGeneration as any).wallets || walletGeneration;
+      const seedPhrase = (walletGeneration as any).seedPhrase || (generatedKeys as any).eth?.mnemonic;
+
+      if (!generatedKeys || !(generatedKeys as any).eth) {
+        console.error('❌ [CREATE WALLET] Failed to generate wallet keys:', { generatedKeys: !!generatedKeys, hasEth: !!((generatedKeys as any) && (generatedKeys as any).eth) });
         throw new Error('Failed to generate wallet keys - invalid response structure');
       }
       

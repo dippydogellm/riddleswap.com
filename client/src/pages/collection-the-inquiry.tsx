@@ -1,8 +1,8 @@
-import { CollectionShowcase } from '@/components/collection-showcase';
+import { CollectionShowcaseV3 } from '@/components/collection-showcase-v3';
 
 export default function TheInquiryCollection() {
   return (
-    <CollectionShowcase
+    <CollectionShowcaseV3
       collectionName="The Inquiry"
       collectionSlug="the-inquiry"
       description="What makes a riddle? What makes us ask? Explore the mystery together as we journey through a vibrantly abstract and absurdist tale of the riddle and the blockchain. 123 unique AI-rendered NFTs that question reality, challenge perception, and invite you to discover the deeper meaning behind every enigma. The origin story of RiddleSwap begins here."

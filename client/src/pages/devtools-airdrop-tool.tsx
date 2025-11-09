@@ -34,7 +34,8 @@ const airdropSchema = z.object({
 type AirdropFormData = z.infer<typeof airdropSchema>;
 
 const AirdropTool = () => {
-  const { projectId } = useParams();
+  const params = useParams<{ projectId: string }>();
+  const projectId = params.projectId;
   const { toast } = useToast();
   const { isAuthenticated, isLoading } = useAuth();
 

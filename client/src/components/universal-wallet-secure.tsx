@@ -43,7 +43,7 @@ import { getSessionToken } from "@/utils/auth";
 import { clearAllStaleSessions } from "@/utils/session-cleanup";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
 import { connectJoeyWallet, disconnectJoeyWallet } from "@/lib/joey-wallet-integration";
-import { connectXamanWallet, disconnectXamanWallet } from "@/lib/xaman-wallet-integration";
+import { connectXamanWallet } from "@/lib/xaman-wallet-integration";
 import { XamanConnectQR } from "@/components/XamanConnectQR";
 
 import { NFTOffersManager } from "./nft-offers-manager";
@@ -2213,7 +2213,7 @@ export default function UniversalWalletPage({ config }: UniversalWalletPageProps
             
             // Optionally navigate to XRP wallet or update chain
             if (config?.symbol !== 'XRP') {
-              setSelectedChain('xrp');
+              // setSelectedChain('xrp'); // TODO: Implement chain switching if needed
             }
             
             setShowXamanQR(false);

@@ -37,12 +37,13 @@ export function LiveBridgeManager() {
   const [step3Result, setStep3Result] = useState<LiveBridgeStep3Data | null>(null);
 
   // Live Bridge Step 1: Create mainnet bridge
-  const createLiveBridge = useMutation({
+  const createLiveBridge = useMutation<LiveBridgeStep1Data, Error, any>({
     mutationFn: async (data: any) => {
-      return await apiRequest('/api/bridge/step1', {
+      const response = await apiRequest('/api/bridge/step1', {
         method: 'POST',
         body: JSON.stringify(data)
       });
+      return await response.json() as LiveBridgeStep1Data;
     },
     onSuccess: (data: LiveBridgeStep1Data) => {
       if (data.success) {
@@ -68,12 +69,13 @@ export function LiveBridgeManager() {
   });
 
   // Live Bridge Step 3: Execute mainnet RDL distribution
-  const completeLiveDistribution = useMutation({
+  const completeLiveDistribution = useMutation<LiveBridgeStep3Data, Error, any>({
     mutationFn: async (data: any) => {
-      return await apiRequest('/api/bridge/step3', {
+      const response = await apiRequest('/api/bridge/step3', {
         method: 'POST',
         body: JSON.stringify(data)
       });
+      return await response.json() as LiveBridgeStep3Data;
     },
     onSuccess: (data: LiveBridgeStep3Data) => {
       if (data.success) {

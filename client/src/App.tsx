@@ -33,17 +33,16 @@ const DexScreenerPage = lazy(() => import("@/pages/dexscreener"));
 const NFTCollectionPage = lazy(() => import("@/pages/nft-collection"));
 const NFTCollectionsPage = lazy(() => import("@/pages/nft-collections"));
 const NFTMarketplacePage = lazy(() => import("@/pages/nft-marketplace"));
-const MultiChainNFTMarketplace = lazy(() => import("@/pages/multichain-nft-marketplace"));
 const NFTCollectionDetail = lazy(() => import("@/pages/nft-collection-detail"));
-const EthMarketplacePage = lazy(() => import("@/pages/eth-marketplace"));
-const SolMarketplacePage = lazy(() => import("@/pages/sol-marketplace"));
 const NFTDetailPage = lazy(() => import("@/pages/nft-detail-material").then(module => ({ default: module.NFTDetailMaterialPage })));
+const NFTDetailV3Page = lazy(() => import("@/pages/nft-detail-v3"));
 const AcceptOfferPage = lazy(() => import("@/pages/accept-offer"));
 const NFTGatewayPage = lazy(() => import("@/pages/nft-gateway"));
 const GamingNFTs = lazy(() => import("@/pages/GamingNFTs"));
 const PartnerProjectDetail = lazy(() => import("@/pages/partner-project-detail"));
 const WalletProfile = lazy(() => import("@/pages/wallet-profile"));
 const TokenAnalytics = lazy(() => import("@/pages/token-analytics"));
+const TokenPageV3 = lazy(() => import("@/pages/token-page-v3"));
 const RiddleScanner = lazy(() => import("@/pages/riddle-scanner"));
 const AdvancedSearch = lazy(() => import("@/pages/advanced-search"));
 const SearchResults = lazy(() => import("@/pages/search-results"));
@@ -52,7 +51,6 @@ const NFTLaunchpadDashboard = lazy(() => import("@/pages/nft-launchpad-dashboard
 const NFTManagementPage = lazy(() => import("@/pages/nft-management"));
 const NFTProfilePage = lazy(() => import("@/pages/nft-profile"));
 const NFTTop24hPage = lazy(() => import("@/pages/nft-top24h"));
-const BrokerMarketplace = lazy(() => import("@/pages/broker-marketplace"));
 // Lazy load static and admin pages
 const BridgeCountdown = lazy(() => import("@/pages/bridge-countdown"));
 const OurStoryPage = lazy(() => import("@/pages/our-story"));
@@ -80,6 +78,7 @@ import "./styles/wallet-connect-fix.css"; // Wallet Connect modal z-index fixes
 import { SessionMonitor } from "@/components/SessionMonitor";
 import { GlobalSessionRenewalHandler } from "@/components/GlobalSessionRenewalHandler";
 import { AuthGuard } from "@/components/AuthGuard";
+import { RouteSessionWrapper } from "@/components/RouteSessionWrapper";
 import GDPRCookieConsent from "@/components/GDPRCookieConsent";
 import BottomShortcutBar from "@/components/BottomShortcutBar";
 import { useToast } from "@/hooks/use-toast";
@@ -322,10 +321,12 @@ function Router() {
   
   const [walletData, setWalletData] = useState(() => {
     console.log('💳 Router: Initializing wallet data state');
-    // Only load wallet data if session exists - use standardized key
-    const sessionToken = localStorage.getItem('riddle_session_token') || localStorage.getItem('sessionToken'); // Legacy fallback
-    if (!sessionToken) {
-      console.log('🔓 Router: No session token found');
+    // Only load wallet data if session exists - use standardized key with priority order
+    const sessionToken = localStorage.getItem('riddle_session_token') || 
+                         localStorage.getItem('sessionToken') || 
+                         localStorage.getItem('nft_session_token'); // Legacy fallbacks
+    if (!sessionToken || sessionToken === 'null' || sessionToken === 'undefined') {
+      console.log('🔓 Router: No valid session token found');
       return null;
     }
     const saved = localStorage.getItem('riddleWallet');
@@ -374,19 +375,20 @@ function Router() {
   }, []);
 
   return (
-    <div className="min-h-screen flex flex-col" style={{marginTop: 0, paddingTop: 0}}>
-      <ProfessionalHeader />
-      <SearchBar />
-      <div className="flex-1">
-        <Suspense fallback={
-          <div className="flex items-center justify-center min-h-screen">
-            <div className="text-center">
-              <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary mx-auto mb-4"></div>
-              <p className="text-sm text-muted-foreground">Loading page...</p>
+    <RouteSessionWrapper>
+      <div className="min-h-screen flex flex-col" style={{marginTop: 0, paddingTop: 0}}>
+        <ProfessionalHeader />
+        <SearchBar />
+        <div className="flex-1">
+          <Suspense fallback={
+            <div className="flex items-center justify-center min-h-screen">
+              <div className="text-center">
+                <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary mx-auto mb-4"></div>
+                <p className="text-sm text-muted-foreground">Loading page...</p>
+              </div>
             </div>
-          </div>
-        }>
-          <Switch>
+          }>
+            <Switch>
             {(() => {
               // Central grouped route configuration (order matters for precedence)
               type SimpleRoute = { path: string; component: any };
@@ -427,15 +429,13 @@ function Router() {
                   routes: [
                     // Marketplace before detail param routes to preserve precedence
                     { path: '/nft-marketplace', component: NFTMarketplacePage },
-                    { path: '/nft-marketplace-v2', component: NFTMarketplacePage },
                     { path: '/gaming-nfts', component: GamingNFTs },
-                    { path: '/eth', component: EthMarketplacePage },
-                    { path: '/sol', component: SolMarketplacePage },
                     { path: '/nft/collection/:taxon', component: NFTCollectionPage },
                     { path: '/nft-collections', component: NFTCollectionsPage },
                     { path: '/nft-collection/:chain/:contractAddress', component: NFTCollectionDetail },
                     { path: '/nft-collection/:issuer/:taxon', component: NFTCollectionDetail },
                     { path: '/nft/:nftId/accept-offer/:offerId', component: AcceptOfferPage },
+                    { path: '/nft/v3/:id', component: NFTDetailV3Page }, // V3 NFT Detail (Material UI)
                     { path: '/nft/:id', component: NFTDetailPage },
                     { path: '/nft-gateway', component: NFTGatewayPage },
                     { path: '/nft-launchpad', component: NftLaunchpadPage },
@@ -464,7 +464,6 @@ function Router() {
                     { path: '/nft-management', component: NFTManagementPage },
                     { path: '/nft-profile/:id', component: NFTProfilePage },
                     { path: '/nft-top24h', component: NFTTop24hPage },
-                    { path: '/broker-marketplace', component: BrokerMarketplace },
                   ],
                 },
                 {
@@ -584,6 +583,8 @@ function Router() {
                   routes: [
                     { path: '/scanner', component: RiddleScanner },
                     { path: '/riddle-scanner', component: RiddleScanner },
+                    // V3 Token Page (Material UI with integrated swap)
+                    { path: '/token/v3/:symbol/:issuer', component: TokenPageV3 },
                     // Chain token routes
                     { path: '/token/:symbol/:issuer', component: TokenAnalytics },
                     { path: '/xrpl/:symbol/:issuer', component: TokenAnalytics },
@@ -810,6 +811,7 @@ function Router() {
       </div>
       <UniversalFooter />
     </div>
+    </RouteSessionWrapper>
   );
 }
 

@@ -78,13 +78,19 @@ export function MyLaunches({ walletAddress }: MyLaunchesProps) {
   // Fetch user's launches
   const { data: launches = [], isLoading } = useQuery<TokenLaunch[]>({
     queryKey: ['/api/launchpad/my-launches', walletAddress],
-    queryFn: () => apiRequest(`/api/launchpad/my-launches/${walletAddress}`),
+    queryFn: async () => {
+      const response = await apiRequest(`/api/launchpad/my-launches/${walletAddress}`);
+      return await response.json() as TokenLaunch[];
+    },
   });
 
   // Fetch whitelist for selected launch
   const { data: whitelist = [] } = useQuery({
     queryKey: ['/api/launchpad/whitelist', selectedLaunch?.id],
-    queryFn: () => apiRequest(`/api/launchpad/whitelist/${selectedLaunch?.id}`),
+    queryFn: async () => {
+      const response = await apiRequest(`/api/launchpad/whitelist/${selectedLaunch?.id}`);
+      return await response.json() as any[];
+    },
     enabled: !!selectedLaunch,
   });
 

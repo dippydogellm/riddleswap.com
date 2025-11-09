@@ -602,7 +602,7 @@ const MappingSystemPage = () => {
                   data-testid="input-location-search"
                 />
               </div>
-              <Button onClick={refetchLocations} variant="outline" data-testid="button-refresh-locations">
+              <Button onClick={() => refetchLocations()} variant="outline" data-testid="button-refresh-locations">
                 <RefreshCw className="h-4 w-4" />
               </Button>
             </div>
@@ -757,7 +757,7 @@ const MappingSystemPage = () => {
                         
                         <Button
                           onClick={() => {
-                            setCoordinateInput(selectedLocation.coordinates);
+                            setCoordinateInput({ ...selectedLocation.coordinates, z: selectedLocation.coordinates.z || 0 });
                             setActiveTab('coordinates');
                           }}
                           variant="outline"

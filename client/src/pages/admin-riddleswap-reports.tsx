@@ -40,10 +40,11 @@ const AdminRiddleSwapReports = () => {
         method: 'POST'
       });
     },
-    onSuccess: (data) => {
+    onSuccess: async (data) => {
+      const jsonData = await data.json();
       toast({
         title: 'Collections Downloaded',
-        description: `Successfully processed ${data.collections_processed} collections with ${data.total_nfts} NFTs`,
+        description: `Successfully processed ${jsonData.collections_processed} collections with ${jsonData.total_nfts} NFTs`,
       });
       queryClient.invalidateQueries({ queryKey: ['/api/riddleswap-collections'] });
     },
@@ -57,7 +58,7 @@ const AdminRiddleSwapReports = () => {
   });
 
   // Fetch volume-based rewards
-  const { data: rewardsData, isLoading: rewardsLoading, refetch: refetchRewards } = useQuery({
+  const { data: rewardsData, isLoading: rewardsLoading, refetch: refetchRewards } = useQuery<{ data: any }>({
     queryKey: ['/api/riddleswap-collections/rewards', targetWallet],
     enabled: !!targetWallet,
     refetchInterval: 60000, // Refresh every minute
@@ -71,10 +72,11 @@ const AdminRiddleSwapReports = () => {
         : '/api/riddleswap-collections/report';
       return await apiRequest(url, { method: 'GET' });
     },
-    onSuccess: (data) => {
+    onSuccess: async (data) => {
+      const jsonData = await data.json();
       toast({
         title: 'Report Generated',
-        description: `Monthly RDL allocation report created: ${data.report_id}`,
+        description: `Monthly RDL allocation report created: ${jsonData.report_id}`,
       });
     },
     onError: (error: any) => {
@@ -87,7 +89,7 @@ const AdminRiddleSwapReports = () => {
   });
 
   // Fetch wallet rewards data
-  const { data: walletData, isLoading: walletLoading } = useQuery({
+  const { data: walletData, isLoading: walletLoading } = useQuery<{ data: any }>({
     queryKey: ['/api/riddleswap-collections/wallet', targetWallet],
     enabled: !!targetWallet,
   });

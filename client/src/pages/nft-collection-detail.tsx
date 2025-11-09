@@ -283,8 +283,8 @@ const TraitFilters = ({ traits, selectedTraits, onTraitChange }: {
 // Main Component
 export default function NFTCollectionDetail() {
   // Try both XRPL and multi-chain routes
-  const [, xrplParams] = useRoute('/nft-collection/:issuer/:taxon');
-  const [, multiChainParams] = useRoute('/nft-collection/:chain/:contractAddress');
+  const [, xrplParams] = useRoute<{ issuer: string; taxon: string }>('/nft-collection/:issuer/:taxon');
+  const [, multiChainParams] = useRoute<{ chain: string; contractAddress: string }>('/nft-collection/:chain/:contractAddress');
   const [, setLocation] = useLocation();
   
   // Determine if this is XRPL or multi-chain based on which route matched

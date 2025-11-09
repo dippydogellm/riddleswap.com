@@ -135,9 +135,11 @@ export default function ProjectAuthSetup({ isOpen, onClose, project, onSuccess }
 
       const response = await apiRequest('/api/projects/auth/register', {
         method: 'POST',
-        body: payload
+        body: JSON.stringify(payload),
+        headers: { 'Content-Type': 'application/json' }
       });
-      return response;
+      const result = await response.json();
+      return result as { success: boolean; authConfigId: string };
     },
     onSuccess: (data) => {
       toast({

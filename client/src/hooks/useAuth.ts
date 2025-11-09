@@ -72,7 +72,11 @@ export function useAuth(redirectToLogin = true) {
     // Add user object for compatibility with components expecting it
     user: {
       walletAddress: session.walletData?.xrpAddress || session.walletAddresses?.xrpAddress || null,
-      handle: session.handle || null
+      handle: session.handle || null,
+      xrpAddress: session.walletAddresses?.xrpAddress || session.walletData?.xrpAddress || null,
+      ethAddress: session.walletAddresses?.ethAddress || session.walletData?.ethAddress || null,
+      solAddress: session.walletAddresses?.solAddress || session.walletData?.solAddress || null,
+      btcAddress: session.walletAddresses?.btcAddress || session.walletData?.btcAddress || null
     }
   };
 }

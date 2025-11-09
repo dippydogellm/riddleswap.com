@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 // DISABLED: AppKit import - using direct wallet APIs only
-// import { appKit } from '@/lib/appkit-config';
+import { appKit } from '@/lib/appkit-config';
 import { XamanSwapQRModalEnhanced } from './xaman-qr-modal-swap-enhanced';
 import { UnifiedSuccessModal } from './modals';
 const xrpLogo = '/images/chains/xrp-logo.png';

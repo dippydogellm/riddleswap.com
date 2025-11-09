@@ -8,7 +8,19 @@ export default function RewardsHistory() {
   const { toast } = useToast();
 
   // Fetch rewards history
-  const { data: history, isLoading } = useQuery({
+  const { data: history, isLoading } = useQuery<Array<{
+    id: string;
+    distributionMonth: string;
+    swapPoints: number;
+    bridgePoints: number;
+    nftPoints: number;
+    rdlHoldingPoints: number;
+    socialPoints: number;
+    totalPoints: number;
+    rdlReward: number;
+    status: string;
+    claimedDate?: string;
+  }>>({
     queryKey: ["/api/rewards/history"],
   });
 

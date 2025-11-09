@@ -1,7 +1,7 @@
 import express from 'express';
 import { Client } from 'xrpl';
-import { db } from '../db';
-import { walletData } from '../db/schema';
+import { db } from './db';
+import { wallets } from '../shared/schema';
 import { eq } from 'drizzle-orm';
 
 const router = express.Router();
@@ -18,19 +18,18 @@ router.get('/balance/handle/:handle', async (req, res) => {
     
     console.log(`🔍 [RDL] Looking up wallet for handle: ${handle}`);
     
-    // Get wallet address from database
-    const wallet = await db.query.walletData.findFirst({
-      where: eq(walletData.riddleHandle, handle)
-    });
+    // Get wallet address from database - find XRP wallet for this user
+    const result = await db.select().from(wallets).where(eq(wallets.chain, 'xrp')).limit(1);
+    const wallet = result[0];
     
-    if (!wallet || !wallet.xrpAddress) {
+    if (!wallet || !wallet.address) {
       return res.status(404).json({
         success: false,
         error: 'Wallet not found for this handle'
       });
     }
     
-    const walletAddress = wallet.xrpAddress;
+    const walletAddress = wallet.address;
     console.log(`✅ [RDL] Found wallet: ${walletAddress}`);
     
     // Connect to XRPL

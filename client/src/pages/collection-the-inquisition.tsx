@@ -1,8 +1,8 @@
-import { CollectionShowcase } from '@/components/collection-showcase';
+import { CollectionShowcaseV3 } from '@/components/collection-showcase-v3';
 
 export default function TheInquisitionCollection() {
   return (
-    <CollectionShowcase
+    <CollectionShowcaseV3
       collectionName="The Inquisition"
       collectionSlug="the-inquisition"
       description="Find peace in having nothing. Find strength in having something. Find drive in wanting it all. Welcome, to the Inquisition. Abstract, and from the World of RDL explore conflict excitement and enchantment as a community. Be a collector. Be riddle. Build your Sanctum. With over 1,000 unique NFTs, each warrior brings their own power and story to the battlefield."

@@ -7,6 +7,7 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Progress } from '@/components/ui/progress';
 import { useToast } from '@/hooks/use-toast';
+import { apiRequest } from '@/lib/queryClient';
 import { useParams, useLocation } from 'wouter';
 import { useMutation } from '@tanstack/react-query';
 import { ShoppingCart, Eye, Heart, Share2, Filter, Grid, List, Zap, Clock, Coins } from 'lucide-react';
@@ -16,7 +17,8 @@ import { BuyNowDialog } from '@/components/nft/BuyNowDialog';
 import '@/styles/nft-collection.css';
 
 export default function NFTCollection() {
-  const { taxon } = useParams();
+  const params = useParams<{ taxon: string }>();
+  const taxon = params.taxon;
   const [, setLocation] = useLocation();
   const { toast } = useToast();
   const [selectedNFT, setSelectedNFT] = useState<any>(null);
@@ -235,6 +237,32 @@ export default function NFTCollection() {
       toast({
         title: "Mint Failed",
         description: error instanceof Error ? error.message : "Failed to mint NFT.",
+        variant: "destructive"
+      });
+    }
+  });
+
+  // Buy NFT mutation
+  const buyNFTMutation = useMutation({
+    mutationFn: async ({ nft_id, amount }: { nft_id: string; amount: string }) => {
+      return await apiRequest('/api/nft/buy', {
+        method: 'POST',
+        body: JSON.stringify({ nft_id, amount }),
+      });
+    },
+    onSuccess: () => {
+      setShowOfferDialog(false);
+      setOfferAmount('');
+      toast({
+        title: "Offer Submitted!",
+        description: "Your offer has been submitted successfully.",
+      });
+      fetchCollectionData(); // Refresh data
+    },
+    onError: (error) => {
+      toast({
+        title: "Offer Failed",
+        description: error instanceof Error ? error.message : "Failed to submit offer.",
         variant: "destructive"
       });
     }

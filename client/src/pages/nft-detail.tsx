@@ -179,7 +179,7 @@ function NFTActionModal({ action, nftId, nftName, onClose, onConfirm }: NFTActio
 }
 
 export function NFTDetailPage() {
-  const params = useParams();
+  const params = useParams<{ id?: string; nftId?: string }>();
   const [, setLocation] = useLocation();
   const [nftDetail, setNftDetail] = useState<NFTDetail | null>(null);
   const [transactions, setTransactions] = useState<NFTTransaction[]>([]);

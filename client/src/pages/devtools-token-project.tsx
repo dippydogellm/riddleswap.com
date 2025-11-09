@@ -49,7 +49,7 @@ export default function DevToolsTokenProject() {
   const { toast } = useToast();
   const [, navigate] = useLocation();
   const { isAuthenticated, isLoading: authLoading } = useAuth();
-  const [match, params] = useRoute('/devtools/token/:id');
+  const [match, params] = useRoute<{ id: string }>('/devtools/token/:id');
   const queryClient = useQueryClient();
   const [activeTab, setActiveTab] = useState('overview');
 

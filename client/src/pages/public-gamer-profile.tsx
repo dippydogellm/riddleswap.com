@@ -130,7 +130,7 @@ interface PlayerNFT {
 
 export default function PublicGamerProfile() {
   const { toast } = useToast();
-  const [, params] = useRoute("/gamerprofile/:handle");
+  const [, params] = useRoute<{ handle: string }>("/gamerprofile/:handle");
   const handle = params?.handle || "";
   
   const [activeCollection, setActiveCollection] = useState<string>("The Inquiry");

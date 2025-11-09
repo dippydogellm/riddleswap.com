@@ -194,12 +194,13 @@ const ComprehensiveAirdropTool = () => {
         headers: { 'Content-Type': 'application/json' }
       });
     },
-    onSuccess: (data) => {
-      setAirdropResult(data);
+    onSuccess: async (data) => {
+      const jsonData = await data.json();
+      setAirdropResult(jsonData);
       setAirdropStatus('completed');
       toast({
         title: "Airdrop Created",
-        description: `Successfully created airdrop with ID: ${data.airdrop_id}`,
+        description: `Successfully created airdrop with ID: ${jsonData.airdrop_id}`,
       });
     },
     onError: (error: any) => {

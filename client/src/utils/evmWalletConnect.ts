@@ -10,23 +10,16 @@ export interface EVMWalletConnection {
   signer?: any;
 }
 
-declare global {
-  interface Window {
-    ethereum?: any;
-    phantom?: {
-      ethereum?: any;
-    };
-  }
-}
+
 
 // Check if MetaMask is installed
 export function isMetaMaskInstalled(): boolean {
-  return typeof window !== 'undefined' && Boolean(window.ethereum?.isMetaMask);
+  return typeof window !== 'undefined' && Boolean((window as any).ethereum?.isMetaMask);
 }
 
 // Check if Phantom is installed
 export function isPhantomInstalled(): boolean {
-  return typeof window !== 'undefined' && Boolean(window.phantom?.ethereum);
+  return typeof window !== 'undefined' && Boolean((window as any).phantom?.ethereum);
 }
 
 // Connect to MetaMask
@@ -36,13 +29,13 @@ export async function connectMetaMask(chainId?: number): Promise<EVMWalletConnec
   }
 
   try {
-    const provider = new ethers.BrowserProvider(window.ethereum);
-    
+    const provider = new ethers.BrowserProvider((window as any).ethereum);
+
     // Request account access
-    const accounts = await window.ethereum.request({ 
-      method: 'eth_requestAccounts' 
+    const accounts = await (window as any).ethereum.request({
+      method: 'eth_requestAccounts'
     });
-    
+
     if (!accounts || accounts.length === 0) {
       throw new Error('No accounts found in MetaMask');
     }
@@ -50,7 +43,7 @@ export async function connectMetaMask(chainId?: number): Promise<EVMWalletConnec
     // Switch to requested chain if specified
     if (chainId) {
       try {
-        await window.ethereum.request({
+        await (window as any).ethereum.request({
           method: 'wallet_switchEthereumChain',
           params: [{ chainId: `0x${chainId.toString(16)}` }],
         });
@@ -90,7 +83,7 @@ export async function connectPhantom(chainId?: number): Promise<EVMWalletConnect
   }
 
   try {
-    const phantomProvider = window.phantom?.ethereum;
+    const phantomProvider = (window as any).phantom?.ethereum;
     if (!phantomProvider) {
       throw new Error('Phantom Ethereum provider not found');
     }
@@ -162,8 +155,8 @@ export function disconnectEVMWallet(): void {
 // Helper: Add chain to MetaMask
 async function addChainToMetaMask(chainId: number): Promise<void> {
   const chainData = getChainData(chainId);
-  
-  await window.ethereum.request({
+
+  await (window as any).ethereum.request({
     method: 'wallet_addEthereumChain',
     params: [chainData],
   });
@@ -172,8 +165,8 @@ async function addChainToMetaMask(chainId: number): Promise<void> {
 // Helper: Add chain to Phantom
 async function addChainToPhantom(chainId: number): Promise<void> {
   const chainData = getChainData(chainId);
-  
-  await window.phantom?.ethereum.request({
+
+  await (window as any).phantom?.ethereum.request({
     method: 'wallet_addEthereumChain',
     params: [chainData],
   });
@@ -250,10 +243,10 @@ export async function getCurrentAccount(walletType: EVMWalletType): Promise<stri
     
     if (walletType === 'metamask') {
       if (!isMetaMaskInstalled()) return null;
-      provider = window.ethereum;
+      provider = (window as any).ethereum;
     } else if (walletType === 'phantom') {
       if (!isPhantomInstalled()) return null;
-      provider = window.phantom?.ethereum;
+      provider = (window as any).phantom?.ethereum;
     } else {
       return null;
     }
@@ -269,11 +262,11 @@ export async function getCurrentAccount(walletType: EVMWalletType): Promise<stri
 // Listen for account changes
 export function onAccountsChanged(callback: (accounts: string[]) => void, walletType: EVMWalletType): () => void {
   let provider: any;
-  
-  if (walletType === 'metamask' && window.ethereum) {
-    provider = window.ethereum;
-  } else if (walletType === 'phantom' && window.phantom?.ethereum) {
-    provider = window.phantom.ethereum;
+
+  if (walletType === 'metamask' && (window as any).ethereum) {
+    provider = (window as any).ethereum;
+  } else if (walletType === 'phantom' && (window as any).phantom?.ethereum) {
+    provider = (window as any).phantom.ethereum;
   }
 
   if (provider) {
@@ -290,11 +283,11 @@ export function onAccountsChanged(callback: (accounts: string[]) => void, wallet
 // Listen for chain changes
 export function onChainChanged(callback: (chainId: string) => void, walletType: EVMWalletType): () => void {
   let provider: any;
-  
-  if (walletType === 'metamask' && window.ethereum) {
-    provider = window.ethereum;
-  } else if (walletType === 'phantom' && window.phantom?.ethereum) {
-    provider = window.phantom.ethereum;
+
+  if (walletType === 'metamask' && (window as any).ethereum) {
+    provider = (window as any).ethereum;
+  } else if (walletType === 'phantom' && (window as any).phantom?.ethereum) {
+    provider = (window as any).phantom.ethereum;
   }
 
   if (provider) {

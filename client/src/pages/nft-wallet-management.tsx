@@ -1,5 +1,6 @@
 // NFT Wallet Management Page - XRPL NFT handling - LIVE DATA ONLY, NO CACHE
 import { useState, useEffect } from 'react';
+import { useMutation } from '@tanstack/react-query';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
@@ -9,6 +10,7 @@ import { Badge } from '@/components/ui/badge';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { AlertDialog, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger } from '@/components/ui/alert-dialog';
 import { useToast } from '@/hooks/use-toast';
+import { apiRequest } from '@/lib/queryClient';
 import { Check, X, Send, Settings, ExternalLink, Wallet, Image, Eye, Link, Search, Plus } from 'lucide-react';
 import { useLocation } from 'wouter';
 
@@ -66,6 +68,66 @@ export default function NFTWalletManagement() {
       fetchLinkedProjects();
     }
   }, [selectedWallet]);
+
+  // Accept offer mutation
+  const acceptOfferMutation = useMutation({
+    mutationFn: async (offerId: string) => {
+      return await apiRequest(`/api/nft/accept-offer/${offerId}`, { method: 'POST' });
+    },
+    onSuccess: () => {
+      toast({ title: "Offer Accepted", description: "The offer has been accepted successfully." });
+      fetchNFTsAndOffers();
+    },
+    onError: (error) => {
+      toast({ title: "Failed to Accept Offer", description: error instanceof Error ? error.message : "Unknown error", variant: "destructive" });
+    }
+  });
+
+  // Accept all offers mutation
+  const acceptAllOffersMutation = useMutation({
+    mutationFn: async () => {
+      return await apiRequest('/api/nft/accept-all-offers', { method: 'POST' });
+    },
+    onSuccess: () => {
+      toast({ title: "All Offers Accepted", description: "All offers have been accepted successfully." });
+      fetchNFTsAndOffers();
+    },
+    onError: (error) => {
+      toast({ title: "Failed to Accept All Offers", description: error instanceof Error ? error.message : "Unknown error", variant: "destructive" });
+    }
+  });
+
+  // Reject offer mutation
+  const rejectOfferMutation = useMutation({
+    mutationFn: async (offerId: string) => {
+      return await apiRequest(`/api/nft/reject-offer/${offerId}`, { method: 'POST' });
+    },
+    onSuccess: () => {
+      toast({ title: "Offer Rejected", description: "The offer has been rejected." });
+      fetchNFTsAndOffers();
+    },
+    onError: (error) => {
+      toast({ title: "Failed to Reject Offer", description: error instanceof Error ? error.message : "Unknown error", variant: "destructive" });
+    }
+  });
+
+  // Send NFT mutation
+  const sendNFTMutation = useMutation({
+    mutationFn: async (data: { toAddress: string; nftId: string }) => {
+      return await apiRequest('/api/nft/send', {
+        method: 'POST',
+        body: JSON.stringify(data)
+      });
+    },
+    onSuccess: () => {
+      toast({ title: "NFT Sent", description: "The NFT has been sent successfully." });
+      fetchNFTsAndOffers();
+      setSendNFTData({ toAddress: '', nftId: '' });
+    },
+    onError: (error) => {
+      toast({ title: "Failed to Send NFT", description: error instanceof Error ? error.message : "Unknown error", variant: "destructive" });
+    }
+  });
 
   const fetchWallets = async () => {
     try {

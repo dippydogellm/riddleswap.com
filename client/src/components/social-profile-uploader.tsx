@@ -54,12 +54,12 @@ export function SocialProfileUploader({ walletAddress }: ProfileUploaderProps) {
   });
 
   // Fetch profile data
-  const { data: profile, isLoading } = useQuery({
+  const { data: profile, isLoading } = useQuery<SocialProfile>({
     queryKey: ["social-profile", walletAddress],
-    queryFn: async () => {
+    queryFn: async (): Promise<SocialProfile> => {
       const response = await fetch(`/api/social/profile/${walletAddress}`);
       if (!response.ok) throw new Error("Failed to fetch profile");
-      return response.json() as SocialProfile;
+      return response.json();
     },
     enabled: !!walletAddress,
   });

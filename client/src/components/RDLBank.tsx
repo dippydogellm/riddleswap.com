@@ -15,7 +15,23 @@ import {
 } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 import { useAuth } from '@/hooks/useAuth';
-import { ChainLogo } from '@/components/ChainLogo';
+import { ChainLogo } from '@/components/ui/chain-logo';
+
+// Helper function to get chain icon URLs
+const getChainIconUrl = (chain: string): string => {
+  const chainIcons: { [key: string]: string } = {
+    'ethereum': '/images/chains/ethereum.svg',
+    'eth': '/images/chains/ethereum.svg',
+    'solana': '/images/chains/solana.svg',
+    'sol': '/images/chains/solana.svg',
+    'xrpl': '/images/chains/xrp-logo.png',
+    'xrp': '/images/chains/xrp-logo.png',
+    'bitcoin': '/images/chains/bitcoin.svg',
+    'btc': '/images/chains/bitcoin.svg'
+  };
+
+  return chainIcons[chain.toLowerCase()] || '/images/chains/default.svg';
+};
 
 interface RDLBalance {
   chain: string;
@@ -261,9 +277,10 @@ export function RDLBank() {
                   >
                     <div className="flex items-center gap-4">
                       <div className="relative">
-                        <ChainLogo 
-                          chain={chain} 
-                          size="lg" 
+                        <ChainLogo
+                          chain={chain}
+                          iconUrl={getChainIconUrl(chain)}
+                          size="lg"
                           className="w-12 h-12"
                         />
                         {hasBalance && (

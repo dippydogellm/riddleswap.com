@@ -23,7 +23,8 @@ import { Badge } from '@/components/ui/badge';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 
 export default function ProjectDashboard() {
-  const { projectId } = useParams();
+  const params = useParams<{ projectId: string }>();
+  const projectId = params.projectId;
   const [, navigate] = useLocation();
   const { toast } = useToast();
   const { isAuthenticated, isLoading: authLoading } = useAuth();
@@ -44,19 +45,19 @@ export default function ProjectDashboard() {
   }, [isAuthenticated, authLoading, toast]);
 
   // Fetch project details
-  const { data: projectData, isLoading: projectLoading } = useQuery({
+  const { data: projectData, isLoading: projectLoading } = useQuery<{ project: any; stats: any }>({
     queryKey: [`/api/devtools/projects/${projectId}`],
     enabled: isAuthenticated && !!projectId,
   });
 
   // Fetch project revenue data
-  const { data: revenueData } = useQuery({
+  const { data: revenueData } = useQuery<{ breakdown: any; recentPayments: any[]; monthlyRevenue: any }>({
     queryKey: [`/api/devtools/projects/${projectId}/revenue`],
     enabled: isAuthenticated && !!projectId,
   });
 
   // Fetch project stats
-  const { data: statsData } = useQuery({
+  const { data: statsData } = useQuery<{ stats: any }>({
     queryKey: [`/api/devtools/projects/${projectId}/stats`],
     enabled: isAuthenticated && !!projectId,
   });

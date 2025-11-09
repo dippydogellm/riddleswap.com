@@ -33,7 +33,7 @@ interface OfferDetails {
 }
 
 export default function AcceptOfferPage() {
-  const [, params] = useRoute('/nft/:nftId/accept-offer/:offerId');
+  const [, params] = useRoute<{ nftId: string; offerId: string }>('/nft/:nftId/accept-offer/:offerId');
   const [, setLocation] = useLocation();
   const { toast } = useToast();
 
@@ -48,7 +48,7 @@ export default function AcceptOfferPage() {
 
   useEffect(() => {
     const fetchOfferDetails = async () => {
-      if (!params?.nftId || !params?.offerId) {
+      if (!params || !params.nftId || !params.offerId) {
         toast({
           title: "Error",
           description: "Invalid offer URL",

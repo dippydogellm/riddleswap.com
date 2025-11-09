@@ -71,7 +71,7 @@ const COLLECTION_COLORS = {
 };
 
 const InquisitionCollections = () => {
-  const params = useParams();
+  const params = useParams<{ id?: string }>();
   const collectionId = params.id ? parseInt(params.id) : null;
   const { toast } = useToast();
   const queryClient = useQueryClient();
