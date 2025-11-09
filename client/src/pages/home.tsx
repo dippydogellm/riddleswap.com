@@ -43,15 +43,16 @@ const chains: ChainInfo[] = [
 const services: ServiceInfo[] = [
   { title: 'Multi-Chain Swap', icon: Zap, description: 'Trade tokens across 19 blockchains with best price routing', link: '/swap' },
   { title: 'Create Wallet', icon: Wallet, description: 'Secure multi-chain wallet supporting all major networks', link: '/create-wallet' },
+  { title: 'The Trolls Inquisition', icon: Swords, description: 'Epic NFT battle arena - Build squadrons and compete', link: '/trolls-inquisition' },
+  { title: 'RiddleCity', icon: Layers, description: 'Virtual land metaverse - Own, build & earn from digital real estate', link: '/riddle-city' },
   { title: 'NFT Marketplace', icon: Image, description: 'Buy, sell & trade NFTs across several chains', link: '/nft-marketplace' },
   { title: 'Cross-Chain Bridge', icon: Layers, description: 'Transfer assets between 17+ blockchain networks', link: '/bridge' },
   { title: 'Liquidity Vault', icon: Lock, description: 'Earn yield with secure vault strategies', link: '/vault' },
-  { title: 'Trolls Inquisition', icon: Swords, description: 'Epic NFT battle game with AI-powered gameplay', link: '/gaming' },
+  { title: 'Gaming Hub', icon: Swords, description: 'Access all gaming features and your NFT collection', link: '/gaming' },
   { title: 'Portfolio Tracker', icon: BarChart3, description: 'Track assets across all supported chains', link: '/portfolio' },
   { title: 'Token Analytics', icon: LineChart, description: 'Real-time token data, charts & analytics', link: '/scanner' },
   { title: 'DevTools', icon: Rocket, description: 'Launch tokens, NFTs, airdrops & more', link: '/devtools' },
   { title: 'Staking & Rewards', icon: Award, description: 'Earn rewards via staking & liquidity', link: '/staking' },
-  { title: 'Send & Receive', icon: Send, description: 'Cross-chain payments with address book', link: '/wallet-dashboard' },
 ];
 
 const Home: React.FC = () => {

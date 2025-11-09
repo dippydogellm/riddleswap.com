@@ -22,46 +22,46 @@ interface GamingNavigationProps {
 const GamingNavigation: React.FC<GamingNavigationProps> = ({ theme = 'dark', className = '' }) => {
   const navigationItems = [
     {
-      name: 'Gaming Dashboard',
-      href: '/gaming-dashboard',
+      name: 'Gaming Hub',
+      href: '/gaming',
       icon: <Gamepad2 className="h-4 w-4" />,
       description: 'Your command center'
     },
     {
-      name: 'Land Purchase',
-      href: '/land-purchase',
+      name: 'The Trolls Inquisition',
+      href: '/trolls-inquisition',
+      icon: <Crown className="h-4 w-4" />,
+      description: 'NFT Battle Arena'
+    },
+    {
+      name: 'RiddleCity',
+      href: '/riddle-city',
+      icon: <Map className="h-4 w-4" />,
+      description: 'Virtual land metaverse'
+    },
+    {
+      name: 'Land Marketplace',
+      href: '/land-marketplace',
       icon: <Landmark className="h-4 w-4" />,
       description: 'Buy and manage land'
     },
     {
       name: 'NFT Marketplace',
-      href: '/nft-marketplace',
+      href: '/gaming-nfts',
       icon: <ShoppingCart className="h-4 w-4" />,
-      description: 'Browse and trade NFTs'
+      description: 'Browse gaming NFTs'
     },
     {
       name: 'My NFTs',
-      href: '/gaming-nfts',
+      href: '/gaming/my-nfts',
       icon: <Package className="h-4 w-4" />,
       description: 'View your collection'
     },
     {
-      name: 'Weapons Arsenal',
-      href: '/weapons-arsenal',
-      icon: <Swords className="h-4 w-4" />,
-      description: 'Manage your weapons'
-    },
-    {
-      name: 'Squadron Manager',
-      href: '/squadrons',
-      icon: <Users className="h-4 w-4" />,
-      description: 'Organize your forces'
-    },
-    {
       name: 'Battle Arena',
-      href: '/battles',
+      href: '/gaming/battles',
       icon: <Swords className="h-4 w-4" />,
-      description: 'Enter combat'
+      description: 'Squadrons & battles'
     },
     {
       name: 'Alliance Hub',
@@ -71,27 +71,15 @@ const GamingNavigation: React.FC<GamingNavigationProps> = ({ theme = 'dark', cla
     },
     {
       name: 'Leaderboards',
-      href: '/inquisition-gaming#leaderboards',
+      href: '/gaming#leaderboards',
       icon: <Trophy className="h-4 w-4" />,
       description: 'Global rankings'
-    },
-    {
-      name: 'Riddle City',
-      href: '/riddle-city',
-      icon: <Map className="h-4 w-4" />,
-      description: 'Explore the metaverse'
     },
     {
       name: 'Profile Editor',
       href: '/edit-gaming-profile',
       icon: <Crown className="h-4 w-4" />,
-      description: 'Customize your character'
-    },
-    {
-      name: 'Inquisition Hub',
-      href: '/inquisition-gaming',
-      icon: <Home className="h-4 w-4" />,
-      description: 'Main gaming portal'
+      description: 'Customize your profile'
     }
   ];
 

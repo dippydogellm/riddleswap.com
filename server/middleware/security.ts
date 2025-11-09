@@ -405,6 +405,18 @@ const isWalletRoute = (path: string) => {
 export const securityMiddleware = (app: any) => {
   const isProduction = process.env.NODE_ENV === 'production';
   
+  // Allow disabling CSP completely in development for debugging
+  if (process.env.DISABLE_CSP === 'true' && !isProduction) {
+    console.log('⚠️  CSP: DISABLED (development mode - set DISABLE_CSP=false to enable)');
+    app.use(helmet({
+      contentSecurityPolicy: false,
+      crossOriginEmbedderPolicy: false,
+      crossOriginOpenerPolicy: { policy: "same-origin-allow-popups" },
+      frameguard: false
+    }));
+    return;
+  }
+  
   if (isProduction || process.env.FORCE_CSP === 'true') {
     // Enable comprehensive CSP for security in all environments when FORCE_CSP=true or production
     console.log('🔒 CSP: ENABLED for security');
@@ -502,12 +514,83 @@ export const securityMiddleware = (app: any) => {
         useDefaults: false,
         directives: {
           defaultSrc: ["'self'"],
-          scriptSrc: ["'self'", "'unsafe-eval'", "'unsafe-inline'", "https://cdn.jsdelivr.net", "https://unpkg.com"],
-          styleSrc: ["'self'", "'unsafe-inline'", "https://fonts.googleapis.com"],
-          imgSrc: ["'self'", "data:", "blob:", "https:", "https://assets.coingecko.com"],
-          connectSrc: ["'self'", "ws:", "wss:", "http://localhost:*", "ws://localhost:*", "https://api.coingecko.com"],
-          fontSrc: ["'self'", "https://fonts.gstatic.com", "data:"],
+          scriptSrc: [
+            "'self'", 
+            "'unsafe-eval'", 
+            "'unsafe-inline'", 
+            "https://cdn.jsdelivr.net", 
+            "https://unpkg.com",
+            "https://cdnjs.cloudflare.com",
+            "blob:",
+            "https://bridge.walletconnect.org",
+            "https://registry.walletconnect.org",
+          ],
+          styleSrc: [
+            "'self'", 
+            "'unsafe-inline'", 
+            "https://fonts.googleapis.com",
+            "https://cdn.jsdelivr.net",
+          ],
+          imgSrc: [
+            "'self'", 
+            "data:", 
+            "blob:", 
+            "https:", 
+            "http:",
+            "https://assets.coingecko.com",
+            "https://cryptologos.cc",
+            "https://dd.dexscreener.com",
+            "https://api.dexscreener.com",
+            "https://*.dexscreener.com",
+            "https://static.dexscreener.com",
+            "https://assets-cdn.trustwallet.com",
+            "https://raw.githubusercontent.com",
+            "https://bithomp.com",
+            "https://cdn.bithomp.com",
+            "https://gateway.pinata.cloud",
+            "https://ipfs.io",
+            "https://cloudflare-ipfs.com",
+            "https://nftstorage.link",
+            "https://storage.googleapis.com",
+          ],
+          connectSrc: [
+            "'self'", 
+            "ws:", 
+            "wss:", 
+            "http://localhost:*", 
+            "ws://localhost:*",
+            "http://127.0.0.1:*",
+            "ws://127.0.0.1:*",
+            "wss://s1.ripple.com",
+            "wss://s.altnet.rippletest.net",
+            "https://api.coingecko.com",
+            "https://bridge.walletconnect.org",
+            "https://registry.walletconnect.org",
+            "https://api.dexscreener.com",
+            "https://api.bithomp.com",
+            "https://api.mainnet-beta.solana.com",
+            "https://storage.googleapis.com",
+          ],
+          frameSrc: [
+            "'self'",
+            "https://dexscreener.com",
+            "https://*.dexscreener.com",
+            "https://bridge.walletconnect.org",
+            "https://verify.walletconnect.org",
+            "https://xumm.app",
+            "https://xaman.app",
+          ],
+          fontSrc: [
+            "'self'", 
+            "https://fonts.gstatic.com", 
+            "data:",
+          ],
           objectSrc: ["'none'"],
+          mediaSrc: ["'self'", "blob:", "https:", "http:"],
+          childSrc: ["'self'", "blob:"],
+          workerSrc: ["'self'", "blob:"],
+          baseUri: ["'self'"],
+          formAction: ["'self'"],
           frameAncestors: ["'none'"],
         }
       },

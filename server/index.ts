@@ -48,6 +48,7 @@ import multiDexAggregatorRoutes from "./multi-dex-aggregator";
 import inquisitionGeneratorRoutes from "./inquisition-generator-routes";
 import inquisitionAuditRoutes from "./routes/inquisition-audit-routes";
 import riddleCityRoutes from "./routes/riddlecity";
+import riddleCityApiRoutes from "./routes/riddle-city";
 import gamingRoutes from "./routes/gaming";
 
 
@@ -498,6 +499,10 @@ async function performAsyncInitialization() {
   app.use('/api/gaming', gamingRoutes);
   console.log('🎮 Gaming routes registered (player profiles, battles, squadrons)');
 
+  // RiddleCity Routes (Land stats, marketplace)
+  app.use('/api/riddle-city', riddleCityApiRoutes);
+  console.log('🏙️ RiddleCity routes registered (land stats, marketplace)');
+
   // NFT Image History Routes (Image generation history and management)
   const nftImageHistoryRoutes = (await import('./routes/nft-image-history-routes')).default;
   app.use('/api/gaming', nftImageHistoryRoutes);
@@ -761,17 +766,6 @@ async function performAsyncInitialization() {
   // All organized images are now served by Vite from client/public/
   // No need for separate server static serving as Vite handles client/public/
 
-  // CRITICAL FIX: Add API route protection before Vite setup
-  // Add explicit 404 handler for unregistered API routes to prevent Vite interception
-  app.use('/api/*', (req, res) => {
-    console.log(`⚠️ [API 404] Unregistered API route accessed: ${req.originalUrl}`);
-    res.status(404).json({ 
-      error: 'API endpoint not found',
-      path: req.originalUrl,
-      method: req.method 
-    });
-  });
-
   // importantly only setup vite in development and after
   // setting up all the other routes so the catch-all route
   // doesn't interfere with the other routes
@@ -792,7 +786,15 @@ async function performAsyncInitialization() {
     serveStatic(app);
   }
 
-  // Remove overly aggressive API protection that was blocking all API routes
+  // Add API 404 handler AFTER Vite setup to catch unregistered API routes
+  app.use('/api/*', (req, res) => {
+    console.log(`⚠️ [API 404] Unregistered API route accessed: ${req.originalUrl}`);
+    res.status(404).json({ 
+      error: 'API endpoint not found',
+      path: req.originalUrl,
+      method: req.method 
+    });
+  });
 
   // Apply error handling middleware only to API routes, not frontend
   // Vite handles all non-API routes with its catch-all handler

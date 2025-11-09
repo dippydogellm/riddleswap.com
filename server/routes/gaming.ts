@@ -4880,4 +4880,351 @@ router.get("/civilization/:civKey/stats", sessionAuth, async (req: Authenticated
   }
 });
 
+/**
+ * GET /api/gaming/projects
+ * Get all partner projects/collections with NFT counts
+ */
+router.get("/projects", async (req, res) => {
+  try {
+    const projects = await db
+      .select({
+        id: gamingNftCollections.collection_id,
+        name: gamingNftCollections.collection_name,
+        nft_count: sql<number>`count(${gamingNfts.nft_id})`,
+      })
+      .from(gamingNftCollections)
+      .leftJoin(gamingNfts, eq(gamingNftCollections.collection_id, gamingNfts.collection_id))
+      .groupBy(gamingNftCollections.collection_id)
+      .orderBy(desc(sql<number>`count(${gamingNfts.nft_id})`));
+
+    res.json({
+      success: true,
+      projects: projects.map(p => ({
+        id: p.id,
+        name: p.name,
+        description: '',
+        logo_url: null,
+        nft_count: Number(p.nft_count) || 0,
+      })),
+    });
+  } catch (error: any) {
+    console.error("❌ [PROJECTS] Error:", error);
+    res.status(500).json({ error: "Failed to fetch projects", details: error.message });
+  }
+});
+
+/**
+ * GET /api/gaming/civilization
+ * Get user's civilization/land NFTs
+ */
+router.get("/civilization", sessionAuth, async (req: AuthenticatedRequest, res) => {
+  try {
+    const userId = req.session.userId;
+    if (!userId) {
+      return res.status(401).json({ error: "Not authenticated" });
+    }
+
+    // Get player's civilization data
+    const playerCiv = await db
+      .select()
+      .from(playerCivilizations)
+      .where(eq(playerCivilizations.player_id, userId))
+      .limit(1);
+
+    // For now, return empty array for lands - can be expanded later
+    // to include specific land NFTs from RiddleCity collection
+    res.json({
+      success: true,
+      civilization: playerCiv[0] || null,
+      lands: [], // Can be populated with actual land NFTs later
+    });
+  } catch (error: any) {
+    console.error("❌ [CIVILIZATION] Error:", error);
+    res.status(500).json({ error: "Failed to fetch civilization", details: error.message });
+  }
+});
+
+/**
+ * GET /api/gaming/battles/active
+ * Get user's active battles
+ */
+router.get("/battles/active", sessionAuth, async (req: AuthenticatedRequest, res) => {
+  try {
+    const userId = req.session.userId;
+    if (!userId) {
+      return res.status(401).json({ error: "Not authenticated" });
+    }
+
+    // Get active battles where user is a participant
+    const activeBattles = await db
+      .select({
+        id: battles.id,
+        status: battles.status,
+        created_at: battles.created_at,
+      })
+      .from(battles)
+      .innerJoin(battleParticipants, eq(battles.id, battleParticipants.battle_id))
+      .where(
+        and(
+          eq(battleParticipants.player_id, userId),
+          or(
+            eq(battles.status, 'pending'),
+            eq(battles.status, 'in_progress')
+          )
+        )
+      )
+      .orderBy(desc(battles.created_at));
+
+    res.json({
+      success: true,
+      active_count: activeBattles.length,
+      battles: activeBattles.map(b => ({
+        id: b.id,
+        name: `Battle #${b.id}`,
+        status: b.status,
+        created_at: b.created_at,
+      })),
+    });
+  } catch (error: any) {
+    console.error("❌ [ACTIVE BATTLES] Error:", error);
+    res.status(500).json({ error: "Failed to fetch active battles", details: error.message });
+  }
+});
+
+/**
+ * GET /api/gaming/battles/available
+ * Get available battles to join (pending battles created by others)
+ */
+router.get("/battles/available", sessionAuth, async (req: AuthenticatedRequest, res) => {
+  try {
+    const userId = req.session.userId;
+    if (!userId) {
+      return res.status(401).json({ error: "Not authenticated" });
+    }
+
+    // Get pending battles not created by this user
+    const availableBattles = await db
+      .select({
+        id: battles.id,
+        creator_id: battles.creator_player_id,
+        wager: battles.wager_amount,
+        created_at: battles.created_at,
+      })
+      .from(battles)
+      .where(
+        and(
+          eq(battles.status, 'pending'),
+          sql`${battles.creator_player_id} != ${userId}`
+        )
+      )
+      .orderBy(desc(battles.created_at))
+      .limit(20);
+
+    res.json({
+      success: true,
+      battles: availableBattles.map(b => ({
+        id: b.id,
+        creator_id: b.creator_id,
+        creator_name: 'Player', // Can be expanded to join with users table
+        wager: Number(b.wager) || 0,
+        created_at: b.created_at,
+      })),
+    });
+  } catch (error: any) {
+    console.error("❌ [AVAILABLE BATTLES] Error:", error);
+    res.status(500).json({ error: "Failed to fetch available battles", details: error.message });
+  }
+});
+
+/**
+ * GET /api/gaming/nfts/search
+ * Enhanced NFT search with multiple filters:
+ * - owner: wallet address or player handle
+ * - collection: collection ID or name
+ * - minRarity/maxRarity: rarity rank range
+ * - minPower/maxPower: power level range
+ * - rarityTier: common, uncommon, rare, epic, legendary
+ * - sortBy: rarity, power, name
+ */
+router.get("/nfts/search", async (req, res) => {
+  try {
+    const {
+      owner,
+      collection,
+      minRarity,
+      maxRarity,
+      minPower,
+      maxPower,
+      rarityTier,
+      sortBy = 'rarity',
+      order = 'asc',
+      limit = 50,
+      offset = 0
+    } = req.query;
+
+    console.log(`🔍 [NFT SEARCH] Searching with filters:`, {
+      owner, collection, minRarity, maxRarity, minPower, maxPower, rarityTier, sortBy
+    });
+
+    const conditions: any[] = [];
+
+    // Owner filter - search by wallet address or player handle
+    if (owner) {
+      const ownerStr = owner as string;
+      // Check if it's a wallet address or player handle
+      if (ownerStr.startsWith('r')) {
+        // Likely a wallet address
+        conditions.push(eq(gamingNfts.owner_address, ownerStr));
+      } else {
+        // Player handle - need to join with players and get their wallet
+        const player = await db.query.gamingPlayers.findFirst({
+          where: eq(gamingPlayers.user_handle, ownerStr)
+        });
+        if (player) {
+          conditions.push(eq(gamingNfts.owner_address, player.wallet_address));
+        } else {
+          // No player found, return empty results
+          return res.json({
+            success: true,
+            filters: { owner, collection, minRarity, maxRarity, minPower, maxPower, rarityTier },
+            total: 0,
+            nfts: []
+          });
+        }
+      }
+    }
+
+    // Collection filter - by ID or name
+    if (collection) {
+      const collectionStr = collection as string;
+      // Try exact match first
+      const foundCollection = await db.query.gamingNftCollections.findFirst({
+        where: or(
+          eq(gamingNftCollections.collection_id, collectionStr),
+          eq(gamingNftCollections.collection_name, collectionStr)
+        )
+      });
+      if (foundCollection) {
+        conditions.push(eq(gamingNfts.collection_id, foundCollection.collection_id));
+      } else {
+        // Partial match on name
+        conditions.push(sql`${gamingNfts.collection_id} IN (
+          SELECT ${gamingNftCollections.collection_id} 
+          FROM ${gamingNftCollections} 
+          WHERE LOWER(${gamingNftCollections.collection_name}) LIKE LOWER(${'%' + collectionStr + '%'})
+        )`);
+      }
+    }
+
+    // Rarity rank filters
+    if (minRarity) {
+      conditions.push(sql`${gamingNfts.rarity_rank} >= ${parseInt(minRarity as string)}`);
+    }
+    if (maxRarity) {
+      conditions.push(sql`${gamingNfts.rarity_rank} <= ${parseInt(maxRarity as string)}`);
+    }
+
+    // Rarity tier filter
+    if (rarityTier) {
+      conditions.push(eq(gamingNfts.rarity_tier, rarityTier as string));
+    }
+
+    // Power level filters (using power_multiplier)
+    if (minPower) {
+      conditions.push(sql`${gamingNfts.power_multiplier} >= ${parseFloat(minPower as string)}`);
+    }
+    if (maxPower) {
+      conditions.push(sql`${gamingNfts.power_multiplier} <= ${parseFloat(maxPower as string)}`);
+    }
+
+    // Build sort clause
+    let orderByClause;
+    const isDesc = order === 'desc';
+    
+    switch(sortBy) {
+      case 'rarity':
+        orderByClause = isDesc ? desc(gamingNfts.rarity_rank) : gamingNfts.rarity_rank;
+        break;
+      case 'power':
+        orderByClause = isDesc ? desc(gamingNfts.power_multiplier) : gamingNfts.power_multiplier;
+        break;
+      case 'name':
+        orderByClause = isDesc ? desc(gamingNfts.name) : gamingNfts.name;
+        break;
+      default:
+        orderByClause = gamingNfts.rarity_rank;
+    }
+
+    // Execute query with joins to get collection info
+    const query = db
+      .select({
+        nft: gamingNfts,
+        collection: gamingNftCollections
+      })
+      .from(gamingNfts)
+      .leftJoin(gamingNftCollections, eq(gamingNfts.collection_id, gamingNftCollections.collection_id))
+      .orderBy(orderByClause)
+      .limit(parseInt(limit as string))
+      .offset(parseInt(offset as string));
+
+    if (conditions.length > 0) {
+      query.where(and(...conditions));
+    }
+
+    const results = await query;
+
+    // Get count for pagination
+    let countQuery = db
+      .select({ count: sql<number>`count(*)` })
+      .from(gamingNfts);
+    
+    if (conditions.length > 0) {
+      countQuery = countQuery.where(and(...conditions));
+    }
+    
+    const [{ count }] = await countQuery;
+
+    // Format response
+    const nfts = results.map(({ nft, collection }) => ({
+      id: nft.id,
+      nft_id: nft.nft_id,
+      token_id: nft.token_id,
+      name: nft.name,
+      description: nft.description,
+      image_url: nft.image_url || nft.ai_generated_image_url,
+      owner_address: nft.owner_address,
+      collection_id: nft.collection_id,
+      collection_name: collection?.collection_name,
+      rarity_rank: nft.rarity_rank,
+      rarity_score: nft.rarity_score,
+      rarity_tier: nft.rarity_tier,
+      power_multiplier: nft.power_multiplier,
+      power_percentile: nft.power_percentile,
+      is_genesis: nft.is_genesis,
+      traits: nft.traits,
+      game_stats: nft.game_stats,
+      overall_rarity_rank: nft.overall_rarity_rank,
+      collection_rarity_rank: nft.collection_rarity_rank,
+      created_at: nft.created_at,
+      updated_at: nft.updated_at
+    }));
+
+    res.json({
+      success: true,
+      filters: { owner, collection, minRarity, maxRarity, minPower, maxPower, rarityTier, sortBy, order },
+      total: count,
+      limit: parseInt(limit as string),
+      offset: parseInt(offset as string),
+      nfts
+    });
+
+  } catch (error: any) {
+    console.error("❌ [NFT SEARCH] Error:", error);
+    res.status(500).json({ 
+      error: "Failed to search NFTs", 
+      details: error.message 
+    });
+  }
+});
+
 export default router;

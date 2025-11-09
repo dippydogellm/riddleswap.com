@@ -54,6 +54,7 @@ export const nftRarityScorecards = pgTable("nft_rarity_scorecards", {
   total_rarity_score: integer("total_rarity_score").default(0).notNull(), // Sum of all trait scores
   average_rarity_score: numeric("average_rarity_score", { precision: 5, scale: 2 }), // Average trait score
   rarity_tier: text("rarity_tier"), // 'legendary', 'epic', 'rare', 'uncommon', 'common'
+  rarity_rank: integer("rarity_rank"), // Position in collection (1 = rarest)
   
   // Metadata
   total_traits: integer("total_traits").default(0),
@@ -64,6 +65,7 @@ export const nftRarityScorecards = pgTable("nft_rarity_scorecards", {
   index("idx_rarity_scorecards_project").on(table.project_id),
   index("idx_rarity_scorecards_collection").on(table.collection_id),
   index("idx_rarity_scorecards_score").on(table.collection_id, table.total_rarity_score),
+  index("idx_rarity_scorecards_rank").on(table.collection_id, table.rarity_rank),
 ]);
 
 /**
@@ -117,7 +119,7 @@ export const rarityCalculationHistory = pgTable("rarity_calculation_history", {
   nfts_processed: integer("nfts_processed").default(0),
   traits_analyzed: integer("traits_analyzed").default(0),
   duration_ms: integer("duration_ms"),
-  status: text("status").notNull(), // 'success', 'failed', 'partial'
+  status: text("status").notNull(), // 'success', 'failed', 'partial', 'started'
   error_message: text("error_message"),
   started_at: timestamp("started_at").notNull(),
   completed_at: timestamp("completed_at"),

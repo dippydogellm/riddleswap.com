@@ -95,7 +95,8 @@ const navigationConfig = {
     { label: 'AI Studio', path: '/ai-studio', icon: Wrench },
   ],
   projects: [
-    { label: 'The Inquisition', path: '/collections/the-inquisition', icon: Image },
+    { label: 'The Trolls Inquisition', path: '/trolls-inquisition', icon: Image },
+    { label: 'RiddleCity', path: '/riddle-city', icon: Home },
     { label: 'The Inquiry', path: '/collections/the-inquiry', icon: Image },
     { label: 'The Lost Emporium', path: '/collections/the-lost-emporium', icon: Image },
     { label: 'Dantes Aurum', path: '/collections/dantes-aurum', icon: Image },

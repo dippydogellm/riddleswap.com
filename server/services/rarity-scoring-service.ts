@@ -58,7 +58,6 @@ export class RarityScoringService {
       
       // Record calculation start
       await db.insert(rarityCalculationHistory).values({
-        project_id: projectId || null,
         collection_id: collectionId,
         calculation_type: 'full',
         status: 'started',
@@ -128,8 +127,7 @@ export class RarityScoringService {
         console.log(`⚠️ [RARITY] No NFTs found for collection: ${collectionId}`);
         await db.update(rarityCalculationHistory)
           .set({ 
-            status: 'failed',
-            completed_at: new Date() 
+            status: 'failed'
           })
           .where(eq(rarityCalculationHistory.collection_id, collectionId));
         return;
@@ -165,8 +163,7 @@ export class RarityScoringService {
       const duration = Date.now() - startTime;
       await db.update(rarityCalculationHistory)
         .set({ 
-          status: 'success',
-          completed_at: new Date()
+          status: 'success'
         })
         .where(eq(rarityCalculationHistory.collection_id, collectionId));
       
@@ -176,8 +173,7 @@ export class RarityScoringService {
       console.error(`❌ [RARITY] Failed to calculate rarity:`, error);
       await db.update(rarityCalculationHistory)
         .set({ 
-          status: 'failed',
-          completed_at: new Date()
+          status: 'failed'
         })
         .where(eq(rarityCalculationHistory.collection_id, collectionId));
       throw error;
@@ -436,8 +432,8 @@ export class RarityScoringService {
       
       await db.update(nftRarityScorecards)
         .set({ 
-          rarity_tier: tier,
-        })
+          rarity_rank: rank,
+        } as any)
         .where(eq(nftRarityScorecards.id, scorecards[i].id));
     }
     
@@ -450,9 +446,10 @@ export class RarityScoringService {
   private async updateCollectionStats(
     collectionId: string,
     collectionName: string,
-    projectId: number | undefined,
+    projectId: number | undefined | null,
     nfts: any[],
-    traitCounts: Record<string, Record<string, number>>
+    traitCounts: Record<string, Record<string, number>>,
+    masterCard?: any
   ): Promise<void> {
     const traitDistribution: Record<string, any> = {};
     let totalTraitValues = 0;
@@ -491,7 +488,6 @@ export class RarityScoringService {
     
     // Upsert collection stats
     await db.insert(projectCollectionStats).values({
-      project_id: projectId || null,
       collection_id: collectionId,
       collection_name: collectionName,
       total_nfts: nfts.length,
@@ -499,21 +495,18 @@ export class RarityScoringService {
       total_trait_values: totalTraitValues,
       trait_distribution: traitDistribution,
       rarity_distribution: rarityDistribution,
-      last_rarity_calculation: new Date(),
       updated_at: new Date(),
-    }).onConflictDoUpdate({
+    } as any).onConflictDoUpdate({
       target: projectCollectionStats.collection_id,
       set: {
-        project_id: projectId || null,
         collection_name: collectionName,
         total_nfts: nfts.length,
         total_traits: Object.keys(traitCounts).length,
         total_trait_values: totalTraitValues,
         trait_distribution: traitDistribution,
         rarity_distribution: rarityDistribution,
-        last_rarity_calculation: new Date(),
         updated_at: new Date(),
-      }
+      } as any
     });
     
     console.log(`✅ [RARITY] Updated collection stats`);

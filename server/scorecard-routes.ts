@@ -127,18 +127,17 @@ router.get('/scorecards/collection/:collectionId/traits', async (req, res) => {
     const { collectionId } = req.params;
     const { traitType } = req.query;
 
-    let query = db.select().from(projectTraitScores);
     const conditions = [eq(projectTraitScores.collection_id, collectionId)];
     
     if (traitType) {
       conditions.push(eq(projectTraitScores.trait_type, traitType as string));
     }
 
-    if (conditions.length > 0) {
-      query = query.where(and(...conditions));
-    }
-
-    const traits = await query.orderBy(desc(projectTraitScores.rarity_score));
+    const traits = await db
+      .select()
+      .from(projectTraitScores)
+      .where(and(...conditions))
+      .orderBy(desc(projectTraitScores.rarity_score));
 
     res.json({
       collection_id: collectionId,
@@ -165,18 +164,16 @@ router.get('/scorecards/collection/:collectionId/leaderboard', async (req, res) 
     const limit = parseInt(req.query.limit as string) || 100;
     const tier = req.query.tier as string;
 
-    let query = db.select().from(nftRarityScorecards);
     const conditions = [eq(nftRarityScorecards.collection_id, collectionId)];
     
     if (tier) {
       conditions.push(eq(nftRarityScorecards.rarity_tier, tier));
     }
 
-    if (conditions.length > 0) {
-      query = query.where(and(...conditions));
-    }
-
-    const leaderboard = await query
+    const leaderboard = await db
+      .select()
+      .from(nftRarityScorecards)
+      .where(and(...conditions))
       .orderBy(desc(nftRarityScorecards.total_rarity_score))
       .limit(limit);
 
@@ -304,13 +301,10 @@ router.get('/scorecards/search', async (req, res) => {
       conditions.push(sql`${nftRarityScorecards.total_rarity_score} <= ${parseInt(maxScore as string)}`);
     }
 
-    let query = db.select().from(nftRarityScorecards);
-    
-    if (conditions.length > 0) {
-      query = query.where(and(...conditions));
-    }
-
-    const results = await query
+    const results = await db
+      .select()
+      .from(nftRarityScorecards)
+      .where(and(...conditions))
       .orderBy(desc(nftRarityScorecards.total_rarity_score))
       .limit(parseInt(limit as string));
 

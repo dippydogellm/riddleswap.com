@@ -163,23 +163,27 @@ export class GoogleCloudStorageService {
   // Upload a file and return the public URL or storage path
   async uploadFile(
     buffer: Buffer,
-    type: 'profile' | 'cover' | 'post' | 'generated',
+    type: 'profile' | 'cover' | 'post' | 'generated' | 'bithomp-nft' | 'bithomp-token' | 'bithomp-collection',
     contentType: string,
-    makePublic: boolean = true
+    makePublic: boolean = true,
+    customFilename?: string
   ): Promise<string> {
     // Security validation
     this.validateFile(buffer, contentType);
 
-    // Generate unique filename
+    // Generate unique filename or use custom one
     const fileExtension = this.getExtensionFromContentType(contentType);
-    const filename = `${randomUUID()}${fileExtension}`;
+    const filename = customFilename || `${randomUUID()}${fileExtension}`;
     
     // Determine subdirectory based on type
     const subdirMap = {
       profile: 'profiles',
       cover: 'covers',
       post: 'posts',
-      generated: 'generated-images'
+      generated: 'generated-images',
+      'bithomp-nft': 'bithomp-cache/nfts',
+      'bithomp-token': 'bithomp-cache/tokens',
+      'bithomp-collection': 'bithomp-cache/collections'
     };
     const subdir = subdirMap[type];
     const storageKey = `uploads/${subdir}/${filename}`;

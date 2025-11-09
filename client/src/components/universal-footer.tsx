@@ -24,6 +24,9 @@ export default function UniversalFooter() {
 
   const platformLinks = [
     { name: "Home", href: "/", icon: Home },
+    { name: "Gaming Hub", href: "/gaming", icon: Home },
+    { name: "The Trolls Inquisition", href: "/trolls-inquisition", icon: Home },
+    { name: "RiddleCity", href: "/riddle-city", icon: Home },
     { name: "XRPL Swap", href: "/xrpl-swap", icon: Coins },
     { name: "Portfolio", href: "/portfolio", icon: Wallet },
     { name: "Analytics", href: "/dexscreener", icon: BarChart3 },

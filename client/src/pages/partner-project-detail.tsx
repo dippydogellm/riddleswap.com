@@ -53,6 +53,50 @@ interface TabPanelProps {
   value: number;
 }
 
+interface ProjectData {
+  project_name: string;
+  collection_name: string;
+  collection_id: string;
+}
+
+interface StatsData {
+  total_nfts: number;
+  total_traits: number;
+  total_trait_values: number;
+  last_rarity_calculation: string;
+  rarity_distribution: {
+    legendary: number;
+    epic: number;
+    rare: number;
+    uncommon: number;
+    common: number;
+  };
+}
+
+interface NFTScorecard {
+  nft_id: string;
+  nft_name: string;
+  total_rarity_score: number;
+  rarity_tier: string;
+  rarity_rank?: number;
+}
+
+interface LeaderboardData {
+  leaderboard: NFTScorecard[];
+}
+
+interface TraitScore {
+  trait_type: string;
+  trait_value: string;
+  trait_count: number;
+  rarity_percentage: string;
+  rarity_score: number;
+}
+
+interface TraitsData {
+  traits: TraitScore[];
+}
+
 function TabPanel(props: TabPanelProps) {
   const { children, value, index, ...other } = props;
   return (
@@ -68,25 +112,25 @@ export default function PartnerProjectDetail() {
   const [activeTab, setActiveTab] = useState(0);
 
   // Fetch project scorecard data
-  const { data: projectData, isLoading: projectLoading, refetch: refetchProject } = useQuery({
+  const { data: projectData, isLoading: projectLoading, refetch: refetchProject } = useQuery<ProjectData>({
     queryKey: [`/api/scorecards/project/${projectId}`],
     enabled: !!projectId,
   });
 
   // Fetch collection stats
-  const { data: statsData, isLoading: statsLoading } = useQuery({
+  const { data: statsData, isLoading: statsLoading } = useQuery<StatsData>({
     queryKey: [`/api/scorecards/collection/${projectData?.collection_id}/stats`],
     enabled: !!projectData?.collection_id,
   });
 
   // Fetch leaderboard
-  const { data: leaderboardData, isLoading: leaderboardLoading } = useQuery({
+  const { data: leaderboardData, isLoading: leaderboardLoading } = useQuery<LeaderboardData>({
     queryKey: [`/api/scorecards/collection/${projectData?.collection_id}/leaderboard`, { limit: 10 }],
     enabled: !!projectData?.collection_id,
   });
 
   // Fetch trait scores
-  const { data: traitsData, isLoading: traitsLoading } = useQuery({
+  const { data: traitsData, isLoading: traitsLoading } = useQuery<TraitsData>({
     queryKey: [`/api/scorecards/collection/${projectData?.collection_id}/traits`],
     enabled: !!projectData?.collection_id,
   });

@@ -197,7 +197,11 @@ const GamingV3 = lazy(() => {
 });
 
 // Reuse frequent lazy modules for stability and performance
-const GamingDashboardV3 = lazy(() => import("@/pages/gaming-dashboard-v3"));
+const GamingDashboard = lazy(() => import("@/pages/gaming-dashboard-material"));
+const GamingDashboardHub = lazy(() => import("@/pages/gaming-dashboard-hub"));
+const GamingBattlesPage = lazy(() => import("@/pages/gaming-battles"));
+const GamingNFTDetail = lazy(() => import("@/pages/gaming-nft-detail-material"));
+const GamingNFTBrowse = lazy(() => import("@/pages/gaming-nft-browse"));
 const BattleRoomPage = lazy(() => import("@/pages/battle-room"));
 const PublicGamerProfilePage = lazy(() => import("@/pages/public-gamer-profile"));
 const ExternalWalletTestingPage = lazy(() => import("@/pages/external-wallet-testing"));
@@ -215,6 +219,8 @@ const InquisitionWizardPage = lazy(() => import("@/pages/inquisition-wizard"));
 const InquisitionProfilePage = lazy(() => import("@/pages/inquisition-profile"));
 const InquisitionPlayerProfilePage = lazy(() => import("@/pages/inquisition-player-profile"));
 const InquisitionCollectionsPage = lazy(() => import("@/pages/inquisition-collections"));
+const TrollsInquisitionLanding = lazy(() => import("@/pages/trolls-inquisition-landing"));
+const RiddleCityLanding = lazy(() => import("@/pages/riddle-city-landing"));
 const RiddleCityPage = lazy(() => import("@/pages/riddlecity"));
 const RiddleCityPublicCityPage = lazy(() => import("@/pages/riddlecity-public-city"));
 
@@ -683,17 +689,23 @@ function Router() {
                   name: 'gaming-v3-and-legacy',
                   routes: [
                     { path: '/inquisition-landing', component: InquisitionLanding },
-                    { path: '/inquisition-gaming', component: GamingDashboardV3 },
-                    { path: '/inquisition-gaming-v3', component: GamingDashboardV3 },
-                    { path: '/nft-gaming', component: GamingDashboardV3 },
-                    { path: '/nft-gaming-dashboard', component: GamingDashboardV3 },
+                    { path: '/trolls-inquisition', component: TrollsInquisitionLanding },
+                    { path: '/the-trolls-inquisition', component: TrollsInquisitionLanding },
+                    { path: '/riddle-city', component: RiddleCityLanding },
+                    { path: '/riddlecity', component: RiddleCityLanding },
+                    { path: '/inquisition-gaming', component: GamingDashboard },
+                    { path: '/inquisition-gaming-v3', component: GamingDashboard },
+                    { path: '/nft-gaming', component: GamingDashboard },
+                    { path: '/nft-gaming-dashboard', component: GamingDashboard },
                     { path: '/battle-dashboard', component: BattleDashboard },
                     { path: '/battle/:id', component: BattleRoomPage },
                     { path: '/spectate-battles', component: SpectateBattles },
-                    { path: '/gaming-dashboard', component: GamingDashboardV3 },
+                    { path: '/gaming-dashboard', component: GamingDashboard },
+                    { path: '/gaming/dashboard', component: GamingDashboard },
+                    { path: '/gaming/battles', component: GamingBattlesPage },
+                    { path: '/gaming/battle/:battleId', component: BattleRoomPage },
+                    { path: '/gaming/nft/:nftId', component: GamingNFTDetail },
                     { path: '/gamerprofile/:handle', component: PublicGamerProfilePage },
-                    { path: '/trolls-inquisition', component: GamingDashboardV3 },
-                    { path: '/the-trolls-inquisition', component: GamingDashboardV3 },
                     { path: '/land', component: LandMarketplace },
                     { path: '/land-marketplace', component: LandMarketplace },
                     { path: '/land-purchase', component: LandMarketplace },
@@ -708,10 +720,10 @@ function Router() {
                     { path: '/gaming/projects/:projectId', component: PartnerProjectDetail },
                     { path: '/gaming/squadrons/:id', component: lazy(() => import('@/pages/squadron-detail')) },
                     { path: '/edit-gaming-profile', component: EditGamingProfilePage },
-                    { path: '/squadrons', component: GamingDashboardV3 },
+                    { path: '/squadrons', component: GamingDashboard },
                     { path: '/battles', component: lazy(() => import('@/pages/inquisition-battles')) },
                     { path: '/alliances', component: lazy(() => import('@/pages/inquisition-alliances')) },
-                    { path: '/gaming', component: GamingV3 },
+                    { path: '/gaming', component: GamingDashboardHub },
                     // Catch-all /gaming routes - MUST BE LAST to avoid shadowing specific routes
                     { path: '/gaming/:rest*', component: GamingV3 },
                   ],
@@ -719,13 +731,13 @@ function Router() {
                 {
                   name: 'inquisition-audit-system',
                   routes: [
-                    { path: '/inquisition', component: GamingDashboardV3 },
+                    { path: '/inquisition', component: GamingDashboard },
                     { path: '/inquisition/wizard', component: InquisitionWizardPage },
                     { path: '/inquisition/profile', component: InquisitionProfilePage },
                     { path: '/inquisition/player/:handle', component: InquisitionPlayerProfilePage },
                     { path: '/inquisition/collections', component: InquisitionCollectionsPage },
                     { path: '/inquisition/collections/:id', component: InquisitionCollectionsPage },
-                    { path: '/inquisition/leaderboard', component: GamingDashboardV3 },
+                    { path: '/inquisition/leaderboard', component: GamingDashboard },
                     { path: '/inquisition/alliances', component: lazy(() => import('@/pages/inquisition-alliances')) },
                     { path: '/inquisition/battles', component: lazy(() => import('@/pages/inquisition-battles')) },
                     { path: '/inquisition/tournaments', component: lazy(() => import('@/pages/inquisition-battles')) },
