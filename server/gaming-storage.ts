@@ -125,10 +125,10 @@ export class MemoryGamingStorage implements IGamingStorage {
     const playerId = `player_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
     const player: GamePlayer = {
       id: playerId,
-      handle: playerData.handle || null,
-      userId: playerData.userId || null,
-      primaryChain: playerData.primaryChain,
-      primaryAddress: playerData.primaryAddress,
+      handle: (playerData as any).handle ?? null,
+      userId: (playerData as any).userId ?? null,
+      primaryChain: (playerData as any).primaryChain ?? 'xrpl',
+      primaryAddress: (playerData as any).primaryAddress ?? '',
       createdAt: new Date(),
       lastActivity: new Date()
     };
@@ -179,16 +179,16 @@ export class MemoryGamingStorage implements IGamingStorage {
     const walletId = `wallet_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
     const wallet: GamePlayerWallet = {
       id: walletId,
-      playerId: walletData.playerId,
-      chain: walletData.chain,
-      address: walletData.address,
-      isPrimary: walletData.isPrimary || false,
+      playerId: (walletData as any).playerId,
+      chain: (walletData as any).chain ?? 'xrpl',
+      address: (walletData as any).address ?? '',
+      isPrimary: !!(walletData as any).isPrimary,
       createdAt: new Date()
     };
 
-    const playerWallets = this.playerWallets.get(walletData.playerId) || [];
+  const playerWallets = this.playerWallets.get((walletData as any).playerId) || [];
     playerWallets.push(wallet);
-    this.playerWallets.set(walletData.playerId, playerWallets);
+  this.playerWallets.set((walletData as any).playerId, playerWallets);
 
     return wallet;
   }
@@ -220,28 +220,28 @@ export class MemoryGamingStorage implements IGamingStorage {
     const claimId = `claim_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
     const claim: GameLandClaim = {
       id: claimId,
-      blockId: claimData.blockId,
-      playerId: claimData.playerId,
-      chain: claimData.chain,
-      stakedRdl: claimData.stakedRdl,
-      status: claimData.status || 'active',
+  blockId: (claimData as any).blockId,
+  playerId: (claimData as any).playerId,
+  chain: (claimData as any).chain ?? 'xrpl',
+  stakedRdl: (claimData as any).stakedRdl ?? '0',
+  status: (claimData as any).status ?? 'active',
       createdAt: new Date(),
       releasedAt: null
     };
 
     // Update land block ownership
-    const block = this.landBlocks.get(claimData.blockId);
+  const block = this.landBlocks.get((claimData as any).blockId);
     if (block) {
-      block.ownerPlayerId = claimData.playerId;
+  block.ownerPlayerId = (claimData as any).playerId;
       block.status = 'claimed';
       block.lastClaimedAt = new Date();
-      this.landBlocks.set(claimData.blockId, block);
+  this.landBlocks.set((claimData as any).blockId, block);
     }
 
     // Add to player's claims
-    const playerClaims = this.landClaims.get(claimData.playerId) || [];
+  const playerClaims = this.landClaims.get((claimData as any).playerId) || [];
     playerClaims.push(claim);
-    this.landClaims.set(claimData.playerId, playerClaims);
+  this.landClaims.set((claimData as any).playerId, playerClaims);
 
     return claim;
   }
@@ -263,13 +263,13 @@ export class MemoryGamingStorage implements IGamingStorage {
     const traitId = `trait_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
     const trait: GameNftTrait = {
       id: traitId,
-      chain: traitData.chain,
-      nftId: traitData.nftId,
-      collectionKey: traitData.collectionKey,
-      traits: traitData.traits || {},
-      power: traitData.power || '100.0',
-      level: traitData.level || 1,
-      experience: traitData.experience || '0',
+  chain: (traitData as any).chain ?? 'xrpl',
+  nftId: (traitData as any).nftId ?? '',
+  collectionKey: (traitData as any).collectionKey ?? '',
+  traits: (traitData as any).traits ?? {},
+  power: (traitData as any).power ?? '100.0',
+  level: (traitData as any).level ?? 1,
+  experience: (traitData as any).experience ?? '0',
       createdAt: new Date(),
       updatedAt: new Date()
     };
@@ -288,11 +288,11 @@ export class MemoryGamingStorage implements IGamingStorage {
     const battleId = `battle_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
     const battle: GameBattle = {
       id: battleId,
-      chain: battleData.chain,
-      locationBlockId: battleData.locationBlockId || null,
-      battleType: battleData.battleType || 'land_claim',
-      status: battleData.status || 'pending',
-      wagerRdl: battleData.wagerRdl || '0',
+  chain: (battleData as any).chain ?? 'xrpl',
+  locationBlockId: (battleData as any).locationBlockId ?? null,
+  battleType: (battleData as any).battleType ?? 'land_claim',
+  status: (battleData as any).status ?? 'pending',
+  wagerRdl: (battleData as any).wagerRdl ?? '0',
       winnerPlayerId: null,
       startedAt: null,
       endedAt: null,
@@ -309,10 +309,10 @@ export class MemoryGamingStorage implements IGamingStorage {
     const participantId = `participant_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
     const participant: GameBattleParticipant = {
       id: participantId,
-      battleId: participantData.battleId,
-      playerId: participantData.playerId,
-      nftId: participantData.nftId || null,
-      totalPower: participantData.totalPower || '0',
+  battleId: (participantData as any).battleId,
+  playerId: (participantData as any).playerId,
+  nftId: (participantData as any).nftId ?? null,
+  totalPower: (participantData as any).totalPower ?? '0',
       outcome: null,
       rewardRdl: '0',
       experienceGained: '0',
@@ -320,15 +320,15 @@ export class MemoryGamingStorage implements IGamingStorage {
     };
 
     // Add to battle participants
-    const participants = this.battleParticipants.get(participantData.battleId) || [];
+  const participants = this.battleParticipants.get((participantData as any).battleId) || [];
     participants.push(participant);
-    this.battleParticipants.set(participantData.battleId, participants);
+  this.battleParticipants.set((participantData as any).battleId, participants);
 
     // Add to player's battles
-    const playerBattles = this.playerBattles.get(participantData.playerId) || [];
-    if (!playerBattles.includes(participantData.battleId)) {
-      playerBattles.push(participantData.battleId);
-      this.playerBattles.set(participantData.playerId, playerBattles);
+    const playerBattles = this.playerBattles.get((participantData as any).playerId) || [];
+    if (!playerBattles.includes((participantData as any).battleId)) {
+      playerBattles.push((participantData as any).battleId);
+      this.playerBattles.set((participantData as any).playerId, playerBattles);
     }
 
     return participant;

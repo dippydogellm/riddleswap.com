@@ -108,7 +108,7 @@ export class XRPLBridgeHandler {
         payload: JSON.stringify(xrplPayload), // Store the actual XRPL transaction payload
         walletType: walletType,
         riddleWalletId: walletHandle || riddleWalletId || null
-      });
+      } as any);
       
       console.log(`   - Base Amount: ${amount} ${fromToken}`);
       console.log(`   - Platform Fee (1%): ${feeAmountInXRP} ${fromToken}`);

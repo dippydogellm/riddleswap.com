@@ -357,6 +357,91 @@ export class NftOwnershipScanner {
   }
 
   /**
+   * Fetch ALL NFTs from a collection by issuer+taxon with pagination
+   * Handles large collections like The Inquisition (1200 NFTs)
+   */
+  private async fetchCollectionNftsFromBithomp(issuer: string, taxon: number, maxNfts: number = 2000): Promise<BithompNftData[]> {
+    try {
+      const allNfts: any[] = [];
+      let marker: string | undefined = undefined;
+      const batchSize = 400; // Bithomp API limit per request
+      let fetchCount = 0;
+
+      console.log(`🌐 [COLLECTION SCANNER] Fetching all NFTs for ${issuer.slice(0, 10)}... taxon:${taxon}`);
+
+      // Paginate through all NFTs
+      while (allNfts.length < maxNfts) {
+        fetchCount++;
+        
+        // Build URL with marker for pagination
+        // Include all NFTs (not just those with metadata or images)
+        let url = `${this.BITHOMP_BASE_URL}/nfts?issuer=${issuer}&taxon=${taxon}&limit=${batchSize}&includeDeleted=false`;
+        if (marker) {
+          url += `&marker=${marker}`;
+        }
+        
+        console.log(`📡 [COLLECTION SCANNER] Batch ${fetchCount}: Fetching ${batchSize} NFTs from Bithomp...`);
+        console.log(`   URL: ${url.replace(process.env.BITHOMP_API_KEY || '', '****')}`);
+        
+        const response = await fetch(url, {
+          headers: {
+            'x-bithomp-token': process.env.BITHOMP_API_KEY || '',
+            'User-Agent': 'RiddleSwap/1.0',
+            'Accept': 'application/json'
+          },
+          signal: AbortSignal.timeout(30000) // 30 second timeout for large collections
+        });
+
+        if (!response.ok) {
+          const errorText = await response.text();
+          console.error(`❌ [COLLECTION SCANNER] Bithomp API failed: ${response.status}`, errorText);
+          break;
+        }
+
+        const data = await response.json() as any;
+        const nfts = data.nfts || [];
+        
+        if (nfts.length === 0) {
+          console.log(`✅ [COLLECTION SCANNER] No more NFTs to fetch`);
+          break;
+        }
+
+        allNfts.push(...nfts);
+        console.log(`   ✅ Fetched ${nfts.length} NFTs (Total: ${allNfts.length})`);
+
+        // Check if there's a marker for next page
+        marker = data.marker;
+        if (!marker) {
+          console.log(`✅ [COLLECTION SCANNER] Reached end of collection (no marker)`);
+          break;
+        }
+
+        // Rate limit between requests
+        await new Promise(resolve => setTimeout(resolve, 300));
+      }
+
+      console.log(`✅ [COLLECTION SCANNER] Fetched ${allNfts.length} total NFTs for ${issuer.slice(0, 10)}... taxon:${taxon}`);
+
+      // Convert to BithompNftData format
+      return allNfts.map((nft: any) => ({
+        issuer: nft.issuer || issuer,
+        nftokenID: nft.nftokenID || nft.NFTokenID,
+        nftokenTaxon: nft.nftokenTaxon ?? nft.NFTokenTaxon ?? taxon,
+        owner: nft.owner || '',
+        uri: nft.uri || nft.URI,
+        metadata: nft.metadata || {},
+        issuerTokenTaxon: `${issuer}:${taxon}`,
+        sequence: nft.sequence || 0,
+        ledgerIndex: nft.ledgerIndex || 0,
+        timestamp: nft.timestamp || new Date().toISOString()
+      }));
+    } catch (error: any) {
+      console.error(`❌ [COLLECTION SCANNER] Error fetching collection:`, error?.message || error);
+      return [];
+    }
+  }
+
+  /**
    * Fetch NFTs from our own XRPL wallet endpoint (which uses Bithomp internally)
    */
   private async fetchWalletNftsFromBithomp(walletAddress: string): Promise<BithompNftData[]> {
@@ -412,6 +497,187 @@ export class NftOwnershipScanner {
     } catch (error) {
       console.error(`❌ [NFT-SCANNER] Bithomp API error for wallet ${walletAddress}:`, error);
       throw error;
+    }
+  }
+
+  /**
+   * Scan ALL NFTs from all gaming collections and POPULATE DATABASE
+   * This fetches all NFTs and stores them with power scores
+   */
+  async scanAllCollections(): Promise<{
+    collections_scanned: number;
+    total_nfts_found: number;
+    total_nfts_stored: number;
+    nfts_by_collection: Record<string, number>;
+    scan_duration_ms: number;
+  }> {
+    const startTime = Date.now();
+    console.log(`🌐 [COLLECTION SCANNER] Starting full collection scan and database population...`);
+
+    try {
+      // Load all gaming collections
+      const collections = await this.loadCollections();
+      
+      if (collections.size === 0) {
+        console.error(`❌ [COLLECTION SCANNER] No collections found in database!`);
+        return {
+          collections_scanned: 0,
+          total_nfts_found: 0,
+          total_nfts_stored: 0,
+          nfts_by_collection: {},
+          scan_duration_ms: Date.now() - startTime
+        };
+      }
+
+      const nftsByCollection: Record<string, number> = {};
+      let totalNfts = 0;
+      let totalStored = 0;
+
+      // Scan each collection
+      for (const [collectionKey, collectionInfo] of collections.entries()) {
+        console.log(`\n📚 [COLLECTION SCANNER] Scanning: ${collectionInfo.name}`);
+        console.log(`   Issuer: ${collectionInfo.issuer}`);
+        console.log(`   Taxon: ${collectionInfo.taxon}`);
+
+        const nfts = await this.fetchCollectionNftsFromBithomp(
+          collectionInfo.issuer,
+          collectionInfo.taxon,
+          2000 // Fetch up to 2000 NFTs per collection
+        );
+
+        nftsByCollection[collectionInfo.name] = nfts.length;
+        totalNfts += nfts.length;
+
+        console.log(`✅ [COLLECTION SCANNER] Found ${nfts.length} NFTs in ${collectionInfo.name}`);
+
+        // POPULATE DATABASE with all NFTs from this collection
+        if (nfts.length > 0) {
+          console.log(`💾 [COLLECTION SCANNER] Populating database with ${nfts.length} NFTs...`);
+          const stored = await this.populateCollectionNfts(collectionKey, nfts, collectionInfo);
+          totalStored += stored;
+          console.log(`✅ [COLLECTION SCANNER] Stored ${stored}/${nfts.length} NFTs in database`);
+        }
+
+        // Rate limit: Wait 500ms between collection scans
+        await new Promise(resolve => setTimeout(resolve, 500));
+      }
+
+      const scanDuration = Date.now() - startTime;
+
+      console.log(`\n✅ [COLLECTION SCANNER] Full scan complete:`);
+      console.log(`   Collections scanned: ${collections.size}`);
+      console.log(`   Total NFTs found: ${totalNfts}`);
+      console.log(`   Total NFTs stored: ${totalStored}`);
+      console.log(`   Scan duration: ${scanDuration}ms`);
+
+      return {
+        collections_scanned: collections.size,
+        total_nfts_found: totalNfts,
+        total_nfts_stored: totalStored,
+        nfts_by_collection: nftsByCollection,
+        scan_duration_ms: scanDuration
+      };
+
+    } catch (error: any) {
+      console.error(`❌ [COLLECTION SCANNER] Full scan failed:`, error?.message || error);
+      throw error;
+    }
+  }
+
+  /**
+   * Populate database with all NFTs from a collection
+   * Calculates power scores and stores metadata
+   */
+  private async populateCollectionNfts(
+    collectionKey: string, 
+    nfts: BithompNftData[], 
+    collectionInfo: { name: string; issuer: string; taxon: number }
+  ): Promise<number> {
+    let storedCount = 0;
+
+    try {
+      // Get collection ID from database
+      const collection = await db
+        .select()
+        .from(gamingNftCollections)
+        .where(eq(gamingNftCollections.collection_id, collectionKey))
+        .limit(1);
+
+      if (collection.length === 0) {
+        console.error(`❌ [COLLECTION SCANNER] Collection not found in database: ${collectionKey}`);
+        return 0;
+      }
+
+      const collectionDbId = collection[0].id;
+
+      // Process each NFT
+      for (const nft of nfts) {
+        try {
+          // Calculate power score
+          const powerScore = this.calculateNftPower(nft);
+
+          // Extract metadata
+          const nftName = nft.metadata?.name || `${collectionInfo.name} #${nft.sequence || 'Unknown'}`;
+          const imageUrl = nft.metadata?.image || '';
+          const description = nft.metadata?.description || '';
+
+          // Check if NFT already exists
+          const existing = await db
+            .select()
+            .from(gamingNfts)
+            .where(eq(gamingNfts.nft_id, nft.nftokenID))
+            .limit(1);
+
+          if (existing.length === 0) {
+            // Insert new NFT
+            await (db.insert(gamingNfts) as any).values({
+              collection_id: collectionDbId,
+              token_id: nft.sequence?.toString() || nft.nftokenID.substring(0, 16),
+              nft_id: nft.nftokenID,
+              owner_address: nft.owner || null,
+              metadata: nft.metadata || {},
+              traits: nft.metadata?.attributes || {},
+              image_url: imageUrl,
+              name: nftName,
+              description: description,
+              rarity_score: powerScore.toString(),
+              created_at: new Date(),
+              updated_at: new Date()
+            });
+            storedCount++;
+            
+            if (storedCount % 10 === 0) {
+              console.log(`   💾 Stored ${storedCount}/${nfts.length} NFTs...`);
+            }
+          } else {
+            // Update existing NFT (refresh metadata and power)
+            await db
+              .update(gamingNfts)
+              .set({
+                owner_address: nft.owner || existing[0].owner_address,
+                metadata: nft.metadata || {},
+                traits: nft.metadata?.attributes || {},
+                image_url: imageUrl,
+                name: nftName,
+                description: description,
+                rarity_score: powerScore.toString(),
+                updated_at: new Date()
+              } as any)
+              .where(eq(gamingNfts.nft_id, nft.nftokenID));
+            storedCount++;
+          }
+        } catch (nftError: any) {
+          console.error(`❌ [COLLECTION SCANNER] Failed to store NFT ${nft.nftokenID}:`, nftError?.message);
+          // Continue with next NFT
+        }
+      }
+
+      console.log(`✅ [COLLECTION SCANNER] Stored ${storedCount}/${nfts.length} NFTs for ${collectionInfo.name}`);
+      return storedCount;
+
+    } catch (error: any) {
+      console.error(`❌ [COLLECTION SCANNER] Failed to populate collection ${collectionKey}:`, error?.message);
+      return storedCount;
     }
   }
 

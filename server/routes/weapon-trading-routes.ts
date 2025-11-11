@@ -110,12 +110,8 @@ export function setupWeaponTradingRoutes(app: Express) {
         sellerId: player.id,
         sellerXrplAddress: player.wallet_address,
         priceDrops: priceDropsNumber,
-        description: description || null,
-        status: 'active',
-        expiresAt: expiresAt,
-        createdAt: new Date(),
-        updatedAt: new Date()
-      }).returning();
+        expiresAt: expiresAt
+      } as any).returning();
 
       console.log('✅ [WEAPON TRADING] Listed weapon:', weaponId, 'by', userHandle);
 

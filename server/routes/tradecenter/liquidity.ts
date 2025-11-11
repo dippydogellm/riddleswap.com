@@ -223,37 +223,98 @@ router.get('/positions', requireAuth, async (req, res) => {
 
 router.post('/add', requireAuth, async (req, res) => {
   try {
-    const validation = AddLiquiditySchema.safeParse(req.body);
+    const { asset1, asset2, amount1, amount2, walletAddress, createNew, mode } = req.body;
     
-    if (!validation.success) {
+    if (!asset1 || !asset2 || !amount1 || !amount2 || !walletAddress) {
       return res.status(400).json({
         success: false,
-        error: 'Invalid request',
-        details: validation.error.errors
+        error: 'Missing required fields'
       });
     }
     
-    const { tokenA, tokenB, amountA, amountB, chain, walletAddress } = validation.data;
     const session = (req as any).userSession;
+    console.log(`💧 [Add Liquidity] ${session.handle}: ${amount1} + ${amount2} (${mode} mode, createNew: ${createNew})`);
     
-    // Verify wallet ownership
-    const chainKey = `${chain}Address`;
-    if (session.walletData?.[chainKey] !== walletAddress) {
-      return res.status(403).json({
-        success: false,
-        error: 'Wallet address mismatch'
+    const client = new Client(XRPL_SERVER);
+    await client.connect();
+    
+    try {
+      // Parse assets
+      const parseAsset = (asset: string): any => {
+        if (asset === 'XRP') {
+          return { currency: 'XRP' };
+        }
+        const [currency, issuer] = asset.split('.');
+        return issuer ? { currency, issuer } : { currency };
+      };
+
+      const asset1Obj = parseAsset(asset1);
+      const asset2Obj = parseAsset(asset2);
+
+      // Convert amounts to proper format
+      const formatAmount = (amount: string, currency: string): any => {
+        const numAmount = parseFloat(amount);
+        if (currency === 'XRP') {
+          return (numAmount * 1e6).toString(); // Convert to drops
+        }
+        return {
+          currency: asset1Obj.currency || asset2Obj.currency,
+          value: numAmount.toString(),
+          issuer: asset1Obj.issuer || asset2Obj.issuer
+        };
+      };
+
+      let transaction: any;
+
+      if (createNew) {
+        // Create new AMM pool (AMMCreate transaction)
+        transaction = {
+          TransactionType: 'AMMCreate',
+          Account: walletAddress,
+          Amount: formatAmount(amount1, asset1),
+          Amount2: formatAmount(amount2, asset2),
+          TradingFee: 500 // 0.5% default trading fee
+        };
+        
+        console.log(`🆕 Creating new AMM pool for ${asset1}/${asset2}`);
+      } else {
+        // Add to existing pool (AMMDeposit transaction)
+        transaction = {
+          TransactionType: 'AMMDeposit',
+          Account: walletAddress,
+          Asset: asset1Obj,
+          Asset2: asset2Obj,
+          Amount: formatAmount(amount1, asset1),
+          Amount2: formatAmount(amount2, asset2)
+        };
+        
+        console.log(`➕ Adding liquidity to existing ${asset1}/${asset2} pool`);
+      }
+
+      await client.disconnect();
+
+      // Return transaction payload for frontend signing
+      res.json({
+        success: true,
+        transaction,
+        requiresSigning: true,
+        message: createNew ? 'Pool creation transaction ready' : 'Liquidity deposit transaction ready',
+        details: {
+          asset1,
+          asset2,
+          amount1,
+          amount2,
+          mode,
+          createNew
+        },
+        timestamp: Date.now()
       });
+      
+    } finally {
+      if (client.isConnected()) {
+        await client.disconnect();
+      }
     }
-    
-    console.log(`💧 [Add Liquidity] ${session.handle}: ${amountA} ${tokenA} + ${amountB} ${tokenB} on ${chain}`);
-    
-    // TODO: Execute add liquidity transaction
-    
-    res.json({
-      success: true,
-      message: 'Liquidity add not yet implemented',
-      timestamp: Date.now()
-    });
     
   } catch (error) {
     console.error('❌ [Add Liquidity Error]:', error);
@@ -415,6 +476,238 @@ router.get('/balances/:address', requireAuth, async (req, res) => {
     res.status(500).json({
       success: false,
       error: error instanceof Error ? error.message : 'Failed to fetch LP balances'
+    });
+  }
+});
+
+// ============================================================================
+// GET /api/tradecenter/liquidity/pool-exists
+// Check if AMM pool exists for asset pair
+// ============================================================================
+
+router.get('/pool-exists', async (req, res) => {
+  try {
+    const { asset1, asset2 } = req.query;
+    
+    if (!asset1 || !asset2) {
+      return res.status(400).json({
+        success: false,
+        error: 'Missing required parameters: asset1, asset2'
+      });
+    }
+    
+    const client = new Client(XRPL_SERVER);
+    await client.connect();
+    
+    try {
+      const parseAsset = (asset: string): any => {
+        if (asset === 'XRP') return { currency: 'XRP' };
+        const [currency, issuer] = asset.split('.');
+        return issuer ? { currency, issuer } : { currency };
+      };
+      
+      const ammInfo: any = await client.request({
+        command: 'amm_info',
+        asset: parseAsset(asset1 as string),
+        asset2: parseAsset(asset2 as string)
+      } as any);
+      
+      const exists = !!ammInfo.result?.amm;
+      
+      await client.disconnect();
+      
+      res.json({
+        success: true,
+        exists,
+        pool: exists ? {
+          ammAccount: ammInfo.result.amm.account,
+          asset1: ammInfo.result.amm.amount,
+          asset2: ammInfo.result.amm.amount2,
+          lpToken: ammInfo.result.amm.lp_token
+        } : null
+      });
+    } finally {
+      if (client.isConnected()) {
+        await client.disconnect();
+      }
+    }
+  } catch (error) {
+    console.error('❌ [Pool Exists Error]:', error);
+    res.json({
+      success: true,
+      exists: false,
+      pool: null
+    });
+  }
+});
+
+// ============================================================================
+// GET /api/tradecenter/liquidity/calculate
+// Calculate pool share and amounts for single or double-sided input
+// ============================================================================
+
+router.get('/calculate', async (req, res) => {
+  try {
+    const { asset1, asset2, amount, amount1, amount2, inputAsset, mode = 'single' } = req.query;
+    
+    if (!asset1 || !asset2) {
+      return res.status(400).json({
+        success: false,
+        error: 'Missing required parameters: asset1, asset2'
+      });
+    }
+
+    if (mode === 'single' && (!amount || !inputAsset)) {
+      return res.status(400).json({
+        success: false,
+        error: 'Single mode requires: amount, inputAsset'
+      });
+    }
+
+    if (mode === 'double' && (!amount1 || !amount2)) {
+      return res.status(400).json({
+        success: false,
+        error: 'Double mode requires: amount1, amount2'
+      });
+    }
+    
+    console.log(`🧮 [Calculate Liquidity] ${mode} mode for ${asset1}/${asset2} pool`);
+    
+    const client = new Client(XRPL_SERVER);
+    await client.connect();
+    
+    try {
+      // Parse assets
+      const parseAsset = (asset: string): any => {
+        if (asset === 'XRP') return { currency: 'XRP' };
+        const [currency, issuer] = asset.split('.');
+        return issuer ? { currency, issuer } : { currency };
+      };
+      
+      const ammInfo: any = await client.request({
+        command: 'amm_info',
+        asset: parseAsset(asset1 as string),
+        asset2: parseAsset(asset2 as string)
+      } as any);
+      
+      if (!ammInfo.result?.amm) {
+        return res.status(404).json({
+          success: false,
+          error: 'AMM pool not found for this pair'
+        });
+      }
+      
+      const amm = ammInfo.result.amm;
+      const pool1 = amm.amount;
+      const pool2 = amm.amount2;
+      
+      const pool1Amount = typeof pool1 === 'string' ? parseFloat(pool1) / 1e6 : parseFloat(pool1.value || '0');
+      const pool2Amount = typeof pool2 === 'string' ? parseFloat(pool2) / 1e6 : parseFloat(pool2.value || '0');
+      
+      const totalLPTokens = parseFloat(amm.lp_token?.value || '1');
+      
+      let inputAmount: number;
+      let otherAssetAmount: number;
+      let depositAmount1: number;
+      let depositAmount2: number;
+      
+      if (mode === 'single') {
+        // Single-sided: calculate the other asset needed
+        inputAmount = parseFloat(amount as string);
+        const isAsset1 = inputAsset === asset1;
+        
+        otherAssetAmount = isAsset1 
+          ? (inputAmount * pool2Amount) / pool1Amount
+          : (inputAmount * pool1Amount) / pool2Amount;
+        
+        depositAmount1 = isAsset1 ? inputAmount : otherAssetAmount;
+        depositAmount2 = isAsset1 ? otherAssetAmount : inputAmount;
+      } else {
+        // Double-sided: use both provided amounts
+        depositAmount1 = parseFloat(amount1 as string);
+        depositAmount2 = parseFloat(amount2 as string);
+        inputAmount = depositAmount1;
+        otherAssetAmount = depositAmount2;
+      }
+      
+      // Calculate LP tokens to be minted
+      // Formula: LP_minted = sqrt(amount1 * amount2) * total_LP / sqrt(pool1 * pool2)
+      const currentK = Math.sqrt(pool1Amount * pool2Amount);
+      const newK = Math.sqrt(
+        (pool1Amount + depositAmount1) *
+        (pool2Amount + depositAmount2)
+      );
+      
+      const lpTokensMinted = ((newK - currentK) / currentK) * totalLPTokens;
+      
+      // Calculate pool share percentage
+      const newTotalLP = totalLPTokens + lpTokensMinted;
+      const poolSharePercent = (lpTokensMinted / newTotalLP) * 100;
+      
+      // Calculate TVL
+      const currentTVL = pool1Amount + pool2Amount; // Simplified, both in same unit
+      const newTVL = currentTVL + inputAmount + otherAssetAmount;
+      
+      await client.disconnect();
+      
+      const response: any = {
+        success: true,
+        mode,
+        poolShare: {
+          lpTokens: lpTokensMinted.toFixed(6),
+          percentage: poolSharePercent.toFixed(4),
+          formatted: `${poolSharePercent.toFixed(4)}%`
+        },
+        pool: {
+          current: {
+            asset1: pool1Amount.toFixed(6),
+            asset2: pool2Amount.toFixed(6),
+            tvl: currentTVL.toFixed(6)
+          },
+          afterDeposit: {
+            asset1: (pool1Amount + depositAmount1).toFixed(6),
+            asset2: (pool2Amount + depositAmount2).toFixed(6),
+            tvl: newTVL.toFixed(6)
+          }
+        },
+        priceImpact: {
+          value: 0,
+          formatted: '0.00%'
+        },
+        tradingFee: amm.trading_fee || 0,
+        tradingFeePercent: ((amm.trading_fee || 0) / 1000).toFixed(3),
+        timestamp: Date.now()
+      };
+
+      if (mode === 'single') {
+        response.input = {
+          asset: inputAsset,
+          amount: inputAmount.toFixed(6)
+        };
+        response.required = {
+          asset: inputAsset === asset1 ? asset2 : asset1,
+          amount: otherAssetAmount.toFixed(6)
+        };
+      } else {
+        response.amounts = {
+          asset1: depositAmount1.toFixed(6),
+          asset2: depositAmount2.toFixed(6)
+        };
+      }
+
+      res.json(response);
+      
+    } finally {
+      if (client.isConnected()) {
+        await client.disconnect();
+      }
+    }
+    
+  } catch (error) {
+    console.error('❌ [Calculate Liquidity Error]:', error);
+    res.status(500).json({
+      success: false,
+      error: error instanceof Error ? error.message : 'Failed to calculate liquidity'
     });
   }
 });

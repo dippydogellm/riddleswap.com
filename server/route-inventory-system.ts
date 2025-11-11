@@ -310,7 +310,7 @@ export class RouteInventorySystem {
     const stats: UsageStats = {
       date: today,
       routeUsage,
-      totalRequests: Object.values(routeUsage as any).reduce((sum, count) => sum + count, 0),
+      totalRequests: Object.values(routeUsage as any).reduce((sum: number, count: any) => sum + (count as number), 0) as number,
       uniqueRoutes: Object.keys(routeUsage).length
     };
 

@@ -209,7 +209,7 @@ export class DynamicBridgeCompletion {
                 verification_status: 'failed',
                 errorMessage: `Transaction verification failed: ${verificationResult.message}`,
                 updatedAt: new Date()
-              })
+              } as any)
               .where(eq(bridge_payloads.transaction_id, transactionId));
             
             throw new Error(`Transaction verification failed: ${verificationResult.message}`);
@@ -298,7 +298,7 @@ export class DynamicBridgeCompletion {
                 verification_status: 'failed',
                 errorMessage: `Transaction verification failed: ${verificationResult.message}`,
                 updatedAt: new Date()
-              })
+              } as any)
               .where(eq(bridge_payloads.transaction_id, transactionId));
             
             throw new Error(`Transaction verification failed: ${verificationResult.message}`);
@@ -389,7 +389,7 @@ export class DynamicBridgeCompletion {
                 verification_status: 'failed',
                 errorMessage: `Transaction verification failed: ${verificationResult.message}`,
                 updatedAt: new Date()
-              })
+              } as any)
               .where(eq(bridge_payloads.transaction_id, transactionId));
             
             throw new Error(`Transaction verification failed: ${verificationResult.message}`);
@@ -478,7 +478,7 @@ export class DynamicBridgeCompletion {
                 verification_status: 'failed',
                 errorMessage: `Transaction verification failed: ${verificationResult.message}`,
                 updatedAt: new Date()
-              })
+              } as any)
               .where(eq(bridge_payloads.transaction_id, transactionId));
             
             throw new Error(`Transaction verification failed: ${verificationResult.message}`);

@@ -522,7 +522,7 @@ export async function processPendingBridgeTransactions() {
               status: 'failed',
               errorMessage: `Verification failed: ${verification.error}`,
               updatedAt: new Date()
-            })
+            } as any)
             .where(eq(bridge_payloads.id, payload.id));
           continue;
         }

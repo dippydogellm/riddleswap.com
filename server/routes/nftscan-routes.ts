@@ -30,30 +30,33 @@ router.get('/:chain/collections', async (req, res) => {
     // Get trending collections as our main collections list
     const collections = await moralisNFTService.getTrendingCollections(chain as MoralisChainId, limit);
     
-    // Transform collections for marketplace display
-    const marketplaceCollections = collections.map(collection => ({
-      address: collection.contractAddress || collection.token_address || collection.address,
-      name: collection.name || 'Unnamed Collection',
-      symbol: collection.symbol,
-      image: collection.image || 
-              collection.contract_metadata?.image || 
-              collection.contract_metadata?.image_url || 
-              collection.contract_metadata?.logo ||
-              collection.contract_metadata?.banner_image,
-      logo: collection.logo || collection.contract_metadata?.logo,
-      banner_image: collection.banner_image || collection.contract_metadata?.banner_image,
-      description: collection.description || collection.contract_metadata?.description,
-      floor_price: collection.floor_price,
-      floor_price_usd: collection.floor_price_usd,
-      volume_24h: collection.volume_24h,
-      verified: collection.verified || collection.verified_collection || false,
-      items_total: collection.total_tokens || collection.items_total,
-      owners_total: collection.owner_count || collection.owners_total,
-      market_cap: collection.market_cap_usd,
-      sales_24h: collection.sales_24h,
-      average_price_24h: collection.average_price_24h,
-      chain
-    }));
+    // Transform collections for marketplace display - cast to any for optional field access
+    const marketplaceCollections = collections.map(collection => {
+      const c = collection as any; // Cast to access optional/varying fields from different APIs
+      return {
+        address: collection.contractAddress || c.token_address || c.address,
+        name: collection.name || 'Unnamed Collection',
+        symbol: collection.symbol,
+        image: collection.image || 
+                c.contract_metadata?.image || 
+                c.contract_metadata?.image_url || 
+                c.contract_metadata?.logo ||
+                c.contract_metadata?.banner_image,
+        logo: c.logo || c.contract_metadata?.logo,
+        banner_image: collection.bannerImage || c.banner_image || c.contract_metadata?.banner_image,
+        description: collection.description || c.contract_metadata?.description,
+        floor_price: collection.floorPrice || c.floor_price,
+        floor_price_usd: collection.floorPrice || c.floor_price_usd,
+        volume_24h: collection.volume24h || c.volume_24h,
+        verified: collection.verified || c.verified_collection || false,
+        items_total: c.total_tokens || c.items_total,
+        owners_total: c.owner_count || c.owners_total,
+        market_cap: c.market_cap_usd,
+        sales_24h: collection.sales24h || c.sales_24h,
+        average_price_24h: c.average_price_24h,
+        chain
+      };
+    });
     
     res.json({
       success: true,

@@ -91,43 +91,99 @@ const Home: React.FC = () => {
 
   return (
     <Box component="main" sx={{ minHeight: '100vh', bgcolor: theme.palette.mode === 'dark' ? 'background.default' : 'grey.50' }}>
+      {/* Product Showcase Menu Bar */}
+      <Box sx={{ 
+        bgcolor: theme.palette.mode === 'dark' ? 'grey.900' : 'white',
+        borderBottom: 1,
+        borderColor: 'divider',
+        py: 2
+      }}>
+        <Container maxWidth="xl">
+          <Grid container spacing={2} alignItems="center">
+            {[
+              { name: 'Trading', icon: <TrendingUp size={20} />, link: '/swap', color: '#3b82f6' },
+              { name: 'NFT Marketplace', icon: <Image size={20} />, link: '/nft-marketplace', color: '#8b5cf6' },
+              { name: 'Trolls Inquisition', icon: <Swords size={20} />, link: '/trolls-inquisition', color: '#ef4444' },
+              { name: 'RiddleCity', icon: <Layers size={20} />, link: '/riddle-city', color: '#f59e0b' },
+              { name: 'Portfolio', icon: <BarChart3 size={20} />, link: '/portfolio', color: '#10b981' },
+              { name: 'Analytics', icon: <LineChart size={20} />, link: '/scanner', color: '#06b6d4' },
+              { name: 'Wallet', icon: <Wallet size={20} />, link: '/create-wallet', color: '#6366f1' },
+              { name: 'DevTools', icon: <Rocket size={20} />, link: '/devtools', color: '#ec4899' }
+            ].map(product => (
+              <Grid item xs={6} sm={4} md={3} lg={1.5} key={product.name}>
+                <Button
+                  component={Link as any}
+                  href={product.link}
+                  fullWidth
+                  sx={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: 0.5,
+                    py: 1.5,
+                    px: 1,
+                    bgcolor: theme.palette.mode === 'dark' ? 'grey.800' : 'grey.50',
+                    color: theme.palette.text.primary,
+                    '&:hover': {
+                      bgcolor: theme.palette.mode === 'dark' ? 'grey.700' : 'grey.100',
+                      transform: 'translateY(-2px)',
+                      boxShadow: 3
+                    },
+                    transition: 'all 0.2s',
+                    borderRadius: 2
+                  }}
+                >
+                  <Box sx={{ color: product.color }}>{product.icon}</Box>
+                  <Typography variant="caption" fontWeight={600} sx={{ fontSize: { xs: '0.65rem', sm: '0.75rem' } }}>
+                    {product.name}
+                  </Typography>
+                </Button>
+              </Grid>
+            ))}
+          </Grid>
+        </Container>
+      </Box>
+
       {/* Hero */}
       <Box sx={{
         position: 'relative',
-        py: { xs: 10, md: 14 },
-        background: 'linear-gradient(135deg, #2563eb 0%, #7e22ce 50%, #db2777 100%)',
+        py: { xs: 8, md: 12 },
+        bgcolor: theme.palette.mode === 'dark' ? 'grey.900' : 'primary.main',
         color: 'common.white'
       }}>
         <Container maxWidth="lg" sx={{ textAlign: 'center', position: 'relative' }}>
           <Box sx={{ display: 'flex', justifyContent: 'center', mb: 4 }}>
-            <Box component="img" src="/images/logos/rdl-logo-official.png" alt="RiddleSwap Logo" sx={{ height: 96 }}
+            <Box component="img" src="/images/logos/rdl-logo-official.png" alt="RiddleSwap Logo" sx={{ height: 80 }}
               onError={(e: React.SyntheticEvent<HTMLImageElement>) => { (e.currentTarget.style.display = 'none'); }} />
           </Box>
-          <Typography variant="h2" sx={{ fontWeight: 800, mb: 2, letterSpacing: '-2px', fontSize: { xs: '2.75rem', md: '4.5rem' } }}>
+          <Typography variant="h2" sx={{ fontWeight: 800, mb: 2, letterSpacing: '-1px', fontSize: { xs: '2.5rem', md: '4rem' } }}>
             RiddleSwap
           </Typography>
-            <Typography variant="h4" sx={{ fontWeight: 600, mb: 3, opacity: 0.95 }}>
-              Multi-Chain DeFi Platform
-            </Typography>
-          <Typography variant="h6" sx={{ maxWidth: 900, mx: 'auto', mb: 5, fontWeight: 400, lineHeight: 1.4 }}>
+          <Typography variant="h4" sx={{ fontWeight: 600, mb: 3, opacity: 0.95 }}>
+            Multi-Chain DeFi Platform
+          </Typography>
+          <Typography variant="h6" sx={{ maxWidth: 900, mx: 'auto', mb: 5, fontWeight: 400, lineHeight: 1.4, opacity: 0.9 }}>
             Trade, swap, bridge & manage crypto across <strong>19 blockchains</strong> in one unified experience. From DeFi to NFTs to gaming – everything you need for decentralized finance.
           </Typography>
           <Stack direction={{ xs: 'column', sm: 'row' }} spacing={2} justifyContent="center" sx={{ mb: 4 }}>
-            <Button component={Link as any} href="/create-wallet" variant="contained" size="large" color="inherit"
+            <Button component={Link as any} href="/create-wallet" variant="contained" size="large"
               sx={{
                 bgcolor: 'common.white', color: 'primary.main', fontWeight: 700, px: 4,
-                '&:hover': { bgcolor: alpha('#ffffff', 0.9) }
+                '&:hover': { bgcolor: 'grey.100' }
               }} startIcon={<Wallet size={22} />} endIcon={<ChevronRight size={22} />}>Create Free Wallet</Button>
-            <Button component={Link as any} href="/swap" variant="contained" size="large"
+            <Button component={Link as any} href="/swap" variant="contained" size="large" color="secondary"
               startIcon={<Zap size={22} />} sx={{
                 fontWeight: 700, px: 4,
-                background: 'linear-gradient(90deg,#6d28d9,#db2777)',
-                '&:hover': { background: 'linear-gradient(90deg,#5b21b6,#be185d)' }
+                '&:hover': { bgcolor: 'secondary.dark' }
               }}>Start Trading</Button>
           </Stack>
           <Stack direction="row" spacing={1} justifyContent="center" flexWrap="wrap" sx={{ mt: 2 }}>
             {['Swap', 'Bridge', 'NFTs', 'Gaming', 'Analytics', 'Wallet'].map(tag => (
-              <Chip key={tag} label={tag} color="primary" variant="outlined" sx={{ bgcolor: alpha('#ffffff', 0.15), color: 'white', borderColor: alpha('#ffffff', 0.3) }} />
+              <Chip key={tag} label={tag} sx={{ 
+                bgcolor: alpha('#ffffff', 0.15), 
+                color: 'white', 
+                borderColor: alpha('#ffffff', 0.3),
+                '&:hover': { bgcolor: alpha('#ffffff', 0.25) }
+              }} />
             ))}
           </Stack>
         </Container>
@@ -175,8 +231,16 @@ const Home: React.FC = () => {
                   <Card sx={{ height: '100%', display: 'flex', flexDirection: 'column', borderRadius: 3, position: 'relative', overflow: 'hidden',
                     '&:hover': { boxShadow: 8, transform: 'translateY(-6px)' }, transition: 'all .25s' }}>
                     <CardContent sx={{ flexGrow: 1 }}>
-                      <Box sx={{ width: 56, height: 56, borderRadius: 2, display: 'flex', alignItems: 'center', justifyContent: 'center', mb: 2,
-                        background: `linear-gradient(135deg, ${alpha(theme.palette.primary.main, .8)}, ${alpha(theme.palette.secondary.main, .8)})` }}>
+                      <Box sx={{ 
+                        width: 56, 
+                        height: 56, 
+                        borderRadius: 2, 
+                        display: 'flex', 
+                        alignItems: 'center', 
+                        justifyContent: 'center', 
+                        mb: 2,
+                        bgcolor: theme.palette.mode === 'dark' ? 'primary.dark' : 'primary.main'
+                      }}>
                         <Icon size={30} color="#fff" />
                       </Box>
                       <Typography variant="h6" fontWeight={700} gutterBottom>{service.title}</Typography>
@@ -194,25 +258,32 @@ const Home: React.FC = () => {
       </Box>
 
       {/* Community */}
-      <Box sx={{ py: 10, background: 'linear-gradient(135deg,#7e22ce,#db2777)' }}>
+      <Box sx={{ py: 10, bgcolor: theme.palette.mode === 'dark' ? 'grey.800' : 'secondary.main' }}>
         <Container maxWidth="lg" sx={{ textAlign: 'center', color: 'white' }}>
           <Typography variant="h3" fontWeight={700} gutterBottom><Users style={{ verticalAlign: 'middle', marginRight: 12 }} size={42} />Join Our Community</Typography>
           <Typography variant="subtitle1" sx={{ opacity: 0.9, mb: 6 }}>Connect with traders, developers & crypto enthusiasts</Typography>
           <Grid container spacing={3} justifyContent="center">
             {[{
-              name: 'Telegram', icon: <FaTelegram size={64} color='#3b82f6' />, url: 'https://t.me/riddlexrp', desc: 'Announcements & live support'
+              name: 'Telegram', icon: <FaTelegram size={64} />, url: 'https://t.me/riddlexrp', desc: 'Announcements & live support', color: '#3b82f6'
             }, {
-              name: 'Twitter/X', icon: <FaTwitter size={64} color='#0ea5e9' />, url: 'https://twitter.com/riddleswap', desc: 'Updates, news & insights'
+              name: 'Twitter/X', icon: <FaTwitter size={64} />, url: 'https://twitter.com/riddleswap', desc: 'Updates, news & insights', color: '#0ea5e9'
             }, {
-              name: 'Discord', icon: <FaDiscord size={64} color='#6366f1' />, url: 'https://discord.gg/riddleswap', desc: 'Chat with team & community'
+              name: 'Discord', icon: <FaDiscord size={64} />, url: 'https://discord.gg/riddleswap', desc: 'Chat with team & community', color: '#6366f1'
             }].map(s => (
               <Grid item xs={12} md={4} key={s.name}>
-                <Card sx={{ p: 3, borderRadius: 4, bgcolor: alpha('#ffffff', 0.1), backdropFilter: 'blur(4px)', color: 'white',
-                  '&:hover': { boxShadow: 10, transform: 'translateY(-6px)', bgcolor: alpha('#ffffff', 0.15) }, transition: 'all .25s' }}>
-                  <Box sx={{ mb: 2, display: 'flex', justifyContent: 'center' }}>{s.icon}</Box>
+                <Card sx={{ 
+                  p: 3, 
+                  borderRadius: 4, 
+                  bgcolor: theme.palette.mode === 'dark' ? 'grey.900' : alpha('#ffffff', 0.2),
+                  backdropFilter: 'blur(4px)', 
+                  color: 'white',
+                  '&:hover': { boxShadow: 10, transform: 'translateY(-6px)' }, 
+                  transition: 'all .25s' 
+                }}>
+                  <Box sx={{ mb: 2, display: 'flex', justifyContent: 'center', color: s.color }}>{s.icon}</Box>
                   <Typography variant="h6" fontWeight={700} gutterBottom>{s.name}</Typography>
-                  <Typography variant="body2" sx={{ opacity: 0.8, mb: 2 }}>{s.desc}</Typography>
-                  <Button href={s.url} target="_blank" rel="noopener" variant="outlined" endIcon={<ArrowRight size={16} />} sx={{ color: 'white', borderColor: alpha('#ffffff', 0.4) }}>
+                  <Typography variant="body2" sx={{ opacity: 0.9, mb: 2 }}>{s.desc}</Typography>
+                  <Button href={s.url} target="_blank" rel="noopener" variant="outlined" endIcon={<ArrowRight size={16} />} sx={{ color: 'white', borderColor: alpha('#ffffff', 0.5), '&:hover': { borderColor: 'white' } }}>
                     {s.name === 'Telegram' ? 'Join Now' : s.name === 'Discord' ? 'Join Server' : 'Follow Us'}
                   </Button>
                 </Card>
@@ -270,14 +341,14 @@ const Home: React.FC = () => {
       </Box>
 
       {/* Final CTA */}
-      <Box sx={{ py: 12, background: 'linear-gradient(90deg,#2563eb,#7e22ce)', textAlign: 'center', color: 'white' }}>
+      <Box sx={{ py: 12, bgcolor: theme.palette.mode === 'dark' ? 'grey.900' : 'primary.dark', textAlign: 'center', color: 'white' }}>
         <Container maxWidth="md">
           <Typography variant="h3" fontWeight={700} gutterBottom>Ready to Start Your DeFi Journey?</Typography>
           <Typography variant="h6" sx={{ opacity: 0.9, mb: 4 }}>Create your free multi-chain wallet in under 60 seconds.</Typography>
-          <Button component={Link as any} href="/create-wallet" size="large" variant="contained" color="inherit"
+          <Button component={Link as any} href="/create-wallet" size="large" variant="contained"
             startIcon={<Wallet size={26} />} endIcon={<ChevronRight size={26} />} sx={{
               bgcolor: 'common.white', color: 'primary.main', fontWeight: 800, borderRadius: 4, px: 5,
-              '&:hover': { bgcolor: alpha('#ffffff', 0.9) }
+              '&:hover': { bgcolor: 'grey.100' }
             }}>Get Started Now</Button>
         </Container>
       </Box>

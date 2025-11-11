@@ -28,15 +28,29 @@ import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Progress } from '@/components/ui/progress';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { useSession } from '@/utils/sessionManager';
+import { SessionRenewalModal } from '@/components/SessionRenewalModal';
 
 export default function TradingDashboard() {
+  const session = useSession();
   const [selectedCategory, setSelectedCategory] = useState('all');
+  const [showRenewalModal, setShowRenewalModal] = useState(false);
   const [metrics, setMetrics] = useState({
     activeUsers: 0,
     totalTradesDay: 0,
     systemUptime: 99.9,
     avgResponseTime: 0
   });
+  
+  // Check if session needs renewal
+  useEffect(() => {
+    if ((session as any).needsRenewal) {
+      console.log('⚠️ [TRADING] Session needs renewal, showing modal');
+      setShowRenewalModal(true);
+    } else {
+      setShowRenewalModal(false);
+    }
+  }, [(session as any).needsRenewal]);
 
   // Fetch real-time analytics and metrics
   const { data: analyticsData } = useQuery({
@@ -565,6 +579,12 @@ export default function TradingDashboard() {
           </Button>
         </div>
       </div>
+      
+      {/* Session Renewal Modal */}
+      <SessionRenewalModal 
+        open={showRenewalModal} 
+        onOpenChange={setShowRenewalModal}
+      />
     </div>
   );
 }

@@ -443,15 +443,15 @@ router.post("/cache/warm", sessionAuth, requireAdminAccess, async (req: Authenti
     
     // Warm token metadata cache (optional)
     let metadataWarmed = 0;
-    try {
-      const { tokenMetadataService } = await import('./token-metadata-service');
-      if (tokenMetadataService && typeof tokenMetadataService.warmMetadataCache === 'function') {
-        metadataWarmed = await tokenMetadataService.warmMetadataCache(popularTokens.map(t => t.symbol));
-        console.log(`✅ [ANALYTICS] Warmed ${metadataWarmed} metadata entries`);
-      }
-    } catch (error) {
-      console.log(`ℹ️ [ANALYTICS] Token metadata service not available, skipping metadata warming`);
-    }
+    // try {
+    //   const { tokenMetadataService } = await import('./token-metadata-service');
+    //   if (tokenMetadataService && typeof tokenMetadataService.warmMetadataCache === 'function') {
+    //     metadataWarmed = await tokenMetadataService.warmMetadataCache(popularTokens.map(t => t.symbol));
+    //     console.log(`✅ [ANALYTICS] Warmed ${metadataWarmed} metadata entries`);
+    //   }
+    // } catch (error) {
+    //   console.log(`ℹ️ [ANALYTICS] Token metadata service not available, skipping metadata warming`);
+    // }
     
     // Warm trustline cache for common addresses (optional)
     let trustlineWarmed = 0;

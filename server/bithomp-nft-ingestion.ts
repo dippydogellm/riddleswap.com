@@ -158,7 +158,7 @@ export async function importNFTsToDatabase(
         game_stats: {},
         is_genesis: false,
         power_multiplier: "1.00"
-      });
+      } as any);
 
       imported++;
       console.log(`✅ Imported NFT: ${metadata.name || nft.nftId}`);

@@ -53,6 +53,25 @@ export async function registerRoutes(app: Express, server: Server): Promise<void
   authorizedMinterModule.registerAuthorizedMinterRoutes(app);
 
   // =============================================================================
+  // CIVILIZATION & PLAYER ROUTES
+  // =============================================================================
+  
+  console.log('🏰 Registering Civilization routes...');
+  const civilizationModule = await import('./routes/civilization');
+  civilizationModule.registerCivilizationRoutes(app);
+  console.log('✅ Civilization routes registered successfully');
+
+  // =============================================================================
+  // SCANNER MANAGEMENT ROUTES (ADMIN)
+  // =============================================================================
+  
+  console.log('🔍 Registering Scanner Management routes...');
+  const scannerModule = await import('./routes/scanner');
+  scannerModule.initializeScannerManager();
+  scannerModule.registerScannerRoutes(app);
+  console.log('✅ Scanner Management routes registered successfully');
+
+  // =============================================================================
   // SEARCH API ROUTES (PUBLIC ACCESS)
   // =============================================================================
   
@@ -368,6 +387,20 @@ export async function registerRoutes(app: Express, server: Server): Promise<void
   const bithompOverrideRoutes = bithompOverrideModule.default;
   app.use('/', bithompOverrideRoutes);
   console.log('✅ Bithomp Override routes registered successfully');
+
+  // Bithomp Tokens
+  console.log('🔧 Registering Bithomp Tokens routes...');
+  const bithompTokensModule = await import('./bithomp-tokens');
+  const bithompTokensRoutes = bithompTokensModule.default;
+  app.use('/api', bithompTokensRoutes);
+  console.log('✅ Bithomp Tokens routes registered successfully');
+
+  // 1inch Tokens
+  console.log('🔧 Registering 1inch Tokens routes...');
+  const oneinchTokensModule = await import('./oneinch-tokens');
+  const oneinchTokensRoutes = oneinchTokensModule.default;
+  app.use('/api', oneinchTokensRoutes);
+  console.log('✅ 1inch Tokens routes registered successfully');
 
   // =============================================================================
   // GAMING NFT ROUTES (PUBLIC ACCESS - NFT GAMING SYSTEM)

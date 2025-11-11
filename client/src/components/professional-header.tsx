@@ -274,28 +274,7 @@ export default function ProfessionalHeader() {
                 src="/images/logos/rdl-logo-official.png"
                 alt="RDL"
                 style={{ width: 32, height: 32, objectFit: 'contain' }}
-                onError={(e) => {
-                  const target = e.currentTarget as HTMLImageElement;
-                  target.style.display = 'none';
-                  const nextEl = target.nextElementSibling as HTMLElement;
-                  if (nextEl) nextEl.style.display = 'flex';
-                }}
               />
-              <div
-                style={{
-                  width: 32,
-                  height: 32,
-                  borderRadius: 4,
-                  background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center'
-                }}
-              >
-                <Typography variant="body2" sx={{ color: 'white', fontWeight: 'bold' }}>
-                  RDL
-                </Typography>
-              </div>
             </Link>
           </div>          {/* Desktop Navigation - Hidden, using mobile sidebar instead */}
           <div style={{ display: 'none', alignItems: 'center', gap: 8, flex: 1 }} className="md:flex">

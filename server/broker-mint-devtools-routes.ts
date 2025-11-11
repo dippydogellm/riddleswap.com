@@ -93,7 +93,7 @@ router.post('/init', requireAuthentication, async (req: any, res: Response) => {
       totalAmount: totalAmountDrops.toString(),
       status: 'pending',
       expiresAt,
-    });
+    } as any);
 
     const BROKER_WALLET_ADDRESS = process.env.RIDDLE_BROKER_ADDRESS || process.env.BROKER_WALLET_ADDRESS || 'rGLzXKif4ksBZe2MY6RZT9m69hdgzsXG4X';
 

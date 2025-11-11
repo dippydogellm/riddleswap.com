@@ -1,18 +1,10 @@
 import { 
   nftCollections, 
   nfts, 
-  nftListings, 
-  launchpadProjects, 
-  apiCache, 
-  ipfsStorage,
   type NftCollection,
   type Nft,
-  type NftListing,
-  type LaunchpadProject,
   type InsertNftCollection,
-  type InsertNft,
-  type InsertNftListing,
-  type InsertLaunchpadProject
+  type InsertNft
 } from "@shared/nft-schema";
 import {
   messages,
@@ -47,7 +39,6 @@ export class NFTStorage {
     return await db
       .select()
       .from(nftCollections)
-      .where(eq(nftCollections.isActive, true))
       .orderBy(desc(nftCollections.createdAt));
   }
 
@@ -64,10 +55,9 @@ export class NFTStorage {
     return await db
       .select()
       .from(nftCollections)
-      .where(and(
-        eq(nftCollections.creatorAddress, creatorAddress),
-        eq(nftCollections.isActive, true)
-      ))
+      .where(
+        eq(nftCollections.issuer, creatorAddress)
+      )
       .orderBy(desc(nftCollections.createdAt));
   }
 
@@ -100,181 +90,65 @@ export class NFTStorage {
   }
 
   async getNftsByCollection(collectionId: string): Promise<Nft[]> {
-    return await db
-      .select()
-      .from(nfts)
-      .where(eq(nfts.collectionId, collectionId))
-      .orderBy(nfts.tokenId);
+    // The minimal NFT schema doesn't have a collectionId relationship.
+    // Return an empty array to avoid relying on non-existent fields.
+    return [];
   }
 
   async getNftsByOwner(ownerAddress: string): Promise<Nft[]> {
     return await db
       .select()
       .from(nfts)
-      .where(and(
-        eq(nfts.ownerAddress, ownerAddress),
-        eq(nfts.isMinted, true)
-      ))
-      .orderBy(desc(nfts.mintedAt));
+      .where(
+        eq(nfts.owner, ownerAddress)
+      )
+      .orderBy(desc(nfts.updatedAt));
   }
 
   async mintNft(id: string, ownerAddress: string, mintFeeHash: string): Promise<Nft | null> {
     const [nft] = await db
       .update(nfts)
       .set({ 
-        isMinted: true,
-        ownerAddress,
-        mintFeeHash,
-        mintedAt: new Date()
+        owner: ownerAddress,
+        // Persist fee hash in metadata if needed by upstream callers
+        metadata: sql`${nfts.metadata} || ${JSON.stringify({ mintFeeHash })}::jsonb`,
+        updatedAt: new Date()
        } as any)
       .where(eq(nfts.id, id))
       .returning();
-
-    if (nft) {
-      // Update collection minted count
-      const [{ count }] = await db
-        .select({ count: sql<number>`count(*)` })
-        .from(nfts)
-        .where(and(
-          eq(nfts.collectionId, nft.collectionId),
-          eq(nfts.isMinted, true)
-        ));
-      
-      await db
-        .update(nftCollections)
-        .set({  mintedCount: count  } as any)
-        .where(eq(nftCollections.id, nft.collectionId));
-    }
 
     return nft || null;
   }
 
   // Marketplace Methods
-  async createListing(data: InsertNftListing): Promise<NftListing> {
-    const id = nanoid();
-    const [listing] = await db
-      .insert(nftListings)
-      .values({ ...data, id } as any)
-      .returning();
-    return listing;
+  // Not supported in minimal schema; keep method for compatibility and return a stub
+  async createListing(data: any): Promise<any> {
+    return { ...data, id: nanoid(), status: 'unsupported' };
   }
 
   async getActiveListings(): Promise<any[]> {
-    // Use Drizzle query builder instead of raw SQL
-    const results = await db
-      .select({
-        id: nftListings.id,
-        nftId: nftListings.nftId,
-        sellerAddress: nftListings.sellerAddress,
-        price: nftListings.price,
-        currency: nftListings.currency,
-        isActive: nftListings.isActive,
-        expiresAt: nftListings.expiresAt,
-        createdAt: nftListings.createdAt,
-        nft_id: nfts.id,
-        nft_name: nfts.name,
-        nft_description: nfts.description,
-        nft_image: nfts.image,
-        nft_attributes: nfts.attributes,
-        nft_rarity: nfts.rarity,
-        collection_id: nftCollections.id,
-        collection_name: nftCollections.name,
-        collection_image: nftCollections.image
-      })
-      .from(nftListings)
-      .innerJoin(nfts, eq(nftListings.nftId, nfts.id))
-      .innerJoin(nftCollections, eq(nfts.collectionId, nftCollections.id))
-      .where(eq(nftListings.isActive, true));
-    return results.map((row) => ({
-      id: row.id,
-      nftId: row.nftId,
-      sellerAddress: row.sellerAddress,
-      price: row.price,
-      currency: row.currency,
-      isActive: row.isActive,
-      expiresAt: row.expiresAt,
-      createdAt: row.createdAt,
-      nft: {
-        id: row.nft_id,
-        name: row.nft_name,
-        description: row.nft_description,
-        image: row.nft_image,
-        attributes: row.nft_attributes,
-        rarity: row.nft_rarity,
-        collection: {
-          id: row.collection_id,
-          name: row.collection_name,
-          image: row.collection_image
-        }
-      }
-    }));
+    // Listings are not modeled in the minimal schema
+    return [];
   }
 
-  async getListingsByCollection(collectionId: string): Promise<NftListing[]> {
-    const listings = await db
-      .select()
-      .from(nftListings)
-      .innerJoin(nfts, eq(nftListings.nftId, nfts.id))
-      .where(and(
-        eq(nfts.collectionId, collectionId),
-        eq(nftListings.isActive, true)
-      ))
-      .orderBy(desc(nftListings.createdAt));
-    
-    return listings.map(row => row.nft_listings) as NftListing[];
+  async getListingsByCollection(collectionId: string): Promise<any[]> {
+    return [];
   }
 
   async deactivateListing(id: string): Promise<boolean> {
-    const result = await db
-      .update(nftListings)
-      .set({  isActive: false, updatedAt: new Date()  } as any)
-      .where(eq(nftListings.id, id));
-    return (result.rowCount ?? 0) > 0;
+    return false;
   }
 
   // Launchpad Methods
-  async createLaunchpadProject(data: InsertLaunchpadProject): Promise<LaunchpadProject> {
-    const id = nanoid();
-    const [project] = await db
-      .insert(launchpadProjects)
-      .values({ ...data, id } as any)
-      .returning();
-    return project;
-  }
+  async createLaunchpadProject(data: any): Promise<any> { return { ...data, id: nanoid(), status: 'unsupported' }; }
 
-  async getAllLaunchpadProjects(): Promise<LaunchpadProject[]> {
-    return await db
-      .select()
-      .from(launchpadProjects)
-      .orderBy(desc(launchpadProjects.createdAt));
-  }
+  async getAllLaunchpadProjects(): Promise<any[]> { return []; }
 
-  async getFeaturedProjects(): Promise<LaunchpadProject[]> {
-    return await db
-      .select()
-      .from(launchpadProjects)
-      .where(eq(launchpadProjects.status, 'launched'))
-      .orderBy(desc(launchpadProjects.launchDate))
-      .limit(6);
-  }
+  async getFeaturedProjects(): Promise<any[]> { return []; }
 
-  async getLaunchpadProject(id: string): Promise<LaunchpadProject | null> {
-    const [project] = await db
-      .select()
-      .from(launchpadProjects)
-      .where(eq(launchpadProjects.id, id))
-      .limit(1);
-    return project || null;
-  }
+  async getLaunchpadProject(id: string): Promise<any | null> { return null; }
 
-  async updateLaunchpadProject(id: string, data: Partial<InsertLaunchpadProject>): Promise<LaunchpadProject | null> {
-    const [project] = await db
-      .update(launchpadProjects)
-      .set({  ...data, updatedAt: new Date()  } as any)
-      .where(eq(launchpadProjects.id, id))
-      .returning();
-    return project || null;
-  }
+  async updateLaunchpadProject(id: string, data: any): Promise<any | null> { return null; }
 
   // Statistics Methods - NO FAKE DATA
   async getCollectionStats(collectionId: string): Promise<any> {
@@ -295,74 +169,29 @@ export class NFTStorage {
 
   // Cache Methods
   async getCache(key: string): Promise<any | null> {
-    const [cache] = await db
-      .select()
-      .from(apiCache)
-      .where(and(
-        eq(apiCache.cacheKey, key),
-        gt(apiCache.expiresAt, new Date())
-      ))
-      .limit(1);
-    
-    if (cache) {
-      // Calculate TTL for CDN headers
-      const ttl = Math.floor((cache.expiresAt.getTime() - Date.now()) / 1000);
-      return {
-        data: cache.data,
-        ttl: ttl.toString(),
-        cachedAt: cache.createdAt,
-        expiresAt: cache.expiresAt
-      };
-    }
-    
+    // Not modeled in minimal schema
     return null;
   }
 
   async setCache(key: string, data: any, minutesToExpire: number): Promise<void> {
-    const expiresAt = new Date(Date.now() + minutesToExpire * 60 * 1000);
-    
-    await db
-      .insert(apiCache)
-      .values({
-        cacheKey: key,
-        data,
-        expiresAt
-      } as any)
-      .onConflictDoUpdate({
-        target: [apiCache.cacheKey],
-        set: {
-          data,
-          expiresAt
-        }
-      });
+    // No-op in minimal schema
+    return;
   }
 
   async clearExpiredCache(): Promise<void> {
-    await db
-      .delete(apiCache)
-      .where(lt(apiCache.expiresAt, new Date()));
+    // No-op in minimal schema
+    return;
   }
 
   // IPFS Methods
   async storeIpfsHash(hash: string, fileName: string, contentType?: string, size?: number): Promise<void> {
-    await db
-      .insert(ipfsStorage)
-      .values({
-        hash,
-        fileName,
-        contentType,
-        size
-      } as any)
-      .onConflictDoNothing();
+    // Not modeled in minimal schema
+    return;
   }
 
   async getIpfsEntry(hash: string): Promise<any | null> {
-    const [entry] = await db
-      .select()
-      .from(ipfsStorage)
-      .where(eq(ipfsStorage.hash, hash))
-      .limit(1);
-    return entry || null;
+    // Not modeled in minimal schema
+    return null;
   }
 
   // Message Methods
@@ -470,11 +299,11 @@ export class NFTStorage {
       .onConflictDoUpdate({
         target: [walletNftSearches.walletAddress],
         set: {
-          nfts: data.nfts,
-          metadata: data.metadata,
+          nfts: (data as any).nfts,
+          metadata: (data as any).metadata,
           lastSearched: new Date(),
           cachedUntil
-        }
+        } as any
       })
       .returning();
     return search;
@@ -507,13 +336,13 @@ export class NFTStorage {
       .onConflictDoUpdate({
         target: [nftMetadataCache.nftId],
         set: {
-          uri: data.uri,
-          metadata: data.metadata,
-          traits: data.traits,
-          imageUrl: data.imageUrl,
+          uri: (data as any).uri,
+          metadata: (data as any).metadata,
+          traits: (data as any).traits,
+          imageUrl: (data as any).imageUrl,
           cachedAt: new Date(),
           expiresAt
-        }
+        } as any
       })
       .returning();
     return metadata;

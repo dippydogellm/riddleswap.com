@@ -247,7 +247,42 @@ class SessionManager {
           return true;
         }
       } else {
-        // Increment failure counter on 401/403
+        // CRITICAL FIX: Check if this is a session renewal request (401 with needsRenewal flag)
+        if (response.status === 401) {
+          try {
+            const errorData = await response.json() as any;
+            if (errorData.needsRenewal && errorData.authenticated) {
+              console.log('⚠️ SessionManager: 401 but session needs renewal, not expired');
+              // Keep session but mark it as needing renewal
+              this.sessionData = {
+                ...(this.sessionData ?? {}),
+                sessionToken: token,
+                handle: errorData.handle || errorData.username,
+                username: errorData.username || errorData.handle,
+                authenticated: true,
+                walletData: errorData.walletData || errorData.walletAddresses,
+                walletAddresses: errorData.walletAddresses,
+                expiresAt: errorData.expiresAt,
+                loginTime: this.sessionData?.loginTime || new Date().toISOString(),
+                lastActivity: new Date().toISOString(),
+                autoLogoutEnabled: this.sessionData?.autoLogoutEnabled || false,
+                autoLogoutMinutes: this.sessionData?.autoLogoutMinutes || 30,
+                needsRenewal: true
+              } as any;
+              
+              localStorage.setItem(this.TOKEN_KEY, token);
+              sessionStorage.setItem(this.SESSION_KEY, JSON.stringify(this.sessionData));
+              
+              this.notifyListeners();
+              console.log('🔔 SessionManager: Session marked for renewal, not clearing');
+              return true; // Keep session alive but flag for renewal
+            }
+          } catch (jsonError) {
+            console.log('⚠️ SessionManager: Could not parse 401 response JSON');
+          }
+        }
+        
+        // Increment failure counter on 401/403 only if NOT a renewal request
         if (response.status === 401 || response.status === 403) {
           this.consecutiveFailures++;
           console.log(`⚠️ SessionManager: Session check failed (${this.consecutiveFailures}/${this.maxConsecutiveFailures})`);

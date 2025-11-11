@@ -192,7 +192,7 @@ export function registerEVMScannerRoutes(app: Express) {
           const searchResponse = await fetch(`https://api.dexscreener.com/latest/dex/search?q=USDC`);
           if (searchResponse.ok) {
             const searchData = await searchResponse.json();
-            const hoursAgo = Date.now() / 1000 - (parseInt(hours) * 60 * 60);
+            const hoursAgo = Date.now() / 1000 - (parseInt(hours as string) * 60 * 60);
             const chainPairs = (searchData.pairs || [])
               .filter((p: any) => {
                 const matchesChain = p.chainId === chainId;
@@ -219,7 +219,7 @@ export function registerEVMScannerRoutes(app: Express) {
         const pairsData = await pairsResponse.json();
         
         // Filter by creation time and chain
-        const hoursAgo = Date.now() / 1000 - (parseInt(hours) * 60 * 60);
+        const hoursAgo = Date.now() / 1000 - (parseInt(hours as string) * 60 * 60);
         const newPairs = (pairsData.pairs || []).filter((p: any) => {
           const matchesChain = p.chainId === chainId;
           const isNew = p.pairCreatedAt && p.pairCreatedAt >= hoursAgo;

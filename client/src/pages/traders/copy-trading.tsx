@@ -15,6 +15,8 @@ import { Alert, AlertDescription } from '@/components/ui/alert';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { apiRequest } from '@/lib/queryClient';
+import { useSession } from '@/utils/sessionManager';
+import { SessionRenewalModal } from '@/components/SessionRenewalModal';
 
 interface Trader {
   id: string;
@@ -70,6 +72,7 @@ interface CopyTradingSetup {
 }
 
 export default function CopyTradingPage() {
+  const session = useSession();
   const [selectedChains, setSelectedChains] = useState<string[]>(['ethereum']);
   const [copyAmount, setCopyAmount] = useState([1000]);
   const [riskLevel, setRiskLevel] = useState([50]);
@@ -80,8 +83,18 @@ export default function CopyTradingPage() {
   const [setupStep, setSetupStep] = useState(1);
   const [topTraders, setTopTraders] = useState<Trader[]>([]);
   const [myPositions, setMyPositions] = useState<CopyPosition[]>([]);
+  const [showRenewalModal, setShowRenewalModal] = useState(false);
   const { toast } = useToast();
   const queryClient = useQueryClient();
+  
+  // Check if session needs renewal
+  useEffect(() => {
+    if ((session as any).needsRenewal) {
+      setShowRenewalModal(true);
+    } else {
+      setShowRenewalModal(false);
+    }
+  }, [(session as any).needsRenewal]);
 
   // Fetch wallet status with TanStack Query
   const { data: walletStatus, isLoading: walletLoading } = useQuery({
@@ -106,7 +119,7 @@ export default function CopyTradingPage() {
     queryFn: async (): Promise<CopyTradingSetup> => {
       const response = await fetch('/api/copy-trading/setup-status', {
         headers: {
-          'Authorization': `Bearer ${localStorage.getItem('sessionToken') || ''}`
+          'Authorization': `Bearer ${session.sessionToken || ''}`
         }
       });
       const data = await response.json() as any;
@@ -118,7 +131,7 @@ export default function CopyTradingPage() {
         setupComplete: false
       };
     },
-    enabled: !!localStorage.getItem('sessionToken')
+    enabled: !!session.sessionToken
   });
 
   // Fetch top traders with TanStack Query
@@ -138,13 +151,13 @@ export default function CopyTradingPage() {
     queryFn: async () => {
       const response = await fetch('/api/copy-trading/positions', {
         headers: {
-          'Authorization': `Bearer ${localStorage.getItem('sessionToken') || ''}`
+          'Authorization': `Bearer ${session.sessionToken || ''}`
         }
       });
       const data = await response.json() as any;
       return data;
     },
-    enabled: !!localStorage.getItem('sessionToken'),
+    enabled: !!session.sessionToken,
     refetchInterval: 10000 // Refresh every 10 seconds
   });
 
@@ -1120,6 +1133,12 @@ export default function CopyTradingPage() {
           </div>
         </DialogContent>
       </Dialog>
+      
+      {/* Session Renewal Modal */}
+      <SessionRenewalModal 
+        open={showRenewalModal} 
+        onOpenChange={setShowRenewalModal}
+      />
     </div>
   );
 }

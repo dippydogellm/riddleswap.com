@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { useLocation } from "wouter";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -11,6 +11,7 @@ import { Loader2, Swords, Users, Trophy, Plus, Play, Shield, Zap, AlertCircle } 
 import { useSession } from "@/utils/sessionManager";
 import { useToast } from "@/hooks/use-toast";
 import { normalizeNftImage, getFallbackImage } from "@/utils/imageNormalizer";
+import { SessionRenewalModal } from "@/components/SessionRenewalModal";
 
 export default function GamingBattlesPage() {
   const session = useSession();
@@ -19,6 +20,16 @@ export default function GamingBattlesPage() {
   const queryClient = useQueryClient();
   const [activeTab, setActiveTab] = useState("squadrons");
   const [createSquadronOpen, setCreateSquadronOpen] = useState(false);
+  const [showRenewalModal, setShowRenewalModal] = useState(false);
+
+  // Watch for session renewal needs
+  useEffect(() => {
+    if ((session as any).needsRenewal) {
+      setShowRenewalModal(true);
+    } else {
+      setShowRenewalModal(false);
+    }
+  }, [(session as any).needsRenewal]);
   const [createBattleOpen, setCreateBattleOpen] = useState(false);
   const [squadronName, setSquadronName] = useState("");
   const [selectedNFTs, setSelectedNFTs] = useState<string[]>([]);
@@ -458,6 +469,11 @@ export default function GamingBattlesPage() {
           </TabsContent>
         </Tabs>
       </div>
+
+      <SessionRenewalModal 
+        open={showRenewalModal}
+        onOpenChange={setShowRenewalModal}
+      />
     </div>
   );
 }

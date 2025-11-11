@@ -3,7 +3,7 @@ import { db } from './db';
 import { gamingNfts, nftPowerAttributes } from '../shared/schema';
 import { battles, battleParticipants, nftScorecards } from '@shared/battle-system-schema';
 import { eq, and, like, sql, asc, desc } from 'drizzle-orm';
-import { uploadToGCS, getGCSPublicUrl } from './gcs-upload.js';
+import { unifiedStorage } from './unified-storage';
 import OpenAI from 'openai';
 
 const router = Router();
@@ -192,12 +192,13 @@ Cinematic composition, game card art style, vibrant colors, 4K quality.`;
     // Download the image
     const imageBuffer = await fetch(imageUrl).then(r => r.arrayBuffer());
     
-    // Upload to GCS
-    const gcsPath = `battle-images/${id}-${Date.now()}.png`;
-    await uploadToGCS(Buffer.from(imageBuffer), gcsPath, 'image/png');
-    
-    const publicUrl = getGCSPublicUrl(gcsPath);
-    console.log(`✅ [BATTLE IMAGE] Uploaded to GCS: ${publicUrl}`);
+    // Upload to Vercel Blob
+    const publicUrl = await unifiedStorage.uploadFile(
+      Buffer.from(imageBuffer),
+      'generated',
+      'image/png'
+    );
+    console.log(`✅ [BATTLE IMAGE] Uploaded to Vercel Blob: ${publicUrl}`);
 
     // Update database with battle image URL
     await db

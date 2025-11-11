@@ -55,6 +55,12 @@ import {
   FolderPlus, Crown, Database, Shield, Calendar, Hash,
   Upload, FileImage, Layers, Hammer
 } from 'lucide-react';
+// Analytics charts
+import RewardsVsFeesChart from '@/components/charts/RewardsVsFeesChart';
+import AirdropProgressChart from '@/components/charts/AirdropProgressChart';
+import ClaimRateGauge from '@/components/charts/ClaimRateGauge';
+import ChainDeploymentsBar from '@/components/charts/ChainDeploymentsBar';
+import ThemeToggle from '@/components/ThemeToggle';
 
 // Schemas
 const projectCreateSchema = z.object({
@@ -777,6 +783,7 @@ export default function DeveloperDashboard() {
               <Plus className="w-4 h-4 mr-2" />
               New Project
             </Button>
+            <ThemeToggle />
           </div>
         </div>
 
@@ -843,7 +850,7 @@ export default function DeveloperDashboard() {
 
         {/* Main Content Tabs */}
         <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-6">
-          <TabsList className="grid w-full grid-cols-4">
+          <TabsList className="grid w-full grid-cols-5">
             <TabsTrigger value="overview" data-testid="overview-tab">
               <BarChart3 className="w-4 h-4 mr-2" />
               Overview
@@ -1242,72 +1249,32 @@ export default function DeveloperDashboard() {
 
           {/* Analytics Tab */}
           <TabsContent value="analytics" className="space-y-6">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {/* KPI Summary Cards */}
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
               <Card>
-                <CardHeader>
-                  <CardTitle className="flex items-center">
-                    <BarChart3 className="w-5 h-5 mr-2" />
-                    Usage Statistics
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <div className="space-y-4">
-                    <div className="flex justify-between">
-                      <span>API Calls This Month</span>
-                      <span className="font-semibold">{usageData?.apiCalls || 0}</span>
-                    </div>
-                    <div className="flex justify-between">
-                      <span>Data Transfer</span>
-                      <span className="font-semibold">{usageData?.dataTransfer || '0 MB'}</span>
-                    </div>
-                    <div className="flex justify-between">
-                      <span>Compute Time</span>
-                      <span className="font-semibold">{usageData?.computeTime || '0 ms'}</span>
-                    </div>
-                  </div>
-                </CardContent>
+                <CardHeader className="pb-2"><CardTitle className="text-sm font-medium">API Calls</CardTitle></CardHeader>
+                <CardContent className="pt-0"><p className="text-2xl font-bold">{usageData?.apiCalls || 0}</p></CardContent>
               </Card>
+              <Card>
+                <CardHeader className="pb-2"><CardTitle className="text-sm font-medium">Data Transfer</CardTitle></CardHeader>
+                <CardContent className="pt-0"><p className="text-2xl font-bold">{usageData?.dataTransfer || '0 MB'}</p></CardContent>
+              </Card>
+              <Card>
+                <CardHeader className="pb-2"><CardTitle className="text-sm font-medium">Compute Time</CardTitle></CardHeader>
+                <CardContent className="pt-0"><p className="text-2xl font-bold">{usageData?.computeTime || '0 ms'}</p></CardContent>
+              </Card>
+              <Card>
+                <CardHeader className="pb-2"><CardTitle className="text-sm font-medium">Total Deployments</CardTitle></CardHeader>
+                <CardContent className="pt-0"><p className="text-2xl font-bold">{projects.reduce((acc, p) => acc + (p.selectedChains?.length || 0), 0)}</p></CardContent>
+              </Card>
+            </div>
 
-              <Card>
-                <CardHeader>
-                  <CardTitle className="flex items-center">
-                    <TrendingUp className="w-5 h-5 mr-2" />
-                    Project Activity
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <div className="space-y-4">
-                    <div className="flex justify-between">
-                      <span>Projects Created This Month</span>
-                      <span className="font-semibold">{projects.filter(p => {
-                        const createdDate = new Date(p.createdAt || '');
-                        const thisMonth = new Date();
-                        return createdDate.getMonth() === thisMonth.getMonth() && 
-                               createdDate.getFullYear() === thisMonth.getFullYear();
-                      }).length}</span>
-                    </div>
-                    <div className="flex justify-between">
-                      <span>Most Active Chain</span>
-                      <span className="font-semibold">
-                        {(() => {
-                          const chainCounts: Record<string, number> = {};
-                          projects.forEach(p => {
-                            p.selectedChains?.forEach(chain => {
-                              chainCounts[chain] = (chainCounts[chain] || 0) + 1;
-                            });
-                          });
-                          const mostActive = Object.entries(chainCounts).sort(([,a], [,b]) => b - a)[0];
-                          return mostActive ? supportedChains.find(c => c.id === mostActive[0])?.name || mostActive[0] : 'None';
-                        })()}
-                      </span>
-                    </div>
-                    <div className="flex justify-between">
-                      <span>Total Deployments</span>
-                      <span className="font-semibold">{projects.reduce((acc, p) => acc + (p.selectedChains?.length || 0), 0)}</span>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
+            {/* Charts Grid */}
+            <div className="grid grid-cols-1 xl:grid-cols-2 gap-6">
+              <RewardsVsFeesChart />
+              <AirdropProgressChart />
+              <ClaimRateGauge />
+              <ChainDeploymentsBar />
             </div>
           </TabsContent>
 

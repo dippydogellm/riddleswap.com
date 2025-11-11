@@ -162,9 +162,7 @@ router.post('/api/address-book', sessionAuth, async (req: AuthenticatedRequest, 
         chain: validated.chain,
         notes: validated.notes || null,
         is_favorite: validated.isFavorite || false,
-        created_at: new Date(),
-        updated_at: new Date(),
-      })
+      } as any)
       .returning();
 
     return res.status(201).json({

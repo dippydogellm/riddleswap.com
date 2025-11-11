@@ -1,8 +1,8 @@
 import { Router, Request, Response } from "express";
 import { db } from "./db";
-import { squadrons, squadronMembers, gamingPlayers } from "../shared/schema";
+import { squadrons, squadronMembers, gamingPlayers, gamingNfts, inquisitionNftAudit } from "../shared/schema";
 import { sessionAuth, requireAuthentication, requireAuthenticationReadOnly, AuthenticatedRequest } from "./middleware/session-auth";
-import { eq, and, desc } from "drizzle-orm";
+import { eq, and, desc, sql } from "drizzle-orm";
 import crypto from "crypto";
 import { z } from "zod";
 
@@ -302,6 +302,86 @@ router.get("/api/squadrons/player", requireAuthenticationReadOnly, async (req: A
     });
   } catch (error: any) {
     console.error("Error fetching squadrons:", error);
+    res.status(500).json({ error: error.message });
+  }
+});
+
+// GET individual squadron with power calculations
+router.get("/api/squadrons/:id", requireAuthenticationReadOnly, async (req: AuthenticatedRequest, res: Response) => {
+  try {
+    const { id } = req.params;
+    const userHandle = req.user?.handle || req.user?.userHandle;
+    
+    if (!userHandle) {
+      return res.status(401).json({ error: "Not authenticated" });
+    }
+
+    console.log(`🔍 [SQUADRON DETAIL] Fetching squadron ${id} for user ${userHandle}`);
+
+    // Get squadron with owner verification
+    const squadron = await db.query.squadrons.findFirst({
+      where: eq(squadrons.id, id)
+    });
+
+    if (!squadron) {
+      return res.status(404).json({ error: "Squadron not found" });
+    }
+
+    // Verify ownership
+    const player = await db.query.gamingPlayers.findFirst({
+      where: eq(gamingPlayers.user_handle, userHandle)
+    });
+
+    if (!player || squadron.player_id !== player.id) {
+      return res.status(403).json({ error: "You don't have permission to view this squadron" });
+    }
+
+    // Get squadron members with NFT details
+    const members = await db
+      .select({
+        id: squadronMembers.id,
+        squadron_id: squadronMembers.squadron_id,
+        nft_id: squadronMembers.nft_id,
+        position: squadronMembers.position,
+        joined_at: squadronMembers.added_at,
+        nft_name: gamingNfts.name,
+        nft_image: gamingNfts.image_url,
+        army_power: inquisitionNftAudit.power_strength,
+        religion_power: inquisitionNftAudit.power_magic,
+        civilization_power: inquisitionNftAudit.power_defense,
+        economic_power: inquisitionNftAudit.power_speed,
+        total_power: sql`COALESCE(${inquisitionNftAudit.power_strength}, 0) + COALESCE(${inquisitionNftAudit.power_magic}, 0) + COALESCE(${inquisitionNftAudit.power_defense}, 0) + COALESCE(${inquisitionNftAudit.power_speed}, 0)`.as('total_power'),
+      })
+      .from(squadronMembers)
+      .leftJoin(gamingNfts, eq(squadronMembers.nft_id, gamingNfts.id))
+      .leftJoin(inquisitionNftAudit, eq(squadronMembers.nft_id, inquisitionNftAudit.nft_token_id))
+      .where(eq(squadronMembers.squadron_id, id))
+      .orderBy(squadronMembers.position);
+
+    // Calculate total power
+    const totalArmyPower = members.reduce((sum, m) => sum + (Number(m.army_power) || 0), 0);
+    const totalReligionPower = members.reduce((sum, m) => sum + (Number(m.religion_power) || 0), 0);
+    const totalCivilizationPower = members.reduce((sum, m) => sum + (Number(m.civilization_power) || 0), 0);
+    const totalEconomicPower = members.reduce((sum, m) => sum + (Number(m.economic_power) || 0), 0);
+    const totalPower = members.reduce((sum, m) => sum + (Number(m.total_power) || 0), 0);
+
+    console.log(`✅ [SQUADRON DETAIL] Squadron ${squadron.name}: ${members.length} members, ${totalPower} total power`);
+
+    res.json({
+      success: true,
+      data: {
+        ...squadron,
+        members,
+        total_army_power: totalArmyPower,
+        total_religion_power: totalReligionPower,
+        total_civilization_power: totalCivilizationPower,
+        total_economic_power: totalEconomicPower,
+        total_power: totalPower,
+        nft_count: members.length
+      }
+    });
+  } catch (error: any) {
+    console.error("❌ [SQUADRON DETAIL] Error:", error);
     res.status(500).json({ error: error.message });
   }
 });

@@ -65,12 +65,12 @@ export default function TrollsInquisitionLanding() {
     <Box
       sx={{
         minHeight: "100vh",
-        background: `linear-gradient(135deg, ${alpha(theme.palette.error.dark, 0.9)} 0%, ${alpha(theme.palette.warning.dark, 0.8)} 50%, ${alpha(theme.palette.error.main, 0.9)} 100%)`,
+        bgcolor: theme.palette.mode === 'dark' ? 'background.default' : 'grey.50',
         position: "relative",
         overflow: "hidden",
       }}
     >
-      {/* Animated background elements */}
+      {/* Decorative pattern */}
       <Box
         sx={{
           position: "absolute",
@@ -78,67 +78,67 @@ export default function TrollsInquisitionLanding() {
           left: 0,
           right: 0,
           bottom: 0,
-          backgroundImage: `radial-gradient(circle at 20% 50%, ${alpha(theme.palette.warning.light, 0.1)} 0%, transparent 50%), 
-                           radial-gradient(circle at 80% 80%, ${alpha(theme.palette.error.light, 0.1)} 0%, transparent 50%)`,
-          animation: "pulse 8s ease-in-out infinite",
-          "@keyframes pulse": {
-            "0%, 100%": { opacity: 0.5 },
-            "50%": { opacity: 1 },
-          },
+          opacity: 0.03,
+          backgroundImage: `repeating-linear-gradient(45deg, transparent, transparent 50px, currentColor 50px, currentColor 51px)`,
         }}
       />
 
-      <Container maxWidth="xl" sx={{ position: "relative", zIndex: 1, py: 8 }}>
-        {/* Hero Section */}
-        <Fade in timeout={1000}>
-          <Box textAlign="center" mb={8}>
-            <Box
-              sx={{
-                display: "flex",
-                justifyContent: "center",
-                mb: 4,
-              }}
-            >
+      {/* Hero Section with Solid Background */}
+      <Box sx={{
+        py: { xs: 8, md: 12 },
+        bgcolor: theme.palette.mode === 'dark' ? 'grey.900' : 'error.main',
+        color: 'white',
+        position: 'relative',
+        overflow: 'hidden'
+      }}>
+        <Container maxWidth="lg" sx={{ position: "relative", zIndex: 1 }}>
+          <Fade in timeout={1000}>
+            <Box textAlign="center">
               <Box
-                component="img"
-                src="/inquisition-logo.png"
-                alt="The Trolls Inquisition"
                 sx={{
-                  width: { xs: 200, md: 300 },
-                  height: { xs: 200, md: 300 },
-                  filter: "drop-shadow(0 0 40px rgba(255, 140, 0, 0.8))",
-                  animation: "float 6s ease-in-out infinite",
-                  "@keyframes float": {
-                    "0%, 100%": { transform: "translateY(0px)" },
-                    "50%": { transform: "translateY(-20px)" },
-                  },
+                  display: "flex",
+                  justifyContent: "center",
+                  mb: 4,
                 }}
-              />
-            </Box>
+              >
+                <Box
+                  component="img"
+                  src="/inquisition-logo.png"
+                  alt="The Trolls Inquisition"
+                  sx={{
+                    width: { xs: 200, md: 300 },
+                    height: { xs: 200, md: 300 },
+                    filter: "drop-shadow(0 0 20px rgba(255, 140, 0, 0.3))",
+                    animation: "float 6s ease-in-out infinite",
+                    "@keyframes float": {
+                      "0%, 100%": { transform: "translateY(0px)" },
+                      "50%": { transform: "translateY(-20px)" },
+                    },
+                  }}
+                />
+              </Box>
 
-            <Typography
-              variant="h2"
-              fontWeight="bold"
-              color="white"
-              gutterBottom
-              sx={{
-                textShadow: "0 4px 20px rgba(0,0,0,0.5)",
-                fontSize: { xs: "2.5rem", md: "4rem" },
-              }}
-            >
-              The Trolls Inquisition
-            </Typography>
-            <Typography
-              variant="h5"
-              color="white"
-              sx={{
-                opacity: 0.9,
-                mb: 4,
-                textShadow: "0 2px 10px rgba(0,0,0,0.3)",
-              }}
-            >
-              Enter the Ultimate NFT Battle Arena
-            </Typography>
+              <Typography
+                variant="h2"
+                fontWeight="bold"
+                color="white"
+                gutterBottom
+                sx={{
+                  fontSize: { xs: "2.5rem", md: "4rem" },
+                }}
+              >
+                The Trolls Inquisition
+              </Typography>
+              <Typography
+                variant="h5"
+                color="white"
+                sx={{
+                  opacity: 0.9,
+                  mb: 4,
+                }}
+              >
+                Enter the Ultimate NFT Battle Arena
+              </Typography>
 
             {/* Search Bar */}
             <Box sx={{ maxWidth: 600, mx: "auto", mb: 4 }}>
@@ -177,59 +177,63 @@ export default function TrollsInquisitionLanding() {
               />
             </Box>
 
-            {/* CTA Buttons */}
-            <Box
-              sx={{
-                display: "flex",
-                gap: 2,
-                justifyContent: "center",
-                flexWrap: "wrap",
-              }}
-            >
-              <Button
-                variant="contained"
-                size="large"
-                startIcon={<Swords />}
-                onClick={() => navigate("/gaming")}
+              {/* CTA Buttons */}
+              <Box
                 sx={{
-                  bgcolor: "white",
-                  color: theme.palette.error.main,
-                  px: 4,
-                  py: 1.5,
-                  fontSize: "1.1rem",
-                  fontWeight: "bold",
-                  "&:hover": {
-                    bgcolor: alpha(theme.palette.common.white, 0.9),
-                    transform: "scale(1.05)",
-                  },
-                  transition: "all 0.3s",
+                  display: "flex",
+                  gap: 2,
+                  justifyContent: "center",
+                  flexWrap: "wrap",
                 }}
               >
-                Enter Gaming Hub
-              </Button>
-              <Button
-                variant="outlined"
-                size="large"
-                startIcon={<Storefront />}
-                onClick={() => navigate("/gaming-nfts")}
-                sx={{
-                  color: "white",
-                  borderColor: "white",
-                  px: 4,
-                  py: 1.5,
-                  fontSize: "1.1rem",
-                  fontWeight: "bold",
-                  "&:hover": {
+                <Button
+                  variant="contained"
+                  size="large"
+                  startIcon={<Swords />}
+                  onClick={() => navigate("/gaming")}
+                  sx={{
+                    bgcolor: "white",
+                    color: theme.palette.error.main,
+                    px: 4,
+                    py: 1.5,
+                    fontSize: "1.1rem",
+                    fontWeight: "bold",
+                    "&:hover": {
+                      bgcolor: alpha(theme.palette.common.white, 0.9),
+                      transform: "scale(1.05)",
+                    },
+                    transition: "all 0.3s",
+                  }}
+                >
+                  Enter Gaming Hub
+                </Button>
+                <Button
+                  variant="outlined"
+                  size="large"
+                  startIcon={<Storefront />}
+                  onClick={() => navigate("/gaming-nfts")}
+                  sx={{
+                    color: "white",
                     borderColor: "white",
-                    bgcolor: alpha(theme.palette.common.white, 0.1),
-                  },
-                }}
-              >
-                NFT Marketplace
-              </Button>
+                    px: 4,
+                    py: 1.5,
+                    fontSize: "1.1rem",
+                    fontWeight: "bold",
+                    "&:hover": {
+                      borderColor: "white",
+                      bgcolor: alpha(theme.palette.common.white, 0.1),
+                    },
+                  }}
+                >
+                  NFT Marketplace
+                </Button>
+              </Box>
             </Box>
-          </Box>
-        </Fade>
+          </Fade>
+        </Container>
+      </Box>
+
+      <Container maxWidth="xl" sx={{ position: "relative", zIndex: 1, py: 8 }}>
 
         {/* Features Grid */}
         <Grid container spacing={3} mb={8}>

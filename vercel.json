@@ -5,7 +5,9 @@
       "src": "server/index.ts",
       "use": "@vercel/node",
       "config": {
-        "includeFiles": ["server/**", "shared/**"]
+        "includeFiles": ["server/**", "shared/**"],
+        "memory": 1024,
+        "maxDuration": 30
       }
     },
     {
@@ -28,11 +30,5 @@
   ],
   "env": {
     "NODE_ENV": "production"
-  },
-  "functions": {
-    "server/index.ts": {
-      "memory": 1024,
-      "maxDuration": 30
-    }
   }
 }

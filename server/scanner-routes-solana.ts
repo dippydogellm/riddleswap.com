@@ -162,7 +162,7 @@ export function registerSolanaScannerRoutes(app: Express) {
       const pairsData = await pairsResponse.json();
       
       // Filter by creation time and chain
-      const hoursAgo = Date.now() / 1000 - (parseInt(hours) * 60 * 60);
+      const hoursAgo = Date.now() / 1000 - (parseInt(hours as string) * 60 * 60);
       const newPairs = (pairsData.pairs || []).filter((p: any) => {
         const matchesChain = p.chainId === 'solana';
         const isNew = p.pairCreatedAt && p.pairCreatedAt >= hoursAgo;

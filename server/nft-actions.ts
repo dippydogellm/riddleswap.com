@@ -1,5 +1,5 @@
 import { Client, Wallet, xrpToDrops, dropsToXrp } from 'xrpl';
-import { decryptWithPasswordServer } from './wallet-generation.js';
+import { decryptWalletData as decryptWithPasswordServer } from './wallet-encryption';
 
 const XRPL_NETWORK = 'wss://xrplcluster.com/';
 

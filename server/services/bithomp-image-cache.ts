@@ -1,9 +1,9 @@
 /**
  * Bithomp Image Caching Service
- * Downloads images from Bithomp CDN and saves them to GCS for permanent storage
+ * Downloads images from Bithomp CDN and saves them to Vercel Blob for permanent storage
  */
 
-import { gcsStorage } from '../gcs-storage';
+import { unifiedStorage } from '../unified-storage';
 import fetch from 'node-fetch';
 import crypto from 'crypto';
 
@@ -77,26 +77,25 @@ export class BithompImageCacheService {
       const extension = contentType.includes('webp') ? 'webp' : contentType.includes('png') ? 'png' : 'jpg';
       const filename = `${hash}.${extension}`;
 
-      console.log(`💾 [Bithomp Cache] Uploading to GCS: ${filename} (${imageBuffer.length} bytes)`);
+      console.log(`💾 [Bithomp Cache] Uploading to Vercel Blob: ${filename} (${imageBuffer.length} bytes)`);
 
-      // Upload to GCS
-      const gcsUrl = await gcsStorage.uploadFile(
+      // Upload to Vercel Blob
+      const blobUrl = await unifiedStorage.uploadFile(
         imageBuffer,
-        `bithomp-${category}`,
+        'generated', // Use 'generated' type for Bithomp cached images
         contentType,
-        true,
-        filename
+        true
       );
 
       // Cache the result
-      this.cache.set(bithompUrl, gcsUrl);
+      this.cache.set(bithompUrl, blobUrl);
       this.processing.delete(bithompUrl);
 
-      console.log(`✅ [Bithomp Cache] Cached successfully: ${gcsUrl}`);
+      console.log(`✅ [Bithomp Cache] Cached successfully: ${blobUrl}`);
 
       return {
         success: true,
-        gcsUrl,
+        gcsUrl: blobUrl, // Keep property name for compatibility
         originalUrl: bithompUrl,
         cached: false,
         fileSize: imageBuffer.length,

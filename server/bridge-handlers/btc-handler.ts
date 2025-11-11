@@ -47,7 +47,7 @@ export class BTCHandler implements ChainHandler {
       }
 
       // Create keypair
-      const ECPairFactory = ECPair.ECPairFactory(tinySecp.default || tinySecp);
+  const ECPairFactory = ECPair.ECPairFactory(tinySecp as any);
       const keyPair = ECPairFactory.fromPrivateKey(privateKeyBuffer);
       
       // Verify address

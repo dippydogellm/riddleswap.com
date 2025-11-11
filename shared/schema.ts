@@ -263,6 +263,10 @@ export const gamingNftCollections = pgTable("gaming_nft_collections", {
   top_nft_power: decimal("top_nft_power", { precision: 10, scale: 4 }),
   last_rarity_scan: timestamp("last_rarity_scan"),
   
+  // AI scoring fields
+  ai_score: integer("ai_score"), // Overall AI-generated score for collection
+  ai_analysis: jsonb("ai_analysis").$type<Record<string, any>>(), // AI analysis details
+  
   created_at: timestamp("created_at").defaultNow().notNull(),
   updated_at: timestamp("updated_at").defaultNow().notNull(),
 }, (table) => [
@@ -286,6 +290,7 @@ export const gamingNfts = pgTable("gaming_nfts", {
   description: text("description"),
   rarity_rank: integer("rarity_rank"),
   rarity_score: decimal("rarity_score", { precision: 10, scale: 4 }),
+  trait_rarity_breakdown: jsonb("trait_rarity_breakdown").$type<Array<{ trait_type: string; value: string; rarity_percentage: number; rarity_score: number }>>(),
   game_stats: jsonb("game_stats").$type<Record<string, any>>().default({}),
   is_genesis: boolean("is_genesis").default(false),
   power_multiplier: decimal("power_multiplier", { precision: 5, scale: 2 }).default("1.00"),
@@ -313,6 +318,40 @@ export const gamingNfts = pgTable("gaming_nfts", {
   index("idx_gaming_nfts_rarity").on(table.rarity_rank),
 ]);
 
+// Project Master Cards - Collection/Project metadata for AI scorecard system
+export const projectMasterCards = pgTable("project_master_cards", {
+  id: text("id").primaryKey().$defaultFn(() => crypto.randomUUID()),
+  project_name: text("project_name").notNull().unique(),
+  issuer_address: text("issuer_address").notNull(),
+  taxon: integer("taxon").notNull(),
+  total_supply: integer("total_supply").default(0),
+  category: text("category"),
+  description: text("description"),
+  created_at: timestamp("created_at").defaultNow().notNull(),
+  updated_at: timestamp("updated_at").defaultNow().notNull(),
+}, (table) => [
+  index("idx_project_master_cards_issuer_taxon").on(table.issuer_address, table.taxon),
+]);
+
+// Project Score Cards - AI-generated trait scorecards
+export const projectScoreCards = pgTable("project_score_cards", {
+  id: text("id").primaryKey().$defaultFn(() => crypto.randomUUID()),
+  project_id: text("project_id").references(() => projectMasterCards.id, { onDelete: "cascade" }).notNull(),
+  trait_category: text("trait_category").notNull(),
+  trait_value: text("trait_value").notNull(),
+  gaming_utility_score: integer("gaming_utility_score").default(50),
+  visual_impact_score: integer("visual_impact_score").default(50),
+  rarity_value_score: integer("rarity_value_score").default(50),
+  synergy_score: integer("synergy_score").default(50),
+  overall_trait_score: integer("overall_trait_score").default(50),
+  ai_reasoning: text("ai_reasoning"),
+  created_at: timestamp("created_at").defaultNow().notNull(),
+  updated_at: timestamp("updated_at").defaultNow().notNull(),
+}, (table) => [
+  index("idx_project_score_cards_project").on(table.project_id),
+  index("idx_project_score_cards_trait").on(table.trait_category),
+]);
+
 // Player gaming profiles and NFT ownership
 export const gamingPlayers = pgTable("gaming_players", {
   id: text("id").primaryKey().$defaultFn(() => crypto.randomUUID()),
@@ -332,6 +371,7 @@ export const gamingPlayers = pgTable("gaming_players", {
   civilization_power: decimal("civilization_power", { precision: 10, scale: 2 }).default("0"), // Cultural influence and development
   economic_power: decimal("economic_power", { precision: 10, scale: 2 }).default("0"), // Wealth and trade influence
   total_power_level: decimal("total_power_level", { precision: 10, scale: 2 }).default("0"),
+  overall_score: integer("overall_score").default(0),
   gaming_rank: text("gaming_rank").default("Novice"), // Novice, Warrior, Commander, Lord, Legend
   achievements: jsonb("achievements").$type<Array<string>>().default([]),
   game_stats: jsonb("game_stats").$type<Record<string, any>>().default({}),
@@ -667,8 +707,16 @@ export const projectClaims = pgTable("project_claims", {
 export const users = pgTable("users", {
   id: serial("id").primaryKey(),
   username: text("username").notNull().unique(),
+  // New handle field used across notification-service & messaging
+  handle: text("handle").unique(),
   password: text("password").notNull(),
-});
+  // Optional profile enrichment fields referenced in notification-service
+  displayName: text("display_name"),
+  profileImageUrl: text("profile_image_url"),
+}, (table) => [
+  index("idx_users_handle").on(table.handle),
+  index("idx_users_username").on(table.username)
+]);
 
 // Error logging system for comprehensive error tracking
 export const errorLogs = pgTable("error_logs", {
@@ -1044,7 +1092,7 @@ export const walletConnections = pgTable("wallet_connections", {
 
 export const bridgeTransactions = pgTable("bridge_transactions", {
   id: text("id").primaryKey().$defaultFn(() => crypto.randomUUID()),
-  wallet_connection_id: text("wallet_connection_id").references(() => walletConnections.id),
+  wallet_connection_id: integer("wallet_connection_id").references(() => walletConnections.id),
   source_chain: text("source_chain").notNull(),
   destination_chain: text("destination_chain").notNull(),
   input_token: text("input_token").notNull(),
@@ -1238,15 +1286,35 @@ export const messages = pgTable('messages', {
 // NFT swap offers
 export const nftSwapOffers = pgTable('nft_swap_offers', {
   id: text('id').primaryKey().$defaultFn(() => crypto.randomUUID()),
-  fromUserId: text('from_user_id').notNull(),
-  toUserId: text('to_user_id').notNull(),
-  offeredNftId: text('offered_nft_id').notNull(),
-  requestedNftId: text('requested_nft_id').notNull(),
-  status: text('status').default('pending'), // pending, accepted, rejected, cancelled
+  // Legacy minimal fields (retain for backward compatibility)
+  fromUserId: text('from_user_id'),
+  toUserId: text('to_user_id'),
+  offeredNftId: text('offered_nft_id'),
+  requestedNftId: text('requested_nft_id'),
+  // Extended fields actually used in routes
+  makerHandle: text('maker_handle'),
+  takerHandle: text('taker_handle'),
+  makerWallet: text('maker_wallet'),
+  takerWallet: text('taker_wallet'),
+  offeredItems: jsonb('offered_items').$type<any[]>(),
+  wantedItems: jsonb('wanted_items').$type<any[]>(),
+  description: text('description'),
+  escrowRef: text('escrow_ref'),
+  expiresAt: timestamp('expires_at'),
+  matchedAt: timestamp('matched_at'),
+  isPrivateOffer: boolean('is_private_offer').default(false),
+  privateOfferTarget: text('private_offer_target'),
+  // Status & tracking
+  status: text('status').default('open'), // open, matched, completed, cancelled, expired
   txHash: text('tx_hash'),
   createdAt: timestamp('created_at').defaultNow(),
   updatedAt: timestamp('updated_at').defaultNow()
-});
+}, (table) => [
+  index('idx_nft_swap_offers_maker').on(table.makerHandle),
+  index('idx_nft_swap_offers_taker').on(table.takerHandle),
+  index('idx_nft_swap_offers_status').on(table.status),
+  index('idx_nft_swap_offers_created').on(table.createdAt)
+]);
 
 // Wallet NFT searches - cache results
 export const walletNftSearches = pgTable('wallet_nft_searches', {
@@ -5919,6 +5987,8 @@ export const gameBattlesRelations = relations(gameBattles, ({ one, many }) => ({
 // Gaming schema exports with Zod validation
 export const insertGamePlayerSchema = createInsertSchema(gamePlayers).omit(['id', 'createdAt', 'lastActivity']);
 
+export const insertGamePlayerWalletSchema = createInsertSchema(gamePlayerWallets).omit(['id', 'createdAt']);
+
 export const insertGameLandBlockSchema = createInsertSchema(gameLandBlocks).omit(['createdAt']);
 
 export const insertGameLandClaimSchema = createInsertSchema(gameLandClaims).omit(['id', 'createdAt']);
@@ -5949,6 +6019,7 @@ export const insertLandPlotPurchaseSchema = createInsertSchema(landPlotPurchases
 export type GamePlayer = typeof gamePlayers.$inferSelect;
 export type InsertGamePlayer = z.infer<typeof insertGamePlayerSchema>;
 export type GamePlayerWallet = typeof gamePlayerWallets.$inferSelect;
+export type InsertGamePlayerWallet = z.infer<typeof insertGamePlayerWalletSchema>;
 export type GameLandBlock = typeof gameLandBlocks.$inferSelect;
 export type InsertGameLandBlock = z.infer<typeof insertGameLandBlockSchema>;
 export type GameLandClaim = typeof gameLandClaims.$inferSelect;

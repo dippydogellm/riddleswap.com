@@ -1,17 +1,14 @@
 /**
  * Unified Storage Service
  * 
- * Provides a single interface for file storage that automatically
- * switches between Google Cloud Storage (production) and Replit Object Storage (development)
- * based on environment configuration.
+ * Provides a single interface for file storage using Vercel Blob.
+ * Automatically configured for Vercel deployment with BLOB_READ_WRITE_TOKEN.
  */
 
-import { GoogleCloudStorageService } from './gcs-storage';
-import { ReplitObjectStorageService } from './replit-object-storage';
+import { VercelBlobStorage } from './blob-storage';
 
-// Determine which storage backend to use
-const USE_GCS = process.env.USE_GCS === 'true' || process.env.NODE_ENV === 'production';
-const STORAGE_BACKEND = process.env.STORAGE_BACKEND || (USE_GCS ? 'gcs' : 'replit');
+// Vercel Blob is now the default and only storage backend
+const STORAGE_BACKEND = 'vercel-blob';
 
 console.log(`🗄️ [STORAGE] Using backend: ${STORAGE_BACKEND}`);
 
@@ -28,18 +25,12 @@ interface StorageService {
 }
 
 class UnifiedStorageService implements StorageService {
-  private backend: StorageService;
+  private backend: VercelBlobStorage;
   private backendName: string;
 
   constructor() {
-    if (STORAGE_BACKEND === 'gcs') {
-      this.backend = new GoogleCloudStorageService();
-      this.backendName = 'Google Cloud Storage';
-    } else {
-      this.backend = new ReplitObjectStorageService();
-      this.backendName = 'Replit Object Storage';
-    }
-    
+    this.backend = new VercelBlobStorage();
+    this.backendName = 'Vercel Blob Storage';
     console.log(`✅ [STORAGE] Initialized: ${this.backendName}`);
   }
 
@@ -61,10 +52,9 @@ class UnifiedStorageService implements StorageService {
   }
 
   async listFiles(prefix: string): Promise<string[]> {
-    if (this.backend.listFiles) {
-      return await this.backend.listFiles(prefix);
-    }
-    throw new Error('listFiles not supported by current storage backend');
+    const files = await this.backend.listFiles(prefix);
+    // Convert array of file objects to array of URLs for compatibility
+    return files.map((file: any) => file.url || file);
   }
 
   async fileExists(storageKey: string): Promise<boolean> {

@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -45,6 +45,7 @@ import { apiRequest } from "@/lib/queryClient";
 import { useToast } from "@/hooks/use-toast";
 import { useSession } from "@/utils/sessionManager";
 import { BackButton } from "@/components/gaming/BackButton";
+import { SessionRenewalModal } from "@/components/SessionRenewalModal";
 
 // Validation schemas
 const profileSchema = z.object({
@@ -97,8 +98,19 @@ export default function GamingProfile() {
   const [uploadType, setUploadType] = useState<'commander' | 'crest'>('commander');
   const [searchQuery, setSearchQuery] = useState("");
   const [showPlayerSearch, setShowPlayerSearch] = useState(false);
+  const [showRenewalModal, setShowRenewalModal] = useState(false);
   
-  const { isLoggedIn, handle } = useSession();
+  const session = useSession();
+  const { isLoggedIn, handle } = session;
+
+  // Watch for session renewal needs
+  useEffect(() => {
+    if ((session as any).needsRenewal) {
+      setShowRenewalModal(true);
+    } else {
+      setShowRenewalModal(false);
+    }
+  }, [(session as any).needsRenewal]);
 
   // Fetch gaming profile with auto-refresh for new images
   const { data: profile, isLoading: profileLoading, refetch: refetchProfile } = useQuery<GamingProfile>({
@@ -736,6 +748,11 @@ export default function GamingProfile() {
           data-testid="input-crest-file"
         />
       </div>
+
+      <SessionRenewalModal 
+        open={showRenewalModal}
+        onOpenChange={setShowRenewalModal}
+      />
     </div>
   );
 }

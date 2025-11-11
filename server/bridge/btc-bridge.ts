@@ -156,7 +156,7 @@ export class BTCBridgeHandler {
           status: 'failed',
           errorMessage: `UTXO check failed: ${error instanceof Error ? error.message : 'Unknown error'}`,
           updatedAt: new Date()
-        })
+        } as any)
         .where(eq(bridge_payloads.transaction_id, params.transactionId))
         .catch(dbError => console.error('Failed to update bridge status:', dbError));
       
@@ -316,21 +316,19 @@ export class BTCBridgeHandler {
         return {
           success: true,
           transactionId,
-          payload,
-          bankAddress,
           amount,
           outputAmount,
           bridgeFee,
           fromToken,
           toToken,
-          instructions: payload.instructions,
-          utxoCheck,
-          readyToExecute: utxoCheck.success,
-          fundingRequired: !utxoCheck.success,
+          walletAddress: cachedKeys.btcAddress,
           fundingInstructions: utxoCheck.success ? null : this.generateFundingInstructions(
             utxoCheck,
             cachedKeys.btcAddress
-          )
+          ),
+          message: utxoCheck.success
+            ? 'Bitcoin bridge created and ready to execute'
+            : 'Bitcoin bridge created; awaiting funding'
         };
       }
       

@@ -562,7 +562,7 @@ router.post('/buildings/place', sessionAuth, async (req, res) => {
       constructionEnds: constructionEnds,
       productionMultiplier: '1.00',
       efficiency: 100
-    }).returning();
+    } as any).returning();
 
     await db.update(schema.cities).set({ 
       credits: (parseFloat(city.credits) - creditCost).toFixed(2),
@@ -580,7 +580,7 @@ router.post('/buildings/place', sessionAuth, async (req, res) => {
       foodDelta: '0.00',
       source: 'construction',
       details: { buildingType, buildingId: newBuilding.id }
-    });
+    } as any);
 
     res.json({ success: true, data: newBuilding });
   } catch (error) {
@@ -726,7 +726,7 @@ router.post('/buildings/:buildingId/upgrade', sessionAuth, async (req, res) => {
       foodDelta: '0.00',
       source: 'upgrade',
       details: { buildingType: buildingDef.upgradesTo, buildingId }
-    });
+    } as any);
 
     res.json({ success: true, data: updatedBuilding });
   } catch (error) {
@@ -874,7 +874,7 @@ router.post('/furnishings/place', sessionAuth, async (req, res) => {
       foodDelta: '0.00',
       source: 'furnishing',
       details: { furnishingType, buildingId }
-    });
+    } as any);
 
     res.json({ success: true, data: newFurnishing });
   } catch (error) {
@@ -1147,7 +1147,7 @@ router.post('/resources/tick', sessionAuth, async (req, res) => {
       foodDelta: foodDelta.toFixed(2),
       source: 'production',
       details: { buildingCount: buildings.length, policyCount: policies.length }
-    });
+    } as any);
 
     res.json({ 
       success: true, 
@@ -1252,7 +1252,7 @@ router.post('/policies/enact', sessionAuth, async (req, res) => {
       enactedAt: new Date(),
       expiresAt: expiresAt,
       isActive: true
-    }).returning();
+    } as any).returning();
 
     await db.update(schema.cities).set({ 
       credits: (parseFloat(city.credits) - cost).toFixed(2),
@@ -1268,7 +1268,7 @@ router.post('/policies/enact', sessionAuth, async (req, res) => {
       foodDelta: '0.00',
       source: 'policy',
       details: { policyType, action: 'enacted' }
-    });
+    } as any);
 
     res.json({ success: true, data: newPolicy });
   } catch (error) {
@@ -1405,7 +1405,7 @@ router.post('/defense/activate', sessionAuth, async (req, res) => {
       foodDelta: '0.00',
       source: 'defense',
       details: { systemType, action: 'activated' }
-    });
+    } as any);
 
     res.json({ success: true, data: newDefense });
   } catch (error) {
@@ -1496,7 +1496,7 @@ router.post('/citizens/assign', sessionAuth, async (req, res) => {
       productionBonus: productionBonus.toFixed(2),
       defenseBonus: defenseBonus,
       happinessBonus: happinessBonus
-    }).returning();
+    } as any).returning();
 
     await db.update(schema.cities).set({ 
       population: city.population + 1,
@@ -1647,9 +1647,9 @@ router.get('/stats', readOnlyAuth, async (req, res) => {
     const activeBuildings = city.buildings.filter(b => b.constructionStatus === 'active').length;
     const constructingBuildings = city.buildings.filter(b => b.constructionStatus === 'constructing').length;
 
-    const totalDefenseStrength = city.defenses.reduce((sum, d) => sum + d.strength, 0);
+    const totalDefenseStrength = (city as any).defenses?.reduce((sum: number, d: any) => sum + d.strength, 0) || 0;
 
-    const citizenBonuses = city.citizens.reduce((acc, c) => {
+    const citizenBonuses = (city as any).citizens?.reduce((acc: any, c: any) => {
       acc.economic += parseFloat(c.economicBonus || '0');
       acc.production += parseFloat(c.productionBonus || '0');
       acc.defense += c.defenseBonus;
@@ -1679,21 +1679,21 @@ router.get('/stats', readOnlyAuth, async (req, res) => {
           constructing: constructingBuildings
         },
         economy: {
-          furnishings: city.furnishings.length,
-          shops: city.shops.length,
+          furnishings: (city as any).furnishings?.length || 0,
+          shops: (city as any).shops?.length || 0,
           economicValue: city.economicValue
         },
         defense: {
           rating: city.defenseRating,
-          systems: city.defenses.length,
+          systems: (city as any).defenses?.length || 0,
           totalStrength: totalDefenseStrength
         },
         politics: {
-          activePolicies: city.policies.filter(p => p.isActive).length
+          activePolicies: (city as any).policies?.filter((p: any) => p.isActive).length || 0
         },
         citizens: {
-          total: city.citizens.length,
-          bonuses: citizenBonuses
+          total: (city as any).citizens?.length || 0,
+          bonuses: citizenBonuses || { economic: 0, production: 0, defense: 0, happiness: 0 }
         }
       }
     });

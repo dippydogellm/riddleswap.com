@@ -34,10 +34,63 @@ interface ProfileHubProps {
 export function ProfileHub({ player, civilization, stats, theme, onEditProfile, onSyncComplete }: ProfileHubProps) {
   const { toast } = useToast();
   const [isSyncing, setIsSyncing] = useState(false);
+  const [isScanning, setIsScanning] = useState(false);
   
   const winRate = stats.total_battles > 0 
     ? ((stats.battles_won / stats.total_battles) * 100).toFixed(1)
     : "0.0";
+
+  const handleWalletScan = async () => {
+    try {
+      setIsScanning(true);
+      
+      // Get session token for authentication
+      const sessionToken = sessionManager.getSessionToken();
+      if (!sessionToken) {
+        throw new Error("Please log in to scan your wallet");
+      }
+      
+      toast({
+        title: "Scanning Wallet...",
+        description: "Fetching all NFTs from your wallet on-chain. This may take a moment.",
+      });
+      
+      const response = await fetch('/api/gaming/player/scan-wallet-nfts', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${sessionToken}`
+        },
+        credentials: 'include'
+      });
+
+      const data = await response.json() as any;
+      
+      if (data.success) {
+        const collections = Object.keys(data.scan_result?.collections || {}).length;
+        toast({
+          title: "Wallet Scan Complete!",
+          description: `Found ${data.scan_result.total_nfts} NFTs from ${collections} collections with ${data.scan_result.total_power} total power`,
+        });
+        
+        // Trigger callback to refresh parent component data
+        if (onSyncComplete) {
+          onSyncComplete();
+        }
+      } else {
+        throw new Error(data.error || "Failed to scan wallet");
+      }
+    } catch (error: any) {
+      console.error('Wallet scan error:', error);
+      toast({
+        title: "Scan Failed",
+        description: error.message || "Failed to scan wallet. Please try again.",
+        variant: "destructive"
+      });
+    } finally {
+      setIsScanning(false);
+    }
+  };
 
   const handleManualSync = async () => {
     try {
@@ -165,6 +218,25 @@ export function ProfileHub({ player, civilization, stats, theme, onEditProfile, 
               className="border-orange-500 text-orange-400 hover:bg-orange-500 hover:text-white"
             >
               Edit Profile
+            </Button>
+            <Button
+              onClick={handleWalletScan}
+              disabled={isScanning}
+              variant="outline"
+              size="sm"
+              className="border-purple-500 text-purple-400 hover:bg-purple-500 hover:text-white"
+            >
+              {isScanning ? (
+                <>
+                  <RefreshCw className="w-4 h-4 mr-1 animate-spin" />
+                  Scanning...
+                </>
+              ) : (
+                <>
+                  <RefreshCw className="w-4 h-4 mr-1" />
+                  Scan My Wallet
+                </>
+              )}
             </Button>
             <Button
               onClick={handleManualSync}

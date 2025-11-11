@@ -518,7 +518,7 @@ export async function registerBrokerRoutes(app: Express) {
         status: 'pending',
         message,
         expiresAt
-      });
+      } as any);
 
       // Prepare unsigned payment transaction
       const { xrpToDrops } = await import('xrpl');
@@ -586,21 +586,21 @@ export async function registerBrokerRoutes(app: Express) {
         const broker = getBrokerService();
         const brokerAddress = broker.getAddress();
 
-        const txData = tx.result.tx_json || tx.result;
+        const txData = (tx.result.tx_json || tx.result) as any;
 
-        if (txData.TransactionType !== 'Payment') {
+        if (txData['TransactionType'] !== 'Payment') {
           return res.status(400).json({ error: 'Not a payment transaction' });
         }
 
-        if (txData.Destination !== brokerAddress) {
+        if (txData['Destination'] !== brokerAddress) {
           return res.status(400).json({ error: 'Payment not sent to broker address' });
         }
 
-        if (txData.Account !== escrow.userAddress) {
+        if (txData['Account'] !== escrow.userAddress) {
           return res.status(400).json({ error: 'Payment not from escrow user' });
         }
 
-        const paidAmount = txData.Amount as string;
+        const paidAmount = txData['Amount'] as string;
         if (paidAmount !== escrow.escrowAmount) {
           return res.status(400).json({ 
             error: `Incorrect amount. Expected ${escrow.escrowAmount} drops, received ${paidAmount} drops` 
@@ -623,7 +623,7 @@ export async function registerBrokerRoutes(app: Express) {
         
         const brokerOfferResult = await broker.createBuyOfferToOwner(
           escrow.nftTokenId,
-          offerAmountXrp,
+          offerAmountXrp.toString(),
           escrow.nftOwner
         );
 
@@ -1006,7 +1006,7 @@ export async function registerBrokerRoutes(app: Express) {
             sell_offer_id: result.offerId,
             transaction_hash: result.txHash,
             status: 'listed'
-          });
+          } as any);
         }
         
         res.json(result);
@@ -1201,7 +1201,7 @@ export async function registerBrokerRoutes(app: Express) {
           });
         }
         
-        const priceXrp = parseFloat(xrpl.dropsToXrp(sellOffer.amount));
+        const priceXrp = parseFloat(xrpl.dropsToXrp(String(sellOffer.amount)));
         
         // Step 2: Create buy offer with broker fee
         const buyOfferResult = await brokerOfferService.createBrokerBuyOffer(
@@ -1245,7 +1245,7 @@ export async function registerBrokerRoutes(app: Express) {
         const { limit = 50, offset = 0, status } = req.query;
         
         // Build query
-        let query = db
+        let query: any = db
           .select()
           .from(brokerNftSales)
           .orderBy(desc(brokerNftSales.created_at))

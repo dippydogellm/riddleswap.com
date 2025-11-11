@@ -94,7 +94,7 @@ export default function SquadronDetail() {
     <div className="container mx-auto py-8 px-4 max-w-7xl">
       <Button
         variant="ghost"
-        onClick={() => setLocation('/gaming')}
+        onClick={() => setLocation('/gaming-dashboard-v3')}
         className="mb-6"
       >
         <ArrowLeft className="mr-2 h-4 w-4" />

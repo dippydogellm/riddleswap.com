@@ -11,6 +11,7 @@ import { NFTCollectionDropdown } from "@/components/gaming/NFTCollectionDropdown
 import { EnhancedStatsPanel } from "@/components/gaming/EnhancedStatsPanel";
 import { SetupWizard } from "@/components/gaming/SetupWizard";
 import { useSession } from "@/utils/sessionManager";
+import { SessionRenewalModal } from "@/components/SessionRenewalModal";
 import { Loader2, Shield, Castle, AlertTriangle, X, Search, SortAsc } from "lucide-react";
 import { normalizeNftImage, getFallbackImage } from "@/utils/imageNormalizer";
 import { ErrorBoundary } from "@/components/ErrorBoundary";
@@ -32,10 +33,21 @@ export default function GamingDashboardV3() {
   const [location, navigate] = useLocation();
   const [theme, setTheme] = useState<'light' | 'dark'>('dark');
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [showRenewalModal, setShowRenewalModal] = useState(false);
   
   useEffect(() => {
     console.log('🎮 [GAMING DASHBOARD] Component mounted, session:', session?.handle);
   }, [session]);
+  
+  // Check if session needs renewal
+  useEffect(() => {
+    if ((session as any).needsRenewal) {
+      console.log('⚠️ [GAMING DASHBOARD] Session needs renewal, showing modal');
+      setShowRenewalModal(true);
+    } else {
+      setShowRenewalModal(false);
+    }
+  }, [(session as any).needsRenewal]);
   
   // Modal states
   const [editProfileOpen, setEditProfileOpen] = useState(false);
@@ -1112,6 +1124,12 @@ export default function GamingDashboardV3() {
           </div>
         </DialogContent>
       </Dialog>
+      
+      {/* Session Renewal Modal */}
+      <SessionRenewalModal 
+        open={showRenewalModal} 
+        onOpenChange={setShowRenewalModal}
+      />
     </div>
   );
 }

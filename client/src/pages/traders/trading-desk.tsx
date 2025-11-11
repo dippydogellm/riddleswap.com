@@ -8,6 +8,8 @@ import { useToast } from '@/hooks/use-toast';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Slider } from '@/components/ui/slider';
+import { useSession } from '@/utils/sessionManager';
+import { SessionRenewalModal } from '@/components/SessionRenewalModal';
 
 interface TokenData {
   symbol: string;
@@ -32,13 +34,24 @@ interface QuickTradeOrder {
 }
 
 export default function TradingDeskPage() {
+  const session = useSession();
   const [watchlist, setWatchlist] = useState<TokenData[]>([]);
   const [selectedChain, setSelectedChain] = useState('ethereum');
   const [quickTradeAmount, setQuickTradeAmount] = useState('100');
   const [slippage, setSlippage] = useState([0.5]);
   const [recentOrders, setRecentOrders] = useState<QuickTradeOrder[]>([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [showRenewalModal, setShowRenewalModal] = useState(false);
   const { toast } = useToast();
+  
+  // Check if session needs renewal
+  useEffect(() => {
+    if ((session as any).needsRenewal) {
+      setShowRenewalModal(true);
+    } else {
+      setShowRenewalModal(false);
+    }
+  }, [(session as any).needsRenewal]);
 
   const supportedChains = [
     { id: 'ethereum', name: 'Ethereum', native: 'ETH' },
@@ -126,7 +139,10 @@ export default function TradingDeskPage() {
 
       const response = await fetch(swapEndpoint, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${session.sessionToken || ''}`
+        },
         body: JSON.stringify({
           tokenIn: action === 'buy' ? 'NATIVE' : token.address,
           tokenOut: action === 'buy' ? token.address : 'NATIVE',
@@ -444,6 +460,12 @@ export default function TradingDeskPage() {
           </Card>
         </div>
       </div>
+      
+      {/* Session Renewal Modal */}
+      <SessionRenewalModal 
+        open={showRenewalModal} 
+        onOpenChange={setShowRenewalModal}
+      />
     </div>
   );
 }

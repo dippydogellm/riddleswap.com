@@ -84,51 +84,127 @@ router.get('/orders', requireAuth, async (req, res) => {
 
 router.post('/create', requireAuth, async (req, res) => {
   try {
-    const validation = CreateLimitOrderSchema.safeParse(req.body);
+    const { baseToken, quoteToken, amount, price, side, walletAddress, takeProfit, stopLoss } = req.body;
     
-    if (!validation.success) {
+    if (!baseToken || !quoteToken || !amount || !price || !side || !walletAddress) {
       return res.status(400).json({
         success: false,
-        error: 'Invalid order parameters',
-        details: validation.error.errors
+        error: 'Missing required fields'
       });
     }
     
-    const orderData = validation.data;
     const session = (req as any).userSession;
     
-    // Verify wallet ownership
-    const chainKey = `${orderData.chain}Address`;
-    if (session.walletData?.[chainKey] !== orderData.walletAddress) {
-      return res.status(403).json({
-        success: false,
-        error: 'Wallet address mismatch'
+    console.log(`📝 [Create Limit Order] ${session.handle}: ${side} ${amount} ${baseToken} @ ${price}`);
+    if (takeProfit) console.log(`  ↗️ Take Profit: ${takeProfit}`);
+    if (stopLoss) console.log(`  ↘️ Stop Loss: ${stopLoss}`);
+    
+    // Parse assets
+    const parseAsset = (asset: string): any => {
+      if (asset === 'XRP') return { currency: 'XRP' };
+      const [currency, issuer] = asset.split('.');
+      return issuer ? { currency, issuer } : { currency };
+    };
+
+    const baseAsset = parseAsset(baseToken);
+    const quoteAsset = parseAsset(quoteToken);
+
+    // Format amounts
+    const formatAmount = (amt: string, asset: any): any => {
+      const numAmount = parseFloat(amt);
+      if (asset.currency === 'XRP') {
+        return (numAmount * 1e6).toString(); // Convert to drops
+      }
+      return {
+        currency: asset.currency,
+        value: numAmount.toString(),
+        issuer: asset.issuer
+      };
+    };
+
+    // Calculate amounts based on price and side
+    const takerPays = side === 'sell' 
+      ? formatAmount(amount, baseAsset)
+      : formatAmount((parseFloat(amount) * price).toString(), quoteAsset);
+      
+    const takerGets = side === 'sell'
+      ? formatAmount((parseFloat(amount) * price).toString(), quoteAsset)
+      : formatAmount(amount, baseAsset);
+
+    // Main limit order transaction (OfferCreate)
+    const mainOrder = {
+      TransactionType: 'OfferCreate',
+      Account: walletAddress,
+      TakerPays: takerPays,
+      TakerGets: takerGets,
+      Flags: 0 // Can add flags for passive orders, etc.
+    };
+
+    const transactions: any[] = [mainOrder];
+
+    // Add Take Profit order if specified
+    if (takeProfit) {
+      const tpPrice = parseFloat(takeProfit);
+      const tpTakerGets = side === 'sell'
+        ? formatAmount(amount, baseAsset)
+        : formatAmount((parseFloat(amount) / tpPrice).toString(), baseAsset);
+        
+      const tpTakerPays = side === 'sell'
+        ? formatAmount((parseFloat(amount) * tpPrice).toString(), quoteAsset)
+        : formatAmount(amount, quoteAsset);
+
+      transactions.push({
+        TransactionType: 'OfferCreate',
+        Account: walletAddress,
+        TakerPays: tpTakerPays,
+        TakerGets: tpTakerGets,
+        Flags: 0,
+        Memos: [{
+          Memo: {
+            MemoType: Buffer.from('TakeProfit').toString('hex'),
+            MemoData: Buffer.from(`TP:${takeProfit}`).toString('hex')
+          }
+        }]
       });
     }
-    
-    console.log(`📝 [Create Limit Order] ${session.handle}: ${orderData.type} ${orderData.fromAmount} ${orderData.fromToken} @ ${orderData.limitPrice}`);
-    
-    const expiresAt = new Date(Date.now() + orderData.expiresIn * 1000);
-    
-    // TODO: Save to database
-    // const orderId = await db.insert(limitOrders).values({
-    //   userHandle: session.handle,
-    //   walletAddress: orderData.walletAddress,
-    //   type: orderData.type,
-    //   fromToken: orderData.fromToken,
-    //   toToken: orderData.toToken,
-    //   fromAmount: orderData.fromAmount,
-    //   limitPrice: orderData.limitPrice,
-    //   chain: orderData.chain,
-    //   status: 'active',
-    //   expiresAt
-    // });
+
+    // Add Stop Loss order if specified
+    if (stopLoss) {
+      const slPrice = parseFloat(stopLoss);
+      const slTakerGets = side === 'sell'
+        ? formatAmount(amount, baseAsset)
+        : formatAmount((parseFloat(amount) / slPrice).toString(), baseAsset);
+        
+      const slTakerPays = side === 'sell'
+        ? formatAmount((parseFloat(amount) * slPrice).toString(), quoteAsset)
+        : formatAmount(amount, quoteAsset);
+
+      transactions.push({
+        TransactionType: 'OfferCreate',
+        Account: walletAddress,
+        TakerPays: slTakerPays,
+        TakerGets: slTakerGets,
+        Flags: 0,
+        Memos: [{
+          Memo: {
+            MemoType: Buffer.from('StopLoss').toString('hex'),
+            MemoData: Buffer.from(`SL:${stopLoss}`).toString('hex')
+          }
+        }]
+      });
+    }
     
     res.json({
       success: true,
-      message: 'Limit order created',
-      orderId: 'temp-order-id',
-      expiresAt: expiresAt.toISOString(),
+      transactions,
+      requiresSigning: true,
+      message: `Limit order${transactions.length > 1 ? 's' : ''} ready to sign`,
+      details: {
+        mainOrder: { amount, price, side },
+        takeProfit: takeProfit || null,
+        stopLoss: stopLoss || null,
+        orderCount: transactions.length
+      },
       timestamp: Date.now()
     });
     

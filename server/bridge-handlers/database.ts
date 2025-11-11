@@ -1,7 +1,7 @@
 // Database operations for bridge transactions
 
 import { db } from '../db';
-import { bridge_payloads } from '../shared/schema';
+import { bridge_payloads } from '@shared/schema';
 import { eq } from 'drizzle-orm';
 
 export interface SaveTransactionParams {
@@ -25,7 +25,7 @@ export async function saveBridgeTransaction(params: SaveTransactionParams): Prom
     });
 
     // Use UPSERT to prevent duplicates
-    await db.insert(bridge_payloads).values({
+  await db.insert(bridge_payloads).values({
       transaction_id: params.transactionId,
       step: 1,
       uuid: params.transactionId,
@@ -41,13 +41,13 @@ export async function saveBridgeTransaction(params: SaveTransactionParams): Prom
       updatedAt: new Date(),
       step3TxHash: null,
       outputAmount: null
-    }).onConflictDoUpdate({
+    } as any).onConflictDoUpdate({
       target: bridge_payloads.transaction_id,
       set: {
         txHash: params.txHash,
         status: params.status,
         updatedAt: new Date()
-      }
+      } as any
     });
 
     console.log('✅ Transaction saved to database');

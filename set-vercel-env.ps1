@@ -1,0 +1,83 @@
+# Vercel Environment Variables Setup Script
+# This script will add all environment variables to your Vercel project
+
+Write-Host "Setting up Vercel Environment Variables..." -ForegroundColor Cyan
+Write-Host ""
+
+# Function to add environment variable
+function Add-VercelEnv {
+    param($Name, $Value, $Type = "encrypted")
+    Write-Host "Adding $Name..." -ForegroundColor Yellow
+    $Value | vercel env add $Name production
+}
+
+# === REQUIRED VARIABLES ===
+Write-Host "`n=== Setting Required Variables ===" -ForegroundColor Green
+
+Add-VercelEnv "DATABASE_URL" "postgresql://neondb_owner:npg_qdIe1X8rkaJb@ep-broad-surf-a576s6yl.us-east-2.aws.neon.tech/neondb?sslmode=require"
+Add-VercelEnv "SESSION_SECRET" "0kvrEZ2Yj6wxFvUkJSCNnzpddUwweAmZA6qDgFi2icV+xFArbuoiwGTx/8MWBWZy09oRx8/4N3aIBSYZJXJuyA=="
+Add-VercelEnv "BITHOMP_API_KEY" "95b64250-f24f-4654-9b4b-b155a3a6867b"
+Add-VercelEnv "NODE_ENV" "production"
+
+# === WALLET & TRADING ===
+Write-Host "`n=== Setting Wallet & Trading Variables ===" -ForegroundColor Green
+
+Add-VercelEnv "RIDDLE_BROKER_ADDRESS" "rGLzXKif4ksBZe2MY6RZT9m69hdgzsXG4X"
+Add-VercelEnv "BROKER_WALLET_SEED" "sEd7B9EmH6mJ7zpxptNPeZMxmdsp8fM"
+Add-VercelEnv "RIDDLE_BROKER_SECRET" "sEd7B9EmH6mJ7zpxptNPeZMxmdsp8fM"
+Add-VercelEnv "BANK_RDL_PRIVATE_KEY" "sEdSiXZ5cAUHRvhvf263uUUCGHvtj8D"
+Add-VercelEnv "ETHEREUM_BANK_PRIVATE_KEY" "0x9ef513f3b982fb1e071a6af8b7ba7167de8acb10939a4443a160d4bc6e1b16ff"
+Add-VercelEnv "SOLANA_BANK_PRIVATE_KEY" "fyUv91gHPkNuTo5Ev53nWTKDgurRe9mxGx1q9Yy8pnBoPzpVWv3XpEnmmMytu9NTMo7YUdLsyjHyHccQjAYVvvr"
+Add-VercelEnv "ONE_INCH_API_KEY" "viiZs5mppdTHlxWlaric8MmMRjufCAXp"
+
+# === WALLET CONNECT ===
+Write-Host "`n=== Setting WalletConnect Variables ===" -ForegroundColor Green
+
+Add-VercelEnv "VITE_WALLETCONNECT_PROJECT_ID" "fa5ebbd9b00cc684a0662cd09406ed00"
+Add-VercelEnv "WALLETCONNECT_PROJECT_ID" "4746ae20129f1e0edd0a9d8a214cd4b1"
+Add-VercelEnv "VITE_FEE_WALLET_EVM" "0x9211346f428628d7C84CE1338C0b51FDdf2E8461"
+Add-VercelEnv "VITE_WALLET_CONNECTION_TIMEOUT" "600"
+
+# === XAMAN (XUMM) ===
+Write-Host "`n=== Setting Xaman Variables ===" -ForegroundColor Green
+
+Add-VercelEnv "XUMM_API_KEY" "4918cc89-7d0a-4145-bf81-05fc5d6e1190"
+Add-VercelEnv "XUMM_API_SECRET" "d403a2b6-a587-490a-a2e2-f856bd403a2b6-a587-490a-a2e2-f856b0213eff0213eff"
+
+# === STORAGE ===
+Write-Host "`n=== Setting Storage Variables ===" -ForegroundColor Green
+
+Add-VercelEnv "USE_GCS" "true"
+Add-VercelEnv "STORAGE_BACKEND" "gcs"
+Add-VercelEnv "GCS_BUCKET_NAME" "riddleswap"
+Add-VercelEnv "GCS_PROJECT_ID" "riddleswap"
+
+# GCS_KEY_JSON (complex JSON)
+Write-Host "Adding GCS_KEY_JSON..." -ForegroundColor Yellow
+@'
+{"type":"service_account","project_id":"riddleswap","private_key_id":"2928723c24b9613c919a60f92fccb44f04eb4e76","private_key":"-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQC6t9+nwceuZrwg\nIQlkw5JqiToxpurfHD0oLGivP9x1Zw1SIcie6yBckuPhoAvWu5Ud8WXN1D7kSTPO\nbOI31kqAiUgDyidc992D9kXfemwXzLXEHETkYLL0RSQcg/lvqpI4yoXdAwi4aE5P\nXVyb3JTEw61nKMo7821PFW3/sm4FWLwza9xBbORgZUrSRZw6qV/dLRmK6moKNGHx\n/G5uEvF6vVxDbAdOi0qSmsfRUVBCD1TwyP9f6ZvBwoWbm1rapBM2f+NFoVFGWhJ2\nHtmrXq61mQdA3Wpml5nIyGa04PjBAPX0/EDbYOCvhH+/l0ewm6dewTlEAZKBOEkv\nKHaZmvWrAgMBAAECggEAAioHGRv0DCh/PEU1wdRmQVQx96V5BnH+n7G/MDW0x/IG\nHI7Cds5qwcYnMbCtQnOf0MjdjbXpPOzqujGBqtiR1ps5oLy6YKCJSnk3G8fWFeaI\nk7J+oNAh5KTNLi7D3DP6wR3ee3IIgHQC0wUAnhExgOdz8CEaoE4KKnjFgQJf7tw+\ntLUkPGmm2006BUw3ki/Z3J+zo0w+yIJ3PbiCU31v74e7/lqnSAzYcQgt8Yulow1q\nmXp+U9QHmTxMfHG750VXkTXsOe4K6KYiW3H0PyNxCueI9rnz3u9+6nQ3CBVOoER6\nS4rPObNImB+visH6hVnBR6E9ivcgN+01oMSsLZQq3QKBgQD8VKkiPEn9sUbd1c2y\nDCRyHrvHn4ZmABO3BYnKGruT5VbJP+WeD31PtzGSxH0GLU62oajgsnsCNFRt7hw3\n2mK+yeqEV0uEa/sThoBjxAyUG+RRSSyIzvRb8EOWsrkhhRigVQ1nKIT/ecisKgn+\nGgv/koX+qbjNQ4o2buuKjutchQKBgQC9bvXvNm84Ee3+MZ4sNnch0jYkVD3ZgjB6\noVcfOU1pRxmO9WCGtDMEUOnS8MU2R5+m8Dl65G6pc9n+VqQlttWYihzyYxhP3k6h\nPOpC+7PtSVIMIu6PP6poC7NwEJIPlXsjrwammaeZcDR6XolkjPnAm26tgu+bCk89\nzXx3pkn4bwKBgBp5V3V8FddELkdAE2DG3VwL1W/QUO2KvIbLUfWecGfH/B8JUTIQ\nNfmTIuRfMS7gug13UJyinT1R+DnAbb1+cDXMQYq5DfdKzQDzb60H+LnhY0cUAlQo\nQoMS5kR9Y+cca8UGp21XVvzm7iMCFiJO4UtjOCPL8tO2bl3frV7QN+lxAoGBALnV\ntOZrHEiBLlyECIuPEufW9M5G5jYPBcgHpxQ2fr6cxXH9PihndvTw+7G4CX/qW7DF\nUV5B4l3SDTT5giaNapUuSJ9wn1Ua3UBIJfh4PFa36wmE60sURfO0Jt/1IZSwLBEh\njwC5FDXuYUz6mQZPVmOhF76YCL6sKniSsVwfgcl5AoGBAPGXGF2WB+L5t682SZPx\nyw10DQgHJtaCeFXygqxeWIgRLyWCo1T3sK9lN1vW1fS0rnWlFfSw51VfxPVokoqG\nSw86pC4gP4DhGHoicnobSHCmq2WNzlZV1HixxPHBvmQEqSoH9Uu6h3HfsnHEtW1Q\nhK2SKwl7Be0S9S5sahr0aNRZ\n-----END PRIVATE KEY-----\n","client_email":"riddleswap@riddleswap.iam.gserviceaccount.com","client_id":"104002485348091606018","auth_uri":"https://accounts.google.com/o/oauth2/auth","token_uri":"https://oauth2.googleapis.com/token","auth_provider_x509_cert_url":"https://www.googleapis.com/oauth2/v1/certs","client_x509_cert_url":"https://www.googleapis.com/robot/v1/metadata/x509/riddleswap%40riddleswap.iam.gserviceaccount.com","universe_domain":"googleapis.com"}
+'@ | vercel env add GCS_KEY_JSON production
+
+# === NFT STORAGE ===
+Write-Host "`n=== Setting NFT Storage Variables ===" -ForegroundColor Green
+
+Add-VercelEnv "NFT_STORAGE_TOKEN" "e82a06f9.fdf7e9cbdbc84aec8d6758ab643abcfb"
+
+# === NOTIFICATIONS ===
+Write-Host "`n=== Setting Notification Variables ===" -ForegroundColor Green
+
+Add-VercelEnv "TELEGRAM_BOT_TOKEN" "8380829527:AAEWYuREocfgnfvZAQQ8guPC2mOv5khx5ys"
+Add-VercelEnv "TELEGRAM_CHANNEL_ID" "@TheOracleRiddleBot"
+
+# === OPENAI (OPTIONAL) ===
+Write-Host "`n=== Setting OpenAI Variables (Optional) ===" -ForegroundColor Green
+
+Add-VercelEnv "OPENAI_PROJECT" "proj_ywCVuJxaz537EZxq44wGJ5wx"
+Add-VercelEnv "OPENAI_API_KEY" "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"
+
+Write-Host "`n✅ All environment variables have been set!" -ForegroundColor Green
+Write-Host ""
+Write-Host "Next steps:" -ForegroundColor Cyan
+Write-Host "1. Redeploy your application: vercel --prod" -ForegroundColor Yellow
+Write-Host "2. Your app will be live with all environment variables configured" -ForegroundColor Yellow
+Write-Host ""

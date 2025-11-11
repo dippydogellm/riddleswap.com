@@ -316,7 +316,7 @@ router.get("/status/:jobId", async (req, res) => {
     let projectName = null;
     if (job.project_id) {
       const project = await storage.getDevtoolsProject(job.project_id);
-      projectName = project?.project_name;
+      projectName = project?.name;
     }
     
     res.json({
@@ -411,7 +411,7 @@ router.get("/jobs", async (req, res) => {
         if (job.project_id) {
           try {
             const project = await storage.getDevtoolsProject(job.project_id);
-            projectName = project?.project_name;
+            projectName = project?.name;
           } catch (error) {
             console.error(`Error fetching project name for ${job.project_id}:`, error);
           }

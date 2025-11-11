@@ -56,16 +56,16 @@ async function executeAmmTrade(config: any): Promise<{
     const [walletRecord] = await db
       .select()
       .from(riddleWallets)
-      .where(eq(riddleWallets.userHandle, config.riddle_handle))
+      .where(eq(riddleWallets.handle, config.riddle_handle))
       .limit(1);
     
-    if (!walletRecord || !walletRecord.encryptedPrivateKey || !walletRecord.encryptedIv) {
+    if (!walletRecord || !walletRecord.encryptedSeedPhrase) {
       throw new Error(`Wallet not found for handle: ${config.riddle_handle}`);
     }
     
-    // Decrypt private key
-    const privateKey = decryptWallet(walletRecord.encryptedPrivateKey, walletRecord.encryptedIv);
-    const wallet = Wallet.fromSeed(privateKey);
+    // Decrypt seed phrase
+    const seedPhrase = decryptWallet(walletRecord.encryptedSeedPhrase, walletRecord.salt);
+    const wallet = Wallet.fromSeed(seedPhrase);
     
     console.log(`🔐 [AMM-EXECUTOR] Using wallet: ${wallet.address}`);
     
@@ -76,22 +76,23 @@ async function executeAmmTrade(config: any): Promise<{
     let toIssuer = config.quote_issuer;
     
     // For buy_and_sell strategy, alternate direction
-    if (config.strategy === 'buy_and_sell') {
-      const lastTx = await db
-        .select()
-        .from(marketMakerTransactions)
-        .where(eq(marketMakerTransactions.config_id, config.id))
-        .orderBy(marketMakerTransactions.executed_at)
-        .limit(1);
+    // TODO: Add trade_type field to marketMakerTransactions schema
+    // if (config.strategy === 'buy_and_sell') {
+    //   const lastTx = await db
+    //     .select()
+    //     .from(marketMakerTransactions)
+    //     .where(eq(marketMakerTransactions.config_id, config.id))
+    //     .orderBy(marketMakerTransactions.executed_at)
+    //     .limit(1);
       
-      // If last trade was buy, now sell (and vice versa)
-      if (lastTx.length > 0 && lastTx[0].trade_type === 'buy') {
-        fromToken = config.quote_token;
-        toToken = config.base_token;
-        fromIssuer = config.quote_issuer;
-        toIssuer = config.base_issuer;
-      }
-    }
+    //   // If last trade was buy, now sell (and vice versa)
+    //   if (lastTx.length > 0 && lastTx[0].trade_type === 'buy') {
+    //     fromToken = config.quote_token;
+    //     toToken = config.base_token;
+    //     fromIssuer = config.quote_issuer;
+    //     toIssuer = config.base_issuer;
+    //   }
+    // }
     
     // Execute swap using XRPL
     const swapAmount = parseFloat(config.payment_amount);
@@ -205,18 +206,13 @@ export async function processAmmTrades(): Promise<{
         // Record transaction
         await db.insert(marketMakerTransactions).values({
           config_id: config.id,
-          trade_type: config.strategy === 'buy_only' ? 'buy' : 
-                      config.strategy === 'sell_only' ? 'sell' : 'buy_and_sell',
-          from_token: config.base_token,
-          to_token: config.quote_token,
-          amount_sold: result.amountSold || config.payment_amount,
-          amount_bought: result.amountBought || '0',
-          transaction_hash: result.txHash,
+          tx_hash: result.txHash,
+          chain: config.chain,
+          amount: result.amountSold || config.payment_amount,
+          fee_amount: '0',
           status: result.success ? 'success' : 'failed',
           error_message: result.error,
-          executed_at: new Date(),
-          chain: config.chain
-        });
+        } as any);
         
         // Calculate next execution time
         const freqMinutes = config.frequency_minutes || (

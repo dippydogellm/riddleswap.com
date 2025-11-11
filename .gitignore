@@ -11,6 +11,9 @@ vite.config.ts.*
 .env.development.local
 .env.test.local
 env
+.env.consolidated
+.env.consolidated.local
+.env.consolidated.*.local
 
 # Mobile build directories (not needed for web deployment)
 ios/

@@ -148,7 +148,7 @@ export default function UnifiedAdminPage({ walletAddress }: AdminPageProps) {
 
       {/* Admin Tabs */}
       <Tabs defaultValue="platform" className="w-full">
-        <TabsList className="grid w-full grid-cols-5">
+        <TabsList className="grid w-full grid-cols-6">
           <TabsTrigger value="platform" className="flex items-center gap-2">
             <BarChart3 className="h-4 w-4" />
             Platform
@@ -168,6 +168,10 @@ export default function UnifiedAdminPage({ walletAddress }: AdminPageProps) {
           <TabsTrigger value="trading" className="flex items-center gap-2">
             <Bot className="h-4 w-4" />
             Trading Tools
+          </TabsTrigger>
+          <TabsTrigger value="scanners" className="flex items-center gap-2">
+            <RefreshCw className="h-4 w-4" />
+            Scanners
           </TabsTrigger>
         </TabsList>
 
@@ -195,7 +199,145 @@ export default function UnifiedAdminPage({ walletAddress }: AdminPageProps) {
         <TabsContent value="trading">
           <TradingToolsSection />
         </TabsContent>
+
+        {/* Scanners Tab */}
+        <TabsContent value="scanners">
+          <div className="space-y-6">
+            <AdminScannerDashboard />
+          </div>
+        </TabsContent>
       </Tabs>
+    </div>
+  );
+}
+
+// Lazy-loaded Scanner Dashboard Component
+const AdminScannerDashboard = () => {
+  const [scanners, setScanners] = useState<any[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    fetchScanners();
+    const interval = setInterval(fetchScanners, 5000);
+    return () => clearInterval(interval);
+  }, []);
+
+  const fetchScanners = async () => {
+    try {
+      const response = await fetch('/api/admin/scanners/status');
+      const data = await response.json();
+      if (data.success) {
+        setScanners(data.scanners);
+      }
+      setLoading(false);
+    } catch (error) {
+      console.error('Failed to fetch scanners:', error);
+      setLoading(false);
+    }
+  };
+
+  if (loading) {
+    return (
+      <div className="flex items-center justify-center p-12">
+        <RefreshCw className="h-8 w-8 animate-spin" />
+      </div>
+    );
+  }
+
+  return (
+    <div className="space-y-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        {scanners.map((scanner) => (
+          <Card key={scanner.type}>
+            <CardHeader>
+              <CardTitle className="flex items-center justify-between">
+                <span>{scanner.name}</span>
+                <Badge variant={scanner.status === 'running' ? 'default' : 'secondary'}>
+                  {scanner.status}
+                </Badge>
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-4">
+              <div className="grid grid-cols-2 gap-4 text-sm">
+                <div>
+                  <div className="text-muted-foreground">Last Run</div>
+                  <div className="font-semibold">
+                    {scanner.lastRun ? formatDistanceToNow(new Date(scanner.lastRun), { addSuffix: true }) : 'Never'}
+                  </div>
+                </div>
+                <div>
+                  <div className="text-muted-foreground">Next Run</div>
+                  <div className="font-semibold">
+                    {scanner.nextRun ? formatDistanceToNow(new Date(scanner.nextRun), { addSuffix: true }) : 'Not scheduled'}
+                  </div>
+                </div>
+                <div>
+                  <div className="text-muted-foreground">Items Processed</div>
+                  <div className="font-semibold">{scanner.itemsProcessed.toLocaleString()}</div>
+                </div>
+                <div>
+                  <div className="text-muted-foreground">Duration</div>
+                  <div className="font-semibold">
+                    {scanner.duration ? `${(scanner.duration / 1000).toFixed(2)}s` : 'N/A'}
+                  </div>
+                </div>
+              </div>
+
+              {scanner.status === 'running' && (
+                <div className="space-y-2">
+                  <div className="flex items-center justify-between text-sm">
+                    <span>Progress</span>
+                    <span>{scanner.progress}%</span>
+                  </div>
+                  <div className="w-full bg-secondary rounded-full h-2">
+                    <div 
+                      className="bg-primary h-2 rounded-full transition-all duration-300"
+                      style={{ width: `${scanner.progress}%` }}
+                    />
+                  </div>
+                </div>
+              )}
+
+              <div className="flex gap-2">
+                <Button
+                  size="sm"
+                  onClick={() => fetch(`/api/admin/scanners/run/${scanner.type}`, { method: 'POST' })}
+                  disabled={scanner.status === 'running'}
+                >
+                  <Play className="h-4 w-4 mr-1" />
+                  Run Now
+                </Button>
+                {scanner.nextRun ? (
+                  <Button
+                    size="sm"
+                    variant="outline"
+                    onClick={() => fetch(`/api/admin/scanners/stop/${scanner.type}`, { method: 'POST' })}
+                  >
+                    <Pause className="h-4 w-4 mr-1" />
+                    Stop Schedule
+                  </Button>
+                ) : (
+                  <Button
+                    size="sm"
+                    variant="outline"
+                    onClick={() => fetch(`/api/admin/scanners/start/${scanner.type}`, { method: 'POST' })}
+                  >
+                    <Play className="h-4 w-4 mr-1" />
+                    Start Schedule
+                  </Button>
+                )}
+              </div>
+
+              {scanner.error && (
+                <Alert variant="destructive">
+                  <AlertTriangle className="h-4 w-4" />
+                  <AlertDescription>{scanner.error}</AlertDescription>
+                </Alert>
+              )}
+            </CardContent>
+          </Card>
+        ))}
+      </div>
     </div>
   );
 }

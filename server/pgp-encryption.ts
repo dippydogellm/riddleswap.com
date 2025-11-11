@@ -1,8 +1,5 @@
 import * as openpgp from 'openpgp';
 import crypto from 'crypto';
-import db from './db';
-import { users } from '../shared/schema';
-import { eq } from 'drizzle-orm';
 
 interface KeyPair {
   publicKey: string;
@@ -31,7 +28,7 @@ export class PGPEncryptionService {
       }],
       passphrase,
       format: 'armored'
-    });
+    } as any);
 
     const keyPair: KeyPair = { publicKey, privateKey, passphrase };
     

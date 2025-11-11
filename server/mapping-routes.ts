@@ -2,6 +2,8 @@ import { Router, Request, Response } from 'express';
 import { z } from 'zod';
 import { sessionAuth } from './middleware/session-auth';
 import { OpenAI } from 'openai';
+import { db } from './db';
+import { sql } from 'drizzle-orm';
 
 // Simple storage interface for mapping data
 const mappingStorage = {
@@ -72,7 +74,14 @@ router.get('/locations', sessionAuth, async (req: Request, res: Response) => {
   try {
     const { zone, status, location_type, limit = 100 } = req.query;
     
-    let query = `
+    const conditions: any[] = [];
+    if (zone) conditions.push(sql`zone = ${zone as string}`);
+    if (status) conditions.push(sql`status = ${status as string}`);
+    if (location_type) conditions.push(sql`location_type = ${location_type as string}`);
+
+    const whereClause = conditions.length ? sql`WHERE ${sql.join(conditions, sql` AND `)}` : sql``;
+
+    const result = await db.execute(sql`
       SELECT 
         id, name, description, zone, coordinates, latitude, longitude,
         elevation, location_type, status, danger_level, resources,
@@ -80,34 +89,10 @@ router.get('/locations', sessionAuth, async (req: Request, res: Response) => {
         last_visited, visit_count, riddleauthor_notes, map_image_url,
         created_at, updated_at
       FROM game_locations
-      WHERE 1=1
-    `;
-    
-    const params: any[] = [];
-    let paramIndex = 1;
-    
-    if (zone) {
-      query += ` AND zone = $${paramIndex}`;
-      params.push(zone);
-      paramIndex++;
-    }
-    
-    if (status) {
-      query += ` AND status = $${paramIndex}`;
-      params.push(status);
-      paramIndex++;
-    }
-    
-    if (location_type) {
-      query += ` AND location_type = $${paramIndex}`;
-      params.push(location_type);
-      paramIndex++;
-    }
-    
-    query += ` ORDER BY created_at DESC LIMIT $${paramIndex}`;
-    params.push(parseInt(limit as string));
-    
-    const result = await db.execute(query, params);
+      ${whereClause}
+      ORDER BY created_at DESC
+      LIMIT ${parseInt(limit as string)}
+    `);
     
     console.log('🗺️ [MAPPING] Retrieved', result.rows.length, 'locations');
     res.json(result.rows);
@@ -122,10 +107,7 @@ router.get('/locations/:id', sessionAuth, async (req: Request, res: Response) =>
   try {
     const { id } = req.params;
     
-    const result = await db.execute(
-      'SELECT * FROM game_locations WHERE id = $1',
-      [id]
-    );
+    const result = await db.execute(sql`SELECT * FROM game_locations WHERE id = ${id}`);
     
     if (result.rows.length === 0) {
       return res.status(404).json({ error: 'Location not found' });
@@ -145,29 +127,29 @@ router.post('/locations', sessionAuth, async (req: Request, res: Response) => {
     const validatedData = createLocationSchema.parse(req.body);
     const userHandle = (req as any).user?.handle || 'system';
     
-    const result = await db.execute(`
+    const result = await db.execute(sql`
       INSERT INTO game_locations (
         name, description, zone, coordinates, latitude, longitude,
         elevation, location_type, status, danger_level, resources,
         accessibility, special_properties, discovered_by
-      ) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14)
+      ) VALUES (
+        ${validatedData.name},
+        ${validatedData.description || ''},
+        ${validatedData.zone},
+        ${JSON.stringify(validatedData.coordinates)},
+        ${validatedData.latitude ?? null},
+        ${validatedData.longitude ?? null},
+        ${validatedData.elevation},
+        ${validatedData.location_type},
+        ${'active'},
+        ${validatedData.danger_level},
+        ${JSON.stringify(validatedData.resources)},
+        ${validatedData.accessibility},
+        ${JSON.stringify(validatedData.special_properties)},
+        ${userHandle}
+      )
       RETURNING *
-    `, [
-      validatedData.name,
-      validatedData.description || '',
-      validatedData.zone,
-      JSON.stringify(validatedData.coordinates),
-      validatedData.latitude || null,
-      validatedData.longitude || null,
-      validatedData.elevation,
-      validatedData.location_type,
-      'active',
-      validatedData.danger_level,
-      JSON.stringify(validatedData.resources),
-      validatedData.accessibility,
-      JSON.stringify(validatedData.special_properties),
-      userHandle
-    ]);
+    `);
     
     console.log('✅ [MAPPING] Created location:', validatedData.name);
     res.status(201).json(result.rows[0]);
@@ -185,10 +167,7 @@ router.patch('/locations/:id/status', sessionAuth, async (req: Request, res: Res
     const userHandle = (req as any).user?.handle || 'system';
     
     // Get current location data
-    const currentResult = await db.execute(
-      'SELECT status, coordinates FROM game_locations WHERE id = $1',
-      [id]
-    );
+    const currentResult = await db.execute(sql`SELECT status, coordinates FROM game_locations WHERE id = ${id}`);
     
     if (currentResult.rows.length === 0) {
       return res.status(404).json({ error: 'Location not found' });
@@ -197,27 +176,26 @@ router.patch('/locations/:id/status', sessionAuth, async (req: Request, res: Res
     const currentLocation = currentResult.rows[0];
     
     // Update location status
-    const updateResult = await db.execute(
-      'UPDATE game_locations SET status = $1, updated_at = NOW() WHERE id = $2 RETURNING *',
-      [validatedData.status, id]
-    );
+    const updateResult = await db.execute(sql`
+      UPDATE game_locations SET status = ${validatedData.status}, updated_at = NOW() WHERE id = ${id} RETURNING *
+    `);
     
     // Log the status change
-    await db.execute(`
+    await db.execute(sql`
       INSERT INTO location_status_logs (
         location_id, user_handle, status_change, previous_status, new_status,
         event_type, coordinates, details
-      ) VALUES ($1, $2, $3, $4, $5, $6, $7, $8)
-    `, [
-      id,
-      userHandle,
-      `Status changed from ${currentLocation.status} to ${validatedData.status}`,
-      currentLocation.status,
-      validatedData.status,
-      validatedData.event_type || 'manual_update',
-      currentLocation.coordinates,
-      JSON.stringify(validatedData.details)
-    ]);
+      ) VALUES (
+        ${id},
+        ${userHandle},
+        ${`Status changed from ${currentLocation.status} to ${validatedData.status}`},
+        ${currentLocation.status},
+        ${validatedData.status},
+        ${validatedData.event_type || 'manual_update'},
+        ${currentLocation.coordinates},
+        ${JSON.stringify(validatedData.details)}
+      )
+    `);
     
     console.log('🔄 [MAPPING] Updated location status:', id, '→', validatedData.status);
     res.json(updateResult.rows[0]);
@@ -232,7 +210,7 @@ router.patch('/locations/:id/status', sessionAuth, async (req: Request, res: Res
 // Get all zones
 router.get('/zones', sessionAuth, async (req: Request, res: Response) => {
   try {
-    const result = await db.execute(`
+    const result = await db.execute(sql`
       SELECT * FROM coordinate_zones 
       ORDER BY zone_name ASC
     `);
@@ -250,28 +228,28 @@ router.post('/zones', sessionAuth, async (req: Request, res: Response) => {
   try {
     const validatedData = createZoneSchema.parse(req.body);
     
-    const result = await db.execute(`
+    const result = await db.execute(sql`
       INSERT INTO coordinate_zones (
         zone_name, description, boundaries, center_lat, center_lng,
         radius_km, zone_type, control_faction, security_level,
         climate, terrain_type, population, resources
-      ) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13)
+      ) VALUES (
+        ${validatedData.zone_name},
+        ${validatedData.description || ''},
+        ${JSON.stringify(validatedData.boundaries)},
+        ${validatedData.center_lat ?? null},
+        ${validatedData.center_lng ?? null},
+        ${validatedData.radius_km ?? null},
+        ${validatedData.zone_type},
+        ${validatedData.control_faction || null},
+        ${validatedData.security_level},
+        ${validatedData.climate},
+        ${validatedData.terrain_type},
+        ${validatedData.population},
+        ${JSON.stringify(validatedData.resources)}
+      )
       RETURNING *
-    `, [
-      validatedData.zone_name,
-      validatedData.description || '',
-      JSON.stringify(validatedData.boundaries),
-      validatedData.center_lat || null,
-      validatedData.center_lng || null,
-      validatedData.radius_km || null,
-      validatedData.zone_type,
-      validatedData.control_faction || null,
-      validatedData.security_level,
-      validatedData.climate,
-      validatedData.terrain_type,
-      validatedData.population,
-      JSON.stringify(validatedData.resources)
-    ]);
+    `);
     
     console.log('✅ [MAPPING] Created zone:', validatedData.zone_name);
     res.status(201).json(result.rows[0]);
@@ -292,17 +270,12 @@ router.get('/coordinates/within-bounds', sessionAuth, async (req: Request, res: 
       return res.status(400).json({ error: 'Missing coordinate bounds' });
     }
     
-    const result = await db.execute(`
+    const result = await db.execute(sql`
       SELECT * FROM game_locations 
-      WHERE latitude BETWEEN $1 AND $2 
-      AND longitude BETWEEN $3 AND $4
+      WHERE latitude BETWEEN ${parseFloat(south as string)} AND ${parseFloat(north as string)}
+      AND longitude BETWEEN ${parseFloat(west as string)} AND ${parseFloat(east as string)}
       ORDER BY created_at DESC
-    `, [
-      parseFloat(south as string),
-      parseFloat(north as string),
-      parseFloat(west as string),
-      parseFloat(east as string)
-    ]);
+    `);
     
     console.log('📍 [MAPPING] Found', result.rows.length, 'locations within bounds');
     res.json(result.rows);
@@ -322,24 +295,19 @@ router.get('/coordinates/nearest', sessionAuth, async (req: Request, res: Respon
     }
     
     // Using Haversine formula for distance calculation
-    const result = await db.execute(`
+    const result = await db.execute(sql`
       SELECT *, 
         (6371 * acos(
-          cos(radians($1)) * cos(radians(latitude)) * 
-          cos(radians(longitude) - radians($2)) + 
-          sin(radians($1)) * sin(radians(latitude))
+          cos(radians(${parseFloat(lat as string)})) * cos(radians(latitude)) * 
+          cos(radians(longitude) - radians(${parseFloat(lng as string)})) + 
+          sin(radians(${parseFloat(lat as string)})) * sin(radians(latitude))
         )) AS distance_km
       FROM game_locations 
       WHERE latitude IS NOT NULL AND longitude IS NOT NULL
-      HAVING distance_km <= $3
+      HAVING distance_km <= ${parseFloat(radius as string)}
       ORDER BY distance_km ASC
-      LIMIT $4
-    `, [
-      parseFloat(lat as string),
-      parseFloat(lng as string),
-      parseFloat(radius as string),
-      parseInt(limit as string)
-    ]);
+      LIMIT ${parseInt(limit as string)}
+    `);
     
     console.log('🎯 [MAPPING] Found', result.rows.length, 'nearest locations');
     res.json(result.rows);
@@ -358,10 +326,7 @@ router.post('/zones/:id/generate-image', sessionAuth, async (req: Request, res: 
     const { prompt, style = 'fantasy map' } = req.body;
     
     // Get zone data
-    const zoneResult = await db.execute(
-      'SELECT * FROM coordinate_zones WHERE id = $1',
-      [id]
-    );
+    const zoneResult = await db.execute(sql`SELECT * FROM coordinate_zones WHERE id = ${id}`);
     
     if (zoneResult.rows.length === 0) {
       return res.status(404).json({ error: 'Zone not found' });
@@ -390,27 +355,24 @@ router.post('/zones/:id/generate-image', sessionAuth, async (req: Request, res: 
     }
     
     // Update zone with image URL
-    await db.execute(
-      'UPDATE coordinate_zones SET map_image_url = $1, map_generated = true, updated_at = NOW() WHERE id = $2',
-      [imageUrl, id]
-    );
+    await db.execute(sql`UPDATE coordinate_zones SET map_image_url = ${imageUrl}, map_generated = true, updated_at = NOW() WHERE id = ${id}`);
     
     // Save to map assets
-    await db.execute(`
+    await db.execute(sql`
       INSERT INTO map_assets (
         asset_name, asset_type, zone_id, image_url, prompt_used,
         generation_metadata, asset_tags, created_by
-      ) VALUES ($1, $2, $3, $4, $5, $6, $7, $8)
-    `, [
-      `${zone.zone_name} Map`,
-      'zone_map',
-      id,
-      imageUrl,
-      imagePrompt,
-      JSON.stringify({ model: 'dall-e-3', size: '1024x1024', quality: 'standard' }),
-      [zone.terrain_type, zone.climate, style],
-      'riddleauthor'
-    ]);
+      ) VALUES (
+        ${`${zone.zone_name} Map`},
+        ${'zone_map'},
+        ${id},
+        ${imageUrl},
+        ${imagePrompt},
+        ${JSON.stringify({ model: 'dall-e-3', size: '1024x1024', quality: 'standard' })},
+        ${[zone.terrain_type, zone.climate, style] as any},
+        ${'riddleauthor'}
+      )
+    `);
     
     console.log('✅ [MAPPING] Generated map image for zone:', zone.zone_name);
     res.json({
@@ -432,10 +394,7 @@ router.post('/locations/:id/generate-image', sessionAuth, async (req: Request, r
     const { prompt, style = 'detailed landscape' } = req.body;
     
     // Get location data
-    const locationResult = await db.execute(
-      'SELECT * FROM game_locations WHERE id = $1',
-      [id]
-    );
+    const locationResult = await db.execute(sql`SELECT * FROM game_locations WHERE id = ${id}`);
     
     if (locationResult.rows.length === 0) {
       return res.status(404).json({ error: 'Location not found' });
@@ -464,28 +423,25 @@ router.post('/locations/:id/generate-image', sessionAuth, async (req: Request, r
     }
     
     // Update location with image URL
-    await db.execute(
-      'UPDATE game_locations SET map_image_url = $1, updated_at = NOW() WHERE id = $2',
-      [imageUrl, id]
-    );
+    await db.execute(sql`UPDATE game_locations SET map_image_url = ${imageUrl}, updated_at = NOW() WHERE id = ${id}`);
     
     // Save to map assets
-    await db.execute(`
+    await db.execute(sql`
       INSERT INTO map_assets (
         asset_name, asset_type, location_id, image_url, prompt_used,
         generation_metadata, coordinates, asset_tags, created_by
-      ) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)
-    `, [
-      location.name,
-      'location_image',
-      id,
-      imageUrl,
-      imagePrompt,
-      JSON.stringify({ model: 'dall-e-3', size: '1024x1024', quality: 'standard' }),
-      location.coordinates,
-      [location.location_type, location.zone, style],
-      'riddleauthor'
-    ]);
+      ) VALUES (
+        ${location.name},
+        ${'location_image'},
+        ${id},
+        ${imageUrl},
+        ${imagePrompt},
+        ${JSON.stringify({ model: 'dall-e-3', size: '1024x1024', quality: 'standard' })},
+        ${location.coordinates},
+        ${[location.location_type, location.zone, style] as any},
+        ${'riddleauthor'}
+      )
+    `);
     
     console.log('✅ [MAPPING] Generated image for location:', location.name);
     res.json({
@@ -508,12 +464,12 @@ router.get('/locations/:id/logs', sessionAuth, async (req: Request, res: Respons
     const { id } = req.params;
     const { limit = 50 } = req.query;
     
-    const result = await db.execute(`
+    const result = await db.execute(sql`
       SELECT * FROM location_status_logs 
-      WHERE location_id = $1 
+      WHERE location_id = ${id}
       ORDER BY created_at DESC 
-      LIMIT $2
-    `, [id, parseInt(limit as string)]);
+      LIMIT ${parseInt(limit as string)}
+    `);
     
     console.log('📋 [MAPPING] Retrieved', result.rows.length, 'status logs for location');
     res.json(result.rows);
@@ -528,32 +484,18 @@ router.get('/assets', sessionAuth, async (req: Request, res: Response) => {
   try {
     const { asset_type, zone_id, location_id, limit = 100 } = req.query;
     
-    let query = 'SELECT * FROM map_assets WHERE 1=1';
-    const params: any[] = [];
-    let paramIndex = 1;
-    
-    if (asset_type) {
-      query += ` AND asset_type = $${paramIndex}`;
-      params.push(asset_type);
-      paramIndex++;
-    }
-    
-    if (zone_id) {
-      query += ` AND zone_id = $${paramIndex}`;
-      params.push(zone_id);
-      paramIndex++;
-    }
-    
-    if (location_id) {
-      query += ` AND location_id = $${paramIndex}`;
-      params.push(location_id);
-      paramIndex++;
-    }
-    
-    query += ` ORDER BY created_at DESC LIMIT $${paramIndex}`;
-    params.push(parseInt(limit as string));
-    
-    const result = await db.execute(query, params);
+    const assetConds: any[] = [];
+    if (asset_type) assetConds.push(sql`asset_type = ${asset_type as string}`);
+    if (zone_id) assetConds.push(sql`zone_id = ${zone_id as string}`);
+    if (location_id) assetConds.push(sql`location_id = ${location_id as string}`);
+
+    const assetWhere = assetConds.length ? sql`WHERE ${sql.join(assetConds, sql` AND `)}` : sql``;
+    const result = await db.execute(sql`
+      SELECT * FROM map_assets
+      ${assetWhere}
+      ORDER BY created_at DESC
+      LIMIT ${parseInt(limit as string)}
+    `);
     
     console.log('🎨 [MAPPING] Retrieved', result.rows.length, 'map assets');
     res.json(result.rows);

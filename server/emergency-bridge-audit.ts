@@ -1,7 +1,7 @@
 // EMERGENCY Bridge Audit - Check ALL transactions for failed XRP with successful payouts
 import { Client as XRPLClient } from 'xrpl';
 import { db } from './db';
-import { bridgePayloads } from '../shared/schema';
+import { bridge_payloads } from '../shared/schema';
 import { eq, and, isNotNull } from 'drizzle-orm';
 
 export interface CriticalDiscrepancy {
@@ -56,13 +56,13 @@ export class EmergencyBridgeAudit {
     // Get ALL completed XRP transactions with both hashes
     const suspiciousTransactions = await db
       .select()
-      .from(bridgePayloads)
+      .from(bridge_payloads)
       .where(
         and(
-          eq(bridgePayloads.status, 'completed'),
-          eq(bridgePayloads.fromcurrency, 'XRP'),
-          isNotNull(bridgePayloads.txhash),
-          isNotNull(bridgePayloads.step3txhash)
+          eq(bridge_payloads.status, 'completed'),
+          eq(bridge_payloads.fromCurrency, 'XRP'), // corrected field name
+          isNotNull(bridge_payloads.txHash),        // corrected field name
+          isNotNull(bridge_payloads.step3TxHash)    // corrected field name
         )
       )
       .limit(50); // Audit first 50 for immediate assessment
@@ -72,22 +72,22 @@ export class EmergencyBridgeAudit {
     for (const transaction of suspiciousTransactions) {
       console.log(`🔍 Checking transaction: ${transaction.transaction_id}`);
       
-      if (transaction.txhash && transaction.step3txhash) {
+  if (transaction.txHash && transaction.step3TxHash) {
         // Check XRP transaction status
-        const xrpCheck = await this.checkXRPLTransaction(transaction.txhash);
+  const xrpCheck = await this.checkXRPLTransaction(transaction.txHash);
         // Check RDL transaction status  
-        const rdlCheck = await this.checkXRPLTransaction(transaction.step3txhash);
+  const rdlCheck = await this.checkXRPLTransaction(transaction.step3TxHash);
         
         // Critical discrepancy: XRP failed but RDL succeeded
         if (!xrpCheck.success && rdlCheck.success) {
           const discrepancy: CriticalDiscrepancy = {
             transactionId: transaction.transaction_id || 'unknown',
             xrpAmount: transaction.amount?.toString() || '0',
-            rdlAmount: transaction.outputamount?.toString() || '0',
+            rdlAmount: transaction.outputAmount?.toString() || '0',
             xrpStatus: xrpCheck.status,
             rdlStatus: rdlCheck.status,
-            xrpHash: transaction.txhash,
-            rdlHash: transaction.step3txhash,
+            xrpHash: transaction.txHash,
+            rdlHash: transaction.step3TxHash,
             financially_compromised: true
           };
           
@@ -95,7 +95,7 @@ export class EmergencyBridgeAudit {
           
           console.log(`❌ CRITICAL DISCREPANCY: ${transaction.transaction_id}`);
           console.log(`   XRP: ${xrpCheck.status} | RDL: ${rdlCheck.status}`);
-          console.log(`   Amount: ${transaction.amount} XRP → ${transaction.outputamount} RDL`);
+          console.log(`   Amount: ${transaction.amount} XRP → ${transaction.outputAmount} RDL`);
         }
         
         // Add delay to avoid rate limiting

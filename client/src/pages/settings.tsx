@@ -1,55 +1,100 @@
-import React, { useState } from 'react';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
-import { Switch } from '@/components/ui/switch';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import React, { useState, useEffect } from 'react';
+import {
+  Box,
+  Container,
+  Typography,
+  Card,
+  CardContent,
+  TextField,
+  Button,
+  Switch,
+  FormControlLabel,
+  Select,
+  MenuItem,
+  FormControl,
+  InputLabel,
+  Tabs,
+  Tab,
+  Paper,
+  Divider,
+  IconButton,
+  InputAdornment,
+  Alert,
+  Slider,
+  Grid,
+  Link as MuiLink
+} from '@mui/material';
 import { useToast } from '@/hooks/use-toast';
+import { useSession } from '@/utils/sessionManager';
+import { SessionRenewalModal } from '@/components/SessionRenewalModal';
 import { 
-  User, 
-  Shield, 
-  Bell, 
+  Person as User, 
+  Security as Shield, 
+  Notifications as Bell, 
   Palette, 
-  Globe, 
-  Database,
-  Key,
-  Eye,
-  EyeOff,
-  Save
-} from 'lucide-react';
+  Storage as Database,
+  Visibility as Eye,
+  VisibilityOff as EyeOff,
+  Save,
+  Lock,
+  Shortcut as ShortcutsIcon
+} from '@mui/icons-material';
+
+interface TabPanelProps {
+  children?: React.ReactNode;
+  index: number;
+  value: number;
+}
+
+function TabPanel(props: TabPanelProps) {
+  const { children, value, index, ...other } = props;
+  return (
+    <div
+      role="tabpanel"
+      hidden={value !== index}
+      id={`settings-tabpanel-${index}`}
+      aria-labelledby={`settings-tab-${index}`}
+      {...other}
+    >
+      {value === index && <Box sx={{ py: 3 }}>{children}</Box>}
+    </div>
+  );
+}
 
 const SettingsPage: React.FC = () => {
   const { toast } = useToast();
+  const session = useSession();
   const [showApiKey, setShowApiKey] = useState(false);
+  const [showRenewalModal, setShowRenewalModal] = useState(false);
+  const [tabValue, setTabValue] = useState(0);
+  
   const [settings, setSettings] = useState({
-    // Profile settings
     displayName: localStorage.getItem('displayName') || '',
     email: localStorage.getItem('email') || '',
     timezone: localStorage.getItem('timezone') || 'UTC',
-    
-    // Security settings
     twoFactorEnabled: localStorage.getItem('twoFactorEnabled') === 'true',
     sessionTimeout: localStorage.getItem('sessionTimeout') || '30',
-    
-    // Notification settings
+    requirePasswordForPayments: localStorage.getItem('requirePasswordForPayments') === 'true',
+    autoLogoutMinutes: parseInt(localStorage.getItem('autoLogoutMinutes') || '30', 10),
     emailNotifications: localStorage.getItem('emailNotifications') !== 'false',
     pushNotifications: localStorage.getItem('pushNotifications') !== 'false',
     tradeAlerts: localStorage.getItem('tradeAlerts') !== 'false',
-    
-    // Appearance settings
     theme: localStorage.getItem('theme') || 'system',
     language: localStorage.getItem('language') || 'en',
     currency: localStorage.getItem('currency') || 'USD',
-    
-    // API settings
     apiKey: localStorage.getItem('apiKey') || '',
     rpcEndpoint: localStorage.getItem('rpcEndpoint') || 'https://xrplcluster.com',
   });
 
+  useEffect(() => {
+    if ((session as any).needsRenewal) {
+      setShowRenewalModal(true);
+    } else {
+      setShowRenewalModal(false);
+    }
+  }, [(session as any).needsRenewal]);
+
   const handleSave = (section: string) => {
-    // Save settings to localStorage
     Object.entries(settings).forEach(([key, value]) => {
       localStorage.setItem(key, value.toString());
     });
@@ -64,331 +109,551 @@ const SettingsPage: React.FC = () => {
     setSettings(prev => ({ ...prev, [key]: value }));
   };
 
+  const handleTabChange = (event: React.SyntheticEvent, newValue: number) => {
+    setTabValue(newValue);
+  };
+
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 py-8">
-      <div className="container mx-auto px-4 max-w-4xl">
-        <div className="mb-8">
-          <h1 className="text-3xl font-bold text-gray-900 dark:text-white">Settings</h1>
-          <p className="text-gray-600 dark:text-gray-400 mt-2">
+    <Box sx={{ bgcolor: '#0a0118', minHeight: '100vh', py: 4 }}>
+      <Container maxWidth="lg">
+        <Box sx={{ mb: 4 }}>
+          <Typography variant="h3" sx={{ color: 'white', fontWeight: 700, mb: 1 }}>
+            Settings
+          </Typography>
+          <Typography variant="body1" sx={{ color: '#9ca3af' }}>
             Manage your account preferences and application settings
-          </p>
-        </div>
+          </Typography>
+        </Box>
 
-        <Tabs defaultValue="profile" className="space-y-6">
-          <TabsList className="grid w-full grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-1">
-            <TabsTrigger value="profile" className="flex items-center gap-1 text-xs md:text-sm px-2 md:px-4">
-              <User className="h-3 w-3 md:h-4 md:w-4" />
-              <span className="hidden sm:inline">Profile</span>
-              <span className="sm:hidden">Prof</span>
-            </TabsTrigger>
-            <TabsTrigger value="security" className="flex items-center gap-1 text-xs md:text-sm px-2 md:px-4">
-              <Shield className="h-3 w-3 md:h-4 md:w-4" />
-              <span className="hidden sm:inline">Security</span>
-              <span className="sm:hidden">Sec</span>
-            </TabsTrigger>
-            <TabsTrigger value="notifications" className="flex items-center gap-1 text-xs md:text-sm px-2 md:px-4">
-              <Bell className="h-3 w-3 md:h-4 md:w-4" />
-              <span className="hidden sm:inline">Notifications</span>
-              <span className="sm:hidden">Notif</span>
-            </TabsTrigger>
-            <TabsTrigger value="appearance" className="flex items-center gap-1 text-xs md:text-sm px-2 md:px-4">
-              <Palette className="h-3 w-3 md:h-4 md:w-4" />
-              <span className="hidden sm:inline">Appearance</span>
-              <span className="sm:hidden">Look</span>
-            </TabsTrigger>
-            <TabsTrigger value="api" className="flex items-center gap-1 text-xs md:text-sm px-2 md:px-4">
-              <Database className="h-3 w-3 md:h-4 md:w-4" />
-              <span className="hidden sm:inline">API</span>
-              <span className="sm:hidden">API</span>
-            </TabsTrigger>
-          </TabsList>
+        <Paper sx={{ bgcolor: '#1a1625', borderRadius: 2 }}>
+          <Tabs 
+            value={tabValue} 
+            onChange={handleTabChange}
+            variant="scrollable"
+            scrollButtons="auto"
+            sx={{
+              borderBottom: 1,
+              borderColor: 'divider',
+              '& .MuiTab-root': { color: '#9ca3af', minHeight: 64 },
+              '& .Mui-selected': { color: '#3b82f6' }
+            }}
+          >
+            <Tab icon={<User />} label="Profile" iconPosition="start" />
+            <Tab icon={<Shield />} label="Security" iconPosition="start" />
+            <Tab icon={<Bell />} label="Notifications" iconPosition="start" />
+            <Tab icon={<Palette />} label="Appearance" iconPosition="start" />
+            <Tab icon={<ShortcutsIcon />} label="Shortcuts" iconPosition="start" />
+            <Tab icon={<Database />} label="API" iconPosition="start" />
+          </Tabs>
 
-          {/* Profile Settings */}
-          <TabsContent value="profile">
-            <Card>
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <User className="h-5 w-5" />
-                  Profile Information
-                </CardTitle>
-                <CardDescription>
-                  Update your personal information and preferences
-                </CardDescription>
-              </CardHeader>
-              <CardContent className="space-y-4">
-                <div className="grid grid-cols-2 gap-4">
-                  <div className="space-y-2">
-                    <Label htmlFor="displayName">Display Name</Label>
-                    <Input
-                      id="displayName"
-                      value={settings.displayName}
-                      onChange={(e) => updateSetting('displayName', e.target.value)}
-                      placeholder="Enter your display name"
-                    />
-                  </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="email">Email Address</Label>
-                    <Input
-                      id="email"
-                      type="email"
-                      value={settings.email}
-                      onChange={(e) => updateSetting('email', e.target.value)}
-                      placeholder="Enter your email"
-                    />
-                  </div>
-                </div>
-                <div className="space-y-2">
-                  <Label htmlFor="timezone">Timezone</Label>
-                  <Select value={settings.timezone} onValueChange={(value) => updateSetting('timezone', value)}>
-                    <SelectTrigger>
-                      <SelectValue placeholder="Select timezone" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="UTC">UTC</SelectItem>
-                      <SelectItem value="America/New_York">Eastern Time</SelectItem>
-                      <SelectItem value="America/Chicago">Central Time</SelectItem>
-                      <SelectItem value="America/Denver">Mountain Time</SelectItem>
-                      <SelectItem value="America/Los_Angeles">Pacific Time</SelectItem>
-                      <SelectItem value="Europe/London">London</SelectItem>
-                      <SelectItem value="Europe/Paris">Paris</SelectItem>
-                      <SelectItem value="Asia/Tokyo">Tokyo</SelectItem>
-                    </SelectContent>
-                  </Select>
-                </div>
-                <Button onClick={() => handleSave('Profile')} className="w-full">
-                  <Save className="h-4 w-4 mr-2" />
-                  Save Profile Settings
-                </Button>
-              </CardContent>
-            </Card>
-          </TabsContent>
-
-          {/* Security Settings */}
-          <TabsContent value="security">
-            <Card>
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <Shield className="h-5 w-5" />
-                  Security Settings
-                </CardTitle>
-                <CardDescription>
-                  Manage your account security and authentication
-                </CardDescription>
-              </CardHeader>
-              <CardContent className="space-y-4">
-                <div className="flex items-center justify-between">
-                  <div className="space-y-0.5">
-                    <Label>Two-Factor Authentication</Label>
-                    <p className="text-sm text-gray-600 dark:text-gray-400">
-                      Add an extra layer of security to your account
-                    </p>
-                  </div>
-                  <Switch
-                    checked={settings.twoFactorEnabled}
-                    onCheckedChange={(checked) => updateSetting('twoFactorEnabled', checked)}
+          {/* Profile Tab */}
+          <TabPanel value={tabValue} index={0}>
+            <Box sx={{ px: 3 }}>
+              <Typography variant="h6" sx={{ color: 'white', mb: 3, display: 'flex', alignItems: 'center', gap: 1 }}>
+                <User /> Profile Information
+              </Typography>
+              <Grid container spacing={3}>
+                <Grid item xs={12} md={6}>
+                  <TextField
+                    fullWidth
+                    label="Display Name"
+                    value={settings.displayName}
+                    onChange={(e) => updateSetting('displayName', e.target.value)}
+                    sx={{ 
+                      '& .MuiInputLabel-root': { color: '#9ca3af' },
+                      '& .MuiOutlinedInput-root': { color: 'white' }
+                    }}
                   />
-                </div>
-                <div className="space-y-2">
-                  <Label htmlFor="sessionTimeout">Session Timeout (minutes)</Label>
-                  <Select value={settings.sessionTimeout} onValueChange={(value) => updateSetting('sessionTimeout', value)}>
-                    <SelectTrigger>
-                      <SelectValue placeholder="Select timeout" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="15">15 minutes</SelectItem>
-                      <SelectItem value="30">30 minutes</SelectItem>
-                      <SelectItem value="60">1 hour</SelectItem>
-                      <SelectItem value="120">2 hours</SelectItem>
-                      <SelectItem value="480">8 hours</SelectItem>
-                    </SelectContent>
-                  </Select>
-                </div>
-                <Button onClick={() => handleSave('Security')} className="w-full">
-                  <Save className="h-4 w-4 mr-2" />
-                  Save Security Settings
-                </Button>
-              </CardContent>
-            </Card>
-          </TabsContent>
-
-          {/* Notification Settings */}
-          <TabsContent value="notifications">
-            <Card>
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <Bell className="h-5 w-5" />
-                  Notification Preferences
-                </CardTitle>
-                <CardDescription>
-                  Choose how you want to be notified about important events
-                </CardDescription>
-              </CardHeader>
-              <CardContent className="space-y-4">
-                <div className="flex items-center justify-between">
-                  <div className="space-y-0.5">
-                    <Label>Email Notifications</Label>
-                    <p className="text-sm text-gray-600 dark:text-gray-400">
-                      Receive notifications via email
-                    </p>
-                  </div>
-                  <Switch
-                    checked={settings.emailNotifications}
-                    onCheckedChange={(checked) => updateSetting('emailNotifications', checked)}
+                </Grid>
+                <Grid item xs={12} md={6}>
+                  <TextField
+                    fullWidth
+                    type="email"
+                    label="Email Address"
+                    value={settings.email}
+                    onChange={(e) => updateSetting('email', e.target.value)}
+                    sx={{ 
+                      '& .MuiInputLabel-root': { color: '#9ca3af' },
+                      '& .MuiOutlinedInput-root': { color: 'white' }
+                    }}
                   />
-                </div>
-                <div className="flex items-center justify-between">
-                  <div className="space-y-0.5">
-                    <Label>Push Notifications</Label>
-                    <p className="text-sm text-gray-600 dark:text-gray-400">
-                      Receive push notifications in your browser
-                    </p>
-                  </div>
-                  <Switch
-                    checked={settings.pushNotifications}
-                    onCheckedChange={(checked) => updateSetting('pushNotifications', checked)}
-                  />
-                </div>
-                <div className="flex items-center justify-between">
-                  <div className="space-y-0.5">
-                    <Label>Trade Alerts</Label>
-                    <p className="text-sm text-gray-600 dark:text-gray-400">
-                      Get notified about trading opportunities and price changes
-                    </p>
-                  </div>
-                  <Switch
-                    checked={settings.tradeAlerts}
-                    onCheckedChange={(checked) => updateSetting('tradeAlerts', checked)}
-                  />
-                </div>
-                <Button onClick={() => handleSave('Notifications')} className="w-full">
-                  <Save className="h-4 w-4 mr-2" />
-                  Save Notification Settings
-                </Button>
-              </CardContent>
-            </Card>
-          </TabsContent>
-
-          {/* Appearance Settings */}
-          <TabsContent value="appearance">
-            <Card>
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <Palette className="h-5 w-5" />
-                  Appearance & Display
-                </CardTitle>
-                <CardDescription>
-                  Customize how the application looks and feels
-                </CardDescription>
-              </CardHeader>
-              <CardContent className="space-y-4">
-                <div className="grid grid-cols-2 gap-4">
-                  <div className="space-y-2">
-                    <Label htmlFor="theme">Theme</Label>
-                    <Select value={settings.theme} onValueChange={(value) => updateSetting('theme', value)}>
-                      <SelectTrigger>
-                        <SelectValue placeholder="Select theme" />
-                      </SelectTrigger>
-                      <SelectContent>
-                        <SelectItem value="light">Light</SelectItem>
-                        <SelectItem value="dark">Dark</SelectItem>
-                        <SelectItem value="system">System</SelectItem>
-                      </SelectContent>
-                    </Select>
-                  </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="language">Language</Label>
-                    <Select value={settings.language} onValueChange={(value) => updateSetting('language', value)}>
-                      <SelectTrigger>
-                        <SelectValue placeholder="Select language" />
-                      </SelectTrigger>
-                      <SelectContent>
-                        <SelectItem value="en">English</SelectItem>
-                        <SelectItem value="es">Spanish</SelectItem>
-                        <SelectItem value="fr">French</SelectItem>
-                        <SelectItem value="de">German</SelectItem>
-                        <SelectItem value="ja">Japanese</SelectItem>
-                        <SelectItem value="ko">Korean</SelectItem>
-                      </SelectContent>
-                    </Select>
-                  </div>
-                </div>
-                <div className="space-y-2">
-                  <Label htmlFor="currency">Default Currency</Label>
-                  <Select value={settings.currency} onValueChange={(value) => updateSetting('currency', value)}>
-                    <SelectTrigger>
-                      <SelectValue placeholder="Select currency" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="USD">USD - US Dollar</SelectItem>
-                      <SelectItem value="EUR">EUR - Euro</SelectItem>
-                      <SelectItem value="GBP">GBP - British Pound</SelectItem>
-                      <SelectItem value="JPY">JPY - Japanese Yen</SelectItem>
-                      <SelectItem value="BTC">BTC - Bitcoin</SelectItem>
-                      <SelectItem value="ETH">ETH - Ethereum</SelectItem>
-                    </SelectContent>
-                  </Select>
-                </div>
-                <Button onClick={() => handleSave('Appearance')} className="w-full">
-                  <Save className="h-4 w-4 mr-2" />
-                  Save Appearance Settings
-                </Button>
-              </CardContent>
-            </Card>
-          </TabsContent>
-
-          {/* API Settings */}
-          <TabsContent value="api">
-            <Card>
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <Database className="h-5 w-5" />
-                  API Configuration
-                </CardTitle>
-                <CardDescription>
-                  Manage API keys and external service connections
-                </CardDescription>
-              </CardHeader>
-              <CardContent className="space-y-4">
-                <div className="space-y-2">
-                  <Label htmlFor="apiKey">API Key</Label>
-                  <div className="flex space-x-2">
-                    <Input
-                      id="apiKey"
-                      type={showApiKey ? "text" : "password"}
-                      value={settings.apiKey}
-                      onChange={(e) => updateSetting('apiKey', e.target.value)}
-                      placeholder="Enter your API key"
-                      className="flex-1"
-                    />
-                    <Button
-                      type="button"
-                      variant="outline"
-                      size="icon"
-                      onClick={() => setShowApiKey(!showApiKey)}
+                </Grid>
+                <Grid item xs={12}>
+                  <FormControl fullWidth>
+                    <InputLabel sx={{ color: '#9ca3af' }}>Timezone</InputLabel>
+                    <Select
+                      value={settings.timezone}
+                      onChange={(e) => updateSetting('timezone', e.target.value)}
+                      label="Timezone"
+                      sx={{ color: 'white' }}
                     >
-                      {showApiKey ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
-                    </Button>
-                  </div>
-                </div>
-                <div className="space-y-2">
-                  <Label htmlFor="rpcEndpoint">RPC Endpoint</Label>
-                  <Input
-                    id="rpcEndpoint"
-                    value={settings.rpcEndpoint}
-                    onChange={(e) => updateSetting('rpcEndpoint', e.target.value)}
-                    placeholder="Enter RPC endpoint URL"
-                  />
-                </div>
-                <Button onClick={() => handleSave('API')} className="w-full">
-                  <Save className="h-4 w-4 mr-2" />
-                  Save API Settings
-                </Button>
-              </CardContent>
-            </Card>
-          </TabsContent>
-        </Tabs>
-      </div>
-    </div>
+                      <MenuItem value="UTC">UTC</MenuItem>
+                      <MenuItem value="America/New_York">Eastern Time</MenuItem>
+                      <MenuItem value="America/Chicago">Central Time</MenuItem>
+                      <MenuItem value="America/Denver">Mountain Time</MenuItem>
+                      <MenuItem value="America/Los_Angeles">Pacific Time</MenuItem>
+                      <MenuItem value="Europe/London">London</MenuItem>
+                      <MenuItem value="Europe/Paris">Paris</MenuItem>
+                      <MenuItem value="Asia/Tokyo">Tokyo</MenuItem>
+                    </Select>
+                  </FormControl>
+                </Grid>
+                <Grid item xs={12}>
+                  <Button 
+                    variant="contained" 
+                    fullWidth 
+                    startIcon={<Save />}
+                    onClick={() => handleSave('Profile')}
+                    sx={{ bgcolor: '#3b82f6', '&:hover': { bgcolor: '#2563eb' } }}
+                  >
+                    Save Profile Settings
+                  </Button>
+                </Grid>
+              </Grid>
+            </Box>
+          </TabPanel>
+
+          {/* Security Tab */}
+          <TabPanel value={tabValue} index={1}>
+            <Box sx={{ px: 3 }}>
+              <Typography variant="h6" sx={{ color: 'white', mb: 3, display: 'flex', alignItems: 'center', gap: 1 }}>
+                <Shield /> Security Settings
+              </Typography>
+              
+              <Alert severity="info" sx={{ mb: 3 }}>
+                Configure security settings to protect your account and transactions
+              </Alert>
+
+              <Box sx={{ mb: 3 }}>
+                <FormControlLabel
+                  control={
+                    <Switch
+                      checked={settings.requirePasswordForPayments}
+                      onChange={(e) => updateSetting('requirePasswordForPayments', e.target.checked)}
+                      sx={{
+                        '& .MuiSwitch-switchBase.Mui-checked': { color: '#3b82f6' },
+                        '& .MuiSwitch-switchBase.Mui-checked + .MuiSwitch-track': { bgcolor: '#3b82f6' }
+                      }}
+                    />
+                  }
+                  label={
+                    <Box>
+                      <Typography sx={{ color: 'white', fontWeight: 500 }}>
+                        <Lock sx={{ fontSize: 16, mr: 1, verticalAlign: 'middle' }} />
+                        Require Password for Payments
+                      </Typography>
+                      <Typography variant="body2" sx={{ color: '#9ca3af' }}>
+                        Always prompt for your password before swaps, trades, NFT purchases, and wagers
+                      </Typography>
+                    </Box>
+                  }
+                />
+              </Box>
+
+              <Divider sx={{ my: 3, borderColor: '#374151' }} />
+
+              <Box sx={{ mb: 3 }}>
+                <FormControlLabel
+                  control={
+                    <Switch
+                      checked={settings.twoFactorEnabled}
+                      onChange={(e) => updateSetting('twoFactorEnabled', e.target.checked)}
+                      sx={{
+                        '& .MuiSwitch-switchBase.Mui-checked': { color: '#3b82f6' },
+                        '& .MuiSwitch-switchBase.Mui-checked + .MuiSwitch-track': { bgcolor: '#3b82f6' }
+                      }}
+                    />
+                  }
+                  label={
+                    <Box>
+                      <Typography sx={{ color: 'white', fontWeight: 500 }}>
+                        Two-Factor Authentication
+                      </Typography>
+                      <Typography variant="body2" sx={{ color: '#9ca3af' }}>
+                        Add an extra layer of security to your account
+                      </Typography>
+                    </Box>
+                  }
+                />
+              </Box>
+
+              <Divider sx={{ my: 3, borderColor: '#374151' }} />
+
+              <Box sx={{ mb: 3 }}>
+                <Typography sx={{ color: 'white', fontWeight: 500, mb: 2 }}>
+                  Auto-Logout Timer: {settings.autoLogoutMinutes} minutes
+                </Typography>
+                <Typography variant="body2" sx={{ color: '#9ca3af', mb: 2 }}>
+                  Automatically log out after period of inactivity
+                </Typography>
+                <Slider
+                  value={settings.autoLogoutMinutes}
+                  onChange={(e, value) => updateSetting('autoLogoutMinutes', value)}
+                  min={5}
+                  max={480}
+                  step={5}
+                  marks={[
+                    { value: 5, label: '5m' },
+                    { value: 30, label: '30m' },
+                    { value: 60, label: '1h' },
+                    { value: 120, label: '2h' },
+                    { value: 480, label: '8h' }
+                  ]}
+                  valueLabelDisplay="auto"
+                  sx={{
+                    color: '#3b82f6',
+                    '& .MuiSlider-markLabel': { color: '#9ca3af' }
+                  }}
+                />
+              </Box>
+
+              <Divider sx={{ my: 3, borderColor: '#374151' }} />
+
+              <FormControl fullWidth sx={{ mb: 3 }}>
+                <InputLabel sx={{ color: '#9ca3af' }}>Session Timeout</InputLabel>
+                <Select
+                  value={settings.sessionTimeout}
+                  onChange={(e) => updateSetting('sessionTimeout', e.target.value)}
+                  label="Session Timeout"
+                  sx={{ color: 'white' }}
+                >
+                  <MenuItem value="15">15 minutes</MenuItem>
+                  <MenuItem value="30">30 minutes</MenuItem>
+                  <MenuItem value="60">1 hour</MenuItem>
+                  <MenuItem value="120">2 hours</MenuItem>
+                  <MenuItem value="480">8 hours</MenuItem>
+                </Select>
+              </FormControl>
+
+              <Button 
+                variant="contained" 
+                fullWidth 
+                startIcon={<Save />}
+                onClick={() => handleSave('Security')}
+                sx={{ bgcolor: '#3b82f6', '&:hover': { bgcolor: '#2563eb' } }}
+              >
+                Save Security Settings
+              </Button>
+            </Box>
+          </TabPanel>
+
+          {/* Notifications Tab */}
+          <TabPanel value={tabValue} index={2}>
+            <Box sx={{ px: 3 }}>
+              <Typography variant="h6" sx={{ color: 'white', mb: 3, display: 'flex', alignItems: 'center', gap: 1 }}>
+                <Bell /> Notification Preferences
+              </Typography>
+              
+              <Box sx={{ mb: 3 }}>
+                <FormControlLabel
+                  control={
+                    <Switch
+                      checked={settings.emailNotifications}
+                      onChange={(e) => updateSetting('emailNotifications', e.target.checked)}
+                      sx={{
+                        '& .MuiSwitch-switchBase.Mui-checked': { color: '#3b82f6' },
+                        '& .MuiSwitch-switchBase.Mui-checked + .MuiSwitch-track': { bgcolor: '#3b82f6' }
+                      }}
+                    />
+                  }
+                  label={
+                    <Box>
+                      <Typography sx={{ color: 'white', fontWeight: 500 }}>
+                        Email Notifications
+                      </Typography>
+                      <Typography variant="body2" sx={{ color: '#9ca3af' }}>
+                        Receive notifications via email
+                      </Typography>
+                    </Box>
+                  }
+                />
+              </Box>
+
+              <Box sx={{ mb: 3 }}>
+                <FormControlLabel
+                  control={
+                    <Switch
+                      checked={settings.pushNotifications}
+                      onChange={(e) => updateSetting('pushNotifications', e.target.checked)}
+                      sx={{
+                        '& .MuiSwitch-switchBase.Mui-checked': { color: '#3b82f6' },
+                        '& .MuiSwitch-switchBase.Mui-checked + .MuiSwitch-track': { bgcolor: '#3b82f6' }
+                      }}
+                    />
+                  }
+                  label={
+                    <Box>
+                      <Typography sx={{ color: 'white', fontWeight: 500 }}>
+                        Push Notifications
+                      </Typography>
+                      <Typography variant="body2" sx={{ color: '#9ca3af' }}>
+                        Receive push notifications in your browser
+                      </Typography>
+                    </Box>
+                  }
+                />
+              </Box>
+
+              <Box sx={{ mb: 3 }}>
+                <FormControlLabel
+                  control={
+                    <Switch
+                      checked={settings.tradeAlerts}
+                      onChange={(e) => updateSetting('tradeAlerts', e.target.checked)}
+                      sx={{
+                        '& .MuiSwitch-switchBase.Mui-checked': { color: '#3b82f6' },
+                        '& .MuiSwitch-switchBase.Mui-checked + .MuiSwitch-track': { bgcolor: '#3b82f6' }
+                      }}
+                    />
+                  }
+                  label={
+                    <Box>
+                      <Typography sx={{ color: 'white', fontWeight: 500 }}>
+                        Trade Alerts
+                      </Typography>
+                      <Typography variant="body2" sx={{ color: '#9ca3af' }}>
+                        Get notified about trading opportunities and price changes
+                      </Typography>
+                    </Box>
+                  }
+                />
+              </Box>
+
+              <Button 
+                variant="contained" 
+                fullWidth 
+                startIcon={<Save />}
+                onClick={() => handleSave('Notifications')}
+                sx={{ bgcolor: '#3b82f6', '&:hover': { bgcolor: '#2563eb' } }}
+              >
+                Save Notification Settings
+              </Button>
+            </Box>
+          </TabPanel>
+
+          {/* Appearance Tab */}
+          <TabPanel value={tabValue} index={3}>
+            <Box sx={{ px: 3 }}>
+              <Typography variant="h6" sx={{ color: 'white', mb: 3, display: 'flex', alignItems: 'center', gap: 1 }}>
+                <Palette /> Appearance & Display
+              </Typography>
+              <Grid container spacing={3}>
+                <Grid item xs={12} md={6}>
+                  <FormControl fullWidth>
+                    <InputLabel sx={{ color: '#9ca3af' }}>Theme</InputLabel>
+                    <Select
+                      value={settings.theme}
+                      onChange={(e) => updateSetting('theme', e.target.value)}
+                      label="Theme"
+                      sx={{ color: 'white' }}
+                    >
+                      <MenuItem value="light">Light</MenuItem>
+                      <MenuItem value="dark">Dark</MenuItem>
+                      <MenuItem value="system">System</MenuItem>
+                    </Select>
+                  </FormControl>
+                </Grid>
+                <Grid item xs={12} md={6}>
+                  <FormControl fullWidth>
+                    <InputLabel sx={{ color: '#9ca3af' }}>Language</InputLabel>
+                    <Select
+                      value={settings.language}
+                      onChange={(e) => updateSetting('language', e.target.value)}
+                      label="Language"
+                      sx={{ color: 'white' }}
+                    >
+                      <MenuItem value="en">English</MenuItem>
+                      <MenuItem value="es">Spanish</MenuItem>
+                      <MenuItem value="fr">French</MenuItem>
+                      <MenuItem value="de">German</MenuItem>
+                      <MenuItem value="ja">Japanese</MenuItem>
+                      <MenuItem value="ko">Korean</MenuItem>
+                    </Select>
+                  </FormControl>
+                </Grid>
+                <Grid item xs={12}>
+                  <FormControl fullWidth>
+                    <InputLabel sx={{ color: '#9ca3af' }}>Default Currency</InputLabel>
+                    <Select
+                      value={settings.currency}
+                      onChange={(e) => updateSetting('currency', e.target.value)}
+                      label="Default Currency"
+                      sx={{ color: 'white' }}
+                    >
+                      <MenuItem value="USD">USD - US Dollar</MenuItem>
+                      <MenuItem value="EUR">EUR - Euro</MenuItem>
+                      <MenuItem value="GBP">GBP - British Pound</MenuItem>
+                      <MenuItem value="JPY">JPY - Japanese Yen</MenuItem>
+                      <MenuItem value="BTC">BTC - Bitcoin</MenuItem>
+                      <MenuItem value="ETH">ETH - Ethereum</MenuItem>
+                    </Select>
+                  </FormControl>
+                </Grid>
+                <Grid item xs={12}>
+                  <Button 
+                    variant="contained" 
+                    fullWidth 
+                    startIcon={<Save />}
+                    onClick={() => handleSave('Appearance')}
+                    sx={{ bgcolor: '#3b82f6', '&:hover': { bgcolor: '#2563eb' } }}
+                  >
+                    Save Appearance Settings
+                  </Button>
+                </Grid>
+              </Grid>
+            </Box>
+          </TabPanel>
+
+          {/* Shortcuts Tab */}
+          <TabPanel value={tabValue} index={4}>
+            <Box sx={{ px: 3 }}>
+              <Typography variant="h6" sx={{ color: 'white', mb: 3, display: 'flex', alignItems: 'center', gap: 1 }}>
+                <ShortcutsIcon /> Quick Access Shortcuts
+              </Typography>
+              
+              <Alert severity="info" sx={{ mb: 3 }}>
+                Quick links to frequently used pages
+              </Alert>
+
+              <Grid container spacing={2}>
+                <Grid item xs={12} sm={6}>
+                  <Card sx={{ bgcolor: '#111827', border: '1px solid #374151' }}>
+                    <CardContent>
+                      <Typography variant="h6" sx={{ color: 'white', mb: 2 }}>Gaming</Typography>
+                      <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1 }}>
+                        <MuiLink href="/gaming-dashboard-v3" sx={{ color: '#3b82f6', textDecoration: 'none' }}>
+                          Gaming Dashboard
+                        </MuiLink>
+                        <MuiLink href="/gaming-battles" sx={{ color: '#3b82f6', textDecoration: 'none' }}>
+                          Battles
+                        </MuiLink>
+                        <MuiLink href="/gaming-profile" sx={{ color: '#3b82f6', textDecoration: 'none' }}>
+                          Gaming Profile
+                        </MuiLink>
+                      </Box>
+                    </CardContent>
+                  </Card>
+                </Grid>
+
+                <Grid item xs={12} sm={6}>
+                  <Card sx={{ bgcolor: '#111827', border: '1px solid #374151' }}>
+                    <CardContent>
+                      <Typography variant="h6" sx={{ color: 'white', mb: 2 }}>Trading</Typography>
+                      <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1 }}>
+                        <MuiLink href="/trading-dashboard" sx={{ color: '#3b82f6', textDecoration: 'none' }}>
+                          Trading Dashboard
+                        </MuiLink>
+                        <MuiLink href="/trade-v3" sx={{ color: '#3b82f6', textDecoration: 'none' }}>
+                          Swap & Trade
+                        </MuiLink>
+                        <MuiLink href="/trading-desk" sx={{ color: '#3b82f6', textDecoration: 'none' }}>
+                          Trading Desk
+                        </MuiLink>
+                      </Box>
+                    </CardContent>
+                  </Card>
+                </Grid>
+
+                <Grid item xs={12} sm={6}>
+                  <Card sx={{ bgcolor: '#111827', border: '1px solid #374151' }}>
+                    <CardContent>
+                      <Typography variant="h6" sx={{ color: 'white', mb: 2 }}>Wallet</Typography>
+                      <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1 }}>
+                        <MuiLink href="/create-wallet" sx={{ color: '#3b82f6', textDecoration: 'none' }}>
+                          Create Wallet
+                        </MuiLink>
+                        <MuiLink href="/wallet-login" sx={{ color: '#3b82f6', textDecoration: 'none' }}>
+                          Login to Wallet
+                        </MuiLink>
+                        <MuiLink href="/portfolio" sx={{ color: '#3b82f6', textDecoration: 'none' }}>
+                          Portfolio
+                        </MuiLink>
+                      </Box>
+                    </CardContent>
+                  </Card>
+                </Grid>
+
+                <Grid item xs={12} sm={6}>
+                  <Card sx={{ bgcolor: '#111827', border: '1px solid #374151' }}>
+                    <CardContent>
+                      <Typography variant="h6" sx={{ color: 'white', mb: 2 }}>NFTs</Typography>
+                      <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1 }}>
+                        <MuiLink href="/gaming-nfts" sx={{ color: '#3b82f6', textDecoration: 'none' }}>
+                          Gaming NFTs
+                        </MuiLink>
+                        <MuiLink href="/nft-marketplace" sx={{ color: '#3b82f6', textDecoration: 'none' }}>
+                          NFT Marketplace
+                        </MuiLink>
+                      </Box>
+                    </CardContent>
+                  </Card>
+                </Grid>
+              </Grid>
+            </Box>
+          </TabPanel>
+
+          {/* API Tab */}
+          <TabPanel value={tabValue} index={5}>
+            <Box sx={{ px: 3 }}>
+              <Typography variant="h6" sx={{ color: 'white', mb: 3, display: 'flex', alignItems: 'center', gap: 1 }}>
+                <Database /> API Configuration
+              </Typography>
+              
+              <Box sx={{ mb: 3 }}>
+                <TextField
+                  fullWidth
+                  label="API Key"
+                  type={showApiKey ? "text" : "password"}
+                  value={settings.apiKey}
+                  onChange={(e) => updateSetting('apiKey', e.target.value)}
+                  InputProps={{
+                    endAdornment: (
+                      <InputAdornment position="end">
+                        <IconButton onClick={() => setShowApiKey(!showApiKey)} edge="end">
+                          {showApiKey ? <EyeOff /> : <Eye />}
+                        </IconButton>
+                      </InputAdornment>
+                    ),
+                  }}
+                  sx={{ 
+                    '& .MuiInputLabel-root': { color: '#9ca3af' },
+                    '& .MuiOutlinedInput-root': { color: 'white' }
+                  }}
+                />
+              </Box>
+
+              <Box sx={{ mb: 3 }}>
+                <TextField
+                  fullWidth
+                  label="RPC Endpoint"
+                  value={settings.rpcEndpoint}
+                  onChange={(e) => updateSetting('rpcEndpoint', e.target.value)}
+                  sx={{ 
+                    '& .MuiInputLabel-root': { color: '#9ca3af' },
+                    '& .MuiOutlinedInput-root': { color: 'white' }
+                  }}
+                />
+              </Box>
+
+              <Button 
+                variant="contained" 
+                fullWidth 
+                startIcon={<Save />}
+                onClick={() => handleSave('API')}
+                sx={{ bgcolor: '#3b82f6', '&:hover': { bgcolor: '#2563eb' } }}
+              >
+                Save API Settings
+              </Button>
+            </Box>
+          </TabPanel>
+        </Paper>
+
+        <SessionRenewalModal 
+          open={showRenewalModal}
+          onOpenChange={setShowRenewalModal}
+        />
+      </Container>
+    </Box>
   );
 };
 

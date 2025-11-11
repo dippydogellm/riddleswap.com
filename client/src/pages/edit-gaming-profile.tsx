@@ -11,11 +11,22 @@ import { useToast } from "@/hooks/use-toast";
 import { User, Shield, Sparkles, Save, Upload, X } from "lucide-react";
 import { Link } from "wouter";
 import { BackButton } from "@/components/gaming/BackButton";
+import { SessionRenewalModal } from "@/components/SessionRenewalModal";
 
 export default function EditGamingProfile() {
   const session = useSession();
   const { toast } = useToast();
   const queryClient = useQueryClient();
+  const [showRenewalModal, setShowRenewalModal] = useState(false);
+
+  // Watch for session renewal needs
+  useEffect(() => {
+    if ((session as any).needsRenewal) {
+      setShowRenewalModal(true);
+    } else {
+      setShowRenewalModal(false);
+    }
+  }, [(session as any).needsRenewal]);
 
   const [playerName, setPlayerName] = useState("");
   const [commanderClass, setCommanderClass] = useState("");
@@ -347,6 +358,11 @@ export default function EditGamingProfile() {
           </form>
         )}
       </div>
+
+      <SessionRenewalModal 
+        open={showRenewalModal}
+        onOpenChange={setShowRenewalModal}
+      />
     </div>
   );
 }

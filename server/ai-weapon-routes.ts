@@ -25,7 +25,7 @@ router.post('/generate-weapon-image', sessionAuth, async (req: AuthenticatedRequ
     const validatedData = generateWeaponImageSchema.parse(req.body);
     
     // Validate options
-    const validationErrors = aiWeaponImageService.validateWeaponOptions(validatedData);
+    const validationErrors = aiWeaponImageService.validateWeaponOptions(validatedData as any);
     if (validationErrors.length > 0) {
       return res.status(400).json({
         success: false,
@@ -36,7 +36,7 @@ router.post('/generate-weapon-image', sessionAuth, async (req: AuthenticatedRequ
 
     console.log(`🎨 [AI-WEAPON-API] User ${req.user?.userHandle || 'unknown'} generating ${validatedData.weaponType} image`);
 
-    const result = await aiWeaponImageService.generateWeaponImage(validatedData);
+    const result = await aiWeaponImageService.generateWeaponImage(validatedData as any);
 
     res.json({
       success: true,
@@ -71,7 +71,7 @@ router.post('/generate-weapon-batch', sessionAuth, async (req: AuthenticatedRequ
     // Validate each weapon option
     const allErrors: string[] = [];
     validatedData.weapons.forEach((weapon, index) => {
-      const errors = aiWeaponImageService.validateWeaponOptions(weapon);
+      const errors = aiWeaponImageService.validateWeaponOptions(weapon as any);
       if (errors.length > 0) {
         allErrors.push(`Weapon ${index + 1}: ${errors.join(', ')}`);
       }
@@ -87,7 +87,7 @@ router.post('/generate-weapon-batch', sessionAuth, async (req: AuthenticatedRequ
 
     console.log(`🎨 [AI-WEAPON-API] User ${req.user?.userHandle || 'unknown'} generating batch of ${validatedData.weapons.length} weapons`);
 
-    const results = await aiWeaponImageService.generateBatchWeaponImages(validatedData.weapons);
+    const results = await aiWeaponImageService.generateBatchWeaponImages(validatedData.weapons as any);
 
     res.json({
       success: true,

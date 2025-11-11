@@ -41,6 +41,9 @@ import {
 import { useToast } from '@/hooks/use-toast';
 import { WalletConnectionDashboard } from '@/components/wallet-connection-dashboard';
 import { useQuery } from '@tanstack/react-query';
+import { useSession } from '@/utils/sessionManager';
+import { SessionRenewalModal } from '@/components/SessionRenewalModal';
+import { checkSessionForPayment } from '@/utils/sessionCheck';
 
 type Chain = 'XRPL' | 'Ethereum' | 'BSC' | 'Polygon' | 'Arbitrum' | 'Optimism' | 'Base' | 'Avalanche';
 
@@ -75,16 +78,41 @@ const NATIVE_TOKENS: Record<Chain, Token> = {
   Avalanche: { symbol: 'AVAX', name: 'Avalanche', address: '0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE', decimals: 18 }
 };
 
+// Add animation styles
+const styles = `
+  @keyframes scaleIn {
+    from {
+      transform: scale(0);
+      opacity: 0;
+    }
+    to {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+`;
+
 export default function TradeV3Page() {
   const { toast } = useToast();
+  const session = useSession();
   const [chain, setChain] = useState<Chain>('Ethereum');
-  const [tab, setTab] = useState<'swap' | 'limit' | 'liquidity'>('swap');
+  const [tab, setTab] = useState<'swap' | 'bridge' | 'limit' | 'liquidity'>('swap');
   const [fromToken, setFromToken] = useState<Token>(NATIVE_TOKENS.Ethereum);
   const [toToken, setToToken] = useState<Token | null>(null);
   const [fromAmount, setFromAmount] = useState('');
   const [toAmount, setToAmount] = useState('');
   const [slippage, setSlippage] = useState(0.5);
   const [isLoadingQuote, setIsLoadingQuote] = useState(false);
+  const [showRenewalModal, setShowRenewalModal] = useState(false);
+
+  // Watch for session renewal needs
+  useEffect(() => {
+    if ((session as any).needsRenewal) {
+      setShowRenewalModal(true);
+    } else {
+      setShowRenewalModal(false);
+    }
+  }, [(session as any).needsRenewal]);
   const [isSwapping, setIsSwapping] = useState(false);
   const [walletModalOpen, setWalletModalOpen] = useState(false);
   const [tokenSearchOpen, setTokenSearchOpen] = useState<'from' | 'to' | null>(null);
@@ -92,10 +120,41 @@ export default function TradeV3Page() {
   const [searchResults, setSearchResults] = useState<Token[]>([]);
   const [isSearching, setIsSearching] = useState(false);
   const [quoteData, setQuoteData] = useState<any>(null);
+  const [liquidityData, setLiquidityData] = useState<any>(null);
+  const [liquidityMode, setLiquidityMode] = useState<'single' | 'double'>('single');
+  const [createNewPool, setCreateNewPool] = useState(false);
+  const [limitOrderPrice, setLimitOrderPrice] = useState('');
+  const [takeProfitPrice, setTakeProfitPrice] = useState('');
+  const [stopLossPrice, setStopLossPrice] = useState('');
   const [apiConnectionStatus, setApiConnectionStatus] = useState<{bithomp: boolean, oneInch: boolean} | null>(null);
   const [settingsOpen, setSettingsOpen] = useState(false);
   const [autoTrustline, setAutoTrustline] = useState(true);
   const [tokenBalances, setTokenBalances] = useState<Record<string, string>>({});
+  
+  // Confirmation Dialog State
+  const [confirmDialogOpen, setConfirmDialogOpen] = useState(false);
+  const [confirmDialogData, setConfirmDialogData] = useState<{
+    type: 'swap' | 'bridge' | 'limit' | 'liquidity';
+    payload: any;
+    summary: {
+      from?: string;
+      to?: string;
+      amount?: string;
+      estimatedOutput?: string;
+      fee?: string;
+      slippage?: string;
+      price?: string;
+      poolShare?: string;
+      [key: string]: any;
+    };
+  } | null>(null);
+  const [isProcessing, setIsProcessing] = useState(false);
+  const [successDialogOpen, setSuccessDialogOpen] = useState(false);
+  const [successDialogData, setSuccessDialogData] = useState<{
+    type: 'swap' | 'bridge' | 'limit' | 'liquidity';
+    txHash?: string;
+    details: any;
+  } | null>(null);
 
   // Check for Riddle Wallet session with private keys using transactionAuth utility
   const { data: sessionData } = useQuery({
@@ -321,11 +380,91 @@ export default function TradeV3Page() {
     return () => clearInterval(interval);
   }, [chainWallet?.address, chain]);
 
+  // Fetch liquidity calculation for Liquidity tab
+  useEffect(() => {
+    const getLiquidityCalc = async () => {
+      if (tab !== 'liquidity' || chain !== 'XRPL' || !fromToken || !toToken) {
+        setLiquidityData(null);
+        return;
+      }
+
+      // Check if pool exists
+      try {
+        const asset1 = fromToken.issuer ? `${fromToken.address}.${fromToken.issuer}` : fromToken.address;
+        const asset2 = toToken.issuer ? `${toToken.address}.${toToken.issuer}` : toToken.address;
+        
+        // First check if pool exists
+        const poolCheck = await fetch(`/api/tradecenter/liquidity/pool-exists?asset1=${asset1}&asset2=${asset2}`);
+        const poolData = await poolCheck.json();
+        
+        if (!poolData.exists) {
+          setCreateNewPool(true);
+          setLiquidityData(null);
+          // In double-sided mode, don't auto-fill
+          if (liquidityMode === 'single') {
+            setToAmount('');
+          }
+          return;
+        }
+        
+        setCreateNewPool(false);
+        
+        // Only calculate if we have amounts
+        if (liquidityMode === 'single' && fromAmount && parseFloat(fromAmount) > 0) {
+          const params = new URLSearchParams({
+            asset1,
+            asset2,
+            amount: fromAmount,
+            inputAsset: asset1,
+            mode: 'single'
+          });
+          
+          console.log(`💧 Calculating single-sided liquidity for ${fromAmount} ${fromToken.symbol}`);
+          
+          const response = await fetch(`/api/tradecenter/liquidity/calculate?${params}`);
+          const data = await response.json();
+          
+          if (data.success) {
+            setLiquidityData(data);
+            setToAmount(data.required.amount);
+            console.log(`✅ Pool share: ${data.poolShare.formatted}`);
+          }
+        } else if (liquidityMode === 'double' && fromAmount && toAmount && parseFloat(fromAmount) > 0 && parseFloat(toAmount) > 0) {
+          const params = new URLSearchParams({
+            asset1,
+            asset2,
+            amount1: fromAmount,
+            amount2: toAmount,
+            mode: 'double'
+          });
+          
+          console.log(`💧 Calculating double-sided liquidity: ${fromAmount} ${fromToken.symbol} + ${toAmount} ${toToken.symbol}`);
+          
+          const response = await fetch(`/api/tradecenter/liquidity/calculate?${params}`);
+          const data = await response.json();
+          
+          if (data.success) {
+            setLiquidityData(data);
+            console.log(`✅ Pool share: ${data.poolShare.formatted}`);
+          }
+        }
+      } catch (error) {
+        console.error('Failed to calculate liquidity:', error);
+        setLiquidityData(null);
+      }
+    };
+
+    const debounce = setTimeout(getLiquidityCalc, 500);
+    return () => clearTimeout(debounce);
+  }, [tab, chain, fromToken, toToken, fromAmount, toAmount, liquidityMode]);
+
   useEffect(() => {
     const getQuote = async () => {
-      if (!fromToken || !toToken || !fromAmount || parseFloat(fromAmount) <= 0) {
-        setToAmount('');
-        setQuoteData(null);
+      if (tab !== 'swap' || !fromToken || !toToken || !fromAmount || parseFloat(fromAmount) <= 0) {
+        if (tab === 'swap') {
+          setToAmount('');
+          setQuoteData(null);
+        }
         return;
       }
 
@@ -400,6 +539,26 @@ export default function TradeV3Page() {
   }, [fromAmount, fromToken, toToken, chain]);
 
   const handleSwap = async () => {
+    // Check session before allowing swap
+    const sessionCheck = checkSessionForPayment();
+    if (!sessionCheck.valid) {
+      if (sessionCheck.needsRenewal) {
+        setShowRenewalModal(true);
+        toast({
+          title: "Session Renewal Required",
+          description: "Please renew your session to perform swaps",
+          variant: "destructive"
+        });
+      } else {
+        toast({
+          title: "Login Required",
+          description: sessionCheck.message,
+          variant: "destructive"
+        });
+      }
+      return;
+    }
+
     if (!fromToken || !toToken || !fromAmount) {
       toast({
         title: "Invalid Swap",
@@ -429,54 +588,81 @@ export default function TradeV3Page() {
       return;
     }
 
-    setIsSwapping(true);
-    try {
-      const amount = (parseFloat(fromAmount) * Math.pow(10, fromToken.decimals)).toString();
-
+    // Prepare transaction payload
+    const walletAddress = chainWallet?.address || '';
+    if (!walletAddress) {
       toast({
-        title: "Swap Initiated",
-        description: "Processing transaction..."
+        title: "Error",
+        description: "Wallet address not found",
+        variant: "destructive"
       });
+      return;
+    }
 
-      // Map chain to API format
-      const chainParam = chain === 'XRPL' ? 'xrp' : 
-                        chain === 'Ethereum' ? 'eth' :
-                        chain === 'BSC' ? 'eth' :
-                        chain === 'Polygon' ? 'eth' : 'eth';
+    const chainParam = chain === 'XRPL' ? 'xrp' : 
+                      chain === 'Ethereum' ? 'eth' :
+                      chain === 'BSC' ? 'eth' :
+                      chain === 'Polygon' ? 'eth' : 'eth';
+    
+    const fromTokenParam = chain === 'XRPL' 
+      ? (fromToken.issuer ? `${fromToken.address}.${fromToken.issuer}` : fromToken.address)
+      : fromToken.address;
       
-      // Get wallet address
-      const walletAddress = chainWallet?.address || '';
-      
-      if (!walletAddress) {
-        throw new Error('Wallet address not found');
+    const toTokenParam = chain === 'XRPL'
+      ? (toToken.issuer ? `${toToken.address}.${toToken.issuer}` : toToken.address)
+      : toToken.address;
+
+    const payload = {
+      fromToken: fromTokenParam,
+      toToken: toTokenParam,
+      amount: fromAmount,
+      chain: chainParam,
+      slippage: slippage,
+      walletAddress: walletAddress
+    };
+
+    // Show confirmation dialog
+    setConfirmDialogData({
+      type: 'swap',
+      payload: payload,
+      summary: {
+        from: `${fromAmount} ${fromToken.symbol}`,
+        to: `~${toAmount} ${toToken.symbol}`,
+        amount: fromAmount,
+        estimatedOutput: toAmount,
+        fee: quoteData?.fee || 'Unknown',
+        slippage: `${slippage}%`,
+        chain: chain,
+        walletAddress: walletAddress
       }
+    });
+    setConfirmDialogOpen(true);
+  };
+
+  const executeSwap = async () => {
+    if (!confirmDialogData) return;
+    
+    // Re-check session before execution
+    const sessionCheck = checkSessionForPayment();
+    if (!sessionCheck.valid) {
+      if (sessionCheck.needsRenewal) {
+        setShowRenewalModal(true);
+      }
+      setConfirmDialogOpen(false);
+      return;
+    }
+    
+    setIsProcessing(true);
+    try {
+      console.log(`🚀 Executing swap via Trade Center`);
       
-      // Format tokens
-      const fromTokenParam = chain === 'XRPL' 
-        ? (fromToken.issuer ? `${fromToken.address}.${fromToken.issuer}` : fromToken.address)
-        : fromToken.address;
-        
-      const toTokenParam = chain === 'XRPL'
-        ? (toToken.issuer ? `${toToken.address}.${toToken.issuer}` : toToken.address)
-        : toToken.address;
-      
-      console.log(`🚀 Executing swap via Trade Center: ${fromAmount} ${fromToken.symbol} → ${toToken.symbol}`);
-      
-      // Use new unified Trade Center API
       const response = await fetch('/api/tradecenter/swap/execute', {
         method: 'POST',
         headers: { 
           'Content-Type': 'application/json',
-          'Authorization': `Bearer ${localStorage.getItem('sessionToken')}`
+          'Authorization': `Bearer ${session.sessionToken || ''}`
         },
-        body: JSON.stringify({
-          fromToken: fromTokenParam,
-          toToken: toTokenParam,
-          amount: fromAmount,
-          chain: chainParam,
-          slippage: slippage,
-          walletAddress: walletAddress
-        })
+        body: JSON.stringify(confirmDialogData.payload)
       });
 
       const result = await response.json();
@@ -487,13 +673,23 @@ export default function TradeV3Page() {
 
       const tx = result.transaction;
       
-      toast({
-        title: "Swap Successful! ✅",
-        description: `Swapped ${fromAmount} ${fromToken.symbol} for ~${toAmount} ${toToken.symbol}`,
+      // Close confirmation, show success
+      setConfirmDialogOpen(false);
+      setSuccessDialogData({
+        type: 'swap',
+        txHash: tx?.hash || tx?.id,
+        details: {
+          from: confirmDialogData.summary.from,
+          to: confirmDialogData.summary.to,
+          txHash: tx?.hash || tx?.id,
+          timestamp: new Date().toISOString()
+        }
       });
+      setSuccessDialogOpen(true);
       
       console.log(`✅ Swap complete:`, tx);
 
+      // Reset form
       setFromAmount('');
       setToAmount('');
       setQuoteData(null);
@@ -501,6 +697,333 @@ export default function TradeV3Page() {
       console.error('Swap error:', error);
       toast({
         title: "Swap Failed",
+        description: error.message || "Transaction failed",
+        variant: "destructive"
+      });
+      setConfirmDialogOpen(false);
+    } finally {
+      setIsProcessing(false);
+    }
+  };
+
+  const handleBridge = async () => {
+    if (!fromAmount) {
+      toast({
+        title: "Invalid Bridge",
+        description: "Please enter an amount",
+        variant: "destructive"
+      });
+      return;
+    }
+
+    if (!hasWalletForChain) {
+      toast({
+        title: "Wallet Required",
+        description: "Connect wallet to bridge",
+        variant: "destructive"
+      });
+      return;
+    }
+
+    const walletAddress = chainWallet?.address || '';
+    if (!walletAddress) {
+      toast({
+        title: "Error",
+        description: "Wallet address not found",
+        variant: "destructive"
+      });
+      return;
+    }
+
+    const payload = {
+      fromChain: chain,
+      toChain: 'Ethereum', // This would be dynamic in full implementation
+      token: fromToken.address,
+      amount: fromAmount,
+      walletAddress: walletAddress
+    };
+
+    setConfirmDialogData({
+      type: 'bridge',
+      payload: payload,
+      summary: {
+        from: `${fromAmount} ${fromToken.symbol} on ${chain}`,
+        to: `${fromAmount} ${fromToken.symbol} on Ethereum`,
+        amount: fromAmount,
+        fromChain: chain,
+        toChain: 'Ethereum',
+        walletAddress: walletAddress
+      }
+    });
+    setConfirmDialogOpen(true);
+  };
+
+  const executeBridge = async () => {
+    if (!confirmDialogData) return;
+    
+    setIsProcessing(true);
+    try {
+      const response = await fetch('/api/tradecenter/bridge/execute', {
+        method: 'POST',
+        headers: { 
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${localStorage.getItem('sessionToken')}`
+        },
+        body: JSON.stringify(confirmDialogData.payload)
+      });
+
+      const result = await response.json();
+      
+      if (!result.success) {
+        throw new Error(result.error || 'Bridge execution failed');
+      }
+
+      setConfirmDialogOpen(false);
+      setSuccessDialogData({
+        type: 'bridge',
+        txHash: result.transaction?.hash,
+        details: {
+          from: confirmDialogData.summary.from,
+          to: confirmDialogData.summary.to,
+          txHash: result.transaction?.hash,
+          timestamp: new Date().toISOString()
+        }
+      });
+      setSuccessDialogOpen(true);
+      
+      setFromAmount('');
+      setToAmount('');
+    } catch (error: any) {
+      console.error('Bridge error:', error);
+      toast({
+        title: "Bridge Failed",
+        description: error.message || "Transaction failed",
+        variant: "destructive"
+      });
+      setConfirmDialogOpen(false);
+    } finally {
+      setIsProcessing(false);
+    }
+  };
+
+  const handleLimitOrder = async () => {
+    if (!fromToken || !toToken || !fromAmount || !limitOrderPrice) {
+      toast({
+        title: "Invalid Order",
+        description: "Please fill in all required fields",
+        variant: "destructive"
+      });
+      return;
+    }
+
+    if (!hasPrivateKeys) {
+      toast({
+        title: "Private Keys Required",
+        description: "Unlock Riddle Wallet to place limit orders",
+        variant: "destructive"
+      });
+      return;
+    }
+
+    const walletAddress = chainWallet?.address || '';
+    if (!walletAddress) {
+      toast({
+        title: "Error",
+        description: "Wallet address not found",
+        variant: "destructive"
+      });
+      return;
+    }
+
+    const price = parseFloat(limitOrderPrice);
+    const fromTokenParam = fromToken.issuer ? `${fromToken.address}.${fromToken.issuer}` : fromToken.address;
+    const toTokenParam = toToken.issuer ? `${toToken.address}.${toToken.issuer}` : toToken.address;
+
+    const payload = {
+      baseToken: fromTokenParam,
+      quoteToken: toTokenParam,
+      amount: fromAmount,
+      price: price,
+      side: 'sell',
+      walletAddress: walletAddress,
+      takeProfit: takeProfitPrice ? parseFloat(takeProfitPrice) : undefined,
+      stopLoss: stopLossPrice ? parseFloat(stopLossPrice) : undefined
+    };
+
+    let description = `Sell ${fromAmount} ${fromToken.symbol} at ${price.toFixed(6)}`;
+    if (takeProfitPrice) description += ` | TP: ${takeProfitPrice}`;
+    if (stopLossPrice) description += ` | SL: ${stopLossPrice}`;
+
+    setConfirmDialogData({
+      type: 'limit',
+      payload: payload,
+      summary: {
+        from: `${fromAmount} ${fromToken.symbol}`,
+        to: toToken.symbol,
+        amount: fromAmount,
+        price: price.toFixed(6),
+        side: 'Sell',
+        takeProfit: takeProfitPrice || 'None',
+        stopLoss: stopLossPrice || 'None',
+        description: description
+      }
+    });
+    setConfirmDialogOpen(true);
+  };
+
+  const executeLimitOrder = async () => {
+    if (!confirmDialogData) return;
+    
+    setIsProcessing(true);
+    try {
+      const response = await fetch('/api/tradecenter/limit/create', {
+        method: 'POST',
+        headers: { 
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${localStorage.getItem('sessionToken')}`
+        },
+        body: JSON.stringify(confirmDialogData.payload)
+      });
+
+      const result = await response.json();
+      
+      if (!result.success) {
+        throw new Error(result.error || 'Order creation failed');
+      }
+
+      setConfirmDialogOpen(false);
+      setSuccessDialogData({
+        type: 'limit',
+        txHash: result.offerSequence,
+        details: {
+          description: confirmDialogData.summary.description,
+          offerSequence: result.offerSequence,
+          timestamp: new Date().toISOString()
+        }
+      });
+      setSuccessDialogOpen(true);
+      
+      setFromAmount('');
+      setToAmount('');
+      setLimitOrderPrice('');
+      setTakeProfitPrice('');
+      setStopLossPrice('');
+    } catch (error: any) {
+      console.error('Limit order error:', error);
+      toast({
+        title: "Order Failed",
+        description: error.message || "Transaction failed",
+        variant: "destructive"
+      });
+      setConfirmDialogOpen(false);
+    } finally {
+      setIsProcessing(false);
+    }
+  };
+
+  const handleLiquidity = async () => {
+    if (!fromToken || !toToken || !fromAmount || !toAmount) {
+      toast({
+        title: "Invalid Liquidity",
+        description: "Please fill in all fields",
+        variant: "destructive"
+      });
+      return;
+    }
+
+    if (!hasPrivateKeys) {
+      toast({
+        title: "Private Keys Required",
+        description: "Unlock Riddle Wallet to add liquidity",
+        variant: "destructive"
+      });
+      return;
+    }
+
+    const walletAddress = chainWallet?.address || '';
+    if (!walletAddress) {
+      toast({
+        title: "Error",
+        description: "Wallet address not found",
+        variant: "destructive"
+      });
+      return;
+    }
+
+    const asset1 = fromToken.issuer ? `${fromToken.address}.${fromToken.issuer}` : fromToken.address;
+    const asset2 = toToken.issuer ? `${toToken.address}.${toToken.issuer}` : toToken.address;
+
+    const payload = {
+      asset1: asset1,
+      asset2: asset2,
+      amount1: fromAmount,
+      amount2: toAmount,
+      walletAddress: walletAddress,
+      createNew: createNewPool,
+      mode: liquidityMode
+    };
+
+    setConfirmDialogData({
+      type: 'liquidity',
+      payload: payload,
+      summary: {
+        from: `${fromAmount} ${fromToken.symbol}`,
+        to: `${toAmount} ${toToken.symbol}`,
+        amount: fromAmount,
+        amount2: toAmount,
+        poolShare: liquidityData?.poolShare || 'Unknown',
+        mode: liquidityMode === 'single' ? 'Single-Sided' : 'Double-Sided',
+        createNew: createNewPool,
+        pool: `${fromToken.symbol}/${toToken.symbol}`
+      }
+    });
+    setConfirmDialogOpen(true);
+  };
+
+  const executeLiquidity = async () => {
+    if (!confirmDialogData) return;
+    
+    setIsProcessing(true);
+    try {
+      const response = await fetch('/api/tradecenter/liquidity/add', {
+        method: 'POST',
+        headers: { 
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${localStorage.getItem('sessionToken')}`
+        },
+        body: JSON.stringify(confirmDialogData.payload)
+      });
+
+      const result = await response.json();
+      
+      if (!result.success) {
+        throw new Error(result.error || 'Liquidity operation failed');
+      }
+
+      setConfirmDialogOpen(false);
+      setSuccessDialogData({
+        type: 'liquidity',
+        txHash: result.transaction?.hash,
+        details: {
+          pool: confirmDialogData.summary.pool,
+          amount1: confirmDialogData.summary.from,
+          amount2: confirmDialogData.summary.to,
+          poolShare: confirmDialogData.summary.poolShare,
+          createNew: confirmDialogData.summary.createNew,
+          txHash: result.transaction?.hash,
+          timestamp: new Date().toISOString()
+        }
+      });
+      setSuccessDialogOpen(true);
+      
+      setFromAmount('');
+      setToAmount('');
+      setLiquidityData(null);
+      setCreateNewPool(false);
+    } catch (error: any) {
+      console.error('Liquidity error:', error);
+      toast({
+        title: "Operation Failed",
         description: error.message || "Transaction failed",
         variant: "destructive"
       });
@@ -531,22 +1054,24 @@ export default function TradeV3Page() {
   };
 
   return (
-    <Container maxWidth="md" sx={{ py: 4 }}>
-      {/* API Connection Status */}
-      {apiConnectionStatus && (!apiConnectionStatus.bithomp || !apiConnectionStatus.oneInch) && (
-        <Alert severity="warning" sx={{ mb: 2 }}>
-          <strong>API Connection Issues:</strong>
-          {!apiConnectionStatus.bithomp && ' Bithomp API not responding.'}
-          {!apiConnectionStatus.oneInch && ' 1inch API not responding.'}
-          {' '}Check environment variables: BITHOMP_API_KEY, VITE_ONEINCH_API_KEY
-        </Alert>
-      )}
-      
-      {apiConnectionStatus?.bithomp && apiConnectionStatus?.oneInch && (
-        <Alert severity="success" sx={{ mb: 2 }}>
-          ✅ All APIs connected: Bithomp (XRPL) & 1inch (EVM chains)
-        </Alert>
-      )}
+    <>
+      <style>{styles}</style>
+      <Container maxWidth="md" sx={{ py: 4 }}>
+        {/* API Connection Status */}
+        {apiConnectionStatus && (!apiConnectionStatus.bithomp || !apiConnectionStatus.oneInch) && (
+          <Alert severity="warning" sx={{ mb: 2 }}>
+            <strong>API Connection Issues:</strong>
+            {!apiConnectionStatus.bithomp && ' Bithomp API not responding.'}
+            {!apiConnectionStatus.oneInch && ' 1inch API not responding.'}
+            {' '}Check environment variables: BITHOMP_API_KEY, VITE_ONEINCH_API_KEY
+          </Alert>
+        )}
+        
+        {apiConnectionStatus?.bithomp && apiConnectionStatus?.oneInch && (
+          <Alert severity="success" sx={{ mb: 2 }}>
+            ✅ All APIs connected: Bithomp (XRPL) & 1inch (EVM chains)
+          </Alert>
+        )}
       
       <Box mb={3}>
         <Typography variant="h4" fontWeight="bold" gutterBottom>
@@ -578,13 +1103,12 @@ export default function TradeV3Page() {
               </Select>
             </FormControl>
 
-            {chain === 'XRPL' && (
-              <Tabs value={tab} onChange={(_, v) => setTab(v)}>
-                <Tab value="swap" label="Swap" />
-                <Tab value="limit" label="Limit" />
-                <Tab value="liquidity" label="Liquidity" />
-              </Tabs>
-            )}
+            <Tabs value={tab} onChange={(_, v) => setTab(v)}>
+              <Tab value="swap" label="Swap" />
+              <Tab value="bridge" label="Bridge" />
+              <Tab value="limit" label="Limit" />
+              <Tab value="liquidity" label="Liquidity" />
+            </Tabs>
 
             <Box flexGrow={1} />
 
@@ -852,16 +1376,487 @@ export default function TradeV3Page() {
             </Box>
           )}
 
+          {tab === 'bridge' && (
+            <Box>
+              <Alert severity="info" sx={{ mb: 3 }}>
+                Cross-chain bridge powered by secure relayers
+              </Alert>
+
+              <Paper variant="outlined" sx={{ p: 2, mb: 2, bgcolor: 'background.default' }}>
+                <Box display="flex" justifyContent="space-between" alignItems="center" mb={1}>
+                  <Typography variant="caption" color="text.secondary" fontWeight="bold">
+                    From Chain
+                  </Typography>
+                </Box>
+                
+                <FormControl fullWidth>
+                  <Select
+                    value={chain}
+                    onChange={(e) => {
+                      setChain(e.target.value as Chain);
+                      setFromToken(NATIVE_TOKENS[e.target.value as Chain]);
+                    }}
+                  >
+                    {(Object.keys(NATIVE_TOKENS) as Chain[]).map((c) => (
+                      <MenuItem key={c} value={c}>{c}</MenuItem>
+                    ))}
+                  </Select>
+                </FormControl>
+
+                <Box display="flex" gap={2} alignItems="center" mt={2}>
+                  <TextField
+                    fullWidth
+                    placeholder="0.00"
+                    type="number"
+                    value={fromAmount}
+                    onChange={(e) => setFromAmount(e.target.value)}
+                    InputProps={{
+                      sx: { fontSize: '1.5rem', fontWeight: 'bold' }
+                    }}
+                    variant="standard"
+                  />
+                  
+                  <Button variant="outlined" sx={{ minWidth: 140, height: 48 }}>
+                    {fromToken.logoURI && (
+                      <Avatar src={fromToken.logoURI} sx={{ width: 24, height: 24, mr: 1 }} />
+                    )}
+                    <Typography variant="body2" fontWeight="bold">
+                      {fromToken.symbol}
+                    </Typography>
+                  </Button>
+                </Box>
+              </Paper>
+
+              <Box display="flex" justifyContent="center" my={-2} position="relative" zIndex={1}>
+                <IconButton
+                  onClick={() => {}}
+                  sx={{
+                    bgcolor: 'primary.main',
+                    color: 'primary.contrastText',
+                    border: '4px solid',
+                    borderColor: 'background.default',
+                    '&:hover': { bgcolor: 'primary.dark' }
+                  }}
+                >
+                  <ArrowDownward />
+                </IconButton>
+              </Box>
+
+              <Paper variant="outlined" sx={{ p: 2, bgcolor: 'background.default' }}>
+                <Box display="flex" justifyContent="space-between" alignItems="center" mb={1}>
+                  <Typography variant="caption" color="text.secondary" fontWeight="bold">
+                    To Chain
+                  </Typography>
+                </Box>
+                
+                <FormControl fullWidth>
+                  <Select value="Ethereum" onChange={() => {}}>
+                    {(Object.keys(NATIVE_TOKENS) as Chain[]).filter(c => c !== chain).map((c) => (
+                      <MenuItem key={c} value={c}>{c}</MenuItem>
+                    ))}
+                  </Select>
+                </FormControl>
+
+                <Box display="flex" gap={2} alignItems="center" mt={2}>
+                  <TextField
+                    fullWidth
+                    placeholder="0.00"
+                    type="number"
+                    value={toAmount}
+                    InputProps={{
+                      readOnly: true,
+                      sx: { fontSize: '1.5rem', fontWeight: 'bold' }
+                    }}
+                    variant="standard"
+                  />
+                  
+                  <Button variant="outlined" sx={{ minWidth: 140, height: 48 }}>
+                    <Typography variant="body2" fontWeight="bold">
+                      {fromToken.symbol}
+                    </Typography>
+                  </Button>
+                </Box>
+              </Paper>
+
+              <Button
+                fullWidth
+                variant="contained"
+                size="large"
+                onClick={handleBridge}
+                disabled={!fromAmount || !hasWalletForChain || isSwapping}
+                sx={{ mt: 3, py: 1.5 }}
+              >
+                {isSwapping ? (
+                  <CircularProgress size={24} color="inherit" />
+                ) : (
+                  `Bridge ${fromToken.symbol}`
+                )}
+              </Button>
+            </Box>
+          )}
+
+          {tab === 'limit' && chain !== 'XRPL' && (
+            <Alert severity="warning" sx={{ mt: 2 }}>
+              Limit orders are currently only available on XRPL. Switch to XRPL to place limit orders.
+            </Alert>
+          )}
+
           {chain === 'XRPL' && tab === 'limit' && (
-            <Alert severity="info">
-              Limit orders coming soon for XRPL DEX
+            <Box>
+              <Alert severity="info" sx={{ mb: 3 }}>
+                Place limit orders on XRPL DEX order book
+              </Alert>
+
+              <Paper variant="outlined" sx={{ p: 2, mb: 2, bgcolor: 'background.default' }}>
+                <Box display="flex" justifyContent="space-between" alignItems="center" mb={1}>
+                  <Typography variant="caption" color="text.secondary" fontWeight="bold">
+                    You Sell
+                  </Typography>
+                </Box>
+                
+                <Box display="flex" gap={2} alignItems="center">
+                  <TextField
+                    fullWidth
+                    placeholder="0.00"
+                    type="number"
+                    value={fromAmount}
+                    onChange={(e) => setFromAmount(e.target.value)}
+                    InputProps={{
+                      sx: { fontSize: '1.5rem', fontWeight: 'bold' }
+                    }}
+                    variant="standard"
+                  />
+                  
+                  <Button
+                    variant="outlined"
+                    onClick={() => setTokenSearchOpen('from')}
+                    sx={{ minWidth: 140, height: 48 }}
+                  >
+                    {fromToken.logoURI && (
+                      <Avatar src={fromToken.logoURI} sx={{ width: 24, height: 24, mr: 1 }} />
+                    )}
+                    <Typography variant="body2" fontWeight="bold">
+                      {fromToken.symbol}
+                    </Typography>
+                  </Button>
+                </Box>
+              </Paper>
+
+              <Paper variant="outlined" sx={{ p: 2, mb: 2, bgcolor: 'background.default' }}>
+                <Box display="flex" justifyContent="space-between" alignItems="center" mb={1}>
+                  <Typography variant="caption" color="text.secondary" fontWeight="bold">
+                    You Buy
+                  </Typography>
+                </Box>
+                
+                <Box display="flex" gap={2} alignItems="center">
+                  <TextField
+                    fullWidth
+                    placeholder="0.00"
+                    type="number"
+                    value={toAmount}
+                    onChange={(e) => setToAmount(e.target.value)}
+                    InputProps={{
+                      sx: { fontSize: '1.5rem', fontWeight: 'bold' }
+                    }}
+                    variant="standard"
+                  />
+                  
+                  <Button
+                    variant="outlined"
+                    onClick={() => setTokenSearchOpen('to')}
+                    sx={{ minWidth: 140, height: 48 }}
+                  >
+                    {toToken ? (
+                      <>
+                        {toToken.logoURI && (
+                          <Avatar src={toToken.logoURI} sx={{ width: 24, height: 24, mr: 1 }} />
+                        )}
+                        <Typography variant="body2" fontWeight="bold">
+                          {toToken.symbol}
+                        </Typography>
+                      </>
+                    ) : (
+                      <Typography variant="body2">Select token</Typography>
+                    )}
+                  </Button>
+                </Box>
+              </Paper>
+
+              <Paper variant="outlined" sx={{ p: 2, mb: 2 }}>
+                <Typography variant="caption" color="text.secondary" fontWeight="bold">Limit Price</Typography>
+                <TextField
+                  fullWidth
+                  placeholder="0.00"
+                  type="number"
+                  value={limitOrderPrice}
+                  onChange={(e) => setLimitOrderPrice(e.target.value)}
+                  InputProps={{
+                    sx: { fontSize: '1.2rem', fontWeight: 'bold' }
+                  }}
+                  variant="standard"
+                  helperText={toToken ? `Price per ${toToken.symbol}` : 'Select tokens first'}
+                />
+              </Paper>
+
+              <Paper variant="outlined" sx={{ p: 2, mb: 2, bgcolor: 'success.light' }}>
+                <Typography variant="caption" color="text.primary" fontWeight="bold" gutterBottom display="block">
+                  Advanced Settings (Optional)
+                </Typography>
+                
+                <Box mt={2}>
+                  <Typography variant="caption" color="text.secondary">Take Profit Price</Typography>
+                  <TextField
+                    fullWidth
+                    placeholder="0.00"
+                    type="number"
+                    value={takeProfitPrice}
+                    onChange={(e) => setTakeProfitPrice(e.target.value)}
+                    variant="standard"
+                    helperText="Auto-sell when price reaches this level"
+                    sx={{ mb: 2 }}
+                  />
+                </Box>
+
+                <Box>
+                  <Typography variant="caption" color="text.secondary">Stop Loss Price</Typography>
+                  <TextField
+                    fullWidth
+                    placeholder="0.00"
+                    type="number"
+                    value={stopLossPrice}
+                    onChange={(e) => setStopLossPrice(e.target.value)}
+                    variant="standard"
+                    helperText="Auto-sell to limit losses"
+                  />
+                </Box>
+              </Paper>
+
+              <Button
+                fullWidth
+                variant="contained"
+                size="large"
+                onClick={handleLimitOrder}
+                disabled={!fromToken || !toToken || !fromAmount || !toAmount || !hasPrivateKeys || isSwapping}
+                sx={{ mt: 3, py: 1.5 }}
+              >
+                {isSwapping ? (
+                  <CircularProgress size={24} color="inherit" />
+                ) : !hasPrivateKeys ? (
+                  'Unlock Riddle Wallet'
+                ) : (
+                  `Place Limit Order`
+                )}
+              </Button>
+            </Box>
+          )}
+
+          {tab === 'liquidity' && chain !== 'XRPL' && (
+            <Alert severity="warning" sx={{ mt: 2 }}>
+              Liquidity provision is currently only available on XRPL AMM. Switch to XRPL to add liquidity.
             </Alert>
           )}
 
           {chain === 'XRPL' && tab === 'liquidity' && (
-            <Alert severity="info">
-              Liquidity provision coming soon for XRPL AMM
-            </Alert>
+            <Box>
+              {createNewPool ? (
+                <Alert severity="warning" sx={{ mb: 3 }}>
+                  <strong>Pool doesn't exist!</strong> You'll create a new AMM pool for {fromToken?.symbol}/{toToken?.symbol}
+                </Alert>
+              ) : (
+                <Alert severity="info" sx={{ mb: 3 }}>
+                  Add liquidity to XRPL AMM pools and earn fees
+                </Alert>
+              )}
+
+              <Box display="flex" gap={1} mb={2}>
+                <Button
+                  variant={liquidityMode === 'single' ? 'contained' : 'outlined'}
+                  onClick={() => {
+                    setLiquidityMode('single');
+                    setToAmount('');
+                  }}
+                  fullWidth
+                >
+                  Single-Sided
+                </Button>
+                <Button
+                  variant={liquidityMode === 'double' ? 'contained' : 'outlined'}
+                  onClick={() => setLiquidityMode('double')}
+                  fullWidth
+                >
+                  Double-Sided
+                </Button>
+              </Box>
+
+              <Paper variant="outlined" sx={{ p: 2, mb: 2, bgcolor: 'background.default' }}>
+                <Box display="flex" justifyContent="space-between" alignItems="center" mb={1}>
+                  <Typography variant="caption" color="text.secondary" fontWeight="bold">
+                    Token A
+                  </Typography>
+                </Box>
+                
+                <Box display="flex" gap={2} alignItems="center">
+                  <TextField
+                    fullWidth
+                    placeholder="0.00"
+                    type="number"
+                    value={fromAmount}
+                    onChange={(e) => setFromAmount(e.target.value)}
+                    InputProps={{
+                      sx: { fontSize: '1.5rem', fontWeight: 'bold' }
+                    }}
+                    variant="standard"
+                  />
+                  
+                  <Button
+                    variant="outlined"
+                    onClick={() => setTokenSearchOpen('from')}
+                    sx={{ minWidth: 140, height: 48 }}
+                  >
+                    {fromToken.logoURI && (
+                      <Avatar src={fromToken.logoURI} sx={{ width: 24, height: 24, mr: 1 }} />
+                    )}
+                    <Typography variant="body2" fontWeight="bold">
+                      {fromToken.symbol}
+                    </Typography>
+                  </Button>
+                </Box>
+              </Paper>
+
+              <Box display="flex" justifyContent="center" my={-2} position="relative" zIndex={1}>
+                <Typography variant="h6" sx={{ 
+                  bgcolor: 'background.paper',
+                  px: 2,
+                  color: 'text.secondary'
+                }}>
+                  +
+                </Typography>
+              </Box>
+
+              <Paper variant="outlined" sx={{ p: 2, bgcolor: 'background.default' }}>
+                <Box display="flex" justifyContent="space-between" alignItems="center" mb={1}>
+                  <Typography variant="caption" color="text.secondary" fontWeight="bold">
+                    Token B {liquidityMode === 'single' ? '(Auto-calculated)' : ''}
+                  </Typography>
+                </Box>
+                
+                <Box display="flex" gap={2} alignItems="center">
+                  <TextField
+                    fullWidth
+                    placeholder="0.00"
+                    type="number"
+                    value={toAmount}
+                    onChange={liquidityMode === 'double' ? (e) => setToAmount(e.target.value) : undefined}
+                    InputProps={{
+                      readOnly: liquidityMode === 'single' && !createNewPool,
+                      sx: { 
+                        fontSize: '1.5rem', 
+                        fontWeight: 'bold',
+                        bgcolor: liquidityMode === 'single' && !createNewPool ? 'action.hover' : 'transparent'
+                      }
+                    }}
+                    variant="standard"
+                    helperText={
+                      createNewPool ? "Enter amount for new pool creation" :
+                      liquidityMode === 'single' && liquidityData ? "✓ Balanced for optimal pool entry" : 
+                      liquidityMode === 'single' ? "Enter Token A amount first" :
+                      "Enter your desired amount"
+                    }
+                  />
+                  
+                  <Button
+                    variant="outlined"
+                    onClick={() => setTokenSearchOpen('to')}
+                    sx={{ minWidth: 140, height: 48 }}
+                  >
+                    {toToken ? (
+                      <>
+                        {toToken.logoURI && (
+                          <Avatar src={toToken.logoURI} sx={{ width: 24, height: 24, mr: 1 }} />
+                        )}
+                        <Typography variant="body2" fontWeight="bold">
+                          {toToken.symbol}
+                        </Typography>
+                      </>
+                    ) : (
+                      <Typography variant="body2">Select token</Typography>
+                    )}
+                  </Button>
+                </Box>
+              </Paper>
+
+              {liquidityData && fromToken && toToken && (
+                <Paper variant="outlined" sx={{ p: 2, mt: 2, bgcolor: 'success.light' }}>
+                  <Box display="flex" justifyContent="space-between" mb={1}>
+                    <Typography variant="caption" color="text.primary" fontWeight="bold">
+                      Pool Share
+                    </Typography>
+                    <Typography variant="caption" fontWeight="bold" color="success.dark">
+                      {liquidityData.poolShare.formatted}
+                    </Typography>
+                  </Box>
+                  <Box display="flex" justifyContent="space-between" mb={1}>
+                    <Typography variant="caption" color="text.primary">
+                      LP Tokens
+                    </Typography>
+                    <Typography variant="caption" fontWeight="bold">
+                      {liquidityData.poolShare.lpTokens}
+                    </Typography>
+                  </Box>
+                  <Box display="flex" justifyContent="space-between" mb={1}>
+                    <Typography variant="caption" color="text.primary">
+                      Exchange Rate
+                    </Typography>
+                    <Typography variant="caption" fontWeight="bold">
+                      1 {fromToken.symbol} = {(parseFloat(toAmount) / parseFloat(fromAmount)).toFixed(6)} {toToken.symbol}
+                    </Typography>
+                  </Box>
+                  <Box display="flex" justifyContent="space-between" mb={1}>
+                    <Typography variant="caption" color="text.primary">
+                      Pool TVL
+                    </Typography>
+                    <Typography variant="caption" fontWeight="bold">
+                      {liquidityData.pool.current.tvl} (→ {liquidityData.pool.afterDeposit.tvl})
+                    </Typography>
+                  </Box>
+                  <Box display="flex" justifyContent="space-between">
+                    <Typography variant="caption" color="text.primary">
+                      Trading Fee
+                    </Typography>
+                    <Typography variant="caption" fontWeight="bold">
+                      {liquidityData.tradingFeePercent}%
+                    </Typography>
+                  </Box>
+                </Paper>
+              )}
+              
+              {!liquidityData && fromToken && toToken && fromAmount && (
+                <Box sx={{ mt: 2, textAlign: 'center' }}>
+                  <CircularProgress size={20} />
+                  <Typography variant="caption" color="text.secondary" display="block" mt={1}>
+                    Calculating pool share...
+                  </Typography>
+                </Box>
+              )}
+
+              <Button
+                fullWidth
+                variant="contained"
+                size="large"
+                onClick={handleLiquidity}
+                disabled={!fromToken || !toToken || !fromAmount || !toAmount || !hasPrivateKeys || isSwapping}
+                sx={{ mt: 3, py: 1.5 }}
+              >
+                {isSwapping ? (
+                  <CircularProgress size={24} color="inherit" />
+                ) : !hasPrivateKeys ? (
+                  'Unlock Riddle Wallet'
+                ) : (
+                  'Add Liquidity'
+                )}
+              </Button>
+            </Box>
           )}
         </CardContent>
       </Card>
@@ -1029,6 +2024,356 @@ export default function TradeV3Page() {
         isOpen={walletModalOpen}
         onClose={() => setWalletModalOpen(false)}
       />
-    </Container>
+
+      {/* Confirmation Dialog */}
+      <Dialog
+        open={confirmDialogOpen}
+        onClose={() => !isProcessing && setConfirmDialogOpen(false)}
+        maxWidth="md"
+        fullWidth
+      >
+        <DialogTitle sx={{ bgcolor: 'primary.main', color: 'white', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+          <Box display="flex" alignItems="center" gap={1}>
+            {confirmDialogData?.type === 'swap' && <SwapVert />}
+            {confirmDialogData?.type === 'bridge' && <ArrowDownward />}
+            {confirmDialogData?.type === 'limit' && <TrendingUp />}
+            {confirmDialogData?.type === 'liquidity' && <WalletIcon />}
+            <Typography variant="h6">
+              Confirm {confirmDialogData?.type === 'swap' ? 'Swap' : 
+                       confirmDialogData?.type === 'bridge' ? 'Bridge' : 
+                       confirmDialogData?.type === 'limit' ? 'Limit Order' : 
+                       'Liquidity'}
+            </Typography>
+          </Box>
+          {!isProcessing && (
+            <IconButton onClick={() => setConfirmDialogOpen(false)} sx={{ color: 'white' }}>
+              <Close />
+            </IconButton>
+          )}
+        </DialogTitle>
+        <DialogContent sx={{ pt: 3 }}>
+          {isProcessing ? (
+            <Box display="flex" flexDirection="column" alignItems="center" gap={3} py={4}>
+              <CircularProgress size={60} />
+              <Typography variant="h6" color="text.secondary">
+                Processing Transaction...
+              </Typography>
+              <Typography variant="body2" color="text.secondary" textAlign="center">
+                Please wait while your transaction is being submitted to the blockchain.
+                <br />
+                Do not close this window.
+              </Typography>
+            </Box>
+          ) : (
+            <>
+              {/* Transaction Summary */}
+              <Paper elevation={0} sx={{ bgcolor: 'grey.50', p: 3, mb: 3, borderRadius: 2 }}>
+                <Typography variant="subtitle2" color="text.secondary" gutterBottom>
+                  Transaction Summary
+                </Typography>
+                <Divider sx={{ my: 2 }} />
+                
+                {confirmDialogData?.type === 'swap' && (
+                  <>
+                    <Box display="flex" justifyContent="space-between" mb={1.5}>
+                      <Typography variant="body2" color="text.secondary">From:</Typography>
+                      <Typography variant="body2" fontWeight="bold">{confirmDialogData.summary.from}</Typography>
+                    </Box>
+                    <Box display="flex" justifyContent="space-between" mb={1.5}>
+                      <Typography variant="body2" color="text.secondary">To (Estimated):</Typography>
+                      <Typography variant="body2" fontWeight="bold">{confirmDialogData.summary.to}</Typography>
+                    </Box>
+                    <Box display="flex" justifyContent="space-between" mb={1.5}>
+                      <Typography variant="body2" color="text.secondary">Slippage Tolerance:</Typography>
+                      <Typography variant="body2">{confirmDialogData.summary.slippage}</Typography>
+                    </Box>
+                    <Box display="flex" justifyContent="space-between" mb={1.5}>
+                      <Typography variant="body2" color="text.secondary">Network Fee:</Typography>
+                      <Typography variant="body2">{confirmDialogData.summary.fee}</Typography>
+                    </Box>
+                    <Box display="flex" justifyContent="space-between">
+                      <Typography variant="body2" color="text.secondary">Chain:</Typography>
+                      <Typography variant="body2">{confirmDialogData.summary.chain}</Typography>
+                    </Box>
+                  </>
+                )}
+
+                {confirmDialogData?.type === 'bridge' && (
+                  <>
+                    <Box display="flex" justifyContent="space-between" mb={1.5}>
+                      <Typography variant="body2" color="text.secondary">From:</Typography>
+                      <Typography variant="body2" fontWeight="bold">{confirmDialogData.summary.from}</Typography>
+                    </Box>
+                    <Box display="flex" justifyContent="space-between" mb={1.5}>
+                      <Typography variant="body2" color="text.secondary">To:</Typography>
+                      <Typography variant="body2" fontWeight="bold">{confirmDialogData.summary.to}</Typography>
+                    </Box>
+                    <Box display="flex" justifyContent="space-between" mb={1.5}>
+                      <Typography variant="body2" color="text.secondary">Amount:</Typography>
+                      <Typography variant="body2">{confirmDialogData.summary.amount}</Typography>
+                    </Box>
+                  </>
+                )}
+
+                {confirmDialogData?.type === 'limit' && (
+                  <>
+                    <Box display="flex" justifyContent="space-between" mb={1.5}>
+                      <Typography variant="body2" color="text.secondary">Order Type:</Typography>
+                      <Chip label={confirmDialogData.summary.side} size="small" color="error" />
+                    </Box>
+                    <Box display="flex" justifyContent="space-between" mb={1.5}>
+                      <Typography variant="body2" color="text.secondary">Amount:</Typography>
+                      <Typography variant="body2" fontWeight="bold">{confirmDialogData.summary.from}</Typography>
+                    </Box>
+                    <Box display="flex" justifyContent="space-between" mb={1.5}>
+                      <Typography variant="body2" color="text.secondary">Price:</Typography>
+                      <Typography variant="body2" fontWeight="bold">{confirmDialogData.summary.price} {confirmDialogData.summary.to}</Typography>
+                    </Box>
+                    {confirmDialogData.summary.takeProfit !== 'None' && (
+                      <Box display="flex" justifyContent="space-between" mb={1.5}>
+                        <Typography variant="body2" color="text.secondary">Take Profit:</Typography>
+                        <Typography variant="body2" color="success.main">{confirmDialogData.summary.takeProfit}</Typography>
+                      </Box>
+                    )}
+                    {confirmDialogData.summary.stopLoss !== 'None' && (
+                      <Box display="flex" justifyContent="space-between" mb={1.5}>
+                        <Typography variant="body2" color="text.secondary">Stop Loss:</Typography>
+                        <Typography variant="body2" color="error.main">{confirmDialogData.summary.stopLoss}</Typography>
+                      </Box>
+                    )}
+                  </>
+                )}
+
+                {confirmDialogData?.type === 'liquidity' && (
+                  <>
+                    <Box display="flex" justifyContent="space-between" mb={1.5}>
+                      <Typography variant="body2" color="text.secondary">Pool:</Typography>
+                      <Typography variant="body2" fontWeight="bold">{confirmDialogData.summary.pool}</Typography>
+                    </Box>
+                    <Box display="flex" justifyContent="space-between" mb={1.5}>
+                      <Typography variant="body2" color="text.secondary">Mode:</Typography>
+                      <Chip label={confirmDialogData.summary.mode} size="small" color="primary" />
+                    </Box>
+                    {confirmDialogData.summary.createNew && (
+                      <Box display="flex" justifyContent="space-between" mb={1.5}>
+                        <Typography variant="body2" color="text.secondary">Action:</Typography>
+                        <Chip label="Create New Pool" size="small" color="warning" />
+                      </Box>
+                    )}
+                    <Box display="flex" justifyContent="space-between" mb={1.5}>
+                      <Typography variant="body2" color="text.secondary">Token A:</Typography>
+                      <Typography variant="body2" fontWeight="bold">{confirmDialogData.summary.from}</Typography>
+                    </Box>
+                    <Box display="flex" justifyContent="space-between" mb={1.5}>
+                      <Typography variant="body2" color="text.secondary">Token B:</Typography>
+                      <Typography variant="body2" fontWeight="bold">{confirmDialogData.summary.to}</Typography>
+                    </Box>
+                    <Box display="flex" justifyContent="space-between">
+                      <Typography variant="body2" color="text.secondary">Pool Share:</Typography>
+                      <Typography variant="body2" color="success.main">{confirmDialogData.summary.poolShare}</Typography>
+                    </Box>
+                  </>
+                )}
+              </Paper>
+
+              {/* Transaction Payload */}
+              <Paper elevation={0} sx={{ bgcolor: 'grey.900', p: 2, mb: 3, borderRadius: 2 }}>
+                <Typography variant="subtitle2" color="grey.400" gutterBottom>
+                  Transaction Payload
+                </Typography>
+                <Box sx={{ maxHeight: 200, overflow: 'auto', mt: 1 }}>
+                  <pre style={{ margin: 0, color: '#4ade80', fontSize: '11px', fontFamily: 'monospace' }}>
+                    {JSON.stringify(confirmDialogData?.payload, null, 2)}
+                  </pre>
+                </Box>
+              </Paper>
+
+              {/* Disclaimer */}
+              <Alert severity="warning" sx={{ mb: 3 }}>
+                <Typography variant="body2" fontWeight="bold" gutterBottom>
+                  ⚠️ Important Disclaimer
+                </Typography>
+                <Typography variant="caption" component="div" sx={{ mt: 1 }}>
+                  • Please review all transaction details carefully before confirming
+                  <br />
+                  • Transactions on the blockchain are irreversible
+                  <br />
+                  • Network fees will be deducted from your wallet
+                  <br />
+                  • Slippage may cause final amounts to differ from estimates
+                  <br />
+                  • Always verify token addresses and amounts before proceeding
+                </Typography>
+              </Alert>
+
+              {/* Action Buttons */}
+              <Box display="flex" gap={2}>
+                <Button
+                  variant="outlined"
+                  fullWidth
+                  onClick={() => setConfirmDialogOpen(false)}
+                  disabled={isProcessing}
+                >
+                  Cancel
+                </Button>
+                <Button
+                  variant="contained"
+                  fullWidth
+                  onClick={() => {
+                    if (confirmDialogData?.type === 'swap') executeSwap();
+                    else if (confirmDialogData?.type === 'bridge') executeBridge();
+                    else if (confirmDialogData?.type === 'limit') executeLimitOrder();
+                    else if (confirmDialogData?.type === 'liquidity') executeLiquidity();
+                  }}
+                  disabled={isProcessing}
+                  sx={{ bgcolor: 'primary.main' }}
+                >
+                  Confirm & Sign
+                </Button>
+              </Box>
+            </>
+          )}
+        </DialogContent>
+      </Dialog>
+
+      {/* Success Dialog */}
+      <Dialog
+        open={successDialogOpen}
+        onClose={() => setSuccessDialogOpen(false)}
+        maxWidth="sm"
+        fullWidth
+      >
+        <DialogContent sx={{ textAlign: 'center', py: 5 }}>
+          <Box
+            sx={{
+              width: 80,
+              height: 80,
+              borderRadius: '50%',
+              bgcolor: 'success.main',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              margin: '0 auto 24px',
+              animation: 'scaleIn 0.3s ease-out'
+            }}
+          >
+            <Typography variant="h2" color="white">✓</Typography>
+          </Box>
+          
+          <Typography variant="h5" fontWeight="bold" gutterBottom>
+            Transaction Successful!
+          </Typography>
+          
+          <Typography variant="body2" color="text.secondary" paragraph>
+            {successDialogData?.type === 'swap' && 'Your swap has been completed successfully'}
+            {successDialogData?.type === 'bridge' && 'Your bridge transaction has been submitted'}
+            {successDialogData?.type === 'limit' && 'Your limit order has been placed on the DEX'}
+            {successDialogData?.type === 'liquidity' && 'Liquidity has been added to the pool'}
+          </Typography>
+
+          <Paper elevation={0} sx={{ bgcolor: 'grey.50', p: 3, mt: 3, mb: 3, textAlign: 'left' }}>
+            {successDialogData?.type === 'swap' && (
+              <>
+                <Box display="flex" justifyContent="space-between" mb={1.5}>
+                  <Typography variant="body2" color="text.secondary">From:</Typography>
+                  <Typography variant="body2" fontWeight="bold">{successDialogData.details.from}</Typography>
+                </Box>
+                <Box display="flex" justifyContent="space-between" mb={1.5}>
+                  <Typography variant="body2" color="text.secondary">To:</Typography>
+                  <Typography variant="body2" fontWeight="bold">{successDialogData.details.to}</Typography>
+                </Box>
+              </>
+            )}
+            
+            {successDialogData?.type === 'bridge' && (
+              <>
+                <Box display="flex" justifyContent="space-between" mb={1.5}>
+                  <Typography variant="body2" color="text.secondary">From:</Typography>
+                  <Typography variant="body2" fontWeight="bold">{successDialogData.details.from}</Typography>
+                </Box>
+                <Box display="flex" justifyContent="space-between" mb={1.5}>
+                  <Typography variant="body2" color="text.secondary">To:</Typography>
+                  <Typography variant="body2" fontWeight="bold">{successDialogData.details.to}</Typography>
+                </Box>
+              </>
+            )}
+            
+            {successDialogData?.type === 'limit' && (
+              <>
+                <Box display="flex" justifyContent="space-between" mb={1.5}>
+                  <Typography variant="body2" color="text.secondary">Order:</Typography>
+                  <Typography variant="body2" fontWeight="bold">{successDialogData.details.description}</Typography>
+                </Box>
+                {successDialogData.details.offerSequence && (
+                  <Box display="flex" justifyContent="space-between" mb={1.5}>
+                    <Typography variant="body2" color="text.secondary">Offer ID:</Typography>
+                    <Typography variant="body2">{successDialogData.details.offerSequence}</Typography>
+                  </Box>
+                )}
+              </>
+            )}
+            
+            {successDialogData?.type === 'liquidity' && (
+              <>
+                <Box display="flex" justifyContent="space-between" mb={1.5}>
+                  <Typography variant="body2" color="text.secondary">Pool:</Typography>
+                  <Typography variant="body2" fontWeight="bold">{successDialogData.details.pool}</Typography>
+                </Box>
+                <Box display="flex" justifyContent="space-between" mb={1.5}>
+                  <Typography variant="body2" color="text.secondary">Added:</Typography>
+                  <Typography variant="body2">{successDialogData.details.amount1} + {successDialogData.details.amount2}</Typography>
+                </Box>
+                <Box display="flex" justifyContent="space-between" mb={1.5}>
+                  <Typography variant="body2" color="text.secondary">Pool Share:</Typography>
+                  <Typography variant="body2" color="success.main">{successDialogData.details.poolShare}</Typography>
+                </Box>
+              </>
+            )}
+            
+            {successDialogData?.txHash && (
+              <>
+                <Divider sx={{ my: 2 }} />
+                <Box display="flex" justifyContent="space-between">
+                  <Typography variant="body2" color="text.secondary">Transaction Hash:</Typography>
+                  <Typography variant="body2" sx={{ fontFamily: 'monospace', fontSize: '10px' }}>
+                    {successDialogData.txHash.substring(0, 8)}...{successDialogData.txHash.substring(successDialogData.txHash.length - 8)}
+                  </Typography>
+                </Box>
+              </>
+            )}
+          </Paper>
+
+          <Box display="flex" gap={2}>
+            {successDialogData?.txHash && (
+              <Button
+                variant="outlined"
+                fullWidth
+                onClick={() => {
+                  const explorerUrl = chain === 'XRPL' 
+                    ? `https://livenet.xrpl.org/transactions/${successDialogData.txHash}`
+                    : `https://etherscan.io/tx/${successDialogData.txHash}`;
+                  window.open(explorerUrl, '_blank');
+                }}
+              >
+                View on Explorer
+              </Button>
+            )}
+            <Button
+              variant="contained"
+              fullWidth
+              onClick={() => setSuccessDialogOpen(false)}
+            >
+              Done
+            </Button>
+          </Box>
+        </DialogContent>
+      </Dialog>
+
+      <SessionRenewalModal 
+        open={showRenewalModal}
+        onOpenChange={setShowRenewalModal}
+      />
+      </Container>
+    </>
   );
 }

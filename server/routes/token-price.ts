@@ -1,7 +1,7 @@
 // Token price API endpoint for authentic live prices
 import { Router } from "express";
-// This file is not needed - route is inline in routes.ts
-export default {};
+import { getAuthenticTokenPrice } from "../price-service";
+// Token price router (server-side). Removed extraneous default export placeholder.
 
 const router = Router();
 

@@ -70,7 +70,7 @@ const validateCdnPath = (req: Request, res: Response, next: any) => {
     }
     
     // Store validated params for use in handlers
-    req.cdnParams = validatedParams;
+    req.cdnParams = validatedParams as any;
     next();
     
   } catch (error) {

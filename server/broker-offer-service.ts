@@ -185,9 +185,11 @@ export async function acceptBrokeredOffers(
     const ledgerIndex = result.result.ledger_index;
     
     // Calculate amounts
-    const sellAmountXrp = parseFloat(xrpl.dropsToXrp(validation.sellOffer!.Amount));
-    const buyAmountXrp = parseFloat(xrpl.dropsToXrp(validation.buyOffer!.Amount));
-    const brokerFeeXrp = parseFloat(xrpl.dropsToXrp(validation.brokerFee!));
+  // Safely convert drop amounts to XRP strings before parsing – xrpl.dropsToXrp expects a string
+  // Convert drops to XRP manually to avoid type mismatches
+  const sellAmountXrp = Number(validation.sellOffer!.Amount) / 1_000_000;
+  const buyAmountXrp = Number(validation.buyOffer!.Amount) / 1_000_000;
+  const brokerFeeXrp = Number(validation.brokerFee!) / 1_000_000;
     
     // Record sale in database
     const [saleRecord] = await db.insert(brokerNftSales).values({
@@ -206,7 +208,7 @@ export async function acceptBrokeredOffers(
       ledger_index: ledgerIndex,
       transaction_result: 'tesSUCCESS',
       status: 'completed'
-    }).returning();
+    } as any).returning();
     
     // Record fee transaction for rewards system
     if (buyerHandle) {
@@ -223,7 +225,7 @@ export async function acceptBrokeredOffers(
         reward_usd_value: (brokerFeeXrp * 0.125).toString(),
         operation_id: saleRecord.id,
         transaction_hash: txHash
-      });
+      } as any);
       
       // Create reward record
       await db.insert(rewards).values({
@@ -233,12 +235,12 @@ export async function acceptBrokeredOffers(
         source_operation: 'marketplace_purchase',
         source_chain: 'xrp',
         reward_token: 'RDL',
-        amount: (brokerFeeXrp * 0.25 as any).toString(),
+        amount: (brokerFeeXrp * 0.25).toString(),
         usd_value: (brokerFeeXrp * 0.125).toString(),
         status: 'claimable',
         description: `NFT purchase cashback (25% of ${brokerFeeXrp} XRP fee)`,
         fee_transaction_id: saleRecord.id
-      });
+      } as any);
     }
     
     console.log(`✅ [BROKER] NFT sale completed!`);

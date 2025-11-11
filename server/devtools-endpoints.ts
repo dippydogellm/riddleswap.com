@@ -18,7 +18,7 @@ import {
   marketMakerTransactions,
   projectNftCollections,
 } from '../shared/schema';
-import { eq, and, desc, sql } from 'drizzle-orm';
+import { eq, and, desc, sql, inArray } from 'drizzle-orm';
 import { Client } from 'xrpl';
 
 const router = Router();
@@ -53,9 +53,9 @@ router.post('/discover/issuer', requireAuthentication, async (req: Authenticated
     // Collect all addresses to check (Riddle wallet + linked wallets)
     const addressesToCheck = [issuerAddress];
     
-    if (userWallet?.linked_wallet_address && userWallet.linked_wallet_chain === 'XRPL') {
-      addressesToCheck.push(userWallet.linked_wallet_address);
-      console.log(`🔗 Also checking linked XRPL wallet: ${userWallet.linked_wallet_address}`);
+    if (userWallet?.linkedWalletAddress && userWallet.linkedWalletChain === 'XRPL') {
+      addressesToCheck.push(userWallet.linkedWalletAddress);
+      console.log(`🔗 Also checking linked XRPL wallet: ${userWallet.linkedWalletAddress}`);
     }
 
     let allCollections: any[] = [];
@@ -118,7 +118,7 @@ router.post('/discover/issuer', requireAuthentication, async (req: Authenticated
         // Create new project
         const [newProject] = await db.insert(devtoolsProjects).values({
           name: collection.name || `Collection #${taxon}`,
-          description: collection.description || `Auto-discovered NFT collection (Taxon ${taxon} as any)`,
+          description: collection.description || `Auto-discovered NFT collection (Taxon ${taxon})`,
           ownerWalletAddress: collectionIssuer,
           projectType: 'imported',
           asset_type: 'nft',
@@ -135,7 +135,7 @@ router.post('/discover/issuer', requireAuthentication, async (req: Authenticated
           bithomp_collection_description: collection.description || null,
           bithomp_floor_price: collection.floorPrice || null,
           bithomp_total_nfts: collection.nftsCount || 0,
-        }).returning();
+        } as any).returning();
 
         console.log(`✨ Created new project: ${newProject.name} (Taxon ${taxon})`);
         
@@ -485,7 +485,7 @@ router.post('/airdrop/create', requireAuthentication, async (req: AuthenticatedR
       start_date: startDate ? new Date(startDate as any) : new Date(),
       end_date: endDate ? new Date(endDate) : null,
       status: 'draft'
-    }).returning();
+    } as any).returning();
 
     // Create payment record
     const [payment] = await db.insert(devtoolsPayments).values({
@@ -499,7 +499,7 @@ router.post('/airdrop/create', requireAuthentication, async (req: AuthenticatedR
       payment_method: 'crypto_xrp',
       service_description: `Airdrop to ${recipientCount} recipients`,
       service_quantity: recipientCount
-    }).returning();
+    } as any).returning();
 
     res.json({
       success: true,
@@ -617,7 +617,7 @@ router.post('/snapshot/create', requireAuthentication, async (req: Authenticated
       payment_status: 'pending',
       payment_method: 'crypto_xrp',
       service_description: `${snapshotType} snapshot on ${chain}`
-    }).returning();
+    } as any).returning();
 
     res.json({
       success: true,
@@ -736,7 +736,7 @@ router.post('/promotion/create', requireAuthentication, async (req: Authenticate
       price_usd: totalPrice.toString(),
       payment_status: 'pending',
       status: 'pending'
-    }).returning();
+    } as any).returning();
 
     // Create payment
     const [payment] = await db.insert(devtoolsPayments).values({
@@ -749,7 +749,7 @@ router.post('/promotion/create', requireAuthentication, async (req: Authenticate
       payment_status: 'pending',
       payment_method: 'crypto_xrp',
       service_description: `${promotionType} promotion for ${durationDays} days`
-    }).returning();
+    } as any).returning();
 
     res.json({
       success: true,
@@ -982,7 +982,7 @@ router.post('/market-maker/create', requireAuthentication, async (req: Authentic
       max_amount: maxAmount?.toString(),
       platform_fee_percentage: "0.0025", // 0.25% fee
       is_active: false, // Start inactive
-    }).returning();
+    } as any).returning();
 
     res.json({
       success: true,
@@ -1340,7 +1340,7 @@ router.get('/projects/:projectId', requireAuthentication, async (req: Authentica
     // Get project
     const [project] = await db.select()
       .from(devtoolsProjects)
-      .where(eq(devtoolsProjects.id, parseInt(projectId)))
+      .where(eq(devtoolsProjects.id, projectId))
       .limit(1);
 
     if (!project) {
@@ -1360,23 +1360,24 @@ router.get('/projects/:projectId', requireAuthentication, async (req: Authentica
     // Get subscription info
     const subscription = await db.select()
       .from(enhancedProjectSubscriptions)
-      .where(eq(enhancedProjectSubscriptions.project_id, parseInt(projectId)))
+      .where(eq(enhancedProjectSubscriptions.project_id, projectId))
       .limit(1);
 
     // Get payment/revenue stats
     const payments = await db.select()
       .from(devtoolsPayments)
-      .where(eq(devtoolsPayments.project_id, parseInt(projectId)));
+      .where(eq(devtoolsPayments.project_id, projectId));
 
-    const totalRevenue = payments.reduce((sum, p) => sum + parseFloat(p.amount || '0'), 0);
-    const paidPayments = payments.filter(p => p.status === 'completed');
-    const pendingPayments = payments.filter(p => p.status === 'pending');
+  const totalRevenue = payments.reduce((sum, p: any) => sum + parseFloat(p.amount_usd || '0'), 0);
+  const paidPayments = payments.filter((p: any) => p.payment_status === 'paid' || p.payment_status === 'completed');
+  const pendingPayments = payments.filter((p: any) => p.payment_status === 'pending');
 
-    // Get active airdrops
+    // Get active airdrops (linked by creator wallet)
+    const creatorAddress = project.issuer_wallet || project.ownerWalletAddress;
     const activeAirdrops = await db.select()
       .from(devToolAirdrops)
       .where(and(
-        eq(devToolAirdrops.project_id, parseInt(projectId)),
+        eq(devToolAirdrops.creator_address, creatorAddress),
         eq(devToolAirdrops.status, 'active')
       ));
 
@@ -1384,8 +1385,8 @@ router.get('/projects/:projectId', requireAuthentication, async (req: Authentica
       success: true,
       project: {
         ...project,
-        subscriptionTier: subscription[0]?.tier || 'free',
-        subscriptionStatus: subscription[0]?.status || 'inactive'
+  subscriptionTier: subscription[0]?.subscription_tier || 'free',
+  subscriptionStatus: subscription[0]?.subscription_status || 'inactive'
       },
       stats: {
         totalRevenue: totalRevenue.toFixed(2),
@@ -1413,7 +1414,7 @@ router.get('/projects/:projectId/revenue', requireAuthentication, async (req: Au
     // Verify project ownership
     const [project] = await db.select()
       .from(devtoolsProjects)
-      .where(eq(devtoolsProjects.id, parseInt(projectId)))
+      .where(eq(devtoolsProjects.id, projectId))
       .limit(1);
 
     if (!project) {
@@ -1432,16 +1433,16 @@ router.get('/projects/:projectId/revenue', requireAuthentication, async (req: Au
     // Get all payments with details
     const payments = await db.select()
       .from(devtoolsPayments)
-      .where(eq(devtoolsPayments.project_id, parseInt(projectId)))
+      .where(eq(devtoolsPayments.project_id, projectId))
       .orderBy(desc(devtoolsPayments.created_at));
 
     // Calculate revenue breakdown
     const breakdown = {
-      airdrops: payments.filter(p => p.service_type === 'airdrop').reduce((sum, p) => sum + parseFloat(p.amount || '0'), 0),
-      snapshots: payments.filter(p => p.service_type === 'snapshot').reduce((sum, p) => sum + parseFloat(p.amount || '0'), 0),
-      promotions: payments.filter(p => p.service_type === 'promotion').reduce((sum, p) => sum + parseFloat(p.amount || '0'), 0),
-      subscriptions: payments.filter(p => p.service_type === 'subscription').reduce((sum, p) => sum + parseFloat(p.amount || '0'), 0),
-      total: payments.reduce((sum, p) => sum + parseFloat(p.amount || '0'), 0)
+      airdrops: payments.filter((p: any) => p.service_type === 'airdrop').reduce((sum: number, p: any) => sum + parseFloat(p.amount_usd || '0'), 0),
+      snapshots: payments.filter((p: any) => p.service_type === 'snapshot').reduce((sum: number, p: any) => sum + parseFloat(p.amount_usd || '0'), 0),
+      promotions: payments.filter((p: any) => p.service_type === 'promotion').reduce((sum: number, p: any) => sum + parseFloat(p.amount_usd || '0'), 0),
+      subscriptions: payments.filter((p: any) => p.service_type === 'subscription').reduce((sum: number, p: any) => sum + parseFloat(p.amount_usd || '0'), 0),
+      total: payments.reduce((sum: number, p: any) => sum + parseFloat(p.amount_usd || '0'), 0)
     };
 
     // Get monthly revenue (last 12 months)
@@ -1452,13 +1453,13 @@ router.get('/projects/:projectId/revenue', requireAuthentication, async (req: Au
       const monthEnd = new Date(now.getFullYear(), now.getMonth() - i + 1, 0);
       
       const monthPayments = payments.filter(p => {
-        const paymentDate = new Date(p.created_at);
-        return paymentDate >= monthDate && paymentDate <= monthEnd && p.status === 'completed';
+        const paymentDate = new Date((p as any).created_at);
+        return paymentDate >= monthDate && paymentDate <= monthEnd && ((p as any).payment_status === 'paid' || (p as any).payment_status === 'completed');
       });
 
       monthlyRevenue.push({
         month: monthDate.toLocaleDateString('en-US', { month: 'short', year: 'numeric' }),
-        revenue: monthPayments.reduce((sum, p) => sum + parseFloat(p.amount || '0'), 0).toFixed(2),
+  revenue: monthPayments.reduce((sum, p: any) => sum + parseFloat(p.amount_usd || '0'), 0).toFixed(2),
         transactions: monthPayments.length
       });
     }
@@ -1488,7 +1489,7 @@ router.get('/projects/:projectId/stats', requireAuthentication, async (req: Auth
     // Verify ownership
     const [project] = await db.select()
       .from(devtoolsProjects)
-      .where(eq(devtoolsProjects.id, parseInt(projectId)))
+      .where(eq(devtoolsProjects.id, projectId))
       .limit(1);
 
     if (!project) {
@@ -1507,19 +1508,19 @@ router.get('/projects/:projectId/stats', requireAuthentication, async (req: Auth
     // Get counts
     const airdrops = await db.select()
       .from(devToolAirdrops)
-      .where(eq(devToolAirdrops.project_id, parseInt(projectId)));
+      .where(eq(devToolAirdrops.creator_address, project.ownerWalletAddress));
 
     const snapshots = await db.select()
       .from(devToolSnapshots)
-      .where(eq(devToolSnapshots.project_id, parseInt(projectId)));
+      .where(eq(devToolSnapshots.creator_address, project.ownerWalletAddress));
 
     const promotions = await db.select()
       .from(projectPromotions)
-      .where(eq(projectPromotions.project_id, parseInt(projectId)));
+      .where(eq(projectPromotions.project_id, projectId));
 
     const ammConfigs = await db.select()
       .from(marketMakerConfigs)
-      .where(eq(marketMakerConfigs.project_id, parseInt(projectId)));
+      .where(eq(marketMakerConfigs.project_id, projectId));
 
     res.json({
       success: true,
@@ -1566,27 +1567,27 @@ router.get('/system-status', requireAuthentication, async (req: AuthenticatedReq
     // Get overall statistics
     const totalAirdrops = await db.select()
       .from(devToolAirdrops)
-      .where(sql`project_id IN (SELECT id FROM devtools_projects WHERE owner_wallet_address = ${userWallet.xrpAddress})`);
+      .where(inArray(devToolAirdrops.creator_address, projects.map(p => p.ownerWalletAddress)));
 
     const totalSnapshots = await db.select()
       .from(devToolSnapshots)
-      .where(sql`project_id IN (SELECT id FROM devtools_projects WHERE owner_wallet_address = ${userWallet.xrpAddress})`);
+      .where(inArray(devToolSnapshots.creator_address, projects.map(p => p.ownerWalletAddress)));
 
     const totalPromotions = await db.select()
       .from(projectPromotions)
-      .where(sql`project_id IN (SELECT id FROM devtools_projects WHERE owner_wallet_address = ${userWallet.xrpAddress})`);
+      .where(inArray(projectPromotions.project_id, projects.map(p => p.id)));
 
     const totalAmmConfigs = await db.select()
       .from(marketMakerConfigs)
-      .where(sql`project_id IN (SELECT id FROM devtools_projects WHERE owner_wallet_address = ${userWallet.xrpAddress})`);
+      .where(inArray(marketMakerConfigs.project_id, projects.map(p => p.id)));
 
     const totalPayments = await db.select()
       .from(devtoolsPayments)
-      .where(sql`project_id IN (SELECT id FROM devtools_projects WHERE owner_wallet_address = ${userWallet.xrpAddress})`);
+      .where(inArray(devtoolsPayments.project_id, projects.map(p => p.id)));
 
     const totalRevenue = totalPayments
-      .filter(p => p.status === 'completed')
-      .reduce((sum, p) => sum + parseFloat(p.amount || '0'), 0);
+      .filter((p: any) => p.payment_status === 'paid' || p.payment_status === 'completed')
+      .reduce((sum: number, p: any) => sum + parseFloat(p.amount_usd || '0'), 0);
 
     // Check service status
     const serviceStatus = {
@@ -1618,7 +1619,7 @@ router.get('/system-status', requireAuthentication, async (req: AuthenticatedReq
         totalAmmConfigs: totalAmmConfigs.length,
         activeAmm: totalAmmConfigs.filter(c => c.is_active).length,
         totalPayments: totalPayments.length,
-        completedPayments: totalPayments.filter(p => p.status === 'completed').length,
+  completedPayments: totalPayments.filter((p: any) => p.payment_status === 'paid' || p.payment_status === 'completed').length,
         totalRevenue: totalRevenue.toFixed(2),
       },
       services: serviceStatus,

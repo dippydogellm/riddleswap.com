@@ -2,7 +2,7 @@
 // Checks database status against actual XRPL blockchain data
 import { Client as XRPLClient } from 'xrpl';
 import { db } from './db';
-import { bridgePayloads } from '../shared/schema';
+import { bridge_payloads } from '@shared/schema';
 import { eq, and, isNotNull } from 'drizzle-orm';
 
 interface VerificationResult {
@@ -74,12 +74,12 @@ export class BridgeAuditTool {
     // Get all completed transactions with XRP transactions
     const completedTransactions = await db
       .select()
-      .from(bridgePayloads)
+  .from(bridge_payloads)
       .where(
         and(
-          eq(bridgePayloads.status, 'completed'),
-          isNotNull(bridgePayloads.txhash),
-          eq(bridgePayloads.fromcurrency, 'XRP')
+          eq(bridge_payloads.status, 'completed'),
+          isNotNull(bridge_payloads.txHash),
+          eq(bridge_payloads.fromCurrency, 'XRP')
         )
       );
 
@@ -88,10 +88,10 @@ export class BridgeAuditTool {
     const results: VerificationResult[] = [];
     
     for (const transaction of completedTransactions.slice(0, 10)) { // Audit first 10 for testing
-      console.log(`🔍 [AUDIT] Verifying transaction: ${transaction.transaction_id}`);
+  console.log(`🔍 [AUDIT] Verifying transaction: ${transaction.transaction_id}`);
       
-      if (transaction.txhash) {
-        const verification = await this.verifyTransaction(transaction.txhash);
+      if (transaction.txHash) {
+        const verification = await this.verifyTransaction(transaction.txHash);
         
         const result: VerificationResult = {
           transactionId: transaction.transaction_id || 'unknown',

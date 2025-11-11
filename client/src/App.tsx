@@ -23,6 +23,7 @@ const TransactionsPage = lazy(() => import("@/pages/TransactionsPage").then(modu
 import ProfessionalHeader from "@/components/professional-header";
 import SearchBar from "@/components/search-bar";
 import UniversalFooter from "@/components/universal-footer";
+import GamingNavBar from "@/components/GamingNavBar";
 
 // Lazy load swap and DeFi components (legacy pages removed; kept Liquidity page)
 const LiquidityPage = lazy(() => import("@/pages/liquidity"));
@@ -41,6 +42,8 @@ const NFTGatewayPage = lazy(() => import("@/pages/nft-gateway"));
 const GamingNFTs = lazy(() => import("@/pages/GamingNFTs"));
 const PartnerProjectDetail = lazy(() => import("@/pages/partner-project-detail"));
 const WalletProfile = lazy(() => import("@/pages/wallet-profile"));
+const GamingAllCollections = lazy(() => import("@/components/gaming/AllCollections"));
+const GamingNFTCollectionDetail = lazy(() => import("@/components/gaming/NFTCollectionDetail"));
 const TokenAnalytics = lazy(() => import("@/pages/token-analytics"));
 const TokenPageV3 = lazy(() => import("@/pages/token-page-v3"));
 const RiddleScanner = lazy(() => import("@/pages/riddle-scanner"));
@@ -377,8 +380,7 @@ function Router() {
   return (
     <RouteSessionWrapper>
       <div className="min-h-screen flex flex-col" style={{marginTop: 0, paddingTop: 0}}>
-        <ProfessionalHeader />
-        <SearchBar />
+        <GamingNavBar />
         <div className="flex-1">
           <Suspense fallback={
             <div className="flex items-center justify-center min-h-screen">
@@ -689,6 +691,9 @@ function Router() {
                 {
                   name: 'gaming-v3-and-legacy',
                   routes: [
+                      // Public NFT Collection Routes (no auth required)
+                        { path: '/gaming/collections', component: GamingAllCollections },
+                        { path: '/gaming/nft/:collectionId', component: GamingNFTCollectionDetail },
                     { path: '/inquisition-landing', component: InquisitionLanding },
                     { path: '/trolls-inquisition', component: TrollsInquisitionLanding },
                     { path: '/the-trolls-inquisition', component: TrollsInquisitionLanding },

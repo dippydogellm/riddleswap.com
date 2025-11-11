@@ -184,7 +184,7 @@ router.post('/profiles', validateSession, async (req, res) => {
           followerCount: 0,
           averageHoldTime: 0,
           maxDrawdown: '0'
-        })
+        } as any)
         .returning();
 
       res.json({

@@ -2,7 +2,7 @@ import { Router } from 'express';
 import { storage } from './storage';
 import { z } from 'zod';
 import { createInsertSchema } from 'drizzle-zod';
-import { devtoolsProjects, chainConfigurations, devToolAirdrops, insertDevToolAirdropSchema, nftVerificationCache, insertNftVerificationCacheSchema, linkedWallets as linkedWalletsTable, externalWallets as externalWalletsTable, wallets, riddleWallets, inquisitionCollections } from '../shared/schema';
+import { devtoolsProjects, chainConfigurations, devToolAirdrops, insertDevToolAirdropSchema, nftVerificationCache, insertNftVerificationCacheSchema, linkedWallets as linkedWalletsTable, externalWallets as externalWalletsTable, wallets, riddleWallets, inquisitionCollections, insertDevtoolsProjectSchema, insertChainConfigurationSchema } from '../shared/schema';
 import { sessionAuth } from './middleware/session-auth';
 import { readOnlyAuth } from './middleware/read-only-auth';
 import crypto from 'crypto';
@@ -415,18 +415,9 @@ router.get('/all-wallets', readOnlyAuth, async (req: any, res) => {
   }
 });
 
-// Project creation/management schemas
-const createProjectSchema = createInsertSchema(devtoolsProjects).omit({
-  id: true,
-  createdAt: true,
-  updatedAt: true
-});
-
-const createChainConfigSchema = createInsertSchema(chainConfigurations).omit({
-  id: true,
-  createdAt: true,
-  updatedAt: true
-});
+// Project creation/management schemas (reuse shared insert schemas to avoid duplicate omit typing issues)
+const createProjectSchema = insertDevtoolsProjectSchema;
+const createChainConfigSchema = insertChainConfigurationSchema;
 
 // Get user's DevTools projects
 router.get('/projects', readOnlyAuth, async (req: any, res) => {
@@ -528,12 +519,32 @@ router.get('/projects', readOnlyAuth, async (req: any, res) => {
       console.log('Error fetching inquisition collections:', e);
     }
 
-    // Remove duplicates and sort by creation date
+    // Remove duplicates and apply priority sorting:
+    // 1. Claimed projects (claim_status === 'claimed' OR claimStatus === 'claimed')
+    // 2. Override enabled projects (override_bithomp_responses === true)
+    // 3. Newest first (createdAt descending)
+    // 4. Fallback to name alphabetical
     const uniqueProjects = Array.from(new Map(allProjects.map(p => [p.id, p])).values())
-      .sort((a, b) => {
-        const timeA = b.createdAt ? new Date(b.createdAt).getTime() : 0;
-        const timeB = a.createdAt ? new Date(a.createdAt).getTime() : 0;
-        return timeA - timeB;
+      .sort((a: any, b: any) => {
+        const aClaimed = (a.claim_status === 'claimed' || a.claimStatus === 'claimed') ? 1 : 0;
+        const bClaimed = (b.claim_status === 'claimed' || b.claimStatus === 'claimed') ? 1 : 0;
+        if (bClaimed !== aClaimed) return bClaimed - aClaimed;
+
+        const aOverride = a.override_bithomp_responses === true ? 1 : 0;
+        const bOverride = b.override_bithomp_responses === true ? 1 : 0;
+        if (bOverride !== aOverride) return bOverride - aOverride;
+
+        const aCreated = a.createdAt || a.created_at;
+        const bCreated = b.createdAt || b.created_at;
+        const aTime = aCreated ? new Date(aCreated).getTime() : 0;
+        const bTime = bCreated ? new Date(bCreated).getTime() : 0;
+        if (bTime !== aTime) return bTime - aTime; // newer first
+
+        const aName = (a.name || '').toLowerCase();
+        const bName = (b.name || '').toLowerCase();
+        if (aName < bName) return -1;
+        if (aName > bName) return 1;
+        return 0;
       });
 
     console.log(`✅ Found ${uniqueProjects.length} projects for user ${userHandle} across ${walletAddresses.length} wallets (including ${nftCollectionsCount} NFT collections)`);
@@ -1080,20 +1091,21 @@ function getPaymentWalletAddress(cryptoType: string): string {
 // ==============================================
 
 // Enhanced airdrop schema for comprehensive functionality
+// Extended comprehensive airdrop schema adds runtime-only fields; keep original DB column names intact.
 const comprehensiveAirdropSchema = insertDevToolAirdropSchema.extend({
-  distribution_method: z.enum(['immediate', 'claimable', 'scheduled']),
-  gas_optimization: z.boolean().default(true),
-  merkle_tree: z.boolean().default(false),
+  distribution_method: z.enum(['immediate', 'claimable', 'scheduled']).optional(),
+  gas_optimization: z.boolean().default(true).optional(),
+  merkle_tree: z.boolean().default(false).optional(),
   recipients: z.array(z.object({
     address: z.string(),
     amount: z.string(),
     claimed: z.boolean().optional(),
     txHash: z.string().optional()
-  })),
-  chain_id: z.union([z.number(), z.string()]),
-  total_amount: z.string(),
-  recipient_count: z.number(),
-  estimated_gas: z.string()
+  })).optional(),
+  chain_id: z.union([z.number(), z.string()]).optional(),
+  total_amount: z.string().optional(),
+  recipient_count: z.number().optional(),
+  estimated_gas: z.string().optional()
 });
 
 // Chain configurations for gas estimation and validation
@@ -1118,9 +1130,11 @@ router.post('/airdrops/comprehensive', sessionAuth, async (req: any, res) => {
     }
 
     // Validate and parse request data
-    const validatedData = comprehensiveAirdropSchema.parse(req.body);
+    const validatedData: any = comprehensiveAirdropSchema.parse(req.body) as any;
     
-    const chainConfig = chainConfigs[validatedData.chain as keyof typeof chainConfigs];
+  // Access chain from validated data; fall back to provided chain_id or request body
+  const chainValue: any = (validatedData as any).chain || (validatedData as any).chain_id || req.body.chain;
+  const chainConfig = chainConfigs[chainValue as keyof typeof chainConfigs];
     if (!chainConfig) {
       return res.status(400).json({ error: 'Unsupported blockchain' });
     }
@@ -1132,28 +1146,28 @@ router.post('/airdrops/comprehensive', sessionAuth, async (req: any, res) => {
     }
 
     // Prepare airdrop data for storage
-    const airdropData = {
+    const airdropData: any = {
       creator_address: userWallet,
       riddle_wallet_handle: req.user?.handle,
-      chain: validatedData.chain,
-      airdrop_type: validatedData.airdrop_type,
-      token_contract: validatedData.token_contract,
-      amount_per_address: validatedData.amount_per_address,
-      total_recipients: validatedData.recipient_count,
-      recipients: validatedData.recipients,
-      claim_enabled: validatedData.claim_enabled,
+      chain: chainValue,
+      airdrop_type: (validatedData as any).airdrop_type,
+      token_contract: (validatedData as any).token_contract,
+      amount_per_address: (validatedData as any).amount_per_address,
+      total_recipients: (validatedData as any).recipient_count,
+      recipients: (validatedData as any).recipients,
+      claim_enabled: (validatedData as any).claim_enabled,
       merkle_root: merkleRoot,
-      start_date: validatedData.start_date ? new Date(validatedData.start_date) : null,
-      end_date: validatedData.end_date ? new Date(validatedData.end_date) : null,
+  start_date: (validatedData as any).start_date ? new Date((validatedData as any).start_date) : null,
+  end_date: (validatedData as any).end_date ? new Date((validatedData as any).end_date) : null,
       total_claimed: 0,
-      status: validatedData.distribution_method === 'immediate' ? 'active' : 'draft'
+      status: (validatedData as any).distribution_method === 'immediate' ? 'active' : 'draft'
     };
 
     // Create airdrop in database
     const createdAirdrop = await storage.createDevToolAirdrop(airdropData);
 
     // Calculate estimated costs
-    const gasEstimate = calculateGasCosts(validatedData.chain, validatedData.recipients.length, validatedData.airdrop_type);
+  const gasEstimate = calculateGasCosts(chainValue, ((validatedData as any).recipients || []).length, (validatedData as any).airdrop_type);
     
     res.status(201).json({
       success: true,
@@ -1162,7 +1176,7 @@ router.post('/airdrops/comprehensive', sessionAuth, async (req: any, res) => {
       gas_estimate: gasEstimate,
       merkle_root: merkleRoot,
       distribution_method: validatedData.distribution_method,
-      message: `Successfully created ${validatedData.distribution_method} airdrop for ${validatedData.recipient_count} recipients on ${validatedData.chain.toUpperCase()}`
+      message: `Successfully created ${(validatedData as any).distribution_method} airdrop for ${(validatedData as any).recipient_count} recipients on ${String(chainValue).toUpperCase()}`
     });
   } catch (error) {
     console.error('❌ Error creating comprehensive airdrop:', error);

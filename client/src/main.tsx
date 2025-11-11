@@ -3,6 +3,7 @@ import './polyfills';
 import { createRoot } from "react-dom/client";
 import App from "./App";
 import ThemeProvider from './contexts/ThemeProvider';
+import { SpeedInsights } from '@vercel/speed-insights/react';
 import './styles/base.css';
 import './styles/mobile-responsive.css';
 import './styles/sidebar.css';
@@ -92,6 +93,8 @@ const root = document.getElementById("root");
     reactRoot.render(
       <ThemeProvider>
         <App />
+        {/* Vercel Speed Insights component for real-user performance metrics */}
+        <SpeedInsights />
       </ThemeProvider>
     );
   } else {

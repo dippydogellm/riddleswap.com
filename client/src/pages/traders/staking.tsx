@@ -12,6 +12,8 @@ import { Progress } from '@/components/ui/progress';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
 import { Label } from '@/components/ui/label';
+import { useSession } from '@/utils/sessionManager';
+import { SessionRenewalModal } from '@/components/SessionRenewalModal';
 
 interface StakingPool {
   id: string;
@@ -55,6 +57,7 @@ interface QuickBuyData {
 }
 
 export default function TokenStakingPage() {
+  const session = useSession();
   const [stakingPools, setStakingPools] = useState<StakingPool[]>([]);
   const [userStakings, setUserStakings] = useState<UserStaking[]>([]);
   const [stakeAmount, setStakeAmount] = useState('');
@@ -67,8 +70,18 @@ export default function TokenStakingPage() {
   const [selectedBuyPool, setSelectedBuyPool] = useState<StakingPool | null>(null);
   const [buyAmount, setBuyAmount] = useState('');
   const [quickBuyData, setQuickBuyData] = useState<QuickBuyData | null>(null);
+  const [showRenewalModal, setShowRenewalModal] = useState(false);
   const { toast } = useToast();
   const queryClient = useQueryClient();
+  
+  // Check if session needs renewal
+  useEffect(() => {
+    if ((session as any).needsRenewal) {
+      setShowRenewalModal(true);
+    } else {
+      setShowRenewalModal(false);
+    }
+  }, [(session as any).needsRenewal]);
 
   // Real API pools data structure
   const poolNames = {
@@ -111,13 +124,13 @@ export default function TokenStakingPage() {
     queryFn: async () => {
       const response = await fetch('/api/staking/positions', {
         headers: {
-          'Authorization': `Bearer ${localStorage.getItem('sessionToken') || ''}`
+          'Authorization': `Bearer ${session.sessionToken || ''}`
         }
       });
       const data = await response.json() as any;
       return data;
     },
-    enabled: !!localStorage.getItem('sessionToken')
+    enabled: !!session.sessionToken
   });
 
   // Quick buy mutation
@@ -777,6 +790,12 @@ export default function TokenStakingPage() {
           </div>
         </DialogContent>
       </Dialog>
+      
+      {/* Session Renewal Modal */}
+      <SessionRenewalModal 
+        open={showRenewalModal} 
+        onOpenChange={setShowRenewalModal}
+      />
     </div>
   );
 }

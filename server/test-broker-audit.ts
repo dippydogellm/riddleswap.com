@@ -186,8 +186,9 @@ async function testWalletMintSearch() {
         if (escrow.paymentTxHash) {
           console.log(`   Payment TX: ${escrow.paymentTxHash}`);
         }
-        if (escrow.nftTokenId) {
-          console.log(`   NFT Minted: ${escrow.nftTokenId}`);
+        // Note: nftTokenId field may not exist in current schema
+        if ((escrow as any).nftTokenId) {
+          console.log(`   NFT Minted: ${(escrow as any).nftTokenId}`);
         }
       });
       

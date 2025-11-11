@@ -563,6 +563,11 @@ async function performAsyncInitialization() {
   app.use('/api/tradecenter', tradeCenterRoutes);
   console.log('💱 Trade Center routes registered (swap, liquidity, limit orders, bridge)');
 
+  // XRP/RDL Exchange Rate Routes
+  const xrpRdlRateRoutes = (await import('./xrp-rdl-rate')).default;
+  app.use('/api', xrpRdlRateRoutes);
+  console.log('💰 XRP/RDL exchange rate routes registered');
+
   // Land Inventory Routes (NFTs, Buildings, Weapons on Land)
   app.use('/api/land-inventory', landInventoryRoutes);
   console.log('🏰 Land Inventory routes registered (place NFTs, buildings, weapons on land)');
